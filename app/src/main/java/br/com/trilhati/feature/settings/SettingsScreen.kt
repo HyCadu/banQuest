@@ -60,6 +60,7 @@ data class SettingsUi(
     val importedPacks: List<ImportedPack>,
     val versionName: String,
     val social: br.com.trilhati.feature.app.SocialUi = br.com.trilhati.feature.app.SocialUi(),
+    val update: br.com.trilhati.data.update.UpdateUi = br.com.trilhati.data.update.UpdateUi(),
 )
 
 /** O que a tela de configurações dispara. */
@@ -86,6 +87,8 @@ data class SettingsCallbacks(
     val checkUnsynced: suspend () -> Boolean = { false },
     val onSignOut: () -> Unit = {},
     val onDeleteAccount: () -> Unit = {},
+    val onCheckUpdate: () -> Unit = {},
+    val onDownloadUpdate: (url: String) -> Unit = {},
 )
 
 @Composable
@@ -95,6 +98,8 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     val allowed by viewModel.notificationsAllowed.collectAsState()
     val packs by viewModel.importedPacks.collectAsState()
     val social by viewModel.social.collectAsState()
+    val update by viewModel.update.collectAsState()
+    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
     val context = LocalContext.current
     val questionCount = state?.course?.sumOf { u -> u.lessons.sumOf { it.questions.size } } ?: 0
     val unreviewed = state?.course?.sumOf { u -> u.lessons.sumOf { l -> l.questions.count { it.showUnreviewedBadge } } } ?: 0
@@ -127,7 +132,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     }
 
     SettingsContent(
-        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version, social),
+        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version, social, update),
         callbacks = SettingsCallbacks(
             onBack = onBack, onTimerMode = viewModel::setTimerMode, onPaceTarget = viewModel::setPaceTarget,
             onCaseFour = viewModel::setCaseFourMinutes, onNoLives = viewModel::setNoLives, onHaptics = viewModel::setHaptics,
@@ -143,7 +148,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
                     )
                 }
             },
-            onExport = { exportLauncher.launch("trilha-ti-progresso-${state?.today ?: "backup"}.json") },
+            onExport = { exportLauncher.launch("banquest-progresso-${state?.today ?: "backup"}.json") },
             onImport = { importLauncher.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) },
             onImportPack = { packLauncher.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) },
             onRemovePack = viewModel::removePack,
@@ -153,6 +158,10 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
             checkUnsynced = viewModel::hasUnsyncedChanges,
             onSignOut = { viewModel.signOut() },
             onDeleteAccount = { viewModel.deleteAccount() },
+            onCheckUpdate = viewModel::checkUpdateNow,
+            onDownloadUpdate = { url ->
+                if (runCatching { uriHandler.openUri(url) }.isFailure) viewModel.message("Não achei um navegador para baixar o APK.")
+            },
         ),
     )
 }
@@ -221,7 +230,7 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
                 ChunkyButton("Permitir notificações", callbacks.onAllowNotifications, Modifier.fillMaxWidth(), ChunkyStyle.Primary, minHeight = 46.dp)
             }
             Text(
-                "Alguns fabricantes atrasam avisos para economizar bateria. Se o lembrete chegar tarde, libere o Trilha TI " +
+                "Alguns fabricantes atrasam avisos para economizar bateria. Se o lembrete chegar tarde, libere o BanQuest " +
                     "na otimização de bateria do aparelho.",
                 style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
             )
@@ -289,7 +298,30 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             ChunkyButton("Zerar meu progresso", { confirmErase = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
         }
 
-        Text("Trilha TI · versão ${ui.versionName}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft, modifier = Modifier.fillMaxWidth())
+        Section("Sobre o app") {
+            Text("BanQuest · versão ${ui.versionName}", style = MaterialTheme.typography.titleSmall, color = c.ink)
+            val release = ui.update.status.releaseOrNull
+            Text(
+                when {
+                    ui.update.checking -> "Procurando versão nova…"
+                    release != null -> "Versão ${release.versionName} disponível." + if (release.notes.isNotBlank()) " ${release.notes}" else ""
+                    ui.update.lastCheckMs > 0 -> "Você está na versão mais nova."
+                    else -> "Ainda não conferido."
+                },
+                style = MaterialTheme.typography.bodySmall, color = if (release != null) c.secondaryText else c.inkSoft,
+            )
+            if (release != null) {
+                ChunkyButton("Baixar a versão ${release.versionName}", { callbacks.onDownloadUpdate(release.apkUrl) }, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 46.dp)
+            }
+            ChunkyButton(
+                "Verificar atualização", callbacks.onCheckUpdate, Modifier.fillMaxWidth(), ChunkyStyle.Neutral,
+                enabled = !ui.update.checking, minHeight = 46.dp,
+            )
+            Text(
+                "Para instalar, o Android pede permissão para o navegador instalar apps. A versão nova entra por cima, sem perder nada.",
+                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
+            )
+        }
     }
 
     if (pickTime) {

@@ -218,3 +218,28 @@ select tst.ok(not exists (select 1 from public.profiles where id = :'davi'), 'pe
 select tst.ok(not exists (select 1 from public.study_sessions where user_id = :'davi'), 'sessões apagadas');
 select tst.ok(not exists (select 1 from public.friendships where user_a = :'davi' or user_b = :'davi'), 'amizades apagadas');
 select tst.ok(not exists (select 1 from public.friend_requests where from_id = :'davi' or to_id = :'davi'), 'pedidos apagados');
+
+-- =====================================================================================================================
+-- 8. Versões do app (0002_releases.sql)
+-- =====================================================================================================================
+set role anon;
+select set_config('request.jwt.claim.sub', '', false);
+select tst.ok(public.latest_release() is null, 'sem versão publicada: latest_release é nulo, e anônimo pode chamar');
+reset role;
+insert into public.app_releases (version_code, version_name, apk_url, notes)
+values (8, '0.5.0', 'https://exemplo.supabase.co/storage/v1/object/public/apk/banquest-0.5.0.apk', 'Primeira versão BanQuest');
+insert into public.app_releases (version_code, version_name, apk_url, notes, min_version_code)
+values (9, '0.5.1', 'https://exemplo.supabase.co/storage/v1/object/public/apk/banquest-0.5.1.apk', 'Correções', 8);
+select tst.err($$insert into public.app_releases (version_code, version_name, apk_url) values (10, '0.6', 'http://inseguro/x.apk')$$, '23514', 'link do APK precisa ser https');
+select tst.err($$insert into public.app_releases (version_code, version_name, apk_url, min_version_code) values (10, '0.6', 'https://x/a.apk', 11)$$, '23514', 'versão mínima não passa da própria versão');
+set role anon;
+select tst.ok((public.latest_release()->>'version_code')::int = 9, 'anônimo vê a versão mais nova');
+select tst.ok((public.latest_release()->>'min_version_code')::int = 8 and public.latest_release()->>'notes' = 'Correções', 'versão mínima e notas vêm junto');
+select tst.err('select * from public.app_releases', '42501', 'anônimo não lê a tabela de versões');
+select tst.err($$insert into public.app_releases (version_code, version_name, apk_url) values (99, 'x', 'https://x/a.apk')$$, '42501', 'anônimo não publica versão');
+set role authenticated;
+select set_config('request.jwt.claim.sub', :'ana', false);
+select tst.ok(public.latest_release()->>'version_name' = '0.5.1', 'logado também vê a versão mais nova');
+select tst.err($$insert into public.app_releases (version_code, version_name, apk_url) values (99, 'x', 'https://x/a.apk')$$, '42501', 'logado não publica versão');
+reset role;
+

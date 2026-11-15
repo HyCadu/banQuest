@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 /**
- * Tokens de cor do Trilha TI (roxo + turquesa, original). Nada de paleta copiada de outros apps.
+ * Tokens de cor do BanQuest (roxo + turquesa, original). Nada de paleta copiada de outros apps.
  *
  * Convenção: cada cor "cheia" tem uma `*Edge` (a borda inferior mais escura que dá o efeito 3D dos botões)
  * e uma `on*` (cor do texto/ícone sobre ela, com contraste mínimo de 4,5:1 — garantido por teste).

@@ -35,6 +35,9 @@ interface SocialApi {
     suspend fun pushSnapshot(expectedVersion: Long, deviceId: String, payload: JsonElement): ApiResult<PushResult>
     suspend fun pullSnapshot(): ApiResult<RemoteSnapshot?>
     suspend fun deleteAccount(): ApiResult<Unit>
+
+    /** Versão mais nova publicada do app. Não precisa de login. */
+    suspend fun latestRelease(): ApiResult<br.com.trilhati.data.update.AppRelease?>
 }
 
 /** Implementação via PostgREST: POST /rest/v1/rpc/<função>, com o token do usuário logado. */
@@ -87,6 +90,26 @@ class SupabaseSocialApi @Inject constructor(
     override suspend fun pullSnapshot() = rpc("pull_snapshot", JsonObject(emptyMap())) { decodeNullable(it, RemoteSnapshot.serializer()) }
 
     override suspend fun deleteAccount() = rpc("delete_my_account", JsonObject(emptyMap())) { }
+
+    override suspend fun latestRelease(): ApiResult<br.com.trilhati.data.update.AppRelease?> {
+        if (!config.isConfigured) return ApiResult.Err(ErrorKind.NotConfigured, "O servidor do app não está configurado.")
+        // Sem token de usuário: a função é pública (papel anon), para a tela de entrada também poder avisar.
+        val response = try {
+            http.post(
+                "${config.url}/rest/v1/rpc/latest_release",
+                mapOf("apikey" to config.publishableKey, "Content-Type" to "application/json", "Accept" to "application/json"),
+                "{}",
+            )
+        } catch (_: NetworkException) {
+            return ApiResult.Err(ErrorKind.Network, "Sem conexão. Tente de novo mais tarde.")
+        }
+        if (response.code !in 200..299) return ApiResult.Err(classify(response), messageFor(response))
+        return try {
+            ApiResult.Ok(decodeNullable(response.body.ifBlank { "null" }, br.com.trilhati.data.update.AppRelease.serializer()))
+        } catch (e: IllegalArgumentException) {
+            ApiResult.Err(ErrorKind.Server, "Resposta inesperada do servidor.")
+        }
+    }
 
     private fun <T> decodeNullable(body: String, serializer: KSerializer<T>): T? {
         val element = json.parseToJsonElement(body)

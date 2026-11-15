@@ -87,7 +87,7 @@ fun LoginContent(
             },
             Modifier.size(170.dp), animated = animated, decorative = true,
         )
-        Text("Trilha TI", style = MaterialTheme.typography.displaySmall, color = c.primaryText)
+        Text("BanQuest", style = MaterialTheme.typography.displaySmall, color = c.primaryText)
         when (ui.step) {
             AuthStep.Email -> {
                 Text(

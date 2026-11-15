@@ -1,4 +1,4 @@
-# Supabase — configuração passo a passo (versão social 0.4)
+# Supabase — configuração passo a passo (BanQuest)
 
 O app usa o **Supabase Auth** (login por código de 6 dígitos no e-mail) e o **Postgres** do projeto (ranking, amigos,
 ofensiva em dupla e progresso salvo). Tudo o que o app precisa fica em um único arquivo SQL:
@@ -31,6 +31,8 @@ entre aspas.
 
 Sem este passo, o app mostra: *"O banco do servidor ainda não foi configurado (falta rodar o SQL do app no Supabase)."*
 
+Depois, rode também `supabase/migrations/0002_releases.sql` (aviso de versão nova; ver `docs/PUBLICAR_VERSAO.md`).
+
 ## 2. Configurar o envio de e-mail (SMTP próprio) — antes dos templates
 
 O painel **não deixa editar os templates** sem um SMTP próprio. Aparece o aviso *"Set up custom SMTP to edit templates"*.
@@ -42,13 +44,13 @@ Onde configurar: **Authentication → Emails → aba "SMTP Settings"** (ou o bot
 
 ### Opção A — Gmail (mais simples, não precisa de domínio)
 1. Na conta Google que vai enviar: ative a **verificação em duas etapas**.
-2. Em myaccount.google.com → Segurança → **Senhas de app**: crie uma senha para "Trilha TI" (16 letras).
+2. Em myaccount.google.com → Segurança → **Senhas de app**: crie uma senha para "BanQuest" (16 letras).
 3. No Supabase, ligue o SMTP próprio e preencha:
 
    | Campo | Valor |
    |---|---|
    | Sender email address | o seu Gmail |
-   | Sender name | `Trilha TI` |
+   | Sender name | `BanQuest` |
    | Host | `smtp.gmail.com` |
    | Port number | `465` |
    | Minimum interval between emails | deixe o padrão (60 s) |
@@ -62,7 +64,7 @@ O Gmail aceita algumas centenas de e-mails por dia, bem mais do que um grupo de 
 ### Opção B — Resend (se você tiver um domínio próprio)
 1. Crie a conta em resend.com, adicione e **verifique o seu domínio** (registros DNS) e gere uma **API key**.
 2. No Supabase: Host `smtp.resend.com`, Port `465`, Username `resend`, Password = a API key, Sender email
-   `nao-responda@seudominio.com.br`, Sender name `Trilha TI`.
+   `nao-responda@seudominio.com.br`, Sender name `BanQuest`.
 
 Sem domínio verificado, o Resend só entrega para o seu próprio e-mail. Por isso, sem domínio, use a opção A.
 
@@ -86,11 +88,11 @@ Em **Authentication → Rate Limits**, o limite de e-mails por hora pode ser aum
 
    **Subject:**
    ```
-   Seu código do Trilha TI: {{ .Token }}
+   Seu código do BanQuest: {{ .Token }}
    ```
    **Body (Source):**
    ```html
-   <h2>Seu código do Trilha TI</h2>
+   <h2>Seu código do BanQuest</h2>
    <p>Digite este código no app para entrar:</p>
    <p style="font-size:32px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
    <p>Ele vale por pouco tempo. Se você não pediu este código, ignore este e-mail.</p>
@@ -100,7 +102,7 @@ Se o e-mail chegar com um **link** em vez do número, o template ainda está sem
 
 ## 4. Testar
 
-1. Instale `dist/trilha-ti-0.4.1-debug.apk` e abra: aparece a tela **"Entre com seu e-mail"**.
+1. Instale o APK mais recente (`dist/banquest-<versão>.apk`) e abra: aparece a tela **"Entre com seu e-mail"**.
 2. Digite o e-mail → **Receber código** → o e-mail chega com o número → digite → **Entrar**.
 3. Escolha apelido e personagem → **Começar**. Se já havia progresso no celular, ele sobe para a nuvem.
 4. No painel: **Authentication → Users** mostra o e-mail. **Table Editor → profiles** mostra o apelido e o

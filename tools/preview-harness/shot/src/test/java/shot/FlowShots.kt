@@ -49,6 +49,11 @@ class FlowShots {
     @Test fun trilhaPairRisk() = rule.shot("t_path_pair_risk.png") {
         MainContent(fakeState(true).let { it.copy(snapshot = it.snapshot.copy(dailyLogs = emptyMap())) }, NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
     }
+    private val release = br.com.trilhati.domain.update.ReleaseInfo(9, "0.5.1", "https://exemplo.supabase.co/a.apk", "Correções no ranking e personagens mais rápidos.", 1)
+    @Test fun trilhaUpdate() = rule.shot("t_path_update.png") {
+        MainContent(fakeState(true), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial(), updateBanner = release)
+    }
+    @Test fun updateRequired() = rule.shot("d_update_required.png") { br.com.trilhati.feature.update.UpdateRequiredDialog(release.copy(minVersionCode = 9), {}) }
     @Test fun conflict() = rule.shot("d_conflict.png") {
         SyncConflictDialog(br.com.trilhati.data.social.SyncConflict(4, "outro", "2026-11-18T10:00:00Z", 900, 6, 640, 2), {}, {})
     }

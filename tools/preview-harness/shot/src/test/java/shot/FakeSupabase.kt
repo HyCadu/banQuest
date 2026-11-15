@@ -51,6 +51,10 @@ class FakeSupabase(private val clock: Clock) : HttpTransport {
     val requests = mutableListOf<Request>()
     var pushes = 0
 
+    /** Versões publicadas (tabela app_releases do 0002). */
+    data class Release(val code: Int, val name: String, val url: String, val notes: String = "", val minCode: Int = 1)
+    val releases = mutableListOf<Release>()
+
     /** Outro aluno já cadastrado (para amizade). */
     fun seedUser(name: String, code: String, mascot: String = "Tartaruga", showInGlobal: Boolean = true): String {
         val id = UUID.randomUUID().toString()
@@ -76,6 +80,15 @@ class FakeSupabase(private val clock: Clock) : HttpTransport {
             path == "/auth/v1/verify" -> verify(args)
             path == "/auth/v1/token" -> refresh(args)
             path == "/auth/v1/logout" -> HttpResponse(204, "")
+            // pública (papel anon): não exige token de usuário
+            path == "/rest/v1/rpc/latest_release" -> ok(
+                releases.maxByOrNull { it.code }?.let { r ->
+                    buildJsonObject {
+                        put("version_code", r.code); put("version_name", r.name); put("apk_url", r.url); put("notes", r.notes)
+                        put("min_version_code", r.minCode); put("published_at", clock.instant().toString())
+                    }
+                } ?: JsonNull,
+            )
             path.startsWith("/rest/v1/rpc/") -> {
                 val token = headers["Authorization"]?.removePrefix("Bearer ")
                 val (uid, exp) = accessTokens[token] ?: return HttpResponse(401, """{"code":"PGRST301","message":"JWT invalid"}""")

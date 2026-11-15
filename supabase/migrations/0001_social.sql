@@ -491,3 +491,12 @@ grant execute on function public.today_brt(), public.week_start_brt(date) to aut
 -- Leitura direta (RLS limita ao próprio registro). As demais tabelas só são lidas pelas funções.
 grant select on public.profiles, public.progress_snapshots to authenticated;
 revoke select on public.study_sessions, public.friend_requests, public.friendships from authenticated;
+
+-- O 0002 (versões do app) libera latest_release() para quem não está logado. Se este arquivo for rodado de novo
+-- depois do 0002, o "revoke ... from anon" acima tiraria essa permissão: devolve aqui.
+do $$
+begin
+  if to_regprocedure('public.latest_release()') is not null then
+    grant execute on function public.latest_release() to anon, authenticated;
+  end if;
+end $$;

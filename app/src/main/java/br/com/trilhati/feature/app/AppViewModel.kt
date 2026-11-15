@@ -70,7 +70,15 @@ class AppViewModel @Inject constructor(
     private val documents: DocumentIo,
     private val sync: SyncRepository,
     private val syncScheduler: SyncScheduler,
+    private val updates: br.com.trilhati.data.update.UpdateRepository,
 ) : ViewModel() {
+
+    private val checkingUpdate = MutableStateFlow(false)
+
+    /** Versão nova disponível (aviso, diálogo obrigatório e Configurações > Sobre). */
+    val update: StateFlow<br.com.trilhati.data.update.UpdateUi> = combine(updates.ui, checkingUpdate) { ui, busy ->
+        ui.copy(checking = busy)
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, br.com.trilhati.data.update.UpdateUi())
 
     private val socialState: StateFlow<SocialState?> = sync.state.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
@@ -130,6 +138,8 @@ class AppViewModel @Inject constructor(
             }
         }
         refreshImportedPacks()
+        // Versão nova? Confere ao abrir (até na tela de entrada), no máximo a cada 30 min.
+        viewModelScope.launch { updates.check() }
         // Com a conta pronta: agenda a sincronização de hora em hora e sincroniza ao abrir o app.
         viewModelScope.launch {
             gate.filter { it == Gate.Ready }.collect {
@@ -202,10 +212,32 @@ class AppViewModel @Inject constructor(
     }
     fun dismissReminderPrompt() = viewModelScope.launch { settingsRepo.dismissReminderPrompt() }
 
+    // ---------- atualização do app
+
+    /** "Verificar atualização" nas Configurações: pergunta ao servidor na hora e diz o resultado. */
+    fun checkUpdateNow() {
+        if (checkingUpdate.value) return
+        viewModelScope.launch {
+            checkingUpdate.value = true
+            val r = updates.check(force = true)
+            checkingUpdate.value = false
+            message(
+                when (r) {
+                    is ApiResult.Err -> r.message
+                    is ApiResult.Ok -> r.value.releaseOrNull?.let { "BanQuest ${it.versionName} disponível!" }
+                        ?: "Você já está na versão mais nova."
+                },
+            )
+        }
+    }
+
+    fun dismissUpdate(versionCode: Int) = viewModelScope.launch { updates.dismiss(versionCode) }
+
     // ---------- social
 
     /** Ao voltar para o app: sincroniza se a última vez foi há mais de 5 minutos. */
     fun onAppResumed() {
+        viewModelScope.launch { updates.check() }
         val s = socialState.value ?: return
         if (s.ready && !refreshing.value && clock.millis() - s.meta.lastSyncAtMs > RESUME_SYNC_MS) syncNow(quiet = true)
     }
