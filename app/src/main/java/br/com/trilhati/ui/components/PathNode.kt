@@ -36,7 +36,6 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
@@ -109,10 +108,8 @@ fun PathNode(
                 .semantics(mergeDescendants = true) {
                     contentDescription = "$label, $stateText"
                     role = Role.Button
-                    if (state == NodeState.Locked) disabled()
                 }
                 .clickable(
-                    enabled = state != NodeState.Locked,
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null,
                     onClick = onClick,
@@ -189,36 +186,40 @@ private fun StartBubble(modifier: Modifier = Modifier) {
     }
 }
 
-/** Cabeçalho de unidade da trilha ("Unidade 1 · Banco de dados"). */
+/** Cabeçalho de unidade da trilha ("Unidade 1 · Banco de dados"). Fica cinza quando a unidade ainda não tem conteúdo. */
 @Composable
 fun UnitBanner(
     unitNumber: Int,
     title: String,
     subtitle: String,
     modifier: Modifier = Modifier,
+    locked: Boolean = false,
 ) {
     val c = Trilha.colors
     val shape = RoundedCornerShape(22.dp)
+    val face = if (locked) c.locked else c.primary
+    val edge = if (locked) c.lockedEdge else c.primaryEdge
+    val textColor = if (locked) c.onLocked else c.onPrimary
     Box(modifier.fillMaxWidth()) {
-        Box(Modifier.matchParentSize().padding(top = Spacing.edge).background(c.primaryEdge, shape))
+        Box(Modifier.matchParentSize().padding(top = Spacing.edge).background(edge, shape))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = Spacing.edge)
-                .background(c.primary, shape)
+                .background(face, shape)
                 .padding(horizontal = 18.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(1f)) {
-                Text(
-                    "UNIDADE $unitNumber",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = c.onPrimary.copy(alpha = 0.85f),
-                )
-                Text(title, style = MaterialTheme.typography.titleLarge, color = c.onPrimary)
-                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = c.onPrimary.copy(alpha = 0.9f))
+                Text("UNIDADE $unitNumber", style = MaterialTheme.typography.labelMedium, color = textColor.copy(alpha = 0.85f))
+                Text(title, style = MaterialTheme.typography.titleLarge, color = textColor)
+                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = textColor.copy(alpha = 0.9f))
             }
-            GameIconView(GameIcon.Book, size = 40.dp)
+            if (locked) {
+                GameIconView(GameIcon.Lock, size = 36.dp, colors = IconColors(c.onLocked, c.locked, c.lockedEdge))
+            } else {
+                GameIconView(GameIcon.Book, size = 40.dp)
+            }
         }
     }
 }

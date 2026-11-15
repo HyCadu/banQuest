@@ -31,9 +31,12 @@ fun StatChip(
     value: String,
     description: String,
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
 ) {
     Surface(
         modifier = modifier.semantics(mergeDescendants = true) { contentDescription = description },
+        onClick = onClick ?: {},
+        enabled = onClick != null,
         shape = RoundedCornerShape(50),
         color = Trilha.colors.surface,
         border = BorderStroke(2.dp, Trilha.colors.outline),
@@ -57,15 +60,21 @@ fun TopStatusBar(
     hearts: Int,
     daysToExam: Int,
     modifier: Modifier = Modifier,
+    onStreakClick: (() -> Unit)? = null,
+    onGemsClick: (() -> Unit)? = null,
+    onHeartsClick: (() -> Unit)? = null,
+    showHearts: Boolean = true,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        StatChip(GameIcon.Flame, streak.toString(), pluralStringResource(R.plurals.stat_streak_description, streak, streak))
-        StatChip(GameIcon.Gem, gems.toString(), pluralStringResource(R.plurals.stat_gems_description, gems, gems))
-        StatChip(GameIcon.Heart, hearts.toString(), pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts))
+        StatChip(GameIcon.Flame, streak.toString(), pluralStringResource(R.plurals.stat_streak_description, streak, streak), onClick = onStreakClick)
+        StatChip(GameIcon.Gem, gems.toString(), pluralStringResource(R.plurals.stat_gems_description, gems, gems), onClick = onGemsClick)
+        if (showHearts) {
+            StatChip(GameIcon.Heart, hearts.toString(), pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts), onClick = onHeartsClick)
+        }
         StatChip(
             GameIcon.Clock,
             stringResource(R.string.exam_days_short, daysToExam),

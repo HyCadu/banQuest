@@ -10,3 +10,9 @@ local.properties
 captures/
 .kotlin/
 dist/
+
+# harness de prévia
+tools/preview-harness/**/build/
+tools/preview-harness/.gradle/
+tools/preview-harness/local.properties
+tools/preview-harness/**/schemas/

@@ -1,0 +1,1085 @@
+{
+ "schema": 1,
+ "pack": "u1-banco-de-dados",
+ "version": 1,
+ "unit": {
+  "id": "u1",
+  "order": 1,
+  "title": "Banco de dados",
+  "editalTopics": [
+   "Modelo ER e normalização",
+   "SQL (DML, DDL, DCL) e transações",
+   "Subconsultas, CTEs e funções analíticas",
+   "PL/SQL e PL/pgSQL",
+   "PostgreSQL 14/15",
+   "Oracle 19c",
+   "H2",
+   "Modelagem dimensional, DW, data mart e OLAP",
+   "Data lake e NoSQL",
+   "Governança de dados"
+  ]
+ },
+ "lessons": [
+  {
+   "id": "u1l1",
+   "order": 1,
+   "title": "Modelo ER e normalização",
+   "questions": [
+    {
+     "id": "u1l1q01",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "literal",
+     "stem": "No modelo entidade-relacionamento, o atributo (ou conjunto de atributos) que identifica de forma única cada ocorrência de uma entidade é denominado",
+     "options": [
+      "chave primária",
+      "chave estrangeira",
+      "atributo multivalorado",
+      "atributo derivado",
+      "atributo composto"
+     ],
+     "answer": 0,
+     "explanation": "A chave primária identifica unicamente cada ocorrência. A chave estrangeira apenas referencia a chave de outra entidade; os demais são tipos de atributo que não têm função identificadora.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q02",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um sistema acadêmico possui as entidades ALUNO e DISCIPLINA. Um aluno pode cursar várias disciplinas e cada disciplina tem vários alunos matriculados. Ao converter esse relacionamento muitos-para-muitos (N:N) para o modelo relacional, a solução usual é criar",
+     "options": [
+      "uma única chave estrangeira na tabela ALUNO apontando para a tabela DISCIPLINA, sem tabela adicional",
+      "uma única chave estrangeira na tabela DISCIPLINA apontando para a tabela ALUNO, sem tabela adicional",
+      "um atributo multivalorado em ALUNO listando os códigos de todas as disciplinas cursadas",
+      "uma tabela associativa com as chaves primárias de ALUNO e DISCIPLINA como chaves estrangeiras",
+      "uma chave primária composta replicada nas duas tabelas, sem criar uma terceira tabela"
+     ],
+     "answer": 3,
+     "explanation": "Relacionamentos N:N não podem ser representados por uma chave estrangeira simples em nenhum dos lados. A tabela associativa (por exemplo, MATRICULA) guarda o par de chaves e, se necessário, atributos do relacionamento.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q03",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre a primeira forma normal (1FN), é INCORRETO afirmar que",
+     "options": [
+      "seus atributos devem conter apenas valores atômicos, isto é, indivisíveis em partes menores.",
+      "ela elimina grupos repetidos e atributos multivalorados nas linhas da tabela.",
+      "exige que todo atributo não chave dependa da chave primária completa, e não de parte dela.",
+      "ela deve estar satisfeita para que a relação possa ser avaliada na 2FN e na 3FN.",
+      "um campo com vários telefones separados por vírgula é uma violação dela."
+     ],
+     "answer": 2,
+     "explanation": "A exigência de dependência da chave completa é da 2FN (dependência parcial). A 1FN trata de atomicidade e de grupos repetidos.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q04",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "A tabela PEDIDO_ITEM possui as colunas (id_pedido, id_produto, nome_produto, quantidade), com chave primária composta (id_pedido, id_produto). A coluna nome_produto depende apenas de id_produto. Para que a tabela atenda à 2FN, a medida adequada é",
+     "options": [
+      "mover nome_produto para uma tabela PRODUTO, cuja chave primária é id_produto.",
+      "criar um índice único sobre a coluna nome_produto, para acelerar as buscas.",
+      "incluir nome_produto na chave primária composta da própria tabela.",
+      "duplicar nome_produto em todas as tabelas que referenciam o pedido.",
+      "mover a coluna quantidade para uma tabela separada de itens."
+     ],
+     "answer": 0,
+     "explanation": "Há dependência parcial: nome_produto depende de apenas parte da chave composta. A 2FN exige removê-la para uma tabela em que o determinante seja a chave completa (PRODUTO). Índice não resolve redundância.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q05",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "O que caracteriza a terceira forma normal (3FN), em relação à segunda forma normal (2FN), é",
+     "options": [
+      "a eliminação das dependências parciais em relação a uma chave primária composta.",
+      "a exigência de que todos os atributos sejam atômicos.",
+      "a eliminação das dependências transitivas entre atributos não chave e a chave primária.",
+      "a exigência de que todo determinante seja uma chave candidata.",
+      "a eliminação das dependências multivaloradas independentes."
+     ],
+     "answer": 2,
+     "explanation": "As demais alternativas descrevem, respectivamente, a 2FN, a 1FN, a forma normal de Boyce-Codd e a 4FN.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q06",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Na tabela FUNCIONARIO (matricula, nome, id_depto, nome_depto), a coluna nome_depto depende de id_depto, que por sua vez depende de matricula. Essa situação caracteriza",
+     "options": [
+      "dependência parcial, que viola a 2FN.",
+      "atributo multivalorado, que viola a 1FN.",
+      "dependência multivalorada, que viola a 4FN.",
+      "redundância desejável em modelos transacionais, sem violação de forma normal.",
+      "dependência transitiva, que viola a 3FN."
+     ],
+     "answer": 4,
+     "explanation": "matricula → id_depto → nome_depto é uma dependência transitiva. A solução é criar a tabela DEPARTAMENTO (id_depto, nome_depto). Não há dependência parcial porque a chave não é composta.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q07",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Uma equipe percebeu que os relatórios de um sistema transacional, totalmente normalizado, estão lentos por causa de muitas junções, e decidiu replicar algumas colunas em outras tabelas, aceitando o custo de manter essas cópias consistentes. Essa técnica é conhecida como",
+     "options": [
+      "desnormalização, que introduz redundância controlada para melhorar o desempenho de consultas.",
+      "normalização, que elimina dependências funcionais para garantir a integridade referencial.",
+      "fragmentação horizontal, que separa as linhas da tabela em servidores distintos.",
+      "projeção, que descarta colunas do resultado de uma consulta relacional.",
+      "indexação, que substitui as chaves estrangeiras por estruturas de acesso."
+     ],
+     "answer": 0,
+     "explanation": "Desnormalizar é duplicar dados de forma deliberada para reduzir junções, ao custo de maior esforço para manter a consistência nas escritas.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q08",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em um relacionamento 1:N entre CLIENTE e PEDIDO, em que um cliente tem vários pedidos, a chave estrangeira normalmente fica na tabela PEDIDO.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "No lado \"N\" fica a chave estrangeira, que guarda o identificador do cliente dono de cada pedido.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q09",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "relacional",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada conceito do modelo relacional à sua definição:",
+     "pairs": [
+      {
+       "left": "Chave candidata",
+       "right": "Conjunto mínimo de atributos que identifica unicamente uma tupla"
+      },
+      {
+       "left": "Chave estrangeira",
+       "right": "Atributo que referencia a chave primária de outra tabela"
+      },
+      {
+       "left": "Dependência funcional",
+       "right": "Relação em que o valor de X determina o valor de Y"
+      },
+      {
+       "left": "Integridade referencial",
+       "right": "Garantia de que toda chave estrangeira aponte para uma linha existente"
+      }
+     ],
+     "explanation": "Chave candidata é minimal e única; a chave estrangeira aponta para outra tabela; a dependência funcional X → Y é a base da normalização; a integridade referencial impede referências órfãs.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l1q10",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 3,
+     "style": "literal",
+     "stem": "Uma relação está na forma normal de Boyce-Codd (FNBC) quando",
+     "options": [
+      "todos os atributos são atômicos e a relação não possui grupos repetidos.",
+      "não existem dependências multivaloradas não triviais entre seus atributos.",
+      "a relação pode ser reconstruída sem perdas por junção de suas projeções.",
+      "para toda dependência funcional não trivial X → Y, X é uma superchave da relação.",
+      "não há dependências parciais em relação a uma chave primária composta."
+     ],
+     "answer": 3,
+     "explanation": "A FNBC é mais rigorosa que a 3FN: todo determinante precisa ser superchave. As outras alternativas descrevem a 1FN, a 4FN, a 5FN e a 2FN.",
+     "source": "ia",
+     "reviewed": false
+    }
+   ]
+  },
+  {
+   "id": "u1l2",
+   "order": 2,
+   "title": "SQL: DML, DDL, DCL e transações",
+   "questions": [
+    {
+     "id": "u1l2q01",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "sql-dcl",
+     "difficulty": 1,
+     "style": "literal",
+     "stem": "Na linguagem SQL, o comando GRANT, usado para conceder privilégios a usuários, pertence à categoria",
+     "options": [
+      "DML (Data Manipulation Language).",
+      "DCL (Data Control Language).",
+      "DDL (Data Definition Language).",
+      "DQL (Data Query Language).",
+      "TCL (Transaction Control Language)."
+     ],
+     "answer": 1,
+     "explanation": "GRANT e REVOKE controlam permissões e fazem parte da DCL. DML manipula dados, DDL define estruturas e TCL controla transações (COMMIT, ROLLBACK, SAVEPOINT).",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q02",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "sql-ddl",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Todos os comandos a seguir são classificados como DDL (Data Definition Language), EXCETO",
+     "options": [
+      "CREATE TABLE.",
+      "ALTER TABLE.",
+      "UPDATE.",
+      "DROP VIEW.",
+      "CREATE INDEX."
+     ],
+     "answer": 2,
+     "explanation": "UPDATE altera dados já existentes e é DML. Os demais criam, alteram ou removem objetos do esquema.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q03",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "transacoes",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Uma aplicação bancária executa, em uma única transação, dois comandos UPDATE para transferir R$ 100,00 de uma conta para outra. Após o primeiro UPDATE, o servidor perde energia antes do segundo UPDATE e do COMMIT. Considerando as propriedades ACID, após a recuperação do SGBD, os saldos das duas contas",
+     "options": [
+      "ficarão com o primeiro UPDATE aplicado, pois a durabilidade preserva toda alteração já executada.",
+      "ficarão com o primeiro UPDATE aplicado até que o administrador execute o segundo comando manualmente.",
+      "ficarão bloqueados até que o isolamento libere os registros para novas leituras.",
+      "retornarão ao estado anterior à transação, pois a atomicidade desfaz o primeiro UPDATE não confirmado.",
+      "ficarão inconsistentes, pois o SGBD não possui mecanismo de recuperação após falhas."
+     ],
+     "answer": 3,
+     "explanation": "Atomicidade: a transação é feita por inteiro ou não é feita. Como não houve COMMIT, o SGBD desfaz o efeito do primeiro UPDATE na recuperação. Durabilidade só se aplica ao que foi confirmado.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q04",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "transacoes",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "A propriedade ACID que assegura que, uma vez confirmada (COMMIT) a transação, suas alterações permanecem registradas mesmo diante de falhas posteriores é a",
+     "options": [
+      "atomicidade.",
+      "consistência.",
+      "isolamento.",
+      "disponibilidade.",
+      "durabilidade."
+     ],
+     "answer": 4,
+     "explanation": "Durabilidade garante a persistência do que foi confirmado. Disponibilidade não faz parte da sigla ACID.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q05",
+     "type": "code_output",
+     "topic": "BD",
+     "subtopic": "transacoes",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em um banco PostgreSQL, os comandos executados fora do bloco BEGIN ... COMMIT são confirmados automaticamente (autocommit). O último comando, SELECT COUNT(*) FROM t, retorna",
+     "code": "CREATE TABLE t (n INT);\nINSERT INTO t VALUES (1);\nBEGIN;\nINSERT INTO t VALUES (2);\nSAVEPOINT s1;\nINSERT INTO t VALUES (3);\nROLLBACK TO s1;\nCOMMIT;\nSELECT COUNT(*) FROM t;",
+     "options": [
+      "1",
+      "3",
+      "0",
+      "erro de sintaxe",
+      "2"
+     ],
+     "answer": 4,
+     "explanation": "O ROLLBACK TO s1 desfaz apenas o que veio depois do SAVEPOINT (o valor 3). Os valores 1 (autocommit) e 2 (confirmado no COMMIT) permanecem.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q06",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "transacoes",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Segundo o padrão SQL, o menor nível de isolamento que impede leituras sujas (dirty reads) e leituras não repetíveis (non-repeatable reads), mas ainda admite leituras fantasmas (phantom reads), é",
+     "options": [
+      "REPEATABLE READ.",
+      "READ UNCOMMITTED.",
+      "READ COMMITTED.",
+      "SERIALIZABLE.",
+      "READ ONLY."
+     ],
+     "answer": 0,
+     "explanation": "READ UNCOMMITTED admite os três fenômenos; READ COMMITTED impede só a leitura suja; REPEATABLE READ impede também a não repetível; SERIALIZABLE impede os três. READ ONLY não é nível de isolamento.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q07",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "sql-dml",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um analista precisa listar os departamentos que possuem mais de 5 funcionários, a partir da tabela FUNCIONARIO (id_depto, ...). A cláusula que permite aplicar a condição sobre a contagem de funcionários de cada grupo, depois do GROUP BY, é",
+     "options": [
+      "WHERE.",
+      "ORDER BY.",
+      "DISTINCT.",
+      "HAVING.",
+      "LIMIT."
+     ],
+     "answer": 3,
+     "explanation": "WHERE filtra linhas antes do agrupamento e não aceita funções de agregação. HAVING filtra os grupos já formados, por exemplo HAVING COUNT(*) > 5.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q08",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "sql-dml",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Deseja-se listar todos os clientes, inclusive os que nunca fizeram pedidos, com a quantidade de pedidos de cada um (zero para quem não tem). Dadas as tabelas CLIENTE (id) e PEDIDO (id, id_cliente), a consulta que atende ao requisito é",
+     "options": [
+      "SELECT c.id, COUNT(p.id) FROM cliente c INNER JOIN pedido p ON p.id_cliente = c.id GROUP BY c.id",
+      "SELECT c.id, COUNT(p.id) FROM cliente c LEFT JOIN pedido p ON p.id_cliente = c.id GROUP BY c.id",
+      "SELECT c.id, COUNT(*) FROM cliente c LEFT JOIN pedido p ON p.id_cliente = c.id GROUP BY c.id",
+      "SELECT c.id, COUNT(p.id) FROM cliente c RIGHT JOIN pedido p ON p.id_cliente = c.id GROUP BY c.id",
+      "SELECT c.id, COUNT(p.id) FROM cliente c CROSS JOIN pedido p GROUP BY c.id"
+     ],
+     "answer": 1,
+     "explanation": "LEFT JOIN preserva os clientes sem pedido. COUNT(p.id) ignora nulos e devolve zero para eles; COUNT(*) contaria a linha gerada pela junção e devolveria 1. INNER JOIN descarta quem não tem pedido e CROSS JOIN gera produto cartesiano.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q09",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "sql-dml",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em SQL, a condição salario = NULL retorna verdadeiro para as linhas em que o valor de salario é nulo.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Comparações com NULL resultam em UNKNOWN, não em verdadeiro. Para testar nulidade usa-se IS NULL ou IS NOT NULL.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l2q10",
+     "type": "fill_blank",
+     "topic": "BD",
+     "subtopic": "sql-ddl",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um DBA precisa adicionar a coluna email à tabela funcionario, que já existe, em um banco PostgreSQL. A palavra que completa corretamente o comando é",
+     "code": "___ TABLE funcionario ADD COLUMN email VARCHAR(100);",
+     "options": [
+      "UPDATE",
+      "CREATE",
+      "INSERT",
+      "ALTER",
+      "SELECT"
+     ],
+     "answer": 3,
+     "explanation": "ALTER TABLE ... ADD COLUMN modifica a estrutura de uma tabela existente (DDL). UPDATE e INSERT mexem nos dados; CREATE criaria uma tabela nova.",
+     "source": "ia",
+     "reviewed": false
+    }
+   ]
+  },
+  {
+   "id": "u1l3",
+   "order": 3,
+   "title": "Subconsultas, CTEs e funções analíticas",
+   "questions": [
+    {
+     "id": "u1l3q01",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "subconsultas",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Uma subconsulta correlacionada é aquela que",
+     "options": [
+      "é executada uma única vez e tem o resultado reutilizado pela consulta externa inteira.",
+      "só pode ser usada na cláusula FROM, nunca na cláusula WHERE da consulta externa.",
+      "retorna obrigatoriamente uma única linha e uma única coluna, como um valor escalar.",
+      "é materializada em disco antes do início da execução da consulta externa.",
+      "referencia colunas da consulta externa e, por isso, é avaliada para cada uma das suas linhas."
+     ],
+     "answer": 4,
+     "explanation": "A correlação é a referência a colunas da consulta externa. Otimizadores podem reescrevê-la em junção, mas a semântica é de avaliação por linha da consulta externa.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q02",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "subconsultas",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Deseja-se listar os clientes que possuem ao menos um pedido, sem repetir o cliente quando houver vários pedidos, e com bom desempenho mesmo que a tabela PEDIDO seja muito grande. A construção mais adequada é",
+     "options": [
+      "SELECT c.* FROM cliente c INNER JOIN pedido p ON p.id_cliente = c.id",
+      "SELECT c.* FROM cliente c WHERE EXISTS (SELECT 1 FROM pedido p WHERE p.id_cliente = c.id)",
+      "SELECT c.* FROM cliente c WHERE c.id NOT IN (SELECT id_cliente FROM pedido)",
+      "SELECT c.* FROM cliente c LEFT JOIN pedido p ON p.id_cliente = c.id WHERE p.id IS NULL",
+      "SELECT c.* FROM cliente c CROSS JOIN pedido p WHERE p.id_cliente = c.id"
+     ],
+     "answer": 1,
+     "explanation": "EXISTS testa a existência e não multiplica linhas. O INNER JOIN repete o cliente a cada pedido. As alternativas com NOT IN e LEFT JOIN ... IS NULL retornam os clientes SEM pedidos.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q03",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "subconsultas",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Uma consulta lista os produtos que nunca foram vendidos com a condição WHERE id NOT IN (SELECT id_produto FROM item_venda), mas retornou zero linhas, embora existam produtos sem venda. Uma causa provável é que a subconsulta",
+     "options": [
+      "retorna mais de mil linhas, e o SGBD descarta o resultado por limite de memória.",
+      "retorna ao menos um valor NULL, tornando a comparação NOT IN desconhecida em toda linha.",
+      "utiliza a cláusula DISTINCT, que é incompatível com o operador NOT IN no SQL.",
+      "possui a cláusula GROUP BY, que impede qualquer comparação de igualdade.",
+      "referencia uma tabela sem índice, o que faz o SGBD ignorar a condição do filtro."
+     ],
+     "answer": 1,
+     "explanation": "Se a lista contém NULL, id NOT IN (...) nunca é verdadeiro, pois a comparação com NULL é desconhecida. Prefira NOT EXISTS ou filtre os nulos na subconsulta.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q04",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "cte",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em SQL, uma CTE (Common Table Expression), que nomeia um resultado temporário para ser usado na consulta seguinte, é definida pela cláusula",
+     "options": [
+      "HAVING.",
+      "WITH.",
+      "OVER.",
+      "UNION.",
+      "PARTITION."
+     ],
+     "answer": 1,
+     "explanation": "A CTE é declarada com WITH nome AS (consulta). OVER e PARTITION BY pertencem às funções de janela; HAVING filtra grupos; UNION combina resultados.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q05",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "cte",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "A tabela CATEGORIA (id, nome, id_pai) armazena uma hierarquia em que id_pai referencia a própria tabela. Para listar todas as subcategorias, em qualquer nível, de uma categoria raiz, a abordagem mais adequada é",
+     "options": [
+      "uma função de janela RANK() particionada por id_pai, ordenada pelo nome.",
+      "um GROUP BY id_pai combinado com a função COUNT(*) sobre as linhas filhas.",
+      "uma subconsulta escalar na lista de colunas, que retorna apenas os filhos do primeiro nível.",
+      "um CROSS JOIN da tabela com ela mesma, repetido uma vez por nível previsto.",
+      "uma CTE recursiva, que parte da raiz e se une repetidamente às linhas filhas."
+     ],
+     "answer": 4,
+     "explanation": "Hierarquias de profundidade desconhecida pedem recursão: a parte âncora seleciona a raiz e a parte recursiva busca os filhos até não haver mais linhas novas.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q06",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "window",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Qual função de janela atribui números sequenciais únicos às linhas de cada partição, sem repetir valores, mesmo quando há empate na ordenação?",
+     "options": [
+      "RANK()",
+      "DENSE_RANK()",
+      "NTILE()",
+      "ROW_NUMBER()",
+      "LAG()"
+     ],
+     "answer": 3,
+     "explanation": "RANK e DENSE_RANK repetem o número nos empates. NTILE divide em faixas e LAG acessa a linha anterior.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q07",
+     "type": "code_output",
+     "topic": "BD",
+     "subtopic": "window",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Considere a tabela notas (aluno, nota) com as linhas (A, 90), (B, 90) e (C, 80). Na consulta abaixo, os valores de r e d para a linha da nota 80 são, respectivamente,",
+     "code": "SELECT aluno, nota,\n       RANK() OVER (ORDER BY nota DESC) AS r,\n       DENSE_RANK() OVER (ORDER BY nota DESC) AS d\nFROM notas;",
+     "options": [
+      "3 e 2",
+      "2 e 2",
+      "3 e 3",
+      "2 e 3",
+      "1 e 1"
+     ],
+     "answer": 0,
+     "explanation": "RANK deixa um salto após o empate (1, 1, 3); DENSE_RANK não deixa (1, 1, 2). Para a nota 80, r = 3 e d = 2.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q08",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "window",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "A função de janela que permite acessar o valor de uma coluna na linha anterior da partição, segundo a ordenação definida, é",
+     "options": [
+      "LEAD()",
+      "FIRST_VALUE()",
+      "NTILE()",
+      "ROW_NUMBER()",
+      "LAG()"
+     ],
+     "answer": 4,
+     "explanation": "LAG olha para trás e LEAD olha para frente. FIRST_VALUE devolve o primeiro valor da janela.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q09",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "window",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Um analista deseja exibir, para cada venda, o valor da venda e o total acumulado de vendas do mesmo vendedor, ordenado por data, sem reduzir o número de linhas do resultado. A construção apropriada é",
+     "options": [
+      "SUM(valor) com GROUP BY id_vendedor, que reúne as vendas em uma linha por vendedor.",
+      "SUM(valor) OVER (PARTITION BY id_vendedor ORDER BY data_venda)",
+      "COUNT(valor) OVER (ORDER BY data_venda), sem particionar por vendedor.",
+      "uma subconsulta escalar que soma todas as vendas da tabela.",
+      "SUM(valor) com HAVING data_venda <= CURRENT_DATE."
+     ],
+     "answer": 1,
+     "explanation": "Funções de janela agregam sem colapsar linhas. PARTITION BY define o grupo (vendedor) e ORDER BY faz o total ser acumulado em ordem cronológica.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l3q10",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "window",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada função de janela ao seu comportamento:",
+     "pairs": [
+      {
+       "left": "ROW_NUMBER",
+       "right": "Numera as linhas sequencialmente, sem repetições"
+      },
+      {
+       "left": "RANK",
+       "right": "Empates recebem a mesma posição e a seguinte salta valores"
+      },
+      {
+       "left": "DENSE_RANK",
+       "right": "Empates recebem a mesma posição, sem saltos na sequência"
+      },
+      {
+       "left": "LEAD",
+       "right": "Acessa o valor da linha seguinte da partição"
+      }
+     ],
+     "explanation": "ROW_NUMBER é sempre único; RANK deixa lacunas após empates; DENSE_RANK não deixa; LEAD olha para a próxima linha, ao contrário de LAG.",
+     "source": "ia",
+     "reviewed": false
+    }
+   ]
+  },
+  {
+   "id": "u1l4",
+   "order": 4,
+   "title": "PL/SQL, PL/pgSQL e SGBDs",
+   "questions": [
+    {
+     "id": "u1l4q01",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "plsql",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em PL/SQL (Oracle), a estrutura de um bloco anônimo, na ordem das suas seções, é",
+     "options": [
+      "DECLARE, BEGIN, EXCEPTION e END.",
+      "BEGIN, DECLARE, END e EXCEPTION.",
+      "EXCEPTION, DECLARE, BEGIN e END.",
+      "DECLARE, EXCEPTION, BEGIN e END.",
+      "BEGIN, EXCEPTION, DECLARE e END."
+     ],
+     "answer": 0,
+     "explanation": "As variáveis são declaradas em DECLARE, a lógica fica entre BEGIN e EXCEPTION, o tratamento de erros em EXCEPTION e o bloco termina em END. As seções DECLARE e EXCEPTION são opcionais.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q02",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "plsql",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em PL/SQL, o atributo %ROWTYPE, usado na declaração de uma variável, faz com que ela",
+     "options": [
+      "assuma o tipo de dado de uma única coluna da tabela, sem os demais campos.",
+      "armazene apenas o número de linhas afetadas pelo último comando executado.",
+      "tenha a estrutura de um registro com os mesmos campos de uma tabela ou cursor.",
+      "seja declarada como constante imutável, com valor definido na compilação.",
+      "referencie um cursor aberto por outra sessão do banco de dados."
+     ],
+     "answer": 2,
+     "explanation": "%TYPE copia o tipo de uma coluna; %ROWTYPE copia a linha inteira. Contar linhas afetadas é papel do atributo de cursor %ROWCOUNT.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q03",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "plsql",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Em uma procedure PL/SQL, um comando SELECT salario INTO v_salario FROM funcionario WHERE matricula = p_mat é executado. Se não existir funcionário com a matrícula informada, o Oracle",
+     "options": [
+      "retorna NULL na variável, sem disparar exceção.",
+      "dispara a exceção TOO_MANY_ROWS.",
+      "dispara a exceção NO_DATA_FOUND.",
+      "dispara a exceção ZERO_DIVIDE.",
+      "encerra automaticamente a sessão do usuário."
+     ],
+     "answer": 2,
+     "explanation": "SELECT ... INTO exige exatamente uma linha: nenhuma gera NO_DATA_FOUND e mais de uma gera TOO_MANY_ROWS.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q04",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "postgresql",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Uma aplicação PostgreSQL executa relatórios longos de leitura enquanto outras sessões atualizam as mesmas tabelas, e os relatórios não ficam esperando as atualizações terminarem. Esse comportamento é possível porque o PostgreSQL utiliza",
+     "options": [
+      "bloqueio exclusivo de tabela inteira em toda leitura, liberado ao fim do relatório.",
+      "gravação sempre sobre a mesma posição física, sem manter versões antigas das linhas.",
+      "isolamento READ UNCOMMITTED fixo, que lê dados ainda não confirmados.",
+      "MVCC, que mantém versões das linhas e evita que leitores bloqueiem escritores.",
+      "replicação síncrona obrigatória, que duplica cada leitura em outro servidor."
+     ],
+     "answer": 3,
+     "explanation": "Com MVCC cada transação enxerga uma versão consistente dos dados; leitores não bloqueiam escritores e vice-versa em operações comuns.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q05",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "postgresql",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Um DBA percebe que uma tabela PostgreSQL com muitas atualizações cresce de tamanho, embora o número de linhas visíveis não aumente, por causa de versões antigas de linhas (tuplas mortas). Para tornar esse espaço reutilizável, deve-se executar",
+     "options": [
+      "ANALYZE.",
+      "REINDEX.",
+      "TRUNCATE.",
+      "COMMENT.",
+      "VACUUM."
+     ],
+     "answer": 4,
+     "explanation": "No MVCC, UPDATE e DELETE deixam versões antigas que o VACUUM limpa. ANALYZE só atualiza estatísticas e REINDEX reconstrói índices; TRUNCATE apagaria todos os dados.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q06",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "postgresql",
+     "difficulty": 3,
+     "style": "literal",
+     "stem": "O comando MERGE, que combina INSERT, UPDATE e DELETE em uma única instrução condicionada a uma junção entre origem e destino, passou a ser suportado nativamente pelo PostgreSQL a partir da versão",
+     "options": [
+      "9.0",
+      "10",
+      "15",
+      "12",
+      "14"
+     ],
+     "answer": 2,
+     "explanation": "O comando MERGE foi introduzido no PostgreSQL 15. Até então era comum usar INSERT ... ON CONFLICT para cenários de upsert.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q07",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "oracle",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Na arquitetura multitenant do Oracle Database 19c, um PDB (Pluggable Database) é",
+     "options": [
+      "um banco plugável, com dados próprios, contido em um CDB (Container Database).",
+      "uma réplica somente leitura mantida pelo Data Guard em outro servidor.",
+      "um espaço de tabelas temporário compartilhado por todas as sessões.",
+      "uma instância independente, com processos de segundo plano e SGA próprios.",
+      "um arquivo de redo log arquivado, usado em operações de recuperação."
+     ],
+     "answer": 0,
+     "explanation": "No modelo multitenant, vários PDBs compartilham a instância e os processos do CDB, mas cada um tem seus dados e usuários isolados.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q08",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "h2",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Todas as alternativas a seguir apresentam características do SGBD relacional H2, EXCETO",
+     "options": [
+      "ser escrito na linguagem Java e distribuído em um único arquivo JAR.",
+      "poder ser executado embutido (embedded) na própria aplicação Java.",
+      "depender obrigatoriamente de um servidor de banco de dados dedicado.",
+      "oferecer um modo de banco de dados mantido apenas em memória.",
+      "ser acessível por aplicações Java por meio de uma conexão JDBC."
+     ],
+     "answer": 2,
+     "explanation": "O H2 é leve e muito usado em testes e prototipação justamente por não exigir servidor dedicado, embora também ofereça modo servidor.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q09",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "plsql",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Uma regra de negócio exige que, a cada UPDATE na coluna salario da tabela FUNCIONARIO, o valor anterior e o novo sejam gravados em uma tabela de auditoria, automaticamente e independente da aplicação que executou o comando. O recurso mais adequado é",
+     "options": [
+      "uma view materializada atualizada manualmente a cada fechamento.",
+      "uma trigger (gatilho) AFTER UPDATE na tabela FUNCIONARIO.",
+      "um índice único sobre a coluna salario.",
+      "uma constraint CHECK na coluna salario.",
+      "um cursor explícito executado pela aplicação."
+     ],
+     "answer": 1,
+     "explanation": "Triggers disparam automaticamente no banco e têm acesso aos valores antigo e novo (OLD/NEW ou :OLD/:NEW). CHECK só valida valores, não grava auditoria.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l4q10",
+     "type": "order_code",
+     "topic": "BD",
+     "subtopic": "plpgsql",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Ordene as linhas para formar uma função PL/pgSQL válida, que retorna o dobro de um número inteiro:",
+     "lines": [
+      "CREATE FUNCTION dobro(n integer) RETURNS integer AS $$",
+      "BEGIN",
+      "  RETURN n * 2;",
+      "END;",
+      "$$ LANGUAGE plpgsql;"
+     ],
+     "explanation": "O cabeçalho declara nome, parâmetro e retorno; o corpo fica entre os delimitadores $$ com BEGIN ... END; e a linguagem é informada ao final.",
+     "source": "ia",
+     "reviewed": false
+    }
+   ]
+  },
+  {
+   "id": "u1l5",
+   "order": 5,
+   "title": "Modelagem dimensional, DW e NoSQL",
+   "questions": [
+    {
+     "id": "u1l5q01",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "dimensional",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em um modelo dimensional (esquema estrela), a tabela que armazena as medidas numéricas do processo de negócio, como quantidade vendida e valor total, é denominada",
+     "options": [
+      "tabela dimensão.",
+      "tabela de domínio.",
+      "tabela fato.",
+      "tabela de associação.",
+      "tabela de staging."
+     ],
+     "answer": 2,
+     "explanation": "A tabela fato guarda as medidas e as chaves das dimensões. As dimensões descrevem o contexto (quem, o quê, onde, quando).",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q02",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "dimensional",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "No esquema floco de neve (snowflake), em comparação com o esquema estrela, as tabelas de dimensão",
+     "options": [
+      "são desnormalizadas em uma única tabela, reduzindo o número de junções nas consultas.",
+      "são substituídas por uma única tabela fato com todos os atributos descritivos.",
+      "deixam de se relacionar com a tabela fato, sendo acessadas apenas por índices.",
+      "são normalizadas em várias tabelas, reduzindo a redundância ao custo de mais junções.",
+      "armazenam apenas medidas numéricas aditivas, como quantidades e valores totais."
+     ],
+     "answer": 3,
+     "explanation": "O snowflake normaliza as dimensões (por exemplo, produto, categoria e departamento em tabelas separadas). O estrela as mantém desnormalizadas.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q03",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "dimensional",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Uma rede de lojas modela as vendas em um data warehouse e precisa decidir a granularidade da tabela fato: uma linha por item de cada nota fiscal ou uma linha por nota fiscal. Para permitir análises por produto, sem perder possibilidades futuras de detalhamento, a decisão mais adequada é",
+     "options": [
+      "adotar a granularidade de nota fiscal, pois o detalhe por produto pode ser derivado depois.",
+      "adotar a granularidade mais atômica disponível, ou seja, uma linha por item de nota fiscal.",
+      "armazenar apenas totais mensais por loja, para reduzir o volume de dados.",
+      "misturar granularidades diferentes na mesma tabela fato, indicando o nível em uma coluna.",
+      "criar a tabela fato sem chaves para as dimensões, guardando só as medidas."
+     ],
+     "answer": 1,
+     "explanation": "Dados atômicos podem ser agregados a qualquer momento; o contrário não é possível. Misturar granularidades na mesma fato gera contagens duplicadas e resultados incorretos.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q04",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "olap",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada operação OLAP à sua descrição:",
+     "pairs": [
+      {
+       "left": "Drill down",
+       "right": "Navegar de um nível mais agregado para um mais detalhado"
+      },
+      {
+       "left": "Roll up",
+       "right": "Agregar dados subindo na hierarquia de uma dimensão"
+      },
+      {
+       "left": "Slice",
+       "right": "Selecionar uma fatia do cubo fixando um valor em uma dimensão"
+      },
+      {
+       "left": "Dice",
+       "right": "Selecionar um subcubo restringindo valores em várias dimensões"
+      }
+     ],
+     "explanation": "Drill down e roll up mudam o nível de detalhe; slice e dice recortam o cubo, respectivamente por uma dimensão e por várias.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q05",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "dw",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A área financeira de um banco quer um repositório analítico próprio, voltado apenas aos indicadores de crédito, de implantação rápida e sem reestruturar o data warehouse corporativo. O artefato mais adequado é",
+     "options": [
+      "um data lake, que só armazena dados não estruturados, como imagens e áudios.",
+      "um sistema transacional (OLTP) de baixa latência dedicado ao crédito.",
+      "um data mart, que atende a uma área ou assunto específico do negócio.",
+      "um data warehouse sem processo de extração, transformação e carga.",
+      "uma base mantida exclusivamente em memória volátil, sem persistência."
+     ],
+     "answer": 2,
+     "explanation": "O data mart é um subconjunto analítico focado em um assunto ou departamento. Pode ser alimentado a partir do DW corporativo ou diretamente das fontes.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q06",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "datalake",
+     "difficulty": 3,
+     "style": "excecao",
+     "stem": "Todas as características a seguir costumam ser associadas aos data lakes, EXCETO",
+     "options": [
+      "exigir esquema rígido e modelado antes da carga dos dados (schema-on-write).",
+      "armazenar dados brutos em formatos variados, sem transformação prévia.",
+      "aplicar a estrutura aos dados somente no momento da leitura (schema-on-read).",
+      "aceitar dados estruturados, semiestruturados e não estruturados.",
+      "oferecer armazenamento de baixo custo com grande escalabilidade."
+     ],
+     "answer": 0,
+     "explanation": "O esquema rígido definido antes da carga (schema-on-write) é típico do data warehouse tradicional. O data lake guarda dados brutos e aplica a estrutura na leitura.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q07",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "nosql",
+     "difficulty": 3,
+     "style": "excecao",
+     "stem": "Todos os itens a seguir são categorias de bancos de dados NoSQL, EXCETO",
+     "options": [
+      "bancos orientados a documentos, como os que armazenam objetos JSON.",
+      "bancos do tipo chave-valor, com acesso direto pela chave.",
+      "bancos orientados a colunas, organizados em famílias de colunas.",
+      "bancos relacionais com esquema rígido e junções entre tabelas.",
+      "bancos orientados a grafos, estruturados em nós e arestas."
+     ],
+     "answer": 3,
+     "explanation": "As quatro categorias clássicas de NoSQL são chave-valor, documentos, famílias de colunas e grafos. O modelo relacional com esquema rígido é a base do SQL.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q08",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "nosql",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Uma aplicação precisa armazenar o perfil de milhões de usuários. Cada perfil é um objeto hierárquico, com listas e subobjetos de estrutura variável, e precisa ser consultado por vários de seus campos, com escalabilidade horizontal. A categoria de NoSQL mais indicada é",
+     "options": [
+      "o banco orientado a documentos, que guarda objetos hierárquicos flexíveis e permite consultar seus campos.",
+      "o banco do tipo chave-valor puro, em que o valor é um bloco opaco que o SGBD não consegue consultar por campos internos.",
+      "o banco orientado a grafos, indicado quando o foco são as arestas entre os usuários.",
+      "o banco relacional, com uma tabela para cada nível de aninhamento e esquema fixo.",
+      "o banco orientado a colunas, otimizado para varreduras analíticas sobre poucas colunas."
+     ],
+     "answer": 0,
+     "explanation": "Documentos (como JSON) acomodam estrutura variável e aninhada e permitem consulta por campos internos. Em chave-valor puro o valor é opaco ao SGBD.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q09",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "governanca",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Na governança de dados, o papel responsável por zelar pela qualidade e pelo significado dos dados de um domínio de negócio, definindo regras e padrões de uso, é o",
+     "options": [
+      "administrador de banco de dados (DBA), que define o significado de negócio dos dados.",
+      "data steward (curador de dados).",
+      "arquiteto de infraestrutura, responsável pelos servidores.",
+      "gerente de projeto, responsável pelo cronograma.",
+      "analista de testes, responsável pelos casos de teste."
+     ],
+     "answer": 1,
+     "explanation": "O data steward responde pelo significado e pela qualidade dos dados no negócio. O DBA cuida da operação técnica do banco.",
+     "source": "ia",
+     "reviewed": false
+    },
+    {
+     "id": "u1l5q10",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "dw",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "Uma empresa migra para um data warehouse em nuvem com grande capacidade de processamento e quer ingerir rapidamente dados brutos de várias origens, transformando-os depois, conforme a necessidade de cada análise. A abordagem mais adequada é",
+     "options": [
+      "ETL tradicional, em que toda transformação ocorre em um servidor intermediário antes da carga.",
+      "uma carga sem transformação alguma, pois os dados já chegam limpos das origens.",
+      "uma carga única, feita apenas na implantação do sistema.",
+      "o acesso direto ao sistema transacional de origem, sem repositório analítico.",
+      "ELT, em que os dados são carregados primeiro no destino e transformados depois, nele próprio."
+     ],
+     "answer": 4,
+     "explanation": "No ELT os dados brutos são carregados primeiro e transformados no destino, aproveitando seu poder de processamento. No ETL a transformação vem antes da carga.",
+     "source": "ia",
+     "reviewed": false
+    }
+   ]
+  }
+ ]
+}

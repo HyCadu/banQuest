@@ -2,13 +2,6 @@
 <resources>
     <string name="app_name">Trilha TI</string>
 
-    <!-- Abas principais -->
-    <string name="tab_path">Trilha</string>
-    <string name="tab_practice">Praticar</string>
-    <string name="tab_leagues">Ligas</string>
-    <string name="tab_shop">Loja</string>
-    <string name="tab_profile">Perfil</string>
-
     <!-- Componentes -->
     <string name="node_start">Começar</string>
     <string name="node_locked">bloqueada</string>

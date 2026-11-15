@@ -1,0 +1,77 @@
+package shot
+
+import android.graphics.Bitmap
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.test.captureToImage
+import androidx.compose.ui.test.junit4.ComposeContentTestRule
+import androidx.compose.ui.test.onRoot
+import br.com.trilhati.data.content.CourseAssembler
+import br.com.trilhati.data.content.PackDto
+import br.com.trilhati.data.content.toDomain
+import br.com.trilhati.data.prefs.Settings
+import br.com.trilhati.data.repo.AppSnapshot
+import br.com.trilhati.data.repo.LeagueResult
+import br.com.trilhati.data.repo.Profile
+import br.com.trilhati.data.repo.ShopState
+import br.com.trilhati.domain.hearts.HeartsState
+import br.com.trilhati.domain.progress.*
+import br.com.trilhati.domain.srs.SrsCard
+import br.com.trilhati.domain.streak.StreakState
+import br.com.trilhati.feature.app.AppState
+import br.com.trilhati.ui.theme.*
+import java.io.File
+import java.time.Instant
+import java.time.LocalDate
+import kotlinx.serialization.json.Json
+
+val OUT: String = File("build/shots").also { it.mkdirs() }.absolutePath
+val TODAY: LocalDate = LocalDate.of(2026, 11, 18) // quarta-feira
+val NOW_MS: Long = Instant.parse("2026-11-18T15:20:00Z").toEpochMilli()
+
+fun Bitmap.save(name: String) = File(OUT, name).outputStream().use { compress(Bitmap.CompressFormat.PNG, 100, it) }
+
+val course by lazy {
+    val dto = Json { ignoreUnknownKeys = true }.decodeFromString(PackDto.serializer(), File("../../../app/src/main/assets/content/u1-banco-de-dados.json").readText())
+    CourseAssembler.assemble(listOfNotNull(dto.toDomain()))
+}
+
+fun fakeState(progress: Boolean, character: String = "Guaiamum", noLives: Boolean = false): AppState {
+    val lessons = if (progress) mapOf(
+        "u1l1" to LessonProgress("u1l1", "u1", 1, 100, 1, 1),
+        "u1l2" to LessonProgress("u1l2", "u1", 1, 75, 0, 1),
+    ) else emptyMap()
+    val stats = if (progress) Stats(
+        totalXp = 640, gems = 215, hearts = HeartsState(3, NOW_MS - 10 * 60_000), streak = StreakState(3, 5, TODAY, 1),
+        lessonsCompleted = 2, perfectLessons = 1, pacedLessons = 1, answeredTotal = 18, totalTimeMs = 18 * 140_000L,
+        firstTryAnswered = 16, firstTryCorrect = 13, bestLeagueTier = 0,
+    ) else Stats(hearts = HeartsState(5, NOW_MS))
+    val q = course[0].lessons.flatMap { it.questions }
+    val qstats = if (progress) q.take(6).mapIndexed { i, qq ->
+        qq.id to QuestionStat(qq.id, qq.lessonId, 3, if (i < 2) 1 else 3, if (i < 2) SrsCard(0, TODAY) else SrsCard())
+    }.toMap() else emptyMap()
+    val logs = if (progress) (0..9).associate { TODAY.minusDays(it.toLong()) to DailyLog(TODAY.minusDays(it.toLong()), 120, if (it in listOf(0, 1, 2, 5, 6, 8)) 1 else 0, it == 0, it == 3) } else emptyMap()
+    val snap = AppSnapshot(
+        profile = Profile("Carlos", character, 100), stats = stats, lessonProgress = lessons, questionStats = qstats,
+        dailyLogs = logs, achievements = if (progress) mapOf("streak3" to 1L, "perfect1" to 1L) else emptyMap(),
+        league = LeagueWeekState(LocalDate.of(2026, 11, 16), 0, if (progress) 320 else 0),
+        lastLeagueResult = if (progress) LeagueResult(LocalDate.of(2026, 11, 9), 0, 7, 1) else null,
+        shop = ShopState(null, emptySet()), errorBankSize = if (progress) 2 else 0, dueCount = if (progress) 2 else 0,
+    )
+    val quests = br.com.trilhati.domain.quest.QuestEngine.questsFor(TODAY).mapIndexed { i, d ->
+        QuestProgress(TODAY, d.id, if (progress) (if (i == 0) d.target else d.target / 2) else 0, claimed = false)
+    }
+    return AppState(TODAY, course, snap, quests, Settings(noLives = noLives))
+}
+
+fun ComposeContentTestRule.shot(name: String, dark: Boolean = false, content: @Composable () -> Unit) {
+    mainClock.autoAdvance = false
+    setContent {
+        TrilhaTheme(if (dark) ThemeMode.Dark else ThemeMode.Light) { Box(Modifier.background(Trilha.colors.background)) { content() } }
+    }
+    mainClock.advanceTimeBy(300)
+    onRoot().captureToImage().asAndroidBitmap().save(name)
+}

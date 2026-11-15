@@ -1,63 +1,71 @@
-# QA — passo a passo para testar no celular
+# QA — roteiro para testar no celular
 
-## Fase 0 — Esqueleto do projeto
+> Instale o APK mais recente por cima do anterior. O banco de dados é recriado uma vez (a versão anterior só tinha uma
+> tabela vazia), então você começa do zero com 5 corações, 0 XP e nenhuma lição feita.
 
-**Gerar o APK** (na máquina com Android SDK e JDK 17+):
+## Roteiro principal (≈15 minutos)
 
-```bash
-./gradlew assembleDebug
-```
+**1. Primeira tela = Trilha**
+- [ ] O app abre direto na **Trilha**, com ofensiva, gemas, corações e "dias para a prova" no topo, e a barra da meta do dia.
+- [ ] Banner roxo "Unidade 1 · Banco de dados" **fixo no topo** enquanto você rola; o nó atual pulsa com o balão "Começar" e o
+      personagem (Guaiamum) fica ao lado.
+- [ ] Role até o fim: as Unidades 2 a 10 aparecem cinzas ("Conteúdo chegando em breve"). Toque num nó cinza: aparece uma
+      mensagem explicando.
 
-O arquivo sai em `app/build/outputs/apk/debug/app-debug.apk`.
+**2. Fazer uma lição**
+- [ ] Toque no nó atual. A lição abre em **tela cheia**, com X, barra de progresso, corações (4/5 etc.) e o anel do cronômetro.
+- [ ] Todo enunciado mostra o selo **"não revisada"** (as questões são geradas por IA e só você pode marcá-las revisadas).
+- [ ] Responda e toque em **Verificar**. O painel sobe (verde ou vermelho) com a explicação e o personagem reagindo.
+- [ ] **Erre de propósito uma questão**: perde 1 coração, o painel mostra a resposta correta, e a questão **volta no fim**
+      ("Repetição de um erro… vale 5 XP").
+- [ ] Acerte 3 seguidas: aparece **COMBO**. Deixe uma questão passar de 2:15: o anel fica **âmbar**; passe de 3:00: fica
+      **vermelho e pisca** (e a resposta continua valendo).
+- [ ] Você deve encontrar os tipos: múltipla escolha, caso prático, certo/errado, **associar pares** (toque num termo e na
+      definição), **ordenar linhas** (toque nas linhas na ordem) e saída de código.
+- [ ] Toque no **X**: pergunta se quer sair. Voltar do Android faz o mesmo.
+- [ ] Terminando: tela de **resultado** com XP, precisão, melhor combo, **tempo médio por questão** (sempre aparece) e
+      folga/atraso contra 3:00, ofensiva, gemas, "Para revisar".
+- [ ] Volte à Trilha: a lição ganhou check (ou coroa, se perfeita) e a **próxima liberou**. Reabra o app: o progresso persiste.
 
-**Instalar no celular:**
-1. Ative "Opções do desenvolvedor" e "Depuração USB" no aparelho e conecte por USB (ou copie o APK e permita "instalar apps desconhecidos").
-2. Com ADB: `adb install -r app/build/outputs/apk/debug/app-debug.apk`.
+**3. Corações**
+- [ ] Erre de primeira até zerar: a lição termina e aparece **"Acabaram os corações!"**. Teste *Praticar erros* (volta 1
+      coração ao terminar) e, em Configurações, o **modo sem vidas**.
+- [ ] Toque no coração do topo da Trilha: mostra quando volta o próximo (30 min por coração).
 
-**Checklist**
-- [ ] O ícone "Trilha TI" (triângulo âmbar sobre azul-petróleo, provisório) aparece na lista de apps.
-- [ ] Ao abrir, o app mostra a **tela de diagnóstico**: título "Trilha TI", "Fase 0 — esqueleto funcionando", a data de hoje (Brasília) e "Banco de dados: aberto, sem perfil ainda". Se aparecer isso, Compose, Hilt, Clock e Room estão funcionando. Vale para modo claro e escuro.
-- [ ] Se o app **fechar sozinho ao abrir**, anote o modelo do celular e a versão do Android e me avise.
-- [ ] Girar a tela não fecha o app.
-- [ ] Em Configurações do Android > Apps > Trilha TI > Permissões: **nenhuma permissão** listada.
-- [ ] O app funciona com o modo avião ligado (não usa rede).
+**4. Aba Praticar**
+- [ ] Depois de errar algo: mostra "vencidas" e "erros guardados". *Treinar erros* funciona; *Revisão livre* sorteia questões
+      das lições concluídas. Seus pontos fracos aparecem quando há erros suficientes.
 
-**Verificações automáticas (já executadas na entrega):**
+**5. Aba Ligas (missões + liga)**
+- [ ] 3 missões do dia com barras de progresso. Ao completar uma, **Resgatar** dá as gemas.
+- [ ] Liga Bronze com 30 participantes (você + 29 rivais fictícios), "termina em Xd Yh" e zonas de promoção/rebaixamento.
+- [ ] Seu XP da semana sobe a cada lição.
 
-```bash
-./gradlew assembleDebug test lint
-./gradlew assembleRelease lintRelease
-```
+**6. Aba Loja**
+- [ ] Baú diário (uma vez por dia). Comprar *Congelar ofensiva* (200) e *Recarregar corações* (350); sem gemas suficientes,
+      avisa quanto falta.
 
-> Observação: a Fase 0 foi verificada por compilação, testes unitários e lint. O app **não foi aberto em um aparelho/emulador** no ambiente de desenvolvimento (nuvem, sem emulador), então o checklist acima é a primeira execução real.
+**7. Aba Perfil**
+- [ ] **A escolha de personagem só existe aqui.** Troque entre Guaiamum, Tartaruga, Tamanduá e Preguiça: o personagem muda
+      na Trilha, nas lições e no resultado.
+- [ ] Edite o nome, troque a meta diária, veja estatísticas, calendário de dias estudados, acerto por unidade e as 15
+      conquistas. *Configurações*: cronômetro (Desligado/Discreto/Ritmo, 3:00 ou 2:30, caso prático 4:00), modo sem vidas,
+      vibração, tema, apagar dados.
 
----
+**8. Dia seguinte**
+- [ ] Abra o app no dia seguinte (ou mude a data do aparelho): ofensiva continua se você estudou ontem; missões novas;
+      baú diário disponível de novo. Na **segunda-feira**, a liga fecha e mostra o resultado da semana.
 
-## Fase 1 — Design system, mascotes e galeria
+**9. Geral**
+- [ ] Modo claro e escuro (Configurações > Tema). Gire a tela. Fonte grande do sistema. TalkBack (abas, alternativas e nós
+      da trilha têm rótulos).
 
-**Instalar:** use o APK `trilha-ti-fase1-debug.apk` (ou `./gradlew assembleDebug`). Ele substitui a versão da Fase 0 sem apagar dados.
+## O que ainda NÃO existe (não é bug)
+Notificações de lembrete, sons, exportar/importar progresso, importar pacotes de conteúdo, e conteúdo das Unidades 2 a 10.
 
-O app agora abre no **catálogo de design**: é a vitrine de como o app vai parecer. Role a tela de cima para baixo.
+## Verificações automáticas já executadas
+`./gradlew check assembleRelease lintRelease` sem erros nem warnings; **119 testes unitários**; validador de conteúdo sem
+erros; e 11 testes de integração no harness (`tools/preview-harness`, ver README dele).
 
-**Checklist**
-- [ ] No topo: título "Trilha TI", chips de ofensiva (12), gemas (340), corações (5) e "98 d" (dias para a prova; confira se bate com a data de hoje).
-- [ ] Botões "Tema do sistema / Claro / Escuro" trocam o tema na hora. Confira **os dois temas** em todas as telas.
-- [ ] **Mascotes:** escolha cada personagem e cada pose (Parado, Feliz, Triste, Comemorando, Sonolento). Eles devem **se mexer** (respirar, piscar, pular quando comemora, "Z" quando sonolento, lágrima quando triste, confete ao comemorar).
-- [ ] **Todas as poses:** os 4 personagens × 5 poses aparecem lado a lado, sem cortes.
-- [ ] **Botões:** tocar e segurar faz o botão "afundar". "Bloqueado" não reage.
-- [ ] **Cronômetro de ritmo:** três anéis (turquesa, âmbar, vermelho que pisca) e as pílulas "Folga 0:42" e "Atraso 0:15".
-- [ ] **Trilha:** nós de lição (coroa dourada, check turquesa, atual roxo **pulsando** com balão "Começar", bloqueados) e a tartaruga ao lado do nó atual.
-- [ ] **Tela de questão:** toque em uma alternativa (ela destaca), "Verificar" habilita; ao verificar, a certa fica verde, a errada vermelha e sobe o painel com o mascote reagindo. "Continuar" reinicia o exemplo.
-- [ ] **Barra inferior:** 5 abas; a ativa ganha pílula roxa e o ícone dá um pulinho; a aba Praticar tem uma bolinha vermelha.
-- [ ] **TalkBack** ligado: as abas dizem "selecionada"; as alternativas leem "Alternativa A" e o estado; os nós leem "Lição 3, disponível".
-- [ ] **Fonte grande** (Configurações do Android > Tela > Tamanho da fonte): nada fica cortado nem sobreposto.
-- [ ] Gire a tela: o app não fecha e mantém o tema escolhido.
-
-**O que eu quero saber de você (feedback de design)**
-- As cores e o "clima" estão como você imaginou?
-- Os 4 mascotes agradam? Algum precisa de retoque (já sei que o Tamanduá é o mais fraco)?
-- Os botões, a barra inferior e os nós da trilha parecem "de jogo" o bastante?
-
-**Verificações automáticas (já executadas):** `./gradlew assembleDebug test lint` e `./gradlew assembleRelease lintRelease`, sem warnings. 11 testes unitários (relógio, contagem regressiva da prova, contraste de cores).
-
-> Limite: o app **não foi aberto em aparelho real** no ambiente de desenvolvimento. O visual foi conferido por renderização de imagem (claro e escuro), mas animações, toque e TalkBack só você consegue validar no celular.
+> Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
+> você consegue validar.

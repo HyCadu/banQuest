@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.room)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -72,6 +73,22 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
 }
+
+// `./gradlew check` também valida os pacotes de conteúdo (CLAUDE.md).
+val validateContent = tasks.register<Exec>("validateContent") {
+    group = "verification"
+    description = "Valida os pacotes de conteúdo com tools/validate_content.py"
+    val contentDir = layout.projectDirectory.dir("src/main/assets/content")
+    val script = rootProject.layout.projectDirectory.file("tools/validate_content.py")
+    inputs.dir(contentDir)
+    inputs.file(script)
+    commandLine("python3", "-I", script.asFile.absolutePath, contentDir.asFile.absolutePath)
+}
+
+tasks.matching { it.name == "check" }.configureEach { dependsOn(validateContent) }

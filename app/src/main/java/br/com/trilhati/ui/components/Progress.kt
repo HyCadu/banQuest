@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.R
+import br.com.trilhati.domain.pace.PaceZone
 import br.com.trilhati.ui.theme.Trilha
 
 /** Barra de progresso grossa e arredondada, com brilho; anima ao mudar. */
@@ -68,9 +69,6 @@ fun GameProgressBar(
         }
     }
 }
-
-/** Situação do ritmo de prova numa questão (3:00 por padrão). Nunca reprova a resposta. */
-enum class PaceZone { OnPace, Warning, Over }
 
 /**
  * Anel do cronômetro de ritmo. [remaining] vai de 1 (tempo cheio) a 0; no estouro fica em 0 e a zona vira [PaceZone.Over].

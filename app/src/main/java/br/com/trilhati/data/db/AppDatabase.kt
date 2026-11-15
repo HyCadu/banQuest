@@ -3,9 +3,17 @@ package br.com.trilhati.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserProfileEntity::class], version = 1, exportSchema = true)
+@Database(
+    entities = [
+        UserProfileEntity::class, StatsEntity::class, LessonProgressEntity::class, QuestionStatEntity::class,
+        AttemptEntity::class, DailyLogEntity::class, QuestStateEntity::class, AchievementEntity::class,
+        LeagueWeekEntity::class, ShopStateEntity::class, PackMetaEntity::class,
+    ],
+    version = 2,
+    exportSchema = true,
+)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun userProfileDao(): UserProfileDao
+    abstract fun progressDao(): ProgressDao
 
     companion object {
         const val NAME = "trilha-ti.db"

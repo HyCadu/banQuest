@@ -27,7 +27,7 @@ import kotlin.math.sin
 
 /** Ícones de jogo desenhados em código (grade 48x48), originais e consistentes com os mascotes. */
 enum class GameIcon {
-    Flame, Gem, Heart, Star, Clock, Lock, Check, Crown, Chest, Trophy, House, Target, Bag, Person, Info, Book, Close,
+    Flame, Gem, Heart, Star, Clock, Lock, Check, Crown, Chest, Trophy, House, Target, Bag, Person, Info, Book, Close, Snowflake,
 }
 
 /** Cores de um ícone: preenchimento principal, detalhe e contorno. */
@@ -58,6 +58,7 @@ private fun GameIcon.defaults(): IconColors = when (this) {
     GameIcon.Info -> IconColors(Color(0xFFFFB000), Color(0xFF2B1A5E), InkIcon)
     GameIcon.Book -> IconColors(Color(0xFF6B3FD6), Color(0xFFFFFFFF), InkIcon)
     GameIcon.Close -> IconColors(Color(0xFFFFFFFF), Color(0xFFFFFFFF), InkIcon)
+    GameIcon.Snowflake -> IconColors(Color(0xFF8FD6FF), Color(0xFFFFFFFF), InkIcon)
 }
 
 /**
@@ -200,6 +201,18 @@ private fun DrawScope.drawGameIcon(icon: GameIcon, c: IconColors) {
         GameIcon.Check -> {
             val p = Path().apply { moveTo(11f, 25f); lineTo(20f, 34f); lineTo(37f, 14f) }
             stroked(p, c.main, o, 7f)
+        }
+
+        GameIcon.Snowflake -> {
+            val arms = Path().apply {
+                for (deg in listOf(0f, 60f, 120f)) {
+                    val a = deg * PI.toFloat() / 180f
+                    moveTo(24f - 19f * cos(a), 24f - 19f * sin(a))
+                    lineTo(24f + 19f * cos(a), 24f + 19f * sin(a))
+                }
+            }
+            stroked(arms, c.main, o, 4.5f)
+            circleShape(Offset(24f, 24f), 5f, c.accent, o)
         }
 
         GameIcon.Close -> {

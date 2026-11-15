@@ -12,3 +12,6 @@ fun Clock.daysUntil(date: LocalDate): Long = ChronoUnit.DAYS.between(today(), da
 
 /** Dias para a prova, nunca abaixo de zero (para exibir na interface). */
 fun Clock.daysToExam(): Int = daysUntil(EXAM_DATE).coerceAtLeast(0).toInt()
+
+/** Dias para a prova a partir de [today], nunca abaixo de zero. */
+fun daysToExam(today: LocalDate): Int = ChronoUnit.DAYS.between(today, EXAM_DATE).coerceAtLeast(0).toInt()
