@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Trilha TI</string>
-    <string name="diag_title">Trilha TI</string>
-    <string name="diag_phase">Fase 0 — esqueleto funcionando</string>
-    <string name="diag_date">Hoje (Brasília): %1$s</string>
-    <string name="diag_db_empty">Banco de dados: aberto, sem perfil ainda</string>
-    <string name="diag_db_profile">Banco de dados: perfil de %1$s</string>
-    <string name="diag_hint">Tela provisória de diagnóstico. A trilha vem nas próximas fases.</string>
+
+    <!-- Abas principais -->
+    <string name="tab_path">Trilha</string>
+    <string name="tab_practice">Praticar</string>
+    <string name="tab_leagues">Ligas</string>
+    <string name="tab_shop">Loja</string>
+    <string name="tab_profile">Perfil</string>
+
+    <!-- Componentes -->
+    <string name="node_start">Começar</string>
+    <string name="node_locked">bloqueada</string>
+    <string name="node_current">disponível</string>
+    <string name="node_done">concluída</string>
+    <string name="node_perfect">concluída sem erros</string>
+    <string name="unreviewed_badge">não revisada</string>
+    <string name="unreviewed_badge_description">Questão ainda não revisada pelo dono do app</string>
+    <string name="feedback_continue">Continuar</string>
+    <string name="combo_label">combo x%1$d</string>
+    <plurals name="stat_streak_description">
+        <item quantity="one">Ofensiva de %1$d dia</item>
+        <item quantity="other">Ofensiva de %1$d dias</item>
+    </plurals>
+    <plurals name="stat_gems_description">
+        <item quantity="one">%1$d gema</item>
+        <item quantity="other">%1$d gemas</item>
+    </plurals>
+    <plurals name="stat_hearts_description">
+        <item quantity="one">%1$d coração</item>
+        <item quantity="other">%1$d corações</item>
+    </plurals>
+    <plurals name="stat_exam_description">
+        <item quantity="one">%1$d dia para a prova</item>
+        <item quantity="other">%1$d dias para a prova</item>
+    </plurals>
+    <string name="exam_days_short">%1$d d</string>
+    <string name="pace_ahead">Folga %1$s</string>
+    <string name="pace_behind">Atraso %1$s</string>
+    <string name="pace_ring_description">Tempo da questão: %1$s</string>
+    <string name="option_description">Alternativa %1$s</string>
+    <string name="option_correct">correta</string>
+    <string name="option_wrong">errada</string>
+    <string name="option_selected">selecionada</string>
+    <string name="progress_description">%1$d%% concluído</string>
 </resources>
