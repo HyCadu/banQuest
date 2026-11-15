@@ -140,3 +140,73 @@ Continua incompleto (fora do alcance de uma varredura de código):
 - **Marcar questão como revisada:** hoje só editando o JSON (`reviewed: true`). Não há botão no app de propósito: o
   pacote é a fonte da verdade.
 - **Validação em aparelho real:** TalkBack, vibração, sons, horário de notificação e virada de dia/semana reais.
+
+## Versão social com Supabase (0.4.0, 15/11/2026) — a pedido do dono
+
+Plano completo em `docs/PLANO_SOCIAL.md`. As perguntas em aberto ficaram com o padrão sugerido, porque o dono pediu para
+construir sem responder antes:
+
+1. **Ranking só semanal**, de segunda 00:00 a domingo 23:59 (Brasília), calculado no servidor a partir das sessões
+   enviadas, e não de um total vindo do app.
+2. **Amizade:** um pedido feito pelo ranking geral precisa ser aceito; o código `TRI-XXXXX` vale na hora. O código
+   funciona mesmo com quem está oculto do ranking geral. Se os dois se pedirem, a amizade sai na hora.
+3. **"Liga Ouro" virou "Pódio da semana":** top 3 do ranking geral na semana anterior, com pelo menos 3 pessoas que
+   estudaram. Recompensa de 100 gemas, concedida uma vez por semana (chave `podium:<semana>`). A aba "Ligas" virou
+   **"Ranking"**, e as missões do dia passaram a um cartão compacto no topo dela.
+4. **Liga simulada removida** (`LeagueEngine`, tabela `league_week`). A coluna `stats.bestLeagueTier` continua no banco
+   sem uso, porque o SQLite do minSdk 26 não apaga colunas com facilidade.
+5. **Cliente REST próprio em vez do `supabase-kt`.** O login é o do **Supabase Auth**: as contas ficam em
+   Authentication → Users. O app chama direto os mesmos endpoints públicos que o SDK usaria (`/auth/v1/otp`,
+   `/auth/v1/verify`, `/auth/v1/token` e `/rest/v1/rpc/*`), com `HttpURLConnection` atrás da interface `HttpTransport`.
+   Motivo: não adicionar `supabase-kt` + Ktor (CLAUDE.md pede para não incluir dependências sem combinar). A troca pelo
+   SDK é possível depois, sem mudar o servidor.
+6. **Escrita só por funções.** Toda tabela tem RLS; `insert/update/delete` são revogados para `anon` e
+   `authenticated`. O app só lê o próprio perfil e o próprio retrato, e todo o resto passa por funções
+   `security definer` com `search_path` fixo. As funções internas (`are_friends`, `pair_streak`…) não podem ser
+   chamadas pelo app.
+7. **Anti-trapaça "confiança + limites"**, iguais no app (`SessionLimits`) e no servidor: até 150 XP por lição e 120
+   por treino, no mínimo 2 s por resposta, data entre hoje − 7 e hoje, e 40 sessões por dia. O id da sessão é um UUID
+   gerado no app, então reenviar não duplica. Uma sessão que o app já sabe que será recusada sai da fila, para não
+   travar as seguintes.
+8. **Progresso na nuvem = retrato JSON** no mesmo formato do backup, com versão otimista (`expected_version`). Se outro
+   aparelho gravou antes, o app pergunta qual progresso fica (diálogo obrigatório). O ranking não muda, porque vem das
+   sessões. Na primeira entrada: sem nuvem, sobe o do aparelho; sem progresso local, baixa a nuvem; com os dois iguais
+   (por exemplo, backup do Android restaurado), baixa sem perguntar; com os dois diferentes, pergunta.
+9. **Offline-first:** o Room continua sendo a fonte do estudo. As sessões vão para uma fila (`outbox_session`), e a
+   sincronização roda ao abrir o app, ao voltar para ele (se a última rodada tiver mais de 5 min), depois de cada sessão
+   e de hora em hora pelo WorkManager, só com rede. O ranking fica em cache para ser visto offline.
+10. **Conta obrigatória:** sem sessão ou sem perfil, o app abre na tela de entrada. Por isso, o primeiro acesso exige
+    internet; depois, estudar funciona offline.
+11. **Sair da conta limpa o aparelho** (o progresso está na nuvem). Antes de sair, o app avisa se ainda há algo não
+    enviado. **Excluir a conta** apaga em cascata no servidor (`auth.users` → perfil, sessões, amizades, retrato).
+12. **Backup automático do Android** exclui `datastore/auth.preferences_pb` (o token não viaja para outro aparelho) e
+    `datastore/sync.preferences_pb` (o id do aparelho precisa ser único).
+13. **Ofensiva em dupla** conta só dias com **lição concluída** pelos dois, a mesma regra da ofensiva individual
+    (CLAUDE.md, regra 7). O aviso das 21:30 menciona as duplas em risco, e a Trilha mostra um banner.
+14. **Permissões:** entram `INTERNET` e `ACCESS_NETWORK_STATE`, esta última usada pelo WorkManager para só sincronizar
+    com rede. Continuam `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED` e `WAKE_LOCK`, que vêm do WorkManager.
+    `FOREGROUND_SERVICE` continua removida.
+15. **Room v3 com migração escrita à mão** (`MIGRATION_2_3`): cria `outbox_session`, adiciona `stats.podiums` e apaga
+    `league_week`. A destruição automática do banco ficou só para quem vem da v1. Teste: `MigrationTest` na harness,
+    que cria um banco v2 a partir de `app/schemas/.../2.json` e abre com a 0.4.
+16. **SMTP:** o padrão do plano era o Resend, mas ele exige um domínio verificado para mandar e-mail a terceiros. O guia
+    (`docs/SUPABASE_SETUP.md`) recomenda o **Gmail com senha de app** para quem não tem domínio, e o Resend para quem tem.
+17. **Testes da harness:** `androidx.work:work-testing` entrou **só** na harness (`tools/preview-harness`), não no app.
+18. **"Confirm email" desligado no Supabase** (descoberto no primeiro teste real): com ele ligado, um e-mail que recebeu
+    o link de confirmação fica preso como "não confirmado", e o Supabase manda o template de confirmação, com link,
+    em vez do código. O código de 6 dígitos já prova a posse do e-mail. O passo está no `docs/SUPABASE_SETUP.md`.
+
+## Associar pares: erro corrigido (0.4.2, 15/11/2026) — decisão do dono
+
+Antes, qualquer par errado marcava a questão como erro, mesmo depois de o aluno completar todos os pares: custava
+coração, a questão repetia no fim e o resultado saía como erro, embora a tela deixasse continuar. O dono escolheu
+**"corrigiu vale, com custo menor"**:
+- Se o aluno completa os pares sem errar nenhum, é acerto normal: 10 XP, ou 15 com o bônus de velocidade.
+- Se errou algum par no caminho, a questão é **corrigida**:
+  - vale 5 XP, zera o combo e não conta para a lição perfeita;
+  - **não** custa coração e **não** repete no fim;
+  - entra na revisão (Praticar erros) como um erro;
+  - feedback âmbar "Pares completos!", e no resumo aparece como "Corrigida no caminho".
+- Regra pura em `LessonRun.answer(..., corrected = true)` e `XpEngine.answerXp(..., corrected)`, com testes unitários e
+  um teste de integração na harness.
+

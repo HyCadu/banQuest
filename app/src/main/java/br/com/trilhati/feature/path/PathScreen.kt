@@ -84,6 +84,7 @@ fun PathContent(
     modifier: Modifier = Modifier,
     animated: Boolean = true,
     showReminderPrompt: Boolean = false,
+    pairsAtRisk: List<Pair<String, Int>> = emptyList(),
 ) {
     var dialog by remember { mutableStateOf<PathDialog?>(null) }
     val stats = state.snapshot.stats
@@ -102,6 +103,7 @@ fun PathContent(
                 onExamClick = { dialog = PathDialog.Exam },
             )
             DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
+            if (pairsAtRisk.isNotEmpty() && !state.studiedToday) PairRiskBanner(pairsAtRisk, actions.openRanking)
             if (showReminderPrompt) ReminderPrompt(state, character, actions, animated)
         }
         LazyColumn(
@@ -313,6 +315,28 @@ private fun ReminderPrompt(state: AppState, character: MascotCharacter, actions:
             ChunkyButton("Ativar lembrete", actions.enableReminders, Modifier.weight(1f), ChunkyStyle.Primary, minHeight = 44.dp)
             ChunkyButton("Agora não", actions.dismissReminderPrompt, Modifier.weight(1f), ChunkyStyle.Neutral, minHeight = 44.dp)
         }
+    }
+}
+
+/** Aviso no topo da Trilha: a ofensiva em dupla com algum amigo acaba hoje se você não estudar. */
+@Composable
+private fun PairRiskBanner(pairs: List<Pair<String, Int>>, onOpen: () -> Unit) {
+    val c = Trilha.colors
+    val (name, days) = pairs.maxBy { it.second }
+    val others = pairs.size - 1
+    val text = buildString {
+        append("A ofensiva em dupla com $name ($days ${if (days == 1) "dia" else "dias"})")
+        if (others > 0) append(" e mais $others")
+        append(" acaba hoje se você não fizer uma lição.")
+    }
+    Row(
+        Modifier.fillMaxWidth().background(c.warningSoft, androidx.compose.foundation.shape.RoundedCornerShape(16.dp))
+            .border(2.dp, c.warning, androidx.compose.foundation.shape.RoundedCornerShape(16.dp))
+            .clickable(onClickLabel = "Ver ofensivas em dupla", onClick = onOpen).padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        GameIconView(GameIcon.Flame, size = 28.dp)
+        Text(text, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium, color = c.warningText)
     }
 }
 

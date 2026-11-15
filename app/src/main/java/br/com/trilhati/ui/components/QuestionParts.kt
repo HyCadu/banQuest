@@ -149,10 +149,12 @@ fun FeedbackPanel(
     onContinue: () -> Unit,
     modifier: Modifier = Modifier,
     animated: Boolean = true,
+    partial: Boolean = false,
 ) {
     val c = Trilha.colors
-    val background = if (correct) c.successSoft else c.errorSoft
-    val titleColor = if (correct) c.successText else c.errorText
+    // partial: completou corrigindo um erro (âmbar: nem acerto limpo, nem erro).
+    val background = when { partial -> c.warningSoft; correct -> c.successSoft; else -> c.errorSoft }
+    val titleColor = when { partial -> c.warningText; correct -> c.successText; else -> c.errorText }
     Surface(
         modifier = modifier.fillMaxWidth(),
         color = background,
@@ -162,7 +164,7 @@ fun FeedbackPanel(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Mascot(
                     character = character,
-                    pose = if (correct) MascotPose.Happy else MascotPose.Sad,
+                    pose = if (correct || partial) MascotPose.Happy else MascotPose.Sad,
                     modifier = Modifier.size(72.dp),
                     animated = animated,
                     decorative = true,
@@ -178,7 +180,7 @@ fun FeedbackPanel(
                 text = stringResource(R.string.feedback_continue),
                 onClick = onContinue,
                 modifier = Modifier.fillMaxWidth(),
-                style = if (correct) ChunkyStyle.Success else ChunkyStyle.Error,
+                style = when { partial -> ChunkyStyle.Warning; correct -> ChunkyStyle.Success; else -> ChunkyStyle.Error },
             )
         }
     }

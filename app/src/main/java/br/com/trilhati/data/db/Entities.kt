@@ -43,7 +43,9 @@ data class StatsEntity(
     val totalTimeMs: Long,
     val firstTryAnswered: Int,
     val firstTryCorrect: Int,
-    val bestLeagueTier: Int,
+    /** Coluna da antiga liga simulada (v2). Sem uso desde a v3; o SQLite do minSdk 26 não renomeia colunas. */
+    val bestLeagueTier: Int = 0,
+    @androidx.room.ColumnInfo(defaultValue = "0") val podiums: Int = 0,
 )
 
 @Serializable
@@ -108,19 +110,6 @@ data class AchievementEntity(
 )
 
 @Serializable
-@Entity(tableName = "league_week")
-data class LeagueWeekEntity(
-    @PrimaryKey val weekStart: Long,
-    val tier: Int,
-    val userXp: Int,
-    val closed: Boolean,
-    /** Posição final; -1 enquanto a semana está aberta. */
-    val finalRank: Int,
-    /** Resultado do fechamento: 0 = ficou, 1 = subiu, -1 = desceu. */
-    val outcome: Int,
-)
-
-@Serializable
 @Entity(tableName = "shop_state")
 data class ShopStateEntity(
     @PrimaryKey val id: Int = 1,
@@ -134,4 +123,22 @@ data class ShopStateEntity(
 data class PackMetaEntity(
     @PrimaryKey val pack: String,
     val version: Int,
+)
+
+/**
+ * Sessão de estudo esperando envio ao servidor (ranking e ofensiva em dupla). O id é gerado no app, então reenviar
+ * depois de uma falha de rede não duplica nada no servidor.
+ */
+@Entity(tableName = "outbox_session")
+data class OutboxSessionEntity(
+    @PrimaryKey val id: String,
+    val day: Long,
+    val kind: String,
+    val xp: Int,
+    val answers: Int,
+    val durationMs: Long,
+    val streak: Int,
+    val streakLongest: Int,
+    val lastStudyDay: Long,
+    val createdAtMs: Long,
 )

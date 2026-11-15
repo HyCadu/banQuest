@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -30,7 +31,8 @@ import br.com.trilhati.domain.quest.QuestEngine
 import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.feature.app.AppViewModel
-import br.com.trilhati.feature.leagues.LeaguesContent
+import br.com.trilhati.feature.app.SocialUi
+import br.com.trilhati.feature.ranking.RankingContent
 import br.com.trilhati.feature.path.PathContent
 import br.com.trilhati.feature.practice.PracticeContent
 import br.com.trilhati.feature.profile.ProfileContent
@@ -47,7 +49,7 @@ import br.com.trilhati.ui.theme.Trilha
 enum class MainTab(val label: String, val icon: GameIcon) {
     Path("Trilha", GameIcon.House),
     Practice("Praticar", GameIcon.Target),
-    Leagues("Ligas", GameIcon.Trophy),
+    Ranking("Ranking", GameIcon.Trophy),
     Shop("Loja", GameIcon.Bag),
     Profile("Perfil", GameIcon.Person),
 }
@@ -63,8 +65,11 @@ fun MainScreen(
     val state by viewModel.state.collectAsState()
     val nowMs by viewModel.ticker.collectAsState(initial = 0L)
     val notificationsAllowed by viewModel.notificationsAllowed.collectAsState()
+    val social by viewModel.social.collectAsState()
+    val context = androidx.compose.ui.platform.LocalContext.current
     androidx.lifecycle.compose.LifecycleResumeEffect(viewModel) {
         viewModel.refreshNotificationPermission()
+        viewModel.onAppResumed()
         onPauseOrDispose { }
     }
     val permissionLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
@@ -94,12 +99,50 @@ fun MainScreen(
                 }
             },
             dismissReminderPrompt = viewModel::dismissReminderPrompt,
+            refreshSocial = viewModel::refreshSocial,
+            requestFriend = { viewModel.requestFriend(it) },
+            respondRequest = { id, accept -> viewModel.respondRequest(id, accept) },
+            addFriendByCode = viewModel::addFriendByCode,
+            removeFriend = { viewModel.removeFriend(it) },
+            shareFriendCode = { code ->
+                val text = "Bora estudar para o concurso do Banestes no Trilha TI? Me adiciona como amigo com o código $code."
+                val send = android.content.Intent(android.content.Intent.ACTION_SEND).setType("text/plain")
+                    .putExtra(android.content.Intent.EXTRA_TEXT, text)
+                context.startActivity(android.content.Intent.createChooser(send, "Compartilhar código de amigo"))
+            },
         )
     }
     val showPrompt = state?.let { s ->
         !notificationsAllowed && !s.settings.reminderPromptDismissed && s.hasAnyCompletedLesson
     } == true
-    MainContent(state, nowMs, actions, snackbar, showReminderPrompt = showPrompt)
+    MainContent(state, nowMs, actions, snackbar, showReminderPrompt = showPrompt, social = social)
+    social.conflict?.let { conflict ->
+        SyncConflictDialog(conflict, onKeepCloud = { viewModel.resolveConflict(keepLocal = false) }, onKeepLocal = { viewModel.resolveConflict(keepLocal = true) })
+    }
+}
+
+/** Dois aparelhos mexeram no progresso: o aluno escolhe qual fica. Sem "fechar" — a escolha é obrigatória. */
+@Composable
+fun SyncConflictDialog(conflict: br.com.trilhati.data.social.SyncConflict, onKeepCloud: () -> Unit, onKeepLocal: () -> Unit) {
+    br.com.trilhati.ui.components.TrilhaDialog(
+        onDismiss = { },
+        title = "Qual progresso fica?",
+        content = {
+            Text(
+                "Sua conta tem progresso salvo por outro aparelho.\n\n" +
+                    "Na nuvem: ${conflict.serverXp} XP, ${conflict.serverLessons} lições.\n" +
+                    "Neste aparelho: ${conflict.localXp} XP, ${conflict.localLessons} lições.\n\n" +
+                    "O que você não escolher será substituído. O ranking da semana não muda.",
+                style = MaterialTheme.typography.bodyMedium, color = Trilha.colors.ink,
+            )
+        },
+        actions = {
+            br.com.trilhati.ui.components.ChunkyButton("Usar o da nuvem", onKeepCloud, Modifier.fillMaxWidth())
+            br.com.trilhati.ui.components.ChunkyButton(
+                "Manter o deste aparelho", onKeepLocal, Modifier.fillMaxWidth(), br.com.trilhati.ui.components.ChunkyStyle.Neutral,
+            )
+        },
+    )
 }
 
 /** Casca das abas, sem ViewModel: dá para renderizar com dados de exemplo. */
@@ -113,13 +156,24 @@ fun MainContent(
     initialTab: MainTab = MainTab.Path,
     animated: Boolean = true,
     showReminderPrompt: Boolean = false,
+    social: SocialUi = SocialUi(),
 ) {
     var tabIndex by rememberSaveable { mutableIntStateOf(initialTab.ordinal) }
-    val tabActions = remember(actions) { actions.copy(openShop = { tabIndex = MainTab.Shop.ordinal }) }
+    val tabActions = remember(actions) {
+        actions.copy(openShop = { tabIndex = MainTab.Shop.ordinal }, openRanking = { tabIndex = MainTab.Ranking.ordinal })
+    }
+    val pairsAtRisk = remember(social.overview, state?.today) {
+        val overview = social.overview
+        // Cache de outro dia não diz se o amigo estudou hoje, mas a dupla continua valendo até hoje à noite.
+        overview?.friends.orEmpty()
+            .filter { it.pairStreak > 0 && !(overview?.today == state?.today?.toString() && it.meToday) }
+            .map { it.displayName to it.pairStreak }
+    }
     val tabs = MainTab.entries.map { tab ->
         val badge = state != null && when (tab) {
             MainTab.Practice -> state.snapshot.dueCount > 0
-            MainTab.Leagues -> state.quests.any { q -> QuestEngine.byId(q.questId)?.let { QuestEngine.isComplete(it, q.progress) } == true && !q.claimed }
+            MainTab.Ranking -> social.overview?.requests?.isNotEmpty() == true ||
+                state.quests.any { q -> QuestEngine.byId(q.questId)?.let { QuestEngine.isComplete(it, q.progress) } == true && !q.claimed }
             MainTab.Shop -> state.snapshot.shop.lastDailyChestDay != state.today
             else -> false
         }
@@ -141,9 +195,11 @@ fun MainContent(
                 Loading()
             } else {
                 when (MainTab.entries[tabIndex]) {
-                    MainTab.Path -> PathContent(state, nowMs, tabActions, animated = animated, showReminderPrompt = showReminderPrompt)
+                    MainTab.Path -> PathContent(
+                        state, nowMs, tabActions, animated = animated, showReminderPrompt = showReminderPrompt, pairsAtRisk = pairsAtRisk,
+                    )
                     MainTab.Practice -> PracticeContent(state, tabActions, animated = animated)
-                    MainTab.Leagues -> LeaguesContent(state, nowMs, tabActions)
+                    MainTab.Ranking -> RankingContent(state, social, nowMs, tabActions, animated = animated)
                     MainTab.Shop -> ShopContent(state, tabActions, animated = animated)
                     MainTab.Profile -> ProfileContent(state, tabActions, animated = animated)
                 }

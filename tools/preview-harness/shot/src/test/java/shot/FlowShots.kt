@@ -10,6 +10,11 @@ import br.com.trilhati.domain.lesson.LessonRun
 import br.com.trilhati.domain.progress.*
 import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.main.MainContent
+import br.com.trilhati.feature.main.SyncConflictDialog
+import br.com.trilhati.feature.app.SocialUi
+import br.com.trilhati.feature.auth.*
+import br.com.trilhati.feature.ranking.RankingContent
+import br.com.trilhati.feature.ranking.RankingScope
 import br.com.trilhati.feature.main.MainTab
 import br.com.trilhati.feature.session.*
 import br.com.trilhati.feature.settings.SettingsContent
@@ -32,19 +37,29 @@ class FlowShots {
     @get:Rule val rule = createComposeRule()
     private val snack = SnackbarHostState()
 
-    private fun tab(name: String, t: MainTab, progress: Boolean, dark: Boolean = false, character: String = "Guaiamum") =
-        rule.shot(name, dark) { MainContent(fakeState(progress, character), NOW_MS, AppActions(), snack, initialTab = t, animated = false) }
+    private fun tab(name: String, t: MainTab, progress: Boolean, dark: Boolean = false, character: String = "Guaiamum", social: SocialUi = fakeSocial()) =
+        rule.shot(name, dark) { MainContent(fakeState(progress, character), NOW_MS, AppActions(), snack, initialTab = t, animated = false, social = social) }
 
     @Test fun trilhaPrompt() = rule.shot("t_path_prompt.png") { MainContent(fakeState(true), NOW_MS, AppActions(), snack, animated = false, showReminderPrompt = true) }
-    @Test fun settingsLong() = rule.shot("t_settings_full.png") { androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.height(2600.dp)) { SettingsContent(SettingsUi(Settings(), 50, 50, false, emptyList(), "0.3.0"), SettingsCallbacks()) } }
     @Test fun trilhaFresh() = tab("t_path_fresh.png", MainTab.Path, false)
     @Test fun trilhaProgress() = tab("t_path_progress.png", MainTab.Path, true, character = "Tartaruga")
     @Test fun trilhaDark() = tab("t_path_dark.png", MainTab.Path, true, dark = true, character = "Preguica")
     @Test fun practice() = tab("t_practice.png", MainTab.Practice, true)
-    @Test fun leagues() = tab("t_leagues.png", MainTab.Leagues, true)
+    @Test fun rankingTab() = tab("t_ranking.png", MainTab.Ranking, true)
+    @Test fun trilhaPairRisk() = rule.shot("t_path_pair_risk.png") {
+        MainContent(fakeState(true).let { it.copy(snapshot = it.snapshot.copy(dailyLogs = emptyMap())) }, NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
+    }
+    @Test fun conflict() = rule.shot("d_conflict.png") {
+        SyncConflictDialog(br.com.trilhati.data.social.SyncConflict(4, "outro", "2026-11-18T10:00:00Z", 900, 6, 640, 2), {}, {})
+    }
+
+    private fun login(name: String, ui: AuthUi) = rule.shot(name) { LoginContent(ui, {}, {}, {}, {}, {}, {}, {}, {}, {}, animated = false) }
+    @Test fun loginEmail() = login("l_email.png", AuthUi(email = "carlos@exemplo.com"))
+    @Test fun loginCode() = login("l_code.png", AuthUi(step = AuthStep.Code, email = "carlos@exemplo.com", code = "4821", resendInSec = 42, error = "Código errado ou vencido. Confira o e-mail ou peça outro."))
+    @Test fun loginProfile() = login("l_profile.png", AuthUi(step = AuthStep.Profile, email = "carlos@exemplo.com", name = "Carlos", mascot = "Tamandua"))
     @Test fun shop() = tab("t_shop.png", MainTab.Shop, true)
     @Test fun profile() = tab("t_profile.png", MainTab.Profile, true)
-    @Test fun settings() = rule.shot("t_settings.png") { SettingsContent(SettingsUi(Settings(), 50, 50, false, listOf(br.com.trilhati.data.content.ImportedPack("u2.json", "u2-programacao", 1, "Programação e OO", 50)), "0.3.0"), SettingsCallbacks()) }
+    @Test fun settings() = rule.shot("t_settings.png") { SettingsContent(SettingsUi(Settings(), 50, 50, false, listOf(br.com.trilhati.data.content.ImportedPack("u2.json", "u2-programacao", 1, "Programação e OO", 50)), "0.4.0", fakeSocial()), SettingsCallbacks()) }
 
     private fun playing(type: QuestionType, answered: Int = 2, phase: Phase = Phase.Answering, exercise: ExerciseState? = null, idx: Int = 0, combo: Int = 4): SessionUi.Playing {
         val q = course[0].lessons.flatMap { it.questions }.filter { it.type == type }[idx]
@@ -65,6 +80,7 @@ class FlowShots {
     @Test fun sCase() = session("s_case.png", playing(QuestionType.Case, idx = 3, exercise = ExerciseState.Choice(null)))
     @Test fun sCode() = session("s_code.png", playing(QuestionType.CodeOutput, exercise = ExerciseState.Choice(1)))
     @Test fun sMatch() { val p = playing(QuestionType.Match); session("s_match.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0), selectedLeft = 2))) }
+    @Test fun sMatchCorrected() { val p = playing(QuestionType.Match); session("s_match_corrected.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0, 1, 2, 3), mistakes = 1), phase = Phase.Feedback(false, null, 5, slips = 1))) }
     @Test fun sOrder() { val p = playing(QuestionType.OrderCode); session("s_order.png", p.copy(exercise = ExerciseState.Order(listOf(3, 0, 4), listOf(1, 2)))) }
     @Test fun sTf() = session("s_tf.png", playing(QuestionType.TrueFalse, exercise = ExerciseState.Choice(0)))
     @Test fun sDark() = session("s_mcq_dark.png", playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(1)), dark = true)
@@ -80,7 +96,7 @@ class FlowShots {
         val state = fakeState(true)
         val sr = SessionResult(SessionKind.Lesson, "u1l1", "u1", run.records, run.bestCombo, run.perfect)
         val out = ProgressProcessor.apply(
-            ProgressState(state.snapshot.stats, state.snapshot.lessonProgress, emptyMap(), DailyLog(TODAY, 40), state.quests, emptySet(), state.snapshot.league, 100),
+            ProgressState(state.snapshot.stats, state.snapshot.lessonProgress, emptyMap(), DailyLog(TODAY, 40), state.quests, emptySet(), 100),
             sr, TODAY, NOW_MS, { 1 }, 0,
         )
         session("s_result.png", SessionUi.Finished("Modelo ER e normalização", SessionSource.Lesson, out, run, PaceConfig()))

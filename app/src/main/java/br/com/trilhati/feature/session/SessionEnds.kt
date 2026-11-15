@@ -153,7 +153,7 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             if (summary.frozenDays.isNotEmpty()) Banner("Um congelamento protegeu sua ofensiva.", GameIcon.Snowflake, c.secondarySoft, c.secondaryText)
             if (summary.goalJustMet) Banner("Meta diária batida! +20 gemas", GameIcon.Star, c.successSoft, c.successText)
             if (summary.unitCompleted) Banner("Unidade concluída! Abra o baú na trilha.", GameIcon.Chest, c.warningSoft, c.warningText)
-            summary.questsCompleted.forEach { Banner("Missão cumprida: $it. Resgate na aba Ligas.", GameIcon.Trophy, c.successSoft, c.successText) }
+            summary.questsCompleted.forEach { Banner("Missão cumprida: $it. Resgate na aba Ranking.", GameIcon.Trophy, c.successSoft, c.successText) }
             summary.newAchievements.forEach { Banner("Conquista: ${it.title} (+${it.rewardGems} gemas)", GameIcon.Trophy, c.warningSoft, c.warningText) }
 
             val wrong = run.firstTryRecords.filter { !it.correct }
@@ -161,8 +161,8 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                 Text("Para revisar", style = MaterialTheme.typography.headlineSmall, color = c.ink, modifier = Modifier.fillMaxWidth())
                 wrong.take(5).forEach { r ->
                     Text(
-                        r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
-                        Modifier.fillMaxWidth().background(c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
+                        (if (r.corrected) "Corrigida no caminho · " else "") + r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
+                        Modifier.fillMaxWidth().background(if (r.corrected) c.warningSoft else c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
                         style = MaterialTheme.typography.bodySmall, color = c.ink,
                     )
                 }

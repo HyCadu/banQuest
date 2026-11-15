@@ -10,9 +10,12 @@ object XpEngine {
     const val PERFECT_LESSON = 10
     const val LEVEL_XP = 500
 
-    /** XP de uma resposta. Erro não dá XP; acerto na repetição vale metade e não tem bônus de velocidade. */
-    fun answerXp(correct: Boolean, retry: Boolean, elapsedMs: Long): Int = when {
-        !correct -> 0
+    /**
+     * XP de uma resposta. Erro não dá XP; acerto na repetição vale metade e não tem bônus de velocidade.
+     * [corrected] (completou depois de corrigir um par errado) vale o mesmo que a repetição.
+     */
+    fun answerXp(correct: Boolean, retry: Boolean, elapsedMs: Long, corrected: Boolean = false): Int = when {
+        !correct -> if (corrected) CORRECT_RETRY else 0
         retry -> CORRECT_RETRY
         elapsedMs <= FAST_LIMIT_MS -> CORRECT_FIRST_TRY + FAST_BONUS
         else -> CORRECT_FIRST_TRY

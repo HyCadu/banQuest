@@ -148,9 +148,6 @@ object ProgressProcessor {
             firstTryCorrect = state.stats.firstTryCorrect + firstTry.count { it.correct },
         )
 
-        // Liga da semana.
-        val league = state.league.copy(userXp = state.league.userXp + xpTotal)
-
         // Conquistas (podem render gemas, que entram no total).
         val unitsAfter = completedUnitsAfter(lessonProgress)
         val input = AchievementInput(
@@ -160,7 +157,7 @@ object ProgressProcessor {
             unitsCompleted = unitsAfter,
             pacedLessons = stats.pacedLessons,
             reviewCorrect = stats.reviewCorrect,
-            bestLeagueTier = stats.bestLeagueTier,
+            podiums = stats.podiums,
         )
         val newAchievements = AchievementEngine.newlyUnlocked(input, state.unlockedAchievements)
         stats = stats.copy(gems = stats.gems + newAchievements.sumOf { it.rewardGems })
@@ -186,7 +183,6 @@ object ProgressProcessor {
             todayLog = todayLog,
             todayQuests = quests,
             unlockedAchievements = state.unlockedAchievements + newAchievements.map { it.id },
-            league = league,
         )
         return ProcessedSession(newState, summary)
     }

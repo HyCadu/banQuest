@@ -90,4 +90,29 @@ class LessonRunTest {
         assertEquals(150_000, s.totalTimeMs)
         assertEquals(420_000, s.targetsSumMs)
     }
+
+    @Test fun `associar pares corrigido vale 5, zera o combo e nao repete no fim`() {
+        var s = LessonRun.start(pool.take(3))
+        s = LessonRun.answer(s, true, 10_000, 180_000)
+        val matched = s.current!!.question
+        s = LessonRun.answer(s, false, 10_000, 180_000, corrected = true)
+        assertEquals(1, s.queue.size) // só a terceira questão: nada voltou para o fim
+        assertEquals(0, s.combo)
+        val record = s.records.last()
+        assertEquals(matched, record.question)
+        assertTrue(record.corrected); assertFalse(record.correct)
+        assertEquals(5, record.xp)
+        s = LessonRun.answer(s, true, 10_000, 180_000)
+        assertTrue(s.finished)
+        assertFalse("corrigir não é lição perfeita", s.perfect)
+        assertEquals(1, s.mistakes)
+        assertEquals(15 + 5 + 15, s.xp)
+    }
+
+    @Test fun `acerto limpo nunca vira corrigido`() {
+        var s = LessonRun.start(pool.take(1))
+        s = LessonRun.answer(s, true, 10_000, 180_000, corrected = true)
+        assertTrue(s.records.last().correct); assertFalse(s.records.last().corrected)
+        assertEquals(15, s.xp)
+    }
 }

@@ -42,8 +42,13 @@ sealed interface ExerciseState {
 sealed interface Phase {
     data object Answering : Phase
 
-    /** Depois de verificar: [correct], o texto da resposta certa (para erros) e o XP ganho. */
-    data class Feedback(val correct: Boolean, val correctText: String?, val xp: Int) : Phase
+    /**
+     * Depois de verificar: [correct], o texto da resposta certa (para erros) e o XP ganho.
+     * [slips] > 0 com [correct] = false: completou corrigindo (associar pares), sem custo de coração.
+     */
+    data class Feedback(val correct: Boolean, val correctText: String?, val xp: Int, val slips: Int = 0) : Phase {
+        val corrected: Boolean get() = !correct && slips > 0
+    }
 }
 
 @Immutable

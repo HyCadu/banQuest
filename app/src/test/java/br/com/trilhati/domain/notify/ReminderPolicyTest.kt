@@ -64,4 +64,19 @@ class ReminderPolicyTest {
         val titles = (0..10).map { ReminderTexts.daily("Guaiamum", it, 3).title }.toSet()
         assertTrue(titles.size >= 3)
     }
+
+    @Test fun `aviso das 21h30 cita a ofensiva em dupla junto da individual`() {
+        val msg = ReminderPolicy.decide(ReminderKind.StreakRisk, at(21, 31), at(21, 30), true, 0, StreakStatus.AtRisk, 4, "Guaiamum", listOf("Bia" to 6))
+        assertTrue(msg!!.text.contains("Bia (6 dias)"))
+    }
+
+    @Test fun `so a ofensiva em dupla em risco tambem avisa`() {
+        val msg = ReminderPolicy.decide(ReminderKind.StreakRisk, at(21, 31), at(21, 30), true, 0, StreakStatus.None, 0, "Guaiamum", listOf("Bia" to 1, "Caio" to 3))
+        assertEquals("Ofensiva em dupla em risco!", msg!!.title)
+        assertTrue(msg.text.contains("Caio") && msg.text.contains("3 dias"))
+    }
+
+    @Test fun `ofensiva em dupla nao avisa se voce ja estudou`() {
+        assertNull(ReminderPolicy.decide(ReminderKind.StreakRisk, at(21, 31), at(21, 30), true, 1, StreakStatus.DoneToday, 4, "Guaiamum", listOf("Bia" to 6)))
+    }
 }

@@ -24,6 +24,12 @@ enum class MascotCharacter(val displayName: String) {
     Tartaruga("Tartaruga-marinha"),
     Tamandua("Tamanduá"),
     Preguica("Preguiça"),
+    ;
+
+    companion object {
+        /** Personagem pelo nome salvo; desconhecido vira o Guaiamum. */
+        fun of(name: String?): MascotCharacter = entries.firstOrNull { it.name == name } ?: Guaiamum
+    }
 }
 
 enum class MascotPose(val label: String) {

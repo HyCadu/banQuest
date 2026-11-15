@@ -46,6 +46,7 @@ class IntegrationTest {
 
     @Before fun setUp() {
         context = ApplicationProvider.getApplicationContext()
+        androidx.work.testing.WorkManagerTestInitHelper.initializeTestWorkManager(context)
         clock = MutableClock(Instant.parse("2026-11-18T15:00:00Z")) // quarta 12:00 em Brasília
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).allowMainThreadQueries().build()
         progress = ProgressRepository(db, db.progressDao(), clock)
@@ -70,11 +71,13 @@ class IntegrationTest {
     }
 
     private fun newVm(kind: String, id: String = "-") =
-        SessionViewModel(SavedStateHandle(mapOf("kind" to kind, "id" to id)), content, progress, settings, clock, br.com.trilhati.sound.SoundPlayer(context), br.com.trilhati.notify.Notifications(context))
+        SessionViewModel(SavedStateHandle(mapOf("kind" to kind, "id" to id)), content, progress, settings, clock, br.com.trilhati.sound.SoundPlayer(context), br.com.trilhati.notify.Notifications(context),
+            br.com.trilhati.data.social.SyncScheduler(context))
 
     /** Joga a sessão inteira. [wrongOnFirst] é quantas questões errar de propósito (as primeiras de múltipla escolha). */
-    private fun play(vm: SessionViewModel, wrongOnFirst: Int = 0): SessionUi.Finished {
+    private fun play(vm: SessionViewModel, wrongOnFirst: Int = 0, slipOnMatch: Boolean = false, feedbacks: MutableList<Pair<QuestionType, Phase.Feedback>>? = null): SessionUi.Finished {
         var wrongLeft = wrongOnFirst
+        var slip = slipOnMatch
         var guard = 0
         while (guard++ < 60) {
             val ui = await("próximo estado") { vm.ui.value.takeIf { it !is SessionUi.Loading && it !is SessionUi.Saving } }
@@ -86,6 +89,7 @@ class IntegrationTest {
                     when (q.type) {
                         QuestionType.Match -> {
                             val order = (ui.exercise as ExerciseState.Match).rightOrder
+                            if (slip) { slip = false; vm.matchLeft(0); idle(); vm.matchRight(order.indexOf(1)); idle() } // um par errado
                             q.pairs.indices.forEach { i -> vm.matchLeft(i); idle(); vm.matchRight(order.indexOf(i)); idle() }
                         }
                         QuestionType.OrderCode -> {
@@ -99,7 +103,7 @@ class IntegrationTest {
                         }
                     }
                     idle()
-                    try { await("feedback") { (vm.ui.value as? SessionUi.Playing)?.phase as? Phase.Feedback } }
+                    try { await("feedback") { (vm.ui.value as? SessionUi.Playing)?.phase as? Phase.Feedback }.let { feedbacks?.add(q.type to it) } }
                     catch (e: AssertionError) { val cur = vm.ui.value as? SessionUi.Playing; fail("sem feedback em ${q.id} (${q.type}) exercício=${cur?.exercise}") }
                 }
                 else -> fail("estado inesperado: $ui")
@@ -114,7 +118,6 @@ class IntegrationTest {
         assertEquals("Estudante", s.profile.name); assertEquals(100, s.profile.dailyGoalXp)
         assertEquals(5, s.stats.hearts.hearts); assertEquals(0, s.stats.totalXp)
         assertEquals(3, runBlocking { progress.observeQuests(today()).first() }.size)
-        assertEquals(0, s.league.tier)
         // idempotente
         runBlocking { progress.ensureReady(today()); progress.ensureReady(today()) }
         assertEquals(3, runBlocking { progress.observeQuests(today()).first() }.size)
@@ -139,7 +142,11 @@ class IntegrationTest {
         assertEquals(8, s.stats.firstTryAnswered); assertEquals(8, s.stats.firstTryCorrect)
         assertEquals(fin.processed.summary.totalXp, s.stats.totalXp)
         assertTrue(s.stats.gems >= 10)
-        assertEquals(s.stats.totalXp, s.league.userXp)
+        // a sessão entrou na fila para o ranking (sai quando houver rede)
+        val outbox = runBlocking { db.progressDao().outbox(10) }
+        assertEquals(1, outbox.size)
+        assertEquals("lesson", outbox[0].kind); assertEquals(s.stats.totalXp, outbox[0].xp); assertEquals(8, outbox[0].answers)
+        assertEquals(today().toEpochDay(), outbox[0].day); assertEquals(1, outbox[0].streak)
         assertEquals(1, s.dailyLogs.getValue(today()).lessons)
         // desbloqueou a próxima
         val st = TrailEngine.statuses(content.course, s.lessonProgress)
@@ -238,22 +245,27 @@ class IntegrationTest {
         assertEquals(0, snap().stats.streak.current)
     }
 
-    @Test fun ligaFechaNaSegundaEPromoveQuemEstudou() {
+    @Test fun associarParesComParErradoCorrigidoNaoCustaCoracaoMasVaiParaRevisao() {
         runBlocking { progress.ensureReady(today()) }
-        play(newVm("lesson", "u1l1"))
-        val week1 = snap().league
-        assertTrue(week1.userXp > 0)
-        // próxima segunda-feira 00:05 em Brasília
-        clock.instant = Instant.parse("2026-11-23T03:05:00Z")
-        runBlocking { progress.ensureReady(today()) }
+        val feedbacks = mutableListOf<Pair<QuestionType, Phase.Feedback>>()
+        val fin = play(newVm("lesson", "u1l1"), slipOnMatch = true, feedbacks = feedbacks)
+        val match = feedbacks.first { it.first == QuestionType.Match }.second
+        assertTrue("deveria ser corrigida", match.corrected)
+        assertEquals(1, match.slips); assertEquals(5, match.xp); assertNull(match.correctText)
+        assertEquals("nada volta para o fim", 8, fin.run.records.size)
+        assertFalse(fin.run.perfect)
         val s = snap()
-        assertEquals(java.time.LocalDate.of(2026, 11, 23), s.league.weekStart)
-        assertEquals(0, s.league.userXp)
-        val last = s.lastLeagueResult!!
-        assertEquals(java.time.LocalDate.of(2026, 11, 16), last.weekStart)
-        assertTrue("rank=${last.rank}", last.rank in 1..30)
-        assertEquals(if (last.rank <= 10) 1 else 0, last.outcome)
-        assertEquals(if (last.rank <= 10) 1 else 0, s.league.tier)
+        assertEquals("sem perder coração", 5, s.stats.hearts.hearts)
+        assertEquals("vai para a revisão", 1, s.errorBankSize)
+        assertFalse(s.lessonProgress.getValue("u1l1").perfect)
+    }
+
+    @Test fun treinoTambemEntraNaFilaComoPractice() {
+        runBlocking { progress.ensureReady(today()) }
+        play(newVm("lesson", "u1l2"), wrongOnFirst = 1)
+        play(newVm("errors"))
+        val kinds = runBlocking { db.progressDao().outbox(10) }.map { it.kind }.sorted()
+        assertEquals(listOf("lesson", "practice"), kinds)
     }
 
     @Test fun apagarTudoRecomeca() {

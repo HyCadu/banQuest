@@ -1,18 +1,24 @@
 package br.com.trilhati.feature.app
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import br.com.trilhati.feature.auth.LoginScreen
 import br.com.trilhati.feature.main.MainScreen
 import br.com.trilhati.feature.session.SessionSource
 import br.com.trilhati.feature.session.SessionScreen
 import br.com.trilhati.feature.settings.SettingsScreen
+import br.com.trilhati.ui.theme.Trilha
 import br.com.trilhati.ui.theme.TrilhaTheme
 
 /** Rotas de navegação do app. As abas ficam dentro de [MAIN]; lição e configurações abrem em tela cheia. */
@@ -27,34 +33,45 @@ object Routes {
 fun AppRoot() {
     val appViewModel: AppViewModel = hiltViewModel()
     val settings by appViewModel.settings.collectAsState()
-    val nav = rememberNavController()
+    val gate by appViewModel.gate.collectAsState()
 
     TrilhaTheme(settings.themeMode) {
-        NavHost(navController = nav, startDestination = Routes.MAIN) {
-            composable(Routes.MAIN) {
-                MainScreen(
-                    viewModel = appViewModel,
-                    onOpenLesson = { nav.navigate(Routes.session(SessionSource.Lesson, it)) },
-                    onOpenErrors = { nav.navigate(Routes.session(SessionSource.Errors)) },
-                    onOpenReview = { nav.navigate(Routes.session(SessionSource.Review)) },
-                    onOpenSettings = { nav.navigate(Routes.SETTINGS) },
-                )
-            }
-            composable(
-                Routes.SESSION,
-                arguments = listOf(navArgument("kind") { type = NavType.StringType }, navArgument("id") { type = NavType.StringType }),
-            ) {
-                SessionScreen(
-                    onExit = { nav.popBackStack() },
-                    onOpenErrors = {
-                        nav.popBackStack()
-                        nav.navigate(Routes.session(SessionSource.Errors))
-                    },
-                )
-            }
-            composable(Routes.SETTINGS) {
-                SettingsScreen(viewModel = appViewModel, onBack = { nav.popBackStack() })
-            }
+        when (gate) {
+            // Lendo a sessão salva: fundo liso por um instante, sem piscar a tela de entrada.
+            Gate.Loading -> Box(Modifier.fillMaxSize().background(Trilha.colors.background))
+            Gate.Login -> LoginScreen()
+            Gate.Ready -> MainNav(appViewModel)
+        }
+    }
+}
+
+@Composable
+private fun MainNav(appViewModel: AppViewModel) {
+    val nav = rememberNavController()
+    NavHost(navController = nav, startDestination = Routes.MAIN) {
+        composable(Routes.MAIN) {
+            MainScreen(
+                viewModel = appViewModel,
+                onOpenLesson = { nav.navigate(Routes.session(SessionSource.Lesson, it)) },
+                onOpenErrors = { nav.navigate(Routes.session(SessionSource.Errors)) },
+                onOpenReview = { nav.navigate(Routes.session(SessionSource.Review)) },
+                onOpenSettings = { nav.navigate(Routes.SETTINGS) },
+            )
+        }
+        composable(
+            Routes.SESSION,
+            arguments = listOf(navArgument("kind") { type = NavType.StringType }, navArgument("id") { type = NavType.StringType }),
+        ) {
+            SessionScreen(
+                onExit = { nav.popBackStack() },
+                onOpenErrors = {
+                    nav.popBackStack()
+                    nav.navigate(Routes.session(SessionSource.Errors))
+                },
+            )
+        }
+        composable(Routes.SETTINGS) {
+            SettingsScreen(viewModel = appViewModel, onBack = { nav.popBackStack() })
         }
     }
 }

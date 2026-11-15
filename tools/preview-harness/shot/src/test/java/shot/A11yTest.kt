@@ -43,14 +43,41 @@ class A11yTest {
 
     private fun tab(t: MainTab) {
         rule.mainClock.autoAdvance = false
-        rule.setContent { TrilhaTheme { MainContent(fakeState(true), NOW_MS, AppActions(), SnackbarHostState(), initialTab = t, animated = false, showReminderPrompt = true) } }
+        rule.setContent { TrilhaTheme { MainContent(fakeState(true), NOW_MS, AppActions(), SnackbarHostState(), initialTab = t, animated = false, showReminderPrompt = true, social = fakeSocial()) } }
         rule.mainClock.advanceTimeBy(300)
         assertClickablesLabeled(t.name)
     }
 
     @Test fun trilha() = tab(MainTab.Path)
     @Test fun praticar() = tab(MainTab.Practice)
-    @Test fun ligas() = tab(MainTab.Leagues)
+    @Test fun ranking() = tab(MainTab.Ranking)
+
+    @Test fun rankingAmigos() {
+        rule.mainClock.autoAdvance = false
+        rule.setContent {
+            TrilhaTheme {
+                br.com.trilhati.feature.ranking.RankingContent(
+                    fakeState(true), fakeSocial(), NOW_MS, AppActions(), initialScope = br.com.trilhati.feature.ranking.RankingScope.Friends, animated = false,
+                )
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        assertClickablesLabeled("ranking amigos")
+    }
+
+    @Test fun entrada() {
+        rule.mainClock.autoAdvance = false
+        rule.setContent {
+            TrilhaTheme {
+                br.com.trilhati.feature.auth.LoginContent(
+                    br.com.trilhati.feature.auth.AuthUi(step = br.com.trilhati.feature.auth.AuthStep.Profile, name = "Carlos"),
+                    {}, {}, {}, {}, {}, {}, {}, {}, {}, animated = false,
+                )
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        assertClickablesLabeled("entrada")
+    }
     @Test fun loja() = tab(MainTab.Shop)
     @Test fun perfil() = tab(MainTab.Profile)
 

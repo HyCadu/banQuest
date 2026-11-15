@@ -44,6 +44,7 @@ class SessionViewModel @Inject constructor(
     private val clock: Clock,
     private val sounds: br.com.trilhati.sound.SoundPlayer,
     private val notifications: br.com.trilhati.notify.Notifications,
+    private val syncScheduler: br.com.trilhati.data.social.SyncScheduler,
 ) : ViewModel() {
     private val source = SessionSource.fromRoute(savedState.get<String>("kind"))
     private val lessonId: String? = savedState.get<String>("id")?.takeIf { it != "-" }
@@ -204,7 +205,8 @@ class SessionViewModel @Inject constructor(
             val solved = ex.solved + left
             exercise = ex.copy(solved = solved, selectedLeft = null, wrongPair = null)
             val q = checkNotNull(shown).question
-            if (solved.size == q.pairs.size) submit(ex.mistakes == 0) else publish()
+            // Errou algum par no caminho: vale como "corrigida" (sem coração, sem repetir, 5 XP, vai para a revisão).
+            if (solved.size == q.pairs.size) submit(ex.mistakes == 0, slips = ex.mistakes) else publish()
         } else {
             exercise = ex.copy(selectedLeft = null, wrongPair = left to pairIndex, mistakes = ex.mistakes + 1)
             publish()
@@ -229,22 +231,24 @@ class SessionViewModel @Inject constructor(
         publish()
     }
 
-    private fun submit(correct: Boolean) {
+    private fun submit(correct: Boolean, slips: Int = 0) {
         val r = checkNotNull(run)
         val item = checkNotNull(shown)
         val elapsed = (clock.millis() - startedAtMs).coerceAtLeast(0)
         val target = settings.paceConfig.targetMs(item.question.isCase)
-        val next = LessonRun.answer(r, correct, elapsed, target)
+        val corrected = !correct && slips > 0
+        val next = LessonRun.answer(r, correct, elapsed, target, corrected)
         run = next
         val record = next.records.last()
-        if (hearts != null && !correct && !item.retry) {
+        if (hearts != null && !correct && !corrected && !item.retry) {
             hearts = (hearts ?: 0) - 1
             viewModelScope.launch { progress.loseHeart() }
             if (hearts == 0) outOfHearts = true
         }
-        phase = Phase.Feedback(correct, if (correct) null else correctText(item.question), record.xp)
+        phase = Phase.Feedback(correct, if (correct || corrected) null else correctText(item.question), record.xp, slips)
         sfx(
             when {
+                corrected -> br.com.trilhati.sound.Sfx.Correct
                 !correct -> br.com.trilhati.sound.Sfx.Wrong
                 next.combo == 3 || (next.combo > 3 && next.combo % 5 == 0) -> br.com.trilhati.sound.Sfx.Combo
                 else -> br.com.trilhati.sound.Sfx.Correct
@@ -282,6 +286,8 @@ class SessionViewModel @Inject constructor(
             val result = SessionResult(kind, lessonId.takeIf { source == SessionSource.Lesson }, unitId, r.records, r.bestCombo, r.perfect)
             val processed = progress.applySession(result, clock.today(), content.course)
             if (kind == SessionKind.Lesson) notifications.clear()
+            // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
+            syncScheduler.syncSoon()
             sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
             _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig)
         }

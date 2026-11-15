@@ -4,7 +4,7 @@ import kotlin.random.Random
 
 /**
  * Gerador pseudoaleatório determinístico (SplitMix64). Usado onde o resultado precisa ser sempre o mesmo para a mesma
- * semente (missões do dia, bots da liga), independente da versão do Kotlin.
+ * semente (missões do dia), independente da versão do Kotlin.
  */
 class SplitMix(seed: Long) {
     private var state = seed

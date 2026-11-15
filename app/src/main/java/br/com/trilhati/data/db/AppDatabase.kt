@@ -7,9 +7,9 @@ import androidx.room.RoomDatabase
     entities = [
         UserProfileEntity::class, StatsEntity::class, LessonProgressEntity::class, QuestionStatEntity::class,
         AttemptEntity::class, DailyLogEntity::class, QuestStateEntity::class, AchievementEntity::class,
-        LeagueWeekEntity::class, ShopStateEntity::class, PackMetaEntity::class,
+        ShopStateEntity::class, PackMetaEntity::class, OutboxSessionEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {

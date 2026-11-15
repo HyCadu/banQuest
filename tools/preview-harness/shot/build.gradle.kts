@@ -9,9 +9,14 @@ plugins {
 android {
     namespace = "br.com.trilhati"
     compileSdk = 37
-    defaultConfig { applicationId = "br.com.trilhati"; minSdk = 26; targetSdk = 37; versionCode = 1; versionName = "0" }
+    defaultConfig {
+        applicationId = "br.com.trilhati"; minSdk = 26; targetSdk = 37; versionCode = 1; versionName = "0"
+        // A harness nunca fala com o Supabase de verdade: os testes usam transporte e API falsos.
+        buildConfigField("String", "SUPABASE_URL", "\"https://exemplo.supabase.co\"")
+        buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"sb_publishable_teste\"")
+    }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
     sourceSets {
         getByName("main") {
             kotlin.directories.add(rootProject.file("../../app/src/main/java").absolutePath)
@@ -46,5 +51,6 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.18")
     testImplementation("androidx.compose.ui:ui-test-junit4")
     testImplementation("androidx.test:core:1.7.0")
+    testImplementation("androidx.work:work-testing:2.12.0")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

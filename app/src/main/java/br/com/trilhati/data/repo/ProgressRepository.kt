@@ -4,19 +4,15 @@ import androidx.room.withTransaction
 import br.com.trilhati.data.db.AchievementEntity
 import br.com.trilhati.data.db.AppDatabase
 import br.com.trilhati.data.db.AttemptEntity
-import br.com.trilhati.data.db.LeagueWeekEntity
+import br.com.trilhati.data.db.OutboxSessionEntity
 import br.com.trilhati.data.db.ProgressDao
 import br.com.trilhati.data.db.ShopStateEntity
 import br.com.trilhati.data.db.UserProfileEntity
 import br.com.trilhati.domain.achievement.AchievementEngine
 import br.com.trilhati.domain.achievement.AchievementInput
 import br.com.trilhati.domain.hearts.HeartsEngine
-import br.com.trilhati.domain.league.LeagueEngine
-import br.com.trilhati.domain.league.LeagueOutcome
-import br.com.trilhati.domain.league.LeagueTier
 import br.com.trilhati.domain.model.CourseUnit
 import br.com.trilhati.domain.progress.DailyLog
-import br.com.trilhati.domain.progress.LeagueWeekState
 import br.com.trilhati.domain.progress.ProcessedSession
 import br.com.trilhati.domain.progress.ProgressProcessor
 import br.com.trilhati.domain.progress.ProgressState
@@ -58,8 +54,8 @@ class ProgressRepository @Inject constructor(
         }
         val extra = combine(
             dao.observeDailyLogs(today.minusDays(90).toEpochDay()), dao.observeAchievements(),
-            dao.observeLatestLeague(), dao.observeLastClosedLeague(), dao.observeShop(),
-        ) { logs, ach, league, closed, shop -> Extra(logs, ach, league, closed, shop) }
+            dao.observeShop(), dao.observeOutboxCount(),
+        ) { logs, ach, shop, outbox -> Extra(logs, ach, shop, outbox) }
         val counts = combine(dao.observeErrorBankCount(), dao.observeDueCount(today.toEpochDay())) { bank, due -> bank to due }
         return combine(core, extra, counts) { c, e, n ->
             AppSnapshot(
@@ -69,11 +65,10 @@ class ProgressRepository @Inject constructor(
                 questionStats = c.questions.map { it.toDomain() }.associateBy { it.questionId },
                 dailyLogs = e.logs.map { it.toDomain() }.associateBy { it.day },
                 achievements = e.achievements.toMap(),
-                league = e.league?.toDomain() ?: LeagueWeekState(LeagueEngine.weekStart(today)),
-                lastLeagueResult = e.closed?.let { LeagueResult(LocalDate.ofEpochDay(it.weekStart), it.tier, it.finalRank, it.outcome) },
                 shop = e.shop?.toDomain() ?: ShopState(null, emptySet()),
                 errorBankSize = n.first,
                 dueCount = n.second,
+                pendingUploads = e.outbox,
             )
         }
     }
@@ -91,16 +86,15 @@ class ProgressRepository @Inject constructor(
     private class Extra(
         val logs: List<br.com.trilhati.data.db.DailyLogEntity>,
         val achievements: List<AchievementEntity>,
-        val league: LeagueWeekEntity?,
-        val closed: LeagueWeekEntity?,
         val shop: ShopStateEntity?,
+        val outbox: Int,
     )
 
     // ---------- preparação diária
 
     /**
-     * Garante as linhas básicas, as 3 missões de [today], o registro do dia e a liga da semana (fechando semanas
-     * passadas). É barato e idempotente: chame ao abrir o app e quando o dia mudar.
+     * Garante as linhas básicas, as 3 missões de [today] e o registro do dia, e reconcilia a ofensiva.
+     * É barato e idempotente: chame ao abrir o app e quando o dia mudar.
      */
     suspend fun ensureReady(today: LocalDate): Unit = db.withTransaction { ensureReadyInternal(today) }
 
@@ -125,44 +119,34 @@ class ProgressRepository @Inject constructor(
                 dao.upsertDailyLog(log.copy(froze = true).toEntity())
             }
         }
-        reconcileLeague(today)
     }
 
-    private suspend fun reconcileLeague(today: LocalDate) {
-        val currentWeek = LeagueEngine.weekStart(today)
-        var week = dao.latestLeague()?.toDomain()
-        if (week == null) {
-            dao.upsertLeague(LeagueWeekEntity(currentWeek.toEpochDay(), 0, 0, closed = false, finalRank = -1, outcome = 0))
-            return
-        }
-        val name = dao.profile()?.name ?: Profile.DEFAULT_NAME
-        var bestTier = checkNotNull(dao.stats()).bestLeagueTier
-        var closedAny = false
-        while (week!!.weekStart.isBefore(currentWeek)) {
-            val tier = LeagueTier.fromIndex(week.tier)
-            val standings = LeagueEngine.standings(week.weekStart, tier, 1.0, name, week.userXp)
-            val rank = LeagueEngine.rankOfUser(standings)
-            val close = LeagueEngine.close(tier, rank, week.userXp)
-            val outcome = when (close.outcome) { LeagueOutcome.Promoted -> 1; LeagueOutcome.Relegated -> -1; LeagueOutcome.Stayed -> 0 }
-            dao.upsertLeague(LeagueWeekEntity(week.weekStart.toEpochDay(), week.tier, week.userXp, closed = true, finalRank = rank, outcome = outcome))
-            bestTier = maxOf(bestTier, close.newTier.ordinal)
-            week = LeagueWeekState(week.weekStart.plusWeeks(1), close.newTier.ordinal, 0)
-            dao.upsertLeague(LeagueWeekEntity(week.weekStart.toEpochDay(), week.tier, 0, closed = false, finalRank = -1, outcome = 0))
-            closedAny = true
-        }
-        if (closedAny) {
-            var stats = checkNotNull(dao.stats()).toDomain().copy(bestLeagueTier = bestTier)
-            val unlocked = dao.achievementIds().toSet()
-            val input = AchievementInput(
-                longestStreak = stats.streak.longest, totalXp = stats.totalXp, perfectLessons = stats.perfectLessons,
-                unitsCompleted = if ("unit1" in unlocked) 1 else 0, pacedLessons = stats.pacedLessons,
-                reviewCorrect = stats.reviewCorrect, bestLeagueTier = bestTier,
-            )
-            val fresh = AchievementEngine.newlyUnlocked(input, unlocked)
-            stats = stats.copy(gems = stats.gems + fresh.sumOf { it.rewardGems })
-            dao.upsertStats(stats.toEntity())
-            dao.upsertAchievements(fresh.map { AchievementEntity(it.id, nowMs()) })
-        }
+    // ---------- conquistas que dependem do servidor
+
+    /**
+     * Registra um pódio (top 3 do ranking geral) na semana que começou em [weekStart], uma vez por semana.
+     * Devolve as conquistas novas (o chamador mostra o aviso).
+     */
+    suspend fun awardPodium(weekStart: LocalDate, course: List<CourseUnit>): List<br.com.trilhati.domain.achievement.AchievementDef> = db.withTransaction {
+        val shop = (dao.shop() ?: ShopStateEntity(1, -1, "")).toDomain()
+        val key = "podium:$weekStart"
+        if (key in shop.claimedUnitChests) return@withTransaction emptyList()
+        // A marca "já premiado nesta semana" fica junto dos baús abertos: mesma natureza (recompensa única).
+        dao.upsertShop(shop.copy(claimedUnitChests = shop.claimedUnitChests + key).toEntity())
+        var stats = checkNotNull(dao.stats()).toDomain()
+        stats = stats.copy(podiums = stats.podiums + 1)
+        val unlocked = dao.achievementIds().toSet()
+        val progress = dao.lessonProgress().map { it.toDomain() }.associateBy { it.lessonId }
+        val input = AchievementInput(
+            longestStreak = stats.streak.longest, totalXp = stats.totalXp, perfectLessons = stats.perfectLessons,
+            unitsCompleted = TrailEngine.completedUnitCount(course, progress), pacedLessons = stats.pacedLessons,
+            reviewCorrect = stats.reviewCorrect, podiums = stats.podiums,
+        )
+        val fresh = AchievementEngine.newlyUnlocked(input, unlocked)
+        stats = stats.copy(gems = stats.gems + fresh.sumOf { it.rewardGems })
+        dao.upsertStats(stats.toEntity())
+        dao.upsertAchievements(fresh.map { AchievementEntity(it.id, nowMs()) })
+        fresh
     }
 
     // ---------- sessões de estudo
@@ -181,7 +165,6 @@ class ProgressRepository @Inject constructor(
             todayLog = dao.dailyLog(today.toEpochDay())?.toDomain() ?: DailyLog(today),
             todayQuests = dao.quests(today.toEpochDay()).map { it.toDomain() },
             unlockedAchievements = dao.achievementIds().toSet(),
-            league = checkNotNull(dao.latestLeague()).toDomain(),
             dailyGoalXp = profile.dailyGoalXp,
         )
         val before = TrailEngine.completedUnitCount(course, lessonProgress)
@@ -193,7 +176,16 @@ class ProgressRepository @Inject constructor(
         dao.upsertDailyLog(s.todayLog.toEntity())
         dao.upsertQuests(s.todayQuests.map { it.toEntity() })
         dao.upsertAchievements(out.summary.newAchievements.map { AchievementEntity(it.id, now) })
-        dao.upsertLeague(LeagueWeekEntity(s.league.weekStart.toEpochDay(), s.league.tier, s.league.userXp, s.league.closed, s.league.finalRank ?: -1, 0))
+        // Fila para o servidor: alimenta o ranking da semana e a ofensiva em dupla (enviada pelo SyncWorker).
+        dao.insertOutbox(
+            OutboxSessionEntity(
+                id = java.util.UUID.randomUUID().toString(), day = today.toEpochDay(),
+                kind = if (result.kind == br.com.trilhati.domain.progress.SessionKind.Lesson) "lesson" else "practice",
+                xp = out.summary.totalXp, answers = result.records.size, durationMs = result.records.sumOf { it.timeMs },
+                streak = s.stats.streak.current, streakLongest = s.stats.streak.longest,
+                lastStudyDay = s.stats.streak.lastDay.toDay(), createdAtMs = now,
+            ),
+        )
         out.summary.frozenDays.forEach { day ->
             val log = dao.dailyLog(day.toEpochDay())?.toDomain() ?: DailyLog(day)
             dao.upsertDailyLog(log.copy(froze = true).toEntity())
@@ -284,7 +276,7 @@ class ProgressRepository @Inject constructor(
             exportedAtMs = nowMs(),
             profile = dao.profile(), stats = dao.stats(), lessonProgress = dao.lessonProgress(),
             questionStats = dao.allQuestionStats(), attempts = dao.allAttempts(), dailyLogs = dao.allDailyLogs(),
-            quests = dao.allQuests(), achievements = dao.allAchievements(), leagueWeeks = dao.allLeagueWeeks(),
+            quests = dao.allQuests(), achievements = dao.allAchievements(),
             shop = dao.shop(), packs = dao.packMetas(),
         )
     }
@@ -292,7 +284,7 @@ class ProgressRepository @Inject constructor(
     /** Substitui todo o progresso pelo do backup, de uma vez (se algo falhar, nada muda). */
     suspend fun importBackup(backup: br.com.trilhati.data.backup.Backup, today: LocalDate) = db.withTransaction {
         dao.deleteProfile(); dao.deleteStats(); dao.deleteLessonProgress(); dao.deleteQuestionStats(); dao.deleteAttempts()
-        dao.deleteDailyLogs(); dao.deleteQuests(); dao.deleteAchievements(); dao.deleteLeagueWeeks(); dao.deleteShop(); dao.deletePackMetas()
+        dao.deleteDailyLogs(); dao.deleteQuests(); dao.deleteAchievements(); dao.deleteShop(); dao.deletePackMetas()
         backup.profile?.let { dao.upsertProfile(it) }
         backup.stats?.let { dao.upsertStats(it) }
         dao.upsertLessonProgressList(backup.lessonProgress)
@@ -301,7 +293,6 @@ class ProgressRepository @Inject constructor(
         dao.upsertDailyLogs(backup.dailyLogs)
         dao.upsertQuests(backup.quests)
         dao.upsertAchievements(backup.achievements)
-        dao.upsertLeagueWeeks(backup.leagueWeeks)
         backup.shop?.let { dao.upsertShop(it) }
         dao.upsertPackMetas(backup.packs)
         ensureReadyInternal(today)

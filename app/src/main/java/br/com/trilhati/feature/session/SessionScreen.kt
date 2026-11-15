@@ -125,7 +125,9 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
     val haptic = LocalHapticFeedback.current
     val feedback = ui.phase as? Phase.Feedback
     LaunchedEffect(feedback) {
-        if (feedback != null && ui.haptics) haptic.performHapticFeedback(if (feedback.correct) HapticFeedbackType.Confirm else HapticFeedbackType.Reject)
+        if (feedback != null && ui.haptics) {
+            haptic.performHapticFeedback(if (feedback.correct || feedback.corrected) HapticFeedbackType.Confirm else HapticFeedbackType.Reject)
+        }
     }
     val q = ui.question
     val canCheck = when (val ex = ui.exercise) {
@@ -184,11 +186,16 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
                 if (feedback != null) {
                     FeedbackPanel(
                         correct = feedback.correct,
-                        title = (if (feedback.correct) praise(ui.answered) else consolation(ui.answered)) + if (feedback.correct && feedback.xp > 0) "  +${feedback.xp} XP" else "",
+                        title = when {
+                            feedback.corrected -> "Pares completos!"
+                            feedback.correct -> praise(ui.answered)
+                            else -> consolation(ui.answered)
+                        } + if ((feedback.correct || feedback.corrected) && feedback.xp > 0) "  +${feedback.xp} XP" else "",
                         message = buildFeedbackMessage(feedback, q.explanation),
                         character = character,
                         onContinue = actions.onContinue,
                         animated = animated,
+                        partial = feedback.corrected,
                     )
                 }
             }
@@ -196,8 +203,14 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
     }
 }
 
-private fun buildFeedbackMessage(feedback: Phase.Feedback, explanation: String): String =
-    if (feedback.correct || feedback.correctText == null) explanation else "Resposta correta: ${feedback.correctText}\n\n$explanation"
+private fun buildFeedbackMessage(feedback: Phase.Feedback, explanation: String): String = when {
+    feedback.corrected -> {
+        val slips = if (feedback.slips == 1) "1 associação" else "${feedback.slips} associações"
+        "Você errou $slips no caminho, então ela volta em Praticar erros. Sem perder coração.\n\n$explanation"
+    }
+    feedback.correct || feedback.correctText == null -> explanation
+    else -> "Resposta correta: ${feedback.correctText}\n\n$explanation"
+}
 
 private val PRAISE = listOf("Mandou bem!", "Isso aí!", "Perfeito!", "Boa, craque!", "Na mosca!", "Gabaritou essa!")
 private val CONSOLATION = listOf("Quase lá!", "Opa, escorregou!", "Acontece!", "Não foi dessa vez.", "Anota aí!")

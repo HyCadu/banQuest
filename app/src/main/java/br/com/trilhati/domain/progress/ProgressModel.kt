@@ -23,7 +23,8 @@ data class Stats(
     /** Só respostas de primeira: base da precisão. */
     val firstTryAnswered: Int = 0,
     val firstTryCorrect: Int = 0,
-    val bestLeagueTier: Int = 0,
+    /** Semanas terminadas entre os 3 primeiros do ranking geral (conquista "Pódio da semana"). */
+    val podiums: Int = 0,
 ) {
     val accuracyPercent: Int get() = if (firstTryAnswered == 0) 0 else firstTryCorrect * 100 / firstTryAnswered
     val averageTimeMs: Long get() = if (answeredTotal == 0) 0 else totalTimeMs / answeredTotal
@@ -53,13 +54,6 @@ data class DailyLog(val day: LocalDate, val xp: Int = 0, val lessons: Int = 0, v
 
 data class QuestProgress(val day: LocalDate, val questId: String, val progress: Int = 0, val claimed: Boolean = false)
 
-data class LeagueWeekState(
-    val weekStart: LocalDate,
-    val tier: Int = 0,
-    val userXp: Int = 0,
-    val closed: Boolean = false,
-    val finalRank: Int? = null,
-)
 
 /** Tudo que uma sessão de estudo pode alterar. */
 data class ProgressState(
@@ -69,6 +63,5 @@ data class ProgressState(
     val todayLog: DailyLog,
     val todayQuests: List<QuestProgress>,
     val unlockedAchievements: Set<String>,
-    val league: LeagueWeekState,
     val dailyGoalXp: Int,
 )

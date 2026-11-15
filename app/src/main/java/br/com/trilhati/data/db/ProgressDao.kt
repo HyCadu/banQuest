@@ -95,19 +95,6 @@ interface ProgressDao {
     @Upsert
     suspend fun upsertAchievements(achievements: List<AchievementEntity>)
 
-    // ---- liga
-    @Query("SELECT * FROM league_week ORDER BY weekStart DESC LIMIT 1")
-    fun observeLatestLeague(): Flow<LeagueWeekEntity?>
-
-    @Query("SELECT * FROM league_week ORDER BY weekStart DESC LIMIT 1")
-    suspend fun latestLeague(): LeagueWeekEntity?
-
-    @Query("SELECT * FROM league_week WHERE closed = 1 ORDER BY weekStart DESC LIMIT 1")
-    fun observeLastClosedLeague(): Flow<LeagueWeekEntity?>
-
-    @Upsert
-    suspend fun upsertLeague(week: LeagueWeekEntity)
-
     // ---- loja e pacotes
     @Query("SELECT * FROM shop_state WHERE id = 1")
     fun observeShop(): Flow<ShopStateEntity?>
@@ -134,9 +121,6 @@ interface ProgressDao {
     @Query("SELECT * FROM quest_state ORDER BY day ASC, questId ASC")
     suspend fun allQuests(): List<QuestStateEntity>
 
-    @Query("SELECT * FROM league_week ORDER BY weekStart ASC")
-    suspend fun allLeagueWeeks(): List<LeagueWeekEntity>
-
     @Query("SELECT * FROM question_stat")
     suspend fun allQuestionStats(): List<QuestionStatEntity>
 
@@ -145,7 +129,6 @@ interface ProgressDao {
 
     @Upsert suspend fun upsertAttempts(items: List<AttemptEntity>)
     @Upsert suspend fun upsertDailyLogs(items: List<DailyLogEntity>)
-    @Upsert suspend fun upsertLeagueWeeks(items: List<LeagueWeekEntity>)
     @Upsert suspend fun upsertLessonProgressList(items: List<LessonProgressEntity>)
     @Upsert suspend fun upsertPackMetas(items: List<PackMetaEntity>)
 
@@ -157,7 +140,22 @@ interface ProgressDao {
     @Query("DELETE FROM daily_log") suspend fun deleteDailyLogs()
     @Query("DELETE FROM quest_state") suspend fun deleteQuests()
     @Query("DELETE FROM achievement") suspend fun deleteAchievements()
-    @Query("DELETE FROM league_week") suspend fun deleteLeagueWeeks()
     @Query("DELETE FROM shop_state") suspend fun deleteShop()
     @Query("DELETE FROM pack_meta") suspend fun deletePackMetas()
+
+    // ---- fila de envio ao servidor
+    @Insert
+    suspend fun insertOutbox(item: OutboxSessionEntity)
+
+    @Query("SELECT * FROM outbox_session ORDER BY createdAtMs ASC LIMIT :limit")
+    suspend fun outbox(limit: Int): List<OutboxSessionEntity>
+
+    @Query("SELECT COUNT(*) FROM outbox_session")
+    fun observeOutboxCount(): Flow<Int>
+
+    @Query("DELETE FROM outbox_session WHERE id = :id")
+    suspend fun deleteOutbox(id: String)
+
+    @Query("DELETE FROM outbox_session")
+    suspend fun clearOutbox()
 }

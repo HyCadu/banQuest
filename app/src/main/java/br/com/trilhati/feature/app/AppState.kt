@@ -39,6 +39,27 @@ data class AppState(
     fun heartsMsUntilNext(nowMs: Long): Long? = HeartsEngine.msUntilNext(snapshot.stats.hearts, nowMs)
 
     val hasAnyCompletedLesson: Boolean get() = snapshot.lessonProgress.values.any { it.completed }
+
+    /** Concluiu uma lição hoje neste aparelho (é o que conta para as ofensivas), mesmo antes de sincronizar. */
+    val studiedToday: Boolean get() = todayLog.lessons > 0
+}
+
+/**
+ * Lado social que as telas mostram: o último ranking baixado (cache, para ver offline) e o estado da sincronização.
+ * [overview] nulo = ainda não baixou nada (primeira vez sem internet).
+ */
+@Immutable
+data class SocialUi(
+    val overview: br.com.trilhati.data.social.SocialOverview? = null,
+    val email: String? = null,
+    val pendingUploads: Int = 0,
+    val lastSyncAtMs: Long = 0,
+    val lastError: String? = null,
+    val refreshing: Boolean = false,
+    val conflict: br.com.trilhati.data.social.SyncConflict? = null,
+) {
+    val friendCode: String? get() = overview?.profile?.friendCode
+    val showInGlobal: Boolean get() = overview?.profile?.showInGlobal ?: true
 }
 
 /** Ações que as abas disparam. Mantidas num objeto único para as telas serem fáceis de pré-visualizar. */
@@ -58,4 +79,12 @@ data class AppActions(
     val openShop: () -> Unit = {},
     val enableReminders: () -> Unit = {},
     val dismissReminderPrompt: () -> Unit = {},
+    // Social (aba Ranking)
+    val refreshSocial: () -> Unit = {},
+    val requestFriend: (String) -> Unit = {},
+    val respondRequest: (requestId: String, accept: Boolean) -> Unit = { _, _ -> },
+    val addFriendByCode: (String) -> Unit = {},
+    val removeFriend: (String) -> Unit = {},
+    val shareFriendCode: (String) -> Unit = {},
+    val openRanking: () -> Unit = {},
 )

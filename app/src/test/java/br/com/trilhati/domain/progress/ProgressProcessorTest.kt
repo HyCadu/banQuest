@@ -22,7 +22,7 @@ class ProgressProcessorTest {
         return ProgressState(
             stats = stats, lessonProgress = emptyMap(), questionStats = emptyMap(),
             todayLog = DailyLog(today), todayQuests = quests, unlockedAchievements = emptySet(),
-            league = LeagueWeekState(LocalDate.of(2026, 11, 16)), dailyGoalXp = goal,
+            dailyGoalXp = goal,
         )
     }
 
@@ -103,12 +103,6 @@ class ProgressProcessorTest {
         assertFalse(out.state.todayLog.goalMet)
     }
 
-    @Test fun `xp vai para a liga da semana`() {
-        val (_, r) = play(List(8) { true })
-        val out = apply(freshState(), r)
-        assertEquals(out.summary.totalXp, out.state.league.userXp)
-    }
-
     @Test fun `ofensiva perdida com congelamento mantem e registra dias congelados`() {
         val stats = Stats(streak = StreakState(current = 4, longest = 4, lastDay = today.minusDays(2), freezes = 1))
         val (_, r) = play(List(8) { true })
@@ -168,5 +162,20 @@ class ProgressProcessorTest {
         assertEquals(75, s.accuracyPercent)
         assertEquals(5, s.answeredTotal) // 4 + 1 repetição
         assertEquals(30_000, s.averageTimeMs)
+    }
+
+    @Test fun `questao corrigida vai para a revisao como um erro`() {
+        val qs = TestData.questions(3)
+        var run = LessonRun.start(qs)
+        run = LessonRun.answer(run, true, 60_000, 180_000)
+        run = LessonRun.answer(run, false, 60_000, 180_000, corrected = true)
+        run = LessonRun.answer(run, true, 60_000, 180_000)
+        val result = SessionResult(SessionKind.Lesson, "u1l1", "u1", run.records, run.bestCombo, run.perfect)
+        val s = apply(freshState(), result).state
+        val card = s.questionStats.getValue(qs[1].id).card
+        assertTrue(card.active)
+        assertEquals(today.plusDays(1), card.nextReview)
+        assertEquals(0, s.stats.perfectLessons)
+        assertEquals(2, s.stats.firstTryCorrect)
     }
 }

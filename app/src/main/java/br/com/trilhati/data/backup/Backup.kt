@@ -3,7 +3,6 @@ package br.com.trilhati.data.backup
 import br.com.trilhati.data.db.AchievementEntity
 import br.com.trilhati.data.db.AttemptEntity
 import br.com.trilhati.data.db.DailyLogEntity
-import br.com.trilhati.data.db.LeagueWeekEntity
 import br.com.trilhati.data.db.LessonProgressEntity
 import br.com.trilhati.data.db.PackMetaEntity
 import br.com.trilhati.data.db.QuestStateEntity
@@ -29,7 +28,6 @@ data class Backup(
     val dailyLogs: List<DailyLogEntity> = emptyList(),
     val quests: List<QuestStateEntity> = emptyList(),
     val achievements: List<AchievementEntity> = emptyList(),
-    val leagueWeeks: List<LeagueWeekEntity> = emptyList(),
     val shop: ShopStateEntity? = null,
     val packs: List<PackMetaEntity> = emptyList(),
 ) {
