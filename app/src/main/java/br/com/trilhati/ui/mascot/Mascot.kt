@@ -89,7 +89,7 @@ fun Mascot(
     val bounce by animateFloatAsState(spec.bounce, motion, label = "bounce")
 
     var seconds by remember { mutableFloatStateOf(frozenSeconds) }
-    if (animated) {
+    if (animated && !br.com.trilhati.ui.theme.LocalReducedMotion.current) {
         LaunchedEffect(Unit) {
             val start = androidx.compose.runtime.withFrameNanos { it }
             while (true) {

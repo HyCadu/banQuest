@@ -70,6 +70,8 @@ sealed interface SessionUi {
         val answered: Int,
         val slackMs: Long,
         val haptics: Boolean,
+        /** Questões que ainda faltam, contando a atual (para o "tempo restante da lição"). */
+        val remaining: Int = 1,
     ) : SessionUi
 
     data object Saving : SessionUi

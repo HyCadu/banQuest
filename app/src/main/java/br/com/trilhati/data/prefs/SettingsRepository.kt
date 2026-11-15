@@ -26,7 +26,13 @@ data class Settings(
     val noLives: Boolean = false,
     val haptics: Boolean = true,
     val themeMode: ThemeMode = ThemeMode.System,
+    val reminderEnabled: Boolean = true,
+    val reminderMinutes: Int = 19 * 60,
+    val reminderPromptDismissed: Boolean = false,
+    val sounds: Boolean = true,
 ) {
+    val reminderTime: java.time.LocalTime get() = java.time.LocalTime.of(reminderMinutes / 60, reminderMinutes % 60)
+
     val paceConfig: PaceConfig get() = PaceConfig(timerMode, paceTargetMs, caseFourMinutes)
 }
 
@@ -39,6 +45,10 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         val noLives = booleanPreferencesKey("no_lives")
         val haptics = booleanPreferencesKey("haptics")
         val theme = stringPreferencesKey("theme")
+        val reminderEnabled = booleanPreferencesKey("reminder_enabled")
+        val reminderMinutes = androidx.datastore.preferences.core.intPreferencesKey("reminder_minutes")
+        val reminderPromptDismissed = booleanPreferencesKey("reminder_prompt_dismissed")
+        val sounds = booleanPreferencesKey("sounds")
     }
 
     val settings: Flow<Settings> = context.settingsStore.data.map { p -> p.toSettings() }
@@ -50,6 +60,10 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         noLives = this[Keys.noLives] ?: false,
         haptics = this[Keys.haptics] ?: true,
         themeMode = this[Keys.theme]?.let { runCatching { ThemeMode.valueOf(it) }.getOrNull() } ?: ThemeMode.System,
+        reminderEnabled = this[Keys.reminderEnabled] ?: true,
+        reminderMinutes = this[Keys.reminderMinutes]?.coerceIn(0, 24 * 60 - 1) ?: (19 * 60),
+        reminderPromptDismissed = this[Keys.reminderPromptDismissed] ?: false,
+        sounds = this[Keys.sounds] ?: true,
     )
 
     suspend fun setTimerMode(mode: TimerMode) = context.settingsStore.edit { it[Keys.timerMode] = mode.name }
@@ -58,5 +72,9 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
     suspend fun setNoLives(on: Boolean) = context.settingsStore.edit { it[Keys.noLives] = on }
     suspend fun setHaptics(on: Boolean) = context.settingsStore.edit { it[Keys.haptics] = on }
     suspend fun setTheme(mode: ThemeMode) = context.settingsStore.edit { it[Keys.theme] = mode.name }
+    suspend fun setReminderEnabled(on: Boolean) = context.settingsStore.edit { it[Keys.reminderEnabled] = on }
+    suspend fun setReminderMinutes(minutes: Int) = context.settingsStore.edit { it[Keys.reminderMinutes] = minutes.coerceIn(0, 24 * 60 - 1) }
+    suspend fun dismissReminderPrompt() = context.settingsStore.edit { it[Keys.reminderPromptDismissed] = true }
+    suspend fun setSounds(on: Boolean) = context.settingsStore.edit { it[Keys.sounds] = on }
     suspend fun eraseAll() = context.settingsStore.edit { it.clear() }
 }

@@ -62,6 +62,19 @@ fun MainScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val nowMs by viewModel.ticker.collectAsState(initial = 0L)
+    val notificationsAllowed by viewModel.notificationsAllowed.collectAsState()
+    androidx.lifecycle.compose.LifecycleResumeEffect(viewModel) {
+        viewModel.refreshNotificationPermission()
+        onPauseOrDispose { }
+    }
+    val permissionLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.RequestPermission(),
+    ) { granted ->
+        viewModel.refreshNotificationPermission()
+        viewModel.setReminderEnabled(true)
+        viewModel.dismissReminderPrompt()
+        viewModel.message(if (granted) "Combinado! Eu te lembro no horário escolhido." else "Sem permissão, não consigo avisar. Dá para mudar em Configurações.")
+    }
     val snackbar = remember { SnackbarHostState() }
     LaunchedEffect(viewModel) {
         viewModel.messages.collect { snackbar.showSnackbar(it) }
@@ -72,9 +85,21 @@ fun MainScreen(
             buy = viewModel::buy, claimQuest = viewModel::claimQuest, claimDailyChest = viewModel::claimDailyChest,
             claimUnitChest = viewModel::claimUnitChest, setCharacter = viewModel::setCharacter, setName = viewModel::setName,
             setGoal = viewModel::setGoal, message = viewModel::message,
+            enableReminders = {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                } else {
+                    viewModel.setReminderEnabled(true)
+                    viewModel.dismissReminderPrompt()
+                }
+            },
+            dismissReminderPrompt = viewModel::dismissReminderPrompt,
         )
     }
-    MainContent(state, nowMs, actions, snackbar)
+    val showPrompt = state?.let { s ->
+        !notificationsAllowed && !s.settings.reminderPromptDismissed && s.hasAnyCompletedLesson
+    } == true
+    MainContent(state, nowMs, actions, snackbar, showReminderPrompt = showPrompt)
 }
 
 /** Casca das abas, sem ViewModel: dá para renderizar com dados de exemplo. */
@@ -87,8 +112,10 @@ fun MainContent(
     modifier: Modifier = Modifier,
     initialTab: MainTab = MainTab.Path,
     animated: Boolean = true,
+    showReminderPrompt: Boolean = false,
 ) {
     var tabIndex by rememberSaveable { mutableIntStateOf(initialTab.ordinal) }
+    val tabActions = remember(actions) { actions.copy(openShop = { tabIndex = MainTab.Shop.ordinal }) }
     val tabs = MainTab.entries.map { tab ->
         val badge = state != null && when (tab) {
             MainTab.Practice -> state.snapshot.dueCount > 0
@@ -114,11 +141,11 @@ fun MainContent(
                 Loading()
             } else {
                 when (MainTab.entries[tabIndex]) {
-                    MainTab.Path -> PathContent(state, nowMs, actions, animated = animated)
-                    MainTab.Practice -> PracticeContent(state, actions, animated = animated)
-                    MainTab.Leagues -> LeaguesContent(state, nowMs, actions)
-                    MainTab.Shop -> ShopContent(state, actions, animated = animated)
-                    MainTab.Profile -> ProfileContent(state, actions, animated = animated)
+                    MainTab.Path -> PathContent(state, nowMs, tabActions, animated = animated, showReminderPrompt = showReminderPrompt)
+                    MainTab.Practice -> PracticeContent(state, tabActions, animated = animated)
+                    MainTab.Leagues -> LeaguesContent(state, nowMs, tabActions)
+                    MainTab.Shop -> ShopContent(state, tabActions, animated = animated)
+                    MainTab.Profile -> ProfileContent(state, tabActions, animated = animated)
                 }
             }
         }

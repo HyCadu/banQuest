@@ -42,7 +42,7 @@ data class AppState(
 }
 
 /** Ações que as abas disparam. Mantidas num objeto único para as telas serem fáceis de pré-visualizar. */
-class AppActions(
+data class AppActions(
     val openLesson: (String) -> Unit = {},
     val openErrors: () -> Unit = {},
     val openReview: () -> Unit = {},
@@ -55,4 +55,7 @@ class AppActions(
     val setName: (String) -> Unit = {},
     val setGoal: (Int) -> Unit = {},
     val message: (String) -> Unit = {},
+    val openShop: () -> Unit = {},
+    val enableReminders: () -> Unit = {},
+    val dismissReminderPrompt: () -> Unit = {},
 )

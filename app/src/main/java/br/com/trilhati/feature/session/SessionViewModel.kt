@@ -42,6 +42,8 @@ class SessionViewModel @Inject constructor(
     private val progress: ProgressRepository,
     private val settingsRepo: SettingsRepository,
     private val clock: Clock,
+    private val sounds: br.com.trilhati.sound.SoundPlayer,
+    private val notifications: br.com.trilhati.notify.Notifications,
 ) : ViewModel() {
     private val source = SessionSource.fromRoute(savedState.get<String>("kind"))
     private val lessonId: String? = savedState.get<String>("id")?.takeIf { it != "-" }
@@ -159,14 +161,18 @@ class SessionViewModel @Inject constructor(
             progress = r.progress, combo = r.combo, hearts = hearts, retry = item.retry, pace = pace,
             targetMs = pace.targetMs(item.question.isCase), startedAtMs = startedAtMs, answered = r.records.size,
             slackMs = PaceEngine.slackMs(r.targetsSumMs, r.totalTimeMs), haptics = settings.haptics,
+            remaining = if (phase == Phase.Answering) r.queue.size else r.queue.size + 1,
         )
     }
+
+    private fun sfx(sound: br.com.trilhati.sound.Sfx) = sounds.play(sound, settings.sounds)
 
     // ---------- interação
 
     fun select(option: Int) {
         val ex = exercise as? ExerciseState.Choice ?: return
         if (phase != Phase.Answering) return
+        if (ex.selected != option) sfx(br.com.trilhati.sound.Sfx.Click)
         exercise = ex.copy(selected = option)
         publish()
     }
@@ -237,6 +243,13 @@ class SessionViewModel @Inject constructor(
             if (hearts == 0) outOfHearts = true
         }
         phase = Phase.Feedback(correct, if (correct) null else correctText(item.question), record.xp)
+        sfx(
+            when {
+                !correct -> br.com.trilhati.sound.Sfx.Wrong
+                next.combo == 3 || (next.combo > 3 && next.combo % 5 == 0) -> br.com.trilhati.sound.Sfx.Combo
+                else -> br.com.trilhati.sound.Sfx.Correct
+            },
+        )
         publish()
     }
 
@@ -268,6 +281,8 @@ class SessionViewModel @Inject constructor(
             val unitId = lessonId?.let { content.lesson(it)?.unitId }
             val result = SessionResult(kind, lessonId.takeIf { source == SessionSource.Lesson }, unitId, r.records, r.bestCombo, r.perfect)
             val processed = progress.applySession(result, clock.today(), content.course)
+            if (kind == SessionKind.Lesson) notifications.clear()
+            sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
             _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig)
         }
     }

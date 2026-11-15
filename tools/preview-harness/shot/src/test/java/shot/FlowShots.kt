@@ -13,7 +13,11 @@ import br.com.trilhati.feature.main.MainContent
 import br.com.trilhati.feature.main.MainTab
 import br.com.trilhati.feature.session.*
 import br.com.trilhati.feature.settings.SettingsContent
+import br.com.trilhati.feature.settings.SettingsCallbacks
+import br.com.trilhati.feature.settings.SettingsUi
 import br.com.trilhati.ui.mascot.MascotCharacter
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.unit.dp
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,6 +35,8 @@ class FlowShots {
     private fun tab(name: String, t: MainTab, progress: Boolean, dark: Boolean = false, character: String = "Guaiamum") =
         rule.shot(name, dark) { MainContent(fakeState(progress, character), NOW_MS, AppActions(), snack, initialTab = t, animated = false) }
 
+    @Test fun trilhaPrompt() = rule.shot("t_path_prompt.png") { MainContent(fakeState(true), NOW_MS, AppActions(), snack, animated = false, showReminderPrompt = true) }
+    @Test fun settingsLong() = rule.shot("t_settings_full.png") { androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.height(2600.dp)) { SettingsContent(SettingsUi(Settings(), 50, 50, false, emptyList(), "0.3.0"), SettingsCallbacks()) } }
     @Test fun trilhaFresh() = tab("t_path_fresh.png", MainTab.Path, false)
     @Test fun trilhaProgress() = tab("t_path_progress.png", MainTab.Path, true, character = "Tartaruga")
     @Test fun trilhaDark() = tab("t_path_dark.png", MainTab.Path, true, dark = true, character = "Preguica")
@@ -38,7 +44,7 @@ class FlowShots {
     @Test fun leagues() = tab("t_leagues.png", MainTab.Leagues, true)
     @Test fun shop() = tab("t_shop.png", MainTab.Shop, true)
     @Test fun profile() = tab("t_profile.png", MainTab.Profile, true)
-    @Test fun settings() = rule.shot("t_settings.png") { SettingsContent(Settings(), 50, 50, {}, {}, {}, {}, {}, {}, {}, {}) }
+    @Test fun settings() = rule.shot("t_settings.png") { SettingsContent(SettingsUi(Settings(), 50, 50, false, listOf(br.com.trilhati.data.content.ImportedPack("u2.json", "u2-programacao", 1, "Programação e OO", 50)), "0.3.0"), SettingsCallbacks()) }
 
     private fun playing(type: QuestionType, answered: Int = 2, phase: Phase = Phase.Answering, exercise: ExerciseState? = null, idx: Int = 0, combo: Int = 4): SessionUi.Playing {
         val q = course[0].lessons.flatMap { it.questions }.filter { it.type == type }[idx]

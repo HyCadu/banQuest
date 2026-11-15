@@ -149,9 +149,16 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             }
         }
         Row(Modifier.fillMaxWidth().padding(horizontal = Spacing.screen), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (ui.combo >= 3) ComboBadge(ui.combo)
-            if (ui.pace.mode == TimerMode.Pace && ui.answered > 0) PaceChip((ui.slackMs / 1000).toInt())
-            Box(Modifier.weight(1f))
+            // Os chips quebram linha sozinhos com fonte grande, sem espremer o anel do cronômetro.
+            androidx.compose.foundation.layout.FlowRow(
+                Modifier.weight(1f),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                if (ui.combo >= 3) ComboBadge(ui.combo)
+                if (ui.pace.mode == TimerMode.Pace && ui.answered > 0) PaceChip((ui.slackMs / 1000).toInt())
+                if (ui.pace.mode == TimerMode.Pace && ui.phase == Phase.Answering) LessonTimeChip(ui, now)
+            }
             if (ui.pace.mode == TimerMode.Pace && ui.phase == Phase.Answering) TimerRing(ui, now)
         }
         Column(
@@ -204,4 +211,25 @@ private fun TimerRing(ui: SessionUi.Playing, now: State<Long>) {
     val zone = PaceEngine.zone(elapsed, ui.targetMs)
     val label = if (zone == PaceZone.Over) "+" + PaceEngine.format(elapsed - ui.targetMs) else PaceEngine.format(ui.targetMs - elapsed)
     PaceRing(PaceEngine.remainingFraction(elapsed, ui.targetMs), label, zone, size = 60.dp)
+}
+
+/** "Prova: tempo restante da lição" (PLAN.md §7): quanto sobra do orçamento das questões que faltam. */
+@Composable
+private fun LessonTimeChip(ui: SessionUi.Playing, now: State<Long>) {
+    val c = Trilha.colors
+    val elapsed = (now.value - ui.startedAtMs).coerceAtLeast(0)
+    val left = ui.remaining * ui.targetMs - elapsed
+    val late = left < 0
+    androidx.compose.material3.Surface(
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(50),
+        color = if (late) c.errorSoft else c.surfaceAlt,
+        border = androidx.compose.foundation.BorderStroke(1.5.dp, if (late) c.error else c.outline),
+    ) {
+        Text(
+            "Lição " + (if (late) "-" else "") + PaceEngine.format(left),
+            Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
+            style = MaterialTheme.typography.labelMedium,
+            color = if (late) c.errorText else c.inkSoft,
+        )
+    }
 }

@@ -123,7 +123,9 @@ fun PaceRing(
                 style = Stroke(stroke, cap = StrokeCap.Round),
             )
         }
-        Text(label, style = MaterialTheme.typography.titleSmall, color = textColor, textAlign = TextAlign.Center)
+        // O número acompanha o tamanho do anel (não a fonte do sistema), para nunca vazar da borda.
+        val labelSize = with(androidx.compose.ui.platform.LocalDensity.current) { (size * 0.24f).toSp() }
+        Text(label, style = MaterialTheme.typography.titleSmall.copy(fontSize = labelSize, lineHeight = labelSize), color = textColor, textAlign = TextAlign.Center)
     }
 }
 

@@ -7,6 +7,10 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -67,6 +71,8 @@ private val ZigZag = listOf(0, 52, 80, 52, 0, -52, -80, -52)
 private sealed interface PathDialog {
     data object Streak : PathDialog
     data object Hearts : PathDialog
+    data object Exam : PathDialog
+    data class UnitGuide(val unitId: String) : PathDialog
 }
 
 /** Aba Trilha: faixa de status, meta do dia e a trilha de unidades e lições. */
@@ -77,6 +83,7 @@ fun PathContent(
     actions: AppActions,
     modifier: Modifier = Modifier,
     animated: Boolean = true,
+    showReminderPrompt: Boolean = false,
 ) {
     var dialog by remember { mutableStateOf<PathDialog?>(null) }
     val stats = state.snapshot.stats
@@ -88,10 +95,14 @@ fun PathContent(
             TopStatusBar(
                 streak = state.streakCount, gems = stats.gems, hearts = hearts, daysToExam = state.daysToExam,
                 showHearts = !state.settings.noLives,
+                studiedToday = state.todayLog.lessons > 0,
                 onStreakClick = { dialog = PathDialog.Streak },
+                onGemsClick = actions.openShop,
                 onHeartsClick = { dialog = PathDialog.Hearts },
+                onExamClick = { dialog = PathDialog.Exam },
             )
             DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
+            if (showReminderPrompt) ReminderPrompt(state, character, actions, animated)
         }
         LazyColumn(
             modifier = Modifier.weight(1f),
@@ -99,7 +110,7 @@ fun PathContent(
             verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {
             state.course.forEach { unit ->
-                unitItems(unit, state, character, actions, animated)
+                unitItems(unit, state, character, actions, animated, onOpenGuide = { dialog = PathDialog.UnitGuide(unit.id) })
             }
             item(key = "end") {
                 Text(
@@ -113,9 +124,11 @@ fun PathContent(
         }
     }
 
-    when (dialog) {
+    when (val d = dialog) {
         PathDialog.Streak -> StreakDialog(state, onDismiss = { dialog = null })
         PathDialog.Hearts -> HeartsDialog(state, nowMs, actions, onDismiss = { dialog = null })
+        PathDialog.Exam -> ExamDialog(state, onDismiss = { dialog = null })
+        is PathDialog.UnitGuide -> state.course.firstOrNull { it.id == d.unitId }?.let { UnitGuideDialog(it, state, onDismiss = { dialog = null }) }
         null -> Unit
     }
 }
@@ -140,6 +153,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.unitItems(
     character: MascotCharacter,
     actions: AppActions,
     animated: Boolean,
+    onOpenGuide: () -> Unit,
 ) {
     val locked = !unit.hasContent
     val done = unit.lessons.count { state.statuses[it.id] == LessonStatus.Done || state.statuses[it.id] == LessonStatus.Perfect }
@@ -150,7 +164,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.unitItems(
     stickyHeader(key = "banner_${unit.id}") {
         // Cabeçalho fixo da unidade (PLAN.md §7): fica no topo enquanto os nós rolam por baixo.
         Box(Modifier.fillMaxWidth().background(Trilha.colors.background).padding(top = Spacing.sm, bottom = Spacing.sm)) {
-            UnitBanner(unit.order, unit.title, subtitle, locked = locked)
+            UnitBanner(unit.order, unit.title, subtitle, locked = locked, onClick = onOpenGuide)
         }
     }
     itemsIndexed(unit.lessons, key = { _, l -> l.id }) { index, lesson ->
@@ -276,5 +290,92 @@ private fun HeartsDialog(state: AppState, nowMs: Long, actions: AppActions, onDi
             }
             ChunkyButton("Fechar", onDismiss, Modifier.fillMaxWidth())
         },
+    )
+}
+
+@Composable
+private fun ReminderPrompt(state: AppState, character: MascotCharacter, actions: AppActions, animated: Boolean) {
+    val c = Trilha.colors
+    val time = state.settings.reminderTime
+    Column(
+        Modifier.fillMaxWidth().background(c.surface, androidx.compose.foundation.shape.RoundedCornerShape(20.dp))
+            .border(2.dp, c.primary, androidx.compose.foundation.shape.RoundedCornerShape(20.dp)).padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Mascot(character, MascotPose.Sleepy, Modifier.size(56.dp), animated = animated, decorative = true)
+            Text(
+                "Quer que ${br.com.trilhati.domain.notify.ReminderTexts.withArticle(character.name)} te lembre de estudar às %02d:%02d?".format(time.hour, time.minute),
+                style = MaterialTheme.typography.titleSmall, color = c.ink, modifier = Modifier.weight(1f),
+            )
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            ChunkyButton("Ativar lembrete", actions.enableReminders, Modifier.weight(1f), ChunkyStyle.Primary, minHeight = 44.dp)
+            ChunkyButton("Agora não", actions.dismissReminderPrompt, Modifier.weight(1f), ChunkyStyle.Neutral, minHeight = 44.dp)
+        }
+    }
+}
+
+@Composable
+private fun ExamDialog(state: AppState, onDismiss: () -> Unit) {
+    val c = Trilha.colors
+    val lessonsWithContent = state.course.sumOf { u -> u.lessons.count { it.hasContent } }
+    val allLessons = state.course.sumOf { it.lessons.size }
+    val done = state.snapshot.lessonProgress.values.count { it.completed }
+    val days = state.daysToExam
+    val remainingAll = (allLessons - done).coerceAtLeast(0)
+    val perWeek = if (days <= 0) remainingAll else kotlin.math.ceil(remainingAll * 7.0 / days).toInt()
+    TrilhaDialog(
+        onDismiss = onDismiss,
+        title = if (days == 0) "A prova é hoje!" else "Faltam $days ${if (days == 1) "dia" else "dias"}",
+        content = {
+            Text(
+                "Prova do Banestes: 21/02/2027 (domingo), de manhã. São 80 questões em 4 horas, 3:00 por questão em média.",
+                style = MaterialTheme.typography.bodyMedium, color = c.ink,
+            )
+            Text(
+                "Você concluiu $done de $allLessons lições da trilha ($lessonsWithContent já têm questões). " +
+                    "Para fechar a trilha antes da prova, mantenha cerca de $perWeek ${if (perWeek == 1) "lição" else "lições"} por semana.",
+                style = MaterialTheme.typography.bodyMedium, color = c.inkSoft,
+            )
+        },
+        actions = { ChunkyButton("Bora!", onDismiss, Modifier.fillMaxWidth()) },
+    )
+}
+
+@Composable
+private fun UnitGuideDialog(unit: CourseUnit, state: AppState, onDismiss: () -> Unit) {
+    val c = Trilha.colors
+    TrilhaDialog(
+        onDismiss = onDismiss,
+        title = "Unidade ${unit.order}: ${unit.title}",
+        content = {
+            Column(
+                Modifier.fillMaxWidth().heightIn(max = 420.dp).verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                if (!unit.hasContent) {
+                    Text("As questões desta unidade ainda não chegaram. As lições previstas são:", style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
+                }
+                unit.lessons.forEach { lesson ->
+                    val status = state.statuses[lesson.id] ?: LessonStatus.Locked
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        when (status) {
+                            LessonStatus.Perfect -> GameIconView(GameIcon.Crown, size = 22.dp)
+                            LessonStatus.Done -> GameIconView(GameIcon.Check, size = 22.dp, colors = br.com.trilhati.ui.icons.IconColors.flat(c.secondary, c.secondaryEdge))
+                            LessonStatus.Available -> GameIconView(GameIcon.Star, size = 22.dp)
+                            LessonStatus.Locked -> GameIconView(GameIcon.Lock, size = 22.dp, colors = br.com.trilhati.ui.icons.IconColors(c.onLocked, c.locked, c.lockedEdge))
+                        }
+                        Text("${lesson.order}. ${lesson.title}", style = MaterialTheme.typography.bodyMedium, color = c.ink, modifier = Modifier.weight(1f))
+                        if (lesson.hasContent) Text("${lesson.questions.size} q.", style = MaterialTheme.typography.labelSmall, color = c.inkSoft)
+                    }
+                }
+                if (unit.editalTopics.isNotEmpty()) {
+                    Text("Tópicos do edital (Anexo IV, cargo 04)", style = MaterialTheme.typography.titleSmall, color = c.primaryText, modifier = Modifier.padding(top = 6.dp))
+                    Text(unit.editalTopics.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+                }
+            }
+        },
+        actions = { ChunkyButton("Fechar", onDismiss, Modifier.fillMaxWidth()) },
     )
 }

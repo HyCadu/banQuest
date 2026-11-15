@@ -70,7 +70,7 @@ class IntegrationTest {
     }
 
     private fun newVm(kind: String, id: String = "-") =
-        SessionViewModel(SavedStateHandle(mapOf("kind" to kind, "id" to id)), content, progress, settings, clock)
+        SessionViewModel(SavedStateHandle(mapOf("kind" to kind, "id" to id)), content, progress, settings, clock, br.com.trilhati.sound.SoundPlayer(context), br.com.trilhati.notify.Notifications(context))
 
     /** Joga a sessão inteira. [wrongOnFirst] é quantas questões errar de propósito (as primeiras de múltipla escolha). */
     private fun play(vm: SessionViewModel, wrongOnFirst: Int = 0): SessionUi.Finished {
@@ -262,6 +262,52 @@ class IntegrationTest {
         runBlocking { progress.eraseAll(); progress.ensureReady(today()) }
         val s = snap()
         assertEquals(0, s.stats.totalXp); assertTrue(s.lessonProgress.isEmpty())
+    }
+
+    @Test fun backupIdaEVoltaRestauraTudo() {
+        runBlocking { progress.ensureReady(today()) }
+        play(newVm("lesson", "u1l1"))
+        play(newVm("lesson", "u1l2"), wrongOnFirst = 1)
+        val before = snap()
+        val text = br.com.trilhati.data.backup.BackupCodec.encode(runBlocking { progress.exportBackup() })
+        runBlocking { progress.eraseAll(); progress.ensureReady(today()) }
+        assertEquals(0, snap().stats.totalXp)
+        val read = br.com.trilhati.data.backup.BackupCodec.decode(text) as br.com.trilhati.data.backup.BackupRead.Ok
+        runBlocking { progress.importBackup(read.backup, today()) }
+        val after = snap()
+        assertEquals(before.stats, after.stats)
+        assertEquals(before.lessonProgress, after.lessonProgress)
+        assertEquals(before.questionStats, after.questionStats)
+        assertEquals(before.dailyLogs, after.dailyLogs)
+        assertEquals(before.achievements, after.achievements)
+        assertEquals(before.errorBankSize, after.errorBankSize)
+    }
+
+    @Test fun importarPacoteDeConteudoEntraNaTrilha() {
+        // Simula um pacote da Unidade 2 trocando os ids do pacote da Unidade 1.
+        val u1 = java.io.File("../../../app/src/main/assets/content/u1-banco-de-dados.json").readText()
+        val u2 = u1.replace("\"u1l", "\"u2l").replace("\"id\": \"u1\"", "\"id\": \"u2\"").replace("\"order\": 1,\n  \"title\": \"Banco de dados\"", "\"order\": 2,\n  \"title\": \"Programação (teste)\"")
+            .replace("\"pack\": \"u1-banco-de-dados\"", "\"pack\": \"u2-teste\"")
+        val result = content.importPack(u2)
+        assertTrue("$result", result is br.com.trilhati.data.content.PackLoad.Ok)
+        assertTrue(content.course[1].hasContent)
+        assertEquals(1, content.importedPacks().size)
+        assertTrue(content.importPack("{ quebrado") is br.com.trilhati.data.content.PackLoad.Invalid)
+        content.removeImported(content.importedPacks().first().fileName)
+        assertFalse(content.course[1].hasContent)
+    }
+
+    @Test fun notificacaoDeLembreteAparece() {
+        org.robolectric.Shadows.shadowOf(context as android.app.Application).grantPermissions(android.Manifest.permission.POST_NOTIFICATIONS)
+        val n = br.com.trilhati.notify.Notifications(context)
+        n.createChannels()
+        n.post(br.com.trilhati.domain.notify.ReminderTexts.risk("Preguica", 0, 7))
+        val manager = context.getSystemService(android.app.NotificationManager::class.java)
+        val posted = shadowOf(manager).allNotifications
+        assertEquals(1, posted.size)
+        assertTrue(posted[0].extras.getString(android.app.Notification.EXTRA_TEXT)!!.contains("7 dias"))
+        n.clear()
+        assertEquals(0, shadowOf(manager).allNotifications.size)
     }
 
     @Test fun perfilPersiste() {

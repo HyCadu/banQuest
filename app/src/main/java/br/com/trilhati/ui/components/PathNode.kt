@@ -194,13 +194,17 @@ fun UnitBanner(
     subtitle: String,
     modifier: Modifier = Modifier,
     locked: Boolean = false,
+    onClick: (() -> Unit)? = null,
 ) {
     val c = Trilha.colors
     val shape = RoundedCornerShape(22.dp)
     val face = if (locked) c.locked else c.primary
     val edge = if (locked) c.lockedEdge else c.primaryEdge
     val textColor = if (locked) c.onLocked else c.onPrimary
-    Box(modifier.fillMaxWidth()) {
+    val clickModifier = if (onClick == null) Modifier else Modifier
+        .semantics(mergeDescendants = true) { role = Role.Button; contentDescription = "Unidade $unitNumber, $title. Toque para ver o guia." }
+        .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, onClick = onClick)
+    Box(modifier.fillMaxWidth().then(clickModifier)) {
         Box(Modifier.matchParentSize().padding(top = Spacing.edge).background(edge, shape))
         Row(
             modifier = Modifier

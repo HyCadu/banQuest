@@ -93,3 +93,50 @@ Pontos fracos conhecidos:
   importados já existe em `ContentRepository`, falta a tela).
 - Acessibilidade: rótulos e papéis de TalkBack estão nos componentes, mas ainda não houve passada com TalkBack real.
 - Tamanduá segue sendo o mascote menos convincente.
+
+## Varredura de funções incompletas (15/11/2026) — a pedido do dono
+
+O dono pediu uma varredura de tudo que estava faltando ou não se completava, inclusive o ícone. Achados e decisões:
+
+1. **Ícone:** era o triângulo provisório da Fase 0, na paleta antiga. Agora é um ícone adaptativo com o Guaiamum sorrindo
+   sobre turquesa, com versão redonda, monocromática (ícones temáticos do Android 13) e ícone pequeno de notificação.
+   Gerado por `tools/generate_icon.py` a partir da mesma geometria do mascote. Em `mipmap-anydpi`, porque o minSdk é 26.
+2. **Notificações (Fase 6):** lembrete diário no horário escolhido (★ 19:00) se nenhuma lição foi feita, e aviso às 21:30
+   se a ofensiva está em risco. A regra é pura e testada (`domain/notify/ReminderPolicy.kt`); o WorkManager agenda um
+   `OneTimeWork` recalculado a cada disparo, sem alarme exato. Avisos atrasados mais de 90 min (aparelho desligado,
+   economia de bateria) são descartados. Concluir uma lição apaga o lembrete pendente.
+   - **Permissão:** não há onboarding, então o pedido de notificação aparece como um cartão na Trilha depois da primeira
+     lição concluída ("Quer que o Guaiamum te lembre…?"), e em Configurações > Lembretes. Se negada, o app explica e leva
+     à tela do sistema.
+   - **Reinício do aparelho:** o próprio WorkManager reagenda (ele traz o receptor de `BOOT_COMPLETED`), então não há
+     receptor próprio.
+   - **Permissões:** o WorkManager adiciona `ACCESS_NETWORK_STATE`, `FOREGROUND_SERVICE` e `WAKE_LOCK`. As duas primeiras
+     foram **removidas** no manifesto (o app não usa rede nem serviço em primeiro plano). **`WAKE_LOCK` ficou**: é uma
+     permissão "normal", sem pergunta ao usuário, usada pelo WorkManager para não perder o disparo. Ela não está na lista
+     do CLAUDE.md, então **o dono decide**; removê-la pode fazer lembretes falharem em alguns aparelhos.
+3. **Sons (Fase 8):** acerto, erro, combo, lição concluída, conquista e clique, sintetizados por `tools/generate_sounds.py`
+   (WAV curtos, ~110 KB no total). Tocados com SoundPool, respeitando o volume de mídia; opção "Sons" em Configurações.
+4. **Backup do progresso:** Configurações > Dados > Exportar/Importar progresso (JSON, pelo seletor de arquivos, sem
+   permissão). A importação valida formato e versão e substitui tudo numa única transação. O backup automático do Android
+   agora também inclui preferências e pacotes importados.
+5. **Importar pacote de conteúdo:** Configurações > Conteúdo. O pacote passa pelo mesmo validador do app e entra na trilha
+   na hora; pode ser removido depois. Para cada unidade vale o pacote de versão mais alta (no empate, o importado).
+6. **Interações que não faziam nada:** chip de gemas abre a Loja; chip de dias para a prova abre o planejamento
+   (lições por semana até 21/02/2027); o livro do banner da unidade abre o **guia da unidade** (lições, status e tópicos
+   do edital). A chama da ofensiva fica cinza enquanto você não estudou no dia.
+7. **Lição:** novo chip "Lição mm:ss" (PLAN §7, "tempo restante da lição"). Os chips do cabeçalho quebram linha com fonte
+   grande, e o número do anel não cresce com a fonte do sistema.
+8. **Resultado:** aviso de "Subiu para o nível N".
+9. **Acabamento:** fundo da janela no tema do app (sem tela branca ao abrir no escuro); barras do sistema acompanham o tema
+   escolhido; mascotes param de animar quando "Remover animações" está ligado no Android; versão do app em Configurações;
+   aviso sobre otimização de bateria (PLAN §8).
+10. **Acessibilidade automática:** `tools/preview-harness` agora verifica que **todo elemento tocável tem rótulo** para o
+    TalkBack (5 abas e 3 tipos de exercício) e renderiza Trilha e lição com fonte 1,5×.
+11. **Versão:** 0.3.0 (versionCode 3).
+
+Continua incompleto (fora do alcance de uma varredura de código):
+- **Conteúdo das Unidades 2 a 10** (Fase 9): é o maior buraco do app. Exige geração e revisão unidade por unidade.
+- **v1.1 do PLAN:** simulado (20q/60min e 80q/4h), teste de nivelamento para pular unidade, missão mensal.
+- **Marcar questão como revisada:** hoje só editando o JSON (`reviewed: true`). Não há botão no app de propósito: o
+  pacote é a fonte da verdade.
+- **Validação em aparelho real:** TalkBack, vibração, sons, horário de notificação e virada de dia/semana reais.

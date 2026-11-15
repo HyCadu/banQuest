@@ -145,6 +145,9 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             if (summary.xpBonus > 0) {
                 Text("Respostas +${summary.xpFromAnswers} XP · conclusão +${summary.xpBonus} XP", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             }
+            val levelAfter = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp)
+            val levelBefore = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp - summary.totalXp)
+            if (levelAfter > levelBefore) Banner("Subiu para o nível $levelAfter!", GameIcon.Crown, c.primarySoft, c.primaryText)
             if (summary.gemsEarned > 0) Banner("+${summary.gemsEarned} gemas ganhas", GameIcon.Gem, c.secondarySoft, c.secondaryText)
             if (summary.streakIncreased) Banner("Ofensiva de ${summary.streakAfter} ${if (summary.streakAfter == 1) "dia" else "dias"}!", GameIcon.Flame, c.warningSoft, c.warningText)
             if (summary.frozenDays.isNotEmpty()) Banner("Um congelamento protegeu sua ofensiva.", GameIcon.Snowflake, c.secondarySoft, c.secondaryText)

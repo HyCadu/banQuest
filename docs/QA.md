@@ -1,7 +1,6 @@
 # QA — roteiro para testar no celular
 
-> Instale o APK mais recente por cima do anterior. O banco de dados é recriado uma vez (a versão anterior só tinha uma
-> tabela vazia), então você começa do zero com 5 corações, 0 XP e nenhuma lição feita.
+> Instale o APK mais recente por cima do anterior. Desde a versão 0.2, o progresso é mantido entre atualizações.
 
 ## Roteiro principal (≈15 minutos)
 
@@ -60,12 +59,46 @@
 - [ ] Modo claro e escuro (Configurações > Tema). Gire a tela. Fonte grande do sistema. TalkBack (abas, alternativas e nós
       da trilha têm rótulos).
 
+## Novidades da varredura (versão 0.3.0)
+
+**10. Ícone**
+- [ ] O ícone na tela inicial do celular é o **Guaiamum sorrindo sobre fundo turquesa**, na forma do seu launcher
+      (redondo, quadrado etc.). Com ícones temáticos ligados (Android 13+), aparece a silhueta do caranguejo.
+
+**11. Lembretes**
+- [ ] Depois de concluir a primeira lição, a Trilha mostra o cartão "Quer que o Guaiamum te lembre…?". Toque em
+      **Ativar lembrete** e permita as notificações.
+- [ ] Em Configurações > Lembretes, mude o horário para daqui a 2 ou 3 minutos e **não faça lição**. A notificação deve
+      chegar (alguns aparelhos atrasam alguns minutos). Tocar nela abre o app.
+- [ ] Faça uma lição antes do horário: o lembrete do dia **não** deve chegar.
+- [ ] Com ofensiva ativa e sem estudar no dia, às 21:30 chega "Sua ofensiva está em risco!".
+- [ ] Reinicie o celular: o lembrete continua agendado.
+
+**12. Sons e vibração**
+- [ ] Sons de clique (ao escolher alternativa), acerto, erro, combo (no 3º acerto seguido), lição concluída e conquista.
+      Desligue em Configurações > Estudo > Sons. No modo silencioso, não tocam.
+
+**13. Dados**
+- [ ] Configurações > Dados > **Exportar progresso**: salve o arquivo (por exemplo, no Drive ou em Downloads).
+- [ ] **Apagar todos os dados** e depois **Importar progresso** com o arquivo salvo: XP, ofensiva, lições e conquistas voltam.
+- [ ] Configurações > Conteúdo > **Importar pacote**: escolha um arquivo que não seja pacote; o app recusa e explica.
+
+**14. Toques que agora fazem algo**
+- [ ] Toque no chip de **gemas**: abre a Loja. No chip de **dias**: mostra o planejamento até a prova. No **banner da
+      unidade**: abre o guia com as lições e os tópicos do edital.
+- [ ] Antes de estudar no dia, a **chama** do topo fica cinza; depois de uma lição, volta a ficar laranja.
+- [ ] Durante a lição (modo Ritmo), o chip **"Lição mm:ss"** mostra quanto resta do tempo da lição.
+
+**15. Acessibilidade**
+- [ ] Ligue "Remover animações" nas opções de acessibilidade do Android: os mascotes param de se mexer.
+- [ ] Fonte do sistema no máximo: o cabeçalho da lição quebra linha sem cortar nada.
+
 ## O que ainda NÃO existe (não é bug)
-Notificações de lembrete, sons, exportar/importar progresso, importar pacotes de conteúdo, e conteúdo das Unidades 2 a 10.
+Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
 ## Verificações automáticas já executadas
-`./gradlew check assembleRelease lintRelease` sem erros nem warnings; **119 testes unitários**; validador de conteúdo sem
-erros; e 11 testes de integração no harness (`tools/preview-harness`, ver README dele).
+`./gradlew check assembleRelease lintRelease` sem erros nem warnings; **137 testes unitários**; validador de conteúdo sem
+erros; e no harness (`tools/preview-harness`): 14 testes de integração, 10 de acessibilidade e as renderizações das telas.
 
 > Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
 > você consegue validar.

@@ -277,6 +277,38 @@ class ProgressRepository @Inject constructor(
         dao.profile()?.let { dao.upsertProfile(it.copy(dailyGoalXp = xp)) }
     }
 
+    // ---------- backup
+
+    suspend fun exportBackup(): br.com.trilhati.data.backup.Backup = db.withTransaction {
+        br.com.trilhati.data.backup.Backup(
+            exportedAtMs = nowMs(),
+            profile = dao.profile(), stats = dao.stats(), lessonProgress = dao.lessonProgress(),
+            questionStats = dao.allQuestionStats(), attempts = dao.allAttempts(), dailyLogs = dao.allDailyLogs(),
+            quests = dao.allQuests(), achievements = dao.allAchievements(), leagueWeeks = dao.allLeagueWeeks(),
+            shop = dao.shop(), packs = dao.packMetas(),
+        )
+    }
+
+    /** Substitui todo o progresso pelo do backup, de uma vez (se algo falhar, nada muda). */
+    suspend fun importBackup(backup: br.com.trilhati.data.backup.Backup, today: LocalDate) = db.withTransaction {
+        dao.deleteProfile(); dao.deleteStats(); dao.deleteLessonProgress(); dao.deleteQuestionStats(); dao.deleteAttempts()
+        dao.deleteDailyLogs(); dao.deleteQuests(); dao.deleteAchievements(); dao.deleteLeagueWeeks(); dao.deleteShop(); dao.deletePackMetas()
+        backup.profile?.let { dao.upsertProfile(it) }
+        backup.stats?.let { dao.upsertStats(it) }
+        dao.upsertLessonProgressList(backup.lessonProgress)
+        dao.upsertQuestionStats(backup.questionStats)
+        dao.upsertAttempts(backup.attempts)
+        dao.upsertDailyLogs(backup.dailyLogs)
+        dao.upsertQuests(backup.quests)
+        dao.upsertAchievements(backup.achievements)
+        dao.upsertLeagueWeeks(backup.leagueWeeks)
+        backup.shop?.let { dao.upsertShop(it) }
+        dao.upsertPackMetas(backup.packs)
+        ensureReadyInternal(today)
+    }
+
+    suspend fun recordPack(pack: String, version: Int) = dao.upsertPackMeta(br.com.trilhati.data.db.PackMetaEntity(pack, version))
+
     /** Apaga todo o progresso (Configurações > Apagar dados). */
     suspend fun eraseAll() = db.clearAllTables()
 }

@@ -123,4 +123,41 @@ interface ProgressDao {
 
     @Query("SELECT * FROM pack_meta")
     suspend fun packMetas(): List<PackMetaEntity>
+
+    // ---- backup (exportar/importar)
+    @Query("SELECT * FROM attempt ORDER BY id ASC")
+    suspend fun allAttempts(): List<AttemptEntity>
+
+    @Query("SELECT * FROM daily_log ORDER BY day ASC")
+    suspend fun allDailyLogs(): List<DailyLogEntity>
+
+    @Query("SELECT * FROM quest_state ORDER BY day ASC, questId ASC")
+    suspend fun allQuests(): List<QuestStateEntity>
+
+    @Query("SELECT * FROM league_week ORDER BY weekStart ASC")
+    suspend fun allLeagueWeeks(): List<LeagueWeekEntity>
+
+    @Query("SELECT * FROM question_stat")
+    suspend fun allQuestionStats(): List<QuestionStatEntity>
+
+    @Query("SELECT * FROM achievement")
+    suspend fun allAchievements(): List<AchievementEntity>
+
+    @Upsert suspend fun upsertAttempts(items: List<AttemptEntity>)
+    @Upsert suspend fun upsertDailyLogs(items: List<DailyLogEntity>)
+    @Upsert suspend fun upsertLeagueWeeks(items: List<LeagueWeekEntity>)
+    @Upsert suspend fun upsertLessonProgressList(items: List<LessonProgressEntity>)
+    @Upsert suspend fun upsertPackMetas(items: List<PackMetaEntity>)
+
+    @Query("DELETE FROM user_profile") suspend fun deleteProfile()
+    @Query("DELETE FROM stats") suspend fun deleteStats()
+    @Query("DELETE FROM lesson_progress") suspend fun deleteLessonProgress()
+    @Query("DELETE FROM question_stat") suspend fun deleteQuestionStats()
+    @Query("DELETE FROM attempt") suspend fun deleteAttempts()
+    @Query("DELETE FROM daily_log") suspend fun deleteDailyLogs()
+    @Query("DELETE FROM quest_state") suspend fun deleteQuests()
+    @Query("DELETE FROM achievement") suspend fun deleteAchievements()
+    @Query("DELETE FROM league_week") suspend fun deleteLeagueWeeks()
+    @Query("DELETE FROM shop_state") suspend fun deleteShop()
+    @Query("DELETE FROM pack_meta") suspend fun deletePackMetas()
 }

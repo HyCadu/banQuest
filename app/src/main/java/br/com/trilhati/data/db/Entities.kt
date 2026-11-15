@@ -2,11 +2,13 @@ package br.com.trilhati.data.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
 /** Datas são guardadas como "dia da época" (`LocalDate.toEpochDay()`); -1 significa "nenhum". */
 const val NO_DAY = -1L
 
 /** Perfil do usuário (PLAN.md §5.2). Linha única, `id = 1`. */
+@Serializable
 @Entity(tableName = "user_profile")
 data class UserProfileEntity(
     @PrimaryKey val id: Int = SINGLE_ID,
@@ -20,6 +22,7 @@ data class UserProfileEntity(
     }
 }
 
+@Serializable
 @Entity(tableName = "stats")
 data class StatsEntity(
     @PrimaryKey val id: Int = 1,
@@ -43,6 +46,7 @@ data class StatsEntity(
     val bestLeagueTier: Int,
 )
 
+@Serializable
 @Entity(tableName = "lesson_progress")
 data class LessonProgressEntity(
     @PrimaryKey val lessonId: String,
@@ -53,6 +57,7 @@ data class LessonProgressEntity(
     val completedAtMs: Long,
 )
 
+@Serializable
 @Entity(tableName = "question_stat")
 data class QuestionStatEntity(
     @PrimaryKey val questionId: String,
@@ -64,6 +69,7 @@ data class QuestionStatEntity(
     val nextReviewDay: Long,
 )
 
+@Serializable
 @Entity(tableName = "attempt")
 data class AttemptEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -75,6 +81,7 @@ data class AttemptEntity(
     val kind: String,
 )
 
+@Serializable
 @Entity(tableName = "daily_log")
 data class DailyLogEntity(
     @PrimaryKey val day: Long,
@@ -84,6 +91,7 @@ data class DailyLogEntity(
     val froze: Boolean,
 )
 
+@Serializable
 @Entity(tableName = "quest_state", primaryKeys = ["day", "questId"])
 data class QuestStateEntity(
     val day: Long,
@@ -92,12 +100,14 @@ data class QuestStateEntity(
     val claimed: Boolean,
 )
 
+@Serializable
 @Entity(tableName = "achievement")
 data class AchievementEntity(
     @PrimaryKey val id: String,
     val unlockedAtMs: Long,
 )
 
+@Serializable
 @Entity(tableName = "league_week")
 data class LeagueWeekEntity(
     @PrimaryKey val weekStart: Long,
@@ -110,6 +120,7 @@ data class LeagueWeekEntity(
     val outcome: Int,
 )
 
+@Serializable
 @Entity(tableName = "shop_state")
 data class ShopStateEntity(
     @PrimaryKey val id: Int = 1,
@@ -118,6 +129,7 @@ data class ShopStateEntity(
     val claimedUnitChests: String,
 )
 
+@Serializable
 @Entity(tableName = "pack_meta")
 data class PackMetaEntity(
     @PrimaryKey val pack: String,
