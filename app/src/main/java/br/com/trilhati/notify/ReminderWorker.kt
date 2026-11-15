@@ -26,6 +26,7 @@ interface ReminderEntryPoint {
     fun scheduler(): ReminderScheduler
     fun notifications(): Notifications
     fun clock(): Clock
+    fun syncStore(): br.com.trilhati.data.social.SyncStore
 }
 
 /** Dispara no horário agendado, decide se avisa (regra pura em [ReminderPolicy]) e agenda o próximo. */
@@ -45,6 +46,8 @@ class ReminderWorker(context: Context, params: WorkerParameters) : CoroutineWork
             lessonsToday = snapshot.dailyLogs[today]?.lessons ?: 0,
             streakStatus = StreakEngine.status(streak, today), streakCount = StreakEngine.displayCount(streak, today),
             character = snapshot.profile.character,
+            pairsAtRisk = deps.syncStore().current().overview?.friends.orEmpty()
+                .filter { it.pairStreak > 0 && !it.meToday }.map { it.displayName to it.pairStreak },
         )
         message?.let { deps.notifications().post(it) }
         deps.scheduler().schedule(settings.reminderEnabled, settings.reminderTime)

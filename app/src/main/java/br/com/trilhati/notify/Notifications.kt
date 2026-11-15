@@ -35,6 +35,35 @@ class Notifications @Inject constructor(@ApplicationContext private val context:
                 description = "Aviso às 21:30 quando a ofensiva pode ser perdida."
             },
         )
+        manager.createNotificationChannel(
+            NotificationChannel(CHANNEL_SOCIAL, "Amigos", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = "Pedidos de amizade e conquistas do ranking."
+            },
+        )
+    }
+
+    /** Aviso social (pedido de amizade, pódio). Chega quando o app sincroniza (sem Firebase). */
+    fun postSocial(title: String, text: String) {
+        if (!canPost()) return
+        val open = PendingIntent.getActivity(
+            context, 1,
+            Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
+        val notification = NotificationCompat.Builder(context, CHANNEL_SOCIAL)
+            .setSmallIcon(R.drawable.ic_stat_trilha)
+            .setColor(ContextCompat.getColor(context, R.color.brand_primary))
+            .setContentTitle(title)
+            .setContentText(text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+            .setContentIntent(open)
+            .setAutoCancel(true)
+            .build()
+        try {
+            NotificationManagerCompat.from(context).notify(SOCIAL_BASE_ID + (text.hashCode() and 0xFFFF), notification)
+        } catch (_: SecurityException) {
+            // Permissão revogada: sem aviso.
+        }
     }
 
     /** `true` se o app pode mostrar notificações (permissão concedida e não bloqueadas pelo usuário). */
@@ -75,6 +104,8 @@ class Notifications @Inject constructor(@ApplicationContext private val context:
     companion object {
         const val CHANNEL_DAILY = "lembrete_diario"
         const val CHANNEL_RISK = "ofensiva_em_risco"
+        const val CHANNEL_SOCIAL = "amigos"
+        private const val SOCIAL_BASE_ID = 2000
         private const val NOTIFICATION_ID = 1001
     }
 }

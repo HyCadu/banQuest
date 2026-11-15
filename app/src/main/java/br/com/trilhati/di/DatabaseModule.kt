@@ -18,9 +18,10 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.NAME)
-            // A versão 1 (Fase 0) só tinha uma tabela vazia de perfil. Antes de o aluno ter dados reais,
-            // trocar o esquema recria o banco; depois disso, só migrações explícitas (docs/DECISIONS.md).
-            .fallbackToDestructiveMigration(dropAllTables = true)
+            // v1 (Fase 0) só tinha uma tabela vazia: pode ser recriada. Da v2 em diante há progresso real,
+            // então só migrações explícitas (docs/DECISIONS.md).
+            .addMigrations(br.com.trilhati.data.db.MIGRATION_2_3)
+            .fallbackToDestructiveMigrationFrom(true, 1)
             .build()
 
     @Provides

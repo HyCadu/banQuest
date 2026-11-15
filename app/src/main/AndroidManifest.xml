@@ -4,8 +4,11 @@
 
     <!-- Lembretes locais (PLAN.md §8). RECEIVE_BOOT_COMPLETED vem do WorkManager, que reagenda os lembretes ao religar. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- O WorkManager pede estas duas, mas o app não usa rede nem serviço em primeiro plano: removidas (CLAUDE.md, regra 2). -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+    <!-- Versão social: login e sincronização com o Supabase (docs/PLANO_SOCIAL.md). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Usada pelo WorkManager para só sincronizar quando há rede. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- O WorkManager pede esta, mas o app não usa serviço em primeiro plano: removida. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
 
     <application

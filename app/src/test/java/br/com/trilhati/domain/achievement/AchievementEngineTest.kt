@@ -35,9 +35,9 @@ class AchievementEngineTest {
 
     @Test fun `demais conquistas`() {
         val all = AchievementEngine.newlyUnlocked(
-            AchievementInput(perfectLessons = 10, unitsCompleted = 1, pacedLessons = 10, reviewCorrect = 50, bestLeagueTier = AchievementEngine.GOLD_TIER),
+            AchievementInput(perfectLessons = 10, unitsCompleted = 1, pacedLessons = 10, reviewCorrect = 50, podiums = 1),
             emptySet(),
         ).map { it.id }.toSet()
-        assertEquals(setOf("perfect1", "perfect10", "unit1", "paced10", "review50", "gold"), all)
+        assertEquals(setOf("perfect1", "perfect10", "unit1", "paced10", "review50", "podium"), all)
     }
 }

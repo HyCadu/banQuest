@@ -2,6 +2,11 @@
 
 Branch de trabalho: `feature/supabase-social`. A `main` continua sendo a versão offline (0.3.0) até o dono aprovar esta.
 
+> **Situação (15/11/2026): S0 a S5 implementados na branch `feature/supabase-social` (versão 0.4.0).** As perguntas da
+> seção 10 ficaram com o padrão sugerido; decisões e desvios estão em `docs/DECISIONS.md` ("Versão social"). Falta o
+> dono executar `docs/SUPABASE_SETUP.md` (SQL, login por código e SMTP) e o roteiro de dois aparelhos do `docs/QA.md`.
+> O cliente usa a API REST do Supabase Auth/PostgREST diretamente, sem o SDK `supabase-kt` (decisão 5).
+
 ## 1. Objetivo
 
 Transformar o Trilha TI num app para um grupo fechado de amigos que estudam para o Banestes:

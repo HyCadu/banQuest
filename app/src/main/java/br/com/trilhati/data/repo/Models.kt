@@ -2,7 +2,6 @@ package br.com.trilhati.data.repo
 
 import br.com.trilhati.data.db.AchievementEntity
 import br.com.trilhati.data.db.DailyLogEntity
-import br.com.trilhati.data.db.LeagueWeekEntity
 import br.com.trilhati.data.db.LessonProgressEntity
 import br.com.trilhati.data.db.NO_DAY
 import br.com.trilhati.data.db.QuestStateEntity
@@ -11,7 +10,6 @@ import br.com.trilhati.data.db.ShopStateEntity
 import br.com.trilhati.data.db.StatsEntity
 import br.com.trilhati.domain.hearts.HeartsState
 import br.com.trilhati.domain.progress.DailyLog
-import br.com.trilhati.domain.progress.LeagueWeekState
 import br.com.trilhati.domain.progress.LessonProgress
 import br.com.trilhati.domain.progress.QuestProgress
 import br.com.trilhati.domain.progress.QuestionStat
@@ -31,9 +29,6 @@ data class Profile(val name: String, val character: String, val dailyGoalXp: Int
 
 data class ShopState(val lastDailyChestDay: LocalDate?, val claimedUnitChests: Set<String>)
 
-/** Resultado da semana de liga anterior, para exibir "Você subiu para Prata!". */
-data class LeagueResult(val weekStart: LocalDate, val tier: Int, val rank: Int, val outcome: Int)
-
 /** Retrato de tudo que a interface precisa do progresso. Pequeno o bastante para ser recomposto inteiro. */
 data class AppSnapshot(
     val profile: Profile,
@@ -42,8 +37,8 @@ data class AppSnapshot(
     val questionStats: Map<String, QuestionStat>,
     val dailyLogs: Map<LocalDate, DailyLog>,
     val achievements: Map<String, Long>,
-    val league: LeagueWeekState,
-    val lastLeagueResult: LeagueResult?,
+    /** Sessões guardadas esperando envio ao servidor. */
+    val pendingUploads: Int = 0,
     val shop: ShopState,
     val errorBankSize: Int,
     val dueCount: Int,
@@ -60,7 +55,7 @@ internal fun StatsEntity.toDomain() = Stats(
     lessonsCompleted = lessonsCompleted, perfectLessons = perfectLessons, pacedLessons = pacedLessons,
     practiceSessions = practiceSessions, reviewCorrect = reviewCorrect, answeredTotal = answeredTotal,
     totalTimeMs = totalTimeMs, firstTryAnswered = firstTryAnswered, firstTryCorrect = firstTryCorrect,
-    bestLeagueTier = bestLeagueTier,
+    podiums = podiums,
 )
 
 internal fun Stats.toEntity() = StatsEntity(
@@ -69,7 +64,7 @@ internal fun Stats.toEntity() = StatsEntity(
     freezes = streak.freezes, lessonsCompleted = lessonsCompleted, perfectLessons = perfectLessons,
     pacedLessons = pacedLessons, practiceSessions = practiceSessions, reviewCorrect = reviewCorrect,
     answeredTotal = answeredTotal, totalTimeMs = totalTimeMs, firstTryAnswered = firstTryAnswered,
-    firstTryCorrect = firstTryCorrect, bestLeagueTier = bestLeagueTier,
+    firstTryCorrect = firstTryCorrect, podiums = podiums,
 )
 
 internal fun LessonProgressEntity.toDomain() = LessonProgress(lessonId, unitId, timesCompleted, bestAccuracy, perfectCount, completedAtMs)
@@ -89,10 +84,6 @@ internal fun DailyLog.toEntity() = DailyLogEntity(day.toEpochDay(), xp, lessons,
 
 internal fun QuestStateEntity.toDomain() = QuestProgress(LocalDate.ofEpochDay(day), questId, progress, claimed)
 internal fun QuestProgress.toEntity() = QuestStateEntity(day.toEpochDay(), questId, progress, claimed)
-
-internal fun LeagueWeekEntity.toDomain() = LeagueWeekState(
-    LocalDate.ofEpochDay(weekStart), tier, userXp, closed, if (finalRank < 0) null else finalRank,
-)
 
 internal fun ShopStateEntity.toDomain() = ShopState(
     lastDailyChestDay.toDayOrNull(),

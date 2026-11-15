@@ -8,7 +8,7 @@ data class AchievementInput(
     val unitsCompleted: Int = 0,
     val pacedLessons: Int = 0,
     val reviewCorrect: Int = 0,
-    val bestLeagueTier: Int = 0,
+    val podiums: Int = 0,
 )
 
 data class AchievementDef(
@@ -21,9 +21,6 @@ data class AchievementDef(
 
 /** Conquistas (PLAN.md §7, ≈15). */
 object AchievementEngine {
-    /** Índice da liga Ouro na lista de camadas (Bronze=0, Prata=1, Ouro=2). */
-    const val GOLD_TIER = 2
-
     private fun streak(days: Int, gems: Int) = AchievementDef(
         "streak$days", "Ofensiva de $days dias", "Estude $days dias seguidos.", gems,
     ) { it.longestStreak >= days }
@@ -40,7 +37,7 @@ object AchievementEngine {
         AchievementDef("unit1", "Unidade concluída", "Conclua todas as lições de uma unidade.", 60) { it.unitsCompleted >= 1 },
         AchievementDef("paced10", "No ritmo da prova", "Termine 10 lições com média de até 3:00 por questão.", 80) { it.pacedLessons >= 10 },
         AchievementDef("review50", "Caçador de erros", "Acerte 50 questões na revisão de erros.", 60) { it.reviewCorrect >= 50 },
-        AchievementDef("gold", "Liga Ouro", "Chegue à liga Ouro.", 100) { it.bestLeagueTier >= GOLD_TIER },
+        AchievementDef("podium", "Pódio da semana", "Termine uma semana entre os 3 primeiros do ranking geral.", 100) { it.podiums >= 1 },
     )
 
     fun byId(id: String): AchievementDef? = all.firstOrNull { it.id == id }

@@ -49,6 +49,7 @@ import br.com.trilhati.ui.theme.Spacing
 import br.com.trilhati.ui.theme.ThemeMode
 import br.com.trilhati.ui.theme.Trilha
 import java.time.LocalTime
+import kotlinx.coroutines.launch
 
 /** O que a tela de configurações mostra. */
 data class SettingsUi(
@@ -58,6 +59,7 @@ data class SettingsUi(
     val notificationsAllowed: Boolean,
     val importedPacks: List<ImportedPack>,
     val versionName: String,
+    val social: br.com.trilhati.feature.app.SocialUi = br.com.trilhati.feature.app.SocialUi(),
 )
 
 /** O que a tela de configurações dispara. */
@@ -78,6 +80,12 @@ data class SettingsCallbacks(
     val onImportPack: () -> Unit = {},
     val onRemovePack: (String) -> Unit = {},
     val onErase: () -> Unit = {},
+    val onShowInGlobal: (Boolean) -> Unit = {},
+    val onSyncNow: () -> Unit = {},
+    /** Há progresso ainda não enviado? (pergunta antes de sair da conta) */
+    val checkUnsynced: suspend () -> Boolean = { false },
+    val onSignOut: () -> Unit = {},
+    val onDeleteAccount: () -> Unit = {},
 )
 
 @Composable
@@ -86,6 +94,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     val state by viewModel.state.collectAsState()
     val allowed by viewModel.notificationsAllowed.collectAsState()
     val packs by viewModel.importedPacks.collectAsState()
+    val social by viewModel.social.collectAsState()
     val context = LocalContext.current
     val questionCount = state?.course?.sumOf { u -> u.lessons.sumOf { it.questions.size } } ?: 0
     val unreviewed = state?.course?.sumOf { u -> u.lessons.sumOf { l -> l.questions.count { it.showUnreviewedBadge } } } ?: 0
@@ -118,7 +127,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     }
 
     SettingsContent(
-        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version),
+        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version, social),
         callbacks = SettingsCallbacks(
             onBack = onBack, onTimerMode = viewModel::setTimerMode, onPaceTarget = viewModel::setPaceTarget,
             onCaseFour = viewModel::setCaseFourMinutes, onNoLives = viewModel::setNoLives, onHaptics = viewModel::setHaptics,
@@ -139,6 +148,11 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
             onImportPack = { packLauncher.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) },
             onRemovePack = viewModel::removePack,
             onErase = viewModel::eraseAll,
+            onShowInGlobal = { viewModel.setShowInGlobal(it) },
+            onSyncNow = viewModel::refreshSocial,
+            checkUnsynced = viewModel::hasUnsyncedChanges,
+            onSignOut = { viewModel.signOut() },
+            onDeleteAccount = { viewModel.deleteAccount() },
         ),
     )
 }
@@ -151,6 +165,9 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
     var confirmErase by remember { mutableStateOf(false) }
     var confirmImport by remember { mutableStateOf(false) }
     var pickTime by remember { mutableStateOf(false) }
+    var confirmSignOut by remember { mutableStateOf<Boolean?>(null) } // valor = havia algo não sincronizado
+    var confirmDelete by remember { mutableStateOf(false) }
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
     Column(
         modifier.fillMaxSize().background(c.background).statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState())
             .padding(horizontal = Spacing.screen, vertical = Spacing.md),
@@ -159,6 +176,32 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             ChunkyButton("Voltar", callbacks.onBack, style = ChunkyStyle.Neutral, minHeight = 44.dp)
             Text("Configurações", style = MaterialTheme.typography.headlineMedium, color = c.ink)
+        }
+
+        Section("Conta", "Seu progresso é copiado para a nuvem a cada lição: trocar de celular restaura tudo.") {
+            val social = ui.social
+            Text(social.email ?: "Conta conectada", style = MaterialTheme.typography.titleSmall, color = c.ink)
+            social.friendCode?.let { Text("Código de amigo: $it", style = MaterialTheme.typography.bodySmall, color = c.inkSoft) }
+            SwitchRow(
+                "Aparecer no ranking geral",
+                "Desligado, só seus amigos veem você. Ainda dá para adicionar amigos pelo código.",
+                social.showInGlobal, callbacks.onShowInGlobal,
+            )
+            val status = when {
+                social.refreshing -> "Sincronizando…"
+                social.pendingUploads > 0 -> if (social.pendingUploads == 1) "1 sessão esperando internet." else "${social.pendingUploads} sessões esperando internet."
+                social.lastError != null -> "Última tentativa falhou: ${social.lastError}"
+                social.lastSyncAtMs > 0 -> "Tudo sincronizado."
+                else -> "Ainda não sincronizado."
+            }
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(status, style = MaterialTheme.typography.bodySmall, color = if (social.lastError != null) c.warningText else c.inkSoft, modifier = Modifier.weight(1f))
+                ChunkyButton("Sincronizar", callbacks.onSyncNow, style = ChunkyStyle.Neutral, enabled = !social.refreshing, minHeight = 40.dp)
+            }
+            ChunkyButton(
+                "Sair da conta", { scope.launch { confirmSignOut = callbacks.checkUnsynced() } }, Modifier.fillMaxWidth(), ChunkyStyle.Neutral, minHeight = 46.dp,
+            )
+            ChunkyButton("Excluir minha conta", { confirmDelete = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
         }
 
         Section("Lembretes", "Aviso no horário escolhido se você ainda não estudou, e às 21:30 se a ofensiva estiver em risco.") {
@@ -239,11 +282,11 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             }
         }
 
-        Section("Dados", "Todo o progresso fica só neste aparelho. Nada é enviado para a internet.") {
+        Section("Dados", "O progresso também fica salvo na sua conta. O arquivo de backup é uma cópia extra, só sua.") {
             ChunkyButton("Exportar progresso", callbacks.onExport, Modifier.fillMaxWidth(), ChunkyStyle.Neutral, minHeight = 46.dp)
             ChunkyButton("Importar progresso", { confirmImport = true }, Modifier.fillMaxWidth(), ChunkyStyle.Neutral, minHeight = 46.dp)
             Text("Exporte de vez em quando e guarde o arquivo: ele traz XP, ofensiva, lições, erros e conquistas.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
-            ChunkyButton("Apagar todos os dados", { confirmErase = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
+            ChunkyButton("Zerar meu progresso", { confirmErase = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
         }
 
         Text("Trilha TI · versão ${ui.versionName}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft, modifier = Modifier.fillMaxWidth())
@@ -283,11 +326,70 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
     if (confirmErase) {
         TrilhaDialog(
             onDismiss = { confirmErase = false },
-            title = "Apagar tudo?",
-            content = { Text("Isso apaga XP, ofensiva, gemas, progresso das lições e conquistas. Não dá para desfazer.", style = MaterialTheme.typography.bodyMedium, color = c.ink) },
+            title = "Zerar o progresso?",
+            content = {
+                Text(
+                    "Isso apaga XP, ofensiva, gemas, progresso das lições e conquistas, neste aparelho e na nuvem. O XP já " +
+                        "contado no ranking da semana e seus amigos continuam. Não dá para desfazer.",
+                    style = MaterialTheme.typography.bodyMedium, color = c.ink,
+                )
+            },
             actions = {
-                ChunkyButton("Sim, apagar", { callbacks.onErase(); confirmErase = false; callbacks.onBack() }, Modifier.fillMaxWidth(), ChunkyStyle.Error)
+                ChunkyButton("Sim, zerar", { callbacks.onErase(); confirmErase = false; callbacks.onBack() }, Modifier.fillMaxWidth(), ChunkyStyle.Error)
                 ChunkyButton("Cancelar", { confirmErase = false }, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
+            },
+        )
+    }
+    AccountDialogs(confirmSignOut, confirmDelete, callbacks, onDismissSignOut = { confirmSignOut = null }, onDismissDelete = { confirmDelete = false })
+}
+
+@Composable
+private fun AccountDialogs(
+    confirmSignOut: Boolean?,
+    confirmDelete: Boolean,
+    callbacks: SettingsCallbacks,
+    onDismissSignOut: () -> Unit,
+    onDismissDelete: () -> Unit,
+) {
+    val c = Trilha.colors
+    if (confirmSignOut != null) {
+        TrilhaDialog(
+            onDismiss = onDismissSignOut,
+            title = "Sair da conta?",
+            content = {
+                Text(
+                    if (confirmSignOut) {
+                        "Parte do seu progresso ainda não chegou à nuvem (falta internet). Se sair agora, ele se perde. " +
+                            "Conecte-se e toque em Sincronizar antes de sair."
+                    } else {
+                        "Seu progresso está salvo na nuvem. Este aparelho fica limpo e volta tudo quando você entrar de novo."
+                    },
+                    style = MaterialTheme.typography.bodyMedium, color = c.ink,
+                )
+            },
+            actions = {
+                ChunkyButton(
+                    if (confirmSignOut) "Sair mesmo assim" else "Sair", { onDismissSignOut(); callbacks.onSignOut() }, Modifier.fillMaxWidth(),
+                    if (confirmSignOut) ChunkyStyle.Error else ChunkyStyle.Primary,
+                )
+                ChunkyButton("Cancelar", onDismissSignOut, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
+            },
+        )
+    }
+    if (confirmDelete) {
+        TrilhaDialog(
+            onDismiss = onDismissDelete,
+            title = "Excluir a conta?",
+            content = {
+                Text(
+                    "Apaga para sempre sua conta, seu perfil, o progresso na nuvem, o ranking e as amizades. Seus amigos deixam de " +
+                        "ver você. Não dá para desfazer.",
+                    style = MaterialTheme.typography.bodyMedium, color = c.ink,
+                )
+            },
+            actions = {
+                ChunkyButton("Excluir para sempre", { onDismissDelete(); callbacks.onDeleteAccount() }, Modifier.fillMaxWidth(), ChunkyStyle.Error)
+                ChunkyButton("Cancelar", onDismissDelete, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
             },
         )
     }

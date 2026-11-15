@@ -4,4 +4,7 @@
     <!-- Preferências (DataStore) e pacotes de conteúdo importados -->
     <include domain="file" path="datastore/" />
     <include domain="file" path="packs/" />
+    <!-- Sessão de login e estado da sincronização ficam só neste aparelho (token não viaja; id do aparelho é único). -->
+    <exclude domain="file" path="datastore/auth.preferences_pb" />
+    <exclude domain="file" path="datastore/sync.preferences_pb" />
 </full-backup-content>

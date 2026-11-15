@@ -2,9 +2,12 @@
 
 Documento de referência para o Claude Code. Leia junto com `CLAUDE.md`. Onde houver ★, é a decisão padrão adotada; o dono do projeto pode mudá-la depois.
 
+> **Versão social (0.4):** login, nuvem, amigos e ranking real entraram no escopo a pedido do dono. O desenho completo
+> está em `docs/PLANO_SOCIAL.md`; onde este documento falar em "offline", "sem login" ou "ligas com bots", vale o plano social.
+
 ## 1. Contexto e objetivo
 
-Um app Android pessoal, offline, no estilo de trilha gamificada de aprendizado de idiomas, para estudar o concurso do Banestes (banca FCC), cargo **Analista de TI – Desenvolvimento de Sistemas**.
+Um app Android de estudo, offline-first e com amigos, no estilo de trilha gamificada de aprendizado de idiomas, para estudar o concurso do Banestes (banca FCC), cargo **Analista de TI – Desenvolvimento de Sistemas**.
 
 Fatos do concurso que guiam o produto (do edital nº 01/2027):
 
@@ -33,7 +36,8 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 - Ofensiva com "congelar", meta diária, missões diárias, conquistas.
 - Modo "Praticar erros" (revisão espaçada simples).
 - Gemas, loja (congelar ofensiva, recarregar corações) e baús.
-- Ligas semanais contra rivais fictícios (bots determinísticos).
+- Ranking semanal real (geral e só de amigos), amizade por pedido ou código, ofensiva em dupla, progresso salvo na nuvem
+  (Supabase; ver `docs/PLANO_SOCIAL.md`). Substitui as ligas contra rivais fictícios da 0.3.
 - Cronômetro de ritmo de prova (3:00 por questão), configurável.
 - Notificações locais (lembrete diário e "ofensiva em risco").
 - Sons, vibração, animações, modo escuro, acessibilidade básica.
@@ -43,7 +47,7 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 ### Fora da v1 (não implementar agora)
 - Conhecimentos Gerais (Português, Raciocínio e Estatística, Atualidades, Ética/ESG).
 - Simulado de 80 questões / 4 h (planejado para v1.1; ver Fase 10).
-- Login, nuvem, amigos reais, ligas reais, anúncios, compras, analytics.
+- Anúncios, compras, analytics, Firebase, "cutucar" amigos, chat.
 - Outros cargos (Suporte, Segurança) além de reaproveitar o conteúdo comum.
 
 ## 3. Identidade visual e personagens (originais)
@@ -158,11 +162,14 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Gemas e loja:** ganhar em lições, baús, missões, conquistas. Loja: congelar ofensiva (200), recarregar corações (350). Baú diário.
 
-**Conquistas (≈15):** ofensivas 3/7/14/30/60/100; XP total 1k/5k/20k; primeira lição perfeita; 10 lições perfeitas; unidade concluída; "no ritmo" (média ≤ 3:00 em 10 lições); revisão de 50 erros; liga Ouro.
+**Conquistas (≈15):** ofensivas 3/7/14/30/60/100; XP total 1k/5k/20k; primeira lição perfeita; 10 lições perfeitas; unidade concluída; "no ritmo" (média ≤ 3:00 em 10 lições); revisão de 50 erros; Pódio da semana (top 3 do ranking geral com pelo menos 3 participantes).
 
 **Praticar erros:** sessão de 8 questões escolhidas por `SrsEngine` (intervalos 1, 3, 7, 14 dias; erro zera). Mostra quantas estão "vencidas".
 
-**Ligas semanais:** 30 participantes (você + 29 bots com nomes fictícios). XP dos bots simulado de forma **determinística** por seed (`semana + índice`), com curva realista ao longo da semana. Fecha na segunda 00:00: top 10 sobem, últimos 5 descem. Camadas: Bronze, Prata, Ouro, Safira, Rubi, Esmeralda, Ametista, Diamante.
+**Ranking semanal (0.4):** soma o XP das sessões enviadas ao servidor de segunda 00:00 a domingo 23:59 (Brasília). Lista
+geral (quem deixou "aparecer no ranking geral" ligado) e lista só de amigos. Amizade por pedido a partir do ranking (o
+outro aceita) ou por código `TRI-XXXXX` (vale na hora). Ofensiva em dupla: dias seguidos em que os dois concluíram ao
+menos uma lição. Detalhes, regras anti-trapaça e esquema em `docs/PLANO_SOCIAL.md`.
 
 **Perfil/estatísticas:** XP, ofensiva, precisão por tema (as 10 unidades), tempo médio por questão, histórico de 30 dias, conquistas.
 
@@ -191,7 +198,7 @@ Cada fase termina com app compilando, testes verdes e commit. **Pare ao fim de c
 | 4 | Onboarding + trilha + progressão e desbloqueio | Concluir lição desbloqueia a seguinte; progresso persiste |
 | 5 | Ofensiva, congelar, meta diária, missões, conquistas, baús, gemas, loja | Testes de `StreakEngine` (virada, congelar, perda) passam |
 | 6 | Notificações locais | Notificação chega no horário; reboot reagenda |
-| 7 | Praticar erros (SRS) e ligas com bots | Sessão de erros usa itens vencidos; semana fecha e promove |
+| 7 | Praticar erros (SRS) e ligas com bots (na 0.4 viraram o ranking real) | Sessão de erros usa itens vencidos; semana fecha e promove |
 | 8 | Sons, vibração, acessibilidade (TalkBack, fonte grande, contraste), polimento | Checklist de acessibilidade ok; sem jank perceptível |
 | 9 | Conteúdo: unidades 2–10 em lotes com validação e revisão | Todas as unidades validam; relatório de revisão por unidade |
 | 10 (v1.1) | Simulado 20q/60min e 80q/4h (só Específicos), nivelamento | Resultado com tempo por questão e erros por tema |
@@ -200,23 +207,27 @@ Cada fase termina com app compilando, testes verdes e commit. **Pare ao fim de c
 
 ## 10. Testes e qualidade
 
-- **Unitários:** `StreakEngine` (meia-noite, congelar, múltiplos dias), `XpEngine`, `HeartsEngine` (regeneração), `QuestEngine`, `LeagueEngine` (determinismo e promoção), `SrsEngine`, parser/validador de conteúdo, cálculo de folga/atraso do cronômetro.
+- **Unitários:** `StreakEngine` (meia-noite, congelar, múltiplos dias), `XpEngine`, `HeartsEngine` (regeneração), `QuestEngine`, regras sociais (`SocialRules`, limites, semana do ranking), `SrsEngine`, parser/validador de conteúdo, cálculo de folga/atraso do cronômetro.
 - **UI (Compose):** fluxo de uma lição com respostas certa/errada; navegação onboarding→trilha.
 - **Conteúdo:** `validate_content.py` roda no `./gradlew check`.
 - **Manual:** checklist por fase em `docs/QA.md`.
-- Sem analytics e sem rede na v1; permissões mínimas (`POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, `VIBRATE`).
+- **SQL:** `tools/sql-tests/run.sh` aplica a migração duas vezes num Postgres local e roda os testes de RLS e regras.
+- **Integração social:** a harness testa o cliente inteiro contra um Supabase falso em memória (`SocialSyncTest`).
+- Sem analytics. Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE` (+ `RECEIVE_BOOT_COMPLETED` e
+  `WAKE_LOCK` do WorkManager).
 
 ## 11. Entrega e backup
 
 - APK de debug por `./gradlew assembleDebug` e instalação via ADB/arquivo (sideload). Assinatura de release é opcional e fica fora do repositório.
-- Backup automático do Android habilitado para o banco local, mais **exportar/importar JSON** do progresso nas Configurações.
+- Progresso salvo na conta (Supabase) a cada lição; trocar de aparelho restaura tudo. O backup automático do Android
+  continua para o banco local (sem a sessão de login), mais **exportar/importar JSON** nas Configurações.
 
 ## 12. Riscos e decisões em aberto
 
 - **Qualidade factual das questões geradas por IA:** mitigada por validação, segunda revisão e selo "não revisada"; o dono deve revisar sobretudo normas e versões.
 - **Estilo real da FCC em TI ainda não observado:** calibrar com questões reais coladas pelo dono (`content/inbox/`).
 - **Notificações em segundo plano** dependem do fabricante do celular.
-- **Pendências para o dono responder depois:** tema final dos personagens, linguagem de programação preferida (peso dos exemplos), meta diária padrão, uso de PWA/alerta externo, ligas só com bots ou com amigos reais, nome definitivo do app.
+- **Pendências para o dono responder depois:** tema final dos personagens, linguagem de programação preferida (peso dos exemplos), meta diária padrão, uso de PWA/alerta externo, nome definitivo do app. (Ligas: decidido — amigos reais via Supabase.)
 - **Cargo 04 cobra muito mais que programação:** redes, SO, servidores, monitoramento e segurança ocupam grande parte do Anexo IV. A ordem da trilha começa por desenvolvimento, mas o dono deve ajustá-la ao seu ponto fraco.
 - **Versões muito recentes no edital** (ITIL Version 5, PMBOK 8ª ed., OWASP Top 10:2021 e 2025 em seções distintas): material de estudo pode ser escasso, e o conteúdo gerado nesses temas deve ser revisado com mais cuidado.
-- Prioridade se o prazo apertar: fases 0–5 e a Unidade 1–4 de conteúdo valem mais que ligas, loja e sons.
+- Prioridade se o prazo apertar: fases 0–5 e a Unidade 1–4 de conteúdo valem mais que ranking, loja e sons.

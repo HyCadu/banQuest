@@ -43,6 +43,8 @@ object ReminderPolicy {
         streakStatus: StreakStatus,
         streakCount: Int,
         character: String,
+        /** Ofensivas em dupla em risco: nome do amigo e dias juntos (só as que ainda dependem de você hoje). */
+        pairsAtRisk: List<Pair<String, Int>> = emptyList(),
     ): ReminderMessage? {
         if (!enabled) return null
         if (Duration.between(scheduledAt, now).toMinutes() > MAX_LATENESS_MINUTES) return null
@@ -51,8 +53,17 @@ object ReminderPolicy {
         val dayIndex = now.toLocalDate().toEpochDay().toInt()
         return when (kind) {
             ReminderKind.Daily -> ReminderTexts.daily(character, dayIndex, streakCount)
-            ReminderKind.StreakRisk ->
-                if (streakStatus == StreakStatus.AtRisk && streakCount > 0) ReminderTexts.risk(character, dayIndex, streakCount) else null
+            ReminderKind.StreakRisk -> {
+                val pair = pairsAtRisk.filter { it.second > 0 }.maxByOrNull { it.second }
+                when {
+                    streakStatus == StreakStatus.AtRisk && streakCount > 0 ->
+                        ReminderTexts.risk(character, dayIndex, streakCount).let { msg ->
+                            if (pair == null) msg else msg.copy(text = msg.text + " A ofensiva com ${pair.first} (${pair.second} ${if (pair.second == 1) "dia" else "dias"}) também.")
+                        }
+                    pair != null -> ReminderTexts.pairRisk(pair.first, pair.second)
+                    else -> null
+                }
+            }
         }
     }
 }
@@ -80,6 +91,12 @@ object ReminderTexts {
         val (title, text) = options[Math.floorMod(dayIndex, options.size)]
         return ReminderMessage(ReminderKind.Daily, title, text)
     }
+
+    fun pairRisk(friend: String, days: Int): ReminderMessage = ReminderMessage(
+        ReminderKind.StreakRisk,
+        "Ofensiva em dupla em risco!",
+        "Você e $friend estão há $days ${if (days == 1) "dia" else "dias"} estudando juntos. Falta você hoje: faça uma lição antes da meia-noite.",
+    )
 
     fun risk(character: String, dayIndex: Int, streak: Int): ReminderMessage {
         val who = withArticle(character)

@@ -3,10 +3,12 @@
 Leia `PLAN.md` antes de qualquer trabalho. Ele é a especificação; este arquivo são as regras de trabalho.
 
 ## Projeto
-App Android pessoal e offline, estilo trilha gamificada, para estudar os **Conhecimentos Específicos** do cargo Analista de TI – Desenvolvimento de Sistemas do Banestes (banca FCC). Prova em 21/02/2027. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
+App Android de estudo, offline-first e com amigos (versão social: `docs/PLANO_SOCIAL.md`), estilo trilha gamificada, para estudar os **Conhecimentos Específicos** do cargo Analista de TI – Desenvolvimento de Sistemas do Banestes (banca FCC). Prova em 21/02/2027. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
 
 ## Stack
-Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx.serialization. `minSdk 26`. Módulo único `app`. Confirme as versões atuais das dependências antes de fixá-las no `libs.versions.toml`.
+Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx.serialization. `minSdk 26`.
+Backend social: Supabase (Auth por código de e-mail + Postgres com RLS e funções), acessado pela API REST com um cliente
+HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e é testado em `tools/sql-tests/`. Módulo único `app`. Confirme as versões atuais das dependências antes de fixá-las no `libs.versions.toml`.
 
 ## Como trabalhar
 - Siga as **fases do PLAN.md na ordem**. Ao fim de cada fase: compile, rode `./gradlew test lint`, faça commit com mensagem clara e **pare para o dono revisar** antes da fase seguinte.
@@ -18,7 +20,12 @@ Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx
 
 ## Regras que não podem ser quebradas
 1. **Nada copiado de apps existentes:** nome, logo, mascote, sons, ícones, textos e paleta exata. Replique só as mecânicas. Os personagens (Guaiamum, Tartaruga-marinha, Tamanduá, Preguiça) são originais e desenhados em código.
-2. **Offline e privado:** sem login, sem nuvem, sem anúncios. Permissões mínimas: `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, `VIBRATE`.
+2. **Privado e offline-first:** conta obrigatória com login por código de e-mail (Supabase Auth). O estudo funciona sem
+   internet e sincroniza depois. Sem anúncios, sem analytics, sem Firebase. Os outros veem só apelido, personagem, XP da
+   semana e ofensiva — nunca o e-mail. A chave `service_role`/secret do Supabase **nunca** entra no app, no repositório
+   ou no chat (só a publishable, em `gradle.properties`). Toda tabela tem RLS; escrita só por funções `security definer`.
+   Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE`, e as que o WorkManager traz
+   (`RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`).
 3. **Conteúdo de estudo é sensível a erros.** Toda questão gerada por IA entra com `source: "ia"` e `reviewed: false`, passa pelo validador e pela revisão técnica separada. O app mostra um selo "não revisada". Nunca invente norma, versão ou número de artigo; se não tiver certeza, reformule a questão para algo conceitual ou descarte.
 4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`).
 5. **Escopo da v1:** só Conhecimentos Específicos de TI. Português, Raciocínio, Atualidades e Ética ficam para depois. O simulado de 80 questões é a fase 10.
@@ -39,6 +46,8 @@ Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx
 ./gradlew lint                   # lint
 ./gradlew check                  # testes + lint + validação de conteúdo
 python3 tools/validate_content.py app/src/main/assets/content/
+tools/sql-tests/run.sh           # SQL do Supabase num Postgres local (precisa do postgresql-16)
+./gradlew -p tools/preview-harness :shot:testDebugUnitTest   # renders, integração (inclui social) e acessibilidade
 ```
 
 ## Definição de pronto (cada fase)

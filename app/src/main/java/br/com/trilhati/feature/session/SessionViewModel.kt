@@ -44,6 +44,7 @@ class SessionViewModel @Inject constructor(
     private val clock: Clock,
     private val sounds: br.com.trilhati.sound.SoundPlayer,
     private val notifications: br.com.trilhati.notify.Notifications,
+    private val syncScheduler: br.com.trilhati.data.social.SyncScheduler,
 ) : ViewModel() {
     private val source = SessionSource.fromRoute(savedState.get<String>("kind"))
     private val lessonId: String? = savedState.get<String>("id")?.takeIf { it != "-" }
@@ -282,6 +283,8 @@ class SessionViewModel @Inject constructor(
             val result = SessionResult(kind, lessonId.takeIf { source == SessionSource.Lesson }, unitId, r.records, r.bestCombo, r.perfect)
             val processed = progress.applySession(result, clock.today(), content.course)
             if (kind == SessionKind.Lesson) notifications.clear()
+            // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
+            syncScheduler.syncSoon()
             sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
             _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig)
         }

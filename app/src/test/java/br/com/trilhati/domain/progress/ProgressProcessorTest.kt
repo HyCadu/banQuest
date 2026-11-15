@@ -22,7 +22,7 @@ class ProgressProcessorTest {
         return ProgressState(
             stats = stats, lessonProgress = emptyMap(), questionStats = emptyMap(),
             todayLog = DailyLog(today), todayQuests = quests, unlockedAchievements = emptySet(),
-            league = LeagueWeekState(LocalDate.of(2026, 11, 16)), dailyGoalXp = goal,
+            dailyGoalXp = goal,
         )
     }
 
@@ -101,12 +101,6 @@ class ProgressProcessorTest {
         val out = apply(freshState(goal = 300), r)
         assertFalse(out.summary.goalJustMet)
         assertFalse(out.state.todayLog.goalMet)
-    }
-
-    @Test fun `xp vai para a liga da semana`() {
-        val (_, r) = play(List(8) { true })
-        val out = apply(freshState(), r)
-        assertEquals(out.summary.totalXp, out.state.league.userXp)
     }
 
     @Test fun `ofensiva perdida com congelamento mantem e registra dias congelados`() {

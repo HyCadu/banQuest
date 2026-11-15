@@ -1,6 +1,9 @@
 # QA — roteiro para testar no celular
 
 > Instale o APK mais recente por cima do anterior. Desde a versão 0.2, o progresso é mantido entre atualizações.
+>
+> **Versão 0.4.0 (social):** antes de instalar, faça os passos 1 a 3 de `docs/SUPABASE_SETUP.md` (SQL, login por código
+> e SMTP). O roteiro da parte social está na seção "Versão social (0.4.0)", mais abaixo.
 
 ## Roteiro principal (≈15 minutos)
 
@@ -80,7 +83,7 @@
 
 **13. Dados**
 - [ ] Configurações > Dados > **Exportar progresso**: salve o arquivo (por exemplo, no Drive ou em Downloads).
-- [ ] **Apagar todos os dados** e depois **Importar progresso** com o arquivo salvo: XP, ofensiva, lições e conquistas voltam.
+- [ ] **Zerar meu progresso** e depois **Importar progresso** com o arquivo salvo: XP, ofensiva, lições e conquistas voltam.
 - [ ] Configurações > Conteúdo > **Importar pacote**: escolha um arquivo que não seja pacote; o app recusa e explica.
 
 **14. Toques que agora fazem algo**
@@ -93,12 +96,50 @@
 - [ ] Ligue "Remover animações" nas opções de acessibilidade do Android: os mascotes param de se mexer.
 - [ ] Fonte do sistema no máximo: o cabeçalho da lição quebra linha sem cortar nada.
 
+## Versão social (0.4.0)
+
+**16. Entrar**
+- [ ] Instale por cima da 0.3. Ao abrir, aparece **"Entre com seu e-mail"** (a trilha só abre com conta).
+- [ ] Digite um e-mail inválido: o app avisa sem enviar nada. Digite o seu → **Receber código**.
+- [ ] O e-mail chega com um **número de 6 dígitos** (se vier um link, falta o passo 2.3 do guia). Digite um código errado:
+      "Código inválido ou vencido". Digite o certo → **Entrar**.
+- [ ] "Reenviar (60)" conta para trás; **Trocar e-mail** volta ao primeiro passo.
+- [ ] Escolha apelido e personagem → **Começar**. O progresso que você tinha na 0.3 **continua** (sobe para a nuvem).
+
+**17. Ranking**
+- [ ] Aba **Ranking** (antiga Ligas): "Ranking da semana", com tempo até o fim, e as missões do dia num cartão.
+- [ ] Faça uma lição e volte: seu XP da semana aparece na lista **Geral** (pode levar alguns segundos; use **Atualizar**).
+- [ ] No modo avião: faça uma lição. O Ranking mostra "Sem conexão agora…" e "1 sessão esperando internet". Desligue o
+      modo avião e toque em **Atualizar**: o XP entra.
+
+**18. Amigos (precisa de um segundo celular ou de um amigo)**
+- [ ] Lista **Amigos** → **Compartilhar código** abre o compartilhamento do Android com o seu `TRI-XXXXX`.
+- [ ] No outro celular, **Tem o código de alguém?** → digite o código → "Pronto! … agora é seu amigo". Os dois passam a se
+      ver em "Ranking dos amigos" e em "Ofensivas em dupla".
+- [ ] Na lista **Geral**, toque em **+ Adicionar** em alguém: vira "Pedido enviado". O outro recebe uma **notificação**
+      "Pedido de amizade" e vê **Aceitar / Recusar** na lista Amigos (e "Aceitar" na linha do ranking).
+- [ ] Os dois fazem uma lição no mesmo dia: a ofensiva da dupla vira **1**. No dia seguinte, se só o amigo estudou, a
+      Trilha mostra o banner laranja "A ofensiva em dupla com … acaba hoje…".
+- [ ] **Desfazer amizade** pede confirmação e tira a pessoa das listas.
+
+**19. Conta e privacidade**
+- [ ] Configurações → **Conta** mostra o seu e-mail, o código de amigo e o estado da sincronização.
+- [ ] Desligue **Aparecer no ranking geral**: no outro celular você some da lista Geral (mas continua na lista de amigos).
+- [ ] **Trocar de celular:** em Configurações → Conta → **Sair da conta**, o aparelho fica zerado. Entre de novo com o
+      mesmo e-mail: XP, lições, ofensiva e conquistas voltam.
+- [ ] **Conflito:** com a mesma conta em dois celulares, estude nos dois **sem internet** e depois ligue a internet nos
+      dois. Um deles pergunta **"Qual progresso fica?"**. Escolha uma opção e confira que ficou valendo.
+- [ ] **Excluir minha conta** (use uma conta de teste): pede confirmação, volta para a tela de entrada, e no painel do
+      Supabase o usuário some de Authentication → Users.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
 ## Verificações automáticas já executadas
-`./gradlew check assembleRelease lintRelease` sem erros nem warnings; **137 testes unitários**; validador de conteúdo sem
-erros; e no harness (`tools/preview-harness`): 14 testes de integração, 10 de acessibilidade e as renderizações das telas.
+Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem erros nem warnings; **135 testes
+unitários**; validador de conteúdo sem erros; `tools/sql-tests/run.sh` (SQL aplicado duas vezes + testes de RLS e regras)
+passando; e na harness (`tools/preview-harness`): 14 testes de integração, **10 de integração social** contra um Supabase
+falso, 1 de migração v2→v3, 12 de acessibilidade e as renderizações das telas.
 
 > Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
 > você consegue validar.
