@@ -138,6 +138,21 @@
 - [ ] Os corações **não** diminuem e a questão **não** volta no fim da lição.
 - [ ] No resultado, ela aparece em "Para revisar" como **"Corrigida no caminho"**, e a lição não conta como perfeita.
 
+**21. Personagens (0.4.3)**
+- [ ] Na Trilha, espere uns 10 s olhando o personagem: ele faz gestos sozinhos.
+  - Guaiamum anda de lado e estala as garras.
+  - Tartaruga recolhe a cabeça no casco.
+  - Tamanduá fareja e mostra a língua.
+  - Preguiça boceja.
+- [ ] Os personagens têm sombra no chão; ao pular, a sombra encolhe.
+- [ ] Na lição, o personagem pequeno ao lado dos chips **pensa** (balão "…").
+  - No modo Ritmo, quando o anel fica âmbar ou vermelho, ele fica **nervoso** (gota de suor).
+- [ ] Acertos seguidos até 5 de combo: o personagem do feedback fica **surpreso** ("!").
+- [ ] Na tela de entrada, ele **acena**.
+- [ ] No resultado com ofensiva nova, ele aparece **orgulhoso**.
+- [ ] Ao trocar de pose (ex.: do feedback para a próxima questão), ele dá um "pulinho elástico".
+- [ ] Com "Remover animações" ligado no Android, todos ficam parados.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 

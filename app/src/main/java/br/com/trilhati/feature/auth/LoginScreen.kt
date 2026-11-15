@@ -79,7 +79,12 @@ fun LoginContent(
     ) {
         Mascot(
             mascot,
-            when (ui.step) { AuthStep.Syncing -> MascotPose.Celebrate; AuthStep.Profile -> MascotPose.Happy; else -> MascotPose.Idle },
+            when (ui.step) {
+                AuthStep.Email -> MascotPose.Wave
+                AuthStep.Code -> if (ui.error != null) MascotPose.Nervous else MascotPose.Thinking
+                AuthStep.Profile -> MascotPose.Happy
+                AuthStep.Syncing -> MascotPose.Celebrate
+            },
             Modifier.size(170.dp), animated = animated, decorative = true,
         )
         Text("Trilha TI", style = MaterialTheme.typography.displaySmall, color = c.primaryText)

@@ -12,6 +12,8 @@ Projeto Gradle **separado** do app: não entra no `./gradlew check` nem no APK. 
   aparelhos, amigos, privacidade e exclusão de conta) contra um Supabase falso em memória (`FakeSupabase`).
 - `MigrationTest`: cria um banco v2 (app 0.3) a partir de `app/schemas` e confere que a 0.4 abre sem perder progresso.
 - `TallShots`: telas que rolam (Ranking, Configurações) renderizadas numa tela alta.
+- `MascotShots`: grade dos 4 personagens × 10 poses (`m_grid.png`) e quadros dos gestos de quem está parado
+  (`m_fidgets.png`).
 - `A11yTest`: todo elemento tocável das 5 abas, do Ranking (amigos), da entrada e dos exercícios precisa ter rótulo para o TalkBack; renderiza com fonte 1,5×.
 - `IconShots`: o ícone adaptativo em várias máscaras, a versão monocromática e o ícone de notificação.
 

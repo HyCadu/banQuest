@@ -107,7 +107,12 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen, vertical = Spacing.md),
             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(Spacing.md),
         ) {
-            Mascot(character, if (perfect) MascotPose.Celebrate else MascotPose.Happy, Modifier.size(200.dp), animated = animated)
+            val pose = when {
+                perfect -> MascotPose.Celebrate
+                summary.streakIncreased || summary.newAchievements.isNotEmpty() -> MascotPose.Proud
+                else -> MascotPose.Happy
+            }
+            Mascot(character, pose, Modifier.size(200.dp), animated = animated)
             Text(
                 when {
                     !isLesson -> "Treino concluído!"
