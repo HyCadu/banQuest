@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Testa supabase/migrations num Postgres local descartável (sem Supabase, sem rede).
+# Uso: tools/sql-tests/run.sh      (precisa do servidor Postgres instalado: initdb, pg_ctl, psql)
+set -euo pipefail
+HERE=$(cd "$(dirname "$0")" && pwd)
+ROOT=$(cd "$HERE/../.." && pwd)
+PGBIN=${PGBIN:-$(ls -d /usr/lib/postgresql/*/bin 2>/dev/null | sort -V | tail -1)}
+WORK=$(mktemp -d)
+as_pg() { if [ "$(id -u)" = 0 ]; then runuser -u postgres -- "$@"; else "$@"; fi; }
+[ "$(id -u)" = 0 ] && chown postgres "$WORK"
+as_pg "$PGBIN/initdb" -D "$WORK/data" -A trust -U postgres >/dev/null
+as_pg "$PGBIN/pg_ctl" -D "$WORK/data" -o "-k $WORK -c listen_addresses='' -c timezone=UTC" -l "$WORK/log" -w start >/dev/null
+trap 'as_pg "$PGBIN/pg_ctl" -D "$WORK/data" stop -m fast >/dev/null 2>&1; rm -rf "$WORK"' EXIT
+PSQL=("$PGBIN/psql" -h "$WORK" -U postgres -v ON_ERROR_STOP=1 -q -X)
+"${PSQL[@]}" -d postgres -c "create database trilha"
+"${PSQL[@]}" -d trilha -f "$HERE/supabase_stub.sql"
+export PGOPTIONS="-c client_min_messages=warning"
+for f in "$ROOT"/supabase/migrations/*.sql; do
+  "${PSQL[@]}" -d trilha -f "$f"
+  "${PSQL[@]}" -d trilha -f "$f"   # de novo: o SQL precisa poder ser reaplicado
+done
+export PGOPTIONS="-c client_min_messages=notice"
+"${PSQL[@]}" -d trilha -f "$HERE/tests.sql" -o /dev/null 2>&1 | sed -E 's/^psql:[^ ]* (NOTICE|ERROR):  //'
+[ "${PIPESTATUS[0]}" = 0 ] || { echo "SQL: FALHOU"; exit 1; }
+echo "SQL: todos os testes passaram"
