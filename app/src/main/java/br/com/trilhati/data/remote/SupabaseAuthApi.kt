@@ -6,6 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
@@ -115,8 +116,17 @@ class SupabaseAuthApi @Inject constructor(
         }
     }
 
+    /** Texto de erro que o Supabase Auth manda no corpo ("msg", "message" ou "error_description"). */
+    private fun serverText(response: HttpResponse): String {
+        val obj = runCatching { json.parseToJsonElement(response.body).jsonObject }.getOrNull() ?: return ""
+        return listOf("msg", "message", "error_description").firstNotNullOfOrNull { key ->
+            (obj[key] as? JsonPrimitive)?.contentOrNull?.takeIf { it.isNotBlank() }
+        }.orEmpty()
+    }
+
     private fun messageFor(response: HttpResponse): String {
         val code = errorCode(response)
+        val text = serverText(response)
         return when {
             response.code == 429 || code.contains("rate_limit") ->
                 "Muitos pedidos de código seguidos. Espere alguns minutos e tente de novo."
@@ -125,7 +135,12 @@ class SupabaseAuthApi @Inject constructor(
             code.contains("signup_disabled") -> "Cadastro de novas contas está desligado no servidor."
             code.contains("otp_expired") || code.contains("otp") || code.contains("invalid_grant") -> "Código inválido ou vencido. Peça um novo."
             code.contains("email_address_invalid") || code.contains("validation_failed") -> "E-mail inválido."
-            response.code >= 500 -> "O servidor está indisponível agora. Tente de novo em instantes."
+            // Falha do SMTP (senha de app errada, remetente diferente do usuário, porta…): o Supabase devolve 500.
+            response.code >= 500 && text.contains("sending", ignoreCase = true) && text.contains("email", ignoreCase = true) ->
+                "O Supabase não conseguiu enviar o e-mail com o código. Confira o SMTP (Authentication → Emails → SMTP Settings): " +
+                    "usuário, senha de app e remetente. O erro exato aparece em Logs → Auth."
+            response.code >= 500 && text.isNotBlank() -> "O servidor deu erro (${response.code}: ${text.take(120)}). Tente de novo em instantes."
+            response.code >= 500 -> "O servidor deu erro (${response.code}). Tente de novo em instantes."
             else -> "Não deu certo (erro ${response.code}). Tente de novo."
         }
     }

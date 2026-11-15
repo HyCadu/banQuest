@@ -98,7 +98,7 @@ Se o e-mail chegar com um **link** em vez do número, o template ainda está sem
 
 ## 4. Testar
 
-1. Instale `dist/trilha-ti-0.4.0-debug.apk` e abra: aparece a tela **"Entre com seu e-mail"**.
+1. Instale `dist/trilha-ti-0.4.1-debug.apk` e abra: aparece a tela **"Entre com seu e-mail"**.
 2. Digite o e-mail → **Receber código** → o e-mail chega com o número → digite → **Entrar**.
 3. Escolha apelido e personagem → **Começar**. Se já havia progresso no celular, ele sobe para a nuvem.
 4. No painel: **Authentication → Users** mostra o e-mail. **Table Editor → profiles** mostra o apelido e o
@@ -115,6 +115,8 @@ Se o e-mail chegar com um **link** em vez do número, o template ainda está sem
 | "Muitos pedidos de código seguidos" | Espere alguns minutos ou aumente o limite (passo 2). |
 | "Código inválido ou vencido" | Use o código do **último** e-mail, ou peça outro. |
 | O e-mail chega com link, sem número | Passo 3 (templates com `{{ .Token }}`). |
+| "O Supabase não conseguiu enviar o e-mail com o código" | O SMTP recusou o envio. Veja o motivo em **Logs → Auth** (ex.: `535 Username and Password not accepted` = senha de app errada) e corrija no passo 2. |
+| "O servidor deu erro (500: …)" | Veja o texto entre parênteses e o **Logs → Auth** no painel. |
 | Nada carrega e o painel diz "Paused" | O plano gratuito pausa projetos parados por ~1 semana: clique em **Restore**. |
 
 ## 6. Privacidade (para mandar aos amigos)
