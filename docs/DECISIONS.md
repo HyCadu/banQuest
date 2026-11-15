@@ -247,3 +247,39 @@ coração, a questão repetia no fim e o resultado saía como erro, embora a tel
 5. **"Remover animações" do Android e as prévias** continuam respeitados. O personagem fica parado, e nos primeiros
    6 s na tela nunca faz gesto.
 
+## BanQuest 0.5.0 (15/11/2026) — a pedido do dono
+
+1. **Nome "BanQuest"** no ícone, na entrada, nas notificações, no compartilhamento do código, nas Configurações e nos
+   textos de backup.
+   - O `applicationId`/pacote continua `br.com.trilhati`: mudar faria do BanQuest um app novo, sem atualizar por cima.
+   - Também continuam o identificador do formato de backup (`trilha-ti-backup`, para os backups antigos continuarem
+     válidos), os nomes internos de código (`TrilhaTheme`, `Trilha.colors`) e o nome do repositório.
+   - Os textos do e-mail do código ficam no painel do Supabase: o guia agora diz "BanQuest".
+2. **Assinatura fixa — chave nova, guardada pelo dono** (escolhas do dono):
+   - RSA 4096, válida por 30 anos, certificado "CN=BanQuest", sem dados pessoais.
+   - O Gradle lê o caminho e a senha de variáveis de ambiente (`BANQUEST_KEYSTORE_FILE`, `BANQUEST_KEYSTORE_PASSWORD`)
+     ou de `~/.gradle/gradle.properties`.
+   - `tools/build_apk.sh` gera o APK e confere o certificado contra `tools/signing/banquest-cert-sha256.txt`. Ele recusa
+     APK sem a chave ou com outra chave.
+   - O APK distribuído continua sendo a variante debug (sem R8, que é a coberta pelos testes), agora com a chave fixa.
+     Passar para a variante release fica para quando der para testá-la num aparelho.
+   - Consequência aceita pelo dono: a passagem da 0.4.x para a 0.5.0 exige desinstalar e instalar de novo uma vez,
+     depois de sincronizar (passo a passo em `docs/ASSINATURA.md`).
+3. **Aviso de versão nova:**
+   - Fonte: tabela `app_releases` (`0002_releases.sql`), com RLS e sem acesso direto.
+   - O app lê pela função `latest_release()`, liberada também para quem não está logado (papel `anon`), para a tela de
+     entrada e um app desatualizado também receberem o aviso. A função não expõe nada pessoal.
+   - Só o dono publica, pelo painel. O `0001` devolve essa permissão se for rodado de novo depois do `0002` (testado em
+     `tools/sql-tests`).
+   - O app confere ao abrir, ao voltar (no máximo a cada 30 min) e no trabalho de sincronização de hora em hora.
+   - Avisos:
+     - na Trilha, com "Agora não" por versão;
+     - uma notificação por versão, no canal novo "Atualizações do app";
+     - em Configurações → Sobre o app, com "Verificar atualização".
+   - Versão abaixo de `min_version_code` → diálogo que não fecha.
+   - Regra pura e testada (`UpdateRule`). O link precisa ser https.
+   - O download é só um link aberto no navegador. O app não instala nada sozinho, então nenhuma permissão nova
+     (`REQUEST_INSTALL_PACKAGES` não entrou).
+   - APKs ficam num bucket público `apk` do Supabase Storage (guia em `docs/PUBLICAR_VERSAO.md`). Qualquer link https
+     serve.
+

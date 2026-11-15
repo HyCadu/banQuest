@@ -87,4 +87,7 @@ data class AppActions(
     val removeFriend: (String) -> Unit = {},
     val shareFriendCode: (String) -> Unit = {},
     val openRanking: () -> Unit = {},
+    // Atualização do app
+    val openUpdate: (url: String) -> Unit = {},
+    val dismissUpdate: (versionCode: Int) -> Unit = {},
 )

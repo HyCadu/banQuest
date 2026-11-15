@@ -55,12 +55,12 @@ object BackupCodec {
         val backup = try {
             json.decodeFromString(Backup.serializer(), text)
         } catch (e: SerializationException) {
-            return BackupRead.Invalid("o arquivo não é um backup do Trilha TI (${e.message?.take(80)})")
+            return BackupRead.Invalid("o arquivo não é um backup do BanQuest (${e.message?.take(80)})")
         } catch (e: IllegalArgumentException) {
-            return BackupRead.Invalid("o arquivo não é um backup do Trilha TI (${e.message?.take(80)})")
+            return BackupRead.Invalid("o arquivo não é um backup do BanQuest (${e.message?.take(80)})")
         }
         return when {
-            backup.format != Backup.FORMAT -> BackupRead.Invalid("o arquivo não é um backup do Trilha TI")
+            backup.format != Backup.FORMAT -> BackupRead.Invalid("o arquivo não é um backup do BanQuest")
             backup.version > Backup.VERSION -> BackupRead.Invalid("o backup é de uma versão mais nova do app")
             backup.stats == null || backup.profile == null -> BackupRead.Invalid("o backup está incompleto")
             else -> BackupRead.Ok(backup)

@@ -7,6 +7,18 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+/**
+ * Assinatura fixa do BanQuest. A chave NUNCA fica no repositório: o caminho e a senha vêm de variáveis de ambiente
+ * (ou de propriedades do Gradle fora do projeto, em ~/.gradle/gradle.properties). Sem elas, o build usa a chave de debug
+ * da máquina, e o APK resultante NÃO serve para distribuir (tools/build_apk.sh confere isso). Ver docs/ASSINATURA.md.
+ */
+fun signingValue(env: String, prop: String): String? =
+    providers.environmentVariable(env).orElse(providers.gradleProperty(prop)).orNull?.takeIf { it.isNotBlank() }
+
+val banquestKeystore = signingValue("BANQUEST_KEYSTORE_FILE", "banquest.signing.storeFile")
+val banquestPassword = signingValue("BANQUEST_KEYSTORE_PASSWORD", "banquest.signing.storePassword")
+val banquestSigned = banquestKeystore != null && banquestPassword != null
+
 android {
     namespace = "br.com.trilhati"
     compileSdk = 37
@@ -15,15 +27,32 @@ android {
         applicationId = "br.com.trilhati"
         minSdk = 26
         targetSdk = 37
-        versionCode = 7
-        versionName = "0.4.3"
+        versionCode = 8
+        versionName = "0.5.0"
         // Projeto Supabase (chave pública/publishable: pode ir no app; as regras RLS protegem os dados).
         buildConfigField("String", "SUPABASE_URL", "\"${providers.gradleProperty("trilha.supabaseUrl").getOrElse("")}\"")
         buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"${providers.gradleProperty("trilha.supabaseKey").getOrElse("")}\"")
     }
 
+    signingConfigs {
+        if (banquestSigned) {
+            create("banquest") {
+                storeFile = file(checkNotNull(banquestKeystore))
+                storePassword = banquestPassword
+                keyAlias = signingValue("BANQUEST_KEY_ALIAS", "banquest.signing.keyAlias") ?: "banquest"
+                keyPassword = signingValue("BANQUEST_KEY_PASSWORD", "banquest.signing.keyPassword") ?: banquestPassword
+            }
+        }
+    }
+
     buildTypes {
+        // Com a chave disponível, os dois tipos de build saem com a mesma assinatura (o APK distribuído é o debug,
+        // sem R8, que é o que os testes cobrem; a assinatura é o que importa para atualizar por cima).
+        debug {
+            if (banquestSigned) signingConfig = signingConfigs.getByName("banquest")
+        }
         release {
+            if (banquestSigned) signingConfig = signingConfigs.getByName("banquest")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

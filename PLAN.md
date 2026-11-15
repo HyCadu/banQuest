@@ -52,7 +52,7 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 
 ## 3. Identidade visual e personagens (originais)
 
-**Não copiar** nome, logo, mascote, sons, cores exatas, ilustrações ou textos de nenhum app existente. Replicar apenas as **mecânicas** (trilha, corações, ofensiva, XP, ligas, missões). Nome de trabalho: **"Trilha TI"** (editável em `strings.xml`).
+**Não copiar** nome, logo, mascote, sons, cores exatas, ilustrações ou textos de nenhum app existente. Replicar apenas as **mecânicas** (trilha, corações, ofensiva, XP, ligas, missões). Nome do app: **"BanQuest"** (antes "Trilha TI"; editável em `strings.xml`).
 
 - Personagens ★ bichos capixabas originais, desenhados em código (Compose `Canvas`/`Path` ou `VectorDrawable`), estilo geométrico e fofo:
   1. **Guaiamum** (caranguejo azul-arroxeado)

@@ -1,6 +1,8 @@
 # QA — roteiro para testar no celular
 
 > Instale o APK mais recente por cima do anterior. Desde a versão 0.2, o progresso é mantido entre atualizações.
+> **Exceção: da 0.4.x para a 0.5.0 (BanQuest)** é preciso sincronizar, desinstalar e instalar de novo uma vez, porque a
+> assinatura passou a ser fixa. Veja o passo a passo em `docs/ASSINATURA.md`.
 >
 > **Versão 0.4.0 (social):** antes de instalar, faça os passos 1 a 3 de `docs/SUPABASE_SETUP.md` (SQL, login por código
 > e SMTP). O roteiro da parte social está na seção "Versão social (0.4.0)", mais abaixo.
@@ -152,6 +154,26 @@
 - [ ] No resultado com ofensiva nova, ele aparece **orgulhoso**.
 - [ ] Ao trocar de pose (ex.: do feedback para a próxima questão), ele dá um "pulinho elástico".
 - [ ] Com "Remover animações" ligado no Android, todos ficam parados.
+
+## BanQuest 0.5.0
+
+**22. Passagem da 0.4.x (uma vez)**
+- [ ] Na 0.4.x: Configurações → Conta → **Sincronizar**, até aparecer "Tudo sincronizado".
+- [ ] Tente instalar a 0.5.0 por cima: o Android recusa ("App não instalado"). É esperado.
+- [ ] Desinstale, instale `banquest-0.5.0.apk`, entre com o mesmo e-mail: XP, lições, ofensiva e amigos voltam.
+
+**23. Nome novo**
+- [ ] O ícone na tela inicial se chama **BanQuest**, assim como a tela de entrada, o rodapé das Configurações e o texto
+      de "Compartilhar código".
+
+**24. Aviso de versão nova** (depois de rodar o `0002_releases.sql` e publicar uma versão de teste, conforme
+`docs/PUBLICAR_VERSAO.md`)
+- [ ] Com o app na 0.5.0, publique uma linha de teste com `version_code` 9. Abra Configurações → Sobre o app →
+      **Verificar atualização**: aparece "BanQuest … disponível!".
+- [ ] A Trilha mostra o aviso com **Baixar** e **Agora não**. "Agora não" esconde o aviso dessa versão.
+- [ ] Chega **uma** notificação "BanQuest … disponível". Tocar nela abre o download.
+- [ ] Teste `min_version_code` = 9: aparece o aviso **obrigatório**, que não fecha. Depois apague a linha de teste
+      (`delete from public.app_releases where version_code = 9;`).
 
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).

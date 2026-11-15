@@ -233,7 +233,7 @@ class SyncRepository @Inject constructor(
     private suspend fun notifyNewRequests(overview: SocialOverview) {
         val seen = store.current().seenRequestIds
         overview.requests.filter { it.requestId !in seen }.take(3).forEach {
-            notifications.postSocial("Pedido de amizade", "${it.displayName} quer ser seu amigo no Trilha TI. Abra a aba Ranking para aceitar.")
+            notifications.postSocial("Pedido de amizade", "${it.displayName} quer ser seu amigo no BanQuest. Abra a aba Ranking para aceitar.")
         }
         store.markRequestsSeen(overview.requests.map { it.requestId }.toSet())
     }

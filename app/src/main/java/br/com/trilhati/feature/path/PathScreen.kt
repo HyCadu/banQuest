@@ -85,6 +85,7 @@ fun PathContent(
     animated: Boolean = true,
     showReminderPrompt: Boolean = false,
     pairsAtRisk: List<Pair<String, Int>> = emptyList(),
+    updateBanner: br.com.trilhati.domain.update.ReleaseInfo? = null,
 ) {
     var dialog by remember { mutableStateOf<PathDialog?>(null) }
     val stats = state.snapshot.stats
@@ -103,6 +104,11 @@ fun PathContent(
                 onExamClick = { dialog = PathDialog.Exam },
             )
             DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
+            updateBanner?.let { release ->
+                br.com.trilhati.feature.update.UpdateBanner(
+                    release, onDownload = { actions.openUpdate(release.apkUrl) }, onDismiss = { actions.dismissUpdate(release.versionCode) },
+                )
+            }
             if (pairsAtRisk.isNotEmpty() && !state.studiedToday) PairRiskBanner(pairsAtRisk, actions.openRanking)
             if (showReminderPrompt) ReminderPrompt(state, character, actions, animated)
         }

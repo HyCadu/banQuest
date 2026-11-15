@@ -25,13 +25,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface SyncEntryPoint {
     fun sync(): SyncRepository
+    fun updates(): br.com.trilhati.data.update.UpdateRepository
 }
 
 /** Roda uma sincronização em segundo plano. Sem rede, o WorkManager tenta de novo mais tarde. */
 class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
-        val sync = EntryPointAccessors.fromApplication(applicationContext, SyncEntryPoint::class.java).sync()
-        return when (val result = sync.syncNow()) {
+        val entry = EntryPointAccessors.fromApplication(applicationContext, SyncEntryPoint::class.java)
+        // Aviso de versão nova chega mesmo com o app fechado (no máximo uma conferência a cada 30 min).
+        entry.updates().check()
+        return when (val result = entry.sync().syncNow()) {
             is ApiResult.Ok -> Result.success()
             is ApiResult.Err -> if (result.kind == ErrorKind.Network || result.kind == ErrorKind.Server) Result.retry() else Result.success()
         }

@@ -66,7 +66,9 @@ fun MainScreen(
     val nowMs by viewModel.ticker.collectAsState(initial = 0L)
     val notificationsAllowed by viewModel.notificationsAllowed.collectAsState()
     val social by viewModel.social.collectAsState()
+    val update by viewModel.update.collectAsState()
     val context = androidx.compose.ui.platform.LocalContext.current
+    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
     androidx.lifecycle.compose.LifecycleResumeEffect(viewModel) {
         viewModel.refreshNotificationPermission()
         viewModel.onAppResumed()
@@ -104,8 +106,12 @@ fun MainScreen(
             respondRequest = { id, accept -> viewModel.respondRequest(id, accept) },
             addFriendByCode = viewModel::addFriendByCode,
             removeFriend = { viewModel.removeFriend(it) },
+            openUpdate = { url ->
+                if (runCatching { uriHandler.openUri(url) }.isFailure) viewModel.message("Não achei um navegador para baixar. O link: $url")
+            },
+            dismissUpdate = { viewModel.dismissUpdate(it) },
             shareFriendCode = { code ->
-                val text = "Bora estudar para o concurso do Banestes no Trilha TI? Me adiciona como amigo com o código $code."
+                val text = "Bora estudar para o concurso do Banestes no BanQuest? Me adiciona como amigo com o código $code."
                 val send = android.content.Intent(android.content.Intent.ACTION_SEND).setType("text/plain")
                     .putExtra(android.content.Intent.EXTRA_TEXT, text)
                 context.startActivity(android.content.Intent.createChooser(send, "Compartilhar código de amigo"))
@@ -115,7 +121,10 @@ fun MainScreen(
     val showPrompt = state?.let { s ->
         !notificationsAllowed && !s.settings.reminderPromptDismissed && s.hasAnyCompletedLesson
     } == true
-    MainContent(state, nowMs, actions, snackbar, showReminderPrompt = showPrompt, social = social)
+    MainContent(
+        state, nowMs, actions, snackbar, showReminderPrompt = showPrompt, social = social,
+        updateBanner = update.status.releaseOrNull.takeIf { update.showBanner },
+    )
     social.conflict?.let { conflict ->
         SyncConflictDialog(conflict, onKeepCloud = { viewModel.resolveConflict(keepLocal = false) }, onKeepLocal = { viewModel.resolveConflict(keepLocal = true) })
     }
@@ -157,6 +166,7 @@ fun MainContent(
     animated: Boolean = true,
     showReminderPrompt: Boolean = false,
     social: SocialUi = SocialUi(),
+    updateBanner: br.com.trilhati.domain.update.ReleaseInfo? = null,
 ) {
     var tabIndex by rememberSaveable { mutableIntStateOf(initialTab.ordinal) }
     val tabActions = remember(actions) {
@@ -197,6 +207,7 @@ fun MainContent(
                 when (MainTab.entries[tabIndex]) {
                     MainTab.Path -> PathContent(
                         state, nowMs, tabActions, animated = animated, showReminderPrompt = showReminderPrompt, pairsAtRisk = pairsAtRisk,
+                        updateBanner = updateBanner,
                     )
                     MainTab.Practice -> PracticeContent(state, tabActions, animated = animated)
                     MainTab.Ranking -> RankingContent(state, social, nowMs, tabActions, animated = animated)

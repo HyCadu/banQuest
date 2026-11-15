@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import br.com.trilhati.MainActivity
 import br.com.trilhati.R
 import br.com.trilhati.domain.notify.ReminderKind
@@ -40,6 +41,11 @@ class Notifications @Inject constructor(@ApplicationContext private val context:
                 description = "Pedidos de amizade e conquistas do ranking."
             },
         )
+        manager.createNotificationChannel(
+            NotificationChannel(CHANNEL_UPDATES, "Atualizações do app", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = "Avisa quando sai uma versão nova do BanQuest."
+            },
+        )
     }
 
     /** Aviso social (pedido de amizade, pódio). Chega quando o app sincroniza (sem Firebase). */
@@ -63,6 +69,30 @@ class Notifications @Inject constructor(@ApplicationContext private val context:
             NotificationManagerCompat.from(context).notify(SOCIAL_BASE_ID + (text.hashCode() and 0xFFFF), notification)
         } catch (_: SecurityException) {
             // Permissão revogada: sem aviso.
+        }
+    }
+
+    /** Versão nova do app: tocar abre o link do APK no navegador (o Android cuida do download e da instalação). */
+    fun postUpdate(title: String, text: String, url: String) {
+        if (!canPost()) return
+        val download = PendingIntent.getActivity(
+            context, 2,
+            Intent(Intent.ACTION_VIEW, url.toUri()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
+        val notification = NotificationCompat.Builder(context, CHANNEL_UPDATES)
+            .setSmallIcon(R.drawable.ic_stat_trilha)
+            .setColor(ContextCompat.getColor(context, R.color.brand_primary))
+            .setContentTitle(title)
+            .setContentText(text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+            .setContentIntent(download)
+            .setAutoCancel(true)
+            .build()
+        try {
+            NotificationManagerCompat.from(context).notify(UPDATE_ID, notification)
+        } catch (_: SecurityException) {
+            // Permissão revogada: o aviso continua na Trilha e nas Configurações.
         }
     }
 
@@ -105,6 +135,8 @@ class Notifications @Inject constructor(@ApplicationContext private val context:
         const val CHANNEL_DAILY = "lembrete_diario"
         const val CHANNEL_RISK = "ofensiva_em_risco"
         const val CHANNEL_SOCIAL = "amigos"
+        const val CHANNEL_UPDATES = "atualizacoes"
+        private const val UPDATE_ID = 3001
         private const val SOCIAL_BASE_ID = 2000
         private const val NOTIFICATION_ID = 1001
     }

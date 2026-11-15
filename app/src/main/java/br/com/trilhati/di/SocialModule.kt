@@ -28,5 +28,10 @@ abstract class SocialModule {
         @Provides
         @Singleton
         fun provideConfig(): SupabaseConfig = SupabaseConfig(BuildConfig.SUPABASE_URL, BuildConfig.SUPABASE_PUBLISHABLE_KEY)
+
+        /** Versão instalada, para comparar com a mais nova publicada. */
+        @Provides
+        fun provideAppVersion(): br.com.trilhati.data.update.AppVersion =
+            br.com.trilhati.data.update.AppVersion(BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME)
     }
 }

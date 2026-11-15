@@ -19,6 +19,8 @@ for f in "$ROOT"/supabase/migrations/*.sql; do
   "${PSQL[@]}" -d trilha -f "$f"
   "${PSQL[@]}" -d trilha -f "$f"   # de novo: o SQL precisa poder ser reaplicado
 done
+# o dono pode rodar o 0001 de novo depois do 0002: isso não pode tirar a permissão do latest_release()
+"${PSQL[@]}" -d trilha -f "$ROOT/supabase/migrations/0001_social.sql"
 export PGOPTIONS="-c client_min_messages=notice"
 "${PSQL[@]}" -d trilha -f "$HERE/tests.sql" -o /dev/null 2>&1 | sed -E 's/^psql:[^ ]* (NOTICE|ERROR):  //'
 [ "${PIPESTATUS[0]}" = 0 ] || { echo "SQL: FALHOU"; exit 1; }

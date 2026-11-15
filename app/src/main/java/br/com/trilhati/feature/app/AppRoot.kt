@@ -34,6 +34,8 @@ fun AppRoot() {
     val appViewModel: AppViewModel = hiltViewModel()
     val settings by appViewModel.settings.collectAsState()
     val gate by appViewModel.gate.collectAsState()
+    val update by appViewModel.update.collectAsState()
+    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
 
     TrilhaTheme(settings.themeMode) {
         when (gate) {
@@ -41,6 +43,11 @@ fun AppRoot() {
             Gate.Loading -> Box(Modifier.fillMaxSize().background(Trilha.colors.background))
             Gate.Login -> LoginScreen()
             Gate.Ready -> MainNav(appViewModel)
+        }
+        (update.status as? br.com.trilhati.domain.update.UpdateStatus.Required)?.let { required ->
+            br.com.trilhati.feature.update.UpdateRequiredDialog(required.release, onDownload = {
+                runCatching { uriHandler.openUri(required.release.apkUrl) }
+            })
         }
     }
 }

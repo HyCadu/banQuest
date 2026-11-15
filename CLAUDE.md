@@ -1,9 +1,9 @@
-# CLAUDE.md — Trilha TI (app Android de estudo, concurso Banestes)
+# CLAUDE.md — BanQuest (app Android de estudo, concurso Banestes)
 
 Leia `PLAN.md` antes de qualquer trabalho. Ele é a especificação; este arquivo são as regras de trabalho.
 
 ## Projeto
-App Android de estudo, offline-first e com amigos (versão social: `docs/PLANO_SOCIAL.md`), estilo trilha gamificada, para estudar os **Conhecimentos Específicos** do cargo Analista de TI – Desenvolvimento de Sistemas do Banestes (banca FCC). Prova em 21/02/2027. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
+**BanQuest** (antes "Trilha TI"; o pacote continua `br.com.trilhati`): app Android de estudo, offline-first e com amigos (versão social: `docs/PLANO_SOCIAL.md`), estilo trilha gamificada, para estudar os **Conhecimentos Específicos** do cargo Analista de TI – Desenvolvimento de Sistemas do Banestes (banca FCC). Prova em 21/02/2027. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
 
 ## Stack
 Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx.serialization. `minSdk 26`.
@@ -46,9 +46,16 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 ./gradlew lint                   # lint
 ./gradlew check                  # testes + lint + validação de conteúdo
 python3 tools/validate_content.py app/src/main/assets/content/
+tools/build_apk.sh               # APK assinado para distribuir (precisa da chave; ver docs/ASSINATURA.md)
 tools/sql-tests/run.sh           # SQL do Supabase num Postgres local (precisa do postgresql-16)
 ./gradlew -p tools/preview-harness :shot:testDebugUnitTest   # renders, integração (inclui social) e acessibilidade
 ```
+
+## Distribuição
+- O APK distribuído sai **só** por `tools/build_apk.sh`, assinado com a chave fixa do BanQuest. A chave fica com o
+  dono, nunca no repositório (`docs/ASSINATURA.md`). Sem a chave, não entregue APK.
+- Cada versão nova sobe o `versionCode`. O aviso de versão nova é publicado no Supabase (`docs/PUBLICAR_VERSAO.md`).
+- Não mude o `applicationId` (`br.com.trilhati`): seria outro app, e ninguém conseguiria atualizar por cima.
 
 ## Definição de pronto (cada fase)
 Compila sem warnings novos · testes e lint passam · critério de aceite da fase no PLAN.md cumprido · `docs/QA.md` atualizado com o passo a passo para o dono testar no celular · commit feito.

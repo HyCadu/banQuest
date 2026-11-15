@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Trilha TI</string>
+    <string name="app_name">BanQuest</string>
 
     <!-- Componentes -->
     <string name="node_start">Começar</string>

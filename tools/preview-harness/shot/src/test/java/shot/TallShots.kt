@@ -33,6 +33,18 @@ class TallShots {
     @Test fun rankingHiddenOffline() = ranking("r_hidden_offline.png", fakeSocial(hidden = true, pending = 2, error = "Sem conexão com a internet."), RankingScope.Global)
     @Test fun rankingNeverLoaded() = ranking("r_never.png", SocialUi(lastError = "Sem conexão com a internet."), RankingScope.Global)
     @Test fun settingsFull() = rule.shot("t_settings_full.png") {
-        SettingsContent(SettingsUi(Settings(), 50, 50, false, emptyList(), "0.4.0", fakeSocial(pending = 1)), SettingsCallbacks())
+        SettingsContent(
+            SettingsUi(
+                Settings(), 50, 50, false, emptyList(), "0.5.0", fakeSocial(pending = 1),
+                br.com.trilhati.data.update.UpdateUi(
+                    br.com.trilhati.data.update.AppVersion(8, "0.5.0"),
+                    br.com.trilhati.domain.update.UpdateStatus.Available(
+                        br.com.trilhati.domain.update.ReleaseInfo(9, "0.5.1", "https://exemplo.supabase.co/a.apk", "Correções no ranking.", 1),
+                    ),
+                    showBanner = true, lastCheckMs = NOW_MS,
+                ),
+            ),
+            SettingsCallbacks(),
+        )
     }
 }
