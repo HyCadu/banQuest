@@ -150,6 +150,7 @@ fun FeedbackPanel(
     modifier: Modifier = Modifier,
     animated: Boolean = true,
     partial: Boolean = false,
+    pose: MascotPose? = null,
 ) {
     val c = Trilha.colors
     // partial: completou corrigindo um erro (âmbar: nem acerto limpo, nem erro).
@@ -164,7 +165,7 @@ fun FeedbackPanel(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Mascot(
                     character = character,
-                    pose = if (correct || partial) MascotPose.Happy else MascotPose.Sad,
+                    pose = pose ?: if (correct || partial) MascotPose.Happy else MascotPose.Sad,
                     modifier = Modifier.size(72.dp),
                     animated = animated,
                     decorative = true,

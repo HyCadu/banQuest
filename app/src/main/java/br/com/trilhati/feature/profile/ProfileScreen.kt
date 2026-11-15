@@ -66,7 +66,7 @@ fun ProfileContent(state: AppState, actions: AppActions, modifier: Modifier = Mo
     ) {
         // Cabeçalho
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Mascot(character, if (state.todayLog.goalMet) MascotPose.Celebrate else MascotPose.Happy, Modifier.size(180.dp), animated = animated)
+            Mascot(character, if (state.todayLog.goalMet) MascotPose.Proud else MascotPose.Happy, Modifier.size(180.dp), animated = animated)
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(profile.name, style = MaterialTheme.typography.headlineLarge, color = c.ink)
                 Box(Modifier.clickable { editName = true }.semantics { role = Role.Button }.padding(6.dp)) {

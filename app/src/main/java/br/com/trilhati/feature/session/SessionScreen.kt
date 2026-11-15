@@ -55,7 +55,9 @@ import br.com.trilhati.ui.components.UnreviewedBadge
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
 import br.com.trilhati.ui.icons.IconColors
+import br.com.trilhati.ui.mascot.Mascot
 import br.com.trilhati.ui.mascot.MascotCharacter
+import br.com.trilhati.ui.mascot.MascotPose
 import br.com.trilhati.ui.theme.Spacing
 import br.com.trilhati.ui.theme.Trilha
 
@@ -151,6 +153,7 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             }
         }
         Row(Modifier.fillMaxWidth().padding(horizontal = Spacing.screen), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            LessonBuddy(character, ui, now, animated)
             // Os chips quebram linha sozinhos com fonte grande, sem espremer o anel do cronômetro.
             androidx.compose.foundation.layout.FlowRow(
                 Modifier.weight(1f),
@@ -196,6 +199,14 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
                         onContinue = actions.onContinue,
                         animated = animated,
                         partial = feedback.corrected,
+                        pose = LessonMascot.feedback(
+                            when {
+                                feedback.correct -> AnswerOutcome.Correct
+                                feedback.corrected -> AnswerOutcome.Corrected
+                                else -> AnswerOutcome.Wrong
+                            },
+                            ui.combo,
+                        ),
                     )
                 }
             }
@@ -216,6 +227,22 @@ private val PRAISE = listOf("Mandou bem!", "Isso aí!", "Perfeito!", "Boa, craqu
 private val CONSOLATION = listOf("Quase lá!", "Opa, escorregou!", "Acontece!", "Não foi dessa vez.", "Anota aí!")
 private fun praise(n: Int) = PRAISE[n % PRAISE.size]
 private fun consolation(n: Int) = CONSOLATION[n % CONSOLATION.size]
+
+/**
+ * Personagem pequeno ao lado dos chips: pensa enquanto você responde e fica nervoso quando o cronômetro visível
+ * passa do âmbar. Só o estado do cronômetro (não cada tique) provoca recomposição.
+ */
+@Composable
+private fun LessonBuddy(character: MascotCharacter, ui: SessionUi.Playing, now: State<Long>, animated: Boolean) {
+    val timerVisible = ui.pace.mode == TimerMode.Pace && ui.phase == Phase.Answering
+    val zone by remember(ui.startedAtMs, ui.targetMs, timerVisible) {
+        androidx.compose.runtime.derivedStateOf {
+            if (timerVisible) PaceEngine.zone((now.value - ui.startedAtMs).coerceAtLeast(0), ui.targetMs) else null
+        }
+    }
+    val pose = if (ui.phase == Phase.Answering) LessonMascot.answering(zone) else MascotPose.Idle
+    Mascot(character, pose, Modifier.size(52.dp), animated = animated, decorative = true)
+}
 
 @Composable
 private fun TimerRing(ui: SessionUi.Playing, now: State<Long>) {

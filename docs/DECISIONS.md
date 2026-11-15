@@ -210,3 +210,40 @@ coração, a questão repetia no fim e o resultado saía como erro, embora a tel
 - Regra pura em `LessonRun.answer(..., corrected = true)` e `XpEngine.answerXp(..., corrected)`, com testes unitários e
   um teste de integração na harness.
 
+## Personagens: desenho e animação (0.4.3, 15/11/2026) — a pedido do dono (itens 1 a 4 da proposta)
+
+1. **Desenho:**
+   - sombra no chão, que encolhe quando o personagem pula;
+   - meia-lua de sombra embaixo de corpo e cabeça (`fillOvalShaded`/`shadeInside`), para dar volume;
+   - brilho duplo nos olhos.
+   - **Tamanduá-bandeira redesenhado** de perfil: focinho cônico curvado para baixo, que se funde com a cabeça; cauda
+     em bandeira com mechas de pelo; patas com garras grandes.
+   - **Preguiça** com mãos grandes e três garras curvas escuras.
+   - Tudo continua desenhado em código (regra 1), sem biblioteca nova.
+2. **Animação:**
+   - "squash & stretch" na troca de pose: encolhe, estica e assenta com mola;
+   - física de pulo: achata ao tocar o chão e estica no alto;
+   - piscada dupla de vez em quando;
+   - menos confete na comemoração.
+3. **Gestos de quem está parado:** um a cada 4 a 8 s. A agenda é pura e testada (`FidgetSchedule`), em O(1) e
+   determinística pela semente do personagem.
+   - Gestos comuns: olhar em volta e pulinho.
+   - **Jeito próprio de cada personagem:**
+     - Guaiamum anda de lado estalando as garras;
+     - Tartaruga recolhe a cabeça por trás da borda do casco e volta;
+     - Tamanduá fareja e mostra a língua três vezes;
+     - Preguiça boceja espreguiçando.
+4. **Poses novas** e onde aparecem:
+
+   | Pose | Onde |
+   |---|---|
+   | Pensando (balão de pensamento) | personagem pequeno na lição, enquanto você responde |
+   | Nervoso (gota de suor e boca tremida) | na lição, quando o cronômetro visível passa do âmbar |
+   | Surpreso ("!") | no feedback, a cada 5 de combo |
+   | Acenando | tela de entrada (e-mail) |
+   | Orgulhoso | resultado com ofensiva ou conquista nova; perfil com meta do dia batida, no lugar da comemoração contínua |
+
+   A escolha da pose na lição é pura e testada (`LessonMascot`).
+5. **"Remover animações" do Android e as prévias** continuam respeitados. O personagem fica parado, e nos primeiros
+   6 s na tela nunca faz gesto.
+
