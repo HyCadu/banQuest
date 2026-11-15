@@ -31,48 +31,31 @@ entre aspas.
 
 Sem este passo, o app mostra: *"O banco do servidor ainda não foi configurado (falta rodar o SQL do app no Supabase)."*
 
-## 2. Ligar o login por código de e-mail
+## 2. Configurar o envio de e-mail (SMTP próprio) — antes dos templates
 
-1. **Authentication → Sign In / Providers → Email**: deixe **Enable Email provider** ligado. "Confirm email" pode ficar
-   ligado (o código já confirma o e-mail).
-2. No mesmo lugar, em "Email OTP Length", use **6** (o app pede 6 dígitos). Na validade ("Email OTP Expiration"),
-   o padrão serve.
-3. **Authentication → Emails → Templates**: edite **Magic Link** *e* **Confirm signup**. O primeiro acesso de um e-mail
-   novo pode usar o "Confirm signup". Troque o conteúdo para mostrar o **código** (`{{ .Token }}`) em vez do link:
+O painel **não deixa editar os templates** sem um SMTP próprio. Aparece o aviso *"Set up custom SMTP to edit templates"*.
+E o template padrão manda só um **link**, sem o código, então o login do app não funciona com ele. Além disso, o envio
+padrão manda poucos e-mails por hora e **só para os e-mails da equipe do projeto**. Para um amigo, o app mostraria
+*"O servidor ainda não pode mandar e-mail para esse endereço…"*.
 
-   **Assunto:**
-   ```
-   Seu código do Trilha TI: {{ .Token }}
-   ```
-   **Corpo (HTML):**
-   ```html
-   <h2>Seu código do Trilha TI</h2>
-   <p>Digite este código no app para entrar:</p>
-   <p style="font-size:32px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
-   <p>Ele vale por pouco tempo. Se você não pediu este código, ignore este e-mail.</p>
-   ```
-
-Se o e-mail chegar com um **link** em vez do número, o template ainda está sem `{{ .Token }}`.
-
-## 3. Enviar e-mail para os amigos (SMTP próprio)
-
-O envio padrão do Supabase serve só para testes: manda poucos e-mails por hora e **só para os e-mails da equipe do
-projeto**. Para um amigo, o app mostra: *"O servidor ainda não pode mandar e-mail para esse endereço…"*. A solução é
-configurar um SMTP próprio em **Authentication → Emails → SMTP Settings** → **Enable Custom SMTP**.
+Onde configurar: **Authentication → Emails → aba "SMTP Settings"** (ou o botão **"Set up SMTP"** no aviso).
 
 ### Opção A — Gmail (mais simples, não precisa de domínio)
 1. Na conta Google que vai enviar: ative a **verificação em duas etapas**.
 2. Em myaccount.google.com → Segurança → **Senhas de app**: crie uma senha para "Trilha TI" (16 letras).
-3. No Supabase (SMTP Settings):
+3. No Supabase, ligue o SMTP próprio e preencha:
 
    | Campo | Valor |
    |---|---|
-   | Sender email | o seu Gmail |
+   | Sender email address | o seu Gmail |
    | Sender name | `Trilha TI` |
    | Host | `smtp.gmail.com` |
-   | Port | `465` |
+   | Port number | `465` |
+   | Minimum interval between emails | deixe o padrão (60 s) |
    | Username | o seu Gmail |
    | Password | a senha de app (sem espaços) |
+
+4. **Save changes**.
 
 O Gmail aceita algumas centenas de e-mails por dia, bem mais do que um grupo de amigos usa.
 
@@ -89,6 +72,30 @@ Em **Authentication → Rate Limits**, o limite de e-mails por hora pode ser aum
 
 > A senha de app (ou a API key) fica **só** no painel do Supabase. Ela nunca vai para o app nem para o repositório.
 
+## 3. Ligar o login por código (templates com `{{ .Token }}`)
+
+1. **Authentication → Sign In / Providers → Email**: deixe **Enable Email provider** ligado. "Confirm email" pode ficar
+   ligado (o código já confirma o e-mail). Se houver a opção "Email OTP Length", use **6**.
+2. **Authentication → Emails → aba "Templates"**: com o SMTP salvo, os templates passam a ser editáveis. Edite dois:
+   - **"Magic link or OTP"**: usado quando a conta já existe;
+   - **"Confirm sign up"**: o primeiro acesso de um e-mail novo pode usar este.
+
+   Em cada um, troque o **Subject** e, no **Body**, a aba **Source** (não a Preview), e clique em **Save changes**:
+
+   **Subject:**
+   ```
+   Seu código do Trilha TI: {{ .Token }}
+   ```
+   **Body (Source):**
+   ```html
+   <h2>Seu código do Trilha TI</h2>
+   <p>Digite este código no app para entrar:</p>
+   <p style="font-size:32px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
+   <p>Ele vale por pouco tempo. Se você não pediu este código, ignore este e-mail.</p>
+   ```
+
+Se o e-mail chegar com um **link** em vez do número, o template ainda está sem `{{ .Token }}`.
+
 ## 4. Testar
 
 1. Instale `dist/trilha-ti-0.4.0-debug.apk` e abra: aparece a tela **"Entre com seu e-mail"**.
@@ -104,10 +111,10 @@ Em **Authentication → Rate Limits**, o limite de e-mails por hora pode ser aum
 | O app diz… | O que fazer |
 |---|---|
 | "falta rodar o SQL do app no Supabase" | Passo 1. |
-| "O servidor ainda não pode mandar e-mail para esse endereço" | Passo 3 (SMTP próprio). |
-| "Muitos pedidos de código seguidos" | Espere alguns minutos ou aumente o limite (passo 3). |
+| "O servidor ainda não pode mandar e-mail para esse endereço" | Passo 2 (SMTP próprio). |
+| "Muitos pedidos de código seguidos" | Espere alguns minutos ou aumente o limite (passo 2). |
 | "Código inválido ou vencido" | Use o código do **último** e-mail, ou peça outro. |
-| O e-mail chega com link, sem número | Passo 2.3 (templates com `{{ .Token }}`). |
+| O e-mail chega com link, sem número | Passo 3 (templates com `{{ .Token }}`). |
 | Nada carrega e o painel diz "Paused" | O plano gratuito pausa projetos parados por ~1 semana: clique em **Restore**. |
 
 ## 6. Privacidade (para mandar aos amigos)

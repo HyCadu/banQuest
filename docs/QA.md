@@ -101,7 +101,7 @@
 **16. Entrar**
 - [ ] Instale por cima da 0.3. Ao abrir, aparece **"Entre com seu e-mail"** (a trilha só abre com conta).
 - [ ] Digite um e-mail inválido: o app avisa sem enviar nada. Digite o seu → **Receber código**.
-- [ ] O e-mail chega com um **número de 6 dígitos** (se vier um link, falta o passo 2.3 do guia). Digite um código errado:
+- [ ] O e-mail chega com um **número de 6 dígitos** (se vier um link, falta o passo 3 do guia). Digite um código errado:
       "Código inválido ou vencido". Digite o certo → **Entrar**.
 - [ ] "Reenviar (60)" conta para trás; **Trocar e-mail** volta ao primeiro passo.
 - [ ] Escolha apelido e personagem → **Começar**. O progresso que você tinha na 0.3 **continua** (sobe para a nuvem).
