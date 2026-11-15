@@ -161,8 +161,8 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                 Text("Para revisar", style = MaterialTheme.typography.headlineSmall, color = c.ink, modifier = Modifier.fillMaxWidth())
                 wrong.take(5).forEach { r ->
                     Text(
-                        r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
-                        Modifier.fillMaxWidth().background(c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
+                        (if (r.corrected) "Corrigida no caminho · " else "") + r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
+                        Modifier.fillMaxWidth().background(if (r.corrected) c.warningSoft else c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
                         style = MaterialTheme.typography.bodySmall, color = c.ink,
                     )
                 }

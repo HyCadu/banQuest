@@ -132,6 +132,12 @@
 - [ ] **Excluir minha conta** (use uma conta de teste): pede confirmação, volta para a tela de entrada, e no painel do
       Supabase o usuário some de Authentication → Users.
 
+**20. Associar pares com erro corrigido (0.4.2)**
+- [ ] Numa questão de associar colunas, erre um par de propósito (pisca vermelho) e depois complete todos certo.
+- [ ] O painel fica **âmbar**: "Pares completos! +5 XP", e explica que a questão volta em Praticar erros.
+- [ ] Os corações **não** diminuem e a questão **não** volta no fim da lição.
+- [ ] No resultado, ela aparece em "Para revisar" como **"Corrigida no caminho"**, e a lição não conta como perfeita.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 

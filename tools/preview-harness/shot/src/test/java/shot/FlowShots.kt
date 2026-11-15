@@ -80,6 +80,7 @@ class FlowShots {
     @Test fun sCase() = session("s_case.png", playing(QuestionType.Case, idx = 3, exercise = ExerciseState.Choice(null)))
     @Test fun sCode() = session("s_code.png", playing(QuestionType.CodeOutput, exercise = ExerciseState.Choice(1)))
     @Test fun sMatch() { val p = playing(QuestionType.Match); session("s_match.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0), selectedLeft = 2))) }
+    @Test fun sMatchCorrected() { val p = playing(QuestionType.Match); session("s_match_corrected.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0, 1, 2, 3), mistakes = 1), phase = Phase.Feedback(false, null, 5, slips = 1))) }
     @Test fun sOrder() { val p = playing(QuestionType.OrderCode); session("s_order.png", p.copy(exercise = ExerciseState.Order(listOf(3, 0, 4), listOf(1, 2)))) }
     @Test fun sTf() = session("s_tf.png", playing(QuestionType.TrueFalse, exercise = ExerciseState.Choice(0)))
     @Test fun sDark() = session("s_mcq_dark.png", playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(1)), dark = true)

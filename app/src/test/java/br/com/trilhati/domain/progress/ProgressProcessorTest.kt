@@ -163,4 +163,19 @@ class ProgressProcessorTest {
         assertEquals(5, s.answeredTotal) // 4 + 1 repetição
         assertEquals(30_000, s.averageTimeMs)
     }
+
+    @Test fun `questao corrigida vai para a revisao como um erro`() {
+        val qs = TestData.questions(3)
+        var run = LessonRun.start(qs)
+        run = LessonRun.answer(run, true, 60_000, 180_000)
+        run = LessonRun.answer(run, false, 60_000, 180_000, corrected = true)
+        run = LessonRun.answer(run, true, 60_000, 180_000)
+        val result = SessionResult(SessionKind.Lesson, "u1l1", "u1", run.records, run.bestCombo, run.perfect)
+        val s = apply(freshState(), result).state
+        val card = s.questionStats.getValue(qs[1].id).card
+        assertTrue(card.active)
+        assertEquals(today.plusDays(1), card.nextReview)
+        assertEquals(0, s.stats.perfectLessons)
+        assertEquals(2, s.stats.firstTryCorrect)
+    }
 }

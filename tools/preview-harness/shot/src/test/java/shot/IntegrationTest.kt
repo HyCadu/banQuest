@@ -75,8 +75,9 @@ class IntegrationTest {
             br.com.trilhati.data.social.SyncScheduler(context))
 
     /** Joga a sessão inteira. [wrongOnFirst] é quantas questões errar de propósito (as primeiras de múltipla escolha). */
-    private fun play(vm: SessionViewModel, wrongOnFirst: Int = 0): SessionUi.Finished {
+    private fun play(vm: SessionViewModel, wrongOnFirst: Int = 0, slipOnMatch: Boolean = false, feedbacks: MutableList<Pair<QuestionType, Phase.Feedback>>? = null): SessionUi.Finished {
         var wrongLeft = wrongOnFirst
+        var slip = slipOnMatch
         var guard = 0
         while (guard++ < 60) {
             val ui = await("próximo estado") { vm.ui.value.takeIf { it !is SessionUi.Loading && it !is SessionUi.Saving } }
@@ -88,6 +89,7 @@ class IntegrationTest {
                     when (q.type) {
                         QuestionType.Match -> {
                             val order = (ui.exercise as ExerciseState.Match).rightOrder
+                            if (slip) { slip = false; vm.matchLeft(0); idle(); vm.matchRight(order.indexOf(1)); idle() } // um par errado
                             q.pairs.indices.forEach { i -> vm.matchLeft(i); idle(); vm.matchRight(order.indexOf(i)); idle() }
                         }
                         QuestionType.OrderCode -> {
@@ -101,7 +103,7 @@ class IntegrationTest {
                         }
                     }
                     idle()
-                    try { await("feedback") { (vm.ui.value as? SessionUi.Playing)?.phase as? Phase.Feedback } }
+                    try { await("feedback") { (vm.ui.value as? SessionUi.Playing)?.phase as? Phase.Feedback }.let { feedbacks?.add(q.type to it) } }
                     catch (e: AssertionError) { val cur = vm.ui.value as? SessionUi.Playing; fail("sem feedback em ${q.id} (${q.type}) exercício=${cur?.exercise}") }
                 }
                 else -> fail("estado inesperado: $ui")
@@ -241,6 +243,21 @@ class IntegrationTest {
         clock.instant = clock.instant.plusSeconds(3 * 24 * 3600)
         runBlocking { progress.ensureReady(today()) }
         assertEquals(0, snap().stats.streak.current)
+    }
+
+    @Test fun associarParesComParErradoCorrigidoNaoCustaCoracaoMasVaiParaRevisao() {
+        runBlocking { progress.ensureReady(today()) }
+        val feedbacks = mutableListOf<Pair<QuestionType, Phase.Feedback>>()
+        val fin = play(newVm("lesson", "u1l1"), slipOnMatch = true, feedbacks = feedbacks)
+        val match = feedbacks.first { it.first == QuestionType.Match }.second
+        assertTrue("deveria ser corrigida", match.corrected)
+        assertEquals(1, match.slips); assertEquals(5, match.xp); assertNull(match.correctText)
+        assertEquals("nada volta para o fim", 8, fin.run.records.size)
+        assertFalse(fin.run.perfect)
+        val s = snap()
+        assertEquals("sem perder coração", 5, s.stats.hearts.hearts)
+        assertEquals("vai para a revisão", 1, s.errorBankSize)
+        assertFalse(s.lessonProgress.getValue("u1l1").perfect)
     }
 
     @Test fun treinoTambemEntraNaFilaComoPractice() {

@@ -15,8 +15,8 @@ android {
         applicationId = "br.com.trilhati"
         minSdk = 26
         targetSdk = 37
-        versionCode = 5
-        versionName = "0.4.1"
+        versionCode = 6
+        versionName = "0.4.2"
         // Projeto Supabase (chave pública/publishable: pode ir no app; as regras RLS protegem os dados).
         buildConfigField("String", "SUPABASE_URL", "\"${providers.gradleProperty("trilha.supabaseUrl").getOrElse("")}\"")
         buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"${providers.gradleProperty("trilha.supabaseKey").getOrElse("")}\"")

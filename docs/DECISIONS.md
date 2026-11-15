@@ -195,3 +195,18 @@ construir sem responder antes:
 18. **"Confirm email" desligado no Supabase** (descoberto no primeiro teste real): com ele ligado, um e-mail que recebeu
     o link de confirmação fica preso como "não confirmado", e o Supabase manda o template de confirmação, com link,
     em vez do código. O código de 6 dígitos já prova a posse do e-mail. O passo está no `docs/SUPABASE_SETUP.md`.
+
+## Associar pares: erro corrigido (0.4.2, 15/11/2026) — decisão do dono
+
+Antes, qualquer par errado marcava a questão como erro, mesmo depois de o aluno completar todos os pares: custava
+coração, a questão repetia no fim e o resultado saía como erro, embora a tela deixasse continuar. O dono escolheu
+**"corrigiu vale, com custo menor"**:
+- Se o aluno completa os pares sem errar nenhum, é acerto normal: 10 XP, ou 15 com o bônus de velocidade.
+- Se errou algum par no caminho, a questão é **corrigida**:
+  - vale 5 XP, zera o combo e não conta para a lição perfeita;
+  - **não** custa coração e **não** repete no fim;
+  - entra na revisão (Praticar erros) como um erro;
+  - feedback âmbar "Pares completos!", e no resumo aparece como "Corrigida no caminho".
+- Regra pura em `LessonRun.answer(..., corrected = true)` e `XpEngine.answerXp(..., corrected)`, com testes unitários e
+  um teste de integração na harness.
+

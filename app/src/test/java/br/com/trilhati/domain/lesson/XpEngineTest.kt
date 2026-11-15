@@ -24,4 +24,9 @@ class XpEngineTest {
         assertEquals(250, XpEngine.xpIntoLevel(750))
         assertEquals(0.5f, XpEngine.levelProgress(750), 0.0001f)
     }
+
+    @Test fun `corrigido vale 5 sem bonus de tempo`() {
+        assertEquals(5, XpEngine.answerXp(false, false, 5_000, corrected = true))
+        assertEquals(0, XpEngine.answerXp(false, false, 5_000, corrected = false))
+    }
 }
