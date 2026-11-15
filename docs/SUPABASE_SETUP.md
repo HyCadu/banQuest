@@ -74,8 +74,10 @@ Em **Authentication → Rate Limits**, o limite de e-mails por hora pode ser aum
 
 ## 3. Ligar o login por código (templates com `{{ .Token }}`)
 
-1. **Authentication → Sign In / Providers → Email**: deixe **Enable Email provider** ligado. "Confirm email" pode ficar
-   ligado (o código já confirma o e-mail). Se houver a opção "Email OTP Length", use **6**.
+1. **Authentication → Sign In / Providers → Email**: deixe **Enable Email provider** ligado e **desligue "Confirm email"**.
+   Com ele ligado, um e-mail que já recebeu um link fica como conta "não confirmada", e o Supabase passa a mandar o
+   template de confirmação (com link) em vez do código. Desligar não abre brecha: para entrar, a pessoa precisa
+   digitar o código que chegou no e-mail dela. Se houver a opção "Email OTP Length", use **6**.
 2. **Authentication → Emails → aba "Templates"**: com o SMTP salvo, os templates passam a ser editáveis. Edite dois:
    - **"Magic link or OTP"**: usado quando a conta já existe;
    - **"Confirm sign up"**: o primeiro acesso de um e-mail novo pode usar este.
@@ -114,7 +116,7 @@ Se o e-mail chegar com um **link** em vez do número, o template ainda está sem
 | "O servidor ainda não pode mandar e-mail para esse endereço" | Passo 2 (SMTP próprio). |
 | "Muitos pedidos de código seguidos" | Espere alguns minutos ou aumente o limite (passo 2). |
 | "Código inválido ou vencido" | Use o código do **último** e-mail, ou peça outro. |
-| O e-mail chega com link, sem número | Passo 3 (templates com `{{ .Token }}`). |
+| O e-mail chega com link, sem número | Templates sem `{{ .Token }}` ou não salvos (passo 3.2), ou "Confirm email" ainda ligado (passo 3.1). Neste caso, apague em **Authentication → Users** o usuário que ficou "não confirmado" e peça o código de novo. |
 | "O Supabase não conseguiu enviar o e-mail com o código" | O SMTP recusou o envio. Veja o motivo em **Logs → Auth** (ex.: `535 Username and Password not accepted` = senha de app errada) e corrija no passo 2. |
 | "O servidor deu erro (500: …)" | Veja o texto entre parênteses e o **Logs → Auth** no painel. |
 | Nada carrega e o painel diz "Paused" | O plano gratuito pausa projetos parados por ~1 semana: clique em **Restore**. |

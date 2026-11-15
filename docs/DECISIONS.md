@@ -192,3 +192,6 @@ construir sem responder antes:
 16. **SMTP:** o padrão do plano era o Resend, mas ele exige um domínio verificado para mandar e-mail a terceiros. O guia
     (`docs/SUPABASE_SETUP.md`) recomenda o **Gmail com senha de app** para quem não tem domínio, e o Resend para quem tem.
 17. **Testes da harness:** `androidx.work:work-testing` entrou **só** na harness (`tools/preview-harness`), não no app.
+18. **"Confirm email" desligado no Supabase** (descoberto no primeiro teste real): com ele ligado, um e-mail que recebeu
+    o link de confirmação fica preso como "não confirmado", e o Supabase manda o template de confirmação, com link,
+    em vez do código. O código de 6 dígitos já prova a posse do e-mail. O passo está no `docs/SUPABASE_SETUP.md`.
