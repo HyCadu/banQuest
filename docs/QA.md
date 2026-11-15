@@ -16,7 +16,8 @@ O arquivo sai em `app/build/outputs/apk/debug/app-debug.apk`.
 
 **Checklist**
 - [ ] O ícone "Trilha TI" (triângulo âmbar sobre azul-petróleo, provisório) aparece na lista de apps.
-- [ ] Ao abrir, o app mostra uma **tela totalmente vazia**, sem travar, em modo claro e escuro.
+- [ ] Ao abrir, o app mostra a **tela de diagnóstico**: título "Trilha TI", "Fase 0 — esqueleto funcionando", a data de hoje (Brasília) e "Banco de dados: aberto, sem perfil ainda". Se aparecer isso, Compose, Hilt, Clock e Room estão funcionando. Vale para modo claro e escuro.
+- [ ] Se o app **fechar sozinho ao abrir**, anote o modelo do celular e a versão do Android e me avise.
 - [ ] Girar a tela não fecha o app.
 - [ ] Em Configurações do Android > Apps > Trilha TI > Permissões: **nenhuma permissão** listada.
 - [ ] O app funciona com o modo avião ligado (não usa rede).

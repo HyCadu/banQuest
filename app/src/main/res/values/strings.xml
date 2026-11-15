@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Trilha TI</string>
-    <string name="empty_screen_description">Tela inicial vazia da Trilha TI</string>
+    <string name="diag_title">Trilha TI</string>
+    <string name="diag_phase">Fase 0 — esqueleto funcionando</string>
+    <string name="diag_date">Hoje (Brasília): %1$s</string>
+    <string name="diag_db_empty">Banco de dados: aberto, sem perfil ainda</string>
+    <string name="diag_db_profile">Banco de dados: perfil de %1$s</string>
+    <string name="diag_hint">Tela provisória de diagnóstico. A trilha vem nas próximas fases.</string>
 </resources>
