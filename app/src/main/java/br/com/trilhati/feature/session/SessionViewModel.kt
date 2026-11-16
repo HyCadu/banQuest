@@ -8,9 +8,11 @@ import br.com.trilhati.data.prefs.Settings
 import br.com.trilhati.data.prefs.SettingsRepository
 import br.com.trilhati.data.repo.ProgressRepository
 import br.com.trilhati.domain.hearts.HeartsEngine
+import br.com.trilhati.domain.lesson.LessonPlanner
 import br.com.trilhati.domain.lesson.LessonRun
 import br.com.trilhati.domain.lesson.LessonRunState
 import br.com.trilhati.domain.model.Question
+import br.com.trilhati.domain.model.QuestionLevel
 import br.com.trilhati.domain.model.QuestionType
 import br.com.trilhati.domain.pace.PaceEngine
 import br.com.trilhati.domain.progress.PurchaseResult
@@ -69,7 +71,11 @@ class SessionViewModel @Inject constructor(
     private var exercise: ExerciseState = ExerciseState.Choice()
     private var phase: Phase = Phase.Answering
     private var startedAtMs = 0L
-    private var hearts: Int? = null
+    /** Corações em metades (null quando a sessão não usa corações). */
+    private var heartHalves: Int? = null
+    private var helps = 0
+    /** Primeiro exercício de cada conceito ainda não visto, nesta sessão: ali a dica abre sozinha. */
+    private var introIds: Set<String> = emptySet()
     private var outOfHearts = false
     private var finishing = false
 
@@ -87,11 +93,12 @@ class SessionViewModel @Inject constructor(
         val now = clock.millis()
         val heartsNow = HeartsEngine.regen(snap.stats.hearts, now)
         val usesHearts = source == SessionSource.Lesson && !settings.noLives
-        if (usesHearts && heartsNow.hearts == 0) {
+        if (usesHearts && heartsNow.halves == 0) {
             _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false)
             return
         }
-        hearts = if (usesHearts) heartsNow.hearts else null
+        heartHalves = if (usesHearts) heartsNow.halves else null
+        helps = snap.stats.help.count
         val random = Random(now)
         val questions: List<Question>
         when (source) {
@@ -102,7 +109,11 @@ class SessionViewModel @Inject constructor(
                     return
                 }
                 title = lesson.title
-                questions = LessonRun.pick(lesson.questions, progress.missedIds(lesson.id), random)
+                val answered = progress.answeredIds(lesson.id)
+                questions = LessonPlanner.plan(lesson.questions, progress.missedIds(lesson.id), random, lesson.concepts.map { it.id }, answered)
+                val seenConcepts = lesson.questions.filter { it.id in answered }.mapNotNull { it.conceptId }.toSet()
+                introIds = questions.filter { it.conceptId != null && it.conceptId !in seenConcepts }
+                    .groupBy { it.conceptId }.values.map { it.first().id }.toSet()
             }
             SessionSource.Errors -> {
                 title = "Praticar erros"
@@ -159,10 +170,17 @@ class SessionViewModel @Inject constructor(
         val pace = settings.paceConfig
         _ui.value = SessionUi.Playing(
             title = title, question = item.question, exercise = exercise, phase = phase,
-            progress = r.progress, combo = r.combo, hearts = hearts, retry = item.retry, pace = pace,
-            targetMs = pace.targetMs(item.question.isCase), startedAtMs = startedAtMs, answered = r.records.size,
+            progress = r.progress, combo = r.combo, hearts = heartHalves?.div(2), retry = item.retry, pace = pace,
+            targetMs = pace.targetMs(item.question), startedAtMs = startedAtMs, answered = r.records.size,
             slackMs = PaceEngine.slackMs(r.targetsSumMs, r.totalTimeMs), haptics = settings.haptics,
             remaining = if (phase == Phase.Answering) r.queue.size else r.queue.size + 1,
+            // Durante a resposta a atual ainda está na fila; no feedback ela já saiu, então soma de novo.
+            remainingBudgetMs = r.queue.sumOf { pace.targetMs(it.question) } +
+                if (phase == Phase.Answering) 0 else pace.targetMs(item.question),
+            concept = item.question.conceptId?.let { content.lesson(item.question.lessonId)?.concept(it) },
+            newConcept = !item.retry && item.question.id in introIds,
+            halfHeart = heartHalves?.let { it % 2 == 1 } ?: false,
+            helps = helps,
         )
     }
 
@@ -231,23 +249,41 @@ class SessionViewModel @Inject constructor(
         publish()
     }
 
-    private fun submit(correct: Boolean, slips: Int = 0) {
+    /**
+     * Botão "Não sei" (só nos exercícios de ensino): gasta um uso, mostra a resposta explicada sem custar coração e o
+     * exercício volta no fim da lição (como um erro, sem XP).
+     */
+    fun dontKnow() {
+        if (phase != Phase.Answering) return
+        val q = shown?.question ?: return
+        if (q.level == QuestionLevel.Exam || helps <= 0) return
+        helps -= 1
+        viewModelScope.launch { progress.useHelp() }
+        submit(correct = false, skipped = true)
+    }
+
+    private fun submit(correct: Boolean, slips: Int = 0, skipped: Boolean = false) {
         val r = checkNotNull(run)
         val item = checkNotNull(shown)
         val elapsed = (clock.millis() - startedAtMs).coerceAtLeast(0)
-        val target = settings.paceConfig.targetMs(item.question.isCase)
+        val target = settings.paceConfig.targetMs(item.question)
         val corrected = !correct && slips > 0
         val next = LessonRun.answer(r, correct, elapsed, target, corrected)
         run = next
         val record = next.records.last()
-        if (hearts != null && !correct && !corrected && !item.retry) {
-            hearts = (hearts ?: 0) - 1
-            viewModelScope.launch { progress.loseHeart() }
-            if (hearts == 0) outOfHearts = true
+        // Erro em questão de prova custa um coração; em exercício de ensino (aprender e praticar), meio.
+        val cost = if (item.question.level == QuestionLevel.Exam) 2 else 1
+        val halvesNow = heartHalves
+        if (halvesNow != null && !correct && !corrected && !skipped && !item.retry) {
+            val left = (halvesNow - cost).coerceAtLeast(0)
+            heartHalves = left
+            viewModelScope.launch { progress.loseHeart(cost) }
+            if (left == 0) outOfHearts = true
         }
-        phase = Phase.Feedback(correct, if (correct || corrected) null else correctText(item.question), record.xp, slips)
+        phase = Phase.Feedback(correct, if (correct || corrected) null else correctText(item.question), record.xp, slips, skipped)
         sfx(
             when {
+                skipped -> br.com.trilhati.sound.Sfx.Click
                 corrected -> br.com.trilhati.sound.Sfx.Correct
                 !correct -> br.com.trilhati.sound.Sfx.Wrong
                 next.combo == 3 || (next.combo > 3 && next.combo % 5 == 0) -> br.com.trilhati.sound.Sfx.Combo

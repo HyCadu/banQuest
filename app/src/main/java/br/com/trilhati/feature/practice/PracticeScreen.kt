@@ -22,6 +22,7 @@ import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
+import br.com.trilhati.ui.components.InfoButton
 import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.MascotSays
 import br.com.trilhati.ui.icons.GameIcon
@@ -62,15 +63,23 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
         modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen, vertical = Spacing.md),
         verticalArrangement = Arrangement.spacedBy(Spacing.md),
     ) {
-        Text("Praticar erros", style = MaterialTheme.typography.displaySmall, color = c.primaryText)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("Praticar erros", Modifier.weight(1f), style = MaterialTheme.typography.displaySmall, color = c.primaryText)
+            InfoButton(
+                "Como funciona",
+                "Toda questão que você erra volta para revisão depois de ${SrsEngine.INTERVALS_DAYS[0]}, " +
+                    "${SrsEngine.INTERVALS_DAYS[1]}, ${SrsEngine.INTERVALS_DAYS[2]} e ${SrsEngine.INTERVALS_DAYS[3]} dias, se você for acertando. " +
+                    "Errou de novo? O ciclo recomeça. Terminar um treino devolve 1 coração.",
+            )
+        }
         MascotSays(
             character = character,
             pose = if (due > 0) MascotPose.Idle else MascotPose.Happy,
             text = when {
-                bank == 0 && !state.hasAnyCompletedLesson -> "Ainda não tem erro para revisar. Faça uma lição e eu guardo o que você errar!"
-                bank == 0 -> "Nenhum erro guardado. Mandou bem! Que tal uma revisão livre?"
-                due > 0 -> "Tem $due ${if (due == 1) "questão esperando" else "questões esperando"} revisão. Bora acertar de vez?"
-                else -> "Nada vencido por hoje, mas dá para treinar os erros mais antigos."
+                bank == 0 && !state.hasAnyCompletedLesson -> "Faça uma lição e eu guardo seus erros."
+                bank == 0 -> "Nenhum erro guardado. Mandou bem!"
+                due > 0 -> "$due ${if (due == 1) "erro esperando" else "erros esperando"} revisão. Bora?"
+                else -> "Nada vencido hoje."
             },
             animated = animated,
         )
@@ -90,7 +99,7 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
             enabled = state.hasAnyCompletedLesson,
         )
         if (!state.hasAnyCompletedLesson) {
-            Text("A revisão livre libera depois da primeira lição concluída.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+            Text("Libera depois da primeira lição.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
         }
         if (weak.isNotEmpty()) {
             Text("Seus pontos fracos", style = MaterialTheme.typography.headlineSmall, color = c.ink)
@@ -101,17 +110,10 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
                 ) {
                     Text(w.lessonTitle, style = MaterialTheme.typography.titleSmall, color = c.ink)
                     GameProgressBar(w.accuracy / 100f, color = c.error, height = 10.dp)
-                    Text("${w.accuracy}% de acerto em ${w.answered} respostas", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+                    Text("${w.accuracy}% de acerto", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
                 }
             }
         }
-        Text("Como funciona", style = MaterialTheme.typography.headlineSmall, color = c.ink)
-        Text(
-            "Toda questão que você erra volta para revisão depois de ${SrsEngine.INTERVALS_DAYS[0]}, " +
-                "${SrsEngine.INTERVALS_DAYS[1]}, ${SrsEngine.INTERVALS_DAYS[2]} e ${SrsEngine.INTERVALS_DAYS[3]} dias, se você for acertando. " +
-                "Errou de novo? O ciclo recomeça. Terminar um treino devolve 1 coração.",
-            style = MaterialTheme.typography.bodyMedium, color = c.inkSoft,
-        )
     }
 }
 

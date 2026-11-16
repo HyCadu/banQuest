@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "provas"
 OUT = ROOT / "app" / "src" / "main" / "assets" / "provas" / "provas-anteriores.json"
 HIDDEN = {"versao_antiga", "fora_do_edital"}
-KEEP = ["id", "lesson", "type", "topic", "subtopic", "difficulty", "style", "stem", "code", "options", "answer",
+KEEP = ["id", "lesson", "concept", "type", "topic", "subtopic", "difficulty", "style", "stem", "code", "options", "answer",
         "explanation", "source", "reviewed"]
 REF = ["banca", "orgao", "ano", "cargo", "prova", "numero"]
 

@@ -18,3 +18,12 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
         db.execSQL("DROP TABLE IF EXISTS `league_week`")
     }
 }
+
+/** v3 -> v4 (0.7.1): meio coração e o estoque do botão "Não sei" (todo mundo começa com 3). */
+val MIGRATION_3_4 = object : Migration(3, 4) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE `stats` ADD COLUMN `heartHalf` INTEGER NOT NULL DEFAULT 0")
+        db.execSQL("ALTER TABLE `stats` ADD COLUMN `helps` INTEGER NOT NULL DEFAULT 3")
+        db.execSQL("ALTER TABLE `stats` ADD COLUMN `helpsDay` INTEGER NOT NULL DEFAULT 0")
+    }
+}

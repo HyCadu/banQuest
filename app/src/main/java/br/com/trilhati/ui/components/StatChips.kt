@@ -71,6 +71,8 @@ fun TopStatusBar(
     onExamClick: (() -> Unit)? = null,
     showHearts: Boolean = true,
     studiedToday: Boolean = true,
+    /** Meio coração além de [hearts]: mostra o coração rachado. */
+    halfHeart: Boolean = false,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -84,7 +86,10 @@ fun TopStatusBar(
         )
         StatChip(GameIcon.Gem, gems.toString(), pluralStringResource(R.plurals.stat_gems_description, gems, gems), onClick = onGemsClick)
         if (showHearts) {
-            StatChip(GameIcon.Heart, hearts.toString(), pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts), onClick = onHeartsClick)
+            // Meio coração: "4,5" e o ícone rachado.
+            val text = if (halfHeart) "$hearts,5" else hearts.toString()
+            val description = pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts) + if (halfHeart) " e meio" else ""
+            StatChip(if (halfHeart) GameIcon.HeartCracked else GameIcon.Heart, text, description, onClick = onHeartsClick)
         }
         StatChip(
             GameIcon.Clock,

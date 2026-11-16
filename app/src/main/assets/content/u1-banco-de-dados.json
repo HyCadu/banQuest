@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "pack": "u1-banco-de-dados",
- "version": 1,
+ "version": 3,
  "unit": {
   "id": "u1",
   "order": 1,
@@ -24,6 +24,43 @@
    "id": "u1l1",
    "order": 1,
    "title": "Modelo ER e normalização",
+   "concepts": [
+    {
+     "id": "u1l1c1",
+     "title": "Chaves e atributos",
+     "summary": "Chave primária: a coluna que não se repete e identifica cada linha. Chave candidata: outra coluna que também poderia ser a primária. Atributos podem ser compostos (endereço), multivalorados (telefones) ou derivados (idade, calculada pela data de nascimento)."
+    },
+    {
+     "id": "u1l1c2",
+     "title": "Cardinalidade e relacionamentos",
+     "summary": "1:1, 1:n ou n:m dizem quantas ocorrências de cada lado se ligam. No 1:n, a chave estrangeira fica no lado n (o dos \"vários\"). O n:m precisa de uma tabela associativa. Autorrelacionamento liga uma entidade a ela mesma."
+    },
+    {
+     "id": "u1l1c3",
+     "title": "Entidade fraca e entidade associativa",
+     "summary": "Entidade fraca só é identificada junto com a entidade de que depende (o quarto 101 existe em vários hotéis). Entidade associativa é um relacionamento n:m tratado como entidade, para ter identificação própria ou se ligar a outras entidades."
+    },
+    {
+     "id": "u1l1c4",
+     "title": "Projeto conceitual, lógico e físico",
+     "summary": "Conceitual: o diagrama E-R, sem pensar em SGBD. Lógico: tabelas e chaves para um tipo de SGBD (relacional), sem escolher o produto. Físico: índices, tipos e armazenamento do SGBD escolhido."
+    },
+    {
+     "id": "u1l1c5",
+     "title": "Dependência funcional",
+     "summary": "X → Y quer dizer que cada valor de X tem um único valor de Y (o CPF determina o nome). Se A → B e B → C, então A → C. Mas X → Y e X → Z não permitem concluir Y → Z."
+    },
+    {
+     "id": "u1l1c6",
+     "title": "1FN e 2FN",
+     "summary": "1FN: um valor por campo, sem listas nem grupos repetidos. 2FN: está na 1FN e nenhum atributo depende só de parte de uma chave composta (dependência parcial)."
+    },
+    {
+     "id": "u1l1c7",
+     "title": "3FN, FNBC e desnormalização",
+     "summary": "3FN: está na 2FN e nenhum atributo não chave depende de outro não chave (dependência transitiva). FNBC: todo determinante é chave candidata. Desnormalizar é copiar dados de propósito para ganhar desempenho."
+    }
+   ],
    "questions": [
     {
      "id": "u1l1q01",
@@ -43,7 +80,9 @@
      "answer": 0,
      "explanation": "A chave primária identifica unicamente cada ocorrência. A chave estrangeira apenas referencia a chave de outra entidade; os demais são tipos de atributo que não têm função identificadora.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "prova"
     },
     {
      "id": "u1l1q02",
@@ -63,7 +102,9 @@
      "answer": 3,
      "explanation": "Relacionamentos N:N não podem ser representados por uma chave estrangeira simples em nenhum dos lados. A tabela associativa (por exemplo, MATRICULA) guarda o par de chaves e, se necessário, atributos do relacionamento.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "prova"
     },
     {
      "id": "u1l1q03",
@@ -83,7 +124,9 @@
      "answer": 2,
      "explanation": "A exigência de dependência da chave completa é da 2FN (dependência parcial). A 1FN trata de atomicidade e de grupos repetidos.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "prova"
     },
     {
      "id": "u1l1q04",
@@ -103,7 +146,9 @@
      "answer": 0,
      "explanation": "Há dependência parcial: nome_produto depende de apenas parte da chave composta. A 2FN exige removê-la para uma tabela em que o determinante seja a chave completa (PRODUTO). Índice não resolve redundância.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "prova"
     },
     {
      "id": "u1l1q05",
@@ -123,7 +168,9 @@
      "answer": 2,
      "explanation": "As demais alternativas descrevem, respectivamente, a 2FN, a 1FN, a forma normal de Boyce-Codd e a 4FN.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "prova"
     },
     {
      "id": "u1l1q06",
@@ -143,7 +190,9 @@
      "answer": 4,
      "explanation": "matricula → id_depto → nome_depto é uma dependência transitiva. A solução é criar a tabela DEPARTAMENTO (id_depto, nome_depto). Não há dependência parcial porque a chave não é composta.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "prova"
     },
     {
      "id": "u1l1q07",
@@ -163,54 +212,62 @@
      "answer": 0,
      "explanation": "Desnormalizar é duplicar dados de forma deliberada para reduzir junções, ao custo de maior esforço para manter a consistência nas escritas.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "prova"
     },
     {
      "id": "u1l1q08",
      "type": "truefalse",
      "topic": "BD",
      "subtopic": "er",
-     "difficulty": 2,
-     "style": "literal",
-     "stem": "Em um relacionamento 1:N entre CLIENTE e PEDIDO, em que um cliente tem vários pedidos, a chave estrangeira normalmente fica na tabela PEDIDO.",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No 1:n, a chave estrangeira fica no lado n. Um cliente tem vários pedidos, e cada pedido é de um cliente. Então a chave estrangeira id_cliente fica na tabela PEDIDO.",
      "options": [
       "Certo",
       "Errado"
      ],
      "answer": 0,
-     "explanation": "No lado \"N\" fica a chave estrangeira, que guarda o identificador do cliente dono de cada pedido.",
+     "explanation": "PEDIDO é o lado dos vários: cada pedido guarda o id do seu cliente.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "aprender",
+     "step": 2
     },
     {
      "id": "u1l1q09",
      "type": "match",
      "topic": "BD",
-     "subtopic": "relacional",
+     "subtopic": "er",
      "difficulty": 2,
      "style": "conceitual",
-     "stem": "Associe cada conceito do modelo relacional à sua definição:",
+     "stem": "Associe cada tipo de chave à sua descrição:",
      "pairs": [
       {
+       "left": "Chave primária",
+       "right": "Identifica cada linha da tabela"
+      },
+      {
        "left": "Chave candidata",
-       "right": "Conjunto mínimo de atributos que identifica unicamente uma tupla"
+       "right": "Também poderia ser a primária"
       },
       {
        "left": "Chave estrangeira",
-       "right": "Atributo que referencia a chave primária de outra tabela"
+       "right": "Aponta para a chave de outra tabela"
       },
       {
-       "left": "Dependência funcional",
-       "right": "Relação em que o valor de X determina o valor de Y"
-      },
-      {
-       "left": "Integridade referencial",
-       "right": "Garantia de que toda chave estrangeira aponte para uma linha existente"
+       "left": "Chave composta",
+       "right": "Formada por mais de uma coluna"
       }
      ],
-     "explanation": "Chave candidata é minimal e única; a chave estrangeira aponta para outra tabela; a dependência funcional X → Y é a base da normalização; a integridade referencial impede referências órfãs.",
+     "explanation": "A primária identifica cada linha; a candidata também não se repete e poderia ser a primária; a estrangeira liga a outra tabela; a composta junta mais de uma coluna.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "praticar",
+     "step": 3
     },
     {
      "id": "u1l1q10",
@@ -230,7 +287,966 @@
      "answer": 3,
      "explanation": "A FNBC é mais rigorosa que a 3FN: todo determinante precisa ser superchave. As outras alternativas descrevem a 1FN, a 4FN, a 5FN e a 2FN.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "prova"
+    },
+    {
+     "id": "u1l1q11",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em PRODUTO (codigo, nome, preco), cada produto tem um código diferente, então codigo é a chave primária: identifica cada linha. Agora: em ALUNO (matricula, nome, data_nascimento), cada aluno tem uma matrícula diferente, e pode haver alunos com o mesmo nome. A chave primária é",
+     "options": [
+      "nome",
+      "matricula",
+      "data_nascimento"
+     ],
+     "answer": 1,
+     "explanation": "A chave primária não pode se repetir. Nome e data de nascimento podem ser iguais para alunos diferentes; a matrícula, não.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q12",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Chave candidata é toda coluna que também poderia ser a chave primária, porque não se repete. Em ALUNO (matricula, cpf, nome), a chave primária é matricula e cada aluno tem um CPF diferente. Qual coluna é chave candidata?",
+     "options": [
+      "cpf",
+      "nome",
+      "nenhuma coluna"
+     ],
+     "answer": 0,
+     "explanation": "O CPF não se repete, então poderia identificar cada aluno: é chave candidata (ou alternativa). O nome pode se repetir, então não serve.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q13",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "conceitual",
+     "stem": "Atributo derivado é o que pode ser calculado a partir de outro. Em ALUNO, idade sai da data_nascimento; telefones guarda vários números do mesmo aluno; endereco se divide em rua, número e CEP. Qual é o atributo derivado?",
+     "options": [
+      "telefones",
+      "endereco",
+      "idade"
+     ],
+     "answer": 2,
+     "explanation": "A idade é calculada pela data de nascimento: é derivada. Telefones é multivalorado (vários valores) e endereço é composto (se divide em partes).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q14",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em ALUNO, associe cada atributo ao seu tipo:",
+     "pairs": [
+      {
+       "left": "matricula",
+       "right": "Identificador: não se repete"
+      },
+      {
+       "left": "telefones",
+       "right": "Multivalorado: vários valores"
+      },
+      {
+       "left": "endereco",
+       "right": "Composto: rua, número e CEP"
+      },
+      {
+       "left": "idade",
+       "right": "Derivado: calculado pela data de nascimento"
+      }
+     ],
+     "explanation": "A matrícula identifica cada aluno; telefones aceita vários valores; endereço se divide em partes; idade é calculada a partir de outro atributo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q15",
+     "type": "fill_blank",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em ALUNO, a matrícula é a chave primária e o CPF é chave candidata (por isso leva UNIQUE). Complete a definição:",
+     "code": "CREATE TABLE aluno (\n  matricula INT ___,\n  cpf       CHAR(11) UNIQUE,\n  nome      VARCHAR(80)\n);",
+     "options": [
+      "UNIQUE",
+      "PRIMARY KEY",
+      "DEFAULT 0",
+      "NULL"
+     ],
+     "answer": 1,
+     "explanation": "PRIMARY KEY marca a chave primária. UNIQUE só garante que não se repete (é o que se usa na chave candidata); DEFAULT e NULL não identificam nada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q16",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: um cliente faz vários pedidos, e cada pedido é de um só cliente: isso é 1:n. Agora: um departamento tem vários funcionários, e cada funcionário trabalha em um só departamento. A cardinalidade é",
+     "options": [
+      "1:1",
+      "n:m",
+      "1:n"
+     ],
+     "answer": 2,
+     "explanation": "Um lado tem um só (o departamento de cada funcionário) e o outro tem vários (os funcionários de cada departamento): 1:n, como cliente e pedidos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q17",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No 1:n, a chave estrangeira fica no lado n, o dos \"vários\". Exemplo: id_cliente vai na tabela PEDIDO. Um departamento tem vários funcionários. Onde fica id_departamento?",
+     "options": [
+      "na tabela FUNCIONARIO",
+      "na tabela DEPARTAMENTO",
+      "numa terceira tabela"
+     ],
+     "answer": 0,
+     "explanation": "O lado dos vários é FUNCIONARIO: cada funcionário guarda o id do seu departamento. Uma terceira tabela só é necessária no n:m.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q18",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Quando os dois lados têm \"vários\" (n:m), é preciso uma tabela associativa com as chaves dos dois lados. Um autor escreve vários livros e cada livro pode ter vários autores. Então basta pôr id_livro na tabela AUTOR.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "É n:m: uma coluna id_livro em AUTOR guardaria só um livro por autor. A solução é uma tabela associativa, como AUTORIA (id_autor, id_livro).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q19",
+     "type": "fill_blank",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Cada funcionário trabalha em um departamento (1:n). Complete a chave estrangeira do lado n, com a palavra que aponta para a outra tabela:",
+     "code": "CREATE TABLE funcionario (\n  id_funcionario  INT PRIMARY KEY,\n  nome            VARCHAR(80),\n  id_departamento INT ___ departamento (id_departamento)\n);",
+     "options": [
+      "UNIQUE",
+      "CHECK",
+      "DEFAULT",
+      "REFERENCES"
+     ],
+     "answer": 3,
+     "explanation": "REFERENCES cria a chave estrangeira que aponta para a chave primária de DEPARTAMENTO. UNIQUE, CHECK e DEFAULT são outras restrições.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q20",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um órgão da prefeitura pode ter vários órgãos subordinados, e cada subordinado tem um único órgão superior. Os dois lados são a mesma entidade, Órgão, então é um autorrelacionamento. A cardinalidade dele é",
+     "options": [
+      "n:m",
+      "1:n",
+      "1:1"
+     ],
+     "answer": 1,
+     "explanation": "Um lado tem no máximo um (o superior) e o outro tem vários (os subordinados): 1:n. Seria n:m se um órgão pudesse ter vários superiores.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "praticar",
+     "step": 3,
+     "adaptedFrom": {
+      "id": "fcc-teresina-2016-q55",
+      "banca": "FCC",
+      "orgao": "Prefeitura de Teresina",
+      "ano": 2016,
+      "numero": 55
+     }
+    },
+    {
+     "id": "u1l1q21",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada situação à cardinalidade:",
+     "pairs": [
+      {
+       "left": "Cada funcionário tem um crachá, e cada crachá é de um funcionário",
+       "right": "1:1"
+      },
+      {
+       "left": "Um cliente faz vários pedidos; cada pedido é de um cliente",
+       "right": "1:n"
+      },
+      {
+       "left": "Um autor escreve vários livros; cada livro tem vários autores",
+       "right": "n:m"
+      }
+     ],
+     "explanation": "Um para um nos dois sentidos é 1:1; um de um lado e vários do outro é 1:n; vários dos dois lados é n:m.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q22",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o quarto 101 existe em vários hotéis; para saber de qual quarto se fala, é preciso o hotel junto. Por isso Quarto é entidade fraca de Hotel. Agora: o departamento 01 − RH existe na Secretaria A e na Secretaria B. Qual é a entidade fraca?",
+     "options": [
+      "Secretaria",
+      "Departamento",
+      "as duas são fortes"
+     ],
+     "answer": 1,
+     "explanation": "Como o quarto 101, o departamento 01 se repete em órgãos diferentes: só é identificado junto com a secretaria. Departamento é entidade fraca; Secretaria é a forte (a dona).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "aprender",
+     "step": 1,
+     "adaptedFrom": {
+      "id": "fcc-teresina-2016-q56",
+      "banca": "FCC",
+      "orgao": "Prefeitura de Teresina",
+      "ano": 2016,
+      "numero": 56
+     }
+    },
+    {
+     "id": "u1l1q23",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Departamento é entidade fraca de Órgão: o código do departamento só identifica junto com o do órgão. Então, na tabela DEPARTAMENTO, a chave primária é",
+     "options": [
+      "só cod_depto",
+      "só o nome do departamento",
+      "cod_orgao junto com cod_depto"
+     ],
+     "answer": 2,
+     "explanation": "A chave da entidade fraca junta a chave da dona (cod_orgao) com o identificador dela (cod_depto). Só cod_depto se repetiria entre secretarias.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "aprender",
+     "step": 2,
+     "adaptedFrom": {
+      "id": "fcc-teresina-2016-q56",
+      "banca": "FCC",
+      "orgao": "Prefeitura de Teresina",
+      "ano": 2016,
+      "numero": 56
+     }
+    },
+    {
+     "id": "u1l1q24",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Entidade fraca só é identificada junto com a entidade de que depende. Em PEDIDO e ITEM, o item número 1 existe em todos os pedidos. Para identificar um item, é preciso",
+     "options": [
+      "o número do pedido junto com o do item",
+      "só o número do item",
+      "só o produto do item"
+     ],
+     "answer": 0,
+     "explanation": "O número do item se repete em cada pedido, então ITEM é entidade fraca de PEDIDO: a identificação é o par (pedido, item).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q25",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Entidade associativa é um relacionamento n:m tratado como entidade, quando ele precisa de identificação própria ou de se ligar a outras entidades. A CONSULTA liga CIDADÃO a PROCESSO (n:m), tem número próprio e precisa se ligar a ATENDENTE. CONSULTA deve ser",
+     "options": [
+      "entidade associativa",
+      "atributo de CIDADÃO",
+      "entidade fraca de ATENDENTE"
+     ],
+     "answer": 0,
+     "explanation": "Um relacionamento não se liga a outro relacionamento. Para CONSULTA ter número próprio e se ligar a ATENDENTE, ela vira entidade associativa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "praticar",
+     "step": 3,
+     "adaptedFrom": {
+      "id": "fcc-teresina-2016-q54",
+      "banca": "FCC",
+      "orgao": "Prefeitura de Teresina",
+      "ano": 2016,
+      "numero": 54
+     }
+    },
+    {
+     "id": "u1l1q26",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada estrutura do modelo E-R à sua descrição:",
+     "pairs": [
+      {
+       "left": "Entidade fraca",
+       "right": "Só é identificada junto com a entidade de que depende"
+      },
+      {
+       "left": "Entidade associativa",
+       "right": "Relacionamento tratado como entidade"
+      },
+      {
+       "left": "Autorrelacionamento",
+       "right": "Liga uma entidade a ela mesma"
+      },
+      {
+       "left": "Relacionamento ternário",
+       "right": "Envolve três entidades ao mesmo tempo"
+      }
+     ],
+     "explanation": "Fraca depende da dona para ser identificada; associativa transforma um relacionamento em entidade; autorrelacionamento liga a entidade a ela mesma; ternário reúne três entidades.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q27",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: desenhar o diagrama E-R da biblioteca (LIVRO, LEITOR e EMPRÉSTIMO), sem pensar em tabelas nem em SGBD, é o projeto conceitual. Agora: transformar esse diagrama em tabelas com chaves primárias e estrangeiras, para um banco relacional, mas sem escolher o produto. Isso é o projeto",
+     "options": [
+      "físico",
+      "lógico",
+      "conceitual"
+     ],
+     "answer": 1,
+     "explanation": "Tabelas e chaves para um tipo de SGBD (relacional), sem escolher o produto, é o projeto lógico. O físico já dependeria do produto escolhido.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q28",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O projeto físico depende do SGBD escolhido: índices, tipos de dados e armazenamento do produto. Na biblioteca, decidir criar um índice em LIVRO.titulo no PostgreSQL é parte do projeto",
+     "options": [
+      "lógico",
+      "conceitual",
+      "físico"
+     ],
+     "answer": 2,
+     "explanation": "Índice num SGBD específico (PostgreSQL) é decisão do projeto físico.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q29",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Só o projeto físico depende do produto escolhido; o lógico depende só do tipo de SGBD (relacional) e o conceitual não depende de SGBD nenhum. Então o diagrama E-R da biblioteca precisa mudar se trocarmos o PostgreSQL pelo Oracle.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "O diagrama E-R é o projeto conceitual, que não depende de SGBD. Trocar de produto mexe só no projeto físico.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "aprender",
+     "step": 2,
+     "adaptedFrom": {
+      "id": "fcc-teresina-2016-q58",
+      "banca": "FCC",
+      "orgao": "Prefeitura de Teresina",
+      "ano": 2016,
+      "numero": 58
+     }
+    },
+    {
+     "id": "u1l1q30",
+     "type": "order_code",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Coloque as etapas do projeto do banco da biblioteca na ordem em que são feitas:",
+     "lines": [
+      "Conceitual: diagrama E-R com LIVRO, LEITOR e EMPRÉSTIMO",
+      "Lógico: tabelas e chaves para um banco relacional",
+      "Físico: índices e tipos de dados no PostgreSQL"
+     ],
+     "explanation": "Do mais abstrato para o mais concreto: primeiro o diagrama E-R, depois as tabelas e chaves, por fim os detalhes do SGBD escolhido.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q31",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada decisão da biblioteca à etapa do projeto:",
+     "pairs": [
+      {
+       "left": "LIVRO e LEITOR se relacionam por EMPRÉSTIMO",
+       "right": "Conceitual"
+      },
+      {
+       "left": "A tabela emprestimo tem a chave estrangeira id_livro",
+       "right": "Lógico"
+      },
+      {
+       "left": "Criar um índice em titulo no PostgreSQL",
+       "right": "Físico"
+      }
+     ],
+     "explanation": "Entidades e relacionamentos são do conceitual; tabelas e chaves, do lógico; índices num produto específico, do físico.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q32",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em PRODUTO (codigo, preco), cada código tem um só preço, então vale codigo → preco (o código determina o preço). Agora: em ALUNO (matricula, nome), cada matrícula é de um só aluno, mas há alunos com o mesmo nome. Qual dependência vale?",
+     "options": [
+      "nome → matricula",
+      "matricula → nome",
+      "as duas valem"
+     ],
+     "answer": 1,
+     "explanation": "Cada matrícula tem um só nome: matricula → nome. O contrário não vale, porque um nome pode aparecer com várias matrículas (homônimos).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q33",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Para valer endereco → cpf, cada endereço teria de corresponder a um único CPF. Em PESSOA (cpf, nome, endereco), várias pessoas podem morar no mesmo endereço. Então endereco → cpf vale.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Com várias pessoas no mesmo endereço, um endereço corresponde a vários CPFs: a dependência não existe.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "aprender",
+     "step": 2,
+     "adaptedFrom": {
+      "id": "fgv-banestes-2021-q41",
+      "banca": "FGV",
+      "orgao": "Banestes",
+      "ano": 2021,
+      "numero": 41
+     }
+    },
+    {
+     "id": "u1l1q34",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 1,
+     "style": "conceitual",
+     "stem": "Transitividade: se A → B e B → C, então A → C. Em PRODUTO, codigo → id_fornecedor e id_fornecedor → nome_fornecedor. Logo, vale",
+     "options": [
+      "nome_fornecedor → codigo",
+      "codigo → nome_fornecedor",
+      "id_fornecedor → codigo"
+     ],
+     "answer": 1,
+     "explanation": "O código determina o fornecedor, que determina o nome dele: codigo → nome_fornecedor. As outras não decorrem dessas dependências.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q35",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em PESSOA (cpf, nome, rg, endereco), cada pessoa tem CPF e RG próprios, pode haver homônimos e várias pessoas no mesmo endereço. Qual destas dependências funcionais existe?",
+     "options": [
+      "nome → cpf",
+      "endereco → rg",
+      "rg → nome"
+     ],
+     "answer": 2,
+     "explanation": "O RG identifica a pessoa, então determina o nome. nome → cpf falha por causa dos homônimos, e endereco → rg falha porque várias pessoas moram no mesmo endereço.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "praticar",
+     "step": 3,
+     "adaptedFrom": {
+      "id": "fgv-banestes-2021-q41",
+      "banca": "FGV",
+      "orgao": "Banestes",
+      "ano": 2021,
+      "numero": 41
+     }
+    },
+    {
+     "id": "u1l1q36",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Cuidado: de X → Y e X → Z não dá para concluir Y → Z. Exemplo: em PESSOA valem cpf → nome e cpf → rg. Então nome → rg vale sempre.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "De cpf → nome e cpf → rg só se conclui cpf → (nome, rg). Com homônimos, o mesmo nome aparece com RGs diferentes, então nome não determina rg.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "praticar",
+     "step": 3,
+     "adaptedFrom": {
+      "id": "fgv-banestes-2018-q57",
+      "banca": "FGV",
+      "orgao": "Banestes",
+      "ano": 2018,
+      "numero": 57
+     }
+    },
+    {
+     "id": "u1l1q37",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada regra de dependência funcional ao que ela diz:",
+     "pairs": [
+      {
+       "left": "Reflexividade",
+       "right": "Se Y faz parte de X, então X → Y"
+      },
+      {
+       "left": "Aumento",
+       "right": "Se X → Y, então XZ → YZ"
+      },
+      {
+       "left": "Transitividade",
+       "right": "Se X → Y e Y → Z, então X → Z"
+      }
+     ],
+     "explanation": "Reflexividade: um conjunto determina suas partes. Aumento: acrescentar o mesmo atributo dos dois lados mantém a dependência. Transitividade: dependências encadeadas se juntam.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q38",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: guardar \"2733-1000, 99999-0000\" numa só coluna telefones viola a 1FN, que exige um valor por campo. Agora: a coluna disciplinas de ALUNO guarda \"BD, Redes, Java\". Ela",
+     "options": [
+      "está na 1FN",
+      "viola a 1FN",
+      "viola só a 3FN"
+     ],
+     "answer": 1,
+     "explanation": "Uma lista dentro de um campo é exatamente o que a 1FN proíbe. A solução é uma linha por disciplina, numa tabela separada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q39",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Dependência parcial é quando um atributo depende só de parte de uma chave composta, e a 2FN não aceita. Em NOTA (matricula, cod_disciplina, nome_disciplina, nota), a chave é (matricula, cod_disciplina) e nome_disciplina depende só de cod_disciplina. Essa dependência é",
+     "options": [
+      "parcial",
+      "total",
+      "transitiva"
+     ],
+     "answer": 0,
+     "explanation": "nome_disciplina depende só de cod_disciplina, que é parte da chave composta: dependência parcial, que viola a 2FN.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q40",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Na mesma tabela NOTA, com chave (matricula, cod_disciplina), a coluna nota depende da matrícula e da disciplina juntas: é a nota daquele aluno naquela disciplina. Então nota tem dependência parcial.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "A nota precisa das duas partes da chave para ser identificada: é dependência total, que a 2FN aceita. Parcial seria depender de só uma parte.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q41",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para tirar a dependência parcial de NOTA (matricula, cod_disciplina, nome_disciplina, nota), nome_disciplina deve ir para",
+     "options": [
+      "a chave primária de NOTA",
+      "ALUNO (matricula, nome_disciplina)",
+      "DISCIPLINA (cod_disciplina, nome_disciplina)"
+     ],
+     "answer": 2,
+     "explanation": "O atributo vai para uma tabela em que o seu determinante (cod_disciplina) é a chave inteira. Pôr o nome na chave ou em ALUNO não resolve.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q42",
+     "type": "fill_blank",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Depois da 2FN, a tabela nota guarda só a nota de cada aluno em cada disciplina. Complete a chave primária:",
+     "code": "CREATE TABLE nota (\n  matricula      INT,\n  cod_disciplina INT REFERENCES disciplina (cod_disciplina),\n  nota           DECIMAL(4,2),\n  PRIMARY KEY (___)\n);",
+     "options": [
+      "cod_disciplina",
+      "matricula",
+      "matricula, cod_disciplina",
+      "nota"
+     ],
+     "answer": 2,
+     "explanation": "Cada nota é de um aluno numa disciplina, então a chave é o par (matricula, cod_disciplina). Só uma das colunas se repetiria, e a nota não identifica nada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q43",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em ALUNO (matricula, cod_curso, nome_curso), nome_curso depende de cod_curso, que depende da matrícula: matricula → cod_curso → nome_curso. Isso é dependência transitiva, e a 3FN não aceita. Agora: em PEDIDO (id_pedido, id_cliente, nome_cliente), nome_cliente depende de id_cliente. Essa dependência é",
+     "options": [
+      "transitiva",
+      "parcial",
+      "total"
+     ],
+     "answer": 0,
+     "explanation": "id_pedido → id_cliente → nome_cliente: um atributo não chave depende de outro não chave. É transitiva, como no exemplo do curso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u1l1q44",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Para a 3FN, o atributo da dependência transitiva vai para uma tabela em que o seu determinante é a chave. Em PEDIDO (id_pedido, id_cliente, nome_cliente), cria-se a tabela",
+     "options": [
+      "PEDIDO_NOME (id_pedido, nome_cliente)",
+      "CLIENTE (id_cliente, nome_cliente)",
+      "CLIENTE (nome_cliente, id_pedido)"
+     ],
+     "answer": 1,
+     "explanation": "O determinante de nome_cliente é id_cliente, então ele vira a chave da nova tabela CLIENTE. PEDIDO fica só com id_cliente, como chave estrangeira.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q45",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Desnormalizar é copiar dados de propósito para evitar junções, aceitando o trabalho de manter as cópias iguais. Guardar nome_cliente também em PEDIDO, para o relatório não precisar juntar com CLIENTE, é desnormalizar.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "É uma cópia deliberada para ganhar desempenho na leitura. O custo é atualizar as duas tabelas quando o nome mudar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u1l1q46",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada forma normal à exigência que ela acrescenta:",
+     "pairs": [
+      {
+       "left": "1FN",
+       "right": "Um valor por campo, sem listas"
+      },
+      {
+       "left": "2FN",
+       "right": "Sem dependência parcial da chave"
+      },
+      {
+       "left": "3FN",
+       "right": "Sem dependência transitiva"
+      },
+      {
+       "left": "FNBC",
+       "right": "Todo determinante é chave candidata"
+      }
+     ],
+     "explanation": "Cada forma normal acrescenta uma exigência à anterior: valor único por campo (1FN), fim da dependência parcial (2FN), fim da transitiva (3FN) e todo determinante como chave candidata (FNBC).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q47",
+     "type": "truefalse",
+     "topic": "BD",
+     "subtopic": "normalizacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A FNBC exige que todo atributo que determina outro (determinante) seja chave candidata, o que é mais rígido que a 3FN. Logo, toda tabela na FNBC também está na 3FN.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "A FNBC é a 3FN com uma exigência a mais. O contrário não vale: uma tabela pode estar na 3FN e ter um determinante que não é chave candidata.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c7",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u1l1q48",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "er",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um sistema de crédito, cada CONTRATO tem parcelas numeradas a partir de 1, de modo que a parcela 1 existe em todos os contratos. Para que cada parcela seja identificada sem ambiguidade, no modelo E-R a entidade PARCELA deve ser modelada como",
+     "options": [
+      "entidade associativa entre CONTRATO e CLIENTE, em um relacionamento n:m.",
+      "entidade fraca de CONTRATO, ligada por um relacionamento identificador 1:n.",
+      "atributo multivalorado de CONTRATO, sem identificador próprio na relação.",
+      "entidade forte, identificada apenas pelo número sequencial da parcela.",
+      "autorrelacionamento de CONTRATO, com cardinalidade 1:1 entre as parcelas."
+     ],
+     "answer": 1,
+     "explanation": "O número da parcela se repete entre contratos, então só identifica junto com o contrato: PARCELA é entidade fraca de CONTRATO, no lado n de um relacionamento identificador 1:n. Associativa seria um relacionamento n:m tratado como entidade; a parcela não se identifica sozinha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c3",
+     "level": "prova"
+    },
+    {
+     "id": "u1l1q49",
+     "type": "mcq5",
+     "topic": "BD",
+     "subtopic": "projeto",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre as etapas do projeto de banco de dados, é INCORRETO afirmar que",
+     "options": [
+      "o projeto conceitual descreve os dados sem considerar o SGBD que será usado.",
+      "o projeto lógico depende do tipo de SGBD, como o relacional, mas não do produto.",
+      "o projeto físico define índices e armazenamento conforme o SGBD escolhido.",
+      "o diagrama entidade-relacionamento é o resultado típico do projeto conceitual.",
+      "o projeto lógico precisa ser refeito sempre que se troca o produto de SGBD."
+     ],
+     "answer": 4,
+     "explanation": "Trocar o produto (por exemplo, PostgreSQL por Oracle) mexe no projeto físico. O lógico depende só do tipo de SGBD, então continua valendo entre produtos relacionais. As outras afirmações estão corretas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c4",
+     "level": "prova"
+    },
+    {
+     "id": "u1l1q50",
+     "type": "case",
+     "topic": "BD",
+     "subtopic": "dependencia_funcional",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Na relação VEICULO_CLIENTE (placa, renavam, modelo, cpf_cliente, nome_cliente), cada veículo tem placa e Renavam próprios, cada cliente tem um CPF e pode haver clientes com o mesmo nome. A dependência funcional que NÃO se verifica é",
+     "options": [
+      "placa → renavam",
+      "renavam → modelo",
+      "cpf_cliente → nome_cliente",
+      "nome_cliente → cpf_cliente",
+      "placa → modelo"
+     ],
+     "answer": 3,
+     "explanation": "Placa e Renavam identificam o veículo, então determinam o modelo e um ao outro; o CPF determina o nome. Já o nome não determina o CPF, porque há clientes com o mesmo nome.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l1c5",
+     "level": "prova"
     }
    ]
   },

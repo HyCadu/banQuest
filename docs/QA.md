@@ -190,6 +190,52 @@
 - [ ] As unidades 2 a 10 continuam "Conteúdo chegando em breve" (as questões de prova delas esperam o pacote da
       unidade).
 
+## BanQuest 0.7.1 — aprender fazendo, meio coração e "Não sei"
+
+**26. Lição "Modelo ER e normalização" em blocos** (a 0.7.0 de teste foi substituída por esta)
+- [ ] Na primeira vez, a lição passa por **3 conceitos na ordem** (Chaves e atributos → Cardinalidade → Entidade fraca),
+      3 exercícios seguidos de cada, e termina com 3 questões de prova.
+- [ ] O primeiro exercício de cada conceito mostra **"Novo conceito: …"** já aberto.
+- [ ] Os exercícios de ensino trazem a regra ou um exemplo no enunciado: dá para chegar à resposta lendo, sem chutar.
+- [ ] Na segunda vez, a lição continua de onde parou (conceitos 4 a 6). Na terceira, o 7 e revisão.
+
+**27. Meio coração**
+- [ ] Erre um exercício de aprender ou praticar: o contador vai para **4,5** e o coração aparece **rachado** (e treme).
+      Erre outro de ensino: o coração quebra e o contador vai a 4. Erro em questão de prova tira 1 inteiro.
+- [ ] Na Trilha, o chip de corações mostra "4,5" com o coração rachado, e o diálogo mostra o coração da vez rachado.
+
+**28. Botão "Não sei"**
+- [ ] Aparece nos exercícios de aprender e praticar (não na prova), com o estoque: "Não sei (3)".
+- [ ] Tocar mostra "Agora você sabe!", a resposta e a explicação, **sem perder coração**, e o exercício volta no fim.
+- [ ] O estoque cai para 2. No dia seguinte volta a 3 (o presente diário só enche até 3).
+- [ ] Loja → **Não sei** por 50 gemas; dá para guardar até 9.
+- [ ] Atualizando por cima da 0.6/0.7: corações e progresso continuam iguais, e o estoque começa em 3.
+
+## BanQuest 0.7.2 — menos texto nas telas
+
+**29. Telas mais limpas**
+- [ ] **Ranking:** no título, só "Termina em …" e o botão ↻. Sem parágrafo de instruções. O aviso da semana passada
+      cabe numa linha.
+- [ ] **Ranking › Amigos:** cada ofensiva em dupla é uma linha (nome, situação de hoje, chama com o número e ⋯).
+      "Desfazer amizade" fica no ⋯. O ⓘ ao lado de "Ofensivas em dupla" explica a regra.
+- [ ] **Loja:** um item por linha, com o preço à direita.
+- [ ] **Praticar:** o "Como funciona" está no ⓘ do título.
+- [ ] **Resultado da lição:** tempo médio com "alvo 3:00" e fichas de recompensa no lugar das faixas.
+- [ ] **Configurações:** sem parágrafos; cada seção com explicação tem um ⓘ.
+- [ ] Com o TalkBack ligado, os ícones ↻, ⋯ e ⓘ e as fichas dizem o que são.
+
+## BanQuest 0.7.3 — tela de exercício enxuta
+
+**30. Antes do enunciado, uma faixa curta**
+- [ ] No topo: X, barra de progresso e corações; embaixo, o personagem e o anel do tempo. As fichas "Folga" e "Lição"
+      não aparecem mais durante a questão.
+- [ ] Fique abaixo do ritmo (demore em algumas questões): aparece a ficha de **atraso**. Em dia, não aparece nada.
+- [ ] Antes do enunciado, uma linha: origem curta ("FCC · Teresina 2016 · Q22") e o selo "não revisada". Tocando nela,
+      abre **Sobre esta questão** (prova completa, gabarito preliminar quando for o caso e o que não foi revisado).
+- [ ] No primeiro exercício de um conceito novo aparece a ficha **"Novo: …"** fechada; tocando, abre o resumo.
+- [ ] Repetição de um erro mostra a ficha "Repetição · 5 XP".
+- [ ] Com o estoque de "Não sei" em zero, o botão some.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
@@ -202,6 +248,19 @@ falso, 1 de migração v2→v3, 12 de acessibilidade e as renderizações das te
 Versão 0.6.0: `./gradlew check` sem erros nem warnings (inclui `validateProvas` e `checkProvasPack`); harness com
 85 testes (integração confere as 26 questões de prova na Unidade 1) e renders `s_exam*.png`; APK assinado conferido
 (`dist/banquest-0.6.0.apk`, versionCode 9, com `assets/provas/provas-anteriores.json`).
+
+Versão 0.7.1: `./gradlew check` sem erros nem warnings; 184 testes unitários (inclui `LessonPlannerTest` em blocos,
+`HeartsEngineTest` com meio coração e `HelpEngineTest`); harness com 95 testes (migração 3→4, "Não sei" e meio coração
+numa lição de verdade) e renders `s_learn_new.png`, `s_learn_quick.png`, `s_learn_skipped.png` e `s_practice_*.png`;
+validador de conteúdo sem erros nem avisos; revisão em `content/review/u1-banco-de-dados.md`.
+
+Versão 0.7.2: `./gradlew check` sem erros nem warnings; harness com 95 testes (inclui acessibilidade dos botões novos
+↻, ⋯ e ⓘ) e renders `t_ranking.png`, `r_friends.png`, `t_shop.png`, `t_practice.png`, `s_result.png` e
+`t_settings_full.png`.
+
+Versão 0.7.3: `./gradlew check` sem erros nem warnings; 185 testes unitários; harness com 96 testes (inclui
+`t_path_half_heart.png`, com o coração rachado na Trilha) e renders da lição `s_learn_*.png`, `s_exam*.png`,
+`s_case.png` e `s_match.png`.
 
 > Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
 > você consegue validar.

@@ -50,12 +50,12 @@ internal fun Long.toDayOrNull(): LocalDate? = if (this == NO_DAY) null else Loca
 internal fun LocalDate?.toDay(): Long = this?.toEpochDay() ?: NO_DAY
 
 internal fun StatsEntity.toDomain() = Stats(
-    totalXp = totalXp, gems = gems, hearts = HeartsState(hearts, heartsUpdatedAtMs),
+    totalXp = totalXp, gems = gems, hearts = HeartsState(hearts, heartsUpdatedAtMs, heartHalf),
     streak = StreakState(streakCurrent, streakLongest, streakLastDay.toDayOrNull(), freezes),
     lessonsCompleted = lessonsCompleted, perfectLessons = perfectLessons, pacedLessons = pacedLessons,
     practiceSessions = practiceSessions, reviewCorrect = reviewCorrect, answeredTotal = answeredTotal,
     totalTimeMs = totalTimeMs, firstTryAnswered = firstTryAnswered, firstTryCorrect = firstTryCorrect,
-    podiums = podiums,
+    podiums = podiums, help = br.com.trilhati.domain.progress.HelpState(helps, helpsDay),
 )
 
 internal fun Stats.toEntity() = StatsEntity(
@@ -64,7 +64,7 @@ internal fun Stats.toEntity() = StatsEntity(
     freezes = streak.freezes, lessonsCompleted = lessonsCompleted, perfectLessons = perfectLessons,
     pacedLessons = pacedLessons, practiceSessions = practiceSessions, reviewCorrect = reviewCorrect,
     answeredTotal = answeredTotal, totalTimeMs = totalTimeMs, firstTryAnswered = firstTryAnswered,
-    firstTryCorrect = firstTryCorrect, podiums = podiums,
+    firstTryCorrect = firstTryCorrect, podiums = podiums, heartHalf = hearts.half, helps = help.count, helpsDay = help.grantedDay,
 )
 
 internal fun LessonProgressEntity.toDomain() = LessonProgress(lessonId, unitId, timesCompleted, bestAccuracy, perfectCount, completedAtMs)

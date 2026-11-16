@@ -36,6 +36,8 @@ def main(folder: Path) -> int:
             if q.get("unit") not in UNITS: err(f"unidade inválida: {q.get('unit')}")
             if q.get("lesson") not in LESSONS: err(f"lição inválida: {q.get('lesson')}")
             elif not q["lesson"].startswith(f"{q.get('unit')}l"): err(f"lição {q['lesson']} não é da unidade {q.get('unit')}")
+            elif "concept" in q and not re.fullmatch(re.escape(q["lesson"]) + r"c\d+", str(q["concept"])):
+                err(f"conceito {q['concept']} não é da lição {q['lesson']} (esperado {q['lesson']}cN)")
             if q.get("type") not in TYPES: err(f"tipo inválido para questão real: {q.get('type')}")
             if q.get("style") not in STYLES: err(f"style inválido: {q.get('style')}")
             if q.get("difficulty") not in (1, 2, 3): err("difficulty deve ser 1, 2 ou 3")

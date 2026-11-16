@@ -27,7 +27,16 @@ data class LessonDto(
     val order: Int,
     val title: String,
     val questions: List<QuestionDto>,
+    /** Formato por conceitos (opcional): as ideias que a lição ensina. */
+    val concepts: List<ConceptDto> = emptyList(),
 )
+
+@Serializable
+data class ConceptDto(val id: String, val title: String, val summary: String)
+
+/** Questão oficial de onde um exercício foi adaptado. */
+@Serializable
+data class AdaptedFromDto(val id: String, val banca: String, val orgao: String, val ano: Int, val numero: Int)
 
 /**
  * Pacote de questões de provas anteriores (`assets/provas`), gerado por `tools/build_provas.py`. Cada questão traz a
@@ -77,4 +86,11 @@ data class QuestionDto(
     val lesson: String? = null,
     /** Só nas questões de provas anteriores: de onde a questão saiu. */
     val ref: ExamRefDto? = null,
+    /** Formato por conceitos: id do conceito da lição (ex.: "u1l1c3"). */
+    val concept: String? = null,
+    /** "aprender", "praticar" ou "prova" (sem nível vale "prova"). */
+    val level: String? = null,
+    val adaptedFrom: AdaptedFromDto? = null,
+    /** Passo dentro do conceito (1, 2, 3…), só nos exercícios de aprender e praticar. */
+    val step: Int? = null,
 )

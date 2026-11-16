@@ -36,6 +36,12 @@ data class AppState(
     /** Corações disponíveis em [nowMs], já contando a regeneração por tempo. */
     fun hearts(nowMs: Long): Int = HeartsEngine.regen(snapshot.stats.hearts, nowMs).hearts
 
+    /** Há meio coração além de [hearts]? */
+    fun heartsHalf(nowMs: Long): Boolean = HeartsEngine.regen(snapshot.stats.hearts, nowMs).half
+
+    /** Texto para o TalkBack: "4 corações e meio". */
+    fun heartsDescription(nowMs: Long): String = HeartsEngine.description(HeartsEngine.regen(snapshot.stats.hearts, nowMs))
+
     fun heartsMsUntilNext(nowMs: Long): Long? = HeartsEngine.msUntilNext(snapshot.stats.hearts, nowMs)
 
     val hasAnyCompletedLesson: Boolean get() = snapshot.lessonProgress.values.any { it.completed }

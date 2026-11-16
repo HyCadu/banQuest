@@ -16,14 +16,29 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-TYPES = {"mcq5", "truefalse", "match", "order_code", "fill_blank", "code_output", "case"}
+TYPES = {"mcq5", "truefalse", "match", "order_code", "fill_blank", "code_output", "case", "quick"}
 FIVE_OPTION_TYPES = {"mcq5", "case", "code_output"}
 STYLES = {"conceitual", "literal", "caso_pratico", "excecao"}
 SOURCES = {"autoral", "ia", "fcc_real"}
-QUESTIONS_PER_LESSON = 10
+LEVELS = {"aprender", "praticar", "prova"}
+QUESTIONS_PER_LESSON = 10          # lição no formato antigo (só questões de prova)
+CONCEPT_LESSON_RANGE = (24, 80)    # lição por conceitos: banco maior, a sessão sorteia 12
 BANNED = ("todas as anteriores", "nenhuma das anteriores", "todas as alternativas", "nenhuma das alternativas")
 
 errors, warnings = [], []
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def load_official():
+    """Questões oficiais curadas (content/provas), para conferir as adaptadas e os conceitos das oficiais."""
+    found = {}
+    for f in sorted((ROOT / "content" / "provas").glob("*.json")):
+        for q in json.loads(f.read_text(encoding="utf-8"))["questions"]:
+            found[q["id"]] = {**q["ref"], "lesson": q.get("lesson"), "concept": q.get("concept"), "id": q["id"]}
+    return found
+
+
+OFFICIAL = load_official()
 
 
 def err(where, msg):
@@ -121,8 +136,35 @@ def check_question(path, lesson, q, seen_ids):
         lines = q.get("lines")
         if not isinstance(lines, list) or not (3 <= len(lines) <= 8) or not all(isinstance(x, str) and x.strip() for x in lines):
             err(where, "order_code deve ter de 3 a 8 linhas não vazias")
+    elif t == "quick":
+        check_options(where, q, 3)
     if t == "code_output" and not q.get("code"):
         err(where, 'code_output exige o campo "code"')
+    level = q.get("level", "prova")
+    if level not in LEVELS:
+        err(where, f"level inválido: {level}")
+    concepts = {c.get("id") for c in lesson.get("concepts", [])}
+    if concepts and q.get("concept") not in concepts:
+        err(where, f"conceito inexistente na lição: {q.get('concept')}")
+    if not concepts and "concept" in q:
+        err(where, "conceito numa lição sem conceitos")
+    if "step" in q and level == "prova":
+        err(where, "step só vale em aprender e praticar")
+    if concepts and level == "prova" and t in ("truefalse", "quick"):
+        warn(where, f"{t} no nível prova (o formato da prova é de 5 alternativas)")
+    adapted = q.get("adaptedFrom")
+    if adapted is not None:
+        if q["source"] not in ("ia", "autoral"):
+            err(where, "só exercício de IA ou autoral pode ser adaptado de prova")
+        missing = [k for k in ("id", "banca", "orgao", "ano", "numero") if not adapted.get(k)]
+        if missing:
+            err(where, f"adaptedFrom sem {', '.join(missing)}")
+        elif adapted["id"] not in OFFICIAL:
+            err(where, f"adaptedFrom aponta para questão que não existe em content/provas: {adapted['id']}")
+        else:
+            ref = OFFICIAL[adapted["id"]]
+            if (ref["banca"], ref["orgao"], ref["ano"], ref["numero"]) != (adapted["banca"], adapted["orgao"], adapted["ano"], adapted["numero"]):
+                err(where, f"adaptedFrom não bate com a referência de {adapted['id']} em content/provas")
 
 
 def validate_pack(path):
@@ -151,7 +193,13 @@ def validate_pack(path):
         if lid != f"{unit['id']}l{i}" or lesson.get("order") != i:
             err(path.name, f"lição {lid}: id/order fora do padrão (esperado {unit['id']}l{i}, order {i})")
         qs = lesson.get("questions", [])
-        if len(qs) != QUESTIONS_PER_LESSON:
+        concepts = lesson.get("concepts", [])
+        if concepts:
+            lo, hi = CONCEPT_LESSON_RANGE
+            if not (lo <= len(qs) <= hi):
+                err(f"{path.name}:{lid}", f"lição por conceitos deve ter de {lo} a {hi} exercícios, achei {len(qs)}")
+            check_concepts(path, lesson)
+        elif len(qs) != QUESTIONS_PER_LESSON:
             err(f"{path.name}:{lid}", f"deve ter {QUESTIONS_PER_LESSON} questões, achei {len(qs)}")
         for q in qs:
             check_question(path, lesson, q, seen_ids)
@@ -159,8 +207,54 @@ def validate_pack(path):
     return pack, questions
 
 
+def check_concepts(path, lesson):
+    """Formato por conceitos: ids, títulos, e cada conceito com exercícios de aprender, praticar e prova."""
+    where = f"{path.name}:{lesson['id']}"
+    ids = [c.get("id") for c in lesson["concepts"]]
+    if len(set(ids)) != len(ids):
+        err(where, "conceito repetido")
+    for c in lesson["concepts"]:
+        if not re.fullmatch(re.escape(lesson["id"]) + r"c\d+", c.get("id", "")):
+            err(where, f"conceito {c.get('id')} fora do padrão {lesson['id']}cN")
+        if not c.get("title", "").strip() or len(c.get("summary", "").strip()) < 20:
+            err(where, f"conceito {c.get('id')} sem título ou com resumo curto demais")
+    exam_ids = {q["id"] for q in OFFICIAL.values() if q.get("lesson") == lesson["id"]}
+    for c in ids:
+        qs = [q for q in lesson["questions"] if q.get("concept") == c]
+        levels = Counter(q.get("level", "prova") for q in qs)
+        official = sum(1 for q in OFFICIAL.values() if q.get("concept") == c)
+        if levels["aprender"] < 2:
+            err(where, f"conceito {c}: precisa de ao menos 2 exercícios de aprender (achei {levels['aprender']})")
+        if levels["praticar"] < 2:
+            err(where, f"conceito {c}: precisa de ao menos 2 exercícios de praticar (achei {levels['praticar']})")
+        if levels["prova"] + official < 1:
+            err(where, f"conceito {c}: sem nenhuma questão de prova (do pacote ou oficial)")
+        teach = [q for q in qs if q.get("level", "prova") != "prova"]
+        steps = {q.get("step") for q in teach}
+        if any(not isinstance(q.get("step"), int) or q["step"] < 1 for q in teach):
+            err(where, f"conceito {c}: todo exercício de aprender/praticar precisa de step (1, 2, 3…)")
+        elif not {1, 2, 3} <= steps:
+            err(where, f"conceito {c}: precisa dos passos 1, 2 e 3 (achei {sorted(steps)})")
+        for level in ("aprender", "praticar"):
+            if not any(q.get("level") == level and "adaptedFrom" not in q for q in qs):
+                err(where, f"conceito {c}: precisa de ao menos um exercício de {level} que não seja adaptado")
+    for qid in sorted(exam_ids):
+        if OFFICIAL[qid].get("concept") not in ids:
+            err(where, f"questão oficial {qid} está nesta lição mas sem conceito válido")
+    quick = [q for q in lesson["questions"] if q.get("type") == "quick" and isinstance(q.get("answer"), int)]
+    if len(quick) >= 9:
+        counts = Counter(q["answer"] for q in quick)
+        for pos in range(3):
+            share = counts.get(pos, 0) / len(quick)
+            if not (0.15 <= share <= 0.55):
+                err(where, f"escolha rápida: posição {'ABC'[pos]} da resposta correta tem {share:.0%} (esperado entre 15% e 55%)")
+
+
 def pack_statistics(path, pack, questions):
     where = path.name
+    # Metas de estilo FCC e de posição da resposta valem para as questões de prova; aprender e praticar são outra coisa.
+    questions_all = questions
+    questions = [q for q in questions if q.get("level", "prova") == "prova"]
     five = [q for q in questions if q.get("type") in FIVE_OPTION_TYPES | {"fill_blank"} and len(q.get("options", [])) == 5
             and isinstance(q.get("answer"), int)]
     if len(five) >= 20:
@@ -186,7 +280,7 @@ def pack_statistics(path, pack, questions):
             warn(where, f"questões de exceção em {exc_n / total:.0%} (meta ao menos ~10%)")
         if lit_n / total < 0.10:
             warn(where, f"questões literais em {lit_n / total:.0%} (meta ao menos ~10%)")
-    stems = [(q.get("id", "?"), norm(q.get("stem", ""))) for q in questions]
+    stems = [(q.get("id", "?"), norm(q.get("stem", "") + " " + (q.get("code") or ""))) for q in questions_all]
     for i in range(len(stems)):
         for j in range(i + 1, len(stems)):
             r = difflib.SequenceMatcher(None, stems[i][1], stems[j][1]).ratio()

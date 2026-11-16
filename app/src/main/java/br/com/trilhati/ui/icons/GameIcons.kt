@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -28,6 +29,9 @@ import kotlin.math.sin
 /** Ícones de jogo desenhados em código (grade 48x48), originais e consistentes com os mascotes. */
 enum class GameIcon {
     Flame, Gem, Heart, Star, Clock, Lock, Check, Crown, Chest, Trophy, House, Target, Bag, Person, Info, Book, Close, Snowflake,
+
+    /** Coração rachado: meio coração perdido (o próximo erro de ensino quebra este coração). */
+    HeartCracked,
 }
 
 /** Cores de um ícone: preenchimento principal, detalhe e contorno. */
@@ -44,6 +48,7 @@ private fun GameIcon.defaults(): IconColors = when (this) {
     GameIcon.Flame -> IconColors(Color(0xFFFF7A1A), Color(0xFFFFD84D), InkIcon)
     GameIcon.Gem -> IconColors(Color(0xFF2FA8FF), Color(0xFF8FD6FF), InkIcon)
     GameIcon.Heart -> IconColors(Color(0xFFFF4D6D), Color(0xFFFFA3B5), InkIcon)
+    GameIcon.HeartCracked -> IconColors(Color(0xFFFF4D6D), Color(0xFFFFC7D2), InkIcon)
     GameIcon.Star -> IconColors(Color(0xFFFFB000), Color(0xFFFFE08A), InkIcon)
     GameIcon.Clock -> IconColors(Color(0xFFFFFFFF), Color(0xFF6B3FD6), InkIcon)
     GameIcon.Lock -> IconColors(Color(0xFF9A8FC0), Color(0xFF2B1A5E), InkIcon)
@@ -149,17 +154,22 @@ private fun DrawScope.drawGameIcon(icon: GameIcon, c: IconColors) {
             drawPath(body, o, style = Stroke(LINE, cap = StrokeCap.Round, join = StrokeJoin.Round))
         }
 
-        GameIcon.Heart -> {
-            val heart = Path().apply {
-                moveTo(24f, 43f)
-                cubicTo(6f, 31f, 3f, 21f, 3f, 14f)
-                cubicTo(3f, 8f, 8f, 4f, 14f, 4f)
-                cubicTo(19f, 4f, 22f, 6f, 24f, 10f)
-                cubicTo(26f, 6f, 29f, 4f, 34f, 4f)
-                cubicTo(40f, 4f, 45f, 8f, 45f, 14f)
-                cubicTo(45f, 21f, 42f, 31f, 24f, 43f)
-                close()
+        GameIcon.HeartCracked -> {
+            val heart = heartPath()
+            // Rachadura em zigue-zague do vale do coração até a ponta: metade esquerda inteira, direita desbotada.
+            val crack = listOf(24f to 10f, 20.5f to 17f, 26.5f to 23f, 21.5f to 30f, 25.5f to 36f, 24f to 43f)
+            clipPath(heart) {
+                drawPath(polygon(*(listOf(0f to 0f, 24f to 0f) + crack + listOf(24f to 48f, 0f to 48f)).toTypedArray()), c.main)
+                drawPath(polygon(*(listOf(48f to 0f, 24f to 0f) + crack + listOf(24f to 48f, 48f to 48f)).toTypedArray()), c.accent)
             }
+            drawOval(Color(0xFFFFA3B5), Offset(9f, 9f), Size(8f, 5f))
+            val line = Path().apply { crack.forEachIndexed { i, (x, y) -> if (i == 0) moveTo(x, y) else lineTo(x, y) } }
+            drawPath(line, o, style = Stroke(2.6f, cap = StrokeCap.Round, join = StrokeJoin.Round))
+            drawPath(heart, o, style = Stroke(LINE, cap = StrokeCap.Round, join = StrokeJoin.Round))
+        }
+
+        GameIcon.Heart -> {
+            val heart = heartPath()
             shape(heart, c.main, o)
             drawOval(c.accent, Offset(9f, 9f), Size(8f, 5f))
         }
@@ -314,4 +324,15 @@ private fun DrawScope.drawGameIcon(icon: GameIcon, c: IconColors) {
             }
         }
     }
+}
+
+private fun heartPath(): Path = Path().apply {
+    moveTo(24f, 43f)
+    cubicTo(6f, 31f, 3f, 21f, 3f, 14f)
+    cubicTo(3f, 8f, 8f, 4f, 14f, 4f)
+    cubicTo(19f, 4f, 22f, 6f, 24f, 10f)
+    cubicTo(26f, 6f, 29f, 4f, 34f, 4f)
+    cubicTo(40f, 4f, 45f, 8f, 45f, 14f)
+    cubicTo(45f, 21f, 42f, 31f, 24f, 43f)
+    close()
 }

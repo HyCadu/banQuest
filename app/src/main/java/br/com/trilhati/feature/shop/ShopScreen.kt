@@ -18,26 +18,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.domain.hearts.HeartsEngine
+import br.com.trilhati.domain.progress.HelpEngine
 import br.com.trilhati.domain.progress.ShopItem
 import br.com.trilhati.domain.streak.StreakEngine
 import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
-import br.com.trilhati.ui.components.MascotSays
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
-import br.com.trilhati.ui.mascot.MascotCharacter
-import br.com.trilhati.ui.mascot.MascotPose
 import br.com.trilhati.ui.theme.Spacing
 import br.com.trilhati.ui.theme.Trilha
 
-/** Aba Loja: gemas, baú diário, congelamento de ofensiva e recarga de corações. */
+/** Aba Loja: gemas, baú diário, congelamento de ofensiva, recarga de corações e "Não sei". Um item por linha. */
 @Composable
-fun ShopContent(state: AppState, actions: AppActions, modifier: Modifier = Modifier, animated: Boolean = true) {
+fun ShopContent(state: AppState, actions: AppActions, modifier: Modifier = Modifier) {
     val c = Trilha.colors
     val stats = state.snapshot.stats
-    val character = MascotCharacter.entries.firstOrNull { it.name == state.snapshot.profile.character } ?: MascotCharacter.Guaiamum
     val chestAvailable = state.snapshot.shop.lastDailyChestDay != state.today
     val freezes = stats.streak.freezes
 
@@ -50,57 +47,46 @@ fun ShopContent(state: AppState, actions: AppActions, modifier: Modifier = Modif
             GameIconView(GameIcon.Gem, size = 34.dp)
             Text(stats.gems.toString(), style = MaterialTheme.typography.headlineMedium, color = c.ink)
         }
-        MascotSays(
-            character = character, pose = if (stats.gems >= ShopItem.StreakFreeze.priceGems) MascotPose.Happy else MascotPose.Idle,
-            text = "Gemas vêm de lições, missões, conquistas e baús. Gaste com sabedoria!", animated = animated,
-        )
-        ShopCard(
-            icon = GameIcon.Chest, title = "Baú diário", description = "Uma surpresa de gemas por dia. Abra todo dia!",
-            action = {
-                ChunkyButton(
-                    if (chestAvailable) "Abrir baú" else "Volte amanhã", actions.claimDailyChest, Modifier.fillMaxWidth(),
-                    ChunkyStyle.Warning, enabled = chestAvailable, minHeight = 46.dp,
-                )
-            },
-        )
-        ShopCard(
-            icon = GameIcon.Snowflake, title = "Congelar ofensiva",
-            description = "Protege a ofensiva em um dia sem estudar. Usa sozinho. Você tem $freezes de ${StreakEngine.MAX_FREEZES}.",
-            action = {
-                ChunkyButton(
-                    "${ShopItem.StreakFreeze.priceGems} gemas", { actions.buy(ShopItem.StreakFreeze) }, Modifier.fillMaxWidth(),
-                    ChunkyStyle.Secondary, enabled = freezes < StreakEngine.MAX_FREEZES, icon = GameIcon.Gem, minHeight = 46.dp,
-                )
-            },
-        )
-        ShopCard(
-            icon = GameIcon.Heart, title = "Recarregar corações",
-            description = if (state.settings.noLives) "O modo sem vidas está ligado, então você não perde corações."
-            else "Enche os ${HeartsEngine.MAX} corações de uma vez e deixa você errar à vontade.",
-            action = {
-                ChunkyButton(
-                    "${ShopItem.RefillHearts.priceGems} gemas", { actions.buy(ShopItem.RefillHearts) }, Modifier.fillMaxWidth(),
-                    ChunkyStyle.Secondary, enabled = !state.settings.noLives && stats.hearts.hearts < HeartsEngine.MAX, icon = GameIcon.Gem, minHeight = 46.dp,
-                )
-            },
-        )
+        ShopRow(GameIcon.Chest, "Baú diário", "Gemas grátis todo dia") {
+            ChunkyButton(if (chestAvailable) "Abrir" else "Amanhã", actions.claimDailyChest, style = ChunkyStyle.Warning, enabled = chestAvailable, minHeight = 44.dp)
+        }
+        ShopRow(GameIcon.Snowflake, "Congelar ofensiva", "Salva um dia sem estudo · $freezes/${StreakEngine.MAX_FREEZES}") {
+            PriceButton(ShopItem.StreakFreeze, enabled = freezes < StreakEngine.MAX_FREEZES) { actions.buy(ShopItem.StreakFreeze) }
+        }
+        ShopRow(
+            GameIcon.Heart, "Recarregar corações",
+            if (state.settings.noLives) "Modo sem vidas ligado" else "Enche os ${HeartsEngine.MAX} corações",
+        ) {
+            PriceButton(ShopItem.RefillHearts, enabled = !state.settings.noLives && stats.hearts.halves < HeartsEngine.MAX_HALVES) {
+                actions.buy(ShopItem.RefillHearts)
+            }
+        }
+        val helps = stats.help.count
+        ShopRow(GameIcon.Info, "Não sei", "Resposta explicada sem perder coração · $helps/${HelpEngine.MAX}") {
+            PriceButton(ShopItem.Help, enabled = helps < HelpEngine.MAX) { actions.buy(ShopItem.Help) }
+        }
+    }
+}
+
+/** Item da loja numa linha: ícone, nome, uma linha curta e o botão à direita. */
+@Composable
+private fun ShopRow(icon: GameIcon, title: String, subtitle: String, action: @Composable () -> Unit) {
+    val c = Trilha.colors
+    Row(
+        Modifier.fillMaxWidth().background(c.surface, RoundedCornerShape(22.dp)).border(2.dp, c.outline, RoundedCornerShape(22.dp))
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        GameIconView(icon, size = 40.dp)
+        Column(Modifier.weight(1f)) {
+            Text(title, style = MaterialTheme.typography.titleMedium, color = c.ink)
+            Text(subtitle, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+        }
+        action()
     }
 }
 
 @Composable
-private fun ShopCard(icon: GameIcon, title: String, description: String, action: @Composable () -> Unit) {
-    val c = Trilha.colors
-    Column(
-        Modifier.fillMaxWidth().background(c.surface, RoundedCornerShape(22.dp)).border(2.dp, c.outline, RoundedCornerShape(22.dp)).padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-            GameIconView(icon, size = 48.dp)
-            Column(Modifier.weight(1f)) {
-                Text(title, style = MaterialTheme.typography.titleMedium, color = c.ink)
-                Text(description, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
-            }
-        }
-        action()
-    }
+private fun PriceButton(item: ShopItem, enabled: Boolean, onClick: () -> Unit) {
+    ChunkyButton(item.priceGems.toString(), onClick, style = ChunkyStyle.Secondary, enabled = enabled, icon = GameIcon.Gem, minHeight = 44.dp)
 }

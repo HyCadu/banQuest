@@ -211,7 +211,7 @@ fun MainContent(
                     )
                     MainTab.Practice -> PracticeContent(state, tabActions, animated = animated)
                     MainTab.Ranking -> RankingContent(state, social, nowMs, tabActions, animated = animated)
-                    MainTab.Shop -> ShopContent(state, tabActions, animated = animated)
+                    MainTab.Shop -> ShopContent(state, tabActions)
                     MainTab.Profile -> ProfileContent(state, tabActions, animated = animated)
                 }
             }

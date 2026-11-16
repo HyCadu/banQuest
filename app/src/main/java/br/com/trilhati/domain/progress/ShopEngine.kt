@@ -8,6 +8,8 @@ import java.time.LocalDate
 enum class ShopItem(val priceGems: Int) {
     StreakFreeze(200),
     RefillHearts(350),
+    /** Um uso do botão "Não sei". */
+    Help(50),
 }
 
 sealed interface PurchaseResult {
@@ -24,9 +26,10 @@ object ShopEngine {
     const val UNIT_CHEST_GEMS = 60
 
     /** Pode comprar? Devolve o motivo da recusa, se houver. */
-    fun canBuy(item: ShopItem, gems: Int, hearts: Int, freezes: Int): PurchaseResult? = when {
+    fun canBuy(item: ShopItem, gems: Int, hearts: Int, freezes: Int, helps: Int = 0): PurchaseResult? = when {
         item == ShopItem.RefillHearts && hearts >= HeartsEngine.MAX -> PurchaseResult.AlreadyFull
         item == ShopItem.StreakFreeze && freezes >= StreakEngine.MAX_FREEZES -> PurchaseResult.AlreadyFull
+        item == ShopItem.Help && helps >= HelpEngine.MAX -> PurchaseResult.AlreadyFull
         gems < item.priceGems -> PurchaseResult.NotEnoughGems(item.priceGems - gems)
         else -> null
     }

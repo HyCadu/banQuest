@@ -188,13 +188,13 @@ fun FeedbackPanel(
 }
 
 /**
- * Selo discreto exigido pelo CLAUDE.md: toda questão gerada por IA aparece como "não revisada". Nas questões de
- * provas anteriores ([explanationOnly]) o enunciado é o original, e o selo avisa que só a explicação não foi revisada.
+ * Selo discreto exigido pelo CLAUDE.md (regra 3): toda questão não revisada pelo dono aparece como "não revisada". Nas
+ * questões de provas anteriores, os detalhes ("só a explicação não foi revisada") ficam no toque, em "Sobre esta questão".
  */
 @Composable
-fun UnreviewedBadge(modifier: Modifier = Modifier, explanationOnly: Boolean = false) {
+fun UnreviewedBadge(modifier: Modifier = Modifier) {
     val c = Trilha.colors
-    val description = stringResource(if (explanationOnly) R.string.unreviewed_explanation_badge_description else R.string.unreviewed_badge_description)
+    val description = stringResource(R.string.unreviewed_badge_description)
     Surface(
         modifier = modifier.semantics(mergeDescendants = true) { contentDescription = description },
         shape = RoundedCornerShape(50),
@@ -202,38 +202,43 @@ fun UnreviewedBadge(modifier: Modifier = Modifier, explanationOnly: Boolean = fa
         border = BorderStroke(1.5.dp, c.warning),
     ) {
         Row(
-            modifier = Modifier.padding(start = 6.dp, end = 10.dp, top = 3.dp, bottom = 3.dp),
+            modifier = Modifier.padding(start = 4.dp, end = 8.dp, top = 2.dp, bottom = 2.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            GameIconView(GameIcon.Info, size = 16.dp)
+            GameIconView(GameIcon.Info, size = 14.dp)
             Spacer(Modifier.width(4.dp))
-            Text(
-                stringResource(if (explanationOnly) R.string.unreviewed_explanation_badge else R.string.unreviewed_badge),
-                style = MaterialTheme.typography.labelSmall,
-                color = c.warningText,
-            )
+            Text(stringResource(R.string.unreviewed_badge), style = MaterialTheme.typography.labelSmall, color = c.warningText)
         }
     }
 }
 
-/** Etiqueta das questões de provas anteriores: banca, órgão, ano e número (ex.: "FGV · Banestes 2021 · questão 48"). */
+/**
+ * Dica do conceito nos exercícios de aprender: um botão "Dica: <conceito>" que abre o resumo. Fica fechada até o aluno
+ * pedir, para o exercício ainda fazer pensar. No primeiro exercício de um conceito novo ([isNew]) vem aberta, como
+ * "Novo conceito: <conceito>".
+ */
 @Composable
-fun ExamRefChip(label: String, modifier: Modifier = Modifier) {
+fun ConceptHint(title: String, summary: String, open: Boolean, onToggle: () -> Unit, modifier: Modifier = Modifier, isNew: Boolean = false) {
     val c = Trilha.colors
-    val description = stringResource(R.string.exam_ref_description, label)
+    val state = stringResource(if (open) R.string.concept_hint_open else R.string.concept_hint_closed)
     Surface(
-        modifier = modifier.semantics(mergeDescendants = true) { contentDescription = description },
-        shape = RoundedCornerShape(50),
-        color = c.secondarySoft,
-        border = BorderStroke(1.5.dp, c.secondary),
+        modifier = modifier
+            .semantics(mergeDescendants = true) { role = Role.Button; stateDescription = state }
+            .clickable(onClick = onToggle),
+        shape = RoundedCornerShape(16.dp),
+        color = c.primarySoft,
+        border = BorderStroke(1.5.dp, c.primary),
     ) {
-        Row(
-            modifier = Modifier.padding(start = 6.dp, end = 10.dp, top = 3.dp, bottom = 3.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            GameIconView(GameIcon.Book, size = 16.dp)
-            Spacer(Modifier.width(4.dp))
-            Text(label, style = MaterialTheme.typography.labelSmall, color = c.secondaryText)
+        Column(Modifier.padding(horizontal = 12.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                GameIconView(GameIcon.Star, size = 16.dp)
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    stringResource(if (isNew) R.string.concept_new_label else R.string.concept_hint_label, title),
+                    style = MaterialTheme.typography.labelMedium, color = c.primaryText,
+                )
+            }
+            if (open) Text(summary, style = MaterialTheme.typography.bodyMedium, color = c.ink)
         }
     }
 }

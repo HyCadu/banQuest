@@ -96,6 +96,7 @@ fun PathContent(
         Column(Modifier.padding(horizontal = Spacing.screen).padding(top = Spacing.sm), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             TopStatusBar(
                 streak = state.streakCount, gems = stats.gems, hearts = hearts, daysToExam = state.daysToExam,
+                halfHeart = state.heartsHalf(nowMs),
                 showHearts = !state.settings.noLives,
                 studiedToday = state.todayLog.lessons > 0,
                 onStreakClick = { dialog = PathDialog.Streak },
@@ -277,17 +278,24 @@ private fun StreakDialog(state: AppState, onDismiss: () -> Unit) {
 @Composable
 private fun HeartsDialog(state: AppState, nowMs: Long, actions: AppActions, onDismiss: () -> Unit) {
     val hearts = state.hearts(nowMs)
+    val half = state.heartsHalf(nowMs)
     val wait = state.heartsMsUntilNext(nowMs)
     TrilhaDialog(
         onDismiss = onDismiss,
-        title = "$hearts de ${HeartsEngine.MAX} corações",
+        title = "Corações",
         content = {
-            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                repeat(HeartsEngine.MAX) { i -> GameIconView(GameIcon.Heart, size = 30.dp, modifier = Modifier.alpha(if (i < hearts) 1f else 0.25f)) }
+            Row(Modifier.semantics(mergeDescendants = true) { contentDescription = state.heartsDescription(nowMs) }, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                repeat(HeartsEngine.MAX) { i ->
+                    when {
+                        i < hearts -> GameIconView(GameIcon.Heart, size = 30.dp)
+                        i == hearts && half -> GameIconView(GameIcon.HeartCracked, size = 30.dp)
+                        else -> GameIconView(GameIcon.Heart, size = 30.dp, modifier = Modifier.alpha(0.25f))
+                    }
+                }
             }
             Text(
-                if (wait == null) "Corações cheios! Cada erro em uma lição custa 1."
-                else "Próximo coração em ${PaceEngine.format(wait)}. Eles voltam 1 a cada 30 minutos.",
+                if (wait == null) "Erro de prova quebra um coração. Erro de ensino só racha; o segundo quebra."
+                else "Próximo coração em ${PaceEngine.format(wait)}.",
                 style = MaterialTheme.typography.bodyMedium, color = Trilha.colors.ink,
             )
         },

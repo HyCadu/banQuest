@@ -20,7 +20,7 @@ object DatabaseModule {
         Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.NAME)
             // v1 (Fase 0) só tinha uma tabela vazia: pode ser recriada. Da v2 em diante há progresso real,
             // então só migrações explícitas (docs/DECISIONS.md).
-            .addMigrations(br.com.trilhati.data.db.MIGRATION_2_3)
+            .addMigrations(br.com.trilhati.data.db.MIGRATION_2_3, br.com.trilhati.data.db.MIGRATION_3_4)
             .fallbackToDestructiveMigrationFrom(true, 1)
             .build()
 
