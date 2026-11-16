@@ -61,6 +61,8 @@ data class SettingsUi(
     val versionName: String,
     val social: br.com.trilhati.feature.app.SocialUi = br.com.trilhati.feature.app.SocialUi(),
     val update: br.com.trilhati.data.update.UpdateUi = br.com.trilhati.data.update.UpdateUi(),
+    /** Quantas das [questionCount] são de provas anteriores. */
+    val examCount: Int = 0,
 )
 
 /** O que a tela de configurações dispara. */
@@ -103,6 +105,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     val context = LocalContext.current
     val questionCount = state?.course?.sumOf { u -> u.lessons.sumOf { it.questions.size } } ?: 0
     val unreviewed = state?.course?.sumOf { u -> u.lessons.sumOf { l -> l.questions.count { it.showUnreviewedBadge } } } ?: 0
+    val fromExams = state?.course?.sumOf { u -> u.lessons.sumOf { l -> l.questions.count { it.isFromExam } } } ?: 0
     val version = remember(context) {
         runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: "?"
     }
@@ -132,7 +135,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
     }
 
     SettingsContent(
-        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version, social, update),
+        ui = SettingsUi(settings, questionCount, unreviewed, allowed, packs, version, social, update, examCount = fromExams),
         callbacks = SettingsCallbacks(
             onBack = onBack, onTimerMode = viewModel::setTimerMode, onPaceTarget = viewModel::setPaceTarget,
             onCaseFour = viewModel::setCaseFourMinutes, onNoLives = viewModel::setNoLives, onHaptics = viewModel::setHaptics,
@@ -274,8 +277,9 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
 
         Section("Conteúdo") {
             Text(
-                "${ui.questionCount} questões no app, ${ui.unreviewedCount} ainda não revisadas. As questões geradas por IA mostram " +
-                    "o selo \"não revisada\". Nenhuma é de prova real da banca.",
+                "${ui.questionCount} questões no app, ${ui.examCount} delas de provas anteriores (com a banca e o ano na etiqueta). " +
+                    "${ui.unreviewedCount} ainda não foram revisadas: as geradas por IA mostram o selo \"não revisada\", e nas de prova " +
+                    "o selo avisa que só a explicação não foi revisada.",
                 style = MaterialTheme.typography.bodyMedium, color = c.ink,
             )
             ChunkyButton("Importar pacote de conteúdo (.json)", callbacks.onImportPack, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 46.dp)

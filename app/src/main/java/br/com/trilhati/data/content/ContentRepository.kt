@@ -26,6 +26,7 @@ data class ImportedPack(val fileName: String, val pack: String, val version: Int
 /**
  * Carrega os pacotes de conteúdo embutidos (arquivos .json em `assets/content`) e os importados (em `files/packs`).
  * Para cada unidade vale o pacote de versão mais alta; no empate, o importado. Pacotes inválidos são ignorados (com log).
+ * As questões de provas anteriores (`assets/provas`) entram nas lições indicadas em cada uma ([CourseAssembler]).
  */
 @Singleton
 class ContentRepository @Inject constructor(@ApplicationContext private val context: Context) {
@@ -110,12 +111,38 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
             .mapNotNull { (load, isImported) -> (load as? PackLoad.Ok)?.let { Triple(it, isImported, it.pack.version) } }
             .groupBy { it.first.unit.id }
             .values.map { candidates -> candidates.maxWith(compareBy({ it.third }, { it.second })).first.unit }
-        return CourseAssembler.assemble(chosen).also { reindex(it) }
+        return CourseAssembler.assemble(chosen, examQuestions()).also { reindex(it) }
+    }
+
+    /** Questões de provas anteriores embutidas. Um pacote inválido é ignorado inteiro (com log). */
+    private fun examQuestions(): List<Question> =
+        context.assets.list(EXAM_DIR).orEmpty().filter { it.endsWith(".json") }.sorted().flatMap { name ->
+            val text = context.assets.open("$EXAM_DIR/$name").bufferedReader(Charsets.UTF_8).use { it.readText() }
+            parseExam(name, text)
+        }
+
+    private fun parseExam(name: String, text: String): List<Question> {
+        val dto = try {
+            json.decodeFromString(ExamPackDto.serializer(), text)
+        } catch (e: kotlinx.serialization.SerializationException) {
+            Log.w(TAG, "Pacote de provas $name ignorado: ${e.message?.take(120)}")
+            return emptyList()
+        } catch (e: IllegalArgumentException) {
+            Log.w(TAG, "Pacote de provas $name ignorado: ${e.message?.take(120)}")
+            return emptyList()
+        }
+        val errors = ContentValidator.validate(dto)
+        if (errors.isNotEmpty()) {
+            Log.w(TAG, "Pacote de provas $name ignorado: ${errors.take(3)}")
+            return emptyList()
+        }
+        return dto.toDomain()
     }
 
     companion object {
         const val ASSET_DIR = "content"
         const val IMPORT_DIR = "packs"
+        const val EXAM_DIR = "provas"
         private const val TAG = "ContentRepository"
     }
 }

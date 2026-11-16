@@ -27,7 +27,8 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
    Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE`, e as que o WorkManager traz
    (`RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`).
 3. **Conteúdo de estudo é sensível a erros.** Toda questão gerada por IA entra com `source: "ia"` e `reviewed: false`, passa pelo validador e pela revisão técnica separada. O app mostra um selo "não revisada". Nunca invente norma, versão ou número de artigo; se não tiver certeza, reformule a questão para algo conceitual ou descarte.
-4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`).
+4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`, ou
+   `"prova_real"` com `ref.banca` FCC).
 5. **Escopo da v1:** só Conhecimentos Específicos de TI. Português, Raciocínio, Atualidades e Ética ficam para depois. O simulado de 80 questões é a fase 10.
 6. **O cronômetro é o diferencial:** 3:00 por questão (configurável), nunca reprova a resposta, e o resumo final sempre mostra tempo médio por questão.
 7. **Datas:** fuso `America/Sao_Paulo`, virada do dia à meia-noite local. A ofensiva conta ao concluir pelo menos uma lição.
@@ -37,6 +38,11 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 - Questões estilo FCC: cinco alternativas de tamanho parecido, uma correta, sem "todas as anteriores", mistura de enunciado literal, exceção ("NÃO é") e ~40% de casos práticos.
 - Gere **uma unidade por vez**, valide com `tools/validate_content.py`, faça a segunda revisão e grave o relatório em `content/review/`. Distribua a posição da resposta correta de forma uniforme entre as 5 alternativas.
 - Questões reais coladas pelo dono em `content/inbox/` servem para calibrar estilo. Transcreva-as com `source: "fcc_real"` só se o dono pedir.
+- Provas anteriores enviadas pelo dono (PDF de prova + gabarito): uma prova por arquivo em `content/provas/`, com
+  `source: "prova_real"`, `ref` (banca, órgão, ano, número), `gabarito`, `lesson` e `flags`; texto conferido contra o PDF
+  e resposta conferida resolvendo a questão. Valide com `tools/validate_provas.py` e regere o pacote do app com
+  `tools/build_provas.py` (nunca edite `assets/provas/` à mão). Ao gerar uma unidade nova, conte as questões de prova
+  que já esperam pelas lições dela e use-as para calibrar o estilo.
 - Mantenha cada lição dentro dos tópicos que o Anexo IV do edital cita para o cargo 04.
 
 ## Comandos
@@ -46,6 +52,7 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 ./gradlew lint                   # lint
 ./gradlew check                  # testes + lint + validação de conteúdo
 python3 tools/validate_content.py app/src/main/assets/content/
+python3 tools/validate_provas.py && python3 tools/build_provas.py   # provas anteriores: valida e regera o pacote do app
 tools/build_apk.sh               # APK assinado para distribuir (precisa da chave; ver docs/ASSINATURA.md)
 tools/sql-tests/run.sh           # SQL do Supabase num Postgres local (precisa do postgresql-16)
 ./gradlew -p tools/preview-harness :shot:testDebugUnitTest   # renders, integração (inclui social) e acessibilidade

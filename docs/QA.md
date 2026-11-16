@@ -175,6 +175,21 @@
 - [ ] Teste `min_version_code` = 9: aparece o aviso **obrigatório**, que não fecha. Depois apague a linha de teste
       (`delete from public.app_releases where version_code = 9;`).
 
+## BanQuest 0.6.0 — provas anteriores na trilha
+
+**25. Questões de provas reais nas lições**
+- [ ] Na Trilha, as lições da Unidade 1 mostram mais questões que antes (ex.: "16 q." em vez de "10 q.").
+- [ ] Faça algumas lições da Unidade 1. Entre as 8 questões, algumas trazem a etiqueta azul-esverdeada com banca, órgão,
+      ano e número (ex.: "FGV · Banestes 2021 · questão 48") e o selo amarelo **"explicação não revisada"**.
+- [ ] As questões da Prefeitura de Teresina mostram "· gabarito preliminar" na etiqueta, e as da DPE-RR, "· gabarito
+      não confirmado".
+- [ ] Nas questões com tabela ou figura (ex.: T1, T2 e T3 da FGV 2021; a estrutura SOAP de Teresina), o texto da
+      tabela/figura aparece inteiro e legível, com rolagem se precisar.
+- [ ] Erre uma questão de prova: ela volta no fim da lição e aparece depois em **Praticar erros**.
+- [ ] Configurações → Conteúdo: "… questões no app, 26 delas de provas anteriores …".
+- [ ] As unidades 2 a 10 continuam "Conteúdo chegando em breve" (as questões de prova delas esperam o pacote da
+      unidade).
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
@@ -183,6 +198,10 @@ Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem e
 unitários**; validador de conteúdo sem erros; `tools/sql-tests/run.sh` (SQL aplicado duas vezes + testes de RLS e regras)
 passando; e na harness (`tools/preview-harness`): 14 testes de integração, **10 de integração social** contra um Supabase
 falso, 1 de migração v2→v3, 12 de acessibilidade e as renderizações das telas.
+
+Versão 0.6.0: `./gradlew check` sem erros nem warnings (inclui `validateProvas` e `checkProvasPack`); harness com
+85 testes (integração confere as 26 questões de prova na Unidade 1) e renders `s_exam*.png`; APK assinado conferido
+(`dist/banquest-0.6.0.apk`, versionCode 9, com `assets/provas/provas-anteriores.json`).
 
 > Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
 > você consegue validar.

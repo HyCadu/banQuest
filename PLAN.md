@@ -106,7 +106,8 @@ app/src/main/java/.../
 
 - `type`: `mcq5` (padrão FCC), `truefalse`, `match` (pares termo↔definição), `order_code` (ordenar linhas), `fill_blank` (completar SQL/código com lacuna e opções), `code_output` (qual a saída?), `case` (caso prático com cenário + mcq5).
 - `style`: `conceitual`, `literal` (troca de termo), `caso_pratico`, `excecao` (quantificadores/NÃO é).
-- `source`: `autoral`, `ia`, `fcc_real`. `reviewed`: se o dono conferiu.
+- `source`: `autoral`, `ia`, `fcc_real`, `prova_real` (prova anterior enviada pelo dono, de qualquer banca, com `ref` e
+  vinda de `assets/provas`; ver `docs/DECISIONS.md`). `reviewed`: se o dono conferiu.
 - Cada lição tem **10 questões no banco**; a lição sorteia 8 (prioriza as que o usuário errou). Erros são repetidos uma vez no fim da lição.
 
 ### 5.2 Entidades Room (mínimo)

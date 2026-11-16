@@ -3,6 +3,7 @@ package shot
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.junit4.createComposeRule
+import br.com.trilhati.data.content.toDomain
 import br.com.trilhati.data.prefs.Settings
 import br.com.trilhati.domain.model.QuestionType
 import br.com.trilhati.domain.pace.PaceConfig
@@ -91,6 +92,23 @@ class FlowShots {
     @Test fun sDark() = session("s_mcq_dark.png", playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(1)), dark = true)
     @Test fun sOver() { val p = playing(QuestionType.Mcq5); session("s_over.png", p.copy(startedAtMs = NOW_MS - 200_000, combo = 0)) }
     @Test fun sNoHearts() = session("s_nohearts.png", SessionUi.NoHearts(120, 1_240_000, true))
+
+    // Questões de provas anteriores: etiqueta da prova e selo "explicação não revisada".
+    private val exam by lazy {
+        kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+            .decodeFromString(br.com.trilhati.data.content.ExamPackDto.serializer(), java.io.File("../../../app/src/main/assets/provas/provas-anteriores.json").readText())
+            .toDomain()
+    }
+    private fun examQuestion(id: String) = exam.first { it.id == id }
+    private fun examPlaying(id: String, exercise: ExerciseState = ExerciseState.Choice(), phase: Phase = Phase.Answering) =
+        SessionUi.Playing("Subconsultas, CTEs e funções analíticas", examQuestion(id), exercise, phase, 0.375f, 0, 4, false, PaceConfig(), 180_000, NOW_MS - 95_000, 2, 42_000, true)
+    @Test fun sExam() = session("s_exam.png", examPlaying("fgv-banestes-2021-q48", ExerciseState.Choice(1)))
+    @Test fun sExamPreliminary() = session("s_exam_preliminar.png", examPlaying("fcc-teresina-2016-q22", ExerciseState.Choice(2)))
+    @Test fun sExamFeedback() {
+        val q = examQuestion("fgv-banestes-2018-q64")
+        val wrong = (q.answer + 1) % 5
+        session("s_exam_feedback.png", examPlaying(q.id, ExerciseState.Choice(wrong), Phase.Feedback(false, q.options[q.answer], 0)))
+    }
 
     @Test fun result() {
         val qs = course[0].lessons[0].questions.take(8)

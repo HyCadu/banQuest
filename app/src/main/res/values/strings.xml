@@ -10,6 +10,9 @@
     <string name="node_perfect">concluída sem erros</string>
     <string name="unreviewed_badge">não revisada</string>
     <string name="unreviewed_badge_description">Questão ainda não revisada pelo dono do app</string>
+    <string name="unreviewed_explanation_badge">explicação não revisada</string>
+    <string name="unreviewed_explanation_badge_description">Questão de prova anterior. A explicação foi escrita por IA e ainda não foi revisada</string>
+    <string name="exam_ref_description">Questão de prova anterior: %1$s</string>
     <string name="feedback_continue">Continuar</string>
     <string name="combo_label">combo x%1$d</string>
     <plurals name="stat_streak_description">
