@@ -310,3 +310,29 @@ coração, a questão repetia no fim e o resultado saía como erro, embora a tel
    `./gradlew check` roda o validador e falha se o pacote estiver desatualizado (`--check`).
 6. **Na lição:** etiqueta "FGV · Banestes 2021 · questão 48" (com "gabarito preliminar" ou "gabarito não confirmado"
    quando for o caso) e o selo "explicação não revisada" no lugar de "não revisada", porque o enunciado é o original.
+
+## Provas anteriores: Conhecimentos Gerais (16/11/2026) — a pedido do dono
+
+1. **Entram as questões gerais das provas FGV · Banestes 2018 (Q1–50) e 2021 (Q1–35)**, nos mesmos arquivos de
+   `content/provas`, nas lições G1–G4 (`u11`–`u14`) do `docs/CONTENT_PLAN.md`: Português 35, Raciocínio 30, mercado
+   financeiro 11, ética e lavagem de dinheiro 6. A proporção fica perto do peso de cada matéria na prova (10/10/5/5).
+   - Ficam de fora as anuladas (2021 Q21 e Q22). A 2021 Q25 (criptomoedas, comunicado de 2017) entra com
+     `versao_antiga`, porque o marco legal de 2022 mudou o papel do Banco Central.
+   - Fidelidade: texto conferido contra o PDF e resposta do gabarito definitivo, conferida resolvendo a questão. Termos
+     sublinhados aparecem entre colchetes, com aviso no enunciado. O Texto 1 e o Texto 2 de 2018 entram em cada questão
+     que os usa. A charge de 2018 Q16 virou descrição em texto (`depende_de_figura`).
+   - As questões sobre o Guia de Conduta Ética do Banestes (2018 Q28–30, 2021 Q16) foram conferidas contra o guia
+     atual (PDF do site do banco, atualização de 2020): as respostas oficiais continuam valendo, e as explicações citam
+     os itens atuais. As de 2018 levam `versao_citada_anterior` (a Q30 cita o Capítulo I; hoje a regra está no 8.9.1).
+     O PDF do guia não entra no repositório.
+   - 2018 Q25 diz que o Copom foi instituído em 1999. Mantido como na prova; a explicação corrige: 20/06/1996 (em 1999
+     veio o regime de metas para a inflação, Decreto nº 3.088).
+2. **Não atrapalham o fluxo de estudo:** o app recusa o pacote de provas inteiro se uma questão aponta para lição que
+   não existe no `Curriculum.kt`. Por isso `tools/build_provas.py` só leva ao app as questões de lições que já existem
+   no `Curriculum`. As 83 gerais ficam guardadas em `content/provas` e entram sozinhas quando a trilha dos Gerais for
+   criada; o pacote do app continua com 123 questões, todas de Específicos.
+3. **Peso na trilha (para quando os Gerais entrarem):** os Gerais valem 30 de 130 pontos (peso 1 contra peso 2 dos
+   Específicos), cerca de 23% da nota. Sugestão: uma lição de Gerais para cada três de Específicos, para que a parte
+   de TI continue sendo a maior parte do estudo. A forma de mostrar os Gerais na trilha segue aberta (CONTENT_PLAN,
+   decisão 2).
+4. Os PDFs das provas ficam em `docs/provas/`, fora do git (`.gitignore`), só para conferência.
