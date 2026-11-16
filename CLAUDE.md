@@ -12,6 +12,7 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 
 ## Como trabalhar
 - Siga as **fases do PLAN.md na ordem**. Ao fim de cada fase: compile, rode `./gradlew test lint`, faça commit com mensagem clara e **pare para o dono revisar** antes da fase seguinte.
+- **Nunca faça commit nem push na `main`.** Trabalhe numa branch, abra um pull request e pare: só o dono aprova e faz o merge. Decisões caras de desfazer viram issue `[Decisão]`. Fluxo completo em `CONTRIBUTING.md`.
 - Antes de codar uma fase, escreva em poucas linhas o que vai fazer e quais arquivos vai tocar.
 - Lógica de domínio (`domain/`) fica em Kotlin puro, sem Android, e **toda regra tem teste unitário**. Data e hora sempre via `Clock` injetável, nunca `System.currentTimeMillis()` direto.
 - Prefira funções pequenas, estado imutável e `StateFlow`. Sem `GlobalScope`. Sem `!!` fora de testes.

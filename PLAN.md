@@ -45,7 +45,7 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 - Backup/exportação do progresso em JSON.
 
 ### Fora da v1 (não implementar agora)
-- Conhecimentos Gerais (Português, Raciocínio e Estatística, Atualidades, Ética/ESG).
+- ~~Conhecimentos Gerais~~: **entraram na v1** em 15/11/2026 (G1–G4, ver `docs/CONTENT_PLAN.md`).
 - Simulado de 80 questões / 4 h (planejado para v1.1; ver Fase 10).
 - Anúncios, compras, analytics, Firebase, "cutucar" amigos, chat.
 - Outros cargos (Suporte, Segurança) além de reaproveitar o conteúdo comum.
