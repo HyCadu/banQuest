@@ -877,7 +877,7 @@
       ],
       "answer_letter": "C",
       "answer": 2,
-      "explanation": "Para levar a Selic à meta definida pelo Copom, o Banco Central compra e vende títulos públicos no mercado aberto, regulando a liquidez. Emitir títulos públicos e controlar a dívida são funções do Tesouro. Observação: o Copom foi criado em 1996; o enunciado original diz 1999, ano de início do regime de metas de inflação.",
+      "explanation": "Para levar a Selic à meta definida pelo Copom, o Banco Central compra e vende títulos públicos no mercado aberto, regulando a liquidez. Emitir títulos públicos e controlar a dívida são funções do Tesouro. Observação: o Copom foi instituído em 20 de junho de 1996, e não em 1999, como diz o enunciado original. Em 1999 o Decreto nº 3.088 adotou o regime de metas para a inflação, e a partir daí o Copom passou a usar a Selic para cumprir a meta.",
       "explanation_source": "ia",
       "source": "prova_real",
       "reviewed": false,
@@ -982,11 +982,13 @@
       ],
       "answer_letter": "D",
       "answer": 3,
-      "explanation": "II (hierarquia: cumprir as determinações dos superiores respeitando estatutos, normas e o guia) e III (probidade: integridade, honestidade e interesse público) estão de acordo com o guia. I está errada: eficiência não é otimizar lucros e superar todas as metas a qualquer custo. Confira no guia atual: o edital cita o Guia de Conduta Ética do Banestes vigente.",
+      "explanation": "No guia atual (atualizado em 2020), II é o princípio Hierarquia (item 4.20.1) e III é Probidade (item 4.1.1), com o mesmo texto da questão. I está errada: eficiência não é otimizar lucros e superar todas as metas a qualquer custo, e o guia nem lista eficiência entre os princípios éticos.",
       "explanation_source": "ia",
       "source": "prova_real",
       "reviewed": false,
-      "flags": []
+      "flags": [
+        "versao_citada_anterior"
+      ]
     },
     {
       "id": "fgv-banestes-2018-q29",
@@ -1017,11 +1019,13 @@
       ],
       "answer_letter": "B",
       "answer": 1,
-      "explanation": "I e II correspondem às condutas do guia com a comunidade e com o setor público. III está errada: o acordo do FATCA é entre o Governo do Brasil e o dos Estados Unidos, não entre o Espírito Santo e o Canadá. Confira no guia atual, que é o que o edital cita.",
+      "explanation": "I e II estão no guia atual: relacionamento com a comunidade (item 6.2.1) e com o setor público (item 6.6.2). III está errada: o item 6.1.11 trata do acordo entre o Governo do Brasil e o dos Estados Unidos para implementar o FATCA, não de um acordo entre o Espírito Santo e o Canadá.",
       "explanation_source": "ia",
       "source": "prova_real",
       "reviewed": false,
-      "flags": []
+      "flags": [
+        "versao_citada_anterior"
+      ]
     },
     {
       "id": "fgv-banestes-2018-q30",
@@ -1052,11 +1056,13 @@
       ],
       "answer_letter": "C",
       "answer": 2,
-      "explanation": "O guia orienta comunicar imediatamente ao superior hierárquico as irregularidades de que se tenha conhecimento. Confrontar o colega não é o caminho, e os outros canais não são os indicados nesse capítulo. Confira no guia atual, que é o que o edital cita.",
+      "explanation": "Quem suspeitar de desvios, fraudes ou irregularidades deve comunicar imediatamente ao superior hierárquico e, se não for possível, ao Conselho de Conduta Ética. No guia atual a regra está no item 8.9.1, no Capítulo VIII (a questão cita o Capítulo I da edição de 2018). Confrontar o colega não é o caminho indicado.",
       "explanation_source": "ia",
       "source": "prova_real",
       "reviewed": false,
-      "flags": []
+      "flags": [
+        "versao_citada_anterior"
+      ]
     },
     {
       "id": "fgv-banestes-2018-q31",
