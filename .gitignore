@@ -16,3 +16,6 @@ tools/preview-harness/**/build/
 tools/preview-harness/.gradle/
 tools/preview-harness/local.properties
 tools/preview-harness/**/schemas/
+
+# PDFs de provas usados só para conferência (direito autoral; não versionar)
+docs/provas/

@@ -12,6 +12,7 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 
 ## Como trabalhar
 - Siga as **fases do PLAN.md na ordem**. Ao fim de cada fase: compile, rode `./gradlew test lint`, faça commit com mensagem clara e **pare para o dono revisar** antes da fase seguinte.
+- **Nunca faça commit nem push na `main`.** Trabalhe numa branch, abra um pull request e pare: só o dono aprova e faz o merge. Decisões caras de desfazer viram issue `[Decisão]`. Fluxo completo em `CONTRIBUTING.md`.
 - Antes de codar uma fase, escreva em poucas linhas o que vai fazer e quais arquivos vai tocar.
 - Lógica de domínio (`domain/`) fica em Kotlin puro, sem Android, e **toda regra tem teste unitário**. Data e hora sempre via `Clock` injetável, nunca `System.currentTimeMillis()` direto.
 - Prefira funções pequenas, estado imutável e `StateFlow`. Sem `GlobalScope`. Sem `!!` fora de testes.
@@ -29,7 +30,9 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 3. **Conteúdo de estudo é sensível a erros.** Toda questão gerada por IA entra com `source: "ia"` e `reviewed: false`, passa pelo validador e pela revisão técnica separada. O app mostra um selo "não revisada". Nunca invente norma, versão ou número de artigo; se não tiver certeza, reformule a questão para algo conceitual ou descarte.
 4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`, ou
    `"prova_real"` com `ref.banca` FCC).
-5. **Escopo da v1:** só Conhecimentos Específicos de TI. Português, Raciocínio, Atualidades e Ética ficam para depois. O simulado de 80 questões é a fase 10.
+5. **Escopo da v1:** Conhecimentos Específicos de TI (U1–U10) e Conhecimentos Gerais (G1–G4, `u11`–`u14`), conforme
+   `docs/CONTENT_PLAN.md`. O escopo de cada lição vem do edital (`docs/EDITAL.md`): onde o PLAN.md diverge, vale o
+   edital. O simulado de 80 questões é a fase 10.
 6. **O cronômetro é o diferencial:** 3:00 por questão (configurável), nunca reprova a resposta, e o resumo final sempre mostra tempo médio por questão. No formato por conceitos os 3:00 valem para as questões de prova; praticar e aprender têm alvos menores, proporcionais ao ritmo escolhido.
 7. **Datas:** fuso `America/Sao_Paulo`, virada do dia à meia-noite local. A ofensiva conta ao concluir pelo menos uma lição.
 

@@ -11,23 +11,37 @@ Uso:
   python3 tools/build_provas.py            # regrava o pacote
   python3 tools/build_provas.py --check    # só confere se o pacote está atualizado (usado no ./gradlew check)
 """
-import json, sys
+import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "provas"
 OUT = ROOT / "app" / "src" / "main" / "assets" / "provas" / "provas-anteriores.json"
+CURRICULUM = ROOT / "app" / "src" / "main" / "java" / "br" / "com" / "trilhati" / "domain" / "model" / "Curriculum.kt"
 HIDDEN = {"versao_antiga", "fora_do_edital"}
+
+
+def app_lessons() -> set[str]:
+    """Lições que existem no app. O app recusa o pacote inteiro se uma questão aponta para lição inexistente, então as
+    questões de unidades que ainda não estão no Curriculum (ex.: Gerais u11–u14) ficam em content/provas, esperando."""
+    lessons = set()
+    for m in re.finditer(r'^\s*unit\((\d+), "[^"]*"((?:, "[^"]*")+)\)', CURRICULUM.read_text(encoding="utf-8"), re.M):
+        lessons |= {f"u{m.group(1)}l{i}" for i in range(1, m.group(2).count('"') // 2 + 1)}
+    if not lessons:
+        sys.exit(f"ERRO nenhuma lição lida de {CURRICULUM.relative_to(ROOT)}")
+    return lessons
+
+
 KEEP = ["id", "lesson", "concept", "type", "topic", "subtopic", "difficulty", "style", "stem", "code", "options", "answer",
         "explanation", "source", "reviewed"]
 REF = ["banca", "orgao", "ano", "cargo", "prova", "numero"]
 
 
 def build() -> str:
-    questions = []
+    questions, lessons = [], app_lessons()
     for path in sorted(SRC.glob("*.json")):
         for q in json.loads(path.read_text(encoding="utf-8"))["questions"]:
-            if HIDDEN & set(q.get("flags", [])):
+            if HIDDEN & set(q.get("flags", [])) or q["lesson"] not in lessons:
                 continue
             item = {k: q[k] for k in KEEP if q.get(k) is not None}
             # A FGV fecha cada alternativa com ";" na prova impressa; no app isso sobra em "Resposta correta: 5;".
@@ -49,7 +63,7 @@ def main() -> int:
         print(f"{OUT.relative_to(ROOT)}: atualizado ({count} questões)")
         return 0
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(text, encoding="utf-8")
+    OUT.write_text(text, encoding="utf-8", newline="\n")  # LF também no Windows, sem reescrever o arquivo inteiro no diff
     print(f"{OUT.relative_to(ROOT)}: {count} questões")
     return 0
 

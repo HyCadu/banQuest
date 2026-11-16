@@ -409,7 +409,7 @@
    "subtopic": "INSERT com NOT EXISTS",
    "difficulty": 2,
    "style": "conceitual",
-   "stem": "Considere um banco de dados com duas tabelas. A primeira tabela, numeros, possui dez registros e apenas uma coluna, cujos valores são 1, 2, 3, 4, 5, 5, 9, 9, 9, 10. A segunda tabela, denominada teste, com cinco registros, também possui apenas uma coluna, cujos valores são 1, 3, 3, 4, 5.\nConsidere ainda o comando SQL a seguir. Quando da execução desse comando, o número de registros inseridos na tabela teste é:",
+   "stem": "Considere um banco de dados com duas tabelas. A primeira tabela, números, possui dez registros e apenas uma coluna, cujos valores são 1, 2, 3, 4, 5, 5, 9, 9, 9, 10. A segunda tabela, denominada teste, com cinco registros, também possui apenas uma coluna, cujos valores são 1, 3, 3, 4, 5.\nConsidere ainda o comando SQL a seguir. Quando da execução desse comando, o número de registros inseridos na tabela teste é:",
    "code": "insert into teste\nselect numero from numeros n\nwhere not exists\n   (select * from teste t\n    where t.numero = n.numero)",
    "options": [
     "2",
