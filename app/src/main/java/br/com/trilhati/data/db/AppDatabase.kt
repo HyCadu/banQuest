@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
         AttemptEntity::class, DailyLogEntity::class, QuestStateEntity::class, AchievementEntity::class,
         ShopStateEntity::class, PackMetaEntity::class, OutboxSessionEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {

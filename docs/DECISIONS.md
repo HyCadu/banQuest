@@ -336,3 +336,84 @@ coração, a questão repetia no fim e o resultado saía como erro, embora a tel
    de TI continue sendo a maior parte do estudo. A forma de mostrar os Gerais na trilha segue aberta (CONTENT_PLAN,
    decisão 2).
 4. Os PDFs das provas ficam em `docs/provas/`, fora do git (`.gitignore`), só para conferência.
+
+## Lições por conceitos — piloto na u1l1 (16/11/2026) — a pedido do dono
+Ideia do dono: ensinar com tarefas pequenas e repetidas, como nos apps de idiomas, sem abrir mão das questões no nível
+da prova. Escolhas do dono: lição de 10 a 12 exercícios e exercícios adaptados das questões oficiais.
+1. **Conceitos e níveis.** A lição lista de 4 a 7 conceitos; cada exercício aponta para um conceito e tem um nível:
+   aprender (certo/errado e escolha rápida, o tipo novo `quick` com 3 alternativas), praticar (associar, completar,
+   ordenar, cenário curto) ou prova (FCC de 5 alternativas e as oficiais). Lição sem conceitos continua no formato
+   antigo (sorteio de 8), então a mudança é por lição e não quebra as outras.
+2. **Montagem da sessão (`LessonPlanner`, puro e testado).** ★ 12 exercícios: 4 de aprender, um por conceito, na ordem
+   dos conceitos; 5 de praticar, intercalando conceitos e evitando o mesmo tipo em sequência; 3 de prova no fim. No
+   máximo 4 conceitos por sessão, para cada um aparecer 2 ou 3 vezes. Erros anteriores entram primeiro e puxam o
+   conceito deles. Se faltar exercício num nível, completa com os outros. A repetição do erro no fim continua igual.
+3. **Adaptadas.** Exercício feito a partir de uma questão oficial leva `adaptedFrom` e a etiqueta "adaptada de FCC ·
+   Prefeitura de Teresina 2016 · questão 56", com o selo "não revisada" (é texto de IA). Ela nunca cai na mesma sessão
+   que a original, senão a original vira decoreba. O validador confere que a original existe em `content/provas` com a
+   mesma referência. Dizer "adaptada de FCC · …" não é afirmar que o exercício é da FCC (regra 4): ele aponta para a
+   questão real que o dono forneceu.
+4. **Cronômetro por nível.** ★ Prova usa o ritmo configurado (3:00, ou 2:30, com a opção de 4:00 para caso prático);
+   praticar, metade (1:30); aprender, 2/9 (0:40). Continua nunca reprovando, e o chip "Lição" soma os alvos de cada
+   exercício que falta.
+5. **Dica do conceito.** Nos exercícios de aprender aparece um botão "Dica: <conceito>" que abre um resumo de 2 ou 3
+   linhas. Fica fechado até o aluno pedir.
+6. **Banco da lição.** Formato por conceitos: de 24 a 80 exercícios (a u1l1 tem 46, mais as 6 oficiais). A meta de
+   ~40% de casos práticos e o balanço da posição da resposta entre A e E valem para as questões de prova; a escolha
+   rápida tem o seu próprio balanço entre A, B e C.
+7. **Versão do pacote.** `u1-banco-de-dados` foi para a versão 2, para ganhar de um pacote importado antigo.
+
+## Aprender fazendo, meio coração e "Não sei" (0.7.1, 16/11/2026) — a pedido do dono
+Retorno do dono sobre a 0.7.0: os exercícios novos pareciam "jogados" e chutáveis, e com vidas que demoram a voltar não
+dá para aprender errando. Escolhas do dono: errar em exercício de ensino custa **meio coração**, e o botão **"Não sei"**
+é um bônus que se ganha com o tempo e se compra na loja.
+1. **Sessão em blocos (substitui o item 2 da decisão anterior).** ★ 3 conceitos por sessão, **na ordem da lição**:
+   primeiro os que o aluno ainda não viu (descobertos pelas respostas já dadas naquela lição), depois os dos erros,
+   depois os outros, sorteados. Cada conceito é um bloco de 3 exercícios em sequência (passo 1 exemplo resolvido, 2
+   aplicar, 3 variar); a sessão fecha com 3 questões de prova dos conceitos dela. Total: 12. Prova só de conceito já
+   ensinado; se faltar, a sessão completa com ensino.
+2. **Exercícios que ensinam.** O enunciado traz a regra ou um exemplo resolvido, e a resposta sai do raciocínio. Um
+   cenário por conceito. Campo novo `step` (1, 2, 3…; variantes com o mesmo passo).
+3. **Conceito novo.** No primeiro exercício de um conceito que o aluno ainda não viu, a dica vem aberta com o rótulo
+   "Novo conceito: …". Depois, continua opcional.
+4. **Meio coração.** Corações passam a contar em metades (coluna `heartHalf`). Erro em aprender ou praticar custa ½;
+   erro em questão de prova custa 1. A regeneração continua no mesmo ritmo: ½ a cada 15 min (1 a cada 30). O contador
+   mostra "4½". A repetição de um erro no fim da lição continua sem custo.
+5. **"Não sei".** Estoque (colunas `helps` e `helpsDay`): todos começam com 3; a cada dia novo ganha +1 até 3; na loja
+   custa 50 gemas e dá para guardar até 9. Só aparece em aprender e praticar. Usar mostra a resposta com a explicação,
+   não custa coração, não dá XP, e o exercício volta no fim da lição e vai para a revisão (conta como erro na precisão e
+   tira o "perfeito"). Na questão de prova não há "Não sei", porque é a parte de avaliar.
+6. **Banco v4.** Migração 3→4 só acrescenta colunas (ninguém perde progresso; testada na harness). O backup continua na
+   versão 1: os campos novos têm valor padrão, e um app antigo ignora o que não conhece.
+
+## Menos texto nas telas (0.7.2, 16/11/2026) — a pedido do dono
+O dono achou o app "poluído de textos", principalmente o Ranking. Regras que passam a valer para toda tela:
+1. **Uma linha por item.** Nada de parágrafo explicativo embaixo de opção, cartão ou lista.
+2. **Explicação que importa vai para o ⓘ** (`InfoButton`): abre um diálogo curto. Usado em Ofensivas em dupla, Praticar
+   (como funciona a revisão) e nas seções das Configurações (Conta, Lembretes, Cronômetro, Conteúdo, Dados, Sobre).
+3. **Número e ícone no lugar de frase.** Ex.: ofensiva em dupla é a chama com o número; recompensas do resultado são
+   fichas curtas ("+125", "Meta batida", "Baú liberado", "2 missões"); o tempo médio mostra "alvo 3:00" ao lado.
+4. **Ação rara ou destrutiva sai da frente.** "Desfazer amizade" foi para o menu ⋯ de cada amigo; "Atualizar" virou o
+   botão ↻ no título do ranking, e o "Atualizado há…" só aparece quando há problema (sem conexão, erro ou lições
+   esperando internet).
+5. **Loja em linhas** (ícone, nome, uma linha e o preço à direita), sem a fala do personagem.
+6. **Acessibilidade continua completa:** o que saiu da tela continua no rótulo do TalkBack (ex.: "Ofensiva da dupla:
+   5 dias", "Missões cumpridas: …", "Saiba mais: Ofensivas em dupla").
+O resumo do resultado continua mostrando o tempo médio por questão (regra 6).
+
+## Tela de exercício enxuta e coração rachado (0.7.3, 16/11/2026) — a pedido do dono
+1. **"4,5" com o coração rachado, no lugar de "4½".** Com 4 inteiros e meio, o contador mostra **4,5** (vírgula, padrão
+   do português) e o ícone do coração aparece rachado (metade inteira, metade desbotada, rachadura em zigue-zague). O
+   próximo erro de ensino quebra esse coração e o contador vai a 4. O contador treme quando um coração racha ou quebra
+   (sem animação se o aparelho pedir para remover animações). No diálogo de corações da Trilha, o coração da vez aparece
+   rachado. O TalkBack lê "4 corações e meio". A regra (½ por erro de ensino, 1 por erro de prova) não mudou; o máximo
+   continua 5.
+2. **Tempo: só o anel.** Saem da questão as fichas "Folga" e "Lição"; a folga continua no resumo final. Durante a lição
+   só aparece a ficha de **atraso**, quando o aluno está abaixo do ritmo (folga negativa). O combo continua a partir de 3.
+3. **Uma faixa curta antes do enunciado.** Origem em uma linha ("FCC · Teresina 2016 · Q22", "Adaptada · FCC · …"), o
+   selo "não revisada" pequeno (regra 3 continua: o selo está sempre visível), a ficha "Repetição · 5 XP" e a dica do
+   conceito **fechada** ("Novo: …" no primeiro exercício de um conceito novo, "Dica: …" depois). Tocar na origem ou no
+   selo abre "Sobre esta questão", com a prova completa, a situação do gabarito e o que não foi revisado.
+4. **Detalhes.** A instrução do associar ficou "Toque num termo e na definição". O botão "Não sei" some quando o estoque
+   chega a zero.
+

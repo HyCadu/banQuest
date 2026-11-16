@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.material3.OutlinedTextField
@@ -33,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
@@ -57,6 +60,8 @@ import br.com.trilhati.feature.app.SocialUi
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
 import br.com.trilhati.ui.components.GameProgressBar
+import br.com.trilhati.ui.components.InfoButton
+import br.com.trilhati.ui.components.RoundSymbolButton
 import br.com.trilhati.ui.components.PillChoice
 import br.com.trilhati.ui.components.TrilhaDialog
 import br.com.trilhati.ui.icons.GameIcon
@@ -94,15 +99,18 @@ fun RankingContent(
             GameIconView(GameIcon.Trophy, size = 52.dp)
             Column(Modifier.weight(1f)) {
                 Text("Ranking da semana", Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineMedium, color = c.primaryText)
-                val subtitle = if (nowMs > 0) {
-                    "Termina em ${RankingWeek.remainingLabel(RankingWeek.endMs(state.today, APP_ZONE) - nowMs)} · conta o XP de segunda a domingo"
-                } else {
-                    "Conta o XP de segunda a domingo"
+                if (nowMs > 0) {
+                    Text(
+                        "Termina em ${RankingWeek.remainingLabel(RankingWeek.endMs(state.today, APP_ZONE) - nowMs)}",
+                        style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
+                    )
                 }
-                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             }
+            RoundSymbolButton(
+                if (social.refreshing) "…" else "↻", "Atualizar ranking", actions.refreshSocial, enabled = !social.refreshing,
+            )
         }
-        SyncStatus(social, nowMs, actions.refreshSocial)
+        SyncStatus(social, nowMs)
         QuestsCard(state.quests, actions)
         overview?.lastWeek?.let { LastWeekBanner(it) }
 
@@ -146,28 +154,17 @@ internal fun plural(n: Int, one: String, many: String): String = "$n ${if (n == 
 
 // ---------------------------------------------------------------------------------------------------------- estado
 
+/** Só aparece quando há algo a saber: sem conexão, erro ou lições esperando internet. Uma linha. */
 @Composable
-private fun SyncStatus(social: SocialUi, nowMs: Long, onRefresh: () -> Unit) {
+private fun SyncStatus(social: SocialUi, nowMs: Long) {
     val c = Trilha.colors
     val (text, color) = when {
-        social.refreshing -> "Atualizando…" to c.inkSoft
-        social.lastError != null && social.overview != null -> "Sem conexão agora. Mostrando o ranking de ${ago(social.lastSyncAtMs, nowMs)}." to c.warningText
+        social.lastError != null && social.overview != null -> "Sem conexão · ranking de ${ago(social.lastSyncAtMs, nowMs)}" to c.warningText
         social.lastError != null -> social.lastError to c.errorText
-        social.lastSyncAtMs > 0 -> "Atualizado ${ago(social.lastSyncAtMs, nowMs)}" to c.inkSoft
-        else -> "Ainda não atualizado" to c.inkSoft
+        social.pendingUploads > 0 -> "${plural(social.pendingUploads, "lição esperando", "lições esperando")} internet" to c.inkSoft
+        else -> return
     }
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        Column(Modifier.weight(1f)) {
-            Text(text, style = MaterialTheme.typography.bodySmall, color = color)
-            if (social.pendingUploads > 0) {
-                Text(
-                    "${plural(social.pendingUploads, "sessão esperando", "sessões esperando")} internet para contar no ranking.",
-                    style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                )
-            }
-        }
-        ChunkyButton("Atualizar", onRefresh, style = ChunkyStyle.Neutral, enabled = !social.refreshing, minHeight = 40.dp)
-    }
+    Text(text, style = MaterialTheme.typography.bodySmall, color = color)
 }
 
 private fun ago(thenMs: Long, nowMs: Long): String {
@@ -187,11 +184,7 @@ private fun LastWeekBanner(last: LastWeekResult) {
     val pos = last.pos ?: return
     if (last.xp <= 0) return
     val podium = PodiumRule.earned(last.pos, last.participants, last.xp)
-    val text = if (podium) {
-        "Semana passada: ${pos}º lugar entre ${last.participants}, com ${last.xp} XP. Pódio da semana!"
-    } else {
-        "Semana passada: ${pos}º lugar entre ${last.participants}, com ${last.xp} XP."
-    }
+    val text = if (podium) "Pódio! ${pos}º lugar na semana passada" else "Semana passada: ${pos}º lugar"
     Row(
         Modifier.fillMaxWidth().background(if (podium) c.warningSoft else c.surfaceAlt, RoundedCornerShape(16.dp)).padding(14.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -209,10 +202,7 @@ private fun OfflineCard(social: SocialUi, state: AppState, actions: AppActions, 
             Mascot(MascotCharacter.of(state.snapshot.profile.character), MascotPose.Sleepy, Modifier.size(72.dp), animated = animated, decorative = true)
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(if (social.refreshing) "Buscando o ranking…" else "Ranking ainda não carregado", style = MaterialTheme.typography.titleSmall, color = c.ink)
-                Text(
-                    "Conecte-se à internet para ver seus amigos. Pode estudar normalmente: suas lições entram no ranking quando a conexão voltar.",
-                    style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                )
+                Text("Pode estudar: as lições entram quando a internet voltar.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             }
         }
         ChunkyButton("Tentar de novo", actions.refreshSocial, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, enabled = !social.refreshing, minHeight = 46.dp)
@@ -225,12 +215,8 @@ private fun OfflineCard(social: SocialUi, state: AppState, actions: AppActions, 
 private fun GlobalRanking(overview: SocialOverview, social: SocialUi, actions: AppActions, onOpenFriends: () -> Unit) {
     val c = Trilha.colors
     if (!social.showInGlobal) {
-        Notice("Você está oculto do ranking geral: só seus amigos te veem. Dá para mudar em Configurações › Conta.")
+        Notice("Você está oculto do ranking geral. Só seus amigos te veem.")
     }
-    Text(
-        "Toque em Adicionar para mandar um pedido de amizade. Quem não aparece aqui pode ser adicionado pelo código, na lista Amigos.",
-        style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-    )
     RankingList(overview.global) { row ->
         when (row.friendState) {
             "none" -> SmallAction("+ Adicionar", { actions.requestFriend(row.userId) }, c.secondaryText)
@@ -250,8 +236,7 @@ private fun GlobalRanking(overview: SocialOverview, social: SocialUi, actions: A
     if (overview.global.count { !it.isMe } == 0) {
         Card {
             Text("Por enquanto só tem você aqui.", style = MaterialTheme.typography.titleSmall, color = c.ink)
-            Text("Mande seu código de amigo para a turma instalar o app e entrar na disputa.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
-            ChunkyButton("Ver meu código", onOpenFriends, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 44.dp)
+            ChunkyButton("Convidar amigos", onOpenFriends, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 44.dp)
         }
     }
 }
@@ -320,18 +305,21 @@ private fun FriendsArea(
                 Mascot(MascotCharacter.of(state.snapshot.profile.character), MascotPose.Happy, Modifier.size(72.dp), animated = animated, decorative = true)
                 Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text("Estudar junto rende mais!", style = MaterialTheme.typography.titleSmall, color = c.ink)
-                    Text(
-                        "Mande seu código ou adicione alguém do ranking geral. Com amigos você ganha o ranking da turma e uma ofensiva em dupla com cada um.",
-                        style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                    )
+                    Text("Mande seu código para a turma.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
                 }
             }
         }
     } else {
         SectionTitle("Ranking dos amigos")
         RankingList(overview.friendsRanking) { }
-        SectionTitle("Ofensivas em dupla")
-        Text("Cada dia em que vocês dois concluem pelo menos uma lição soma 1 na ofensiva da dupla.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            SectionTitle("Ofensivas em dupla", Modifier.weight(1f))
+            InfoButton(
+                "Ofensivas em dupla",
+                "Cada dia em que vocês dois concluem pelo menos uma lição soma 1 na ofensiva da dupla. Se um dia passar sem os " +
+                    "dois estudarem, ela volta a zero. No menu ⋯ de cada amigo dá para desfazer a amizade.",
+            )
+        }
         val fresh = overview.today == state.today.toString()
         overview.friends.forEach { friend ->
             PairCard(
@@ -348,8 +336,8 @@ private fun FriendsArea(
 }
 
 @Composable
-private fun SectionTitle(text: String) {
-    Text(text, Modifier.padding(top = 4.dp).semantics { heading() }, style = MaterialTheme.typography.titleLarge, color = Trilha.colors.ink)
+private fun SectionTitle(text: String, modifier: Modifier = Modifier) {
+    Text(text, modifier.padding(top = 4.dp).semantics { heading() }, style = MaterialTheme.typography.titleLarge, color = Trilha.colors.ink)
 }
 
 @Composable
@@ -373,37 +361,39 @@ private fun PairCard(friend: FriendRow, meToday: Boolean, friendToday: Boolean, 
     val today = PairStreakRule.today(meToday, friendToday)
     val atRisk = PairStreakRule.atRiskForMe(friend.pairStreak, meToday)
     val (status, statusColor) = when (today) {
-        PairToday.BothDone -> "Vocês dois já estudaram hoje ✓" to c.successText
-        PairToday.WaitingMe -> "${friend.displayName} já estudou hoje. Falta você!" to c.warningText
-        PairToday.WaitingFriend -> "Você já estudou. Falta ${friend.displayName}." to c.inkSoft
-        PairToday.NobodyYet -> (if (atRisk) "Estudem hoje para não perder a ofensiva da dupla." else "Nenhum dos dois estudou hoje ainda.") to
-            (if (atRisk) c.warningText else c.inkSoft)
+        PairToday.BothDone -> "Os dois estudaram hoje ✓" to c.successText
+        PairToday.WaitingMe -> "Falta você hoje" to c.warningText
+        PairToday.WaitingFriend -> "Falta ${friend.displayName}" to c.inkSoft
+        PairToday.NobodyYet -> (if (atRisk) "Estudem hoje!" else "Ninguém estudou hoje") to (if (atRisk) c.warningText else c.inkSoft)
     }
+    var menu by remember { mutableStateOf(false) }
     Card(highlight = if (atRisk) c.warning else null) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            Mascot(MascotCharacter.of(friend.mascot), MascotPose.Idle, Modifier.size(48.dp), animated = false, decorative = true)
+            Mascot(MascotCharacter.of(friend.mascot), MascotPose.Idle, Modifier.size(44.dp), animated = false, decorative = true)
             Column(Modifier.weight(1f)) {
                 Text(friend.displayName, style = MaterialTheme.typography.titleSmall, color = c.ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                Text(
-                    "${friend.weekXp} XP na semana · ofensiva própria de ${plural(friend.streak, "dia", "dias")}",
-                    style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                )
+                Text(status, style = MaterialTheme.typography.bodySmall, color = statusColor, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                Modifier.semantics(mergeDescendants = true) {
+                    contentDescription = "Ofensiva da dupla: ${plural(friend.pairStreak, "dia", "dias")}"
+                },
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
                 if (friend.pairStreak > 0) {
-                    GameIconView(GameIcon.Flame, size = 30.dp)
+                    GameIconView(GameIcon.Flame, size = 28.dp)
                 } else {
-                    GameIconView(GameIcon.Flame, size = 30.dp, colors = br.com.trilhati.ui.icons.IconColors.flat(c.locked, c.lockedEdge))
+                    GameIconView(GameIcon.Flame, size = 28.dp, colors = br.com.trilhati.ui.icons.IconColors.flat(c.locked, c.lockedEdge))
                 }
                 Text(friend.pairStreak.toString(), style = MaterialTheme.typography.titleMedium, color = c.ink)
             }
+            Box {
+                RoundSymbolButton("⋯", "Mais opções para ${friend.displayName}", { menu = true })
+                DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
+                    DropdownMenuItem(text = { Text("Desfazer amizade") }, onClick = { menu = false; onRemove() })
+                }
+            }
         }
-        Text(
-            if (friend.pairStreak > 0) "Ofensiva da dupla: ${plural(friend.pairStreak, "dia", "dias")} seguidos" else "Ofensiva da dupla: comece hoje!",
-            style = MaterialTheme.typography.labelLarge, color = c.ink,
-        )
-        Text(status, style = MaterialTheme.typography.bodySmall, color = statusColor)
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { SmallAction("Desfazer amizade", onRemove, c.inkSoft) }
     }
 }
 
@@ -411,13 +401,11 @@ private fun PairCard(friend: FriendRow, meToday: Boolean, friendToday: Boolean, 
 private fun MyCodeCard(code: String, actions: AppActions) {
     val c = Trilha.colors
     Card {
-        Text("Seu código de amigo", style = MaterialTheme.typography.titleSmall, color = c.ink)
-        Text(code, style = MaterialTheme.typography.headlineMedium, color = c.primaryText)
-        Text(
-            "Quem digitar esse código vira seu amigo na hora, mesmo que um dos dois esteja oculto do ranking geral.",
-            style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-        )
-        ChunkyButton("Compartilhar código", { actions.shareFriendCode(code) }, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 46.dp)
+        Text("Seu código", style = MaterialTheme.typography.titleSmall, color = c.ink)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(code, Modifier.weight(1f), style = MaterialTheme.typography.headlineMedium, color = c.primaryText)
+            ChunkyButton("Compartilhar", { actions.shareFriendCode(code) }, style = ChunkyStyle.Secondary, minHeight = 46.dp)
+        }
     }
 }
 
@@ -426,7 +414,7 @@ private fun AddByCodeCard(actions: AppActions) {
     val c = Trilha.colors
     var code by rememberSaveable { mutableStateOf("") }
     Card {
-        Text("Tem o código de alguém?", style = MaterialTheme.typography.titleSmall, color = c.ink)
+        Text("Tem um código?", style = MaterialTheme.typography.titleSmall, color = c.ink)
         OutlinedTextField(
             code, { code = it.take(12) }, Modifier.fillMaxWidth(), label = { Text("Código (ex.: TRI-AB2CD)") }, singleLine = true,
             keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters, imeAction = ImeAction.Done),
@@ -488,7 +476,7 @@ private fun QuestsCard(quests: List<QuestProgress>, actions: AppActions) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Missões do dia", Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = c.ink)
-            Text("$done de ${defs.size} feitas", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
+            Text("$done/${defs.size}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
         }
         defs.forEach { (quest, def) ->
             val complete = QuestEngine.isComplete(def, quest.progress)

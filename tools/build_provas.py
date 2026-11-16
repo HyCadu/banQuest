@@ -30,7 +30,9 @@ def app_lessons() -> set[str]:
     if not lessons:
         sys.exit(f"ERRO nenhuma lição lida de {CURRICULUM.relative_to(ROOT)}")
     return lessons
-KEEP = ["id", "lesson", "type", "topic", "subtopic", "difficulty", "style", "stem", "code", "options", "answer",
+
+
+KEEP = ["id", "lesson", "concept", "type", "topic", "subtopic", "difficulty", "style", "stem", "code", "options", "answer",
         "explanation", "source", "reviewed"]
 REF = ["banca", "orgao", "ano", "cargo", "prova", "numero"]
 

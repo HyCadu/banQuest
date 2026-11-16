@@ -30,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.Role
@@ -39,6 +40,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import br.com.trilhati.domain.model.Question
+import br.com.trilhati.domain.model.QuestionLevel
 import br.com.trilhati.domain.model.QuestionType
 import br.com.trilhati.domain.pace.PaceEngine
 import br.com.trilhati.domain.pace.PaceZone
@@ -52,7 +54,7 @@ import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.PaceChip
 import br.com.trilhati.ui.components.PaceRing
 import br.com.trilhati.ui.components.TrilhaDialog
-import br.com.trilhati.ui.components.ExamRefChip
+import br.com.trilhati.ui.components.ConceptHint
 import br.com.trilhati.ui.components.UnreviewedBadge
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
@@ -73,7 +75,7 @@ fun SessionScreen(onExit: () -> Unit, onOpenErrors: () -> Unit, viewModel: Sessi
         SessionActions(
             onSelect = viewModel::select, onCheck = viewModel::check, onContinue = viewModel::continueAfterFeedback,
             onMatchLeft = viewModel::matchLeft, onMatchRight = viewModel::matchRight,
-            onOrderPlace = viewModel::orderPlace, onOrderRemove = viewModel::orderRemove,
+            onOrderPlace = viewModel::orderPlace, onOrderRemove = viewModel::orderRemove, onDontKnow = viewModel::dontKnow,
         )
     }
     SessionContent(
@@ -147,24 +149,18 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
                 contentAlignment = Alignment.Center,
             ) { GameIconView(GameIcon.Close, size = 26.dp, colors = IconColors.flat(c.inkSoft, c.inkSoft)) }
             GameProgressBar(ui.progress, Modifier.weight(1f), height = 16.dp)
-            if (ui.hearts != null) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    GameIconView(GameIcon.Heart, size = 26.dp)
-                    Text(ui.hearts.toString(), style = MaterialTheme.typography.titleMedium, color = c.ink)
-                }
-            }
+            ui.heartsText?.let { text -> HeartCounter(text, ui.hearts ?: 0, ui.halfHeart, animated) }
         }
         Row(Modifier.fillMaxWidth().padding(horizontal = Spacing.screen), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             LessonBuddy(character, ui, now, animated)
-            // Os chips quebram linha sozinhos com fonte grande, sem espremer o anel do cronômetro.
+            // Só o que pede atenção: combo a partir de 3 e o atraso (folga não precisa de aviso; aparece no resumo).
             androidx.compose.foundation.layout.FlowRow(
                 Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 if (ui.combo >= 3) ComboBadge(ui.combo)
-                if (ui.pace.mode == TimerMode.Pace && ui.answered > 0) PaceChip((ui.slackMs / 1000).toInt())
-                if (ui.pace.mode == TimerMode.Pace && ui.phase == Phase.Answering) LessonTimeChip(ui, now)
+                if (ui.pace.mode == TimerMode.Pace && ui.answered > 0 && ui.slackMs < 0) PaceChip((ui.slackMs / 1000).toInt())
             }
             if (ui.pace.mode == TimerMode.Pace && ui.phase == Phase.Answering) TimerRing(ui, now)
         }
@@ -172,8 +168,8 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen, vertical = Spacing.sm),
             verticalArrangement = Arrangement.spacedBy(Spacing.md),
         ) {
-            QuestionTags(q)
-            if (ui.retry) Text("Repetição de um erro: acertando agora vale 5 XP.", style = MaterialTheme.typography.labelMedium, color = c.warningText)
+            // Uma faixa curta antes do enunciado: origem, selo de revisão, repetição e a dica do conceito (fechada).
+            QuestionMeta(q, ui)
             Text(q.stem, style = MaterialTheme.typography.titleMedium, color = c.ink)
             q.code?.let { CodeBlock(it) }
             ExerciseBody(q, ui.exercise, ui.phase, actions)
@@ -181,10 +177,22 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
         // Rodapé: verificar ou painel de feedback
         Column(Modifier.fillMaxWidth().navigationBarsPadding()) {
             if (feedback == null) {
-                if (q.type != QuestionType.Match) {
-                    ChunkyButton("Verificar", actions.onCheck, Modifier.fillMaxWidth().padding(Spacing.screen), ChunkyStyle.Primary, enabled = canCheck)
-                } else {
-                    Box(Modifier.size(0.dp))
+                Row(
+                    Modifier.fillMaxWidth().padding(Spacing.screen),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    // "Não sei" (estoque limitado): só nos exercícios de ensino; não custa coração e o exercício volta no fim.
+                    if (ui.canAskHelp && ui.helps > 0) {
+                        ChunkyButton(
+                            "Não sei (${ui.helps})", actions.onDontKnow,
+                            if (q.type == QuestionType.Match) Modifier.fillMaxWidth() else Modifier,
+                            ChunkyStyle.Neutral, enabled = ui.helps > 0,
+                        )
+                    }
+                    if (q.type != QuestionType.Match) {
+                        ChunkyButton("Verificar", actions.onCheck, Modifier.weight(1f), ChunkyStyle.Primary, enabled = canCheck)
+                    }
                 }
             }
             AnimatedVisibility(visible = feedback != null, enter = slideInVertically { it }, exit = slideOutVertically { it }) {
@@ -192,19 +200,20 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
                     FeedbackPanel(
                         correct = feedback.correct,
                         title = when {
+                            feedback.skipped -> "Agora você sabe!"
                             feedback.corrected -> "Pares completos!"
                             feedback.correct -> praise(ui.answered)
                             else -> consolation(ui.answered)
                         } + if ((feedback.correct || feedback.corrected) && feedback.xp > 0) "  +${feedback.xp} XP" else "",
-                        message = buildFeedbackMessage(feedback, q.explanation),
+                        message = buildFeedbackMessage(feedback, q.explanation, ui.retry),
                         character = character,
                         onContinue = actions.onContinue,
                         animated = animated,
-                        partial = feedback.corrected,
+                        partial = feedback.corrected || feedback.skipped,
                         pose = LessonMascot.feedback(
                             when {
                                 feedback.correct -> AnswerOutcome.Correct
-                                feedback.corrected -> AnswerOutcome.Corrected
+                                feedback.corrected || feedback.skipped -> AnswerOutcome.Corrected
                                 else -> AnswerOutcome.Wrong
                             },
                             ui.combo,
@@ -216,21 +225,106 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
     }
 }
 
-/** Etiqueta da prova (questões reais) e selo de revisão, lado a lado; quebram linha com fonte grande. */
+/**
+ * Faixa curta antes do enunciado (normalmente uma linha): origem da questão ("FCC · Teresina 2016 · Q22"), o selo
+ * "não revisada", a ficha de repetição e a dica do conceito, fechada. Tocar na origem ou no selo abre os detalhes.
+ */
 @Composable
-private fun QuestionTags(q: Question) {
+private fun QuestionMeta(q: Question, ui: SessionUi.Playing) {
+    val c = Trilha.colors
     val ref = q.ref
-    if (ref == null && !q.showUnreviewedBadge) return
+    val adapted = q.adaptedFrom
+    val concept = ui.concept?.takeIf { q.level == QuestionLevel.Learn || ui.newConcept }
+    var details by remember(q.id) { mutableStateOf(false) }
+    var hintOpen by remember(q.id, ui.retry) { mutableStateOf(false) }
+    val source = ref?.compactLabel ?: adapted?.let { "Adaptada · ${it.ref.compactLabel}" }
+    if (source == null && !q.showUnreviewedBadge && !ui.retry && concept == null) return
     androidx.compose.foundation.layout.FlowRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
+        itemVerticalAlignment = Alignment.CenterVertically,
     ) {
-        if (ref != null) ExamRefChip(ref.label)
-        if (q.showUnreviewedBadge) UnreviewedBadge(explanationOnly = q.isFromExam)
+        if (source != null || q.showUnreviewedBadge) {
+            Row(
+                Modifier.semantics(mergeDescendants = true) { role = Role.Button; contentDescription = "Sobre esta questão: ${source ?: "não revisada"}" }
+                    .clickable { details = true },
+                verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                if (source != null) {
+                    GameIconView(GameIcon.Book, size = 16.dp)
+                    Text(source, style = MaterialTheme.typography.labelMedium, color = c.inkSoft, maxLines = 1)
+                }
+                if (q.showUnreviewedBadge) UnreviewedBadge()
+            }
+        }
+        if (ui.retry) RetryChip()
+        concept?.let { ConceptHint(it.title, it.summary, hintOpen, onToggle = { hintOpen = !hintOpen }, isNew = ui.newConcept) }
+    }
+    if (details) {
+        TrilhaDialog(
+            onDismiss = { details = false },
+            title = "Sobre esta questão",
+            content = {
+                val lines = buildList {
+                    ref?.let { add("Questão de prova real: ${it.label}.") }
+                    adapted?.let { add("Exercício feito pela IA a partir da ${it.ref.shortLabel}.") }
+                    if (q.showUnreviewedBadge) {
+                        add(
+                            if (q.isFromExam) "O enunciado e a resposta são os da prova; a explicação foi escrita por IA e ainda não foi revisada."
+                            else "Gerada por IA e ainda não revisada. Se achar algo errado, anote e avise.",
+                        )
+                    }
+                }
+                Text(lines.joinToString("\n\n"), style = MaterialTheme.typography.bodyMedium, color = c.ink)
+            },
+            actions = { ChunkyButton("Entendi", { details = false }, Modifier.fillMaxWidth()) },
+        )
     }
 }
 
-private fun buildFeedbackMessage(feedback: Phase.Feedback, explanation: String): String = when {
+@Composable
+private fun RetryChip() {
+    val c = Trilha.colors
+    androidx.compose.material3.Surface(
+        modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = "Repetição de um erro: acertando agora vale 5 XP" },
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(50),
+        color = c.warningSoft,
+    ) {
+        Text("Repetição · 5 XP", Modifier.padding(horizontal = 10.dp, vertical = 3.dp), style = MaterialTheme.typography.labelSmall, color = c.warningText)
+    }
+}
+
+/**
+ * Corações da lição: "4,5" com o coração rachado quando há meio coração perdido (no lugar de "4½"). Treme quando um
+ * coração racha ou quebra.
+ */
+@Composable
+private fun HeartCounter(text: String, full: Int, cracked: Boolean, animated: Boolean) {
+    val c = Trilha.colors
+    val shake = remember { androidx.compose.animation.core.Animatable(0f) }
+    var last by remember { mutableStateOf(text) }
+    LaunchedEffect(text) {
+        val changed = last != text
+        last = text
+        if (changed && animated) {
+            for (x in listOf(-7f, 7f, -5f, 5f, -2f, 0f)) shake.animateTo(x, androidx.compose.animation.core.tween(45))
+        }
+    }
+    val description = br.com.trilhati.domain.hearts.HeartsEngine.description(
+        br.com.trilhati.domain.hearts.HeartsState(full, 0L, cracked),
+    )
+    Row(
+        Modifier.graphicsLayer { translationX = shake.value * density }.semantics(mergeDescendants = true) { contentDescription = description },
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        GameIconView(if (cracked) GameIcon.HeartCracked else GameIcon.Heart, size = 26.dp)
+        Text(text, style = MaterialTheme.typography.titleMedium, color = c.ink)
+    }
+}
+
+private fun buildFeedbackMessage(feedback: Phase.Feedback, explanation: String, retry: Boolean): String = when {
+    feedback.skipped -> "Resposta: ${feedback.correctText}\n\n$explanation" +
+        if (retry) "" else "\n\nEle volta no fim da lição para você tentar."
     feedback.corrected -> {
         val slips = if (feedback.slips == 1) "1 associação" else "${feedback.slips} associações"
         "Você errou $slips no caminho, então ela volta em Praticar erros. Sem perder coração.\n\n$explanation"
@@ -269,23 +363,3 @@ private fun TimerRing(ui: SessionUi.Playing, now: State<Long>) {
     PaceRing(PaceEngine.remainingFraction(elapsed, ui.targetMs), label, zone, size = 60.dp)
 }
 
-/** "Prova: tempo restante da lição" (PLAN.md §7): quanto sobra do orçamento das questões que faltam. */
-@Composable
-private fun LessonTimeChip(ui: SessionUi.Playing, now: State<Long>) {
-    val c = Trilha.colors
-    val elapsed = (now.value - ui.startedAtMs).coerceAtLeast(0)
-    val left = ui.remaining * ui.targetMs - elapsed
-    val late = left < 0
-    androidx.compose.material3.Surface(
-        shape = androidx.compose.foundation.shape.RoundedCornerShape(50),
-        color = if (late) c.errorSoft else c.surfaceAlt,
-        border = androidx.compose.foundation.BorderStroke(1.5.dp, if (late) c.error else c.outline),
-    ) {
-        Text(
-            "Lição " + (if (late) "-" else "") + PaceEngine.format(left),
-            Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
-            style = MaterialTheme.typography.labelMedium,
-            color = if (late) c.errorText else c.inkSoft,
-        )
-    }
-}

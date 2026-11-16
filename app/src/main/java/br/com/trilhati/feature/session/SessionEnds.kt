@@ -20,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.domain.pace.PaceEngine
@@ -136,30 +138,45 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GameIconView(GameIcon.Clock, size = 32.dp)
                     Column(Modifier.weight(1f)) {
-                        Text("Tempo médio por questão", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
-                        Text(PaceEngine.format(avg), style = MaterialTheme.typography.headlineMedium, color = c.ink)
+                        Text("Tempo médio · alvo ${PaceEngine.format(targetAvg)}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
+                        Text(PaceEngine.format(avg), style = MaterialTheme.typography.headlineMedium, color = if (avg <= targetAvg) c.ink else c.warningText)
                     }
                     PaceChip(slackSeconds)
                 }
-                Text(
-                    if (avg <= targetAvg) "Você ficou dentro do ritmo de prova (alvo ${PaceEngine.format(targetAvg)} por questão)."
-                    else "Você ficou acima do ritmo de prova (alvo ${PaceEngine.format(targetAvg)} por questão). Na prova, a média é 3:00.",
-                    style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                )
-            }
-            if (summary.xpBonus > 0) {
-                Text("Respostas +${summary.xpFromAnswers} XP · conclusão +${summary.xpBonus} XP", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             }
             val levelAfter = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp)
             val levelBefore = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp - summary.totalXp)
-            if (levelAfter > levelBefore) Banner("Subiu para o nível $levelAfter!", GameIcon.Crown, c.primarySoft, c.primaryText)
-            if (summary.gemsEarned > 0) Banner("+${summary.gemsEarned} gemas ganhas", GameIcon.Gem, c.secondarySoft, c.secondaryText)
-            if (summary.streakIncreased) Banner("Ofensiva de ${summary.streakAfter} ${if (summary.streakAfter == 1) "dia" else "dias"}!", GameIcon.Flame, c.warningSoft, c.warningText)
-            if (summary.frozenDays.isNotEmpty()) Banner("Um congelamento protegeu sua ofensiva.", GameIcon.Snowflake, c.secondarySoft, c.secondaryText)
-            if (summary.goalJustMet) Banner("Meta diária batida! +20 gemas", GameIcon.Star, c.successSoft, c.successText)
-            if (summary.unitCompleted) Banner("Unidade concluída! Abra o baú na trilha.", GameIcon.Chest, c.warningSoft, c.warningText)
-            summary.questsCompleted.forEach { Banner("Missão cumprida: $it. Resgate na aba Ranking.", GameIcon.Trophy, c.successSoft, c.successText) }
-            summary.newAchievements.forEach { Banner("Conquista: ${it.title} (+${it.rewardGems} gemas)", GameIcon.Trophy, c.warningSoft, c.warningText) }
+            // Recompensas em fichas curtas, lado a lado (quebram linha sozinhas).
+            androidx.compose.foundation.layout.FlowRow(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                if (levelAfter > levelBefore) Reward("Nível $levelAfter!", GameIcon.Crown, c.primarySoft, c.primaryText)
+                if (summary.gemsEarned > 0) Reward("+${summary.gemsEarned}", GameIcon.Gem, c.secondarySoft, c.secondaryText, "+${summary.gemsEarned} gemas")
+                if (summary.streakIncreased) {
+                    val days = "${summary.streakAfter} ${if (summary.streakAfter == 1) "dia" else "dias"}"
+                    Reward(days, GameIcon.Flame, c.warningSoft, c.warningText, "Ofensiva de $days")
+                }
+                if (summary.frozenDays.isNotEmpty()) Reward("Congelamento usado", GameIcon.Snowflake, c.secondarySoft, c.secondaryText)
+                if (summary.goalJustMet) Reward("Meta batida", GameIcon.Star, c.successSoft, c.successText)
+                if (summary.unitCompleted) Reward("Baú liberado", GameIcon.Chest, c.warningSoft, c.warningText, "Unidade concluída: baú liberado na trilha")
+                // Missões e conquistas viram uma ficha cada grupo; os nomes ficam para o TalkBack (e para as abas Ranking e Perfil).
+                val quests = summary.questsCompleted
+                if (quests.isNotEmpty()) {
+                    Reward(
+                        if (quests.size == 1) "1 missão" else "${quests.size} missões", GameIcon.Target, c.successSoft, c.successText,
+                        "Missões cumpridas: ${quests.joinToString()}",
+                    )
+                }
+                val achievements = summary.newAchievements
+                if (achievements.isNotEmpty()) {
+                    Reward(
+                        if (achievements.size == 1) achievements.first().title else "${achievements.size} conquistas", GameIcon.Trophy,
+                        c.warningSoft, c.warningText, "Conquistas: ${achievements.joinToString { it.title }}",
+                    )
+                }
+            }
 
             val wrong = run.firstTryRecords.filter { !it.correct }
             if (wrong.isNotEmpty()) {
@@ -171,7 +188,6 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                         style = MaterialTheme.typography.bodySmall, color = c.ink,
                     )
                 }
-                Text("Esses erros foram para o treino de erros e voltam para revisão.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             }
         }
         ChunkyButton("Continuar", onContinue, Modifier.fillMaxWidth().padding(Spacing.screen), ChunkyStyle.Primary)
@@ -191,13 +207,15 @@ private fun ResultStat(label: String, value: String, icon: GameIcon, modifier: M
     }
 }
 
+/** Ficha de recompensa: ícone e poucas palavras; [description] é o que o TalkBack lê. */
 @Composable
-private fun Banner(text: String, icon: GameIcon, bg: Color, fg: Color) {
+private fun Reward(text: String, icon: GameIcon, bg: Color, fg: Color, description: String = text) {
     Row(
-        Modifier.fillMaxWidth().background(bg, RoundedCornerShape(16.dp)).padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp),
+        Modifier.background(bg, RoundedCornerShape(50)).padding(start = 8.dp, end = 14.dp, top = 6.dp, bottom = 6.dp)
+            .semantics(mergeDescendants = true) { contentDescription = description },
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        GameIconView(icon, size = 28.dp)
-        Text(text, style = MaterialTheme.typography.titleSmall, color = fg, modifier = Modifier.weight(1f))
+        GameIconView(icon, size = 24.dp)
+        Text(text, style = MaterialTheme.typography.titleSmall, color = fg)
     }
 }

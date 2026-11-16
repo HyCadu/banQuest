@@ -1,6 +1,8 @@
 package br.com.trilhati.data.content
 
+import br.com.trilhati.domain.lesson.LessonPlanner
 import br.com.trilhati.domain.model.Curriculum
+import br.com.trilhati.domain.model.QuestionLevel
 import br.com.trilhati.domain.model.QuestionSource
 import br.com.trilhati.domain.model.QuestionType
 import java.io.File
@@ -23,24 +25,79 @@ class ContentTest {
         assertEquals(emptyList<String>(), ContentValidator.validate(parseU1()))
     }
 
-    @Test fun `unidade 1 tem 5 licoes com 10 questoes cada`() {
+    @Test fun `unidade 1 tem 5 licoes, a primeira por conceitos e as outras com 10 questoes`() {
         val pack = parseU1()
         assertEquals(5, pack.lessons.size)
-        assertTrue(pack.lessons.all { it.questions.size == 10 })
+        assertEquals(50, pack.lessons[0].questions.size)
+        assertTrue(pack.lessons.drop(1).all { it.questions.size == 10 && it.concepts.isEmpty() })
+    }
+
+    @Test fun `licao piloto tem conceitos e cada um passa por aprender, praticar e prova`() {
+        val exam = parseProvas().toDomain()
+        val lesson = CourseAssembler.assemble(listOfNotNull(parseU1().toDomain()), exam)[0].lessons[0]
+        assertEquals(7, lesson.concepts.size)
+        assertTrue(lesson.questions.all { lesson.concept(it.conceptId) != null })
+        lesson.concepts.forEach { c ->
+            val qs = lesson.questions.filter { it.conceptId == c.id }
+            assertTrue("${c.id} aprender", qs.count { it.level == QuestionLevel.Learn } >= 2)
+            assertTrue("${c.id} praticar", qs.count { it.level == QuestionLevel.Practice } >= 2)
+            assertTrue("${c.id} prova", qs.any { it.level == QuestionLevel.Exam })
+            // Sempre há item de aprender e de praticar que não é adaptado: a oficial na sessão não deixa o conceito vazio.
+            assertTrue(qs.any { it.level == QuestionLevel.Learn && it.adaptedFrom == null })
+            assertTrue(qs.any { it.level == QuestionLevel.Practice && it.adaptedFrom == null })
+            // Passos 1, 2 e 3 para montar o bloco "exemplo → aplicar → variar".
+            assertTrue(qs.filter { it.level != QuestionLevel.Exam }.mapNotNull { it.step }.toSet().containsAll(setOf(1, 2, 3)))
+        }
+        assertTrue(LessonPlanner.usesConcepts(lesson.questions))
+        assertEquals(LessonPlanner.SIZE, LessonPlanner.plan(lesson.questions, emptySet(), kotlin.random.Random(1)).size)
+    }
+
+    @Test fun `adaptadas apontam para questoes oficiais que existem, com a mesma referencia`() {
+        val exam = parseProvas().toDomain().associateBy { it.id }
+        val adapted = parseU1().toDomain()!!.lessons.flatMap { it.questions }.filter { it.adaptedFrom != null }
+        assertEquals(8, adapted.size)
+        adapted.forEach { q ->
+            val a = q.adaptedFrom!!
+            val official = exam[a.questionId]
+            assertNotNull("${q.id} → ${a.questionId}", official)
+            assertEquals(official!!.ref!!.shortLabel, a.ref.shortLabel)
+            assertEquals(official.lessonId, q.lessonId)
+            assertTrue(q.source == QuestionSource.Ia && q.level != QuestionLevel.Exam)
+        }
+        assertEquals("adaptada de FCC · Prefeitura de Teresina 2016 · questão 56", adapted.first { it.adaptedFrom!!.questionId.endsWith("q56") }.adaptedFrom!!.label)
+    }
+
+    @Test fun `validador reprova formato por conceitos com problemas`() {
+        val pack = parseU1()
+        val lesson = pack.lessons[0]
+        val quick = lesson.questions.first { it.type == "quick" }
+        fun broken(f: (QuestionDto) -> QuestionDto) =
+            ContentValidator.validate(pack.copy(lessons = listOf(lesson.copy(questions = listOf(f(quick))))))
+        assertEquals(emptyList<String>(), broken { it })
+        assertTrue(broken { it.copy(options = it.options + "Outra" + "Mais uma") }.any { "alternativas" in it })
+        assertTrue(broken { it.copy(concept = "u1l1c99") }.any { "conceito inexistente" in it })
+        assertTrue(broken { it.copy(level = "facil") }.any { "level" in it })
+        val adapted = lesson.questions.first { it.adaptedFrom != null }
+        val officialWithAdapted = ContentValidator.validate(
+            pack.copy(lessons = listOf(lesson.copy(questions = listOf(adapted.copy(source = "prova_real", ref = parseProvas().questions[0].ref))))),
+        )
+        assertTrue(officialWithAdapted.any { "adaptado" in it })
+        val noConcepts = ContentValidator.validate(pack.copy(lessons = listOf(lesson.copy(concepts = emptyList(), questions = listOf(quick)))))
+        assertTrue(noConcepts.any { "sem conceitos" in it })
     }
 
     @Test fun `toda questao de IA vem como nao revisada`() {
         val unit = parseU1().toDomain()
         assertNotNull(unit)
         val all = unit!!.lessons.flatMap { it.questions }
-        assertEquals(50, all.size)
+        assertEquals(90, all.size)
         assertTrue(all.all { it.source == QuestionSource.Ia && !it.reviewed && it.showUnreviewedBadge })
     }
 
     @Test fun `mapeia todos os tipos de exercicio da unidade 1`() {
         val types = parseU1().toDomain()!!.lessons.flatMap { it.questions }.map { it.type }.toSet()
         assertEquals(
-            setOf(QuestionType.Mcq5, QuestionType.Case, QuestionType.TrueFalse, QuestionType.Match, QuestionType.OrderCode, QuestionType.FillBlank, QuestionType.CodeOutput),
+            setOf(QuestionType.Mcq5, QuestionType.Case, QuestionType.TrueFalse, QuestionType.Match, QuestionType.OrderCode, QuestionType.FillBlank, QuestionType.CodeOutput, QuestionType.Quick),
             types,
         )
     }
@@ -95,11 +152,12 @@ class ContentTest {
 
     @Test fun `provas entram so nas licoes que ja tem pacote`() {
         val exam = parseProvas().toDomain()
-        val course = CourseAssembler.assemble(listOfNotNull(parseU1().toDomain()), exam)
+        val pack = parseU1()
+        val course = CourseAssembler.assemble(listOfNotNull(pack.toDomain()), exam)
         val u1 = course[0]
-        u1.lessons.forEach { lesson ->
+        u1.lessons.forEachIndexed { i, lesson ->
             val extra = exam.count { it.lessonId == lesson.id }
-            assertEquals("lição ${lesson.id}", 10 + extra, lesson.questions.size)
+            assertEquals("lição ${lesson.id}", pack.lessons[i].questions.size + extra, lesson.questions.size)
         }
         assertTrue(u1.lessons.sumOf { l -> l.questions.count { it.isFromExam } } > 0)
         // Unidades sem pacote continuam "chegando": nenhuma lição de 1 ou 2 questões de prova.

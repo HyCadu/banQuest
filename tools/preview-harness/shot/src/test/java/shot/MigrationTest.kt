@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import br.com.trilhati.data.db.AppDatabase
 import br.com.trilhati.data.db.MIGRATION_2_3
+import br.com.trilhati.data.db.MIGRATION_3_4
 import java.io.File
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
@@ -29,8 +30,16 @@ import org.robolectric.annotation.Config
 class MigrationTest {
     private val schemaDir = File("../../../app/schemas/br.com.trilhati.data.db.AppDatabase")
 
-    private fun createV2(file: File) {
-        val schema = Json.parseToJsonElement(File(schemaDir, "2.json").readText()).jsonObject.getValue("database").jsonObject
+    private fun createV2(file: File) = create(file, 2) { db ->
+        db.execSQL(
+            "INSERT INTO stats VALUES (1, 640, 215, 3, 99, 3, 5, 20000, 1, 2, 1, 1, 0, 0, 18, 2520000, 16, 13, 2)",
+        )
+        db.execSQL("INSERT INTO league_week (weekStart, tier, userXp, closed, finalRank, outcome) VALUES (20408, 2, 320, 0, 0, 0)")
+    }
+
+    /** Cria um banco [version] exatamente como o Room daquela versão criava (app/schemas/…/<versão>.json). */
+    private fun create(file: File, version: Int, fill: (SQLiteDatabase) -> Unit) {
+        val schema = Json.parseToJsonElement(File(schemaDir, "$version.json").readText()).jsonObject.getValue("database").jsonObject
         val db = SQLiteDatabase.openOrCreateDatabase(file, null)
         schema.getValue("entities").jsonArray.forEach { e ->
             val o = e.jsonObject
@@ -39,11 +48,8 @@ class MigrationTest {
             o["indices"]?.jsonArray?.forEach { i -> db.execSQL(i.jsonObject.getValue("createSql").jsonPrimitive.content.replace("\${TABLE_NAME}", table)) }
         }
         schema.getValue("setupQueries").jsonArray.forEach { db.execSQL(it.jsonPrimitive.content) }
-        db.execSQL(
-            "INSERT INTO stats VALUES (1, 640, 215, 3, 99, 3, 5, 20000, 1, 2, 1, 1, 0, 0, 18, 2520000, 16, 13, 2)",
-        )
-        db.execSQL("INSERT INTO league_week (weekStart, tier, userXp, closed, finalRank, outcome) VALUES (20408, 2, 320, 0, 0, 0)")
-        db.version = 2
+        fill(db)
+        db.version = version
         db.close()
     }
 
@@ -52,7 +58,7 @@ class MigrationTest {
         val file = context.getDatabasePath("migracao-teste.db").also { it.parentFile?.mkdirs(); it.delete() }
         createV2(file)
         val room = Room.databaseBuilder(context, AppDatabase::class.java, file.absolutePath)
-            .addMigrations(MIGRATION_2_3).allowMainThreadQueries().build()
+            .addMigrations(MIGRATION_2_3, MIGRATION_3_4).allowMainThreadQueries().build()
         val dao = room.progressDao()
         val stats = runBlocking { dao.stats() }!!
         assertEquals(640, stats.totalXp); assertEquals(215, stats.gems); assertEquals(3, stats.streakCurrent)
@@ -63,6 +69,27 @@ class MigrationTest {
         }
         assertFalse("league_week deveria sumir", "league_week" in tables)
         assertTrue("outbox_session" in tables)
+        room.close()
+    }
+
+    /** 0.6 (v3) para 0.7.1 (v4): ganha meio coração (vazio) e 3 "Não sei", sem perder nada. */
+    @Test fun v3ParaV4GanhaNaoSeiEMantemCoracoes() {
+        val context: Context = ApplicationProvider.getApplicationContext()
+        val file = context.getDatabasePath("migracao-v3.db").also { it.parentFile?.mkdirs(); it.delete() }
+        create(file, 3) { db ->
+            db.execSQL(
+                "INSERT INTO stats (id, totalXp, gems, hearts, heartsUpdatedAtMs, streakCurrent, streakLongest, streakLastDay, " +
+                    "freezes, lessonsCompleted, perfectLessons, pacedLessons, practiceSessions, reviewCorrect, answeredTotal, " +
+                    "totalTimeMs, firstTryAnswered, firstTryCorrect, bestLeagueTier, podiums) " +
+                    "VALUES (1, 900, 120, 4, 77, 6, 9, 20400, 1, 5, 2, 1, 1, 0, 40, 5600000, 38, 30, 0, 1)",
+            )
+        }
+        val room = Room.databaseBuilder(context, AppDatabase::class.java, file.absolutePath)
+            .addMigrations(MIGRATION_2_3, MIGRATION_3_4).allowMainThreadQueries().build()
+        val stats = runBlocking { room.progressDao().stats() }!!
+        assertEquals(900, stats.totalXp); assertEquals(4, stats.hearts); assertEquals(1, stats.podiums)
+        assertFalse(stats.heartHalf)
+        assertEquals(3, stats.helps); assertEquals(0L, stats.helpsDay)
         room.close()
     }
 }

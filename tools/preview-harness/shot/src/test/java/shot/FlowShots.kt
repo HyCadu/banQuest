@@ -46,6 +46,12 @@ class FlowShots {
     @Test fun trilhaProgress() = tab("t_path_progress.png", MainTab.Path, true, character = "Tartaruga")
     @Test fun trilhaDark() = tab("t_path_dark.png", MainTab.Path, true, dark = true, character = "Preguica")
     @Test fun practice() = tab("t_practice.png", MainTab.Practice, true)
+    // Meio coração perdido: o contador mostra "3,5" com o coração rachado (no lugar de "3½").
+    @Test fun trilhaHalfHeart() = rule.shot("t_path_half_heart.png") {
+        val st = fakeState(true)
+        val stats = st.snapshot.stats.copy(hearts = br.com.trilhati.domain.hearts.HeartsState(3, NOW_MS - 5 * 60_000, half = true))
+        MainContent(st.copy(snapshot = st.snapshot.copy(stats = stats)), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
+    }
     @Test fun rankingTab() = tab("t_ranking.png", MainTab.Ranking, true)
     @Test fun trilhaPairRisk() = rule.shot("t_path_pair_risk.png") {
         MainContent(fakeState(true).let { it.copy(snapshot = it.snapshot.copy(dailyLogs = emptyMap())) }, NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
@@ -87,7 +93,7 @@ class FlowShots {
     @Test fun sCode() = session("s_code.png", playing(QuestionType.CodeOutput, exercise = ExerciseState.Choice(1)))
     @Test fun sMatch() { val p = playing(QuestionType.Match); session("s_match.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0), selectedLeft = 2))) }
     @Test fun sMatchCorrected() { val p = playing(QuestionType.Match); session("s_match_corrected.png", p.copy(exercise = ExerciseState.Match(listOf(2, 0, 3, 1), solved = setOf(0, 1, 2, 3), mistakes = 1), phase = Phase.Feedback(false, null, 5, slips = 1))) }
-    @Test fun sOrder() { val p = playing(QuestionType.OrderCode); session("s_order.png", p.copy(exercise = ExerciseState.Order(listOf(3, 0, 4), listOf(1, 2)))) }
+    @Test fun sOrder() { val p = playing(QuestionType.OrderCode, idx = 1); session("s_order.png", p.copy(exercise = ExerciseState.Order(listOf(3, 0, 4), listOf(1, 2)))) }
     @Test fun sTf() = session("s_tf.png", playing(QuestionType.TrueFalse, exercise = ExerciseState.Choice(0)))
     @Test fun sDark() = session("s_mcq_dark.png", playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(1)), dark = true)
     @Test fun sOver() { val p = playing(QuestionType.Mcq5); session("s_over.png", p.copy(startedAtMs = NOW_MS - 200_000, combo = 0)) }
@@ -102,6 +108,28 @@ class FlowShots {
     private fun examQuestion(id: String) = exam.first { it.id == id }
     private fun examPlaying(id: String, exercise: ExerciseState = ExerciseState.Choice(), phase: Phase = Phase.Answering) =
         SessionUi.Playing("Subconsultas, CTEs e funções analíticas", examQuestion(id), exercise, phase, 0.375f, 0, 4, false, PaceConfig(), 180_000, NOW_MS - 95_000, 2, 42_000, true)
+    // Formato por conceitos (lição u1l1): conceito novo com a dica aberta, adaptada da prova, praticar e "Não sei".
+    private fun conceptPlaying(pick: (br.com.trilhati.domain.model.Question) -> Boolean, exercise: ExerciseState = ExerciseState.Choice(),
+                               phase: Phase = Phase.Answering, newConcept: Boolean = false, halfHeart: Boolean = false): SessionUi.Playing {
+        val lesson = course[0].lessons[0]
+        val q = lesson.questions.first(pick)
+        val pace = PaceConfig()
+        return SessionUi.Playing(lesson.title, q, exercise, phase, 0.2f, 1, 4, false, pace, pace.targetMs(q), NOW_MS - 12_000, 1, 25_000, true,
+            remaining = 11, concept = lesson.concept(q.conceptId), newConcept = newConcept, halfHeart = halfHeart, helps = 2)
+    }
+    @Test fun sLearnNewConcept() = session("s_learn_new.png", conceptPlaying({ it.conceptId == "u1l1c1" && it.step == 1 }, ExerciseState.Choice(1), newConcept = true))
+    @Test fun sLearnAdapted() = session("s_learn_quick.png", conceptPlaying({ it.conceptId == "u1l1c3" && it.step == 1 }, ExerciseState.Choice(1), halfHeart = true))
+    @Test fun sLearnSkipped() {
+        val p = conceptPlaying({ it.conceptId == "u1l1c5" && it.step == 2 && it.type == br.com.trilhati.domain.model.QuestionType.Quick })
+        session("s_learn_skipped.png", p.copy(phase = Phase.Feedback(false, p.question.options[p.question.answer], 0, skipped = true)))
+    }
+    @Test fun sPracticeFillOk() {
+        val p = conceptPlaying({ it.conceptId == "u1l1c6" && it.type == br.com.trilhati.domain.model.QuestionType.FillBlank }, ExerciseState.Choice(2))
+        session("s_practice_fill.png", p.copy(phase = Phase.Feedback(true, null, 12)))
+    }
+    @Test fun sPracticeMatch() = session("s_practice_match.png", conceptPlaying({ it.conceptId == "u1l1c2" && it.type == br.com.trilhati.domain.model.QuestionType.Match },
+        ExerciseState.Match(listOf(2, 0, 1), solved = setOf(0), selectedLeft = 1)))
+
     @Test fun sExam() = session("s_exam.png", examPlaying("fgv-banestes-2021-q48", ExerciseState.Choice(1)))
     @Test fun sExamPreliminary() = session("s_exam_preliminar.png", examPlaying("fcc-teresina-2016-q22", ExerciseState.Choice(2)))
     @Test fun sExamFeedback() {

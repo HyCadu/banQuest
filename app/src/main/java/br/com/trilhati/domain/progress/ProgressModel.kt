@@ -25,6 +25,8 @@ data class Stats(
     val firstTryCorrect: Int = 0,
     /** Semanas terminadas entre os 3 primeiros do ranking geral (conquista "Pódio da semana"). */
     val podiums: Int = 0,
+    /** Estoque do botão "Não sei". */
+    val help: HelpState = HelpState(),
 ) {
     val accuracyPercent: Int get() = if (firstTryAnswered == 0) 0 else firstTryCorrect * 100 / firstTryAnswered
     val averageTimeMs: Long get() = if (answeredTotal == 0) 0 else totalTimeMs / answeredTotal

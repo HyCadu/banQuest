@@ -52,6 +52,10 @@ interface ProgressDao {
     @Query("SELECT questionId FROM question_stat WHERE lessonId = :lessonId AND srsIndex >= 0")
     suspend fun missedIds(lessonId: String): List<String>
 
+    /** Questões da lição já respondidas alguma vez (para saber quais conceitos o aluno já viu). */
+    @Query("SELECT questionId FROM question_stat WHERE lessonId = :lessonId AND times > 0")
+    suspend fun answeredIds(lessonId: String): List<String>
+
     @Query("SELECT questionId FROM question_stat WHERE srsIndex >= 0 AND nextReviewDay <= :today ORDER BY nextReviewDay ASC, questionId ASC LIMIT :limit")
     suspend fun dueIds(today: Long, limit: Int): List<String>
 

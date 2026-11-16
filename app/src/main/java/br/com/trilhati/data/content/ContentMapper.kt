@@ -1,11 +1,14 @@
 package br.com.trilhati.data.content
 
+import br.com.trilhati.domain.model.AdaptedFrom
 import br.com.trilhati.domain.model.AnswerKey
+import br.com.trilhati.domain.model.Concept
 import br.com.trilhati.domain.model.CourseUnit
 import br.com.trilhati.domain.model.ExamRef
 import br.com.trilhati.domain.model.Lesson
 import br.com.trilhati.domain.model.MatchPair
 import br.com.trilhati.domain.model.Question
+import br.com.trilhati.domain.model.QuestionLevel
 import br.com.trilhati.domain.model.QuestionSource
 import br.com.trilhati.domain.model.QuestionStyle
 import br.com.trilhati.domain.model.QuestionType
@@ -19,6 +22,15 @@ internal fun parseType(value: String): QuestionType? = when (value) {
     "fill_blank" -> QuestionType.FillBlank
     "code_output" -> QuestionType.CodeOutput
     "case" -> QuestionType.Case
+    "quick" -> QuestionType.Quick
+    else -> null
+}
+
+/** Sem nível no JSON, a questão vale como de prova (formato antigo). */
+internal fun parseLevel(value: String?): QuestionLevel? = when (value) {
+    null, "prova" -> QuestionLevel.Exam
+    "aprender" -> QuestionLevel.Learn
+    "praticar" -> QuestionLevel.Practice
     else -> null
 }
 
@@ -47,17 +59,21 @@ internal fun parseAnswerKey(value: String): AnswerKey? = when (value) {
 
 private fun ExamRefDto.toDomain(): ExamRef? = parseAnswerKey(gabarito)?.let { ExamRef(banca, orgao, ano, numero, it) }
 
+private fun AdaptedFromDto.toDomain() = AdaptedFrom(id, ExamRef(banca, orgao, ano, numero, AnswerKey.Final))
+
 /** Converte uma questão já validada. Devolve `null` se algum valor textual for desconhecido. */
 private fun QuestionDto.toDomain(lessonId: String): Question? {
     val parsedType = parseType(type) ?: return null
     val parsedStyle = parseStyle(style) ?: return null
     val parsedSource = parseSource(source) ?: return null
+    val parsedLevel = parseLevel(level) ?: return null
     return Question(
         id = id, lessonId = lessonId, type = parsedType, topic = topic, subtopic = subtopic,
         difficulty = difficulty, style = parsedStyle, stem = stem, code = code,
         options = options, answer = answer,
         pairs = pairs.map { MatchPair(it.left, it.right) }, lines = lines,
         explanation = explanation, source = parsedSource, reviewed = reviewed, ref = ref?.toDomain(),
+        conceptId = concept, level = parsedLevel, adaptedFrom = adaptedFrom?.toDomain(), step = step,
     )
 }
 
@@ -73,6 +89,7 @@ fun PackDto.toDomain(): CourseUnit? {
             order = l.order,
             title = l.title,
             questions = l.questions.mapNotNull { q -> q.toDomain(l.id) },
+            concepts = l.concepts.map { Concept(it.id, it.title, it.summary) },
         )
     }
     return CourseUnit(unit.id, unit.order, unit.title, unit.editalTopics, lessons)

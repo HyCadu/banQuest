@@ -46,6 +46,11 @@ data class StatsEntity(
     /** Coluna da antiga liga simulada (v2). Sem uso desde a v3; o SQLite do minSdk 26 não renomeia colunas. */
     val bestLeagueTier: Int = 0,
     @androidx.room.ColumnInfo(defaultValue = "0") val podiums: Int = 0,
+    /** Meio coração além de [hearts] (v4). */
+    @androidx.room.ColumnInfo(defaultValue = "0") val heartHalf: Boolean = false,
+    /** Usos do botão "Não sei" e o dia (epochDay) do último presente diário (v4). */
+    @androidx.room.ColumnInfo(defaultValue = "3") val helps: Int = 3,
+    @androidx.room.ColumnInfo(defaultValue = "0") val helpsDay: Long = 0,
 )
 
 @Serializable

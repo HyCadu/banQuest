@@ -1,5 +1,8 @@
 package br.com.trilhati.domain.pace
 
+import br.com.trilhati.domain.model.Question
+import br.com.trilhati.domain.model.QuestionLevel
+
 /** Situação do ritmo de prova numa questão. Nunca reprova a resposta (CLAUDE.md, regra 6). */
 enum class PaceZone { OnPace, Warning, Over }
 
@@ -13,6 +16,16 @@ data class PaceConfig(
     val caseTakesFourMinutes: Boolean = false,
 ) {
     fun targetMs(isCase: Boolean): Long = if (isCase && caseTakesFourMinutes) CASE_MS else perQuestionMs
+
+    /**
+     * Tempo-alvo por nível (formato por conceitos): prova usa o ritmo da prova; praticar, metade dele; aprender, 2/9
+     * (40 s quando o ritmo é 3:00). Segue o ritmo configurado e, como sempre, nunca reprova a resposta.
+     */
+    fun targetMs(question: Question): Long = when (question.level) {
+        QuestionLevel.Learn -> perQuestionMs * 2 / 9
+        QuestionLevel.Practice -> perQuestionMs / 2
+        QuestionLevel.Exam -> targetMs(question.isCase)
+    }
 
     companion object {
         const val STANDARD_MS = 180_000L

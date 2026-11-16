@@ -6,6 +6,7 @@
   {
    "id": "fcc-teresina-2016-q54",
    "lesson": "u1l1",
+   "concept": "u1l1c3",
    "type": "case",
    "topic": "Modelagem de dados",
    "subtopic": "entidade associativa",
@@ -36,6 +37,7 @@
   {
    "id": "fcc-teresina-2016-q55",
    "lesson": "u1l1",
+   "concept": "u1l1c2",
    "type": "case",
    "topic": "Modelagem de dados",
    "subtopic": "autorrelacionamento",
@@ -66,6 +68,7 @@
   {
    "id": "fcc-teresina-2016-q56",
    "lesson": "u1l1",
+   "concept": "u1l1c3",
    "type": "case",
    "topic": "Modelagem de dados",
    "subtopic": "entidade fraca",
@@ -96,6 +99,7 @@
   {
    "id": "fcc-teresina-2016-q58",
    "lesson": "u1l1",
+   "concept": "u1l1c4",
    "type": "mcq5",
    "topic": "Projeto de banco de dados",
    "subtopic": "conceitual, lógico e físico",
@@ -126,6 +130,7 @@
   {
    "id": "fgv-banestes-2018-q57",
    "lesson": "u1l1",
+   "concept": "u1l1c5",
    "type": "mcq5",
    "topic": "Normalização",
    "subtopic": "dependências funcionais",
@@ -156,6 +161,7 @@
   {
    "id": "fgv-banestes-2021-q41",
    "lesson": "u1l1",
+   "concept": "u1l1c5",
    "type": "mcq5",
    "topic": "Normalização",
    "subtopic": "dependências funcionais",

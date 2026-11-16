@@ -10,7 +10,7 @@ também eliminam, porque a média ponderada mínima é 6,00. Por isso entram na 
 
 | Un. | Tema | Lições | Questões | Estado | Densidade | Risco factual |
 |---|---|---|---|---|---|---|
-| 1 | Banco de dados | 5 | 50 | **pronta** (não revisada pelo dono) | média | baixo |
+| 1 | Banco de dados | 5 | 50 | l1 no **formato por conceitos**; l2–l5 no formato antigo (a converter) | média | baixo |
 | 2 | Programação e OO | 5 | 50 | a fazer | alta (l4) | baixo |
 | 3 | Engenharia de software e ágil | 5 | 50 | a fazer | alta (l4) | **alto** (normas) |
 | 4 | Web, APIs e arquitetura | 5 | 50 | a fazer | **muito alta** (l3, l5) | médio |
@@ -67,11 +67,28 @@ Citar nas questões **só** estas versões, exatamente assim:
 
 ## Por unidade
 
-Legenda dos tipos: `mcq5`, `case`, `truefalse`, `match`, `order_code`, `fill_blank`, `code_output`.
+Legenda dos tipos: `mcq5`, `case`, `truefalse`, `match`, `order_code`, `fill_blank`, `code_output`, `quick` (escolha
+rápida, 3 alternativas, só em exercícios de ensino).
 
-### U1 — Banco de dados (pronta)
-Pendências: o dono revisar as 50 questões, com atenção a u1l4q06 (MERGE no PostgreSQL 15) e u1l2q06 (isolamento).
-Cobertura confere com o edital, incluindo governança e qualidade de dados.
+### Formato das lições: por conceitos (decisão do dono, PR #8)
+As lições passam a ser geradas no **formato por conceitos** (piloto na U1l1; regras em `CLAUDE.md` e `docs/DECISIONS.md`).
+A coluna "Questões" da visão geral conta só as de **prova** (estilo FCC e oficiais); o banco da lição é maior:
+- 4 a 7 conceitos pequenos por lição, cada um com exercícios de **aprender** e **praticar** em passos (`step` 1 = exemplo
+  resolvido, 2 = aplicar, 3 = variar), um cenário por conceito, e ao menos uma questão de **prova**;
+- exercício de ensino nunca cobra o que ainda não foi mostrado: a regra ou o exemplo vem no enunciado;
+- exercícios feitos de questões oficiais levam `adaptedFrom` e nunca caem na mesma sessão da original;
+- banco de 24 a 80 exercícios por lição (o validador já aceita), e a sessão sorteia 12 (3 conceitos × 3 passos + 3 de
+  prova). Isso também atende às lições densas (ver abaixo): elas ganham mais conceitos, não mais questões soltas.
+- Os "Tipos indicados" das tabelas abaixo valem para as questões de prova; nos exercícios de ensino entram também
+  `quick`, `truefalse`, `match`, `fill_blank` e `order_code`.
+
+### U1 — Banco de dados
+- **l1 (Modelo ER e normalização): formato por conceitos** (7 conceitos, 50 exercícios no pacote + 6 oficiais),
+  revisão em `content/review/u1-banco-de-dados.md`.
+- **l2–l5: a converter** para o formato por conceitos, usando as 10 questões de cada uma como prova e as oficiais que já
+  estão nelas.
+- Pendências: o dono revisar as questões, com atenção a u1l4q06 (MERGE no PostgreSQL 15) e u1l2q06 (isolamento).
+  Cobertura confere com o edital, incluindo governança e qualidade de dados.
 
 ### U2 — Programação e orientação a objetos
 Decisão: **as cinco linguagens do edital (PHP, Python, C, Java, C#) e o .NET com peso igual.** Os trechos de código
@@ -226,7 +243,9 @@ Também muda o Perfil (precisão por tema) e, na Fase 10, o simulado passa a pod
 
 Lições com mais de ~8 tópicos: U2l4, U3l4, U4l2, U4l3, U4l5, U6l4, U6l5, U7l5, U9l2, U9l4, U10l1, U10l2.
 
-A decisão está com o dono na [issue #1](https://github.com/HyCadu/trilha-ti/issues/1). Opções:
+A decisão está com o dono na [issue #1](https://github.com/HyCadu/trilha-ti/issues/1). No formato por conceitos, a
+opção ★ 1 já está coberta: o validador aceita de 24 a 80 exercícios por lição, e a lição densa ganha mais conceitos.
+Opções:
 1. **★ Banco maior nas lições densas (15–20 questões).** O app já sorteia 8 de qualquer tamanho; só o validador exige 10
    exatas (`QUESTIONS_PER_LESSON` em `tools/validate_content.py`). Não muda IDs nem progresso.
 2. Dividir as lições. Muda `Curriculum.kt` e o número de lições.
@@ -259,11 +278,19 @@ Hoje 15/11/2026, prova em 21/02/2027: cerca de 14 semanas. Faltam 13 unidades, u
 
 ## Checklist de geração (cada unidade)
 
-1. Conferir os tópicos em [EDITAL.md](EDITAL.md).
-2. Gerar o JSON (`source: "ia"`, `reviewed: false`), com os tipos indicados acima.
-3. `python3 tools/validate_content.py app/src/main/assets/content/`.
+1. Conferir os tópicos em [EDITAL.md](EDITAL.md) e contar as questões oficiais que já esperam pelas lições da unidade
+   (`content/provas`, campo `lesson`): elas viram a prova de algum conceito e calibram o estilo.
+2. Gerar o JSON no formato por conceitos (`concepts`, `concept`, `level`, `step`; `source: "ia"`, `reviewed: false`),
+   com os tipos indicados acima. Dar `concept` às oficiais da lição em `content/provas` e regerar com
+   `python3 tools/build_provas.py`.
+3. `python3 tools/validate_content.py app/src/main/assets/content/` e `python3 tools/validate_provas.py`.
 4. Segunda passada ("ache erros factuais e alternativas ambíguas"), relatório em `content/review/uN-*.md`.
 5. Uma unidade por branch e por pull request (ver [CONTRIBUTING.md](../CONTRIBUTING.md)).
+
+## Pendências do edital no conteúdo já existente
+
+- **SOAP e WSDL não estão no edital.** As questões oficiais FGV18 Q76 e Q78, TER16 Q22 e DPE15 Q47 (todas da U4l3)
+  devem ganhar `fora_do_edital` na PR da U4, quando a l3 virar "APIs e XML".
 
 ## Decisões abertas para o dono
 

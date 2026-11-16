@@ -55,6 +55,7 @@ class SessionActions(
     val onMatchRight: (Int) -> Unit = {},
     val onOrderPlace: (Int) -> Unit = {},
     val onOrderRemove: (Int) -> Unit = {},
+    val onDontKnow: () -> Unit = {},
 )
 
 @Composable
@@ -78,7 +79,7 @@ private fun ChoiceExercise(question: Question, ex: ExerciseState.Choice, phase: 
 private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Phase, actions: SessionActions, modifier: Modifier) {
     val enabled = phase == Phase.Answering
     Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text("Toque em um termo e depois na definição correspondente.", style = MaterialTheme.typography.bodySmall, color = Trilha.colors.inkSoft)
+        Text("Toque num termo e na definição.", style = MaterialTheme.typography.bodySmall, color = Trilha.colors.inkSoft)
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 question.pairs.forEachIndexed { index, pair ->

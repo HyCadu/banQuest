@@ -43,6 +43,7 @@ import br.com.trilhati.domain.pace.TimerMode
 import br.com.trilhati.feature.app.AppViewModel
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
+import br.com.trilhati.ui.components.InfoButton
 import br.com.trilhati.ui.components.PillChoice
 import br.com.trilhati.ui.components.TrilhaDialog
 import br.com.trilhati.ui.theme.Spacing
@@ -193,18 +194,14 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
         Section("Conta", "Seu progresso é copiado para a nuvem a cada lição: trocar de celular restaura tudo.") {
             val social = ui.social
             Text(social.email ?: "Conta conectada", style = MaterialTheme.typography.titleSmall, color = c.ink)
-            social.friendCode?.let { Text("Código de amigo: $it", style = MaterialTheme.typography.bodySmall, color = c.inkSoft) }
-            SwitchRow(
-                "Aparecer no ranking geral",
-                "Desligado, só seus amigos veem você. Ainda dá para adicionar amigos pelo código.",
-                social.showInGlobal, callbacks.onShowInGlobal,
-            )
+            social.friendCode?.let { Text("Código: $it", style = MaterialTheme.typography.bodySmall, color = c.inkSoft) }
+            SwitchRow("Aparecer no ranking geral", if (social.showInGlobal) null else "Só seus amigos veem você", social.showInGlobal, callbacks.onShowInGlobal)
             val status = when {
                 social.refreshing -> "Sincronizando…"
-                social.pendingUploads > 0 -> if (social.pendingUploads == 1) "1 sessão esperando internet." else "${social.pendingUploads} sessões esperando internet."
-                social.lastError != null -> "Última tentativa falhou: ${social.lastError}"
-                social.lastSyncAtMs > 0 -> "Tudo sincronizado."
-                else -> "Ainda não sincronizado."
+                social.pendingUploads > 0 -> if (social.pendingUploads == 1) "1 lição esperando internet" else "${social.pendingUploads} lições esperando internet"
+                social.lastError != null -> "Falhou: ${social.lastError}"
+                social.lastSyncAtMs > 0 -> "Tudo sincronizado"
+                else -> "Ainda não sincronizado"
             }
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text(status, style = MaterialTheme.typography.bodySmall, color = if (social.lastError != null) c.warningText else c.inkSoft, modifier = Modifier.weight(1f))
@@ -216,8 +213,13 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             ChunkyButton("Excluir minha conta", { confirmDelete = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
         }
 
-        Section("Lembretes", "Aviso no horário escolhido se você ainda não estudou, e às 21:30 se a ofensiva estiver em risco.") {
-            SwitchRow("Lembrete diário", "Na voz do seu personagem. Só neste aparelho.", settings.reminderEnabled, callbacks.onReminderEnabled)
+        Section(
+            "Lembretes",
+            "Aviso no horário escolhido se você ainda não estudou, e às 21:30 se a ofensiva estiver em risco, na voz do seu " +
+                "personagem e só neste aparelho. Alguns fabricantes atrasam avisos para economizar bateria: se o lembrete chegar " +
+                "tarde, libere o BanQuest na otimização de bateria do aparelho.",
+        ) {
+            SwitchRow("Lembrete diário", null, settings.reminderEnabled, callbacks.onReminderEnabled)
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text("Horário", style = MaterialTheme.typography.titleSmall, color = c.ink, modifier = Modifier.weight(1f))
                 ChunkyButton(
@@ -226,45 +228,34 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
                 )
             }
             if (settings.reminderEnabled && !ui.notificationsAllowed) {
-                Text(
-                    "As notificações do app estão bloqueadas no Android, então os lembretes não aparecem.",
-                    style = MaterialTheme.typography.bodySmall, color = c.errorText,
-                )
+                Text("Notificações bloqueadas no Android.", style = MaterialTheme.typography.bodySmall, color = c.errorText)
                 ChunkyButton("Permitir notificações", callbacks.onAllowNotifications, Modifier.fillMaxWidth(), ChunkyStyle.Primary, minHeight = 46.dp)
             }
-            Text(
-                "Alguns fabricantes atrasam avisos para economizar bateria. Se o lembrete chegar tarde, libere o BanQuest " +
-                    "na otimização de bateria do aparelho.",
-                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-            )
         }
 
-        Section("Cronômetro de ritmo", "O diferencial do app: treine no ritmo da prova. Ele nunca reprova a resposta.") {
+        Section(
+            "Cronômetro de ritmo",
+            "Treine no ritmo da prova; o tempo nunca reprova a resposta. Ritmo: anel de tempo em cada questão, âmbar aos 75% e " +
+                "vermelho ao estourar, mais o tempo restante da lição. Discreto: o tempo aparece só no resumo. Desligado: sem " +
+                "relógio na tela, mas o tempo ainda é medido para o resumo.",
+        ) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 PillChoice("Desligado", settings.timerMode == TimerMode.Off, { callbacks.onTimerMode(TimerMode.Off) })
                 PillChoice("Discreto", settings.timerMode == TimerMode.Discreet, { callbacks.onTimerMode(TimerMode.Discreet) })
                 PillChoice("Ritmo", settings.timerMode == TimerMode.Pace, { callbacks.onTimerMode(TimerMode.Pace) })
             }
-            Text(
-                when (settings.timerMode) {
-                    TimerMode.Off -> "Sem relógio na tela. O tempo ainda é medido para o resumo."
-                    TimerMode.Discreet -> "Sem relógio durante a questão; o tempo aparece só no resumo final."
-                    TimerMode.Pace -> "Anel de tempo em cada questão, âmbar aos 75% e vermelho ao estourar, mais o tempo restante da lição."
-                },
-                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-            )
             Text("Tempo por questão", style = MaterialTheme.typography.titleSmall, color = c.ink)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                PillChoice("3:00 (média da prova)", settings.paceTargetMs == PaceConfig.STANDARD_MS, { callbacks.onPaceTarget(PaceConfig.STANDARD_MS) }, Modifier.weight(1f))
-                PillChoice("2:30 (sobra tempo)", settings.paceTargetMs == PaceConfig.TIGHT_MS, { callbacks.onPaceTarget(PaceConfig.TIGHT_MS) }, Modifier.weight(1f))
+                PillChoice("3:00 · prova", settings.paceTargetMs == PaceConfig.STANDARD_MS, { callbacks.onPaceTarget(PaceConfig.STANDARD_MS) }, Modifier.weight(1f))
+                PillChoice("2:30 · folga", settings.paceTargetMs == PaceConfig.TIGHT_MS, { callbacks.onPaceTarget(PaceConfig.TIGHT_MS) }, Modifier.weight(1f))
             }
-            SwitchRow("Caso prático com 4:00", "Questões de caso prático ganham mais tempo.", settings.caseFourMinutes, callbacks.onCaseFour)
+            SwitchRow("Caso prático com 4:00", null, settings.caseFourMinutes, callbacks.onCaseFour)
         }
 
         Section("Estudo") {
-            SwitchRow("Modo sem vidas", "Sem corações: estude sem punição por erro.", settings.noLives, callbacks.onNoLives)
-            SwitchRow("Sons", "Efeitos curtos de acerto, erro, combo e conquista.", settings.sounds, callbacks.onSounds)
-            SwitchRow("Vibração", "Vibra de leve ao acertar e ao errar.", settings.haptics, callbacks.onHaptics)
+            SwitchRow("Modo sem vidas", "Errar não custa coração", settings.noLives, callbacks.onNoLives)
+            SwitchRow("Sons", null, settings.sounds, callbacks.onSounds)
+            SwitchRow("Vibração", null, settings.haptics, callbacks.onHaptics)
         }
 
         Section("Tema") {
@@ -275,15 +266,14 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             }
         }
 
-        Section("Conteúdo") {
-            Text(
-                "${ui.questionCount} questões no app, ${ui.examCount} delas de provas anteriores (com a banca e o ano na etiqueta). " +
-                    "${ui.unreviewedCount} ainda não foram revisadas: as geradas por IA mostram o selo \"não revisada\", e nas de prova " +
-                    "o selo avisa que só a explicação não foi revisada.",
-                style = MaterialTheme.typography.bodyMedium, color = c.ink,
-            )
-            ChunkyButton("Importar pacote de conteúdo (.json)", callbacks.onImportPack, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 46.dp)
-            Text("Pacotes novos de unidades chegam como arquivo .json. Eles são validados antes de entrar na trilha.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+        Section(
+            "Conteúdo",
+            "${ui.unreviewedCount} questões ainda não foram revisadas: as geradas por IA mostram o selo \"não revisada\", e nas de " +
+                "provas anteriores o selo avisa que só a explicação não foi revisada. Pacotes novos de unidades chegam como arquivo " +
+                ".json e são validados antes de entrar na trilha.",
+        ) {
+            Text("${ui.questionCount} questões · ${ui.examCount} de provas anteriores", style = MaterialTheme.typography.bodyMedium, color = c.ink)
+            ChunkyButton("Importar pacote (.json)", callbacks.onImportPack, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 46.dp)
             ui.importedPacks.forEach { pack ->
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Column(Modifier.weight(1f)) {
@@ -295,22 +285,25 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             }
         }
 
-        Section("Dados", "O progresso também fica salvo na sua conta. O arquivo de backup é uma cópia extra, só sua.") {
+        Section(
+            "Dados",
+            "O progresso também fica salvo na sua conta. O arquivo de backup é uma cópia extra, só sua, com XP, ofensiva, lições, " +
+                "erros e conquistas.",
+        ) {
             ChunkyButton("Exportar progresso", callbacks.onExport, Modifier.fillMaxWidth(), ChunkyStyle.Neutral, minHeight = 46.dp)
             ChunkyButton("Importar progresso", { confirmImport = true }, Modifier.fillMaxWidth(), ChunkyStyle.Neutral, minHeight = 46.dp)
-            Text("Exporte de vez em quando e guarde o arquivo: ele traz XP, ofensiva, lições, erros e conquistas.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
             ChunkyButton("Zerar meu progresso", { confirmErase = true }, Modifier.fillMaxWidth(), ChunkyStyle.Error, minHeight = 46.dp)
         }
 
-        Section("Sobre o app") {
+        Section("Sobre o app", "Para instalar a versão nova, o Android pede permissão para o navegador instalar apps. Ela entra por cima, sem perder nada.") {
             Text("BanQuest · versão ${ui.versionName}", style = MaterialTheme.typography.titleSmall, color = c.ink)
             val release = ui.update.status.releaseOrNull
             Text(
                 when {
                     ui.update.checking -> "Procurando versão nova…"
                     release != null -> "Versão ${release.versionName} disponível." + if (release.notes.isNotBlank()) " ${release.notes}" else ""
-                    ui.update.lastCheckMs > 0 -> "Você está na versão mais nova."
-                    else -> "Ainda não conferido."
+                    ui.update.lastCheckMs > 0 -> "Você está na versão mais nova"
+                    else -> "Ainda não conferido"
                 },
                 style = MaterialTheme.typography.bodySmall, color = if (release != null) c.secondaryText else c.inkSoft,
             )
@@ -320,10 +313,6 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             ChunkyButton(
                 "Verificar atualização", callbacks.onCheckUpdate, Modifier.fillMaxWidth(), ChunkyStyle.Neutral,
                 enabled = !ui.update.checking, minHeight = 46.dp,
-            )
-            Text(
-                "Para instalar, o Android pede permissão para o navegador instalar apps. A versão nova entra por cima, sem perder nada.",
-                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
             )
         }
     }
@@ -431,26 +420,29 @@ private fun AccountDialogs(
     }
 }
 
+/** Seção das configurações. A explicação ([info]) fica atrás do botão ⓘ, não em parágrafo na tela. */
 @Composable
-private fun Section(title: String, subtitle: String? = null, content: @Composable () -> Unit) {
+private fun Section(title: String, info: String? = null, content: @Composable () -> Unit) {
     val c = Trilha.colors
     Column(
         Modifier.fillMaxWidth().background(c.surface, RoundedCornerShape(22.dp)).border(2.dp, c.outline, RoundedCornerShape(22.dp)).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Text(title, style = MaterialTheme.typography.titleMedium, color = c.primaryText)
-        if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium, color = c.primaryText)
+            if (info != null) InfoButton(title, info)
+        }
         content()
     }
 }
 
 @Composable
-private fun SwitchRow(title: String, description: String, checked: Boolean, onChecked: (Boolean) -> Unit) {
+private fun SwitchRow(title: String, description: String?, checked: Boolean, onChecked: (Boolean) -> Unit) {
     val c = Trilha.colors
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Column(Modifier.weight(1f)) {
             Text(title, style = MaterialTheme.typography.titleSmall, color = c.ink)
-            Text(description, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+            if (description != null) Text(description, style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
         }
         Switch(checked = checked, onCheckedChange = onChecked)
     }

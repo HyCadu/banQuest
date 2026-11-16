@@ -41,4 +41,17 @@ class PaceEngineTest {
         assertEquals(180_000, PaceConfig(caseTakesFourMinutes = true).targetMs(isCase = false))
         assertEquals(150_000, PaceConfig(perQuestionMs = PaceConfig.TIGHT_MS).targetMs(false))
     }
+
+    @Test fun `tempo alvo por nivel segue o ritmo configurado`() {
+        val base = br.com.trilhati.domain.TestData.question("q1")
+        val learn = base.copy(level = br.com.trilhati.domain.model.QuestionLevel.Learn)
+        val practice = base.copy(level = br.com.trilhati.domain.model.QuestionLevel.Practice)
+        assertEquals(40_000, PaceConfig().targetMs(learn))
+        assertEquals(90_000, PaceConfig().targetMs(practice))
+        assertEquals(180_000, PaceConfig().targetMs(base))
+        assertEquals(75_000, PaceConfig(perQuestionMs = PaceConfig.TIGHT_MS).targetMs(practice))
+        // Caso prático de prova continua com a opção de 4:00.
+        val case = base.copy(type = br.com.trilhati.domain.model.QuestionType.Case)
+        assertEquals(240_000, PaceConfig(caseTakesFourMinutes = true).targetMs(case))
+    }
 }

@@ -15,4 +15,9 @@ class ExamRefTest {
             ExamRef("FCC", "Prefeitura de Teresina", 2016, 22, AnswerKey.Preliminary).label,
         )
     }
+
+    @Test fun `etiqueta compacta da tela da questao cabe numa linha`() {
+        assertEquals("FCC · Teresina 2016 · Q22", ExamRef("FCC", "Prefeitura de Teresina", 2016, 22, AnswerKey.Preliminary).compactLabel)
+        assertEquals("FGV · Banestes 2021 · Q48", ExamRef("FGV", "Banestes", 2021, 48, AnswerKey.Final).compactLabel)
+    }
 }

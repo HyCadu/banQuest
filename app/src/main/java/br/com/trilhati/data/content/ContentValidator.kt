@@ -1,6 +1,7 @@
 package br.com.trilhati.data.content
 
 import br.com.trilhati.domain.model.Curriculum
+import br.com.trilhati.domain.model.QuestionLevel
 import br.com.trilhati.domain.model.QuestionType
 
 /**
@@ -18,8 +19,25 @@ object ContentValidator {
         pack.lessons.forEachIndexed { i, lesson ->
             if (lesson.id != "${pack.unit.id}l${i + 1}") errors += "lição ${lesson.id}: id fora do padrão"
             lesson.questions.forEach { q -> validateQuestion(q, seen, errors) }
+            validateConcepts(lesson, errors)
         }
         return errors
+    }
+
+    /** Formato por conceitos: conceitos bem formados e toda questão da lição apontando para um deles. */
+    private fun validateConcepts(lesson: LessonDto, errors: MutableList<String>) {
+        val ids = lesson.concepts.map { it.id }
+        if (ids.toSet().size != ids.size) errors += "lição ${lesson.id}: conceito repetido"
+        lesson.concepts.forEach { c ->
+            if (!c.id.matches(Regex("${lesson.id}c\\d+"))) errors += "lição ${lesson.id}: conceito ${c.id} fora do padrão"
+            if (c.title.isBlank() || c.summary.isBlank()) errors += "lição ${lesson.id}: conceito ${c.id} sem título ou resumo"
+        }
+        lesson.questions.forEach { q ->
+            when {
+                lesson.concepts.isEmpty() && q.concept != null -> errors += "${q.id}: conceito ${q.concept} numa lição sem conceitos"
+                lesson.concepts.isNotEmpty() && q.concept !in ids -> errors += "${q.id}: conceito inexistente (${q.concept})"
+            }
+        }
     }
 
     /** Pacote de provas anteriores: além das regras de cada questão, exige origem `prova_real` e uma lição que exista. */
@@ -33,6 +51,8 @@ object ContentValidator {
             validateQuestion(q, seen, errors)
             if (q.source != "prova_real") errors += "${q.id}: questão de prova precisa de source prova_real"
             if (q.lesson !in lessons) errors += "${q.id}: lição inexistente (${q.lesson})"
+            if (q.concept != null && !q.concept.startsWith("${q.lesson}c")) errors += "${q.id}: conceito ${q.concept} não é da lição ${q.lesson}"
+            if (parseLevel(q.level) != QuestionLevel.Exam) errors += "${q.id}: questão de prova só pode ter nível prova"
         }
         return errors
     }
@@ -54,6 +74,12 @@ object ContentValidator {
         } else if (ref != null) {
             errors += "$at: só questão de prova (prova_real) leva ref"
         }
+        if (parseLevel(q.level) == null) errors += "$at: level inválido (${q.level})"
+        if (q.step != null && (q.step < 1 || parseLevel(q.level) == QuestionLevel.Exam)) errors += "$at: step só vale (>= 1) em aprender e praticar"
+        q.adaptedFrom?.let { a ->
+            if (q.source != "ia" && q.source != "autoral") errors += "$at: só exercício de IA ou autoral pode ser adaptado de prova"
+            if (a.id.isBlank() || a.banca.isBlank() || a.orgao.isBlank() || a.ano < 1990 || a.numero < 1) errors += "$at: adaptedFrom incompleto"
+        }
         if (q.stem.isBlank()) errors += "$at: enunciado vazio"
         if (q.explanation.isBlank()) errors += "$at: explicação vazia"
         when (type) {
@@ -61,6 +87,7 @@ object ContentValidator {
             QuestionType.Mcq5,
             QuestionType.Case,
             QuestionType.CodeOutput -> options(q, 5..5, errors)
+            QuestionType.Quick -> options(q, 3..3, errors)
             QuestionType.FillBlank -> {
                 options(q, 4..5, errors)
                 if (q.code?.contains("___") != true) errors += "$at: fill_blank precisa de code com a lacuna ___"

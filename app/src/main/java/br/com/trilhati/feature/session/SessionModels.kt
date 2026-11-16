@@ -45,8 +45,9 @@ sealed interface Phase {
     /**
      * Depois de verificar: [correct], o texto da resposta certa (para erros) e o XP ganho.
      * [slips] > 0 com [correct] = false: completou corrigindo (associar pares), sem custo de coração.
+     * [skipped]: o aluno usou o "Não sei" (sem custo de coração; o exercício volta no fim).
      */
-    data class Feedback(val correct: Boolean, val correctText: String?, val xp: Int, val slips: Int = 0) : Phase {
+    data class Feedback(val correct: Boolean, val correctText: String?, val xp: Int, val slips: Int = 0, val skipped: Boolean = false) : Phase {
         val corrected: Boolean get() = !correct && slips > 0
     }
 }
@@ -77,7 +78,21 @@ sealed interface SessionUi {
         val haptics: Boolean,
         /** Questões que ainda faltam, contando a atual (para o "tempo restante da lição"). */
         val remaining: Int = 1,
-    ) : SessionUi
+        /** Soma dos tempos-alvo das questões que faltam, contando a atual (cada nível tem o seu alvo). */
+        val remainingBudgetMs: Long = remaining * targetMs,
+        /** Conceito da questão atual, para a dica nos exercícios de aprender. */
+        val concept: br.com.trilhati.domain.model.Concept? = null,
+        /** Primeiro exercício de um conceito que o aluno ainda não viu: a dica já vem aberta, como "Novo conceito". */
+        val newConcept: Boolean = false,
+        /** Meio coração além de [hearts]: o coração do contador aparece rachado. */
+        val halfHeart: Boolean = false,
+        /** Estoque do "Não sei"; o botão só aparece nos exercícios de ensino. */
+        val helps: Int = 0,
+    ) : SessionUi {
+        /** Texto ao lado do coração: "5" ou "4,5" (ver [br.com.trilhati.domain.hearts.HeartsEngine.display]). */
+        val heartsText: String? get() = hearts?.let { if (halfHeart) "$it,5" else "$it" }
+        val canAskHelp: Boolean get() = phase == Phase.Answering && question.level != br.com.trilhati.domain.model.QuestionLevel.Exam
+    }
 
     data object Saving : SessionUi
 

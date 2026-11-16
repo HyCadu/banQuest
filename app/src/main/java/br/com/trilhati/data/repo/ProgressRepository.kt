@@ -11,6 +11,7 @@ import br.com.trilhati.data.db.UserProfileEntity
 import br.com.trilhati.domain.achievement.AchievementEngine
 import br.com.trilhati.domain.achievement.AchievementInput
 import br.com.trilhati.domain.hearts.HeartsEngine
+import br.com.trilhati.domain.progress.HelpEngine
 import br.com.trilhati.domain.model.CourseUnit
 import br.com.trilhati.domain.progress.DailyLog
 import br.com.trilhati.domain.progress.ProcessedSession
@@ -110,10 +111,12 @@ class ProgressRepository @Inject constructor(
             dao.upsertQuests(QuestEngine.questsFor(today).map { QuestProgress(today, it.id).toEntity() })
         }
         // A ofensiva é reconciliada ao abrir o app: dias perdidos consomem congelamentos (ou zeram a ofensiva).
+        // No mesmo passo entra o "Não sei" do dia.
         val stats = checkNotNull(dao.stats()).toDomain()
         val reconciled = StreakEngine.reconcile(stats.streak, today)
+        val updated = stats.copy(streak = reconciled.state, help = HelpEngine.daily(stats.help, today))
+        if (updated != stats) dao.upsertStats(updated.toEntity())
         if (reconciled.state != stats.streak) {
-            dao.upsertStats(stats.copy(streak = reconciled.state).toEntity())
             reconciled.frozenDays.forEach { day ->
                 val log = dao.dailyLog(day.toEpochDay())?.toDomain() ?: DailyLog(day)
                 dao.upsertDailyLog(log.copy(froze = true).toEntity())
@@ -199,14 +202,26 @@ class ProgressRepository @Inject constructor(
     }
 
     suspend fun missedIds(lessonId: String): Set<String> = dao.missedIds(lessonId).toSet()
+    suspend fun answeredIds(lessonId: String): Set<String> = dao.answeredIds(lessonId).toSet()
     suspend fun dueIds(today: LocalDate, limit: Int): List<String> = dao.dueIds(today.toEpochDay(), limit)
     suspend fun bankIds(limit: Int): List<String> = dao.bankIds(limit)
 
     // ---------- corações
 
-    suspend fun loseHeart() = db.withTransaction {
+    /** Perde [halves] metades de coração: 2 num erro de prova, 1 num erro de ensino (aprender e praticar). */
+    suspend fun loseHeart(halves: Int = 2) = db.withTransaction {
         val stats = checkNotNull(dao.stats()).toDomain()
-        dao.upsertStats(stats.copy(hearts = HeartsEngine.lose(stats.hearts, nowMs())).toEntity())
+        dao.upsertStats(stats.copy(hearts = HeartsEngine.lose(stats.hearts, nowMs(), halves)).toEntity())
+    }
+
+    // ---------- botão "Não sei"
+
+    /** Gasta um "Não sei". Devolve `false` se não havia nenhum. */
+    suspend fun useHelp(): Boolean = db.withTransaction {
+        val stats = checkNotNull(dao.stats()).toDomain()
+        val used = HelpEngine.use(stats.help) ?: return@withTransaction false
+        dao.upsertStats(stats.copy(help = used).toEntity())
+        true
     }
 
     // ---------- loja, baús e missões
@@ -214,11 +229,12 @@ class ProgressRepository @Inject constructor(
     suspend fun buy(item: ShopItem): PurchaseResult = db.withTransaction {
         val stats = checkNotNull(dao.stats()).toDomain()
         val hearts = HeartsEngine.regen(stats.hearts, nowMs())
-        ShopEngine.canBuy(item, stats.gems, hearts.hearts, stats.streak.freezes)?.let { return@withTransaction it }
+        ShopEngine.canBuy(item, stats.gems, hearts.hearts, stats.streak.freezes, stats.help.count)?.let { return@withTransaction it }
         val paid = stats.copy(gems = stats.gems - item.priceGems)
         val updated = when (item) {
             ShopItem.StreakFreeze -> paid.copy(streak = StreakEngine.addFreeze(stats.streak))
             ShopItem.RefillHearts -> paid.copy(hearts = HeartsEngine.refill(nowMs()))
+            ShopItem.Help -> paid.copy(help = HelpEngine.buy(stats.help))
         }
         dao.upsertStats(updated.toEntity())
         PurchaseResult.Success(updated.gems)

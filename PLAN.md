@@ -32,7 +32,7 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 ### Dentro da v1
 - Onboarding com escolha de personagem, nome e meta diária.
 - Trilha em caminho (unidades → lições) só com **Conhecimentos Específicos de TI**.
-- Lição de 8 exercícios, corações, XP, combo, tela de resultado.
+- Lição de 8 exercícios (12 no formato por conceitos), corações, XP, combo, tela de resultado.
 - Ofensiva com "congelar", meta diária, missões diárias, conquistas.
 - Modo "Praticar erros" (revisão espaçada simples).
 - Gemas, loja (congelar ofensiva, recarregar corações) e baús.
@@ -109,6 +109,13 @@ app/src/main/java/.../
 - `source`: `autoral`, `ia`, `fcc_real`, `prova_real` (prova anterior enviada pelo dono, de qualquer banca, com `ref` e
   vinda de `assets/provas`; ver `docs/DECISIONS.md`). `reviewed`: se o dono conferiu.
 - Cada lição tem **10 questões no banco**; a lição sorteia 8 (prioriza as que o usuário errou). Erros são repetidos uma vez no fim da lição.
+- **Formato por conceitos** (piloto na `u1l1`; ver `docs/DECISIONS.md`): a lição lista `concepts` (`id` `uXlYcN`,
+  `title`, `summary`) e cada questão traz `concept` e `level` (`aprender`, `praticar` ou `prova`; sem `level` vale
+  `prova`). Tipo novo `quick` (escolha rápida, 3 alternativas curtas). Exercício feito a partir de uma questão oficial
+  leva `adaptedFrom` (`id`, `banca`, `orgao`, `ano`, `numero`). Exercício de ensino leva `step` (1 = exemplo resolvido,
+  2 = aplicar, 3 = variar; variantes repetem o passo). O banco da lição fica entre 24 e 80 exercícios; cada conceito tem
+  os passos 1, 2 e 3, ao menos 2 de aprender, 2 de praticar e 1 de prova (do pacote ou oficial). A sessão tem 12: 3
+  conceitos na ordem da lição (os não vistos primeiro), um bloco de 3 passos para cada, e 3 de prova no fim.
 
 ### 5.2 Entidades Room (mínimo)
 `UserProfile` (nome, personagem, meta diária XP, criado em), `Stats` (XP total, gemas, corações, último regen, ofensiva atual, recorde, último dia concluído, congelamentos), `LessonProgress` (lessonId, estrelas/coroa, melhor nota, concluída em), `QuestionStat` (questionId, vezes, acertos, último erro, próxima revisão, intervalo), `Attempt` (questionId, correta, tempo, data), `DailyLog` (data, XP, lições, meta batida, congelou?), `QuestState`, `Achievement`, `LeagueWeek` (semana, tier, XP do usuário, bots seed), `ShopState`, `PackMeta` (pack, versão importada).
@@ -149,11 +156,11 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Trilha (home):** caminho em zigue-zague com nós por lição, cabeçalho fixo da unidade, nó atual pulsando, baú ao final de cada unidade, personagem ao lado do nó atual. Unidade seguinte desbloqueia ao concluir a anterior; ★ permitir "pular" com um teste de nivelamento (v1.1). Topo: ofensiva, gemas, corações, contagem regressiva para 21/02/2027.
 
-**Lição:** 8 exercícios. Barra de progresso; botão Verificar; feedback em painel inferior (verde/vermelho) com explicação; Continuar. Erro custa 1 coração (se o modo corações estiver ligado); erros voltam no fim da lição (+5 XP em vez de +10). Combo visual a partir de 3 acertos seguidos.
+**Lição:** 8 exercícios (12 no formato por conceitos: blocos por conceito do exemplo resolvido à variação, e prova no fim; "Novo conceito" aberto na primeira vez; botão "Não sei" nos de ensino). Barra de progresso; botão Verificar; feedback em painel inferior (verde/vermelho) com explicação; Continuar. Erro custa 1 coração (½ nos exercícios de aprender e praticar do formato por conceitos; se o modo corações estiver ligado); erros voltam no fim da lição (+5 XP em vez de +10). Combo visual a partir de 3 acertos seguidos.
 
 **XP:** +10 por acerto de primeira, +5 de bônus se ≤ 2:00, +20 por concluir, +10 por lição perfeita. Nível = XP total ÷ 500.
 
-**Cronômetro de ritmo (diferencial do app):** anel/barra de 3:00 por questão, cor âmbar aos 2:15 e vermelha ao estourar (não reprova a resposta). Chip "Prova: tempo restante da lição" e "folga/atraso" = (questões feitas × 3:00) − tempo usado. Resumo final mostra tempo médio por questão e compara com 3:00. Configurações: `Desligado`, `Discreto` (só ao final), `Ritmo` ★ (visível). Ritmo-alvo ajustável: **3:00** ★ (média simples da prova) ou **2:30**, para sobrar tempo de revisão no fim. Opção de "caso prático = 4:00".
+**Cronômetro de ritmo (diferencial do app):** anel/barra de 3:00 por questão, cor âmbar aos 2:15 e vermelha ao estourar (não reprova a resposta). Durante a questão aparece só o anel e, quando o aluno está atrasado, a ficha de atraso = (questões feitas × alvo) − tempo usado; a folga aparece no resumo (0.7.3; antes havia também as fichas "Lição" e "Folga"). Resumo final mostra tempo médio por questão e compara com 3:00. Configurações: `Desligado`, `Discreto` (só ao final), `Ritmo` ★ (visível). Ritmo-alvo ajustável: **3:00** ★ (média simples da prova) ou **2:30**, para sobrar tempo de revisão no fim. Opção de "caso prático = 4:00". No formato por conceitos, o alvo vale para as questões de prova; praticar usa metade dele (1:30) e aprender 2/9 (0:40).
 
 **Ofensiva:** um dia conta ao concluir ≥ 1 lição (não precisa bater a meta). Virada à meia-noite local. Perdeu 1 dia → consome **congelamento** automaticamente (máx. 2 estocados). Mostrar calendário de dias estudados e recorde.
 
