@@ -27,8 +27,8 @@ android {
         applicationId = "br.com.trilhati"
         minSdk = 26
         targetSdk = 37
-        versionCode = 8
-        versionName = "0.5.0"
+        versionCode = 9
+        versionName = "0.6.0"
         // Projeto Supabase (chave pública/publishable: pode ir no app; as regras RLS protegem os dados).
         buildConfigField("String", "SUPABASE_URL", "\"${providers.gradleProperty("trilha.supabaseUrl").getOrElse("")}\"")
         buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"${providers.gradleProperty("trilha.supabaseKey").getOrElse("")}\"")
@@ -125,4 +125,24 @@ val validateContent = tasks.register<Exec>("validateContent") {
     commandLine("python3", "-I", script.asFile.absolutePath, contentDir.asFile.absolutePath)
 }
 
-tasks.matching { it.name == "check" }.configureEach { dependsOn(validateContent) }
+// Questões de provas anteriores: valida a fonte (content/provas) e confere se o pacote do app foi regerado.
+val validateProvas = tasks.register<Exec>("validateProvas") {
+    group = "verification"
+    description = "Valida content/provas com tools/validate_provas.py"
+    val sourceDir = rootProject.layout.projectDirectory.dir("content/provas")
+    val script = rootProject.layout.projectDirectory.file("tools/validate_provas.py")
+    inputs.dir(sourceDir)
+    inputs.file(script)
+    commandLine("python3", "-I", script.asFile.absolutePath, sourceDir.asFile.absolutePath)
+}
+val checkProvasPack = tasks.register<Exec>("checkProvasPack") {
+    group = "verification"
+    description = "Confere se assets/provas está em dia com content/provas (tools/build_provas.py --check)"
+    val script = rootProject.layout.projectDirectory.file("tools/build_provas.py")
+    inputs.dir(rootProject.layout.projectDirectory.dir("content/provas"))
+    inputs.dir(layout.projectDirectory.dir("src/main/assets/provas"))
+    inputs.file(script)
+    commandLine("python3", "-I", script.asFile.absolutePath, "--check")
+}
+
+tasks.matching { it.name == "check" }.configureEach { dependsOn(validateContent, validateProvas, checkProvasPack) }

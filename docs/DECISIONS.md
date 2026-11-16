@@ -283,3 +283,30 @@ coração, a questão repetia no fim e o resultado saía como erro, embora a tel
    - APKs ficam num bucket público `apk` do Supabase Storage (guia em `docs/PUBLICAR_VERSAO.md`). Qualquer link https
      serve.
 
+
+## Provas anteriores na trilha (16/11/2026) — a pedido do dono
+1. **Quais provas entram:** as questões de TI de provas reais que o dono enviou em PDF, de qualquer banca, cada uma com
+   a banca na etiqueta. Hoje são FGV · Banestes 2018 e 2021, FCC · DPE-RR 2015 e FCC · Prefeitura de Teresina 2016.
+   - Fonte da verdade: `content/provas/*.json`, um arquivo por prova, com a lição de destino (`lesson`), a prova de
+     origem (`ref`), a situação do gabarito (`gabarito`) e marcações (`flags`). O validador é `tools/validate_provas.py`.
+   - O texto foi conferido contra o PDF; figuras e tabelas viraram texto. A resposta segue o gabarito oficial e foi
+     conferida resolvendo cada questão. Só a explicação é escrita por IA (`explanation_source: "ia"`, `reviewed: false`).
+2. **Origem nova `prova_real`** (em vez de criar `fgv_real` etc.): vale para qualquer banca, e a banca fica em
+   `ref.banca`. `fcc_real` continua aceito. A regra 4 do CLAUDE.md vale assim: só questão com `ref.banca` FCC (ou
+   `fcc_real`) pode ser chamada de "da FCC", e o validador recusa "FCC" no texto de questão de outra banca.
+3. **Fora por padrão (escolha do dono):** questões que só valem para versões antigas (`versao_antiga`: PMBOK 4/5,
+   COBIT 4.1/5, CMMI 1.3, MPS.BR antigo) e as fora do edital (`fora_do_edital`). Elas ficam guardadas em
+   `content/provas` mas não vão para o app. Das 135, entram 123. Questões que citam uma versão anterior da norma mas
+   cuja resposta não mudou (`versao_citada_anterior`) entram.
+4. **Onde aparecem (escolha do dono): dentro das lições da trilha**, não numa área separada. Cada questão vai para a
+   lição do tópico (ex.: subconsultas → `u1l3`). O TDD e o Mercurial foram para "Testes, TDD e Git" (`u2l5`), porque é
+   lá que o PLAN põe esses temas.
+   - Elas **somam** ao banco da lição, que passa de 10 questões. A lição continua sorteando 8, priorizando erros.
+   - ★ Só entram em lições que já têm pacote de conteúdo. A trilha libera uma lição por vez e a primeira lição vazia
+     trava o resto; abrir lições só com 1 ou 2 questões de prova daria lições curtas demais. Hoje entram as 26 da
+     unidade 1. As outras 97 entram sozinhas quando o pacote de cada unidade chegar, sem mexer em nada.
+5. **Pacote do app gerado, não editado à mão:** `tools/build_provas.py` monta `assets/provas/provas-anteriores.json` a
+   partir de `content/provas`, sem as questões escondidas e sem o ";" que a FGV põe no fim de cada alternativa. O
+   `./gradlew check` roda o validador e falha se o pacote estiver desatualizado (`--check`).
+6. **Na lição:** etiqueta "FGV · Banestes 2021 · questão 48" (com "gabarito preliminar" ou "gabarito não confirmado"
+   quando for o caso) e o selo "explicação não revisada" no lugar de "não revisada", porque o enunciado é o original.

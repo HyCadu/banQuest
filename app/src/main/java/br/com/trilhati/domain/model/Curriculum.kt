@@ -23,4 +23,9 @@ object Curriculum {
     private fun unit(order: Int, title: String, vararg lessons: String) = UnitInfo("u$order", order, title, lessons.toList())
 
     fun lessonId(unitOrder: Int, lessonOrder: Int) = "u${unitOrder}l$lessonOrder"
+
+    /** Todas as 48 lições da trilha. */
+    val lessonIds: Set<String> by lazy {
+        units.flatMap { u -> u.lessonTitles.indices.map { lessonId(u.order, it + 1) } }.toSet()
+    }
 }

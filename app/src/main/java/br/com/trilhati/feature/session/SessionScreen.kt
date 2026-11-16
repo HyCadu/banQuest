@@ -38,6 +38,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import br.com.trilhati.domain.model.Question
 import br.com.trilhati.domain.model.QuestionType
 import br.com.trilhati.domain.pace.PaceEngine
 import br.com.trilhati.domain.pace.PaceZone
@@ -51,6 +52,7 @@ import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.PaceChip
 import br.com.trilhati.ui.components.PaceRing
 import br.com.trilhati.ui.components.TrilhaDialog
+import br.com.trilhati.ui.components.ExamRefChip
 import br.com.trilhati.ui.components.UnreviewedBadge
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
@@ -170,7 +172,7 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen, vertical = Spacing.sm),
             verticalArrangement = Arrangement.spacedBy(Spacing.md),
         ) {
-            if (q.showUnreviewedBadge) UnreviewedBadge()
+            QuestionTags(q)
             if (ui.retry) Text("Repetição de um erro: acertando agora vale 5 XP.", style = MaterialTheme.typography.labelMedium, color = c.warningText)
             Text(q.stem, style = MaterialTheme.typography.titleMedium, color = c.ink)
             q.code?.let { CodeBlock(it) }
@@ -211,6 +213,20 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
                 }
             }
         }
+    }
+}
+
+/** Etiqueta da prova (questões reais) e selo de revisão, lado a lado; quebram linha com fonte grande. */
+@Composable
+private fun QuestionTags(q: Question) {
+    val ref = q.ref
+    if (ref == null && !q.showUnreviewedBadge) return
+    androidx.compose.foundation.layout.FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        if (ref != null) ExamRefChip(ref.label)
+        if (q.showUnreviewedBadge) UnreviewedBadge(explanationOnly = q.isFromExam)
     }
 }
 

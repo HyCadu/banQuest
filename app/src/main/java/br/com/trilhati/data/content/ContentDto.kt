@@ -29,6 +29,30 @@ data class LessonDto(
     val questions: List<QuestionDto>,
 )
 
+/**
+ * Pacote de questões de provas anteriores (`assets/provas`), gerado por `tools/build_provas.py`. Cada questão traz a
+ * lição da trilha onde entra ([QuestionDto.lesson]) e a prova de origem ([QuestionDto.ref]).
+ */
+@Serializable
+data class ExamPackDto(
+    val schema: Int,
+    val pack: String,
+    val version: Int,
+    val questions: List<QuestionDto>,
+)
+
+@Serializable
+data class ExamRefDto(
+    val banca: String,
+    val orgao: String,
+    val ano: Int,
+    val numero: Int,
+    val cargo: String = "",
+    val prova: String = "",
+    /** "definitivo", "preliminar" ou "nao_confirmado". */
+    val gabarito: String = "definitivo",
+)
+
 @Serializable
 data class PairDto(val left: String, val right: String)
 
@@ -49,4 +73,8 @@ data class QuestionDto(
     val explanation: String,
     val source: String,
     @SerialName("reviewed") val reviewed: Boolean = false,
+    /** Só nas questões de provas anteriores: lição da trilha onde a questão entra. */
+    val lesson: String? = null,
+    /** Só nas questões de provas anteriores: de onde a questão saiu. */
+    val ref: ExamRefDto? = null,
 )

@@ -125,8 +125,13 @@ class IntegrationTest {
 
     @Test fun conteudoCarregaDosAssets() {
         assertEquals(10, content.course.size)
-        assertEquals(50, content.course[0].lessons.sumOf { it.questions.size })
+        // 50 questões do pacote da unidade 1 + 26 de provas anteriores encaixadas nas lições dela (assets/provas).
+        val u1 = content.course[0].lessons.flatMap { it.questions }
+        assertEquals(76, u1.size)
+        assertEquals(26, u1.count { it.isFromExam })
         assertNotNull(content.lesson("u1l3")); assertNotNull(content.question("u1l1q01"))
+        assertEquals("FGV · Banestes 2021 · questão 48", content.question("fgv-banestes-2021-q48")?.ref?.label)
+        // Unidade sem pacote continua "chegando", mesmo tendo questões de prova esperando por ela.
         assertFalse(content.lesson("u2l1")!!.hasContent)
     }
 

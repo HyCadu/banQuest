@@ -187,11 +187,14 @@ fun FeedbackPanel(
     }
 }
 
-/** Selo discreto exigido pelo CLAUDE.md: toda questão gerada por IA aparece como "não revisada". */
+/**
+ * Selo discreto exigido pelo CLAUDE.md: toda questão gerada por IA aparece como "não revisada". Nas questões de
+ * provas anteriores ([explanationOnly]) o enunciado é o original, e o selo avisa que só a explicação não foi revisada.
+ */
 @Composable
-fun UnreviewedBadge(modifier: Modifier = Modifier) {
+fun UnreviewedBadge(modifier: Modifier = Modifier, explanationOnly: Boolean = false) {
     val c = Trilha.colors
-    val description = stringResource(R.string.unreviewed_badge_description)
+    val description = stringResource(if (explanationOnly) R.string.unreviewed_explanation_badge_description else R.string.unreviewed_badge_description)
     Surface(
         modifier = modifier.semantics(mergeDescendants = true) { contentDescription = description },
         shape = RoundedCornerShape(50),
@@ -204,7 +207,33 @@ fun UnreviewedBadge(modifier: Modifier = Modifier) {
         ) {
             GameIconView(GameIcon.Info, size = 16.dp)
             Spacer(Modifier.width(4.dp))
-            Text(stringResource(R.string.unreviewed_badge), style = MaterialTheme.typography.labelSmall, color = c.warningText)
+            Text(
+                stringResource(if (explanationOnly) R.string.unreviewed_explanation_badge else R.string.unreviewed_badge),
+                style = MaterialTheme.typography.labelSmall,
+                color = c.warningText,
+            )
+        }
+    }
+}
+
+/** Etiqueta das questões de provas anteriores: banca, órgão, ano e número (ex.: "FGV · Banestes 2021 · questão 48"). */
+@Composable
+fun ExamRefChip(label: String, modifier: Modifier = Modifier) {
+    val c = Trilha.colors
+    val description = stringResource(R.string.exam_ref_description, label)
+    Surface(
+        modifier = modifier.semantics(mergeDescendants = true) { contentDescription = description },
+        shape = RoundedCornerShape(50),
+        color = c.secondarySoft,
+        border = BorderStroke(1.5.dp, c.secondary),
+    ) {
+        Row(
+            modifier = Modifier.padding(start = 6.dp, end = 10.dp, top = 3.dp, bottom = 3.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            GameIconView(GameIcon.Book, size = 16.dp)
+            Spacer(Modifier.width(4.dp))
+            Text(label, style = MaterialTheme.typography.labelSmall, color = c.secondaryText)
         }
     }
 }

@@ -1,5 +1,6 @@
 package br.com.trilhati.data.content
 
+import br.com.trilhati.domain.model.Curriculum
 import br.com.trilhati.domain.model.QuestionType
 
 /**
@@ -21,6 +22,21 @@ object ContentValidator {
         return errors
     }
 
+    /** Pacote de provas anteriores: além das regras de cada questão, exige origem `prova_real` e uma lição que exista. */
+    fun validate(pack: ExamPackDto): List<String> {
+        val errors = mutableListOf<String>()
+        if (pack.schema != 1) errors += "schema ${pack.schema} não suportado (esperado 1)"
+        if (pack.questions.isEmpty()) errors += "pacote sem questões"
+        val lessons = Curriculum.lessonIds
+        val seen = mutableSetOf<String>()
+        pack.questions.forEach { q ->
+            validateQuestion(q, seen, errors)
+            if (q.source != "prova_real") errors += "${q.id}: questão de prova precisa de source prova_real"
+            if (q.lesson !in lessons) errors += "${q.id}: lição inexistente (${q.lesson})"
+        }
+        return errors
+    }
+
     private fun validateQuestion(q: QuestionDto, seen: MutableSet<String>, errors: MutableList<String>) {
         val at = q.id
         if (!seen.add(q.id)) errors += "$at: id duplicado"
@@ -29,6 +45,15 @@ object ContentValidator {
         if (parseStyle(q.style) == null) errors += "$at: style inválido (${q.style})"
         if (parseSource(q.source) == null) errors += "$at: source inválido (${q.source})"
         if (q.source == "ia" && q.reviewed) errors += "$at: questão de IA não pode vir revisada"
+        val ref = q.ref
+        if (q.source == "prova_real") {
+            if (ref == null) errors += "$at: questão de prova sem ref (banca, órgão, ano e número)"
+            else if (ref.banca.isBlank() || ref.orgao.isBlank() || ref.ano < 1990 || ref.numero < 1 || parseAnswerKey(ref.gabarito) == null) {
+                errors += "$at: ref incompleta ou com gabarito inválido"
+            }
+        } else if (ref != null) {
+            errors += "$at: só questão de prova (prova_real) leva ref"
+        }
         if (q.stem.isBlank()) errors += "$at: enunciado vazio"
         if (q.explanation.isBlank()) errors += "$at: explicação vazia"
         when (type) {
