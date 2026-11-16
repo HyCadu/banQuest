@@ -19,6 +19,31 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.selected
+import br.com.trilhati.domain.model.Track
+import br.com.trilhati.ui.theme.LocalReducedMotion
+import br.com.trilhati.ui.theme.LocalTrilhaColors
+import br.com.trilhati.ui.theme.forGeneralTrack
+import br.com.trilhati.ui.theme.lerp
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -92,6 +117,18 @@ fun PathContent(
     val character = MascotCharacter.entries.firstOrNull { it.name == state.snapshot.profile.character } ?: MascotCharacter.Guaiamum
     val hearts = state.hearts(nowMs)
 
+    // Trilha aberta (Específicos ou Gerais). As cores dos Gerais vêm da cor secundária do tema, e a troca anima tudo:
+    // a paleta muda aos poucos, o marcador do botão desliza e a trilha entra pelo lado.
+    val track = state.settings.trailTrack
+    val reduced = LocalReducedMotion.current || !animated
+    val mix by animateFloatAsState(
+        if (track == Track.General) 1f else 0f,
+        if (reduced) snap() else tween(500, easing = FastOutSlowInEasing),
+        label = "trackColors",
+    )
+    val baseColors = Trilha.colors
+    val generalColors = remember(baseColors) { baseColors.forGeneralTrack() }
+    CompositionLocalProvider(LocalTrilhaColors provides lerp(baseColors, generalColors, mix)) {
     Column(modifier.fillMaxSize()) {
         Column(Modifier.padding(horizontal = Spacing.screen).padding(top = Spacing.sm), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             TopStatusBar(
@@ -112,25 +149,43 @@ fun PathContent(
             }
             if (pairsAtRisk.isNotEmpty() && !state.studiedToday) PairRiskBanner(pairsAtRisk, actions.openRanking)
             if (showReminderPrompt) ReminderPrompt(state, character, actions, animated)
+            TrackSwitch(track, actions.setTrack, animated = !reduced)
         }
-        LazyColumn(
+        AnimatedContent(
+            targetState = track,
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = Spacing.screen, vertical = Spacing.sm),
-            verticalArrangement = Arrangement.spacedBy(0.dp),
-        ) {
-            state.course.forEach { unit ->
-                unitItems(unit, state, character, actions, animated, onOpenGuide = { dialog = PathDialog.UnitGuide(unit.id) })
-            }
-            item(key = "end") {
-                Text(
-                    "Mais unidades chegam conforme o conteúdo for liberado.",
-                    modifier = Modifier.fillMaxWidth().padding(vertical = Spacing.lg),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = Trilha.colors.inkSoft,
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                )
+            transitionSpec = {
+                if (reduced) {
+                    EnterTransition.None togetherWith ExitTransition.None
+                } else {
+                    // Gerais entram pela direita; voltar aos Específicos entra pela esquerda.
+                    val dir = if (targetState == Track.General) 1 else -1
+                    (slideInHorizontally(tween(420, easing = FastOutSlowInEasing)) { w -> dir * w / 3 } + fadeIn(tween(300, delayMillis = 80))) togetherWith
+                        (slideOutHorizontally(tween(420, easing = FastOutSlowInEasing)) { w -> -dir * w / 3 } + fadeOut(tween(200)))
+                }
+            },
+            label = "track",
+        ) { shown ->
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(horizontal = Spacing.screen, vertical = Spacing.sm),
+                verticalArrangement = Arrangement.spacedBy(0.dp),
+            ) {
+                state.course.filter { it.track == shown }.forEach { unit ->
+                    unitItems(unit, state, character, actions, animated, onOpenGuide = { dialog = PathDialog.UnitGuide(unit.id) })
+                }
+                item(key = "end") {
+                    Text(
+                        "Mais unidades chegam conforme o conteúdo for liberado.",
+                        modifier = Modifier.fillMaxWidth().padding(vertical = Spacing.lg),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Trilha.colors.inkSoft,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                    )
+                }
             }
         }
+    }
     }
 
     when (val d = dialog) {
@@ -173,7 +228,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.unitItems(
     stickyHeader(key = "banner_${unit.id}") {
         // Cabeçalho fixo da unidade (PLAN.md §7): fica no topo enquanto os nós rolam por baixo.
         Box(Modifier.fillMaxWidth().background(Trilha.colors.background).padding(top = Spacing.sm, bottom = Spacing.sm)) {
-            UnitBanner(unit.order, unit.title, subtitle, locked = locked, onClick = onOpenGuide)
+            UnitBanner(unit.code, unit.title, subtitle, locked = locked, onClick = onOpenGuide)
         }
     }
     itemsIndexed(unit.lessons, key = { _, l -> l.id }) { index, lesson ->
@@ -416,4 +471,45 @@ private fun UnitGuideDialog(unit: CourseUnit, state: AppState, onDismiss: () -> 
         },
         actions = { ChunkyButton("Fechar", onDismiss, Modifier.fillMaxWidth()) },
     )
+}
+
+/**
+ * Botão que troca a trilha: "Específicos | Gerais", com um marcador que desliza de um lado para o outro. As cores do
+ * marcador acompanham a trilha (vêm do [LocalTrilhaColors] animado).
+ */
+@Composable
+private fun TrackSwitch(selected: Track, onSelect: (Track) -> Unit, animated: Boolean) {
+    val c = Trilha.colors
+    val shape = androidx.compose.foundation.shape.RoundedCornerShape(50)
+    androidx.compose.foundation.layout.BoxWithConstraints(
+        Modifier.fillMaxWidth().height(46.dp).background(c.surfaceAlt, shape)
+            .border(2.dp, c.outline, shape).padding(4.dp),
+    ) {
+        val half = maxWidth / 2
+        val offset by animateDpAsState(
+            if (selected == Track.General) half else 0.dp,
+            if (animated) spring(dampingRatio = 0.72f, stiffness = 420f) else snap(),
+            label = "trackThumb",
+        )
+        // Botão "em relevo" (borda e base na cor de borda): destaca o selecionado mesmo quando a cor da trilha é clara
+        // e parecida com o fundo do seletor (ex.: limão nos Gerais do tema Elétrico).
+        Box(
+            Modifier.offset { androidx.compose.ui.unit.IntOffset(offset.roundToPx(), 0) }.width(half).fillMaxHeight().background(c.primaryEdge, shape)
+                .padding(start = 2.dp, top = 2.dp, end = 2.dp, bottom = 4.dp).background(c.primary, shape),
+        )
+        Row(Modifier.fillMaxSize()) {
+            Track.entries.forEach { t ->
+                val isSelected = t == selected
+                val label = if (t == Track.Specific) "Específicos" else "Gerais"
+                Box(
+                    Modifier.weight(1f).fillMaxHeight().clip(shape)
+                        .semantics { role = Role.Tab; this.selected = isSelected; contentDescription = "Trilha $label" }
+                        .clickable { if (!isSelected) onSelect(t) },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(label, style = MaterialTheme.typography.labelLarge, color = if (isSelected) c.onPrimary else c.inkSoft)
+                }
+            }
+        }
+    }
 }

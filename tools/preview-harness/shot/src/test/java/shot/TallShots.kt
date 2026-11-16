@@ -47,4 +47,12 @@ class TallShots {
             SettingsCallbacks(),
         )
     }
+
+    /** Configurações no tema Chiclete: a seção Tema mostra os quatro temas em duas colunas. */
+    @Test fun settingsChiclete() = rule.shot("th_settings_chiclete.png", palette = br.com.trilhati.ui.theme.ThemePalette.Chiclete) {
+        SettingsContent(
+            SettingsUi(Settings(palette = br.com.trilhati.ui.theme.ThemePalette.Chiclete), 50, 50, false, emptyList(), "0.8.0", fakeSocial()),
+            SettingsCallbacks(),
+        )
+    }
 }

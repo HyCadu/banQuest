@@ -3725,6 +3725,2466 @@
     "numero": 83,
     "gabarito": "definitivo"
    }
+  },
+  {
+   "id": "fgv-banestes-2018-q1",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "finalidade do texto",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: Em artigo publicado no jornal carioca O Globo, 19/3/2018, com o nome Erros do passado, o articulista Paulo Guedes escreve o seguinte: “Os regimes trabalhista e previdenciário brasileiros são politicamente anacrônicos, economicamente desastrosos e socialmente perversos. Arquitetados de início em sistemas políticos fechados (na Alemanha imperial de Bismarck e na Itália fascista de Mussolini), e desde então cultivados por obsoletos programas socialdemocratas, são hoje armas de destruição em massa de empregos locais em meio à competição global. Reduzem a competitividade das empresas, fabricam desigualdades sociais, dissipam em consumo corrente a poupança compulsória dos encargos recolhidos, derrubam o crescimento da economia e solapam o valor futuro das aposentadorias”. (adaptado)\n\nA finalidade principal desse primeiro parágrafo do texto 1 é:",
+   "options": [
+    "condenar os regimes trabalhista e previdenciário brasileiros",
+    "propor mudanças nos regimes trabalhista e previdenciário brasileiros",
+    "indicar as razões pelas quais os regimes trabalhista e previdenciário brasileiros devem ser extintos",
+    "demonstrar a obsolescência de nossos regimes trabalhista e previdenciário brasileiros, devido a fortes interesses políticos envolvidos",
+    "mostrar o despreparo de nossas instituições políticas e econômicas diante da competição global."
+   ],
+   "answer": 0,
+   "explanation": "O articulista qualifica os regimes como anacrônicos, desastrosos, perversos e “armas de destruição em massa de empregos”: a finalidade é condenar. Ele não propõe mudanças nem pede a extinção, e não fala do despreparo das instituições.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 1,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q10",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "pergunta que condiciona a resposta",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Numa das entrevistas da revista Veja (7/3/2018), o ex-ministro Milton Seligman teve que responder a uma série de perguntas do entrevistador; a técnica de questionamento que condiciona a resposta está presente na seguinte pergunta:",
+   "options": [
+    "“A Lava-Jato revelou uma rede de lobistas que pagavam propinas a políticos para que abrissem os cofres públicos. Isso é regra ou exceção?”",
+    "“A Lava-Jato produziu algum impacto na atividade lobista no Brasil?”",
+    "“Quando o senhor estava no governo FHC, recebeu algum benefício?”",
+    "“O lobby permite que políticos recebam favores de empresas?”",
+    "“O senhor poderia citar um exemplo de atividade lobista que tenha melhorado a sociedade, como o senhor disse?”."
+   ],
+   "answer": 3,
+   "explanation": "Perguntar se “o lobby permite que políticos recebam favores de empresas?” já embute a ideia de favorecimento e empurra o entrevistado a se defender. As outras perguntas pedem informação ou exemplo sem pressupor a resposta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 10,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q11",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "ordem cronológica",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Texto 2: “A prefeitura da capital italiana anunciou que vai banir a circulação de carros a diesel no centro a partir de 2024. O objetivo é reduzir a poluição, que contribui para a erosão dos monumentos”. (Veja, 7/3/2018)\n\nA ordem cronológica dos fatos citados no texto 2 é:",
+   "options": [
+    "redução da poluição / banimento da circulação de carros / erosão dos monumentos",
+    "banimento da circulação de carros / erosão dos monumentos / redução da poluição",
+    "erosão dos monumentos / redução da poluição / banimento da circulação de carros",
+    "redução da poluição / erosão dos monumentos / banimento da circulação de carros",
+    "erosão dos monumentos / banimento da circulação de carros / redução da poluição."
+   ],
+   "answer": 4,
+   "explanation": "Primeiro existe a erosão dos monumentos (causada pela poluição atual), depois vem o banimento dos carros (a partir de 2024) e só então a redução da poluição, que é o objetivo futuro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 11,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q12",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "inferência",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Texto 2: “A prefeitura da capital italiana anunciou que vai banir a circulação de carros a diesel no centro a partir de 2024. O objetivo é reduzir a poluição, que contribui para a erosão dos monumentos”. (Veja, 7/3/2018)\n\nHá uma série de inferências possíveis a partir do texto 2; a única inferência inadequada é:",
+   "options": [
+    "os monumentos antigos de Roma são de grande importância para a cidade",
+    "os carros a diesel poluem mais que os carros a gasolina",
+    "no centro da cidade circula grande quantidade de veículos",
+    "o prazo dado para o banimento permite a adaptação dos fatores envolvidos",
+    "outros fatores prejudiciais aos monumentos, além da poluição, vão ser banidos de Roma."
+   ],
+   "answer": 4,
+   "explanation": "O texto fala só do banimento dos carros a diesel. Dizer que outros fatores prejudiciais aos monumentos também serão banidos não tem apoio no texto. As demais inferências são razoáveis: importância dos monumentos, diesel poluente, trânsito no centro e prazo para adaptação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 12,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q13",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "argumento",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "“Em um ato de pressão pela manutenção do auxílio-moradia pelo STF, juízes prometem cruzar os braços em 15 de março, ainda que a Constituição proíba a greve da classe”. (Veja, 7/3/2018) O texto da revista Veja indica uma posição contrária ao movimento e o argumento básico para a crítica é:",
+   "options": [
+    "a contradição interna entre o cargo de juiz e o desrespeito à lei",
+    "a injustiça social do denominado auxílio-moradia",
+    "o apelo injustificado a um movimento grevista",
+    "a possibilidade de meios de pressão de altas autoridades",
+    "o prejuízo causado por uma paralisação na Justiça."
+   ],
+   "answer": 0,
+   "explanation": "O trecho destaca que os juízes vão parar “ainda que a Constituição proíba a greve da classe”: a crítica está na contradição entre quem deve aplicar a lei e o seu desrespeito. O texto não discute a justiça do auxílio nem o prejuízo da paralisação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 13,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q16",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "charge",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Observe a charge abaixo, publicada no momento da intervenção nas atividades de segurança do Rio de Janeiro, em março de 2018.\n[Charge, descrita em texto: um homem fala ao telefone num orelhão, diante de um morro; ao lado passam tanques de guerra. No balão: “Tá tranquilo, dr. Até agora ninguém perguntou como é que as armas e as drogas chegam no morro, não.”]\nHá uma série de informações implícitas na charge; NÃO pode, no entanto, ser inferida da imagem e das frases a seguinte informação:",
+   "options": [
+    "a classe social mais alta está envolvida nos crimes cometidos no Rio",
+    "a tarefa da investigação criminal não está sendo bem-feita",
+    "a linguagem do personagem mostra intimidade com o interlocutor",
+    "a presença do orelhão indica o atraso do local da charge",
+    "as imagens dos tanques de guerra denunciam a presença do Exército."
+   ],
+   "answer": 3,
+   "explanation": "A charge sugere que quem traz armas e drogas não está no morro (classe alta envolvida), que ninguém investiga isso, que o personagem fala com intimidade (“Tá tranquilo, dr.”) e que o Exército está presente (tanques). O orelhão é só o meio de ligação; não indica atraso do lugar.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q18",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "intertextualidade",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "O texto abaixo que NÃO apresenta traços de intertextualidade é:",
+   "options": [
+    "Ficou moderno o Brasil / Ficou moderno o milagre / A água já não vira vinho / Vira direto vinagre (Cacaso)",
+    "É bom não esquecer que a ordem de “Crescei e multiplicai-vos” foi dada quando a população do mundo consistia de duas pessoas (W. Ralph Inge)",
+    "A geladeira aqui em casa é Brastemp, mas manda a honestidade reconhecer que também não é nenhuma Brastemp (João Ubaldo Ribeiro)",
+    "Tempo, no Brasil, não é dinheiro. É deságio (L. F. Veríssimo)",
+    "É tão vulgar trabalhar pelo dinheiro quanto trabalhar de olho na posteridade (Orson Welles)."
+   ],
+   "answer": 4,
+   "explanation": "A, B, C e D dialogam com outros textos: o milagre da água em vinho, o “Crescei e multiplicai-vos” bíblico, o slogan “não é nenhuma Brastemp” e o ditado “tempo é dinheiro”. A frase de Orson Welles não retoma outro texto.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 18,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q2",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "título",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: Em artigo publicado no jornal carioca O Globo, 19/3/2018, com o nome Erros do passado, o articulista Paulo Guedes escreve o seguinte: “Os regimes trabalhista e previdenciário brasileiros são politicamente anacrônicos, economicamente desastrosos e socialmente perversos. Arquitetados de início em sistemas políticos fechados (na Alemanha imperial de Bismarck e na Itália fascista de Mussolini), e desde então cultivados por obsoletos programas socialdemocratas, são hoje armas de destruição em massa de empregos locais em meio à competição global. Reduzem a competitividade das empresas, fabricam desigualdades sociais, dissipam em consumo corrente a poupança compulsória dos encargos recolhidos, derrubam o crescimento da economia e solapam o valor futuro das aposentadorias”. (adaptado)\n\nO texto 1 recebe o nome de Erros do passado; esse título se refere exclusivamente a:",
+   "options": [
+    "obsoletos programas socialdemocratas",
+    "experiências de sistemas políticos fechados",
+    "condições econômico-sociais deficientes",
+    "destruições em massa de empregos locais",
+    "sistemas e programas políticos ultrapassados."
+   ],
+   "answer": 4,
+   "explanation": "Os “erros do passado” são os regimes trabalhista e previdenciário, nascidos em sistemas políticos fechados e mantidos por programas socialdemocratas obsoletos: sistemas e programas políticos ultrapassados. As outras opções pegam só uma parte disso ou falam de consequências.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 2,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q20",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "figuras de linguagem",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Todas as frases abaixo mostram uma comparação metafórica; a frase em que essa metáfora tem explicação é:",
+   "options": [
+    "O falso amigo é como a sombra que nos segue enquanto dura o sol",
+    "O amor é um grande mestre",
+    "O amor é como o sarampo: quanto mais tarde chega na vida, mais perigoso é",
+    "Os amantes, como as abelhas, vivem no mel",
+    "O ódio sem desejo de vingança é um grão caído sobre o granito."
+   ],
+   "answer": 2,
+   "explanation": "Só em C a comparação vem explicada: depois dos dois-pontos se diz em que o amor se parece com o sarampo (quanto mais tarde, mais perigoso). Nas outras frases a metáfora fica sem explicação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 20,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q3",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "valor dos parênteses",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: Em artigo publicado no jornal carioca O Globo, 19/3/2018, com o nome Erros do passado, o articulista Paulo Guedes escreve o seguinte: “Os regimes trabalhista e previdenciário brasileiros são politicamente anacrônicos, economicamente desastrosos e socialmente perversos. Arquitetados de início em sistemas políticos fechados (na Alemanha imperial de Bismarck e na Itália fascista de Mussolini), e desde então cultivados por obsoletos programas socialdemocratas, são hoje armas de destruição em massa de empregos locais em meio à competição global. Reduzem a competitividade das empresas, fabricam desigualdades sociais, dissipam em consumo corrente a poupança compulsória dos encargos recolhidos, derrubam o crescimento da economia e solapam o valor futuro das aposentadorias”. (adaptado)\n\nNo texto 1, os termos inseridos nos parênteses – na Alemanha imperial de Bismarck e na Itália fascista de Mussolini – têm a finalidade textual de:",
+   "options": [
+    "enumerar os sistemas políticos fechados do passado",
+    "destacar os sistemas onde se originaram os regimes trabalhista e previdenciário",
+    "criticar o atraso político de alguns sistemas da História",
+    "condenar nossos regimes trabalhista e previdenciário por serem muito antigos",
+    "exemplificar alguns dos nossos erros do passado."
+   ],
+   "answer": 1,
+   "explanation": "Os parênteses dizem onde os regimes foram “arquitetados de início”: na Alemanha de Bismarck e na Itália de Mussolini. A função é destacar os sistemas onde eles se originaram, e não enumerar todos os sistemas fechados nem criticar a História.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 3,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q7",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "coerência",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Muitas frases são construídas propositadamente sem coerência aparente. A frase em que há perfeita coerência na mensagem é:",
+   "options": [
+    "“Um homem só está sempre em má companhia”",
+    "“A maioria dos homens vive uma existência de tranquilo desespero”",
+    "“A história universal é a de um só homem”",
+    "“O tempo tudo tira e tudo dá; tudo se transforma, nada se destrói”",
+    "“O oposto da mentira não é a verdade”."
+   ],
+   "answer": 3,
+   "explanation": "As outras frases criam paradoxos de propósito (homem só em má companhia, tranquilo desespero, história de um só homem, oposto da mentira que não é a verdade). “O tempo tudo tira e tudo dá; tudo se transforma, nada se destrói” é coerente: as partes se explicam.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 7,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q9",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "argumentação",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Numa entrevista, (Veja, 7/3/2018), o ex-ministro da Justiça no governo FHC, Milton Seligman, respondeu à seguinte pergunta: - Por que o termo “lobby” é associado a uma imagem negativa, uma atividade nebulosa? - Ninguém gosta do termo “lobby”, sobretudo quem atua na área. Nos Estados Unidos, por exemplo, havia uma poderosa organização chamada “Associação dos lobistas americanos”, que trocou de nome para “Associação americana de relações governamentais”. O aspecto ausente desse pequeno texto é:",
+   "options": [
+    "a oposição entre o uso de estrangeirismos e o de palavras portuguesas",
+    "a atribuição pela sociedade de diversos aspectos semânticos aos vocábulos",
+    "a estratégia de convencimento apelando para uma exemplificação",
+    "a técnica de questionamento que condiciona a resposta",
+    "o emprego de generalizações como estratégia argumentativa."
+   ],
+   "answer": 0,
+   "explanation": "O texto mostra o peso negativo atribuído à palavra (B), usa o exemplo americano para convencer (C), traz uma pergunta que já supõe a resposta (D) e generaliza (“ninguém gosta”, E). Não há oposição entre estrangeirismo e palavra portuguesa: os nomes citados estão todos traduzidos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q1",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "ambiguidade",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Um técnico de futebol, após um primeiro tempo difícil, declarou que seu time “ia continuar marcando sob pressão”. Nesse caso, pode-se entender que o time está marcando com pressão sobre si mesmo, em lugar de pressionando o adversário. A frase abaixo, também ligada ao mundo do futebol, que está perfeitamente lógica e coerente é:",
+   "options": [
+    "O beque só jogou porque foi regularizado na Federação",
+    "A equipe voltou, após o intervalo, com nova disposição",
+    "O atacante perdeu o mesmo gol da última partida",
+    "O técnico falou com o jogador sobre sua tática",
+    "Os jogadores receberão os atrasados numa única parcela."
+   ],
+   "answer": 1,
+   "explanation": "As outras frases têm duplo sentido: “só jogou” (só ele ou só por isso?), “o mesmo gol” (impossível repetir o lance), “sua tática” (do técnico ou do jogador?) e “os atrasados” (salários ou jogadores?). “A equipe voltou, após o intervalo, com nova disposição” é clara.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 1,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q12",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "campo lexical",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Todas as frases abaixo têm por tema a economia; a frase que mostra simultaneamente uma visão negativa da economia e a utilização de vocábulos do campo lexical da economia é:",
+   "options": [
+    "Em economia, é fácil explicar o passado. Mais fácil ainda é predizer o futuro. Difícil é entender o presente",
+    "Nesse mundo nada é inevitável, exceto a morte e os impostos",
+    "Só um economista imagina que um problema de economia é estritamente econômico",
+    "O comércio do mundo é conduzido pelos fortes e usualmente opera contra os fracos",
+    "Economia é muito útil como uma forma de dar emprego aos economistas."
+   ],
+   "answer": 3,
+   "explanation": "“O comércio do mundo é conduzido pelos fortes e usualmente opera contra os fracos” é negativa e usa vocabulário econômico (comércio, opera). As outras ou não são negativas sobre a economia, ou não usam esse campo lexical.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 12,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q13",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "elementos da comunicação",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Quando um ato comunicativo não se realiza de forma adequada, isso pode ser explicado por problemas de um dos fatores presentes nesse ato. Observe o caso a seguir. Roberto chegou atrasado ao cinema e não pôde compreender por que a heroína do filme recusou a casar-se com o campeão mundial de skate. Aponte a razão da falha na comunicação:",
+   "options": [
+    "o código empregado é diferente para o emissor e o receptor",
+    "a presença de ambiguidade na comunicação",
+    "os conhecimentos do receptor são insuficientes",
+    "a mensagem é bastante densa e difícil",
+    "a pouca colaboração do receptor na compreensão da mensagem."
+   ],
+   "answer": 2,
+   "explanation": "Roberto chegou atrasado e perdeu o começo do filme: faltou a ele conhecimento do contexto para entender a cena. O problema está no repertório do receptor, não no código nem na mensagem.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 13,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q14",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "exemplificação",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "“Certos gêneros de filmes (os filmes de terror ou de ficção científica, por exemplo) criam um grande estresse no espectador.” Na frase acima, a preocupação com a objetividade e a clareza da mensagem faz com que o enunciador apele para a seguinte estratégia:",
+   "options": [
+    "enumerar diversos aspectos ou componentes da realidade",
+    "utilizar quantificações precisas",
+    "empregar vocábulos adequados",
+    "exemplificar para ilustrar ou esclarecer uma noção",
+    "explicar um conceito essencial para a frase."
+   ],
+   "answer": 3,
+   "explanation": "O trecho entre parênteses (filmes de terror ou de ficção científica) exemplifica “certos gêneros de filmes”, deixando a noção mais clara.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 14,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q15",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "informatividade",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "A frase abaixo que mostra conteúdo informativo mais completo e claro é:",
+   "options": [
+    "O deputado apresentou novo projeto de lei",
+    "O encontro será realizado nos dias 26 e 27 de maio",
+    "A lagoa Rodrigo de Freitas está situada no Rio de Janeiro",
+    "O pianista vai interpretar uma sonata e certamente, por sua competência, agradará ao público",
+    "Por causa das chuvas, o rio Gavião (RS) transbordou na tarde de ontem (28)."
+   ],
+   "answer": 4,
+   "explanation": "A opção E diz o que aconteceu, onde (rio Gavião, RS), quando (tarde de ontem, dia 28) e por quê (chuvas). As outras deixam de fora informações essenciais, como quem, qual projeto ou onde.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 15,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q2",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "descrição",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Observe a seguinte descrição de um museu: “Do lado de fora e diante da porta central, pude observar a enorme porta, de estilo antigo, de madeira sólida, cercada de um pequeno friso de pedra, talvez por exigência do estilo da época; ao lado, uma série de janelas do mesmo material, que, em função do horário, ainda estavam fechadas.” Nessa descrição, nem todos os elementos do museu estão presentes; isso ocorre em muitas descrições por diferentes limitações de quem descreve. No caso desse segmento, a limitação descritiva provém:",
+   "options": [
+    "de problemas psicológicos de quem observa",
+    "de falta de conhecimento mais profundo sobre o tema",
+    "do posicionamento físico do observador",
+    "do pouco tempo disponível para uma ampla descrição",
+    "do desinteresse em mostrar outros aspectos do museu."
+   ],
+   "answer": 2,
+   "explanation": "O observador está “do lado de fora e diante da porta central”: ele só descreve o que vê de onde está. A limitação vem do posicionamento físico.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 2,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q3",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "argumentação",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Um teólogo francês afirmou: “Vivemos em uma época perigosa. O homem domina a natureza, antes que tenha aprendido a dominar a si mesmo.” Sobre esse texto, é correto afirmar que:",
+   "options": [
+    "apresenta uma tese, apoiada em argumentos fundamentados em testemunhos de autoridade",
+    "mostra elementos de caráter científico, selecionados segundo uma opinião pessoal",
+    "alerta para o perigo da extinção da raça humana, causada pela irresponsabilidade de muitos",
+    "se apoia numa estratégia de intimidação pelo medo",
+    "se estrutura a partir de uma afirmação, seguida de uma oposição."
+   ],
+   "answer": 3,
+   "explanation": "O texto começa com um alerta (“Vivemos em uma época perigosa”) e justifica o perigo pelo descontrole humano: é uma estratégia de convencer pelo medo. Não há testemunho de autoridade como argumento, nem dados científicos ou previsão de extinção.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 3,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q4",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "inferência",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Observe a frase de um grande romancista inglês, Chesterton: “Não foi o mundo que piorou. As coberturas jornalísticas é que melhoraram muito.” Dessa frase, deduz-se que, segundo o pensamento do autor:",
+   "options": [
+    "as coberturas jornalísticas passaram a explorar temas escabrosos",
+    "o número de ocorrências criminosas aumentou consideravelmente nos últimos tempos",
+    "o mundo piorou menos do que se propaga",
+    "os atos criminosos tornaram-se temas da grande imprensa",
+    "os jornais atuais fazem, com mais amplitude, reportagens mais objetivas e precisas."
+   ],
+   "answer": 4,
+   "explanation": "Para Chesterton, a impressão de piora vem de a imprensa cobrir melhor os fatos: os jornais fazem reportagens mais amplas e precisas. Ele não afirma que o crime aumentou nem que os jornais exploram temas escabrosos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 4,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q5",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "visão positiva",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Todas as frases abaixo são pensamentos sobre a modernidade; o pensamento que revela uma visão positiva sobre esse tema é:",
+   "options": [
+    "“Nós vivemos em um arco-íris de caos” (Cézanne)",
+    "“Eu vejo um museu de grandes novidades” (Cazuza)",
+    "“Meios poderosos, mas objetivos confusos: essa é a nossa época” (Einstein)",
+    "“O mundo está se tornando um asilo de lunáticos” (David Lloyd)",
+    "“Hoje em dia, se alguém não está confuso, é porque não pensa com clareza” (Irene Peter)."
+   ],
+   "answer": 1,
+   "explanation": "As outras frases veem a modernidade como caos, confusão ou loucura. “Eu vejo um museu de grandes novidades” é a única que fala de novidades com tom de valor. É a opção do gabarito oficial.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 5,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q6",
+   "lesson": "u11l2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "inferência",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "De cada uma das manchetes abaixo, sugerimos uma inferência. A inferência é adequada em:",
+   "options": [
+    "O governo pretende arrecadar mais em impostos / o governo pretende combater a sonegação",
+    "As chuvas deste verão serão intensas / os turistas vão aumentar a procura pelo inverno europeu",
+    "Houve mais um assalto a banco em São Paulo / os bancos vão abrir mais agências no interior do estado",
+    "Os viadutos da cidade estão sofrendo corrosão / é urgente a construção de novos viadutos",
+    "As aulas vão chegar ao fim em dezembro / a educação no país vai de ruim a péssima."
+   ],
+   "answer": 0,
+   "explanation": "Arrecadar mais em impostos pode passar por combater a sonegação: a inferência é plausível. As outras não decorrem da manchete (chuvas no verão e inverno europeu, assalto e agências no interior, corrosão e viadutos novos, fim das aulas e piora da educação).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q15",
+   "lesson": "u11l3",
+   "type": "mcq5",
+   "topic": "Semântica",
+   "subtopic": "sinonímia",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nA frase abaixo em que os dois termos unidos pela conjunção E são equivalentes, fazendo com que o segundo termo possa ser retirado da frase é:",
+   "options": [
+    "“As novas opiniões [são sempre suspeitas E geralmente opostas], pelo fato de não serem comuns”",
+    "“O verdadeiro amor é uma expressão da produtividade interna e compreende solicitude, respeito, [responsabilidade E conhecimento]",
+    "“Qualquer pessoa é capaz de ficar [alegre E de bom humor] quando está bem-vestida”",
+    "“[O amor E a amizade] são como o eco: dão tanto quanto recebem”",
+    "“[O amor não mata a morte E a morte não mata o amor], pois, no fundo, entendem-se muito bem”."
+   ],
+   "answer": 2,
+   "explanation": "“Alegre” e “de bom humor” dizem praticamente o mesmo, então o segundo termo pode sair sem perda. Nas outras frases os termos ligados por E somam ideias diferentes (suspeitas/opostas, responsabilidade/conhecimento, amor/amizade, as duas orações recíprocas).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 15,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q17",
+   "lesson": "u11l3",
+   "type": "mcq5",
+   "topic": "Morfologia",
+   "subtopic": "locução adjetiva",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nNa escrita, pode-se optar frequentemente entre uma construção de substantivo + locução adjetiva ou substantivo + adjetivo (esportes da água = esportes aquáticos). O termo abaixo sublinhado que NÃO pode ser substituído por um adjetivo é:",
+   "options": [
+    "A indústria causou a poluição [do rio]",
+    "As águas [do rio] ficaram poluídas",
+    "As margens [do rio] estão cheias de lama",
+    "Os turistas se encantam com a imagem [do rio]",
+    "Os peixes [do rio] são bem saborosos."
+   ],
+   "answer": 0,
+   "explanation": "Em B a E, “do rio” qualifica (águas fluviais, margens fluviais, imagem fluvial, peixes fluviais). Em “a poluição do rio”, o rio é quem sofre a poluição (complemento nominal, valor de paciente): “poluição fluvial” muda o sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 17,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q19",
+   "lesson": "u11l3",
+   "type": "mcq5",
+   "topic": "Morfologia",
+   "subtopic": "artigo",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "A frase abaixo em que o emprego do artigo mostra inadequação é:",
+   "options": [
+    "Todas as coisas que hoje se creem antiquíssimas já foram novas",
+    "Cuidado com todas as coisas que requeiram roupas novas",
+    "Todos os bons pensamentos estão presentes no mundo, só falta aplicá-los",
+    "Em toda a separação existe uma imagem da morte",
+    "Alegria de amor dura apenas um instante, mas sofrimento de amor dura toda a vida."
+   ],
+   "answer": 3,
+   "explanation": "“Toda separação” (sem artigo) significa qualquer separação, que é o sentido pretendido. “Toda a separação” significa a separação inteira, o que não combina com a frase. Nas outras, o artigo está bem empregado (“todas as coisas”, “toda a vida” = a vida inteira).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 19,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q9",
+   "lesson": "u11l3",
+   "type": "mcq5",
+   "topic": "Semântica",
+   "subtopic": "estrangeirismos",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Em todos os textos abaixo aparecem estrangeirismos, com sua tradução indispensável entre parênteses; aquela frase cuja tradução está correta é:",
+   "options": [
+    "O airbag do automóvel funcionou a contento (freios manuais)",
+    "O backup foi muito bem-feito (cópia de arquivo)",
+    "O cartoon exibido agradou aos espectadores (cartaz publicitário)",
+    "Os dois amigos estavam on-line (correspondendo-se por mensagens secretas)",
+    "O playback do restaurante não era adequado (a decoração das paredes)."
+   ],
+   "answer": 1,
+   "explanation": "Backup é cópia de segurança de arquivos. Airbag é bolsa inflável (não freio), cartoon é desenho humorístico (não cartaz), on-line é conectado à rede e playback é reprodução de som gravado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q4",
+   "lesson": "u11l4",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "paralelismo",
+   "difficulty": 3,
+   "style": "excecao",
+   "stem": "Texto 1: Em artigo publicado no jornal carioca O Globo, 19/3/2018, com o nome Erros do passado, o articulista Paulo Guedes escreve o seguinte: “Os regimes trabalhista e previdenciário brasileiros são politicamente anacrônicos, economicamente desastrosos e socialmente perversos. Arquitetados de início em sistemas políticos fechados (na Alemanha imperial de Bismarck e na Itália fascista de Mussolini), e desde então cultivados por obsoletos programas socialdemocratas, são hoje armas de destruição em massa de empregos locais em meio à competição global. Reduzem a competitividade das empresas, fabricam desigualdades sociais, dissipam em consumo corrente a poupança compulsória dos encargos recolhidos, derrubam o crescimento da economia e solapam o valor futuro das aposentadorias”. (adaptado)\n\nUma das características de um bom texto é o respeito pelo paralelismo sintático dos seus componentes; no texto 1, o segmento abaixo que destoa dos demais em função do paralelismo sintático é:",
+   "options": [
+    "reduzem a competitividade das empresas",
+    "fabricam desigualdades sociais",
+    "dissipam em consumo corrente a poupança compulsória",
+    "derrubam o crescimento da economia",
+    "solapam o valor futuro das aposentadorias."
+   ],
+   "answer": 2,
+   "explanation": "Os segmentos são verbo + objeto direto (reduzem a competitividade, fabricam desigualdades, derrubam o crescimento, solapam o valor). Só em “dissipam em consumo corrente a poupança” um adjunto se intercala antes do objeto, quebrando o paralelismo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 4,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q5",
+   "lesson": "u11l4",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "pronomes e referência",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nObserve a frase abaixo, do escritor alemão Goethe: “A liberdade, como a vida, só [a] merece quem deve conquistá-[la] a cada dia”. A observação correta sobre os componentes dessa frase é:",
+   "options": [
+    "o período é composto de três orações, sendo a última reduzida",
+    "o termo “a” em “só a merece” exemplifica uma redundância desnecessária",
+    "os pronomes pessoais sublinhados possuem o mesmo referente",
+    "os termos “a liberdade” e “a vida” poderiam trocar de posição sem alteração de sentido",
+    "o termo “só” equivale ao adjetivo “sozinho”."
+   ],
+   "answer": 2,
+   "explanation": "Os pronomes “a” (só a merece) e “-la” (conquistá-la) retomam “a liberdade”: mesmo referente. O “a” não é redundante, é o objeto deslocado; trocar “liberdade” e “vida” muda o sentido; e “só” é advérbio (somente).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 5,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q8",
+   "lesson": "u11l4",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "conectivos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Todos os itens abaixo são períodos compostos por duas orações, separadas por um sinal de pontuação; o item em que a inclusão de um conectivo entre essas duas orações foi feita de forma adequada ao sentido original é:",
+   "options": [
+    "Todos julgam segundo a aparência, ninguém julga segundo a essência / Todos julgam segundo a aparência, embora ninguém julgue segundo a essência",
+    "O amor vence tudo, cedamos nós também ao amor / O amor vence tudo, por isso cedamos nós também ao amor",
+    "Deus fez o amor, o homem fez o ato sexual / Deus fez o amor à medida que o homem fez o ato sexual",
+    "O amor é um grande mestre, ensina de uma só vez / O amor é um grande mestre, logo ensina de uma só vez",
+    "O talento sem genialidade é pouca coisa. A genialidade sem talento é nada / O talento sem genialidade é pouca coisa, mesmo que a genialidade sem talento seja nada."
+   ],
+   "answer": 1,
+   "explanation": "Em B, a segunda oração é conclusão da primeira (o amor vence tudo, então cedamos a ele), e “por isso” mantém o sentido. “Embora” cria concessão inexistente, “à medida que” cria proporção, “logo” inverte a relação em D, e “mesmo que” deturpa E.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q11",
+   "lesson": "u11l4",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "conjunções",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Todas as frases abaixo mostram a presença da conjunção OU; aquela frase em que ela tem valor de adição é:",
+   "options": [
+    "Aquele senhor falava inglês ou francês com facilidade",
+    "Comprarei um carro novo: um Fusca ou um BMW",
+    "Ou você se conserta ou desaparece daqui!",
+    "Rui Barbosa, ou a Águia de Haia, foi famoso jurista",
+    "Vamos estudar ou seremos reprovados."
+   ],
+   "answer": 0,
+   "explanation": "Quem fala inglês ou francês com facilidade fala as duas línguas: o “ou” soma. Nas outras frases ele indica alternância ou exclusão (B, C, E) ou equivalência (D, “ou a Águia de Haia”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 11,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q7",
+   "lesson": "u11l4",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "valor dos conectivos",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nEm todas as frases abaixo há um conector sublinhado; aquele que apresenta o seu valor semântico perfeitamente indicado é:",
+   "options": [
+    "[Se] Leonardo da Vinci terminou a sua carreira como músico, não vejo problemas em acabar a minha como pintor / causa",
+    "Arte é trabalho livre. [Se] fossem livres, todos os outros trabalhos poderiam se abrir para a arte /explicação",
+    "Estou louca [para] ir para Nova York. Eu sempre quis conhecer a América / finalidade",
+    "Há dois lugares para ouvir um disco e saber [se] ele soa bem: no carro e no banheiro / condição",
+    "Nosso povo é vira-lata [com] muito orgulho / companhia."
+   ],
+   "answer": 0,
+   "explanation": "Em A, “Se” equivale a “já que”: Leonardo de fato terminou como músico, por isso não vejo problema, valor de causa. Em B o “se” é condicional; em C “para” indica direção, não finalidade; em D “se” é integrante; em E “com” indica modo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 7,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q14",
+   "lesson": "u11l5",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "concisão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O livro “Como escrever bem”, de William Zinsser, aponta como problemas de escritura: “Toda palavra que não tenha uma função, toda palavra longa que poderia ser substituída por uma palavra curta, todo advérbio que contenha o mesmo significado que já está contido no verbo, toda construção em voz passiva que deixe o leitor inseguro a respeito de quem está fazendo o quê...”. (p. 19) No pensamento do escritor inglês Hazlitt – Aqueles para quem a roupa é a parte mais importante da pessoa acabam, geralmente, por valer tanto quanto sua roupa – ocorre uma inadequação da escritura, que é:",
+   "options": [
+    "o termo “da pessoa” é perfeitamente dispensável",
+    "o advérbio “geralmente” é uma palavra sem função",
+    "o adjetivo “importante” deveria ser substituído por “valiosa”, por ser uma palavra mais curta",
+    "a forma “valer tanto quanto sua roupa” deixa o leitor inseguro quanto ao significado",
+    "o termo “sua roupa”, por ser repetitivo, deveria ser substituído pelo pronome pessoal “ela”."
+   ],
+   "answer": 0,
+   "explanation": "Pela regra de Zinsser, toda palavra sem função é problema. “Da pessoa” é dispensável: “Aqueles para quem a roupa é a parte mais importante” já se entende. “Geralmente” tem função (relativiza), e as outras trocas não melhoram o texto.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 14,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q6",
+   "lesson": "u11l5",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "redundância",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nAs frases abaixo apresentam um problema em sua estruturação: o advérbio (ou locução) sublinhado já tem seu significado contido no verbo que o acompanha; assinale a exceção:",
+   "options": [
+    "As crianças sorriam [alegremente] das brincadeiras do palhaço",
+    "Os feridos arrastavam-se [com dificuldade] em direção ao abrigo",
+    "Os automóveis voavam [velozmente] pela nova pista",
+    "Todos decidiram, [de súbito], mudar de profissão",
+    "Todos os soldados vagavam [sem destino] após a derrota."
+   ],
+   "answer": 3,
+   "explanation": "Sorrir já é alegre, arrastar-se já é com dificuldade, voar já é veloz e vagar já é sem destino: nesses casos o advérbio repete o verbo. “Decidir” não traz a ideia de repente, então “de súbito” acrescenta informação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q10",
+   "lesson": "u11l5",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "reorganização de períodos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Observe as duas frases a seguir.\nA – Os professores decidiram entrar em greve a partir de hoje.\nB – A Prefeitura concedeu aumento aos professores anteontem.\nSe juntássemos de forma coerente as duas frases em um só período, a melhor forma seria:",
+   "options": [
+    "A Prefeitura concedeu aumento aos professores anteontem, logo os professores decidiram entrar em greve a partir de hoje",
+    "Os professores decidiram entrar em greve a partir de hoje, uma vez que a Prefeitura lhes concedeu aumento anteontem",
+    "Embora a Prefeitura tenha concedido aumento aos professores anteontem, os professores decidiram entrar em greve a partir de hoje",
+    "Apesar de os professores decidirem entrar em greve a partir de hoje, a Prefeitura lhes concedeu aumento anteontem",
+    "A Prefeitura concedeu aumento aos professores anteontem, de modo que eles decidiram entrar em greve a partir de hoje."
+   ],
+   "answer": 2,
+   "explanation": "Aumento concedido e, mesmo assim, greve: a relação é de concessão. “Embora a Prefeitura tenha concedido aumento..., os professores decidiram entrar em greve” mantém a ordem dos fatos e a coerência. “Logo”, “uma vez que” e “de modo que” criam relações de causa que não fazem sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 10,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q8",
+   "lesson": "u11l5",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "títulos jornalísticos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Para os jornais, os títulos das matérias devem seguir regras na sua formulação; nas opções abaixo aparecem as regras e, em seguida, o título de uma reportagem ou notícia. A opção em que a regra inicial foi seguida corretamente pelo título é:",
+   "options": [
+    "não é recomendável o uso da voz passiva em títulos: Os bens da faculdade serão vendidos",
+    "não se deve confundir integrantes da corporação com a instituição: Polícia é acusada do crime",
+    "não se deve usar o presente em referência a uma ação distante: O presidente inaugura hospital daqui a dois anos",
+    "a informação do título não deve ter imprecisão: Um morador de rua foi acusado de furto",
+    "não se deve pôr o verbo no presente quando o tema do título pertence a passado distante: Índice subiu 20% há cinco anos."
+   ],
+   "answer": 4,
+   "explanation": "“Índice subiu 20% há cinco anos” usa o passado para um fato distante, como manda a regra. Os outros títulos quebram a regra citada: voz passiva, corporação confundida com integrantes, presente para ação futura distante e imprecisão (“um morador de rua”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q31",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "condicional",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Considere a sentença: “Se Emília é capixaba, então ela gosta de moqueca”. Um cenário no qual a sentença dada é falsa é:",
+   "options": [
+    "Emília é carioca e não gosta de moqueca",
+    "Emília é paulista e gosta de moqueca",
+    "Emília é capixaba e não gosta de moqueca",
+    "Emília é capixaba e gosta de moqueca",
+    "Emília é mineira e gosta de moqueca."
+   ],
+   "answer": 2,
+   "explanation": "Um “se P então Q” só é falso quando P é verdadeiro e Q é falso: Emília é capixaba e não gosta de moqueca. Se ela não é capixaba, a sentença é verdadeira gostando ou não de moqueca.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 31,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q32",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação da disjunção",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "A negação lógica da sentença “Paulo torce pelo Vasco ou é carioca” é:",
+   "options": [
+    "Paulo não torce pelo Vasco ou não é carioca",
+    "Paulo torce pelo Vasco ou não é carioca",
+    "Se Paulo torce pelo Vasco, então é carioca",
+    "Paulo não torce pelo Vasco e não é carioca",
+    "Se Paulo é carioca, então não torce pelo Vasco."
+   ],
+   "answer": 3,
+   "explanation": "Pela lei de De Morgan, a negação de “P ou Q” é “não P e não Q”: Paulo não torce pelo Vasco e não é carioca.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q33",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "contrapositiva",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Considere a sentença: “Se Carla gosta de peixe, então Carla sabe nadar”. Uma sentença logicamente equivalente à sentença dada é:",
+   "options": [
+    "Se Carla sabe nadar, então Carla gosta de peixe",
+    "Se Carla não sabe nadar, então Carla não gosta de peixe",
+    "Se Carla não gosta de peixe, então Carla não sabe nadar",
+    "Carla gosta de peixe e sabe nadar",
+    "Carla gosta de peixe ou não sabe nadar."
+   ],
+   "answer": 1,
+   "explanation": "“Se P então Q” equivale à contrapositiva “se não Q então não P”: se Carla não sabe nadar, então não gosta de peixe. A recíproca (A) e a inversa (C) não são equivalentes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 33,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q34",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação de quantificador",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A negação lógica da sentença “Todo capixaba é torcedor do Vasco e gosta de moqueca” é:",
+   "options": [
+    "Todo capixaba não é torcedor do Vasco e não gosta de moqueca",
+    "Todo capixaba não é torcedor do Vasco ou não gosta de moqueca",
+    "Algum capixaba é torcedor do Vasco e não gosta de moqueca",
+    "Algum capixaba não é torcedor do Vasco ou gosta de moqueca",
+    "Algum capixaba não é torcedor do Vasco ou não gosta de moqueca."
+   ],
+   "answer": 4,
+   "explanation": "Negar “todo capixaba é X e Y” é afirmar que algum capixaba não é (X e Y), ou seja, algum capixaba não torce pelo Vasco ou não gosta de moqueca (De Morgan na conjunção).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 34,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q40",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "posições em fila",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Sérgio e Mariana estão em uma mesma fila. Há 23 pessoas atrás de Sérgio e 17 pessoas na frente de Mariana. Sérgio está na frente de Mariana e há 8 pessoas entre eles. O número de pessoas na fila é:",
+   "options": [
+    "32",
+    "33",
+    "34",
+    "35",
+    "36."
+   ],
+   "answer": 0,
+   "explanation": "Atrás de Sérgio há 23 pessoas: 8 entre eles, Mariana e 14 atrás dela. Na frente de Mariana há 17: Sérgio, os 8 entre eles e 8 na frente de Sérgio. Total: 8 + 1 + 8 + 1 + 14 = 32.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 40,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q41",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "raciocínio espacial",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Felipe, Márcia, Dóris e Fátima moram em uma pequena cidade plana onde há um obelisco. Felipe mora 2km ao norte e 3km a oeste do obelisco. Márcia mora 1km ao sul e 2km a leste do obelisco. Dóris mora 3km ao norte e 4km a leste do obelisco e Fátima mora 2km ao sul e 2km a oeste do obelisco. Conclui-se que:",
+   "options": [
+    "Felipe mora 4km ao norte e 4km a oeste da casa de Fátima",
+    "Márcia mora 3km ao sul e 4km a leste da casa de Dóris",
+    "Dóris mora 5km ao norte e 2km a leste da casa de Fátima",
+    "Fátima mora 1km ao sul e 4km a oeste da casa de Márcia",
+    "Felipe mora 1km ao sul e 6km a oeste da casa de Dóris."
+   ],
+   "answer": 3,
+   "explanation": "Com o obelisco na origem (leste e norte positivos): Felipe (−3, 2), Márcia (2, −1), Dóris (4, 3), Fátima (−2, −2). Fátima em relação a Márcia: (−4, −1), ou seja, 4 km a oeste e 1 km ao sul.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 41,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q47",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "dedução",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Considere como verdadeiras as sentenças:\n1. Se Ana é capixaba, então Bruna é carioca.\n2. Se Carla é paulista, então Bruna não é carioca.\n3. Se Ana não é capixaba, então Carla não é paulista.\n4. Ana é capixaba ou Carla é paulista.\nDeduz-se que:",
+   "options": [
+    "Ana é capixaba, Bruna é carioca e Carla é paulista",
+    "Ana não é capixaba, Bruna é carioca e Carla é paulista",
+    "Ana é capixaba, Bruna não é carioca e Carla não é paulista",
+    "Ana é capixaba, Bruna é carioca e Carla não é paulista",
+    "Ana não é capixaba, Bruna não é carioca e Carla é paulista."
+   ],
+   "answer": 3,
+   "explanation": "Se Carla fosse paulista, Bruna não seria carioca (2), então Ana não seria capixaba (contrapositiva de 1), e Carla não seria paulista (3): contradição. Logo Carla não é paulista, Ana é capixaba (4) e Bruna é carioca (1).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 47,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q48",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação da conjunção",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considere a sentença “Joana gosta de leite e não gosta de café”. Sabe-se que a sentença dada é falsa. Deduz-se que:",
+   "options": [
+    "Joana não gosta de leite e não gosta de café",
+    "Se Joana gosta de leite, então ela não gosta de café",
+    "Joana gosta de leite ou gosta de café",
+    "Se Joana não gosta de café, então ela não gosta de leite",
+    "Joana não gosta de leite ou não gosta de café."
+   ],
+   "answer": 3,
+   "explanation": "Se “gosta de leite e não gosta de café” é falsa, vale a negação: não gosta de leite ou gosta de café, que equivale a “se gosta de leite, gosta de café” e à contrapositiva “se não gosta de café, não gosta de leite”.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 48,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q27",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "condicional e disjunção",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "A frase a seguir é um conhecido ditado popular: “Se não tem cão então caça com gato\". Uma frase logicamente equivalente é:",
+   "options": [
+    "Se tem cão então não caça com gato",
+    "Se caça com gato então não tem cão",
+    "Tem cão ou caça com gato",
+    "Tem cão e caça com gato",
+    "Tem cão ou não caça com gato."
+   ],
+   "answer": 2,
+   "explanation": "“Se não P então Q” equivale a “P ou Q”: tem cão ou caça com gato.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 27,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q28",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "princípio da casa dos pombos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um escritório de investimentos possui 86 clientes que são atendidos por 6 consultores. Cada consultor deve atender a no mínimo 9 e no máximo 20 clientes. É correto concluir que:",
+   "options": [
+    "pelo menos 1 consultor atende a mais de 14 clientes",
+    "um consultor atende a 16 clientes",
+    "é possível que todos os consultores atendam a um mesmo número de clientes",
+    "é possível que 3 dos consultores atendam o número máximo de clientes por consultor",
+    "não é possível que 3 dos consultores atendam o número mínimo de clientes por consultor."
+   ],
+   "answer": 0,
+   "explanation": "Se todos atendessem no máximo 14, seriam no máximo 6 × 14 = 84 clientes, menos que 86: pelo menos um atende mais de 14. Os 86 não se dividem por 6, então não dá para todos atenderem o mesmo número; 3 no máximo (60) deixariam 26 para 3, abaixo do mínimo de 27.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 28,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q29",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "verdades e mentiras",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Hugo, Lauro e Mário são funcionários de um escritório de investimentos e trabalham com áreas diferentes: um trabalha com mercado de ações, outro com previdência e outro com multimercado. Dentre as afirmativas abaixo, somente uma é verdadeira:\nHugo trabalha com previdência.\nLauro não trabalha com previdência.\nMário não trabalha com multimercado.\nAssim, é correto afirmar que:",
+   "options": [
+    "Hugo trabalha com multimercado",
+    "Hugo trabalha com previdência",
+    "Lauro trabalha com ações",
+    "Lauro trabalha com multimercado",
+    "Mário trabalha com previdência."
+   ],
+   "answer": 0,
+   "explanation": "Se “Hugo trabalha com previdência” fosse verdade, “Lauro não trabalha com previdência” também seria: duas verdades. Então Hugo não trabalha com previdência. Se Lauro também não, Mário trabalha com previdência e as outras duas frases seriam verdadeiras. Logo Lauro é da previdência, Mário não é do multimercado (é de ações) e Hugo é do multimercado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 29,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q31",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "dedução",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considere como verdadeiras as sentenças a seguir.\nSe Priscila é paulista, então Joel é capixaba.\nSe Gabriela não é carioca, então Joel não é capixaba.\nSe Gabriela é carioca, então Priscila não é paulista.\nÉ correto deduzir que:",
+   "options": [
+    "Gabriela é carioca",
+    "Gabriela não é carioca",
+    "Priscila não é paulista",
+    "Priscila é paulista",
+    "Joel não é capixaba."
+   ],
+   "answer": 2,
+   "explanation": "Se Gabriela é carioca, Priscila não é paulista (3). Se não é, Joel não é capixaba (2), e pela contrapositiva de (1) Priscila não é paulista. Nos dois casos, Priscila não é paulista.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 31,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q35",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "tempo",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Os amigos Mário, Daniela e Tomás correram a meia maratona de Vitória. Mário fez a corrida em 1h53min17s, Daniela levou 1h47min24s e Tomás chegou 22min10s após Daniela. Conclui-se que:",
+   "options": [
+    "Tomás chegou 16min17s depois de Mário",
+    "Tomás chegou 31min7s antes de Mário",
+    "Mário chegou 7min7s depois de Daniela",
+    "Mário chegou 7min7s antes de Tomás",
+    "Mário chegou 7min53s depois de Daniela."
+   ],
+   "answer": 0,
+   "explanation": "Tomás: 1h47min24s + 22min10s = 2h09min34s. Mário: 1h53min17s. Diferença: 2h09min34s − 1h53min17s = 16min17s, então Tomás chegou 16min17s depois de Mário. Mário chegou 5min53s depois de Daniela.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q36",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "média",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Três urnas A, B e C contêm, respectivamente, 37, 57 e 86 bolas. Arrumam-se as bolas de modo que as três urnas fiquem com, exatamente, as mesmas quantidades de bolas. O total de bolas nas três urnas é o mesmo total inicial. Conclui-se que, em relação às quantidades iniciais de bolas nas urnas:",
+   "options": [
+    "a urna A tem agora 33 bolas a mais",
+    "a urna B tem agora 3 bolas a menos",
+    "a urna C tem agora 26 bolas a menos",
+    "a urna A tem agora 27 bolas a mais",
+    "a urna B tem agora 7 bolas a mais."
+   ],
+   "answer": 2,
+   "explanation": "Total: 37 + 57 + 86 = 180, então cada urna fica com 60. A ganha 23, B ganha 3 e C perde 26 bolas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 36,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q39",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "sistema simples",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Marcela e Júlia fizeram depósitos mensais em suas respectivas poupanças durante o ano de 2017. Cada uma fez 12 depósitos iguais. Marcela depositou R$ 120,00 mensais a menos do que Júlia. As duas depositaram ao todo R$ 9120,00. Conclui-se que:",
+   "options": [
+    "Marcela depositou R$ 300,00 mensais",
+    "Marcela depositou R$ 340,00 mensais",
+    "Marcela depositou R$ 360,00 mensais",
+    "Júlia depositou R$ 420,00 mensais",
+    "Júlia depositou R$ 440,00 mensais."
+   ],
+   "answer": 4,
+   "explanation": "Por mês as duas depositaram 9120 ÷ 12 = 760. Com J − M = 120 e J + M = 760, Júlia deposita 440 e Marcela 320 por mês.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 39,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q45",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "equação do 1º grau",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Daqui a 8 anos, Lúcia terá o triplo da idade que tinha há 10 anos. A soma das idades que Lúcia tinha há 4 anos com a idade que ela terá daqui a 4 anos é:",
+   "options": [
+    "34 anos",
+    "36 anos",
+    "38 anos",
+    "40 anos",
+    "42 anos."
+   ],
+   "answer": 2,
+   "explanation": "Com idade atual x: x + 8 = 3(x − 10), então x = 19. Há 4 anos tinha 15 e daqui a 4 terá 23: soma 38.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 45,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q26",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "unidades de área",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Em nosso país, as áreas de terrenos são medidas com unidades diversas, como, por exemplo, o hectare que corresponde a 10.000 m²; o alqueire paulista, a 24.000 m²; e o alqueire do Norte, a 27.000 m². Um terreno de 17 alqueires do Norte excede um de 18 alqueires paulistas em:",
+   "options": [
+    "1,8 hectare",
+    "2,2 hectares",
+    "2,5 hectares",
+    "2,7 hectares",
+    "3,1 hectares."
+   ],
+   "answer": 3,
+   "explanation": "17 alqueires do Norte = 17 × 27.000 = 459.000 m²; 18 alqueires paulistas = 18 × 24.000 = 432.000 m². Diferença: 27.000 m² = 2,7 hectares.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 26,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q32",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "paridade",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Alda tem 222 bolinhas numeradas, cada uma com um número inteiro positivo diferente. Há 87 bolinhas com números pares e as demais têm números ímpares. Alda, então, forma 111 grupinhos com duas bolinhas cada um. Há exatamente 37 grupinhos em que as duas bolinhas têm números ímpares. O número de grupinhos que tem duas bolinhas com números pares é:",
+   "options": [
+    "74",
+    "61",
+    "48",
+    "27",
+    "13."
+   ],
+   "answer": 4,
+   "explanation": "Ímpares: 222 − 87 = 135. Os 37 grupos ímpar-ímpar usam 74, sobram 61 ímpares, cada um num grupo misto com um par. Pares restantes: 87 − 61 = 26, formando 13 grupos par-par.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q37",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "pontos igualmente espaçados",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Dezessete pontos são marcados em linha reta, igualmente espaçados entre si. A distância entre o primeiro e o sétimo pontos é igual a 42cm. A distância entre o oitavo e o décimo sétimo pontos, em cm, é:",
+   "options": [
+    "54",
+    "56",
+    "63",
+    "70",
+    "72."
+   ],
+   "answer": 2,
+   "explanation": "Do 1º ao 7º ponto há 6 intervalos: 42 ÷ 6 = 7 cm cada. Do 8º ao 17º há 9 intervalos: 9 × 7 = 63 cm.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 37,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q42",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "acréscimo",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Paula pagou uma conta atrasada com 4% de juros. O valor pago por Paula, com juros incluídos, foi R$ 364,00. O valor original da conta de Paula era:",
+   "options": [
+    "R$ 349,44",
+    "R$ 350,00",
+    "R$ 352,00",
+    "R$ 354,62",
+    "R$ 360,00."
+   ],
+   "answer": 1,
+   "explanation": "Valor pago = original × 1,04. Original = 364 ÷ 1,04 = 350. Somar 4% a 350 dá 14, total 364.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 42,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q43",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "volume",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Uma torneira aberta esvazia um tanque cúbico, completamente cheio, de 1,5m de aresta em 8 horas. Com a mesma vazão, para esvaziar outro tanque cúbico, completamente cheio, com 3m de aresta, uma torneira igual à primeira levaria:",
+   "options": [
+    "16 horas",
+    "24 horas",
+    "32 horas",
+    "48 horas",
+    "64 horas."
+   ],
+   "answer": 4,
+   "explanation": "Dobrar a aresta multiplica o volume do cubo por 2³ = 8. Com a mesma vazão, o tempo também é 8 vezes maior: 8 × 8 h = 64 h.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 43,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q44",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "regra de três composta",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Três caixas atendem 60 clientes em 1h30min. Cinco caixas atenderão 120 clientes em:",
+   "options": [
+    "3h",
+    "2h30min",
+    "2h06min",
+    "1h54min",
+    "1h48min."
+   ],
+   "answer": 4,
+   "explanation": "3 caixas em 1,5 h fazem 60 atendimentos: 60 ÷ (3 × 1,5) = 40/3 clientes por caixa por hora. Para 120 clientes com 5 caixas: 120 ÷ (5 × 40/3) = 1,8 h = 1h48min.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 44,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q46",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "gorjeta",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Roberto e Gerson jantaram juntos em um restaurante. Na hora de pagar a conta, cada um pagou o correspondente ao próprio consumo. Entretanto, Roberto deu 5% de gorjeta e Gerson deu 12% de gorjeta, sobre as respectivas despesas. Ficaram surpresos ao constatar que, com a gorjeta incluída, eles pagaram exatamente o mesmo valor: R$ 168,00 cada um. A soma das gorjetas dadas por eles é:",
+   "options": [
+    "R$ 26,00",
+    "R$ 24,00",
+    "R$ 22,00",
+    "R$ 20,00",
+    "R$ 18,00."
+   ],
+   "answer": 0,
+   "explanation": "Roberto: 168 ÷ 1,05 = 160, gorjeta 8. Gerson: 168 ÷ 1,12 = 150, gorjeta 18. Soma das gorjetas: 26.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 46,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q30",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "tabela de dupla entrada",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Em uma empresa há funcionários homens e mulheres, alguns com curso superior, outros não. Sabe-se que:\n• 65% dos funcionários são homens;\n• entre os funcionários sem curso superior, dois terços são homens;\n• um quinto das mulheres têm curso superior.\nNessa empresa, a porcentagem de homens com curso superior é:",
+   "options": [
+    "7%",
+    "8%",
+    "9%",
+    "10%",
+    "11%."
+   ],
+   "answer": 2,
+   "explanation": "Em 100 funcionários: 65 homens e 35 mulheres. Um quinto das mulheres tem curso superior: 7, então 28 mulheres não têm. Elas são um terço dos sem curso superior: 84 sem curso, 56 deles homens. Homens com curso: 65 − 56 = 9, ou 9%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 30,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q38",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "eliminatória",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em um torneio de tênis, há 32 mulheres e 48 homens inscritos. As mulheres só jogam entre si e os homens também só jogam entre si. Em cada partida, o(a) perdedor(a) é eliminado(a) do torneio. Não há empates. Ao final do torneio, tem-se uma campeã e um campeão. Não havendo desistências, o número total de partidas para que sejam definidos o campeão e a campeã é:",
+   "options": [
+    "72",
+    "74",
+    "76",
+    "78",
+    "80."
+   ],
+   "answer": 3,
+   "explanation": "Cada partida elimina uma pessoa e só sobra uma campeã e um campeão: 32 − 1 = 31 partidas femininas e 48 − 1 = 47 masculinas, total 78.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 38,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q49",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "princípio da casa dos pombos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em uma gaveta há 9 meias brancas, 10 meias pretas e 11 meias vermelhas. O número mínimo de meias que devem ser retiradas da gaveta, sem lhes ver a cor, para ter certeza de haver retirado pelo menos duas meias pretas é:",
+   "options": [
+    "2",
+    "19",
+    "20",
+    "21",
+    "22."
+   ],
+   "answer": 4,
+   "explanation": "No pior caso saem todas as 9 brancas e as 11 vermelhas antes das pretas: 20 meias. Mais 2 garantem duas pretas: 22.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 49,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q50",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "princípio da casa dos pombos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um dado é jogado duas vezes consecutivas e os números sorteados, na ordem dos dois lançamentos, formam o resultado dos dois lançamentos. Repete-se esse procedimento N vezes. O valor mínimo de N para que se tenha certeza de que entre os N resultados haja pelo menos dois iguais é:",
+   "options": [
+    "37",
+    "36",
+    "31",
+    "30",
+    "7."
+   ],
+   "answer": 0,
+   "explanation": "Há 6 × 6 = 36 resultados ordenados possíveis. Com 36 repetições ainda podem ser todos diferentes; com 37 há certeza de repetição.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 50,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q33",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "anagramas",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Considere a sequência dos 120 anagramas da palavra BANCO escritos em ordem alfabética. O anagrama CANBO ocupa a posição de número:",
+   "options": [
+    "50",
+    "51",
+    "52",
+    "53",
+    "54."
+   ],
+   "answer": 1,
+   "explanation": "Letras em ordem: A, B, C, N, O. Começando com A há 4! = 24 anagramas, com B mais 24 (até a posição 48). Com C: CABNO (49), CABON (50), CANBO (51).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 33,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q34",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Estatística",
+   "subtopic": "média e mediana",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "A média e a mediana de 5 números reais são, respectivamente, 17 e 23. A diferença entre o maior e o menor desses 5 números é, no mínimo, igual a:",
+   "options": [
+    "11",
+    "12",
+    "13",
+    "14",
+    "15."
+   ],
+   "answer": 4,
+   "explanation": "Ordenando a ≤ b ≤ 23 ≤ d ≤ e, a soma é 85, logo a + b + d + e = 62. Com d e e no mínimo 23, a + b ≤ 16 e a ≤ 8. A menor diferença é com a = b = 8 e d = e = 23: 23 − 8 = 15.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 34,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q35",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Probabilidade",
+   "subtopic": "dados",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Marcelo joga, simultaneamente, dois dados cúbicos honestos cujas faces estão numeradas de 1 a 6. A probabilidade de os dois números sorteados serem consecutivos é:",
+   "options": [
+    "5/18",
+    "5/36",
+    "1/3",
+    "1/9",
+    "7/36."
+   ],
+   "answer": 0,
+   "explanation": "Pares consecutivos: (1,2), (2,3), (3,4), (4,5), (5,6) e os inversos, 10 de 36 resultados. Probabilidade: 10/36 = 5/18.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q21",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "CVM",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Dentro do Sistema Financeiro Nacional (SFN), cada entidade é responsável por funções específicas. Nesse sentido, a Comissão de Valores Mobiliários (CVM) tem por principal atribuição:",
+   "options": [
+    "zelar pela defesa da concorrência nas emissões de títulos",
+    "zelar pelo funcionamento eficiente e integridade do mercado de capitais",
+    "garantir a regulação prudencial do sistema financeiro",
+    "atender as normas do Banco Central do Brasil",
+    "estabelecer regras para o mercado segurador."
+   ],
+   "answer": 1,
+   "explanation": "A CVM é a supervisora do mercado de valores mobiliários: zela pelo funcionamento eficiente e pela integridade do mercado de capitais. Regulação prudencial do sistema bancário é papel do Banco Central, e regras do mercado segurador são do CNSP, com a Susep como supervisora.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 21,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q22",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "mercados financeiros",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Por Sistema Financeiro Nacional (SFN) entende-se o conjunto de instituições e instrumentos que possibilitam a transferência de recursos entre os agentes econômicos superavitários e os deficitários. Essa transferência é possível em razão:",
+   "options": [
+    "dos mercados monetário, de crédito, de capitais e cambial",
+    "da atuação dos bancos comerciais",
+    "da atuação dos bancos centrais",
+    "das bolsas de valores",
+    "da atuação da CVM."
+   ],
+   "answer": 0,
+   "explanation": "A transferência de recursos dos agentes superavitários para os deficitários ocorre nos mercados financeiros: monetário, de crédito, de capitais e cambial. Bancos, bolsas e CVM são participantes ou supervisores desses mercados, não a explicação completa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 22,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q23",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "Banco Central",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Um banco central possui funções clássicas dentro de um sistema financeiro. No caso brasileiro, amparado pelo Conselho Monetário Nacional (CMN), o Banco Central do Brasil (BCB) tem como uma de suas atribuições:",
+   "options": [
+    "a execução da política fiscal",
+    "o regramento das bolsas de valores",
+    "a execução da política monetária",
+    "a determinação do superávit primário",
+    "o regramento de ofertas públicas iniciais."
+   ],
+   "answer": 2,
+   "explanation": "O Banco Central executa a política monetária definida pelo CMN e pelo Copom. Política fiscal e superávit primário são do governo (Tesouro), e bolsas e ofertas públicas são reguladas pela CVM.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 23,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q24",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "autoridade monetária",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Em 1986 foi a extinta a Conta Movimento, que permitia que o Banco do Brasil emitisse moeda toda vez que fosse necessário ou se assim fosse determinado pelo governo central. Na prática, havia uma superposição de funções com o Banco Central do Brasil, particularmente com relação ao papel de:",
+   "options": [
+    "banco dos bancos",
+    "signatário do acordo de Basileia",
+    "regulador prudencial",
+    "autoridade monetária",
+    "executor da política monetária."
+   ],
+   "answer": 3,
+   "explanation": "A Conta Movimento permitia ao Banco do Brasil sacar recursos do Banco Central e, na prática, criar moeda. Isso o colocava como autoridade monetária ao lado do Banco Central, papel exclusivo deste depois da extinção da conta em 1986.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 24,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q26",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "correspondentes",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "As casas lotéricas possuem autorização para receber pagamentos de contas de luz, água, telefone e, em alguns municípios, até certos tributos. Esse tipo de função, própria do setor bancário tradicional, só é possível por autorização:",
+   "options": [
+    "do Ministério da Fazenda",
+    "do Banco Central do Brasil",
+    "da Comissão de Valores Mobiliários",
+    "do Comitê de Política Monetária",
+    "do Conselho Monetário Nacional."
+   ],
+   "answer": 4,
+   "explanation": "Lotéricas atuam como correspondentes de instituições financeiras. As regras que permitem essa contratação são do Conselho Monetário Nacional, órgão normativo do SFN; o Banco Central fiscaliza o cumprimento. CVM e Copom não tratam do tema, e o Ministério da Fazenda não autoriza esse serviço.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 26,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q17",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "mercados financeiros",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "O Sistema Financeiro Nacional (SFN) é o conjunto de instituições e instrumentos que possibilitam a transferência de recursos entre os agentes econômicos superavitários e os deficitários. Essa transferência é possível por conta:",
+   "options": [
+    "dos mercados monetário, de crédito, de capitais e cambial",
+    "da atuação dos bancos comerciais",
+    "da atuação dos bancos centrais",
+    "das bolsas de valores",
+    "da atuação da CVM."
+   ],
+   "answer": 0,
+   "explanation": "A transferência de recursos entre superavitários e deficitários ocorre nos mercados monetário, de crédito, de capitais e cambial. Bancos, bolsas, bancos centrais e CVM atuam nesses mercados, mas não são a explicação completa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 17,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q18",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "Banco Central",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Amparado pelo Conselho Monetário Nacional (CMN), o Banco Central do Brasil (BCB) tem por uma de suas atribuições:",
+   "options": [
+    "a execução da política fiscal",
+    "o regramento das bolsas de valores",
+    "a execução da política monetária",
+    "a determinação do superávit primário",
+    "o regramento de ofertas públicas iniciais."
+   ],
+   "answer": 2,
+   "explanation": "O Banco Central executa a política monetária seguindo as diretrizes do CMN. Política fiscal e superávit primário são do governo; bolsas e ofertas públicas iniciais, da CVM.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 18,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q24",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "órgãos normativos",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "O Sistema Financeiro Nacional possui órgãos normativos, entidades supervisoras e operadores. Os órgãos normativos, além do Conselho Nacional de Seguros Privados (CNSP), incluem:",
+   "options": [
+    "a Casa da Moeda e o Banco Central",
+    "o Conselho Monetário Nacional (CMN) e o Conselho Nacional de Previdência Complementar (CNPC)",
+    "a Susep e o Banco Central",
+    "o Banco Central e a CVM",
+    "as caixas econômicas e as bolsas de valores."
+   ],
+   "answer": 1,
+   "explanation": "Os órgãos normativos do SFN são o CMN (moeda e crédito), o CNSP (seguros) e o CNPC (previdência complementar fechada). Banco Central, CVM e Susep são supervisores; bancos e bolsas são operadores.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 24,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q25",
+   "lesson": "u13l2",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "operações de mercado aberto",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Comitê de Política Monetária (Copom) foi instituído em 1999 e tem por principais objetivos: i) estabelecer as diretrizes da política monetária; e ii) definir a meta da taxa de juros básica no Brasil e seu eventual viés. Para consecução do objetivo ii), dada a decisão do Copom, o Banco Central:",
+   "options": [
+    "emite títulos públicos",
+    "emite títulos do próprio Banco Central",
+    "realiza operações de mercado aberto",
+    "realiza o controle da dívida pública",
+    "controla as reservas internacionais do país."
+   ],
+   "answer": 2,
+   "explanation": "Para levar a Selic à meta definida pelo Copom, o Banco Central compra e vende títulos públicos no mercado aberto, regulando a liquidez. Emitir títulos públicos e controlar a dívida são funções do Tesouro. Observação: o Copom foi instituído em 20 de junho de 1996, e não em 1999, como diz o enunciado original. Em 1999 o Decreto nº 3.088 adotou o regime de metas para a inflação, e a partir daí o Copom passou a usar a Selic para cumprir a meta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 25,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q20",
+   "lesson": "u13l2",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "operações de mercado aberto",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil tem por principais objetivos: i) estabelecer as diretrizes da política monetária; e ii) definir a meta da taxa de juros básica no Brasil e seu eventual viés. Para a consecução do objetivo ii), dada a decisão do Copom, o Banco Central do Brasil:",
+   "options": [
+    "emite títulos públicos",
+    "emite títulos do próprio Banco Central",
+    "realiza operações de mercado aberto",
+    "realiza o controle da dívida pública",
+    "controla as reservas internacionais do país."
+   ],
+   "answer": 2,
+   "explanation": "Para manter a Selic perto da meta do Copom, o Banco Central compra e vende títulos públicos no mercado aberto, ajustando a liquidez. Emitir títulos públicos e controlar a dívida são funções do Tesouro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 20,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q23",
+   "lesson": "u13l2",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "mercado aberto",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Em 22 de setembro de 2021, o Copom aumentou a meta da taxa Selic para 6,25% ao ano. Em termos práticos, isso significa que a mesa de operações de mercado aberto do Banco Central deve atuar para que a Selic diária fique próxima dessa meta. Se a Selic diária estiver em 8% num certo dia, a mesa de operações do Banco Central deve:",
+   "options": [
+    "comprar títulos públicos no mercado e mantê-los em sua carteira, até que a taxa diária atinja a meta de 6,25%",
+    "vender títulos públicos de sua carteira no mercado, até que a taxa diária atinja a meta de 6,25%",
+    "diminuir a oferta de moeda disponível na economia",
+    "imprimir mais papel-moeda",
+    "pleitear uma mudança no superávit primário."
+   ],
+   "answer": 0,
+   "explanation": "Com a Selic diária (8%) acima da meta, falta liquidez. O Banco Central compra títulos públicos e injeta moeda até a taxa cair para a meta. Vender títulos ou reduzir a oferta de moeda faria a taxa subir ainda mais.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 23,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q28",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Ética",
+   "subtopic": "Guia de Conduta Ética do Banestes",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Sistema Financeiro Banestes (SFB) adota, como prioritários e comuns a todos os relacionamentos, Princípios Éticos. Analise a adequação das afirmativas abaixo aos referidos Princípios contidos no Guia de Conduta Ética do SFB.\nI. Eficiência: o profissional deve atuar com a máxima eficiência a fim de proporcionar a otimização dos lucros e resultados positivos para a companhia e seus acionistas, atingindo e, se possível, superando todas as metas estabelecidas por seus superiores e dirigentes do SFB.\nII. Hierarquia: o profissional deve cumprir as determinações recebidas de seus superiores hierárquicos, respeitando as obrigações decorrentes dos estatutos e normas internas, bem como do Guia de Conduta Ética.\nIII. Probidade: o profissional deve agir com integridade de caráter, retidão e honradez. Deve exteriorizar uma conduta honesta e justa, procurando satisfazer o interesse público, descartando toda a vantagem, quer para si, quer para terceiros, seja a Administração Pública ou particulares.\nEstá correto o que se afirma em:",
+   "options": [
+    "somente I",
+    "somente I e II",
+    "somente III",
+    "somente II e III",
+    "I, II e III."
+   ],
+   "answer": 3,
+   "explanation": "No guia atual (atualizado em 2020), II é o princípio Hierarquia (item 4.20.1) e III é Probidade (item 4.1.1), com o mesmo texto da questão. I está errada: eficiência não é otimizar lucros e superar todas as metas a qualquer custo, e o guia nem lista eficiência entre os princípios éticos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 28,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q29",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Ética",
+   "subtopic": "Guia de Conduta Ética do Banestes",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Sistema Financeiro Banestes (SFB), por meio dos seus profissionais, ao se relacionar com os diversos setores da sociedade, deverá espelhar suas ações em determinados padrões de conduta. Sobre o tema, analise as afirmativas a seguir.\nI. No relacionamento com a comunidade, o profissional deve respeitar valores culturais, esportivos, religiosos, políticos ou quaisquer outros reconhecidos por ela.\nII. No relacionamento com o setor público, o profissional deve abster-se de comentários de natureza político-partidária sobre atos ou atitudes de quaisquer servidores públicos.\nIII. No relacionamento com o cliente, o profissional deve respeitar o acordo entre o Governo do Estado do Espírito Santo, acionista controlador do Banestes, e o Governo do Canadá para melhoria da observância tributária internacional e implementação do FATCA (Foreign Account Tax Compliance Act).\nEstá correto o que se afirma em:",
+   "options": [
+    "somente I",
+    "somente I e II",
+    "somente III",
+    "somente II e III",
+    "I, II e III."
+   ],
+   "answer": 1,
+   "explanation": "I e II estão no guia atual: relacionamento com a comunidade (item 6.2.1) e com o setor público (item 6.6.2). III está errada: o item 6.1.11 trata do acordo entre o Governo do Brasil e o dos Estados Unidos para implementar o FATCA, não de um acordo entre o Espírito Santo e o Canadá.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 29,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q30",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Ética",
+   "subtopic": "comunicação de irregularidades",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "X, empregado do Banestes S.A. – Banco do Estado do Espírito Santo, suspeita de fraudes, irregularidades e outros atos ilícitos, perpetrados por outro empregado que trabalha no mesmo setor. É certo que, se comprovados, tais atos podem prejudicar o Banco e contrariar os princípios do Guia de Conduta Ética do Sistema Financeiro do Banestes (SFB). A atitude correta a ser tomada por X, segundo o Guia de Conduta Ética do SFB (Capítulo I), é:",
+   "options": [
+    "confrontar o empregado e imputar-lhe as irregularidades",
+    "reportar-se direta e imediatamente ao Conselho de Conduta Ética",
+    "comunicar imediatamente ao seu superior hierárquico as irregularidades",
+    "abrir demanda na Ouvidoria do SFB e reportar o ocorrido",
+    "apresentar relatório escrito na Gerência de Recursos Humanos narrando as irregularidades."
+   ],
+   "answer": 2,
+   "explanation": "Quem suspeitar de desvios, fraudes ou irregularidades deve comunicar imediatamente ao superior hierárquico e, se não for possível, ao Conselho de Conduta Ética. No guia atual a regra está no item 8.9.1, no Capítulo VIII (a questão cita o Capítulo I da edição de 2018). Confrontar o colega não é o caminho indicado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 30,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q16",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Ética",
+   "subtopic": "Guia de Conduta Ética do Banestes",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O Banestes possui um Guia de Conduta Ética, aplicável a todos os administradores, membros de conselhos e comitês, empregados, estagiários e prestadores de serviços do SFB (Sistema Financeiro Banestes). De acordo com o guia, o princípio da prudência delimita que o profissional deve:",
+   "options": [
+    "zelar pela defesa da concorrência nas emissões de títulos",
+    "ter atenção e cuidado com assuntos de seu trabalho",
+    "garantir a regulação prudencial do sistema financeiro",
+    "atender as normas do Banco Central do Brasil",
+    "estabelecer regras para o mercado segurador."
+   ],
+   "answer": 1,
+   "explanation": "No guia atual, prudência (item 4.2.1) é agir com atenção e cuidado sobre os assuntos submetidos à sua análise. As outras opções descrevem funções de órgãos do sistema financeiro (CVM, Banco Central, CNSP), não princípios éticos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-q27",
+   "lesson": "u14l3",
+   "type": "mcq5",
+   "topic": "Lavagem de dinheiro",
+   "subtopic": "Lei 9.613/1998",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "A Lei nº 9.613, de 3 de março de 1998, que sofreu profundas alterações com a Lei nº 12.683/12, dispõe sobre os crimes de “lavagem” ou ocultação de bens, direitos e valores, além da prevenção da utilização do sistema financeiro para os ilícitos previstos nesse mesmo diploma legal. Alguns dos bens jurídicos protegidos pelos ilícitos penais previstos na Lei são Estado, coletividade e, de maneira secundária, eventual particular prejudicado. Com base nas previsões da legislação penal supramencionada, é correto afirmar que:",
+   "options": [
+    "aquele que participa de associação em que a atividade apenas secundária é dirigida à prática de crimes previstos na Lei nº 9.613/98, ainda que tenha conhecimento dessa situação, não será responsabilizado com as penas do crime de “lavagem” ou ocultação de bens, direitos e valores",
+    "em sendo os valores ilícitos ocultados produtos de infrações penais anteriores praticadas por terceiros, não restará configurado o crime de “lavagem” ou ocultação de bens, direitos e valores",
+    "o crime de “lavagem” ou ocultação de bens, direitos e valores não é punível na forma tentada, ou seja, quando não se consuma por circunstâncias alheias à vontade do agente",
+    "por ter natureza permanente, não há aumento da pena quando os crimes da Lei nº 9.613/98 forem praticados de forma reiterada, em diferentes momentos, por um mesmo agente",
+    "em sendo os crimes da Lei nº 9.613/98 praticados por intermédio de organização criminosa, aplica-se causa de aumento de pena."
+   ],
+   "answer": 4,
+   "explanation": "A lei prevê aumento de pena quando o crime é cometido de forma reiterada ou por intermédio de organização criminosa. As outras afirmações são falsas: participar sabendo responde, o crime antecedente pode ser de terceiro e a tentativa é punível.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 27,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2021-q19",
+   "lesson": "u14l3",
+   "type": "mcq5",
+   "topic": "Lavagem de dinheiro",
+   "subtopic": "Lei 9.613/1998",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Por meio da Lei nº 9.613/1998, o Brasil regulamentou pela primeira vez a prática de lavagem de dinheiro ou ocultação de bens. Dentre os delitos que configuram esse crime, encontra(m)-se:",
+   "options": [
+    "o uso de informação privilegiada",
+    "fraudes em demonstrativos contábeis",
+    "o não recolhimento de IOF",
+    "ocultar ou dissimular a natureza de bens e direitos",
+    "a remessa de recursos para contas no exterior."
+   ],
+   "answer": 3,
+   "explanation": "A lei define lavagem como ocultar ou dissimular a natureza, origem, localização, disposição, movimentação ou propriedade de bens, direitos ou valores vindos de infração penal. Informação privilegiada, fraude contábil e sonegação são outros crimes, e remessa ao exterior em si não é crime.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2021,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "prova": "Tipo 1",
+    "numero": 19,
+    "gabarito": "definitivo"
+   }
   }
  ]
 }

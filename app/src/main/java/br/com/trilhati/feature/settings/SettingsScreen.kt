@@ -47,7 +47,6 @@ import br.com.trilhati.ui.components.InfoButton
 import br.com.trilhati.ui.components.PillChoice
 import br.com.trilhati.ui.components.TrilhaDialog
 import br.com.trilhati.ui.theme.Spacing
-import br.com.trilhati.ui.theme.ThemeMode
 import br.com.trilhati.ui.theme.Trilha
 import java.time.LocalTime
 import kotlinx.coroutines.launch
@@ -75,7 +74,7 @@ data class SettingsCallbacks(
     val onNoLives: (Boolean) -> Unit = {},
     val onHaptics: (Boolean) -> Unit = {},
     val onSounds: (Boolean) -> Unit = {},
-    val onTheme: (ThemeMode) -> Unit = {},
+    val onPalette: (br.com.trilhati.ui.theme.ThemePalette) -> Unit = {},
     val onReminderEnabled: (Boolean) -> Unit = {},
     val onReminderTime: (LocalTime) -> Unit = {},
     val onAllowNotifications: () -> Unit = {},
@@ -140,7 +139,7 @@ fun SettingsScreen(viewModel: AppViewModel, onBack: () -> Unit) {
         callbacks = SettingsCallbacks(
             onBack = onBack, onTimerMode = viewModel::setTimerMode, onPaceTarget = viewModel::setPaceTarget,
             onCaseFour = viewModel::setCaseFourMinutes, onNoLives = viewModel::setNoLives, onHaptics = viewModel::setHaptics,
-            onSounds = viewModel::setSounds, onTheme = viewModel::setTheme, onReminderEnabled = viewModel::setReminderEnabled,
+            onSounds = viewModel::setSounds, onPalette = { viewModel.setPalette(it) }, onReminderEnabled = viewModel::setReminderEnabled,
             onReminderTime = viewModel::setReminderTime,
             onAllowNotifications = {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -259,10 +258,16 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
         }
 
         Section("Tema") {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                PillChoice("Sistema", settings.themeMode == ThemeMode.System, { callbacks.onTheme(ThemeMode.System) })
-                PillChoice("Claro", settings.themeMode == ThemeMode.Light, { callbacks.onTheme(ThemeMode.Light) })
-                PillChoice("Escuro", settings.themeMode == ThemeMode.Dark, { callbacks.onTheme(ThemeMode.Dark) })
+            // Quatro temas em duas colunas; antes da primeira escolha, vale o claro/escuro do aparelho.
+            val current = br.com.trilhati.ui.theme.resolvePalette(settings.palette)
+            br.com.trilhati.ui.theme.ThemePalette.entries.chunked(2).forEach { pair ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    pair.forEach { palette ->
+                        br.com.trilhati.feature.theme.PaletteCard(
+                            palette, current == palette, { callbacks.onPalette(palette) }, Modifier.weight(1f), compact = true,
+                        )
+                    }
+                }
             }
         }
 

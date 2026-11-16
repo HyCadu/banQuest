@@ -143,7 +143,7 @@ class IntegrationTest {
     }
 
     @Test fun conteudoCarregaDosAssets() {
-        assertEquals(10, content.course.size)
+        assertEquals(14, content.course.size) // 10 Específicos + 4 Gerais
         // 90 exercícios do pacote da unidade 1 (a u1l1 já no formato por conceitos) + 26 de provas anteriores.
         val u1 = content.course[0].lessons.flatMap { it.questions }
         assertEquals(116, u1.size)

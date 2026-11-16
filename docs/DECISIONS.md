@@ -417,3 +417,33 @@ O resumo do resultado continua mostrando o tempo médio por questão (regra 6).
 4. **Detalhes.** A instrução do associar ficou "Toque num termo e na definição". O botão "Não sei" some quando o estoque
    chega a zero.
 
+
+## Temas e trilha dos Gerais (0.8.0, 16/11/2026) — a pedido do dono
+O dono enviou duas paletas de referência e pediu: cores em 60/30/10, as paletas numa aba de temas, a escolha do tema na
+primeira entrada (avisando que dá para trocar nas Configurações) e a trilha dos Gerais com um botão simples de troca e
+animação fluida.
+1. **Quatro temas:** os dois que já existiam, **Claro** e **Escuro** (roxo e turquesa), e dois novos, **Elétrico** e
+   **Chiclete**. O antigo "Sistema" deixou de ser opção: antes da primeira escolha o app segue o claro/escuro do
+   aparelho, e quem tinha Claro ou Escuro fixo continua no mesmo tema.
+2. **60/30/10 com o fundo sempre na cor clara** (correção do dono: "o fundo deve ser sempre a cor clara"):
+   - Elétrico: 60% branco #FFFFFF no fundo e nos cartões, 30% azul #0131CD na cor principal (botões, lição atual,
+     faixa da unidade, seletor) e 10% verde-limão #B9FC01 no destaque (lições concluídas). Texto azul-marinho.
+   - Chiclete: 60% creme #FEF1CF no fundo e nos cartões, 30% rosa #FC3B7F na cor principal e 10% azul #0032A8 no
+     destaque. O texto sobre o rosa é quase preto: branco sobre esse rosa fica em 3,5:1, abaixo do mínimo de 4,5:1.
+   As cores de estado (acerto, erro, alerta, chama, gema, coração) não vêm da referência: são as do tema Claro.
+3. **Contraste testado.** O `ContrastTest` cobre todo par texto/fundo dos quatro temas e das trilhas dos Gerais, com
+   mínimo de 4,5:1. Agora inclui os textos de acerto, erro e alerta sobre o fundo e os cartões (ex.: "Meta batida!").
+4. **Escolha na primeira entrada.** Depois do login e antes da Trilha aparece "Escolha o seu tema", com os quatro
+   cartões (miniatura e faixa 60/30/10) e o aviso "Dá para trocar quando quiser em Configurações › Tema." A escolha
+   fica no DataStore (`palette`, `theme_chosen`). Quem atualizar de uma versão anterior também vê essa tela uma vez. Nas
+   Configurações, a seção **Tema** mostra os quatro em duas colunas.
+5. **Gerais: duas trilhas independentes** (★ da decisão 2 do `docs/CONTENT_PLAN.md`). O seletor "Específicos | Gerais"
+   fica no topo da Trilha e a escolha é lembrada (`trail_track`). Cada trilha desbloqueia na sua própria ordem. As
+   unidades G1 a G4 (`u11`–`u14`) estão no `Curriculum` com os títulos de lição do plano de conteúdo. Ainda não têm
+   pacote, então aparecem como "Conteúdo chegando em breve". As 82 questões de prova dos Gerais já estão no pacote do
+   app (u11: 35, u12: 30, u13: 11, u14: 6) e entram sozinhas quando cada lição ganhar conteúdo.
+6. **Cores da trilha dos Gerais:** a cor principal e a de destaque do tema trocam de papel. Claro e Escuro: roxo vira
+   verde-água. Elétrico: azul vira limão. Chiclete: rosa vira azul. O botão selecionado do seletor tem borda e base em
+   relevo, para continuar visível quando a cor da trilha é clara.
+7. **Animação da troca.** A trilha desliza para o lado da trilha escolhida, com esmaecimento, e as cores se misturam em
+   0,5 s. O botão do seletor desliza com efeito de mola. Se o aparelho pedir para remover animações, a troca é imediata.

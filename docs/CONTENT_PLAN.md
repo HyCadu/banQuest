@@ -232,7 +232,7 @@ estuda por fora ou importa um pacote novo perto da prova.
 
 A trilha hoje é **uma fila só**: a primeira lição sem conteúdo trava tudo depois dela
 (`domain/progress/TrailEngine.kt`). Se G1–G4 entrarem depois da U10, ficam travadas até o fim de TI. Opções:
-1. **★ Duas trilhas independentes** (Específicos e Gerais), com uma troca no topo da Trilha. Muda `Curriculum`,
+1. **★ Duas trilhas independentes** (Específicos e Gerais), com uma troca no topo da Trilha. **Feito na 0.8.0.** Muda `Curriculum`,
    `TrailEngine`, a tela da Trilha e testes. Cada trilha desbloqueia na sua própria ordem.
 2. Intercalar unidades Gerais entre as de TI (ex.: G1 depois da U2). Não muda código, mas obriga uma ordem fixa.
 3. Desbloqueio livre por unidade. Perde a sensação de trilha.
@@ -295,7 +295,8 @@ Hoje 15/11/2026, prova em 21/02/2027: cerca de 14 semanas. Faltam 13 unidades, u
 ## Decisões abertas para o dono
 
 1. **Lições densas:** [issue #1](https://github.com/HyCadu/trilha-ti/issues/1).
-2. **Gerais no app:** duas trilhas (★), intercalar, ou desbloqueio livre.
+2. ~~**Gerais no app:** duas trilhas (★), intercalar, ou desbloqueio livre.~~ **Decidido (0.8.0):** duas trilhas
+   independentes, com o seletor "Específicos | Gerais" no topo da Trilha (ver `docs/DECISIONS.md`).
 3. **Guia de Conduta Ética do Banestes:** o edital indica o PDF no site do banco. O app não acessa a rede; alguém precisa
    baixá-lo e colocá-lo em `docs/` para G4l1 ser gerada sem inventar conteúdo.
 4. **Ordem das unidades** conforme o ponto fraco.

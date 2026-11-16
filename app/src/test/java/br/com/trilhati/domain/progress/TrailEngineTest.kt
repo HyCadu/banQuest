@@ -45,4 +45,18 @@ class TrailEngineTest {
         assertEquals(LessonStatus.Locked, s["u3l1"])
         assertFalse(TrailEngine.isUnitComplete(withEmpty[1], emptyMap()))
     }
+
+    @Test fun `cada trilha anda sozinha`() {
+        val general = TestData.unit(11, 2).copy(track = br.com.trilhati.domain.model.Track.General)
+        val all = listOf(TestData.unit(1, 2), TestData.unit(2, 2, withContent = false), general)
+        val s = TrailEngine.statuses(all, emptyMap())
+        // A primeira lição de cada trilha fica disponível, mesmo com lição vazia travando os Específicos.
+        assertEquals(LessonStatus.Available, s["u1l1"])
+        assertEquals(LessonStatus.Available, s["u11l1"])
+        val p = listOf("u1l1", "u1l2").associateWith { done(it) }
+        val s2 = TrailEngine.statuses(all, p)
+        assertEquals(LessonStatus.Locked, s2["u2l1"])
+        assertEquals(LessonStatus.Available, s2["u11l1"])
+        assertEquals(LessonStatus.Locked, s2["u11l2"])
+    }
 }
