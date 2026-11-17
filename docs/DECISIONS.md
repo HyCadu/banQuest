@@ -460,3 +460,23 @@ animação fluida.
    relevo, para continuar visível quando a cor da trilha é clara.
 7. **Animação da troca.** A trilha desliza para o lado da trilha escolhida, com esmaecimento, e as cores se misturam em
    0,5 s. O botão do seletor desliza com efeito de mola. Se o aparelho pedir para remover animações, a troca é imediata.
+
+## U2 e G1 juntas, com as oficiais ligadas a conceitos (0.10.0, 17/11/2026) — a pedido do dono
+O dono pediu a U2 (Programação e OO) e a G1 (Língua Portuguesa) na mesma rodada, validando tudo no fim, e enviou os PDFs
+das provas do Banestes de 2012 e 2024.
+1. **Uma branch e um PR para as duas unidades** (o CONTENT_PLAN sugere uma unidade por PR): foi o pedido do dono. Cada
+   unidade tem o seu pacote e o seu relatório de revisão, então dá para revisar uma de cada vez.
+2. **Mesmo formato da U1 (por conceitos):** 4 a 7 conceitos por lição, 2 exercícios de aprender e 2 de praticar por
+   conceito (passos 1, 2 e 3, um cenário por conceito) e questões de prova estilo FCC. U2: 26 conceitos e 154
+   exercícios. G1: 28 conceitos e 168 exercícios.
+3. **As 57 oficiais que esperavam por essas lições ganharam `concept`** (22 da U2 e 35 da G1), escolhido pelo assunto
+   que cada uma cobra. As que cobram temas fora do edital (ordenação, hash, complemento a dois, NetBeans, Mercurial,
+   Factory Method) ficaram no conceito mais próximo, como as do Oracle na U1. Tabelas nos relatórios de revisão.
+4. **Provas de 2012 (IDECAN) e 2024: só calibração, sem transcrição.** São do mesmo cargo, mas vieram sem gabarito, e a
+   regra do CLAUDE.md exige gabarito para `prova_real`. A de 2024 tem 4 alternativas, e o app e o validador esperam 5.
+   Transcrever as duas depende de o dono enviar os gabaritos e de decidir como tratar as questões de 4 alternativas.
+5. **Português: só norma-padrão sem divergência.** Onde a gramática admite duas formas (crase facultativa, "comparecer
+   a/em", "a maioria de" + verbo), a questão é montada para que a variação não decida a resposta.
+6. **Testes:** um teste de unidade novo valida todos os pacotes embutidos e confere que toda questão da U2 e da G1
+   (oficiais incluídas) tem conceito da lição. Os testes da harness que usavam a U2 como "unidade sem conteúdo" passaram
+   a usar a U3.

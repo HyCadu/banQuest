@@ -263,8 +263,34 @@
 - [ ] Com "Remover animações" ligado no Android (Acessibilidade), a troca é imediata.
 - [ ] Com o TalkBack, o seletor diz "Trilha Específicos" e "Trilha Gerais" e qual está selecionada.
 
+## BanQuest 0.10.0 — Unidade 2 e G1 Língua Portuguesa
+
+**35. Unidade 2: Programação e orientação a objetos**
+- [ ] Conclua as 5 lições da U1 (ou já tenha concluído): a **Unidade 2** abre, com as lições Fundamentos de programação,
+      Orientação a objetos, Princípios SOLID, Linguagens e plataformas e Testes, TDD e Git.
+- [ ] Na lição 1, o primeiro bloco começa com "Novo: Tipos e representação de números" e um exemplo resolvido.
+      Exercícios com código (Java, C#, Python, PHP e C) mostram o trecho com quebra de linha e recuo legíveis.
+- [ ] Depois dos 9 exercícios de ensino, vêm 3 questões de prova. Algumas são oficiais ("FGV · Banestes 2018 · …",
+      "FCC · …"), por exemplo a do try/catch/finally (FGV 2018 q68) e a do ciclo do TDD (FCC Teresina 2016 q40).
+- [ ] Na lição 4, cada linguagem (Java, C#, Python, PHP e C) tem o seu conceito; no exercício de completar do C, a
+      lacuna é o `%d` do printf.
+
+**36. G1: Língua Portuguesa**
+- [ ] Na Trilha, toque em **Gerais**: G1 não aparece mais como "Conteúdo chegando em breve", e a lição 1 (Ortografia e
+      crase) já vem aberta. G2 a G4 continuam "chegando".
+- [ ] Os textos com aspas curvas (“ ”), travessão (—) e crase aparecem sem caracteres estranhos.
+- [ ] Na lição 2 (Interpretação de texto), as questões oficiais da FGV Banestes 2018 e 2021 aparecem depois dos blocos
+      de ensino, com o texto-base no enunciado.
+- [ ] Respostas: o exercício de associar e o de completar funcionam como na U1; o "Não sei" aparece só nos de ensino.
+
+**37. As duas unidades juntas**
+- [ ] Depois de jogar uma lição de cada, o Perfil e o Praticar mostram os números das duas unidades novas.
+- [ ] O selo "não revisada" aparece em todos os exercícios novos (são de IA).
+- [ ] Um erro numa lição da U2 ou da G1 vai para o banco de erros e volta no treino, como na U1.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
+Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+PLAN). As provas do Banestes de 2012 e 2024 não estão no app (faltam os gabaritos).
 
 ## Verificações automáticas já executadas
 Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem erros nem warnings; **135 testes
@@ -319,3 +345,9 @@ Versão 0.9.0 (temas e trilha dos Gerais juntos com a 0.8.2): `./gradlew check` 
 unitários (inclui `ContrastTest` nos quatro temas e nas trilhas dos Gerais, `TrailEngineTest` com as duas trilhas e
 `LegacyPaletteTest`); validador de conteúdo sem erros (1 aviso); pacote de provas com 205 questões (123 dos Específicos
 e 82 dos Gerais, esperando conteúdo); harness com 117 testes e renders `th_*.png` e `site_*.png`.
+
+Versão 0.10.0 (U2 e G1): `./gradlew check` sem erros, com 196 testes unitários (inclui o teste que valida todos os
+pacotes embutidos e o conceito de cada questão da U2 e da G1); validador de conteúdo com 3 pacotes e 492 exercícios,
+sem erros (1 aviso antigo, u1l2q09); `validate_provas` com 218 questões OK; pacote de provas do app regerado (205
+questões, 83 com conceito); harness com 117 testes, todos passando. Saídas de código da U2 conferidas rodando Java 17,
+.NET 6 e Python 3.12.

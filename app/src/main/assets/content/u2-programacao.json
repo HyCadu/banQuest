@@ -1,0 +1,3665 @@
+{
+ "schema": 1,
+ "pack": "u2-programacao",
+ "version": 1,
+ "unit": {
+  "id": "u2",
+  "order": 2,
+  "title": "Programação e orientação a objetos",
+  "editalTopics": [
+   "Fundamentos: sintaxe, compilação e execução, tipos, variáveis, operadores, controle e repetição",
+   "Classes, interfaces, métodos e atributos; packages",
+   "Encapsulamento, herança, polimorfismo; sobrecarga e sobrescrita",
+   "Tratamento de exceções e acesso a banco de dados",
+   "Princípios SOLID",
+   "PHP, Python, C, Java, C# e .NET",
+   "Testes unitários e de integração, TDD e BDD",
+   "Git, GitFlow, pull requests e code review",
+   "Uso responsável de assistentes de código baseados em IA"
+  ]
+ },
+ "lessons": [
+  {
+   "id": "u2l1",
+   "order": 1,
+   "title": "Fundamentos de programação",
+   "concepts": [
+    {
+     "id": "u2l1c1",
+     "title": "Tipos e representação de números",
+     "summary": "int guarda inteiros; double, números com casas decimais; boolean, verdadeiro ou falso. Entre dois int, a divisão descarta a parte fracionária (7 / 2 = 3). Em complemento a dois com n bits, o intervalo vai de −2^(n−1) a 2^(n−1) − 1."
+    },
+    {
+     "id": "u2l1c2",
+     "title": "Operadores e precedência",
+     "summary": "Multiplicação, divisão e resto (%) vêm antes de soma e subtração; parênteses mudam a ordem. x++ usa o valor e depois soma 1; ++x soma antes. && e || só avaliam o lado direito quando precisam (curto-circuito)."
+    },
+    {
+     "id": "u2l1c3",
+     "title": "Controle e repetição",
+     "summary": "if/else e switch escolhem caminhos; for, while e do-while repetem. while testa antes; do-while executa uma vez antes de testar. break sai do laço; continue pula para a próxima volta. Sem break, o switch do Java continua nos case seguintes."
+    },
+    {
+     "id": "u2l1c4",
+     "title": "Strings, arrays e coleções",
+     "summary": "Arrays têm tamanho fixo e começam no índice 0. Em Java, String é imutável e o conteúdo se compara com equals (== compara referências). Lista mantém a ordem, conjunto não aceita repetidos e mapa guarda pares chave-valor."
+    },
+    {
+     "id": "u2l1c5",
+     "title": "Exceções",
+     "summary": "try envolve o código que pode falhar; catch trata a exceção (o primeiro compatível, de cima para baixo); finally roda sempre. Em Java, exceções verificadas (como IOException) precisam ser tratadas ou declaradas com throws."
+    },
+    {
+     "id": "u2l1c6",
+     "title": "Compilação, execução e acesso a dados",
+     "summary": "C é compilado para código nativo. Java vira bytecode (.class) que a JVM executa; C# vira IL, que o CLR executa. Python costuma ser interpretado. No acesso a banco, o valor do usuário vai como parâmetro, nunca concatenado no SQL."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u2l1q01",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em Java, int guarda inteiros (idade = 30), double guarda números com casas decimais (taxa = 1.5) e boolean guarda true ou false. Agora: no sistema do caixa, a variável saldo vai guardar 1250.75. Qual tipo serve?",
+     "options": [
+      "int",
+      "double",
+      "boolean"
+     ],
+     "answer": 1,
+     "explanation": "1250.75 tem casas decimais, então precisa de um tipo real como double. int perderia os centavos e boolean só guarda verdadeiro ou falso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q02",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em Java, a divisão entre dois int descarta a parte fracionária: 7 / 2 resulta 3. No caixa, com int notas = 9 e int pessoas = 4, a expressão notas / pessoas vale 2.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "9 / 4 daria 2,25; entre dois int a parte fracionária é descartada e sobra 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q03",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em Python 3, / sempre devolve número real e // faz a divisão inteira. No caixa, x = 7 / 2 e y = 7 // 2. Os valores de x e y são",
+     "options": [
+      "3 e 3.5",
+      "3.5 e 3.5",
+      "3.5 e 3"
+     ],
+     "answer": 2,
+     "explanation": "7 / 2 = 3.5 (divisão real) e 7 // 2 = 3 (divisão inteira, arredonda para baixo).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q04",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em Java, associe cada tipo primitivo ao que ele guarda no sistema do caixa:",
+     "pairs": [
+      {
+       "left": "int",
+       "right": "Quantidade de cédulas, como 42"
+      },
+      {
+       "left": "double",
+       "right": "Valor com centavos, como 10.50"
+      },
+      {
+       "left": "char",
+       "right": "Um único caractere, como 'S'"
+      },
+      {
+       "left": "boolean",
+       "right": "Se o caixa está aberto ou não"
+      }
+     ],
+     "explanation": "int é inteiro, double é real com casas decimais, char é um caractere entre aspas simples e boolean é true ou false.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q05",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "representacao",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Na representação de inteiros em complemento a dois com 8 bits, o intervalo de valores representáveis é",
+     "options": [
+      "de −128 a 127.",
+      "de −127 a 127.",
+      "de −128 a 128.",
+      "de 0 a 255.",
+      "de −255 a 255."
+     ],
+     "answer": 0,
+     "explanation": "Com n bits, o complemento a dois vai de −2^(n−1) a 2^(n−1) − 1: com 8 bits, de −128 a 127. De 0 a 255 é o intervalo sem sinal; −127 a 127 seria o de sinal-magnitude ou complemento a um, que têm dois zeros.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q06",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No sistema do caixa, um desenvolvedor calcula a média de atendimentos de um turno com o trecho Java abaixo. O valor exibido é",
+     "code": "int total = 7;\ndouble media = total / 2;\nSystem.out.println(media);",
+     "options": [
+      "3.5",
+      "3.0",
+      "3",
+      "4.0",
+      "erro de compilação"
+     ],
+     "answer": 1,
+     "explanation": "total / 2 é uma divisão entre dois int e vale 3; só depois o resultado é convertido para double, e println mostra 3.0. Para obter 3.5, seria preciso total / 2.0 ou converter antes: (double) total / 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q07",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em 2 + 3 * 4, a multiplicação vem antes da soma: 2 + 12 = 14. Agora: no cálculo da tarifa, quanto vale 10 - 4 / 2 entre inteiros?",
+     "options": [
+      "8",
+      "3",
+      "6"
+     ],
+     "answer": 0,
+     "explanation": "A divisão vem antes da subtração: 4 / 2 = 2, e 10 − 2 = 8. Daria 3 só com parênteses: (10 − 4) / 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q08",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O operador % devolve o resto da divisão inteira: 17 % 5 vale 2. Na tarifa por blocos de 6 operações, 20 % 6 vale 2.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "20 = 3 × 6 + 2, então o resto é 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q09",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em Java, x++ usa o valor de x e só depois soma 1; ++x soma antes de usar. Com int x = 5; int y = x++ + 2; quais são os valores finais?",
+     "options": [
+      "y = 8 e x = 6",
+      "y = 7 e x = 6",
+      "y = 7 e x = 5"
+     ],
+     "answer": 1,
+     "explanation": "x++ entrega 5 para a conta (5 + 2 = 7) e, em seguida, x passa a 6. Com ++x, y seria 8.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l1q10",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Na tarifa média, a divisão só pode ser feita se qtd for diferente de zero. Complete com o operador lógico de curto-circuito, que não avalia o lado direito quando o esquerdo já é falso:",
+     "code": "if (qtd != 0 ___ total / qtd > 100)\n    Console.WriteLine(\"Média alta\");",
+     "options": [
+      "&",
+      "&&",
+      "||",
+      "|"
+     ],
+     "answer": 1,
+     "explanation": "&& só avalia total / qtd se qtd != 0 for verdadeiro, evitando a divisão por zero. & avalia os dois lados mesmo assim; || e | significam \"ou\".",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q11",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Considere o trecho Java abaixo. O que é exibido?",
+     "code": "int a = 3, b = 4;\nint r = a++ * 2 + --b;\nSystem.out.println(r + \" \" + a);",
+     "options": [
+      "10 4",
+      "9 3",
+      "9 4",
+      "11 4",
+      "10 3"
+     ],
+     "answer": 2,
+     "explanation": "a++ entrega 3 (e a passa a 4): 3 * 2 = 6. --b decrementa antes de usar: b vale 3. r = 6 + 3 = 9. Exibe \"9 4\". Com ++a daria 11; com b-- daria 10.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q12",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre a precedência de operadores em Java, NÃO é correto afirmar que",
+     "options": [
+      "a multiplicação * é avaliada antes da adição + quando não há parênteses.",
+      "os parênteses alteram a ordem padrão de avaliação de uma expressão.",
+      "o operador && tem precedência maior que o operador ||.",
+      "o operador de atribuição = tem precedência maior que os operadores aritméticos.",
+      "os operadores relacionais, como <, são avaliados antes do operador &&."
+     ],
+     "answer": 3,
+     "explanation": "A atribuição tem a menor precedência: em x = a + b, a soma é feita antes e só então o resultado é atribuído. As demais afirmações estão corretas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q13",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: for (int i = 1; i <= 3; i++) repete o bloco 3 vezes, com i = 1, 2 e 3. Agora: na fila da agência, quantas senhas são chamadas por for (int i = 0; i < 5; i++)?",
+     "options": [
+      "4",
+      "6",
+      "5"
+     ],
+     "answer": 2,
+     "explanation": "i vale 0, 1, 2, 3 e 4: cinco voltas. Quando i chega a 5, a condição i < 5 é falsa e o laço termina.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q14",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "while testa a condição antes de cada volta; do-while executa o bloco uma vez e só depois testa. Na fila, com int senha = 10; do { senha++; } while (senha < 5); a variável senha termina valendo 11.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O do-while executa o bloco uma vez (senha vai a 11) e só então testa 11 < 5, que é falso. Com while, o bloco nem rodaria.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q15",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "break encerra o laço; continue pula para a próxima volta. Em Python, o laço percorre as senhas [1, 2, 3, 4], imprime cada uma e executa break quando encontra a senha 3, antes de imprimi-la. O que aparece?",
+     "options": [
+      "1 e 2",
+      "1, 2 e 4",
+      "1, 2 e 3"
+     ],
+     "answer": 0,
+     "explanation": "O break na senha 3 encerra o laço antes do print, então só 1 e 2 aparecem. Com continue, apareceriam 1, 2 e 4.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l1q16",
+     "type": "order_code",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ordene as linhas Python que somam as senhas de 1 a 5 e exibem o total:",
+     "lines": [
+      "total = 0",
+      "for senha in range(1, 6):",
+      "    total += senha",
+      "print(total)"
+     ],
+     "explanation": "Primeiro o acumulador começa em 0; o for percorre 1 a 5 (range não inclui o 6); o corpo indentado soma; o print, fora do laço, mostra 15.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q17",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Considere o trecho Java abaixo. O valor exibido é",
+     "code": "int op = 2;\nString s = \"\";\nswitch (op) {\n    case 1: s += \"A\";\n    case 2: s += \"B\";\n    case 3: s += \"C\"; break;\n    default: s += \"D\";\n}\nSystem.out.println(s);",
+     "options": [
+      "B",
+      "BCD",
+      "ABC",
+      "D",
+      "BC"
+     ],
+     "answer": 4,
+     "explanation": "op vale 2: a execução entra no case 2 e, como não há break, continua no case 3 (\"fall-through\") até o break. s fica \"BC\"; o default não é executado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q18",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um terminal de autoatendimento, o menu deve ser lido e processado repetidamente até o cliente digitar 0, e a primeira leitura deve acontecer antes de qualquer teste. A estrutura de repetição mais adequada é",
+     "options": [
+      "do-while, que executa o bloco uma vez antes de testar a condição de parada.",
+      "while, que testa a condição antes e garante ao menos uma execução do bloco.",
+      "for, que exige conhecer o número exato de repetições antes de começar.",
+      "switch, que repete o bloco enquanto o valor lido corresponder a um case.",
+      "if-else, que repete a leitura até que a condição se torne falsa."
+     ],
+     "answer": 0,
+     "explanation": "do-while executa o corpo e só depois testa, garantindo a primeira leitura. while testa antes (pode não executar), switch e if-else não repetem.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q19",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em Java, o array nomes = {\"Ana\", \"Bia\", \"Caio\"} começa no índice 0, então nomes[0] é \"Ana\". Agora: no cadastro, qual é nomes[2]?",
+     "options": [
+      "\"Bia\"",
+      "\"Caio\"",
+      "erro: índice inexistente"
+     ],
+     "answer": 1,
+     "explanation": "Os índices são 0, 1 e 2: nomes[2] é o terceiro elemento, \"Caio\". O erro só viria com nomes[3].",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q20",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em Java, == compara se duas variáveis apontam para o mesmo objeto, e equals compara o conteúdo. Para saber se dois nomes digitados no cadastro têm o mesmo texto, o correto é nome1.equals(nome2).",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Duas Strings com o mesmo texto podem ser objetos diferentes; equals compara os caracteres, == compara as referências.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q21",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em Java, String é imutável: métodos como toUpperCase() devolvem uma String nova e não alteram a original. No cadastro, depois de String s = \"ana\"; s.toUpperCase(); qual é o valor de s?",
+     "options": [
+      "\"ANA\", em maiúsculas",
+      "null",
+      "\"ana\", sem mudança"
+     ],
+     "answer": 2,
+     "explanation": "O resultado de toUpperCase() foi descartado. Para mudar s, seria preciso s = s.toUpperCase(); s nunca fica null nesse código.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l1q22",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada estrutura ao seu uso no cadastro de clientes:",
+     "pairs": [
+      {
+       "left": "Array",
+       "right": "Tamanho fixo, acesso por índice"
+      },
+      {
+       "left": "Lista (ArrayList, list)",
+       "right": "Tamanho variável, mantém a ordem de inserção"
+      },
+      {
+       "left": "Conjunto (Set)",
+       "right": "Não aceita elementos repetidos"
+      },
+      {
+       "left": "Mapa (Map, dict)",
+       "right": "Guarda pares chave-valor, como CPF e nome"
+      }
+     ],
+     "explanation": "Array tem tamanho fixo; lista cresce e guarda a ordem; conjunto descarta repetidos; mapa associa uma chave a um valor.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q23",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No cadastro de clientes, um script em Python 3 separa parte da lista de nomes, como abaixo. O que é exibido?",
+     "code": "nomes = [\"Ana\", \"Bia\", \"Caio\", \"Davi\", \"Eva\"]\nprint(nomes[1:3], nomes[-1])",
+     "options": [
+      "['Bia', 'Caio', 'Davi'] Eva",
+      "['Bia', 'Caio'] Eva",
+      "['Ana', 'Bia', 'Caio'] Eva",
+      "['Bia', 'Caio'] Ana",
+      "['Ana', 'Bia'] Davi"
+     ],
+     "answer": 1,
+     "explanation": "nomes[1:3] pega os índices 1 e 2 (o fim não entra): ['Bia', 'Caio']. O índice -1 é o último elemento: 'Eva'.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q24",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um sistema guarda os CPFs dos clientes já atendidos no dia e precisa responder rapidamente se um CPF já foi atendido, sem guardar repetições. A estrutura mais adequada é",
+     "options": [
+      "uma lista encadeada, que descarta duplicatas automaticamente e consulta qualquer elemento em tempo médio constante.",
+      "um array ordenado à mão, que descarta duplicatas sem nenhum código adicional.",
+      "um conjunto baseado em hash, como HashSet, que descarta duplicatas e consulta em tempo médio constante.",
+      "uma pilha, que permite consultar qualquer elemento sem retirar os que estão acima.",
+      "uma fila, que mantém os elementos sem repetição e em ordem alfabética."
+     ],
+     "answer": 2,
+     "explanation": "O HashSet não guarda repetidos e, pelo hash, verifica a presença em tempo médio O(1). Lista e array exigem busca, e pilha e fila não impedem repetição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q25",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em Java, try { ... } catch (ArithmeticException e) { ... } captura a divisão inteira por zero e o programa segue. Agora: na leitura do extrato, o bloco finally é executado",
+     "options": [
+      "com ou sem exceção",
+      "só quando há exceção",
+      "só quando não há exceção"
+     ],
+     "answer": 0,
+     "explanation": "finally roda nos dois casos; por isso é o lugar de fechar o arquivo do extrato.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q26",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em Java, exceção verificada (checked) precisa ser tratada com try-catch ou declarada com throws. IOException é verificada; então um método que lê o arquivo do extrato e não a trata precisa declarar throws IOException.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O compilador exige o tratamento ou a declaração das exceções verificadas; sem isso, o código não compila.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q27",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Os blocos catch são testados de cima para baixo e só o primeiro compatível executa. O extrato lança FileNotFoundException (subclasse de IOException), e o código tem catch (IOException e) antes de catch (Exception e). Qual executa?",
+     "options": [
+      "catch (Exception e)",
+      "catch (IOException e)",
+      "os dois, nessa ordem"
+     ],
+     "answer": 1,
+     "explanation": "FileNotFoundException é uma IOException, então o primeiro catch já é compatível e só ele executa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l1q28",
+     "type": "order_code",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ordene as linhas em C# para ler o saldo do extrato, avisar se a leitura falhar e fechar o arquivo em qualquer caso:",
+     "lines": [
+      "try {",
+      "    saldo = LerSaldo(arquivo);",
+      "} catch (IOException ex) {",
+      "    Console.WriteLine(\"Falha na leitura\");",
+      "} finally {",
+      "    arquivo.Close();",
+      "}"
+     ],
+     "explanation": "try envolve a leitura, catch trata a falha e finally, por último, fecha o arquivo com ou sem exceção.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q29",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Considere o código Java abaixo. O que é exibido?",
+     "code": "static int f() {\n    try {\n        return 1;\n    } finally {\n        System.out.print(\"F\");\n    }\n}\n\npublic static void main(String[] args) {\n    System.out.print(f());\n}",
+     "options": [
+      "1",
+      "1F",
+      "F",
+      "F1",
+      "erro de compilação"
+     ],
+     "answer": 3,
+     "explanation": "O return 1 é preparado, mas o finally roda antes de o método terminar e imprime \"F\". Depois o main imprime o valor devolvido, 1: \"F1\".",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q30",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "A respeito do tratamento de exceções em Java, NÃO é correto afirmar que",
+     "options": [
+      "um bloco try pode ser seguido de vários blocos catch, testados na ordem em que aparecem.",
+      "o bloco finally é executado tanto quando há exceção quanto quando não há.",
+      "throw lança uma exceção, e throws a declara na assinatura do método.",
+      "um catch da superclasse antes do catch de uma subclasse torna o segundo inalcançável e gera erro de compilação.",
+      "RuntimeException e suas subclasses são exceções verificadas e precisam ser declaradas com throws."
+     ],
+     "answer": 4,
+     "explanation": "RuntimeException e subclasses são não verificadas (unchecked): o compilador não exige tratamento nem throws. As demais estão corretas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q31",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o compilador javac transforma Agencia.java em Agencia.class, com bytecode. Agora: qual programa executa o Agencia.class?",
+     "options": [
+      "o javac",
+      "o processador, direto",
+      "a JVM"
+     ],
+     "answer": 2,
+     "explanation": "O bytecode não é código nativo: quem o executa é a máquina virtual Java (JVM). O javac só compila.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l1q32",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Um programa em C compilado para código nativo gera um executável para a máquina e o sistema de destino. Então o executável do aplicativo da agência, compilado em C no Windows, roda num Linux sem recompilar.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Código nativo depende do sistema e do processador: para o Linux, é preciso recompilar. Quem roda em vários sistemas sem recompilar é o bytecode, com uma JVM.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l1q33",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No aplicativo da agência, o valor digitado nunca deve ser concatenado ao SQL, senão abre brecha para injeção de SQL; ele vai como parâmetro. Em Python com o driver psycopg2, qual linha está correta?",
+     "options": [
+      "cur.execute(\"SELECT * FROM conta WHERE id = %s\", (id,))",
+      "cur.execute(\"SELECT * FROM conta WHERE id = \" + id)",
+      "cur.execute(f\"SELECT * FROM conta WHERE id = {id}\")"
+     ],
+     "answer": 0,
+     "explanation": "O marcador %s com a tupla de parâmetros deixa o driver tratar o valor. Concatenar ou usar f-string coloca o texto do usuário dentro do SQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l1q34",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada peça ao seu papel na execução de programas:",
+     "pairs": [
+      {
+       "left": "Compilador",
+       "right": "Traduz o código-fonte antes da execução"
+      },
+      {
+       "left": "Interpretador",
+       "right": "Lê e executa o programa durante a execução"
+      },
+      {
+       "left": "JVM",
+       "right": "Executa o bytecode Java"
+      },
+      {
+       "left": "CLR",
+       "right": "Executa o código intermediário do .NET"
+      }
+     ],
+     "explanation": "O compilador traduz antes; o interpretador executa enquanto lê; JVM e CLR são as máquinas virtuais do Java e do .NET.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l1q35",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Na plataforma Java, o arquivo .class gerado pelo compilador javac contém",
+     "options": [
+      "bytecode, executado pela máquina virtual Java em qualquer sistema que a possua.",
+      "código de máquina nativo, específico do processador em que foi compilado.",
+      "código-fonte otimizado, interpretado linha a linha pelo próprio javac.",
+      "instruções em CIL, executadas pelo Common Language Runtime do .NET.",
+      "código de montagem (assembly) que o sistema converte em executável."
+     ],
+     "answer": 0,
+     "explanation": "O .class guarda bytecode, independente de plataforma, executado pela JVM. CIL e CLR são do .NET; código nativo é o que um compilador C gera.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "prova"
+    },
+    {
+     "id": "u2l1q36",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "fundamentos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um sistema Java consulta a tabela cliente com o CPF digitado pelo usuário. Para evitar injeção de SQL, o desenvolvedor deve",
+     "options": [
+      "usar Statement concatenando o CPF ao texto do SQL, depois de convertê-lo para maiúsculas e remover os espaços.",
+      "usar PreparedStatement com o marcador ? e definir o valor com setString antes de executar a consulta.",
+      "usar ResultSet com o marcador ? e definir o valor com setString depois de percorrer as linhas.",
+      "usar Statement com executeUpdate, que valida automaticamente os valores concatenados.",
+      "usar DriverManager com o CPF na URL de conexão, para que o banco filtre as linhas."
+     ],
+     "answer": 1,
+     "explanation": "No PreparedStatement o SQL é enviado com marcadores (?) e os valores entram separados (setString, setInt), sem virar parte do comando. Concatenar, com Statement ou não, mantém a brecha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l1c6",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u2l2",
+   "order": 2,
+   "title": "Orientação a objetos",
+   "concepts": [
+    {
+     "id": "u2l2c1",
+     "title": "Classes, objetos e construtores",
+     "summary": "A classe é o molde, com atributos (dados) e métodos (comportamentos); cada new cria um objeto. O construtor tem o nome da classe, não declara retorno e inicializa o objeto. Um atributo static é da classe e é compartilhado por todos os objetos."
+    },
+    {
+     "id": "u2l2c2",
+     "title": "Encapsulamento e pacotes",
+     "summary": "Atributos ficam private e são acessados por métodos ou propriedades que validam os valores. Em Java: private (só a classe), sem modificador (o pacote), protected (pacote e subclasses), public (todos). Pacotes agrupam classes e evitam conflito de nomes."
+    },
+    {
+     "id": "u2l2c3",
+     "title": "Herança e classes abstratas",
+     "summary": "extends faz a subclasse herdar atributos e métodos da superclasse; super chama o construtor ou métodos dela. Java não tem herança múltipla de classes. Classe abstrata não pode ser instanciada e pode ter métodos sem corpo, que as subclasses concretas implementam."
+    },
+    {
+     "id": "u2l2c4",
+     "title": "Interfaces",
+     "summary": "Uma interface é um contrato: declara métodos que a classe que a implementa precisa escrever. Uma classe estende uma só classe, mas pode implementar várias interfaces. Em C#, a mesma sintaxe : serve para herdar e implementar, e as interfaces começam com I."
+    },
+    {
+     "id": "u2l2c5",
+     "title": "Polimorfismo: sobrecarga e sobrescrita",
+     "summary": "Sobrecarga: mesmo nome, parâmetros diferentes, na mesma classe. Sobrescrita: a subclasse redefine um método herdado com a mesma assinatura. Com a variável do tipo da superclasse, roda o método do objeto real. Em C#, a base marca virtual e a derivada, override."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u2l2q01",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: a classe Conta é o molde e new Conta() cria um objeto (uma instância). Agora: em Conta c1 = new Conta(); Conta c2 = new Conta(); quantos objetos Conta foram criados?",
+     "options": [
+      "1",
+      "nenhum, só a classe",
+      "2"
+     ],
+     "answer": 2,
+     "explanation": "Cada new cria um objeto: c1 e c2 são duas instâncias diferentes da mesma classe.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l2q02",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O construtor tem o nome da classe, não declara tipo de retorno e roda no new. Então, em Java, public void Conta() { } é um construtor da classe Conta.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Com void, vira um método comum que por acaso tem o nome da classe. O construtor seria public Conta() { }.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l2q03",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um atributo static pertence à classe e é compartilhado por todos os objetos. A classe Conta tem static int totalContas, somado em 1 no construtor. Depois de criar 3 contas, quanto vale Conta.totalContas?",
+     "options": [
+      "3",
+      "1",
+      "0"
+     ],
+     "answer": 0,
+     "explanation": "Há um único totalContas para a classe inteira, e cada construtor soma 1 nele: 3.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l2q04",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada termo ao exemplo na classe Conta:",
+     "pairs": [
+      {
+       "left": "Classe",
+       "right": "Conta, o molde"
+      },
+      {
+       "left": "Objeto",
+       "right": "A conta da Ana, criada com new"
+      },
+      {
+       "left": "Atributo",
+       "right": "saldo, um dado da conta"
+      },
+      {
+       "left": "Método",
+       "right": "depositar(valor), um comportamento"
+      }
+     ],
+     "explanation": "A classe define; o objeto é a instância; atributos são os dados e métodos são as ações.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l2q05",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para numerar os atendimentos da agência, um desenvolvedor escreveu a classe Java abaixo. O que é exibido?",
+     "code": "class Contador {\n    static int total = 0;\n    int id;\n    Contador() {\n        total++;\n        id = total;\n    }\n}\n// no main:\nContador a = new Contador();\nContador b = new Contador();\nContador c = new Contador();\nSystem.out.println(a.id + \" \" + Contador.total);",
+     "options": [
+      "3 3",
+      "1 1",
+      "1 3",
+      "0 3",
+      "3 1"
+     ],
+     "answer": 2,
+     "explanation": "total é static, então é um só para a classe: chega a 3 depois dos três new. id é de cada objeto e recebe o total da hora da criação: a.id = 1.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q06",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em orientação a objetos, um método construtor",
+     "options": [
+      "é executado sempre que qualquer outro método do objeto é chamado.",
+      "precisa declarar void como tipo de retorno, já que não devolve valor.",
+      "só pode existir um por classe e não pode receber parâmetros.",
+      "é executado na criação do objeto e costuma inicializar os seus atributos.",
+      "é executado quando o objeto é removido da memória pelo coletor."
+     ],
+     "answer": 3,
+     "explanation": "O construtor roda no new e prepara o estado inicial. Não declara retorno, pode ser sobrecarregado (vários por classe, com parâmetros diferentes) e não é chamado a cada método.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q07",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: private double saldo; só pode ser lido ou alterado dentro da própria classe Conta; quem está fora usa os métodos públicos depositar e getSaldo. Agora: um objeto de outra classe tenta conta.saldo = 1000; em Java. O resultado é",
+     "options": [
+      "o saldo passa a 1000",
+      "erro de compilação",
+      "o saldo vira 0"
+     ],
+     "answer": 1,
+     "explanation": "Fora da classe, o atributo private não é visível: o compilador recusa o acesso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l2q08",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em Java, protected dá acesso à própria classe, às subclasses e às classes do mesmo pacote. Então uma classe do mesmo pacote de Conta, que não é subclasse dela, consegue acessar um atributo protected de Conta.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "No Java, protected inclui o acesso de pacote. (No C#, protected não tem essa regra de pacote.)",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l2q09",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Para que só a própria classe Conta acesse o saldo, complete a declaração com o modificador adequado:",
+     "code": "public class Conta {\n    ___ double saldo;\n}",
+     "options": [
+      "public",
+      "static",
+      "private",
+      "protected"
+     ],
+     "answer": 2,
+     "explanation": "private restringe o acesso à própria classe, que é o ponto de partida do encapsulamento. protected e public abrem o acesso; static não trata de acesso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l2q10",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada modificador de acesso do Java a quem enxerga o atributo saldo:",
+     "pairs": [
+      {
+       "left": "private",
+       "right": "Só a própria classe"
+      },
+      {
+       "left": "sem modificador",
+       "right": "Classes do mesmo pacote"
+      },
+      {
+       "left": "protected",
+       "right": "Mesmo pacote e subclasses"
+      },
+      {
+       "left": "public",
+       "right": "Qualquer classe"
+      }
+     ],
+     "explanation": "Do mais restrito ao mais aberto: private, padrão (pacote), protected, public.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l2q11",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Na classe Conta, o atributo saldo era public e vários módulos o alteravam diretamente, inclusive com valores negativos. Para aplicar o encapsulamento, o analista deve",
+     "options": [
+      "tornar saldo static, para que todas as contas compartilhem um único valor validado.",
+      "tornar saldo protected, o que impede o acesso de classes do mesmo pacote e também o de todas as subclasses de Conta.",
+      "manter saldo public e criar uma subclasse que redefina o atributo com valor positivo.",
+      "tornar a classe Conta abstract, o que impede a alteração direta dos seus atributos.",
+      "tornar saldo private e oferecer métodos como depositar e sacar, que validam o valor antes de alterá-lo."
+     ],
+     "answer": 4,
+     "explanation": "Encapsular é esconder o dado (private) e expor operações que garantem as regras. static compartilharia o saldo entre contas; protected não impede o acesso do pacote nem das subclasses; abstract não trata de acesso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q12",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em Java, os pacotes (packages)",
+     "options": [
+      "agrupam classes relacionadas e criam espaços de nomes, permitindo classes de mesmo nome em pacotes diferentes.",
+      "obrigam todas as classes do pacote a serem public, para que possam ser importadas.",
+      "substituem a herança, pois cada classe passa a receber automaticamente os métodos das demais classes do mesmo pacote.",
+      "são arquivos compactados que a JVM descompacta para executar cada classe.",
+      "permitem herança múltipla entre as classes que pertencem ao mesmo pacote."
+     ],
+     "answer": 0,
+     "explanation": "Pacotes organizam o código e evitam conflito de nomes (java.util.Date e java.sql.Date convivem). Não dão herança nem obrigam o public; o arquivo compactado é o .jar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q13",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: class ContaPoupanca extends Conta faz ContaPoupanca herdar atributos e métodos de Conta, que é a superclasse. Agora: em class ContaSalario extends Conta, qual é a subclasse?",
+     "options": [
+      "Conta",
+      "as duas",
+      "ContaSalario"
+     ],
+     "answer": 2,
+     "explanation": "Quem vem antes do extends é a subclasse (herda); quem vem depois é a superclasse.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l2q14",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Classe abstrata não pode ser instanciada com new; serve de base para subclasses. Se Conta é abstract, então new Conta() compila em Java.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "O compilador recusa new de classe abstrata. Instancia-se uma subclasse concreta, como new ContaPoupanca().",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l2q15",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Java não tem herança múltipla de classes: uma classe estende uma só classe, mas pode implementar várias interfaces. Qual declaração é válida?",
+     "options": [
+      "class Poupanca extends Conta implements Rendivel",
+      "class Poupanca extends Conta, Investimento",
+      "class Poupanca implements Conta extends Rendivel"
+     ],
+     "answer": 0,
+     "explanation": "Uma única classe depois do extends e as interfaces depois do implements, nessa ordem.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l2q16",
+     "type": "order_code",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ordene as linhas para criar a subclasse ContaPoupanca, cujo construtor repassa o titular ao construtor de Conta:",
+     "lines": [
+      "public class ContaPoupanca extends Conta {",
+      "    public ContaPoupanca(String titular) {",
+      "        super(titular);",
+      "    }",
+      "}"
+     ],
+     "explanation": "A declaração com extends abre a classe; o construtor chama super(titular) como primeira instrução; depois fecham-se o construtor e a classe.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l2q17",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em Java, a palavra-chave super, usada dentro de uma subclasse,",
+     "options": [
+      "cria uma nova instância da superclasse, independente do objeto atual, e a devolve para uso dentro da subclasse.",
+      "chama o construtor ou um método da superclasse, como em super(titular) na primeira linha do construtor.",
+      "impede que a subclasse sobrescreva os métodos herdados da superclasse.",
+      "declara que a classe não pode ser estendida por nenhuma outra classe.",
+      "chama um método estático da própria subclasse, sem acessar a superclasse."
+     ],
+     "answer": 1,
+     "explanation": "super referencia a parte herdada do próprio objeto: super(...) chama o construtor da superclasse e super.metodo() a versão herdada. Quem impede a extensão é final.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q18",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre classes abstratas em Java, NÃO é correto afirmar que",
+     "options": [
+      "uma classe abstrata não pode ser instanciada diretamente com o operador new.",
+      "uma subclasse concreta precisa implementar todos os métodos abstratos herdados.",
+      "uma classe abstrata só pode declarar métodos abstratos, sem nenhum método com corpo.",
+      "uma classe abstrata pode ter atributos e construtores.",
+      "um método abstrato declara a assinatura, mas não tem corpo."
+     ],
+     "answer": 2,
+     "explanation": "Classe abstrata pode misturar métodos com corpo e métodos abstratos. As demais afirmações estão corretas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q19",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: interface Tarifavel { double tarifa(); } é um contrato; class ContaCorrente implements Tarifavel precisa escrever tarifa(). Agora: ContaCorrente implementa Tarifavel e não escreve tarifa(). Em Java, o resultado é",
+     "options": [
+      "tarifa vale 0 sozinha",
+      "erro, salvo se a classe for abstrata",
+      "tarifa vem vazia de Object"
+     ],
+     "answer": 1,
+     "explanation": "Quem implementa a interface assume o contrato: uma classe concreta precisa implementar todos os métodos abstratos dela.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l2q20",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Uma classe Java pode implementar várias interfaces ao mesmo tempo. Logo, class ContaCorrente implements Tarifavel, Auditavel é válida.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Herança de classe é única, mas interfaces podem ser várias, separadas por vírgula.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l2q21",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em C#, as interfaces costumam começar com I, e a mesma sintaxe : serve para herdar uma classe e implementar interfaces (a classe vem primeiro). Em class ContaCorrente : Conta, ITarifavel, o que são Conta e ITarifavel?",
+     "options": [
+      "As duas são interfaces",
+      "As duas são classes base",
+      "Conta é a classe base; ITarifavel, a interface"
+     ],
+     "answer": 2,
+     "explanation": "C# também só herda uma classe; ela vem primeiro e as interfaces depois.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l2q22",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada termo ao que ele representa:",
+     "pairs": [
+      {
+       "left": "Classe abstrata",
+       "right": "Pode ter atributos de instância e construtor"
+      },
+      {
+       "left": "Interface",
+       "right": "Contrato que várias classes implementam"
+      },
+      {
+       "left": "extends",
+       "right": "Estende uma classe em Java"
+      },
+      {
+       "left": "implements",
+       "right": "Implementa uma interface em Java"
+      }
+     ],
+     "explanation": "Interface é contrato sem estado de instância; classe abstrata pode ter estado e construtor. extends e implements são as palavras do Java.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l2q23",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em Java, uma interface",
+     "options": [
+      "pode ser instanciada com new, desde que todos os seus métodos tenham corpo e não haja atributos de instância.",
+      "pode estender apenas uma classe concreta, da qual herda os atributos.",
+      "impede que a classe que a implementa tenha outra superclasse além de Object.",
+      "pode ser implementada por várias classes sem relação entre si, tratadas pelo tipo da interface.",
+      "pode declarar construtores, que as classes implementadoras chamam com super()."
+     ],
+     "answer": 3,
+     "explanation": "Classes diferentes podem implementar a mesma interface, e o código passa a usá-las pelo tipo dela. Interface não é instanciada, não tem construtor e não estende classes (estende só outras interfaces).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q24",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um banco envia avisos por e-mail, SMS e notificação no aplicativo. O módulo de cobrança deve chamar enviar(mensagem) sem saber qual canal será usado, e novos canais devem entrar sem alterar a cobrança. A solução orientada a objetos mais adequada é",
+     "options": [
+      "criar uma única classe Notificador com um switch por canal, que é alterado a cada novo canal contratado.",
+      "tornar enviar um método static da classe Cobranca, recebendo o nome do canal em uma String.",
+      "criar uma classe por canal, sem relação entre elas, chamadas pelo nome na cobrança.",
+      "usar herança múltipla de classes para que a cobrança herde de todos os canais existentes.",
+      "definir uma interface Notificador com o método enviar e uma classe para cada canal que a implemente."
+     ],
+     "answer": 4,
+     "explanation": "A interface separa o \"o quê\" (enviar) do \"como\" (cada canal). A cobrança depende só do Notificador, e um canal novo é uma classe nova.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q25",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: sobrecarga é ter métodos com o mesmo nome e parâmetros diferentes na mesma classe, como depositar(double) e depositar(double, String). Agora: sacar(double) e sacar(double, boolean) na mesma classe são",
+     "options": [
+      "sobrecarga",
+      "sobrescrita",
+      "erro de compilação"
+     ],
+     "answer": 0,
+     "explanation": "Mesmo nome, listas de parâmetros diferentes, mesma classe: sobrecarga. O compilador escolhe pela chamada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l2q26",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Sobrescrita é a subclasse redefinir um método herdado com a mesma assinatura. Se ContaPoupanca redefine double tarifa() herdado de Conta, isso é sobrescrita.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Mesma assinatura, em classes diferentes ligadas por herança: sobrescrita (override).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l2q27",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No polimorfismo, a variável é do tipo da superclasse, mas o método que roda é o do objeto real. Em Conta c = new ContaPoupanca(); c.tarifa(); com ContaPoupanca sobrescrevendo tarifa(), qual versão executa?",
+     "options": [
+      "a de Conta",
+      "a de ContaPoupanca",
+      "as duas, em sequência"
+     ],
+     "answer": 1,
+     "explanation": "A escolha é feita na execução, pelo tipo do objeto (ContaPoupanca), e não pelo tipo da variável.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l2q28",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada termo ao seu significado:",
+     "pairs": [
+      {
+       "left": "Sobrecarga",
+       "right": "Mesmo nome, parâmetros diferentes"
+      },
+      {
+       "left": "Sobrescrita",
+       "right": "Subclasse redefine método herdado"
+      },
+      {
+       "left": "@Override",
+       "right": "Anotação Java que confere a sobrescrita"
+      },
+      {
+       "left": "virtual e override",
+       "right": "Par de palavras do C# para sobrescrever"
+      }
+     ],
+     "explanation": "Sobrecarga é decidida na compilação; sobrescrita, na execução. @Override faz o compilador conferir; em C#, a base usa virtual e a derivada override.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l2q29",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Considere o código Java abaixo. O que é exibido?",
+     "code": "class Conta {\n    double tarifa() { return 10; }\n    String tipo() { return \"C\"; }\n}\nclass Poupanca extends Conta {\n    double tarifa() { return 0; }\n}\n// no main:\nConta c = new Poupanca();\nSystem.out.println(c.tipo() + c.tarifa());",
+     "options": [
+      "C0.0",
+      "C10.0",
+      "P0.0",
+      "C0",
+      "erro de compilação"
+     ],
+     "answer": 0,
+     "explanation": "tipo() não foi sobrescrito, então vem de Conta (\"C\"). tarifa() foi sobrescrito, e como o objeto é Poupanca, roda a versão dela: 0.0 (double). Resultado: C0.0.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l2q30",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "orientacao-objetos",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Em C#, para que um método de uma classe base possa ser redefinido em uma classe derivada com comportamento polimórfico, o método da base e o da derivada devem ser marcados, respectivamente, com",
+     "options": [
+      "override e virtual.",
+      "virtual e override.",
+      "abstract e new.",
+      "static e override.",
+      "sealed e virtual."
+     ],
+     "answer": 1,
+     "explanation": "Em C#, o método da base precisa ser virtual (ou abstract) e a derivada usa override. new apenas esconde o método da base, sem polimorfismo; static e sealed impedem a sobrescrita.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l2c5",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u2l3",
+   "order": 3,
+   "title": "Princípios SOLID",
+   "concepts": [
+    {
+     "id": "u2l3c1",
+     "title": "Responsabilidade única (SRP)",
+     "summary": "Uma classe deve ter um só motivo para mudar. Se ela busca dados, formata e envia, uma mudança de layout mexe no mesmo código da regra de negócio. SOLID: S responsabilidade única, O aberto/fechado, L Liskov, I segregação de interfaces, D inversão de dependência."
+    },
+    {
+     "id": "u2l3c2",
+     "title": "Aberto/fechado (OCP)",
+     "summary": "Aberto para extensão, fechado para modificação: um comportamento novo entra como uma classe nova que implementa uma abstração, sem editar o código que já funciona. Cadeias de if/switch por tipo, que crescem a cada novidade, são o sinal clássico de violação."
+    },
+    {
+     "id": "u2l3c3",
+     "title": "Substituição de Liskov (LSP)",
+     "summary": "Onde o programa espera a superclasse, qualquer subclasse deve funcionar sem surpresa. Subclasse que lança erro num método herdado ou muda o que ele promete (Quadrado que altera a altura ao mudar a largura) viola o princípio."
+    },
+    {
+     "id": "u2l3c4",
+     "title": "Segregação de interfaces (ISP)",
+     "summary": "Nenhuma classe deve ser obrigada a implementar métodos que não usa. Interfaces grandes viram várias pequenas e cada cliente depende só da parte de que precisa. Métodos vazios ou que lançam \"não suportado\" são o sinal da violação."
+    },
+    {
+     "id": "u2l3c5",
+     "title": "Inversão de dependência (DIP)",
+     "summary": "Módulos de alto nível não dependem dos de baixo nível: os dois dependem de abstrações. Em vez de criar new MySqlRepositorio() dentro do serviço, o serviço recebe uma interface (injeção de dependência), o que permite trocar a implementação e testar com dublês."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u2l3q01",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: pelo SRP, uma classe deve ter um só motivo para mudar. Uma classe Extrato que calcula saldos e também gera o PDF tem dois motivos: a regra de cálculo e o layout. Agora: a classe Relatorio busca os dados no banco, monta o HTML e envia por e-mail. Quantos motivos de mudança ela tem?",
+     "options": [
+      "três",
+      "um",
+      "dois"
+     ],
+     "answer": 0,
+     "explanation": "Mudanças no acesso aos dados, no layout e no envio mexeriam na mesma classe: três responsabilidades.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l3q02",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Separar Relatorio em RepositorioRelatorio (busca os dados), FormatadorHtml (monta o HTML) e EnviadorEmail (envia) aplica o SRP.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Cada classe passa a ter um único motivo para mudar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l3q03",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Com Relatorio dividido em RepositorioRelatorio, FormatadorHtml e EnviadorEmail, a área de negócio pede um novo layout para o relatório. Qual classe muda?",
+     "options": [
+      "só RepositorioRelatorio",
+      "só FormatadorHtml",
+      "as três classes"
+     ],
+     "answer": 1,
+     "explanation": "O layout é responsabilidade de quem monta o HTML; as outras duas nem são tocadas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l3q04",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada letra do SOLID ao seu princípio:",
+     "pairs": [
+      {
+       "left": "S",
+       "right": "Responsabilidade única"
+      },
+      {
+       "left": "O",
+       "right": "Aberto/fechado"
+      },
+      {
+       "left": "L",
+       "right": "Substituição de Liskov"
+      },
+      {
+       "left": "I",
+       "right": "Segregação de interfaces"
+      },
+      {
+       "left": "D",
+       "right": "Inversão de dependência"
+      }
+     ],
+     "explanation": "Single responsibility, Open/closed, Liskov substitution, Interface segregation, Dependency inversion.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l3q05",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um sistema bancário, a classe ContratoService valida os dados do cliente, calcula as parcelas, grava o contrato no banco e gera o PDF. Uma mudança na alíquota de imposto e outra no modelo do PDF obrigaram a alterar e testar a mesma classe. O princípio SOLID violado é o",
+     "options": [
+      "aberto/fechado (OCP), pois a classe não pode ser instanciada por outras classes.",
+      "da substituição de Liskov (LSP), pois a classe não possui nenhuma subclasse.",
+      "da responsabilidade única (SRP), pois a classe concentra vários motivos para mudar.",
+      "da segregação de interfaces (ISP), pois a classe implementa interfaces demais.",
+      "da inversão de dependência (DIP), pois a classe usa tipos primitivos nos cálculos."
+     ],
+     "answer": 2,
+     "explanation": "Imposto e layout de PDF são motivos de mudança sem relação, reunidos numa só classe: violação do SRP. As justificativas das outras alternativas não descrevem os princípios citados.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q06",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: aberto/fechado (OCP) é aberto para extensão e fechado para modificação: um tipo novo entra como classe nova, sem editar o que já funciona. Agora: o cálculo de tarifa tem um if para cada tipo de conta, e cada tipo novo exige editar esse if. Isso",
+     "options": [
+      "aplica o OCP",
+      "não tem relação com o OCP",
+      "viola o OCP"
+     ],
+     "answer": 2,
+     "explanation": "Cada novidade obriga a modificar código existente e testado, o contrário do que o OCP pede.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l3q07",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Criar a interface Tarifa com o método calcular() e uma classe por tipo de conta permite acrescentar a conta universitária só criando uma classe nova. Isso segue o OCP.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O código existente fica fechado; a extensão é uma classe nova que implementa a abstração.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l3q08",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Tarifa é uma interface. Complete para que a tarifa da conta digital entre como extensão, sem mexer nas outras classes:",
+     "code": "public class TarifaDigital ___ Tarifa {\n    public double calcular(double valor) { return 0; }\n}",
+     "options": [
+      "extends",
+      "imports",
+      "overrides",
+      "implements"
+     ],
+     "answer": 3,
+     "explanation": "Uma classe implementa uma interface com implements. extends serve para estender uma classe (ou, numa interface, outra interface).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l3q09",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Com a interface Tarifa e as classes TarifaCorrente e TarifaPoupanca, o banco lança a conta salário. Pelo OCP, o que o desenvolvedor faz?",
+     "options": [
+      "cria a classe TarifaSalario",
+      "acrescenta um if em TarifaCorrente",
+      "altera a interface Tarifa"
+     ],
+     "answer": 0,
+     "explanation": "A extensão é uma classe nova; as classes e a interface que já existem não mudam.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l3q10",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um módulo calcula o frete com um switch sobre o tipo de entrega. A cada nova transportadora, o switch é editado e todo o módulo volta a ser testado. Para seguir o princípio aberto/fechado, a melhor alternativa é",
+     "options": [
+      "acrescentar um case ao switch sempre que uma nova transportadora for contratada.",
+      "tornar o método de cálculo static, para que ele não possa ser alterado por ninguém.",
+      "copiar o módulo inteiro para cada nova transportadora, mantendo o original intacto como referência.",
+      "definir uma abstração de cálculo de frete e implementar cada transportadora em uma classe própria.",
+      "marcar a classe como final, impedindo que ela seja estendida por outras classes."
+     ],
+     "answer": 3,
+     "explanation": "Com a abstração, uma transportadora nova é uma classe nova e o código existente não muda. Mais um case é justamente a modificação que o OCP evita; final impede a extensão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q11",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: pela substituição de Liskov (LSP), onde o programa usa a superclasse deve dar para usar qualquer subclasse sem surpresa. Se Conta tem sacar() e ContaInvestimento lança erro em todo saque, quem espera uma Conta quebra. Agora: Ave tem voar(); Pinguim estende Ave e lança erro em voar(). Isso",
+     "options": [
+      "segue o LSP",
+      "viola o LSP",
+      "é sobrecarga"
+     ],
+     "answer": 1,
+     "explanation": "Quem recebe uma Ave conta com voar(); um Pinguim no lugar quebra essa expectativa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l3q12",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Quadrado estende Retangulo e muda a altura sempre que a largura muda. Um código que define largura 4 e altura 5 e espera área 20 recebe outro valor quando o objeto é um Quadrado. Isso é um exemplo clássico de violação do LSP.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Com Quadrado, definir a altura 5 muda também a largura: a área vira 25. A subclasse não cumpre o que a superclasse promete.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l3q13",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A classe Pagamento tem o método estornar(). Uma subclasse respeita o LSP quando",
+     "options": [
+      "sobrescreve todos os métodos herdados",
+      "tem menos métodos que Pagamento",
+      "mantém o comportamento que Pagamento promete"
+     ],
+     "answer": 2,
+     "explanation": "Sobrescrever é permitido; o que não pode é quebrar o contrato que a superclasse oferece a quem a usa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l3q14",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 3,
+     "style": "caso_pratico",
+     "stem": "PagamentoBoleto herda estornar() de Pagamento, mas boleto pago não admite estorno, e a subclasse lança exceção. Uma solução que respeita o LSP é",
+     "options": [
+      "rever a hierarquia: estornar() só onde é aceito",
+      "documentar a exceção e manter a herança",
+      "sobrescrever estornar() para não fazer nada"
+     ],
+     "answer": 0,
+     "explanation": "Se nem todo pagamento pode ser estornado, a superclasse não deve prometer isso a todos. Ignorar a chamada em silêncio também engana quem chama.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l3q15",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "O princípio da substituição de Liskov estabelece que",
+     "options": [
+      "uma classe deve ter um único motivo para mudar, concentrando uma só responsabilidade.",
+      "módulos de alto nível devem depender de abstrações, e não de implementações concretas de baixo nível.",
+      "clientes não devem ser forçados a depender de métodos que não utilizam.",
+      "entidades de software devem estar abertas para extensão e fechadas para modificação.",
+      "uma subclasse deve poder substituir a superclasse sem alterar o comportamento correto do programa."
+     ],
+     "answer": 4,
+     "explanation": "As outras alternativas descrevem, na ordem, SRP, DIP, ISP e OCP.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q16",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A classe Pagamento possui o método estornar(). A subclasse PagamentoPix sobrescreve estornar() lançando UnsupportedOperationException, e as telas que tratam qualquer Pagamento passaram a falhar ao receber um PagamentoPix. A situação descreve violação do princípio",
+     "options": [
+      "da substituição de Liskov, pois a subclasse não substitui a superclasse sem quebrar quem a usa.",
+      "da responsabilidade única, pois PagamentoPix tem mais de um motivo para mudar.",
+      "aberto/fechado, pois a superclasse Pagamento foi estendida por uma subclasse.",
+      "da inversão de dependência, pois as telas dependem de uma classe mais abstrata que PagamentoPix.",
+      "da segregação de interfaces, pois Pagamento declara um único método público."
+     ],
+     "answer": 0,
+     "explanation": "A subclasse rompe o contrato da superclasse e as telas quebram: LSP. Estender uma classe é justamente o que o OCP recomenda, e depender de abstração é o que o DIP pede.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q17",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: pela segregação de interfaces (ISP), nenhuma classe deve ser obrigada a implementar métodos que não usa. Agora: a interface Multifuncional tem imprimir(), digitalizar() e enviarFax(); a impressora simples da agência implementa tudo e deixa enviarFax() vazio. Isso",
+     "options": [
+      "segue o ISP",
+      "viola o ISP",
+      "viola só o SRP"
+     ],
+     "answer": 1,
+     "explanation": "O método vazio mostra que a interface obriga a impressora simples a depender de algo que ela não usa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l3q18",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Dividir Multifuncional em Impressora, Scanner e Fax, e fazer a impressora simples implementar só Impressora, aplica o ISP.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Interfaces menores: cada classe implementa só o que de fato faz.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l3q19",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Com as interfaces Impressora, Scanner e Fax, associe cada equipamento da agência ao que ele implementa:",
+     "pairs": [
+      {
+       "left": "Impressora simples",
+       "right": "Só Impressora"
+      },
+      {
+       "left": "Copiadora com scanner",
+       "right": "Impressora e Scanner"
+      },
+      {
+       "left": "Multifuncional completa",
+       "right": "Impressora, Scanner e Fax"
+      }
+     ],
+     "explanation": "Cada equipamento implementa apenas as interfaces que correspondem ao que ele faz.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l3q20",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um aplicativo só lê saldos, mas a interface ContaRepositorio tem ler(), gravar(), excluir() e auditar(). Pelo ISP, o melhor é",
+     "options": [
+      "implementar os outros métodos vazios",
+      "fazer o app usar a classe concreta",
+      "criar uma interface só de leitura para o app"
+     ],
+     "answer": 2,
+     "explanation": "Uma interface só com ler() atende o aplicativo sem amarrá-lo a operações que ele nunca chama.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l3q21",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "O acrônimo SOLID reúne cinco princípios de projeto orientado a objetos. A letra I corresponde ao princípio",
+     "options": [
+      "da inversão de dependência.",
+      "da segregação de interfaces.",
+      "da imutabilidade dos objetos.",
+      "da injeção de dependência.",
+      "da integração contínua."
+     ],
+     "answer": 1,
+     "explanation": "I é Interface Segregation. Inversão de dependência é o D; injeção de dependência é uma técnica para aplicá-lo, não uma letra do SOLID.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q22",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "São indícios de violação do princípio da segregação de interfaces (ISP), EXCETO:",
+     "options": [
+      "classes que implementam métodos da interface lançando exceção de operação não suportada.",
+      "classes que deixam métodos da interface com corpo vazio por não precisarem deles.",
+      "uma interface pequena, implementada por inteiro por todas as classes que a usam.",
+      "uma interface com dezenas de métodos, cada um usado por poucos clientes.",
+      "mudanças em um método da interface que obrigam a recompilar clientes que não o usam."
+     ],
+     "answer": 2,
+     "explanation": "Uma interface pequena e usada por inteiro é o que o ISP busca. As demais situações mostram clientes presos a métodos de que não precisam.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q23",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: pela inversão de dependência (DIP), classes de alto nível dependem de abstrações. Em vez de ServicoPagamento criar new MySqlRepositorio(), ele recebe um Repositorio (interface) no construtor. Agora: RelatorioService faz new PostgresConexao() dentro de um método. Isso",
+     "options": [
+      "viola o DIP",
+      "segue o DIP",
+      "é só encapsulamento"
+     ],
+     "answer": 0,
+     "explanation": "O serviço fica preso à classe concreta de conexão; trocar o banco ou testar sem ele exige mudar o serviço.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l3q24",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Injeção de dependência é passar de fora o objeto de que a classe precisa, por exemplo pelo construtor. Ela é uma forma comum de aplicar o DIP.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "A classe recebe a abstração pronta e não decide qual implementação concreta usar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l3q25",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "ServicoPagamento recebe a interface Repositorio no construtor. Como testar o serviço sem banco de dados?",
+     "options": [
+      "editar o serviço para remover o banco",
+      "passar um repositório falso que implementa a interface",
+      "tornar Repositorio uma classe final"
+     ],
+     "answer": 1,
+     "explanation": "Como o serviço depende da interface, qualquer implementação serve, inclusive um dublê de teste em memória.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l3q26",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Repositorio é a interface e MySqlRepositorio, a implementação. Complete o construtor com o tipo que segue o DIP:",
+     "code": "public class ServicoPagamento {\n    private final Repositorio repo;\n    public ServicoPagamento(___ repo) {\n        this.repo = repo;\n    }\n}",
+     "options": [
+      "Repositorio",
+      "MySqlRepositorio",
+      "Object",
+      "void"
+     ],
+     "answer": 0,
+     "explanation": "O parâmetro do tipo da interface aceita qualquer implementação. Com MySqlRepositorio, o serviço voltaria a depender da classe concreta.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l3q27",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A classe CalculadoraDeRisco instancia diretamente a classe BureauAClient para consultar o score dos clientes. O banco decidiu trocar de bureau de crédito, e a mudança exigiu reescrever CalculadoraDeRisco. Para seguir o princípio da inversão de dependência, o analista deve",
+     "options": [
+      "fazer CalculadoraDeRisco herdar de BureauAClient para reaproveitar os métodos de consulta.",
+      "tornar static os métodos de BureauAClient, eliminando a necessidade de instanciá-la.",
+      "copiar o código de BureauAClient para dentro de CalculadoraDeRisco, eliminando assim a dependência entre as classes.",
+      "fazer CalculadoraDeRisco depender de uma interface de consulta de score, recebendo a implementação de fora.",
+      "trocar o modificador de BureauAClient para private, escondendo-a das demais classes."
+     ],
+     "answer": 3,
+     "explanation": "Com uma interface de consulta de score, a troca de bureau vira uma nova implementação, sem mexer na regra de risco. Herdar ou chamar métodos static mantém o acoplamento ao fornecedor.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l3q28",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "solid",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Sobre o princípio da inversão de dependência (DIP), é correto afirmar:",
+     "options": [
+      "módulos de baixo nível devem depender diretamente dos de alto nível, invertendo a herança.",
+      "toda classe deve ser criada por um contêiner de injeção de dependência para que o princípio seja cumprido.",
+      "abstrações devem depender dos detalhes de implementação, para refletir o banco de dados usado.",
+      "as dependências entre classes devem ser eliminadas, e cada classe deve ser autossuficiente.",
+      "módulos de alto e de baixo nível devem depender de abstrações, e os detalhes devem depender das abstrações."
+     ],
+     "answer": 4,
+     "explanation": "É o enunciado do DIP. Contêineres de injeção ajudam, mas não são obrigatórios; e o objetivo é depender de abstrações, não eliminar dependências.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l3c5",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u2l4",
+   "order": 4,
+   "title": "Linguagens e plataformas",
+   "concepts": [
+    {
+     "id": "u2l4c1",
+     "title": "Java",
+     "summary": "Todo código fica em classes e a aplicação começa em public static void main(String[] args). O javac gera bytecode, que roda em qualquer JVM. Coleções guardam objetos (Integer, não int), e o coletor de lixo libera a memória sozinho."
+    },
+    {
+     "id": "u2l4c2",
+     "title": "C# e .NET",
+     "summary": "O C# é compilado para IL, que o CLR executa (com compilação JIT) e cuja memória é gerenciada por coletor de lixo. using importa namespaces; propriedades com get e set substituem getters e setters; NuGet é o gerenciador de pacotes; o .NET atual roda em Windows, Linux e macOS."
+    },
+    {
+     "id": "u2l4c3",
+     "title": "Python",
+     "summary": "Blocos são definidos pela indentação, a tipagem é dinâmica e funções começam com def. Listas são mutáveis, tuplas são imutáveis e dicionários guardam pares chave: valor. Cuidado: o valor padrão de parâmetro é criado uma única vez."
+    },
+    {
+     "id": "u2l4c4",
+     "title": "PHP",
+     "summary": "Roda no servidor e gera o HTML que o navegador recebe. Variáveis começam com $, o ponto concatena textos e aspas duplas interpretam variáveis (simples, não). Arrays podem ser indexados ou associativos ('ana' => 100). & passa parâmetro por referência."
+    },
+    {
+     "id": "u2l4c5",
+     "title": "C",
+     "summary": "Linguagem compilada para código nativo, sem classes. Ponteiros guardam endereços (&x) e * acessa o valor apontado. Strings são arrays de char terminados em '\\0'. Memória de malloc é devolvida com free, pois não há coletor de lixo."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u2l4q01",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em Java todo código fica dentro de uma classe e a aplicação começa em public static void main(String[] args). Agora: em qual método começa a execução de uma aplicação Java de console?",
+     "options": [
+      "start",
+      "main",
+      "init"
+     ],
+     "answer": 1,
+     "explanation": "A JVM procura o método public static void main(String[] args) da classe indicada para iniciar o programa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l4q02",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O lema \"escreva uma vez, rode em qualquer lugar\" vem de o bytecode rodar em qualquer JVM. Então um .class compilado no Windows roda num Linux com JVM compatível, sem recompilar.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O bytecode não depende do sistema; quem é específica de cada sistema é a JVM.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l4q03",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em Java, as coleções guardam objetos, então uma lista de inteiros usa a classe Integer, e não o primitivo int. Qual declaração compila?",
+     "options": [
+      "List<int> notas = new ArrayList<>();",
+      "List notas<int> = new ArrayList();",
+      "List<Integer> notas = new ArrayList<>();"
+     ],
+     "answer": 2,
+     "explanation": "Genéricos do Java só aceitam tipos de referência: Integer. O autoboxing converte int em Integer ao adicionar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l4q04",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada sigla do ecossistema Java ao seu papel:",
+     "pairs": [
+      {
+       "left": "JDK",
+       "right": "Kit com compilador e ferramentas"
+      },
+      {
+       "left": "JVM",
+       "right": "Máquina virtual que roda o bytecode"
+      },
+      {
+       "left": "javac",
+       "right": "Compilador da linguagem"
+      },
+      {
+       "left": "JAR",
+       "right": "Arquivo que empacota as classes"
+      }
+     ],
+     "explanation": "O JDK traz o javac e as ferramentas; a JVM executa; o .jar empacota classes e recursos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l4q05",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Considere o trecho Java abaixo. O que é exibido?",
+     "code": "String a = \"Ban\";\nString b = a + \"estes\";\nString c = \"Banestes\";\nSystem.out.println(b.equals(c) + \" \" + b.length());",
+     "options": [
+      "true 8",
+      "false 8",
+      "true 7",
+      "false 7",
+      "true 9"
+     ],
+     "answer": 0,
+     "explanation": "b é \"Ban\" + \"estes\" = \"Banestes\", com o mesmo conteúdo de c: equals devolve true. O texto tem 8 caracteres.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q06",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em Java, a liberação da memória ocupada por objetos que deixaram de ser referenciados",
+     "options": [
+      "exige que o programador chame free() para cada objeto criado com new.",
+      "é feita automaticamente pelo coletor de lixo (garbage collector) da JVM.",
+      "ocorre apenas quando o programa é encerrado pelo método System.exit().",
+      "é feita pelo compilador javac, que remove os objetos não usados do bytecode.",
+      "depende de um destrutor declarado com o operador ~ em cada classe."
+     ],
+     "answer": 1,
+     "explanation": "O garbage collector recupera objetos inalcançáveis durante a execução. free() é de C; o destrutor com ~ é de C++ (e finalizador em C#).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q07",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: no .NET, o compilador transforma C# em código intermediário (IL), e o CLR executa esse código, convertendo-o em código nativo na hora (JIT). Agora: no sistema interno em .NET, quem executa o IL?",
+     "options": [
+      "o CLR",
+      "a JVM",
+      "o Visual Studio"
+     ],
+     "answer": 0,
+     "explanation": "O Common Language Runtime executa o IL e cuida de memória e segurança. O Visual Studio é só o ambiente de desenvolvimento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l4q08",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em C#, propriedades com get e set substituem os métodos getX e setX do Java. No sistema interno, public string Nome { get; set; } declara uma propriedade autoimplementada.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Na forma autoimplementada, o compilador cria o campo privado; não é preciso escrever o corpo do get e do set.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l4q09",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em C#, using importa um namespace, como o import do Java. Para escrever Console.WriteLine sem o prefixo System., a primeira linha do arquivo deve ser",
+     "options": [
+      "import System;",
+      "using System;",
+      "#include <System>"
+     ],
+     "answer": 1,
+     "explanation": "using System; dá acesso direto aos tipos do namespace System. import é do Java; #include, de C e C++.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l4q10",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada termo do .NET ao seu papel no sistema interno:",
+     "pairs": [
+      {
+       "left": "CLR",
+       "right": "Executa o código e gerencia a memória"
+      },
+      {
+       "left": "IL (CIL)",
+       "right": "Código intermediário gerado pelo compilador"
+      },
+      {
+       "left": "NuGet",
+       "right": "Gerenciador de pacotes do .NET"
+      },
+      {
+       "left": "namespace",
+       "right": "Agrupa tipos, como o pacote do Java"
+      }
+     ],
+     "explanation": "O compilador gera IL; o CLR o executa; o NuGet baixa bibliotecas; namespaces organizam os tipos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l4q11",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No sistema interno em .NET, uma lista guarda códigos de agência e é alterada como no trecho C# abaixo. O que é exibido?",
+     "code": "var lista = new List<int> { 3, 1, 2 };\nlista.Add(5);\nlista.Remove(1);\nConsole.WriteLine(lista.Count + \" \" + lista[1]);",
+     "options": [
+      "4 1",
+      "3 1",
+      "3 2",
+      "3 5",
+      "4 2"
+     ],
+     "answer": 2,
+     "explanation": "Depois de Add(5) a lista é [3, 1, 2, 5]. Remove(1) remove o valor 1 (e não o índice 1): [3, 2, 5]. Count é 3 e lista[1] é 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q12",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Sobre a plataforma .NET, é correto afirmar:",
+     "options": [
+      "o C# é interpretado linha a linha pelo CLR, sem nenhuma etapa de compilação.",
+      "o .NET só executa em Windows, por depender do registro do sistema operacional.",
+      "cada linguagem do .NET tem a sua própria máquina virtual, incompatível com as das demais linguagens.",
+      "C#, F# e Visual Basic são compilados para uma linguagem intermediária comum, executada pelo CLR.",
+      "o coletor de lixo do .NET exige que o programador libere os objetos com delete."
+     ],
+     "answer": 3,
+     "explanation": "As linguagens do .NET compartilham a IL e o CLR. O C# é compilado (para IL e, depois, JIT); o .NET atual é multiplataforma; a memória é gerenciada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q13",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em Python, o bloco é definido pela indentação, sem chaves: depois de if saldo > 0: as linhas recuadas formam o bloco. Agora: no script de conciliação, o que delimita o corpo de um for?",
+     "options": [
+      "as chaves { }",
+      "as palavras begin e end",
+      "a indentação"
+     ],
+     "answer": 2,
+     "explanation": "Python usa o recuo das linhas como parte da sintaxe; indentar errado gera IndentationError ou muda a lógica.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l4q14",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Python tem tipagem dinâmica: a mesma variável pode receber 10 e depois 'dez'. No script de conciliação, x = 10 seguido de x = 'dez' é válido.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O tipo é do valor, não da variável; x passa a referenciar uma string.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l4q15",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Dicionários guardam pares chave: valor. No script de conciliação, com saldo = {'ana': 100, 'bia': 50}, a linha saldo['bia'] += 25 deixa saldo['bia'] valendo",
+     "options": [
+      "75",
+      "25",
+      "50"
+     ],
+     "answer": 0,
+     "explanation": "saldo['bia'] era 50; somando 25, passa a 75. A chave 'ana' não muda.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l4q16",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Complete a palavra que define uma função em Python no script de conciliação:",
+     "code": "___ juros(valor, taxa):\n    return valor * taxa",
+     "options": [
+      "def",
+      "function",
+      "func",
+      "void"
+     ],
+     "answer": 0,
+     "explanation": "Funções em Python começam com def. function é do JavaScript e do PHP; func, de Go e Swift; void, de C, Java e C#.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l4q17",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 3,
+     "style": "conceitual",
+     "stem": "Considere o código Python 3 abaixo. O que é exibido?",
+     "code": "def f(x, lista=[]):\n    lista.append(x)\n    return lista\n\nf(1)\nprint(f(2))",
+     "options": [
+      "[2]",
+      "[1]",
+      "[2, 1]",
+      "erro de execução",
+      "[1, 2]"
+     ],
+     "answer": 4,
+     "explanation": "O valor padrão lista=[] é criado uma única vez, quando a função é definida. A chamada f(1) acrescenta 1 a essa lista, e f(2) acrescenta 2 à mesma lista: [1, 2].",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q18",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Na linguagem Python, as tuplas",
+     "options": [
+      "são sequências imutáveis: depois de criadas, seus elementos não podem ser reatribuídos.",
+      "são sequências mutáveis que aceitam append() para inserir elementos no final.",
+      "guardam pares chave-valor e são declaradas entre chaves.",
+      "não aceitam elementos de tipos diferentes na mesma tupla.",
+      "são convertidas automaticamente em listas quando passadas a uma função."
+     ],
+     "answer": 0,
+     "explanation": "Tupla é imutável e aceita tipos misturados, como (1, 'a'). append é de lista; chave-valor entre chaves é o dicionário.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q19",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em PHP, variáveis começam com $ e o ponto concatena textos: $nome = 'Ana'; echo 'Olá, ' . $nome; exibe Olá, Ana. Agora: no portal de serviços, qual linha exibe 'Saldo: ' seguido do valor de $saldo?",
+     "options": [
+      "echo 'Saldo: ' + $saldo;",
+      "echo 'Saldo: ' . $saldo;",
+      "echo 'Saldo: ' . saldo;"
+     ],
+     "answer": 1,
+     "explanation": "Concatenação em PHP é com ponto, e a variável precisa do $. O + faria soma numérica.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l4q20",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "PHP roda no servidor: o navegador recebe só o HTML gerado. Então o usuário do portal não vê o código PHP pelo \"exibir código-fonte\" do navegador.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O servidor executa o PHP e devolve o resultado; o código-fonte PHP fica no servidor.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l4q21",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em PHP, aspas duplas interpretam variáveis e aspas simples não. No portal, com $n = 3; o que exibe echo \"Itens: $n\";?",
+     "options": [
+      "Itens: $n",
+      "erro de sintaxe",
+      "Itens: 3"
+     ],
+     "answer": 2,
+     "explanation": "Dentro de aspas duplas, $n é substituído pelo valor. Com aspas simples, sairia literalmente Itens: $n.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l4q22",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada trecho PHP ao que ele faz no portal:",
+     "pairs": [
+      {
+       "left": "$a = [1, 2, 3];",
+       "right": "Cria um array indexado"
+      },
+      {
+       "left": "$a = ['ana' => 100];",
+       "right": "Cria um array associativo"
+      },
+      {
+       "left": "count($a)",
+       "right": "Conta os elementos"
+      },
+      {
+       "left": "$a[] = 4;",
+       "right": "Acrescenta um elemento no final"
+      }
+     ],
+     "explanation": "Arrays em PHP podem ter índices numéricos ou chaves de texto; count conta e $a[] = acrescenta ao final.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l4q23",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No portal de serviços, o saldo de cada cliente fica num array associativo, atualizado pelo código PHP abaixo. O que é exibido?",
+     "code": "<?php\n$saldos = ['ana' => 100, 'bia' => 50];\n$saldos['bia'] += 30;\n$saldos['caio'] = 20;\necho count($saldos) . '-' . $saldos['bia'];\n?>",
+     "options": [
+      "2-80",
+      "3-80",
+      "3-50",
+      "2-50",
+      "3-30"
+     ],
+     "answer": 1,
+     "explanation": "'bia' passa de 50 para 80 com += 30, e a nova chave 'caio' faz o array ter 3 elementos. O ponto concatena: 3-80.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q24",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre a linguagem PHP, NÃO é correto afirmar que",
+     "options": [
+      "os nomes de variáveis começam com o símbolo $.",
+      "o operador ponto (.) concatena strings.",
+      "o código PHP é enviado ao navegador e executado no computador do usuário.",
+      "o código pode ser embutido em páginas HTML entre as marcas <?php e ?>.",
+      "arrays associativos usam chaves de texto, como $conta['ana']."
+     ],
+     "answer": 2,
+     "explanation": "PHP é executado no servidor; o navegador recebe apenas o resultado (em geral, HTML). As demais afirmações estão corretas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q25",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em C, int *p = &x; guarda em p o endereço de x, e *p acessa o valor nesse endereço. Agora: no módulo de leitura de cartões, depois de int x = 5; int *p = &x; *p = 9; quanto vale x?",
+     "options": [
+      "9",
+      "5",
+      "o endereço de x"
+     ],
+     "answer": 0,
+     "explanation": "p aponta para x, então *p = 9 grava 9 no próprio x.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l4q26",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "C não tem coletor de lixo: memória pedida com malloc deve ser devolvida com free. No módulo de cartões, esquecer o free num laço que roda muitas vezes pode causar vazamento de memória.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Cada volta reserva memória que nunca é devolvida; o consumo cresce até o programa ou o sistema sofrerem.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l4q27",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Strings em C são arrays de char terminados pelo caractere nulo '\\0'. Quantos bytes ocupa char nome[] = \"Ana\";?",
+     "options": [
+      "3",
+      "4",
+      "8"
+     ],
+     "answer": 1,
+     "explanation": "São 3 letras mais o terminador '\\0': 4 bytes (char ocupa 1 byte).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l4q28",
+     "type": "fill_blank",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No módulo de cartões, complete o printf com o especificador de número inteiro:",
+     "code": "int tentativas = 3;\nprintf(\"Tentativas: ___\\n\", tentativas);",
+     "options": [
+      "%s",
+      "%d",
+      "%f",
+      "%c"
+     ],
+     "answer": 1,
+     "explanation": "%d imprime int; %s, string; %f, número real; %c, um caractere.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l4q29",
+     "type": "code_output",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No módulo de leitura de cartões, uma função em C troca dois valores, como no programa abaixo. O que é exibido?",
+     "code": "#include <stdio.h>\n\nvoid troca(int *a, int *b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\nint main(void) {\n    int x = 1, y = 2;\n    troca(&x, &y);\n    printf(\"%d %d\", x, y);\n    return 0;\n}",
+     "options": [
+      "1 2",
+      "1 1",
+      "2 2",
+      "2 1",
+      "dois endereços de memória"
+     ],
+     "answer": 3,
+     "explanation": "troca recebe os endereços de x e y e troca os valores apontados, usando t como auxiliar. Como a função age sobre as variáveis originais, x passa a 2 e y a 1.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l4q30",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "linguagens",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A respeito da linguagem C, é correto afirmar:",
+     "options": [
+      "é interpretada por uma máquina virtual, que libera a memória automaticamente com um coletor de lixo.",
+      "é orientada a objetos e organiza o código em classes com herança e polimorfismo.",
+      "não permite manipular endereços de memória, por questões de segurança.",
+      "exige que todo programa seja escrito dentro de uma classe com o método main.",
+      "é compilada, não tem classes, e a memória alocada dinamicamente é liberada pelo programador."
+     ],
+     "answer": 4,
+     "explanation": "C é procedural e compilada para código nativo; usa ponteiros e exige malloc/free. Classes e coletor de lixo são de outras linguagens.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l4c5",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u2l5",
+   "order": 5,
+   "title": "Testes, TDD e Git",
+   "concepts": [
+    {
+     "id": "u2l5c1",
+     "title": "Testes unitários e de integração",
+     "summary": "Teste unitário verifica uma unidade isolada, sem banco nem rede, e é rápido e repetível; dependências viram dublês (mocks). Teste de integração verifica as partes juntas, como o serviço gravando no banco. Organização comum: Arrange, Act, Assert."
+    },
+    {
+     "id": "u2l5c2",
+     "title": "TDD e BDD",
+     "summary": "TDD: escrever um teste que falha, escrever o mínimo para passar e refatorar com os testes verdes, em ciclos curtos. BDD: descrever o comportamento em cenários na linguagem do negócio (Dado, Quando, Então) que viram testes automatizados."
+    },
+    {
+     "id": "u2l5c3",
+     "title": "Git: comandos essenciais",
+     "summary": "git add prepara mudanças (staging); git commit grava no histórico local; git push envia ao remoto e git pull traz e integra. git checkout -b (ou git switch -c) cria um branch e muda para ele; git commit --amend refaz o último commit."
+    },
+    {
+     "id": "u2l5c4",
+     "title": "GitFlow, pull requests e code review",
+     "summary": "GitFlow: main com o que está em produção, develop para integrar, feature/ a partir da develop, release/ para preparar a versão e hotfix/ a partir da main para correções urgentes. O pull request pede revisão de outra pessoa antes do merge; PRs pequenos facilitam."
+    },
+    {
+     "id": "u2l5c5",
+     "title": "Assistentes de código com IA",
+     "summary": "A IA sugere código plausível, que pode estar errado, inseguro ou copiado de licença incompatível. O desenvolvedor revisa e testa como se fosse dele, confere se as bibliotecas sugeridas existem e nunca envia segredos ou dados de clientes ao serviço."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u2l5q01",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: teste unitário verifica uma unidade isolada (um método), sem banco nem rede; teste de integração verifica as partes juntas, como o serviço gravando no banco. Agora: no módulo de empréstimos, um teste confere se calcularJuros(1000, 0.01) devolve 10, sem acessar nada externo. Ele é",
+     "options": [
+      "de integração",
+      "de aceitação",
+      "unitário"
+     ],
+     "answer": 2,
+     "explanation": "Testa uma única função isolada, sem recursos externos: teste unitário.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l5q02",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No módulo de empréstimos, um teste que sobe um banco PostgreSQL de teste e confere se o repositório grava e lê o contrato é um teste de integração.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Ele verifica o código funcionando junto com o banco de dados, e não uma unidade isolada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l5q03",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para testar a regra de limite de crédito sem chamar o serviço externo de score, o teste usa um objeto falso que imita esse serviço. Ele é chamado de",
+     "options": [
+      "mock (dublê de teste)",
+      "teste de carga",
+      "branch de teste"
+     ],
+     "answer": 0,
+     "explanation": "Mocks e outros dublês substituem dependências externas para o teste continuar rápido e isolado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l5q04",
+     "type": "order_code",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ordene o teste unitário em C# no padrão Arrange, Act, Assert (preparar, agir, verificar):",
+     "lines": [
+      "// Arrange: cria a conta com saldo 100",
+      "var conta = new Conta(100);",
+      "// Act: saca 30",
+      "conta.Sacar(30);",
+      "// Assert: confere o saldo",
+      "Assert.Equal(70, conta.Saldo);"
+     ],
+     "explanation": "Primeiro se prepara o cenário, depois se executa a ação testada e, por último, se verifica o resultado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l5q05",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um sistema de empréstimos, todos os testes unitários das regras de cálculo passam, mas houve falha em produção porque o nome de uma coluna no banco não correspondia ao mapeamento da aplicação. O tipo de teste que detectaria essa falha antes da implantação é o teste",
+     "options": [
+      "de integração, que exercita a aplicação junto com o banco de dados.",
+      "unitário com mocks no lugar do banco, já que isola cada regra de cálculo.",
+      "de regressão visual, que compara capturas de tela entre duas versões.",
+      "de mutação, que altera o código para medir a qualidade dos testes unitários.",
+      "de carga, que mede o tempo de resposta com muitos usuários simultâneos."
+     ],
+     "answer": 0,
+     "explanation": "O erro está na ligação entre aplicação e banco, que só um teste com o banco real (ou equivalente) exercita. Com mocks, o banco nem é tocado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q06",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Sobre testes unitários automatizados, é correto afirmar:",
+     "options": [
+      "devem ser executados em produção, para usar dados reais dos clientes.",
+      "devem ser rápidos, isolados e repetíveis, sem depender da ordem de execução nem de serviços externos.",
+      "só fazem sentido depois que todo o sistema está integrado e implantado.",
+      "substituem os testes de integração sempre que a cobertura de código dos testes unitários chega a 100%.",
+      "devem compartilhar estado entre si, para reaproveitar os dados do teste anterior."
+     ],
+     "answer": 1,
+     "explanation": "Testes unitários bons são rápidos, isolados e determinísticos. Não usam dados de produção e não dispensam os de integração.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c1",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q07",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: no TDD, primeiro se escreve um teste que falha, depois o código mínimo para passar, e por fim se melhora o código mantendo os testes passando. Agora: o primeiro passo para criar a regra da tarifa de transferência com TDD é",
+     "options": [
+      "escrever a regra completa",
+      "escrever um teste que falha",
+      "refatorar o código existente"
+     ],
+     "answer": 1,
+     "explanation": "O teste vem antes do código: ele falha porque a regra ainda não existe.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l5q08",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No BDD, o comportamento é descrito na linguagem do negócio, no formato Dado (Given), Quando (When), Então (Then). \"Dado um cliente com saldo 100, quando transferir 30, então o saldo será 70\" é um cenário BDD.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O cenário tem contexto (Dado), ação (Quando) e resultado esperado (Então), e pode ser automatizado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l5q09",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada parte do cenário BDD da tarifa de transferência ao seu papel:",
+     "pairs": [
+      {
+       "left": "Dado (Given)",
+       "right": "Contexto inicial"
+      },
+      {
+       "left": "Quando (When)",
+       "right": "Ação executada"
+      },
+      {
+       "left": "Então (Then)",
+       "right": "Resultado esperado"
+      }
+     ],
+     "explanation": "Dado prepara o contexto, Quando descreve a ação e Então diz o que deve acontecer.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l5q10",
+     "type": "order_code",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ordene um ciclo de TDD para a regra da tarifa de transferência:",
+     "lines": [
+      "Escrever um teste da tarifa e ver o teste falhar",
+      "Escrever o código mínimo para o teste passar",
+      "Melhorar o código com todos os testes ainda passando"
+     ],
+     "explanation": "O ciclo é: teste falhando, código mínimo, refatoração. Depois recomeça com o próximo comportamento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l5q11",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A respeito do BDD (Behavior-Driven Development), é correto afirmar:",
+     "options": [
+      "dispensa testes automatizados, pois os cenários servem apenas como documentação.",
+      "é uma técnica de depuração que registra o comportamento do sistema em produção.",
+      "descreve o comportamento esperado em cenários legíveis pelo negócio, que podem virar testes automatizados.",
+      "substitui os testes unitários por diagramas de comportamento da UML.",
+      "exige que os cenários sejam escritos diretamente em linguagem de programação, sem nenhum texto em linguagem natural."
+     ],
+     "answer": 2,
+     "explanation": "O BDD aproxima negócio e desenvolvimento com cenários em linguagem natural estruturada (Dado/Quando/Então), executados por ferramentas de teste.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q12",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Aplicando TDD na regra de cobrança de tarifa, o desenvolvedor escreveu um teste novo, executou-o e viu que ele passou antes de qualquer código novo ser escrito. Pela prática do TDD, isso indica que",
+     "options": [
+      "a funcionalidade já está pronta e a etapa de refatoração pode ser ignorada.",
+      "o código pode ser escrito sem testes, pois o ciclo do TDD foi concluído.",
+      "o teste deve ser apagado, já que no TDD um teste só tem utilidade enquanto ainda está falhando.",
+      "o teste não está verificando o comportamento novo e precisa ser revisto antes de continuar.",
+      "a etapa de refatoração deve ser feita antes de escrever qualquer outro teste."
+     ],
+     "answer": 3,
+     "explanation": "No TDD, ver o teste falhar primeiro prova que ele detecta a ausência do comportamento. Se passou sem código novo, o teste está mal escrito ou testa algo que já existia.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c2",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q13",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: no Git, git add coloca as mudanças na área de preparação (staging) e git commit grava o que foi preparado no histórico local. Agora: alterei Conta.java e quero que a mudança entre no próximo commit. Qual comando vem primeiro?",
+     "options": [
+      "git push",
+      "git clone",
+      "git add Conta.java"
+     ],
+     "answer": 2,
+     "explanation": "Primeiro se prepara a mudança com git add; o commit grava só o que está na staging.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l5q14",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "git commit grava só no repositório local; para enviar os commits ao repositório remoto é preciso git push.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O Git é distribuído: commit é local, e push publica no remoto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l5q15",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada comando Git ao que ele faz no repositório do app:",
+     "pairs": [
+      {
+       "left": "git clone",
+       "right": "Copia um repositório remoto"
+      },
+      {
+       "left": "git pull",
+       "right": "Traz e integra mudanças do remoto"
+      },
+      {
+       "left": "git status",
+       "right": "Mostra arquivos alterados e preparados"
+      },
+      {
+       "left": "git push",
+       "right": "Envia commits locais ao remoto"
+      }
+     ],
+     "explanation": "clone copia, pull traz e integra, status mostra o estado e push publica.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l5q16",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "git diff mostra mudanças ainda não preparadas; git diff --staged mostra o que já está na staging. Depois de git add Conta.java, para ver o que vai entrar no commit, uso",
+     "options": [
+      "git diff --staged",
+      "git diff",
+      "git push --dry-run"
+     ],
+     "answer": 0,
+     "explanation": "O que foi adicionado com git add aparece em git diff --staged; o git diff simples mostra só o que ainda não foi preparado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l5q17",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "No Git, o comando que cria um branch chamado correcao e já passa a trabalhar nele é",
+     "options": [
+      "git branch -d correcao",
+      "git merge correcao",
+      "git commit -b correcao",
+      "git push -b correcao",
+      "git checkout -b correcao"
+     ],
+     "answer": 4,
+     "explanation": "checkout -b cria e muda de branch (o mesmo que git switch -c). branch -d apaga um branch; merge integra outro branch ao atual.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q18",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um desenvolvedor fez um commit com um arquivo de configuração errado e ainda não enviou nada ao repositório remoto. Ele quer só incluir a correção no último commit, sem criar um commit novo. Depois de corrigir e adicionar o arquivo, o comando adequado é",
+     "options": [
+      "git commit --amend",
+      "git revert HEAD",
+      "git push --force",
+      "git reset --hard HEAD~1",
+      "git stash pop"
+     ],
+     "answer": 0,
+     "explanation": "--amend refaz o último commit com o conteúdo da staging. revert cria um commit novo que desfaz o anterior; reset --hard descartaria o commit e as mudanças.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c3",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q19",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: no GitFlow, a main guarda o que está em produção e a develop junta as funcionalidades prontas; cada funcionalidade nasce num branch feature/ a partir da develop. Agora: no time do internet banking, a funcionalidade \"extrato em PDF\" começa em",
+     "options": [
+      "commits direto na main",
+      "feature/extrato-pdf, saindo da develop",
+      "hotfix/extrato-pdf, saindo da main"
+     ],
+     "answer": 1,
+     "explanation": "Funcionalidade nova vai num feature/ criado da develop. hotfix/ é para correção urgente de produção.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l5q20",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No GitFlow, um erro grave em produção é corrigido num branch hotfix/ criado a partir da main e, ao final, integrado na main e na develop.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Integrar também na develop evita que o erro volte na próxima versão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l5q21",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um pull request (PR) pede que as mudanças de um branch sejam revisadas e integradas a outro. No time do internet banking, quem aprova o PR no fluxo com code review?",
+     "options": [
+      "o próprio autor, sozinho",
+      "o Git, automaticamente",
+      "outra pessoa do time, que revisa o código"
+     ],
+     "answer": 2,
+     "explanation": "A revisão por outra pessoa é o objetivo do code review; testes automáticos ajudam, mas não substituem a aprovação.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l5q22",
+     "type": "match",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada branch do GitFlow ao seu uso:",
+     "pairs": [
+      {
+       "left": "main",
+       "right": "Versões em produção"
+      },
+      {
+       "left": "develop",
+       "right": "Integração das funcionalidades"
+      },
+      {
+       "left": "feature/",
+       "right": "Uma funcionalidade nova"
+      },
+      {
+       "left": "release/",
+       "right": "Preparação de uma versão"
+      },
+      {
+       "left": "hotfix/",
+       "right": "Correção urgente de produção"
+      }
+     ],
+     "explanation": "main e develop são permanentes; feature/, release/ e hotfix/ são temporários e voltam por merge.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l5q23",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "No modelo de ramificação GitFlow, os branches de release",
+     "options": [
+      "são criados a partir da main para corrigir erros urgentes encontrados em produção, sem passar pela develop.",
+      "são criados a partir da develop para preparar uma versão e, ao final, são integrados à main e à develop.",
+      "substituem a develop, que deixa de existir depois da primeira versão publicada.",
+      "recebem novas funcionalidades até a data da entrega, sem nenhuma restrição.",
+      "são integrados apenas à develop, e a main é atualizada manualmente depois."
+     ],
+     "answer": 1,
+     "explanation": "release/ sai da develop, recebe só ajustes da versão e volta para main (com tag) e develop. Correção urgente a partir da main é hotfix/.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q24",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "São boas práticas de code review em pull requests, EXCETO:",
+     "options": [
+      "manter os PRs pequenos e focados em uma única mudança.",
+      "rodar os testes automatizados e a análise estática antes de pedir a revisão humana.",
+      "aprovar sem leitura PRs com centenas de arquivos, para não atrasar a entrega.",
+      "comentar o código, e não a pessoa, sugerindo alternativas.",
+      "descrever no PR o que mudou e como testar a mudança."
+     ],
+     "answer": 2,
+     "explanation": "Aprovar sem ler anula a revisão. PRs pequenos, testes automatizados antes, comentários sobre o código e boa descrição são práticas recomendadas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c4",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q25",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: um assistente de código com IA sugere trechos plausíveis, que podem estar errados ou inseguros, e o desenvolvedor continua responsável pelo que entra no sistema. Agora: o assistente sugeriu uma função de cálculo de juros. Antes do commit, o desenvolvedor deve",
+     "options": [
+      "revisar e testar o código como se fosse dele",
+      "aceitar, porque a IA não erra contas",
+      "pedir a outra IA para aprovar"
+     ],
+     "answer": 0,
+     "explanation": "Código sugerido passa pelo mesmo crivo de revisão e testes que qualquer outro código da equipe.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u2l5q26",
+     "type": "truefalse",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Colar num assistente de IA externo um trecho com a senha do banco de dados de produção é aceitável quando o objetivo é só pedir ajuda com um erro.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Segredos e dados de clientes não podem ser enviados a serviços externos: saem do controle da organização. Remova-os antes de pedir ajuda.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u2l5q27",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O assistente sugeriu uma consulta SQL montada com concatenação do texto digitado pelo usuário. A atitude responsável é",
+     "options": [
+      "manter, pois a IA já testou",
+      "trocar por consulta parametrizada",
+      "publicar e corrigir se houver ataque"
+     ],
+     "answer": 1,
+     "explanation": "Concatenar a entrada do usuário abre brecha para injeção de SQL; a sugestão precisa ser corrigida antes do commit.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u2l5q28",
+     "type": "quick",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um trecho sugerido pela IA é quase idêntico ao de um projeto de código aberto com licença restritiva. Antes de usar, o desenvolvedor deve",
+     "options": [
+      "usar, pois sugestão de IA é livre",
+      "apenas renomear as variáveis",
+      "verificar a origem e a licença do código"
+     ],
+     "answer": 2,
+     "explanation": "A sugestão pode reproduzir código protegido; a licença precisa ser compatível com o projeto. Renomear não muda a origem.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u2l5q29",
+     "type": "case",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Uma equipe passou a usar um assistente de código baseado em IA. Corresponde ao uso responsável dessa ferramenta:",
+     "options": [
+      "enviar ao assistente dados reais de clientes, para que ele gere testes mais realistas.",
+      "dispensar o code review dos trechos gerados, pois eles já foram validados pelo modelo.",
+      "aceitar as bibliotecas sugeridas sem verificar se cada pacote citado de fato existe e continua sendo mantido.",
+      "revisar o código sugerido no code review e cobri-lo com testes, como qualquer código escrito pela equipe.",
+      "colar no assistente as chaves de API de produção, para que ele configure a integração."
+     ],
+     "answer": 3,
+     "explanation": "A responsabilidade continua com a equipe: revisão e testes valem para o código gerado. Dados reais e chaves não vão para o serviço, e pacotes sugeridos podem nem existir.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "prova"
+    },
+    {
+     "id": "u2l5q30",
+     "type": "mcq5",
+     "topic": "Programação",
+     "subtopic": "testes-git",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Sobre os riscos do uso de assistentes de código baseados em IA, NÃO é correto afirmar que",
+     "options": [
+      "a ferramenta pode sugerir funções ou pacotes que não existem.",
+      "o trecho sugerido pode conter falhas de segurança, como injeção de SQL.",
+      "dados sensíveis enviados ao serviço podem sair do controle da organização.",
+      "a sugestão pode reproduzir trechos de código sob licença incompatível com a do projeto da equipe.",
+      "o código gerado pela IA é sempre seguro, pois o modelo foi treinado com boas práticas."
+     ],
+     "answer": 4,
+     "explanation": "Não há garantia de segurança no código gerado; por isso ele passa por revisão e testes. As demais afirmações descrevem riscos reais.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u2l5c5",
+     "level": "prova"
+    }
+   ]
+  }
+ ]
+}
