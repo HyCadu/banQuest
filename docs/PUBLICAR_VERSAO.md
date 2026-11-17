@@ -51,3 +51,18 @@ delete from public.app_releases where version_code = 9;   -- some o aviso (se ai
 ```
 
 O link precisa ser `https`. Link `http` ou com espaço é recusado pelo banco e ignorado pelo app.
+
+## E o site de divulgação?
+
+O site (`site-banquest/dist/`) lê a mesma função `latest_release()` ao abrir e troca sozinho todos os botões "Baixar"
+pelo `apk_url` da versão mais nova. Publicando como acima, o site já baixa a versão nova, sem editar nada.
+- O link só é aceito se estiver neste Supabase, no bucket público `apk`, com `https` e terminando em `.apk`. Link de
+  outro lugar é ignorado pelo site, que continua no link anterior.
+- Os links escritos no `index.html` (3 botões com `data-apk`) são a reserva para quando a consulta falha. Vale trocar o
+  nome do arquivo neles a cada versão.
+- Para fixar um link manualmente, de qualquer endereço `https`, preencha `window.BANQUEST_APK_URL` no
+  `site-banquest/dist/config.js`. Ele passa na frente de tudo; deixe `""` para voltar ao automático.
+- As telas do celular do site saem do próprio app. Para regerar depois de mudar o visual:
+  `./gradlew -p tools/preview-harness :shot:testDebugUnitTest --tests 'shot.Site*'` e
+  `python3 tools/build_site_assets.py`.
+
