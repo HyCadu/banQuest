@@ -85,8 +85,14 @@ internal fun NoHeartsScreen(
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
             repeat(5) { GameIconView(GameIcon.Heart, size = 30.dp, modifier = Modifier.padding(2.dp)) }
         }
-        ChunkyButton("Praticar erros (ganhe 1 coração)", onOpenErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
-        ChunkyButton("Recarregar por 350 gemas", onRefill, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, enabled = ui.gems >= 350, icon = GameIcon.Gem)
+        // Só a revisão de erros vencidos devolve coração (0.10.1): sem nenhum vencido, o botão não aparece.
+        if (ui.dueErrors > 0) {
+            ChunkyButton("Revisar erros vencidos (ganhe 1 coração)", onOpenErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
+        }
+        ChunkyButton(
+            "Recarregar por 350 gemas", onRefill, Modifier.fillMaxWidth(),
+            if (ui.dueErrors > 0) ChunkyStyle.Secondary else ChunkyStyle.Primary, enabled = ui.gems >= 350, icon = GameIcon.Gem,
+        )
         if (ui.gems < 350) Text("Você tem ${ui.gems} gemas.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
         ui.msUntilNext?.let { untilNext ->
             Text("Ou espere: o próximo coração volta em ${PaceEngine.format(untilNext)}.", style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
@@ -121,6 +127,7 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             Mascot(character, pose, Modifier.size(200.dp), animated = animated)
             Text(
                 when {
+                    !ui.rewarded -> "Treino concluído!"
                     isExam && perfect -> "Prova gabaritada!"
                     isExam -> "Prova concluída!"
                     !isLesson -> "Treino concluído!"
@@ -130,6 +137,12 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                 style = MaterialTheme.typography.headlineLarge, color = c.primaryText, textAlign = TextAlign.Center,
             )
             Text(ui.title, style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
+            if (!ui.rewarded) {
+                Text(
+                    "Treino para estudar: sem XP e sem coração. Eles vêm das revisões no dia certo.",
+                    style = MaterialTheme.typography.bodyMedium, color = c.ink, textAlign = TextAlign.Center,
+                )
+            }
 
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 ResultStat("XP ganho", "+${summary.totalXp}", GameIcon.Star, Modifier.weight(1f))

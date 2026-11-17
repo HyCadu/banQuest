@@ -127,4 +127,14 @@ class LessonRunTest {
         assertEquals(15, s.xp)
         assertFalse(s.perfect)
     }
+
+    @Test fun `treino sem recompensa nao da xp por resposta`() {
+        var s = LessonRun.start(TestData.questions(2), awardsXp = false)
+        s = LessonRun.answer(s, true, 10_000, 180_000)
+        s = LessonRun.answer(s, false, 10_000, 180_000)
+        s = LessonRun.answer(s, true, 10_000, 180_000) // repetição
+        assertTrue(s.finished)
+        assertEquals(0, s.xp)
+        assertTrue(s.records.all { it.xp == 0 })
+    }
 }

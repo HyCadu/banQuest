@@ -120,14 +120,19 @@ class ProgressProcessorTest {
         assertTrue("unit1" in second.state.unlockedAchievements)
     }
 
-    @Test fun `treino de erros da coracao, nao mexe na ofensiva e conta revisao correta`() {
+    @Test fun `treino de erros vencidos da coracao, nao mexe na ofensiva e conta revisao correta`() {
         val (_, lesson) = play(listOf(false, true, true, true))
         val afterLesson = apply(freshState(), lesson).state
         val wrongQ = TestData.questions(4)[0]
         var run = LessonRun.start(listOf(wrongQ))
         run = LessonRun.answer(run, true, 30_000, 180_000)
         val practice = SessionResult(SessionKind.Practice, null, null, run.records, run.bestCombo, run.perfect)
-        val low = afterLesson.copy(stats = afterLesson.stats.copy(hearts = HeartsState(0, nowMs)))
+        // O erro venceu (chegou o dia da revisão): é o que o app põe no treino de erros.
+        val due = afterLesson.questionStats.getValue(wrongQ.id).let { it.copy(card = it.card.copy(nextReview = today)) }
+        val low = afterLesson.copy(
+            stats = afterLesson.stats.copy(hearts = HeartsState(0, nowMs)),
+            questionStats = afterLesson.questionStats + (wrongQ.id to due),
+        )
         val out = apply(low, practice)
         assertEquals(1, out.state.stats.hearts.hearts)
         assertEquals(afterLesson.stats.streak, out.state.stats.streak)
@@ -209,5 +214,38 @@ class ProgressProcessorTest {
     @Test fun `prova gabaritada soma o bonus de perfeicao`() {
         val out = apply(freshState(), exam(List(5) { true }))
         assertEquals(5 * 15 + 30, out.summary.totalXp)
+    }
+
+    @Test fun `treino livre nao da xp, coracao, missao nem meta e nao adianta o cartao`() {
+        val (_, lesson) = play(listOf(false, true, true, true))
+        val afterLesson = apply(freshState(), lesson).state
+        val wrongQ = TestData.questions(4)[0]
+        val cardBefore = afterLesson.questionStats.getValue(wrongQ.id).card // vence amanhã
+        var run = LessonRun.start(listOf(wrongQ), awardsXp = false)
+        run = LessonRun.answer(run, true, 30_000, 180_000)
+        assertEquals(0, run.xp)
+        val free = SessionResult(SessionKind.FreeReview, null, null, run.records, run.bestCombo, run.perfect)
+        val low = afterLesson.copy(stats = afterLesson.stats.copy(hearts = HeartsState(0, nowMs)))
+        val out = apply(low, free)
+        assertEquals(0, out.summary.totalXp)
+        assertEquals(low.stats.totalXp, out.state.stats.totalXp)
+        assertEquals(0, out.state.stats.hearts.hearts) // sem coração
+        assertEquals(low.todayLog.xp, out.state.todayLog.xp) // meta não anda
+        assertEquals(low.todayQuests, out.state.todayQuests) // missões não andam
+        assertEquals(0, out.state.stats.reviewCorrect)
+        assertEquals(0, out.state.stats.practiceSessions)
+        assertEquals(cardBefore, out.state.questionStats.getValue(wrongQ.id).card) // acertar antes do dia não adianta
+        assertEquals(low.stats.gems, out.state.stats.gems)
+    }
+
+    @Test fun `treino livre errado ainda volta o cartao para o comeco`() {
+        val q = TestData.questions(1)[0]
+        val stat = QuestionStat(q.id, q.lessonId, 3, 3, br.com.trilhati.domain.srs.SrsCard(2, today.plusDays(5)))
+        var run = LessonRun.start(listOf(q), awardsXp = false)
+        run = LessonRun.answer(run, false, 30_000, 180_000)
+        while (!run.finished) run = LessonRun.answer(run, true, 30_000, 180_000)
+        val out = apply(freshState().copy(questionStats = mapOf(q.id to stat)), SessionResult(SessionKind.FreeReview, null, null, run.records, run.bestCombo, run.perfect))
+        assertEquals(br.com.trilhati.domain.srs.SrsCard(0, today.plusDays(1)), out.state.questionStats.getValue(q.id).card)
+        assertEquals(0, out.summary.totalXp)
     }
 }

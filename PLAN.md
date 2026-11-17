@@ -175,7 +175,7 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Conquistas (≈15):** ofensivas 3/7/14/30/60/100; XP total 1k/5k/20k; primeira lição perfeita; 10 lições perfeitas; unidade concluída; "no ritmo" (média ≤ 3:00 em 10 lições); revisão de 50 erros; Pódio da semana (top 3 do ranking geral com pelo menos 3 participantes).
 
-**Praticar erros:** sessão de 8 questões escolhidas por `SrsEngine` (intervalos 1, 3, 7, 14 dias; erro zera). Mostra quantas estão "vencidas".
+**Praticar erros:** sessão de 8 questões escolhidas por `SrsEngine` (intervalos 1, 3, 7, 14 dias; erro zera). Mostra quantas estão "vencidas". Só a revisão das vencidas dá XP e devolve 1 coração, e só ela adianta o cartão (0.10.1). Sem nenhuma vencida, "Treinar os mais antigos" e a "Revisão livre" servem para estudar, sem XP, coração, missão nem ranking. Uma questão sai dos erros guardados depois de acertar as 4 revisões, cada uma no seu dia.
 
 **Provas anteriores (0.10.0, aba Praticar):** cada prova do pacote de provas (só as questões que valem para o edital
 atual), inteira ou, se tiver as duas, só Específicos ou só Gerais. Antes de começar, um aviso com as regras: abrir gasta
