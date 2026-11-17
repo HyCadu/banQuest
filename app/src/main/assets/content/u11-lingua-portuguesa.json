@@ -1,0 +1,3847 @@
+{
+ "schema": 1,
+ "pack": "u11-lingua-portuguesa",
+ "version": 1,
+ "unit": {
+  "id": "u11",
+  "order": 11,
+  "title": "Língua Portuguesa",
+  "editalTopics": [
+   "Ortografia, acentuação e crase",
+   "Compreensão e interpretação de textos; contexto histórico; denotação e conotação",
+   "Discurso direto, indireto e indireto livre; intertextualidade; figuras de linguagem",
+   "Estrutura e formação de palavras; sinonímia e antonímia; pronomes",
+   "Flexão nominal e verbal; vozes do verbo; correlação de tempos e modos",
+   "Morfossintaxe; concordância nominal e verbal; regência nominal e verbal",
+   "Coordenação e subordinação; conectivos",
+   "Pontuação; redação: frases corretas e incorretas, reorganização de períodos, equivalência de estruturas"
+  ]
+ },
+ "lessons": [
+  {
+   "id": "u11l1",
+   "order": 1,
+   "title": "Ortografia e crase",
+   "concepts": [
+    {
+     "id": "u11l1c1",
+     "title": "Acentuação gráfica",
+     "summary": "Proparoxítonas: todas acentuadas (lâmpada, público). Paroxítonas: acentuadas quando terminam em l, n, r, x, ps, ã(s), ão(s), i(s), us, um/uns ou ditongo (fácil, hífen, caráter, tórax, órfã, júri, vírus, álbum, história). Oxítonas: em a(s), e(s), o(s), em/ens (sofá, café, cipó, também, parabéns)."
+    },
+    {
+     "id": "u11l1c2",
+     "title": "Acordo Ortográfico e hífen",
+     "summary": "O Acordo tirou o trema (linguiça), o acento dos ditongos abertos éi e ói das paroxítonas (ideia, jiboia), o de oo e ee (voo, leem) e quase todos os diferenciais (ficam pôde/pode e pôr/por). Hífen: prefixo terminado na mesma vogal que inicia a palavra (micro-ondas); vogais diferentes, junta (autoestima); antes de r ou s, a consoante dobra (antirrugas, ultrassom)."
+    },
+    {
+     "id": "u11l1c3",
+     "title": "Grafias que confundem",
+     "summary": "Por que: pergunta, direta ou indireta. Por quê: no fim da frase. Porque: explicação. Porquê: substantivo (o porquê). Mau é o contrário de bom; mal, de bem. Há: tempo passado (há dois anos); a: futuro ou distância (daqui a dois dias). Aonde, com verbos de movimento; onde, com os de permanência."
+    },
+    {
+     "id": "u11l1c4",
+     "title": "Crase obrigatória",
+     "summary": "Crase é a fusão da preposição a com o artigo a (ou com aquele, aquela, aquilo). Teste: troque a palavra feminina por uma masculina; se aparecer \"ao\", há crase (fui à agência / fui ao banco). Também há crase em locuções femininas (às vezes, à noite, à vista) e nas horas exatas (às 10h)."
+    },
+    {
+     "id": "u11l1c5",
+     "title": "Crase proibida e facultativa",
+     "summary": "Não há crase antes de palavra masculina, de verbo, de pronome pessoal e de tratamento (a ela, a Vossa Senhoria), nem no a singular diante de palavra no plural (a reuniões). É facultativa antes de possessivo feminino (a/à sua conta), de nome próprio feminino (a/à Mariana) e depois de \"até\"."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u11l1q01",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: proparoxítona tem a sílaba tônica na antepenúltima sílaba, e toda proparoxítona é acentuada: lâm-pa-da, pú-bli-co. Agora: na revisão do relatório, em “O calculo do juro foi revisado”, qual palavra está sem o acento obrigatório?",
+     "options": [
+      "juro",
+      "cálculo",
+      "revisado"
+     ],
+     "answer": 1,
+     "explanation": "cál-cu-lo tem a tônica na antepenúltima sílaba: é proparoxítona e leva acento. “Juro” e “revisado” são paroxítonas terminadas em o, sem acento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l1q02",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Oxítonas terminadas em a, e, o (seguidas ou não de s) e em em/ens levam acento: sofá, café, cipó, também. Por essa regra, “parabéns” leva acento.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "pa-ra-BÉNS é oxítona terminada em -ens, como “também” e “armazéns”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l1q03",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Paroxítonas terminadas em l, n, r, x e ps levam acento (fácil, hífen, caráter, tórax, bíceps); terminadas em -em e -ens, não (item, itens). No relatório, qual palavra está acentuada corretamente?",
+     "options": [
+      "hífens",
+      "ítem",
+      "fácil"
+     ],
+     "answer": 2,
+     "explanation": "“Fácil” é paroxítona terminada em l. “Hifens” e “item” são paroxítonas terminadas em -ens e -em, que não levam acento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l1q04",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Paroxítonas terminadas em ditongo crescente levam acento: história, série, água. Qual frase do relatório está correta?",
+     "options": [
+      "A série histórica foi revisada.",
+      "A serie histórica foi revisada.",
+      "A série historica foi revisada."
+     ],
+     "answer": 0,
+     "explanation": "“Série” (sé-rie) e “histórica” (proparoxítona) precisam de acento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l1q05",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Todas as palavras estão corretamente acentuadas em:",
+     "options": [
+      "público, caráter, também, vírus",
+      "público, carater, também, vírus",
+      "publico, caráter, também, vírus",
+      "público, caráter, tambem, vírus",
+      "público, caráter, também, virus"
+     ],
+     "answer": 0,
+     "explanation": "“Público” é proparoxítona; “caráter” e “vírus”, paroxítonas terminadas em r e us; “também”, oxítona terminada em em. Cada alternativa errada perdeu um desses acentos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q06",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Ao revisar um ofício, o analista encontrou as palavras item, itens, hífen e hifens. Sobre a acentuação delas, é correto afirmar que",
+     "options": [
+      "todas levam acento, pois são paroxítonas terminadas em consoante.",
+      "apenas hífen leva acento, pois é paroxítona terminada em n; as outras três não levam.",
+      "item e hífen levam acento, por serem paroxítonas terminadas em -em e -en.",
+      "apenas itens e hifens levam acento, por serem paroxítonas terminadas em -ens.",
+      "nenhuma delas leva acento, pois o Acordo Ortográfico eliminou o acento dessas paroxítonas."
+     ],
+     "answer": 1,
+     "explanation": "Paroxítona terminada em -n é acentuada (hífen, pólen); terminada em -em ou -ens, não (item, itens, hifens). O Acordo não mudou essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q07",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o Acordo Ortográfico tirou o acento dos ditongos abertos éi e ói nas paroxítonas: ideia, assembleia, jiboia. Agora: no comunicado sobre a reunião, qual grafia está correta?",
+     "options": [
+      "assembléia",
+      "assembleia",
+      "assembléa"
+     ],
+     "answer": 1,
+     "explanation": "“Assembleia” é paroxítona com ditongo aberto ei: perdeu o acento. Nas oxítonas o acento continua (papéis, herói).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l1q08",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O Acordo eliminou o trema: escreve-se linguiça, frequente e consequência. Portanto, no comunicado, “tranquilo” está correto sem trema.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O trema ficou só em nomes próprios estrangeiros e seus derivados (Müller, mülleriano).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l1q09",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Prefixo terminado na mesma vogal que começa a palavra pede hífen (micro-ondas, anti-inflamatório); com vogais diferentes, junta-se (autoestima). Qual grafia está correta?",
+     "options": [
+      "infra-estrutura",
+      "infra estrutura",
+      "infraestrutura"
+     ],
+     "answer": 2,
+     "explanation": "infra termina em a e “estrutura” começa com e: vogais diferentes, sem hífen.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l1q10",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Quando o prefixo termina em vogal e a palavra começa com r ou s, a consoante dobra: antirrugas, ultrassom. No folheto da agência, qual grafia está correta?",
+     "options": [
+      "autosserviço",
+      "auto-serviço",
+      "autoserviço"
+     ],
+     "answer": 0,
+     "explanation": "auto + serviço: o s dobra para manter o som de s entre vogais, e não há hífen.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l1q11",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "De acordo com o Acordo Ortográfico em vigor, está corretamente grafado o par de palavras em:",
+     "options": [
+      "idéia e vôo",
+      "ideia e vôo",
+      "ideia e voo",
+      "idéia e voo",
+      "idéa e voo"
+     ],
+     "answer": 2,
+     "explanation": "“Ideia” perdeu o acento do ditongo aberto éi nas paroxítonas, e “voo”, o do hiato oo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q12",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Segundo as regras do Acordo Ortográfico, NÃO está correta a grafia de:",
+     "options": [
+      "micro-ondas",
+      "anti-higiênico",
+      "contrarregra",
+      "auto-escola",
+      "autoestima"
+     ],
+     "answer": 3,
+     "explanation": "auto + escola tem vogais diferentes: escreve-se “autoescola”, sem hífen. As demais estão corretas: mesma vogal (micro-ondas), palavra iniciada por h (anti-higiênico), r dobrado (contrarregra) e vogais diferentes (autoestima).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q13",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “porque” explica (atrasei porque choveu) e “por que” pergunta, inclusive de forma indireta (não sei por que atrasou). Agora: no e-mail ao cliente, como completar “Não sabemos ___ o boleto venceu antes”?",
+     "options": [
+      "porque",
+      "por que",
+      "porquê"
+     ],
+     "answer": 1,
+     "explanation": "É uma pergunta indireta (por qual razão o boleto venceu antes), então se usa “por que”, separado e sem acento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l1q14",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Mau é o contrário de bom e mal é o contrário de bem. No e-mail, “O sistema funcionou mau ontem” está correto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "O contrário seria “funcionou bem”, então o correto é “funcionou mal”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l1q15",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Há indica tempo passado (há dois anos); a indica tempo futuro (daqui a dois dias). Complete: “O contrato foi assinado ___ três meses e vence daqui ___ um ano.”",
+     "options": [
+      "a / há",
+      "há / há",
+      "há / a"
+     ],
+     "answer": 2,
+     "explanation": "Três meses já se passaram: “há”. Um ano ainda vai passar: “daqui a”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l1q16",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Aonde se usa com verbos de movimento (ir a algum lugar); onde, com verbos de permanência (estar, trabalhar em). Qual frase do e-mail está correta?",
+     "options": [
+      "Aonde você vai depois do expediente?",
+      "Aonde você trabalha atualmente?",
+      "Onde você vai depois do expediente?"
+     ],
+     "answer": 0,
+     "explanation": "“Ir” é verbo de movimento: “aonde vai”. “Trabalhar” indica permanência: “onde trabalha”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l1q17",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A frase redigida de acordo com a norma-padrão é:",
+     "options": [
+      "O cliente não informou ao gerente porque desistiu do empréstimo.",
+      "Por que você não renovou o seguro? Por que não quis.",
+      "Você cancelou o cartão do banco porquê?",
+      "O atendimento do caixa foi mau feito ontem.",
+      "Ninguém soube explicar o porquê da demora no atendimento."
+     ],
+     "answer": 4,
+     "explanation": "“O porquê” é substantivo (vem com artigo) e leva acento. Os erros: pergunta indireta pede “por que”; a resposta pede “Porque”; no fim da pergunta, “por quê”; e o contrário de “bem feito” é “mal feito”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q18",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um analista revisou o comunicado: “Daqui ___ dois dias, o sistema que funciona ___ três anos será substituído, pois tem apresentado ___ desempenho.” As lacunas são preenchidas correta e respectivamente por",
+     "options": [
+      "a – há – mau",
+      "há – a – mal",
+      "a – a – mau",
+      "há – há – mal",
+      "a – há – mal"
+     ],
+     "answer": 0,
+     "explanation": "“Daqui a” indica futuro; “funciona há três anos” indica tempo decorrido; “mau desempenho” é o contrário de “bom desempenho”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q19",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “Fui à agência” tem crase, porque “ir” pede a preposição a e “agência” aceita o artigo a; no masculino, fica “Fui ao banco”. Agora: complete “O gerente se dirigiu ___ sala de reuniões.”",
+     "options": [
+      "a",
+      "à",
+      "há"
+     ],
+     "answer": 1,
+     "explanation": "“Dirigir-se a” + “a sala”: no masculino seria “ao escritório”, então há crase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l1q20",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Na indicação de hora exata, usa-se crase. Assim, “A reunião na agência começa às 14h” está correto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Subentende-se “às 14 horas”: preposição a + artigo as.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l1q21",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Pelo teste do masculino: se trocar a palavra feminina por uma masculina gera “ao”, há crase. Em “Entreguei o relatório ___ diretora”, o que vai na lacuna?",
+     "options": [
+      "a",
+      "há",
+      "à"
+     ],
+     "answer": 2,
+     "explanation": "No masculino seria “Entreguei o relatório ao diretor”: preposição a + artigo a = à.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l1q22",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada frase dita no atendimento ao motivo da crase:",
+     "pairs": [
+      {
+       "left": "Pagamento à vista",
+       "right": "Locução adverbial feminina"
+      },
+      {
+       "left": "Refiro-me àquele contrato",
+       "right": "Preposição a + pronome aquele"
+      },
+      {
+       "left": "Chegou às 9h",
+       "right": "Indicação de hora exata"
+      },
+      {
+       "left": "Fui à agência",
+       "right": "Preposição a + artigo a"
+      }
+     ],
+     "explanation": "As quatro situações clássicas de crase: locução feminina, a + aquele, hora exata e a + artigo feminino.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l1q23",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "O sinal indicativo de crase está empregado corretamente em:",
+     "options": [
+      "O cliente começou à reclamar do atendimento.",
+      "O cliente referiu-se àquela proposta enviada ontem.",
+      "O gerente entregou o novo cartão à ele.",
+      "A reunião foi marcada de 8h às 10h.",
+      "O contrato de adesão foi enviado à todos os clientes da agência."
+     ],
+     "answer": 1,
+     "explanation": "“Referir-se a” + “aquela” = “àquela”. Não há crase antes de verbo (reclamar), de pronome pessoal (ele) nem de pronome indefinido (todos); e “de 8h” pede “a 10h” (só “das 8h às 10h” leva crase).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q24",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No comunicado da agência lê-se: “O banco aderiu ___ novas regras, obedece ___ normas do Banco Central e, ___ partir desta semana, atenderá também ___ noite.” As lacunas são preenchidas correta e respectivamente por",
+     "options": [
+      "as – as – a – a",
+      "às – as – à – à",
+      "às – às – a – à",
+      "às – às – à – a",
+      "as – às – a – à"
+     ],
+     "answer": 2,
+     "explanation": "“Aderir a” e “obedecer a” pedem preposição: a + as = às. Em “a partir” não há crase (antes de verbo). “À noite” é locução adverbial feminina.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q25",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: não há crase antes de verbo (“Começou a chover”), porque verbo não aceita artigo. Agora: complete “A equipe passou ___ analisar os contratos.”",
+     "options": [
+      "a",
+      "à",
+      "há"
+     ],
+     "answer": 0,
+     "explanation": "“Analisar” é verbo: só a preposição a, sem artigo, então sem crase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l1q26",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Não se usa crase antes de palavra masculina. Por isso, na correspondência, “Fez o pagamento à prazo” está incorreto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "“Prazo” é masculino: o correto é “a prazo”. Compare com “à vista”, locução feminina.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l1q27",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Antes de pronomes pessoais e de tratamento não há crase. Qual frase da correspondência está correta?",
+     "options": [
+      "Entreguei o cartão à ela.",
+      "Entreguei o cartão a ela.",
+      "Entreguei o cartão à Vossa Senhoria."
+     ],
+     "answer": 1,
+     "explanation": "Pronomes pessoais (ela) e de tratamento (Vossa Senhoria) não aceitam artigo, então não há crase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l1q28",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Com o a singular diante de palavra no plural não há crase (“Compareceu a reuniões”); com “as”, há (“Compareceu às reuniões”). Qual frase está correta?",
+     "options": [
+      "O gerente compareceu à reuniões com clientes.",
+      "O gerente compareceu as reuniões com clientes.",
+      "O gerente compareceu a reuniões com clientes."
+     ],
+     "answer": 2,
+     "explanation": "O a singular é só preposição, sem artigo; e “compareceu as reuniões” perde a preposição que “comparecer” pede.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l1q29",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um ofício, o redator escreveu: “Informamos ___ Vossa Senhoria que, ___ partir de segunda-feira, o atendimento passará ___ ser feito ___ tarde.” As lacunas são preenchidas correta e respectivamente por",
+     "options": [
+      "à – a – a – à",
+      "a – à – a – a",
+      "à – à – à – à",
+      "a – a – a – à",
+      "a – a – à – à"
+     ],
+     "answer": 3,
+     "explanation": "Não há crase antes de pronome de tratamento (Vossa Senhoria) nem antes de verbo (partir, ser). “À tarde” é locução adverbial feminina.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l1q30",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "ortografia-crase",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "Em todas as frases abaixo o uso da crase é facultativo, EXCETO em:",
+     "options": [
+      "O cliente enviou o comprovante à sua gerente.",
+      "O cliente caminhou até à agência mais próxima.",
+      "O cliente entregou os documentos à Mariana.",
+      "O cliente fez referência à sua conta-salário.",
+      "O cliente foi à agência central para renegociar a dívida."
+     ],
+     "answer": 4,
+     "explanation": "Em “foi à agência” a crase é obrigatória (ir a + a agência). É facultativa antes de possessivo feminino (sua gerente, sua conta), de nome próprio feminino (Mariana) e depois de “até”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l1c5",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u11l2",
+   "order": 2,
+   "title": "Interpretação de texto",
+   "concepts": [
+    {
+     "id": "u11l2c1",
+     "title": "Tese, finalidade e situação",
+     "summary": "Tese é a ideia que o autor defende; argumentos a sustentam. Finalidade: informar (notícia), convencer (artigo de opinião), orientar (manual, edital, bula: texto injuntivo), narrar (conto). Pergunte sempre: quem fala, para quem e com que objetivo."
+    },
+    {
+     "id": "u11l2c2",
+     "title": "Inferência e pressupostos",
+     "summary": "Informação explícita está escrita; inferência é o que se conclui com segurança a partir do texto; pressuposto é o que a frase dá como certo (“voltou a atrasar” pressupõe que já atrasou). Extrapolar é concluir mais do que o texto permite."
+    },
+    {
+     "id": "u11l2c3",
+     "title": "Coesão, coerência e ambiguidade",
+     "summary": "Coesão liga as partes do texto com pronomes, sinônimos e conectivos que retomam ou anunciam termos. Coerência é o sentido lógico do todo, sem contradições. Ambiguidade é o duplo sentido indesejado, comum com pronomes como “seu” e “ele”."
+    },
+    {
+     "id": "u11l2c4",
+     "title": "Sentido das palavras e figuras",
+     "summary": "Denotação é o sentido literal; conotação, o figurado. Metáfora compara sem “como”; metonímia troca um termo por outro relacionado (o Planalto pelo governo); hipérbole exagera; ironia diz o contrário do que pensa; eufemismo suaviza; antítese aproxima opostos; prosopopeia dá ação humana a seres inanimados."
+    },
+    {
+     "id": "u11l2c5",
+     "title": "Discurso direto, indireto e indireto livre",
+     "summary": "Direto: a fala com as palavras do falante, marcada por travessão ou aspas (Ele disse: — Volto já). Indireto: o narrador conta a fala (Ele disse que voltaria logo), com ajustes de tempo e de lugar (hoje → naquele dia; aqui → ali). Indireto livre: a fala ou o pensamento se mistura à narração, sem marcas."
+    },
+    {
+     "id": "u11l2c6",
+     "title": "Intertextualidade e contexto",
+     "summary": "Intertextualidade é a presença de um texto em outro: citação (literal, com aspas), paráfrase (mesmo sentido, outras palavras), paródia (recriação com humor ou crítica), alusão e epígrafe. O contexto histórico ajuda a ler: palavras e referências mudam com a época."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u11l2q01",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “Os bancos deveriam ensinar finanças nas escolas, porque o endividamento cresce entre os jovens”, a tese é a opinião defendida (os bancos deveriam ensinar) e o resto é argumento. Agora: em “O trabalho remoto deve continuar, pois reduz custos e aumenta a produtividade”, qual é a tese?",
+     "options": [
+      "o trabalho remoto reduz custos",
+      "a produtividade aumenta",
+      "o trabalho remoto deve continuar"
+     ],
+     "answer": 2,
+     "explanation": "A tese é o que se defende (deve continuar); reduzir custos e aumentar a produtividade são os argumentos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q02",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "A notícia tem por finalidade principal informar um fato; o artigo de opinião, convencer o leitor. Um texto que começa com “O Banco Central divulgou ontem a ata da reunião” é predominantemente informativo.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Relata um fato datado, sem defender ponto de vista: finalidade informativa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q03",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “Para abrir a conta, apresente documento com foto e comprovante de residência. Em seguida, cadastre a senha no terminal.” A finalidade predominante é",
+     "options": [
+      "orientar o leitor",
+      "narrar um fato",
+      "defender uma opinião"
+     ],
+     "answer": 0,
+     "explanation": "Verbos no imperativo e passos em sequência: é um texto injuntivo, que orienta como fazer.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q04",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada gênero à sua finalidade principal:",
+     "pairs": [
+      {
+       "left": "Notícia",
+       "right": "Informar um fato recente"
+      },
+      {
+       "left": "Artigo de opinião",
+       "right": "Defender um ponto de vista"
+      },
+      {
+       "left": "Manual de instruções",
+       "right": "Orientar como fazer algo"
+      },
+      {
+       "left": "Crônica",
+       "right": "Comentar o cotidiano com tom pessoal"
+      }
+     ],
+     "explanation": "Gênero e finalidade andam juntos: informar, convencer, orientar e comentar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q05",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “Muitos acreditam que poupar é cortar todo prazer. Engano. Quem separa todo mês uma pequena parte da renda, mesmo vinte reais, cria um hábito que, com o tempo, vale mais do que o valor guardado. A disciplina, e não a quantia, é o que muda a vida financeira.” A tese defendida no texto é a de que",
+     "options": [
+      "o hábito de poupar com regularidade importa mais do que o valor poupado.",
+      "poupar exige abrir mão de todo tipo de prazer no dia a dia.",
+      "vinte reais guardados por mês bastam para mudar a vida financeira de qualquer pessoa.",
+      "só quem tem renda alta consegue criar o hábito de poupar todo mês.",
+      "a vida financeira melhora apenas quando se cortam os gastos com lazer."
+     ],
+     "answer": 0,
+     "explanation": "A última frase resume a tese: “a disciplina, e não a quantia”. A primeira alternativa errada é a crença que o texto refuta (“Engano”); os vinte reais são só um exemplo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q06",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em uma bula de remédio, em um edital de concurso e em uma receita culinária, predomina a tipologia",
+     "options": [
+      "narrativa, que relata fatos em sequência temporal.",
+      "injuntiva, que orienta o leitor sobre como agir.",
+      "descritiva, que caracteriza seres, objetos e lugares.",
+      "dissertativa, que defende uma tese com argumentos.",
+      "expositiva, que apresenta dados sem orientar ações."
+     ],
+     "answer": 1,
+     "explanation": "Os três gêneros dizem ao leitor o que fazer (tomar, inscrever-se, preparar): tipologia injuntiva ou instrucional.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q07",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “Ana voltou a atrasar o aluguel” pressupõe que ela já tinha atrasado antes; “voltou a” carrega essa ideia. Agora: “O banco continua cobrando a tarifa” pressupõe que",
+     "options": [
+      "a tarifa vai aumentar",
+      "o banco já cobrava a tarifa",
+      "o cliente reclamou da tarifa"
+     ],
+     "answer": 1,
+     "explanation": "“Continua” indica algo que já acontecia. Aumento e reclamação não estão no texto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q08",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Texto: “Desde que instalou o aplicativo, Paulo não vai mais à agência.” Pode-se inferir que Paulo ia à agência antes de instalar o aplicativo.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "“Não vai mais” pressupõe que ia antes.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q09",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “Desde que instalou o aplicativo, Paulo não vai mais à agência.” Qual conclusão extrapola o texto, isto é, vai além do que ele permite?",
+     "options": [
+      "Paulo já frequentou a agência.",
+      "Paulo instalou o aplicativo.",
+      "Paulo detesta o atendimento presencial."
+     ],
+     "answer": 2,
+     "explanation": "O texto não diz o que Paulo sente pelo atendimento presencial; as outras duas conclusões estão garantidas por ele.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q10",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “Até o estagiário entendeu o novo sistema.” A palavra “até” leva a inferir que",
+     "options": [
+      "se esperava que o estagiário tivesse dificuldade",
+      "o estagiário ensinou o sistema aos outros",
+      "ninguém mais entendeu o sistema"
+     ],
+     "answer": 0,
+     "explanation": "“Até” inclui alguém de quem não se esperava aquilo: o estagiário seria o último a entender.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q11",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “A agência do centro, que voltou a abrir aos sábados, passará agora a atender também até as 18h nos dias úteis.” Pode-se inferir do texto que a agência",
+     "options": [
+      "nunca havia funcionado aos sábados antes desta mudança.",
+      "deixará de abrir aos sábados para estender o horário.",
+      "já havia aberto aos sábados em algum momento anterior.",
+      "é a única agência da cidade com atendimento aos sábados.",
+      "atendia, antes da mudança, depois das 18h nos dias úteis."
+     ],
+     "answer": 2,
+     "explanation": "“Voltou a abrir” pressupõe que já abria. As demais contrariam o texto (nunca; deixará de abrir; antes atendia depois das 18h) ou o extrapolam (a única da cidade).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q12",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Na frase “O cliente ainda não recebeu o novo cartão”, o termo “ainda” indica que",
+     "options": [
+      "o cliente recusou o novo cartão enviado pelo banco.",
+      "o cartão foi extraviado durante a entrega ao cliente.",
+      "o cliente já recebeu outro cartão novo antes deste.",
+      "se espera que o cliente receba o cartão em algum momento.",
+      "o banco não pretende mais enviar o cartão ao cliente."
+     ],
+     "answer": 3,
+     "explanation": "“Ainda não” marca algo esperado que não aconteceu até agora. Recusa, extravio e desistência não estão no texto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q13",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “O gerente chamou a cliente. Ela chegou cedo”, o pronome “Ela” retoma “a cliente”. Agora: em “O banco lançou uma plataforma. Ela permite pagar contas”, “Ela” retoma",
+     "options": [
+      "o banco",
+      "uma plataforma",
+      "as contas"
+     ],
+     "answer": 1,
+     "explanation": "“Ela” é feminino singular, como “plataforma”; “banco” é masculino e “contas” está no plural.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q14",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "A frase “O diretor disse ao gerente que seu projeto foi aprovado” é ambígua, pois “seu” pode se referir ao diretor ou ao gerente.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "“Seu” pode retomar qualquer um dos dois homens citados.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q15",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para desfazer a ambiguidade de “O diretor disse ao gerente que seu projeto foi aprovado”, sabendo que o projeto é do gerente, a melhor reescrita é",
+     "options": [
+      "O diretor disse ao gerente que o seu projeto foi aprovado.",
+      "O diretor disse que seu projeto, ao gerente, foi aprovado.",
+      "O diretor disse ao gerente que o projeto deste foi aprovado."
+     ],
+     "answer": 2,
+     "explanation": "“Deste” retoma o último termo citado, o gerente. Pôr artigo antes de “seu” não muda a dúvida.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q16",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Uma frase é incoerente quando suas partes se contradizem. Qual frase é incoerente?",
+     "options": [
+      "Sem nenhum dinheiro, comprou o carro à vista.",
+      "Sem dinheiro, adiou a compra do carro.",
+      "Com o bônus, comprou o carro à vista."
+     ],
+     "answer": 0,
+     "explanation": "Comprar à vista exige pagar na hora: não combina com estar sem nenhum dinheiro.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q17",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A frase que apresenta ambiguidade é:",
+     "options": [
+      "O analista entregou o relatório ao diretor na reunião.",
+      "A cliente pagou a fatura antes do vencimento.",
+      "Os funcionários receberam o bônus no fim do mês.",
+      "O banco reduziu a tarifa das contas digitais.",
+      "A gerente encontrou a cliente em sua sala."
+     ],
+     "answer": 4,
+     "explanation": "“Sua sala” pode ser a sala da gerente ou a da cliente. As demais frases têm um único sentido.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q18",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “O Pix mudou a forma de pagar no Brasil. A ferramenta, criada pelo Banco Central, permite transferências instantâneas a qualquer hora. Por isso, ela se tornou um dos meios de pagamento mais usados no país.” Os termos “A ferramenta” e “ela” retomam, respectivamente,",
+     "options": [
+      "o Pix e o Pix.",
+      "o Pix e o Banco Central.",
+      "o Banco Central e a forma de pagar.",
+      "a forma de pagar e o Pix.",
+      "o Brasil e o Pix."
+     ],
+     "answer": 0,
+     "explanation": "“A ferramenta” é um sinônimo que retoma o Pix, e “ela” retoma “a ferramenta”, isto é, o Pix de novo. É coesão por substituição e por pronome.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q19",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “O mercado ficou nervoso”, “nervoso” tem sentido figurado (conotativo): mercado não tem nervos. Agora: em qual frase “quebrou” está em sentido denotativo, literal?",
+     "options": [
+      "A empresa quebrou em 2020.",
+      "O caixa quebrou o copo.",
+      "O silêncio quebrou o clima."
+     ],
+     "answer": 1,
+     "explanation": "Só o copo se partiu de fato. Empresa que “quebra” vai à falência, e o clima “quebrado” é figura.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q20",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “Já falei isso um milhão de vezes”, há hipérbole, isto é, exagero intencional.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Ninguém repete algo um milhão de vezes: o exagero dá ênfase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q21",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada figura de linguagem ao exemplo:",
+     "pairs": [
+      {
+       "left": "Hipérbole",
+       "right": "Estou morrendo de fome"
+      },
+      {
+       "left": "Eufemismo",
+       "right": "Ele nos deixou (morreu)"
+      },
+      {
+       "left": "Ironia",
+       "right": "Que beleza, perdi o ônibus de novo!"
+      },
+      {
+       "left": "Antítese",
+       "right": "Riso e choro na mesma tarde"
+      }
+     ],
+     "explanation": "Hipérbole exagera, eufemismo suaviza, ironia diz o contrário e antítese aproxima opostos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q22",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Metonímia troca uma palavra por outra relacionada: “ler Machado de Assis” (a obra pelo autor). Em qual frase há metonímia?",
+     "options": [
+      "O projeto foi vetado pelo presidente.",
+      "O projeto é uma bomba-relógio.",
+      "O Planalto vetou o projeto."
+     ],
+     "answer": 2,
+     "explanation": "“O Planalto” (o palácio) está no lugar do governo. “Bomba-relógio” é metáfora.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q23",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Na frase “A inflação é um ladrão silencioso do salário”, a figura de linguagem predominante é a",
+     "options": [
+      "metonímia.",
+      "metáfora.",
+      "hipérbole.",
+      "eufemismo.",
+      "antítese."
+     ],
+     "answer": 1,
+     "explanation": "A inflação é comparada a um ladrão sem conectivo comparativo: metáfora. Não há troca por termo relacionado, exagero, suavização nem oposição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q24",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em uma campanha, um banco escreveu: “Seu dinheiro trabalha enquanto você descansa.” Sobre a linguagem da frase, é correto afirmar que",
+     "options": [
+      "emprega apenas o sentido denotativo, já que descreve um serviço bancário real e conhecido.",
+      "constitui um eufemismo, pois suaviza a ideia de perder o dinheiro aplicado.",
+      "atribui ação humana ao dinheiro, em sentido conotativo, e opõe trabalho e descanso.",
+      "usa metonímia, pois troca o nome do banco pelo dinheiro que ele administra.",
+      "apresenta ironia, pois afirma o contrário do que a campanha quer dizer."
+     ],
+     "answer": 2,
+     "explanation": "Dinheiro não trabalha de fato: é prosopopeia, sentido conotativo. “Trabalha” e “descansa” formam uma antítese.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q25",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o discurso direto reproduz a fala (O cliente disse: — Quero cancelar o cartão); no indireto, o narrador conta (O cliente disse que queria cancelar o cartão). Agora: “A gerente afirmou que o sistema estava fora do ar” está em discurso",
+     "options": [
+      "indireto",
+      "direto",
+      "indireto livre"
+     ],
+     "answer": 0,
+     "explanation": "A fala é contada pelo narrador, com verbo de elocução (afirmou) e “que”: discurso indireto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q26",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Do discurso direto para o indireto, o presente costuma ir para o pretérito imperfeito: “— Estou sem senha”, disse ele, vira “Ele disse que estava sem senha”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O tempo da fala se ajusta ao tempo da narração: estou → estava.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q27",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Transponha para o discurso indireto: O caixa disse: — Volto amanhã.",
+     "options": [
+      "O caixa disse que volto amanhã.",
+      "O caixa disse que voltaria no dia seguinte.",
+      "O caixa disse: voltaria no dia seguinte."
+     ],
+     "answer": 1,
+     "explanation": "Volto → voltaria; amanhã → no dia seguinte; entra o “que” e sai o travessão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q28",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No discurso indireto livre, a fala ou o pensamento da personagem se mistura à narração, sem travessão nem “disse que”. Em qual trecho ele aparece?",
+     "options": [
+      "Joana olhou o extrato e perguntou: — Cadê o salário?",
+      "Joana olhou o extrato e perguntou onde estava o salário.",
+      "Joana olhou o extrato. Onde tinha ido parar o salário?"
+     ],
+     "answer": 2,
+     "explanation": "A pergunta é de Joana, mas vem solta na narração, sem marcas: indireto livre. As outras são direto e indireto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q29",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Ao transpor para o discurso indireto a frase “O diretor anunciou: — Hoje assinaremos o contrato aqui.”, obtém-se, de acordo com a norma-padrão:",
+     "options": [
+      "O diretor anunciou que hoje assinaremos o contrato aqui.",
+      "O diretor anunciou que naquele dia assinaram o contrato aqui.",
+      "O diretor anunciou que hoje assinariam o contrato aqui.",
+      "O diretor anunciou que naquele dia assinariam o contrato ali.",
+      "O diretor anunciou que naquele dia assinarão o contrato ali."
+     ],
+     "answer": 3,
+     "explanation": "Hoje → naquele dia; aqui → ali; o futuro do presente (assinaremos) → futuro do pretérito (assinariam), e a 1ª pessoa vira 3ª.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q30",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto: “Marta saiu da agência com o empréstimo negado. Como ia pagar a reforma agora? Caminhou até o ponto de ônibus em silêncio.” No trecho, a frase interrogativa constitui",
+     "options": [
+      "discurso direto, pois reproduz a fala da personagem com as suas próprias palavras.",
+      "discurso indireto, pois o narrador relata a pergunta com um verbo de elocução.",
+      "uma pergunta retórica dirigida ao leitor, sem relação com a personagem Marta.",
+      "a fala do gerente da agência, reproduzida sem as marcas do discurso direto.",
+      "discurso indireto livre, pois o pensamento da personagem se funde à voz do narrador."
+     ],
+     "answer": 4,
+     "explanation": "A pergunta é o pensamento de Marta, inserido na narração sem travessão, aspas ou “disse que”. Não há verbo de elocução no trecho.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q31",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “Minha terra tem palmeiras onde canta o sabiá” é de Gonçalves Dias; “Minha terra tem shoppings onde canta o lucro” recria o verso com crítica: é paródia. Agora: “Ser ou não ser cliente, eis a questão”, num anúncio, retoma Shakespeare com humor. É",
+     "options": [
+      "paródia",
+      "citação",
+      "paráfrase"
+     ],
+     "answer": 0,
+     "explanation": "O verso é alterado com intenção humorística: paródia. Citação reproduziria o original; paráfrase manteria o sentido.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l2q32",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Paráfrase recria um texto com outras palavras, mantendo o sentido. Dizer “É necessário navegar” no lugar de “Navegar é preciso” é uma paráfrase.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O sentido é o mesmo, com outras palavras: paráfrase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l2q33",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada tipo de intertextualidade à sua descrição:",
+     "pairs": [
+      {
+       "left": "Citação",
+       "right": "Trecho reproduzido entre aspas, com a fonte"
+      },
+      {
+       "left": "Paráfrase",
+       "right": "Mesmo sentido, outras palavras"
+      },
+      {
+       "left": "Paródia",
+       "right": "Recriação com humor ou crítica"
+      },
+      {
+       "left": "Epígrafe",
+       "right": "Trecho de outro autor no início do texto"
+      }
+     ],
+     "explanation": "Citação reproduz, paráfrase reescreve com o mesmo sentido, paródia subverte e epígrafe abre o texto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l2q34",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Texto de 1950: “O telefone ainda é luxo em muitas casas.” Considerando o contexto histórico, “telefone” se refere",
+     "options": [
+      "ao celular de hoje",
+      "ao aparelho fixo da época",
+      "ao aplicativo de mensagens"
+     ],
+     "answer": 1,
+     "explanation": "Em 1950 não havia celular nem aplicativos: o texto fala do telefone fixo, então raro nas casas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l2q35",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Há intertextualidade por paródia em:",
+     "options": [
+      "“Tudo vale a pena se o juro não é pequeno”, anúncio que recria um verso de Fernando Pessoa.",
+      "“O banco ampliou o horário de atendimento”, notícia publicada em um jornal local.",
+      "“Conforme o edital, a prova terá 80 questões”, trecho de um comunicado oficial.",
+      "“A taxa Selic é definida pelo Copom a cada reunião”, frase de um livro didático de economia.",
+      "“Abra sua conta pelo celular em cinco minutos”, slogan de um banco digital."
+     ],
+     "answer": 0,
+     "explanation": "O anúncio recria “Tudo vale a pena / Se a alma não é pequena”, de Fernando Pessoa, com outra intenção: paródia. As demais não retomam outro texto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "prova"
+    },
+    {
+     "id": "u11l2q36",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "interpretacao",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um colunista escreveu: “No meio do caminho tinha uma tarifa. Tinha uma tarifa no meio do caminho.” O trecho",
+     "options": [
+      "é uma citação literal, pois reproduz o poema original sem nenhuma alteração de palavras.",
+      "dialoga com um poema conhecido de Carlos Drummond de Andrade, recriando-o com crítica.",
+      "não apresenta intertextualidade, pois trata de um tema do sistema financeiro.",
+      "é uma paráfrase, pois mantém o sentido do original com outras palavras.",
+      "é uma epígrafe, pois aparece no início do texto com a indicação da fonte."
+     ],
+     "answer": 1,
+     "explanation": "O original é “No meio do caminho tinha uma pedra”, de Drummond. Trocar “pedra” por “tarifa” muda o sentido com intenção crítica: paródia, não citação nem paráfrase.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l2c6",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u11l3",
+   "order": 3,
+   "title": "Morfologia",
+   "concepts": [
+    {
+     "id": "u11l3c1",
+     "title": "Formação de palavras",
+     "summary": "Derivação prefixal (infeliz), sufixal (felizmente), parassintética (prefixo e sufixo juntos: entardecer, emagrecer) e regressiva (o debate, de debater). Composição por justaposição (passatempo, guarda-chuva) ou aglutinação, com perda (planalto, aguardente). Locução adjetiva costuma ter adjetivo equivalente (de chuva = pluvial). Estrangeirismo é palavra de outra língua (delivery)."
+    },
+    {
+     "id": "u11l3c2",
+     "title": "Sinônimos, antônimos e parônimos",
+     "summary": "Sinônimos têm sentido semelhante no contexto; antônimos, sentido oposto. Parônimos têm forma parecida e sentido diferente (retificar = corrigir / ratificar = confirmar; eminente = ilustre / iminente = prestes a ocorrer). Homônimos: mesma forma ou som, sentidos diferentes (concerto/conserto; sessão, seção e cessão)."
+    },
+    {
+     "id": "u11l3c3",
+     "title": "Pronomes e artigos",
+     "summary": "Este: o que está perto de quem fala ou o que ainda vai ser dito; esse: o que já foi dito; aquele: o distante. “Cujo” indica posse, concorda com o possuído e não leva artigo depois (o cliente cuja conta). Na norma-padrão, não se começa frase com pronome oblíquo, e depois de preposição usa-se mim (entre mim e você). Artigo definido determina; indefinido generaliza."
+    },
+    {
+     "id": "u11l3c4",
+     "title": "Flexão nominal e verbal",
+     "summary": "Plural de compostos: variam substantivo e adjetivo (cofres-fortes), mas não verbo nem advérbio (guarda-chuvas, abaixo-assinados). Derivados seguem o verbo primitivo: intervir como vir (interveio), manter como ter (mantêm), rever como ver (quando eu revir), conter como ter (contiveram). Ter e vir levam acento no plural (eles têm, eles vêm)."
+    },
+    {
+     "id": "u11l3c5",
+     "title": "Vozes do verbo",
+     "summary": "Ativa: o sujeito pratica a ação (O banco aprovou o crédito). Passiva analítica: ser + particípio (O crédito foi aprovado pelo banco). Passiva sintética: verbo transitivo direto + se, concordando com o sujeito (Aprovaram-se os créditos). Reflexiva: o sujeito pratica e sofre a ação (O cliente se cadastrou)."
+    },
+    {
+     "id": "u11l3c6",
+     "title": "Tempos e modos",
+     "summary": "Os tempos se combinam: imperfeito do subjuntivo pede futuro do pretérito (Se tivesse saldo, pagaria); futuro do subjuntivo pede futuro do presente (Se tiver saldo, pagarei); “caso” pede presente do subjuntivo (Caso chova, avisarei). Subjuntivo exprime hipótese ou desejo; indicativo, certeza; imperativo, ordem ou pedido."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u11l3q01",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “entardecer”, o prefixo en- e o sufixo -ecer entram ao mesmo tempo (não existem “entarde” nem “tardecer”): é derivação parassintética. Agora: “anoitecer” é formada por derivação",
+     "options": [
+      "parassintética",
+      "prefixal",
+      "sufixal"
+     ],
+     "answer": 0,
+     "explanation": "a- + noite + -ecer entram juntos; não existem “anoite” nem “noitecer”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q02",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Na aglutinação, as palavras se juntam com perda de som ou letra: plano + alto = planalto. Em “passatempo”, passa + tempo se juntam sem perda: é justaposição.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Justaposição mantém as palavras inteiras (pontapé, passatempo); aglutinação as altera (planalto, aguardente).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q03",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada palavra ao seu processo de formação:",
+     "pairs": [
+      {
+       "left": "infeliz",
+       "right": "Derivação prefixal"
+      },
+      {
+       "left": "felizmente",
+       "right": "Derivação sufixal"
+      },
+      {
+       "left": "guarda-chuva",
+       "right": "Composição por justaposição"
+      },
+      {
+       "left": "aguardente",
+       "right": "Composição por aglutinação"
+      }
+     ],
+     "explanation": "in- é prefixo; -mente, sufixo; guarda-chuva junta palavras inteiras; água + ardente perde letras.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q04",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Locução adjetiva é a expressão com valor de adjetivo, que muitas vezes tem um adjetivo equivalente: “de chuva” = pluvial. No relatório, “taxa do mês” equivale a",
+     "options": [
+      "taxa mensurável",
+      "taxa mensal",
+      "taxa monetária"
+     ],
+     "answer": 1,
+     "explanation": "“Do mês” = mensal. “Mensurável” é o que se pode medir; “monetária”, relativo a moeda.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q05",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "As palavras “reler”, “embarcar” e “pontapé” são formadas, respectivamente, por",
+     "options": [
+      "derivação sufixal, composição por aglutinação e derivação parassintética.",
+      "derivação prefixal, derivação sufixal e composição por aglutinação.",
+      "derivação prefixal, derivação parassintética e composição por justaposição.",
+      "composição por justaposição, derivação regressiva e derivação prefixal.",
+      "derivação parassintética, derivação prefixal e composição por aglutinação."
+     ],
+     "answer": 2,
+     "explanation": "re- + ler: prefixal. em- + barco + -ar, ao mesmo tempo: parassintética. ponta + pé, sem perda: justaposição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q06",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Num comunicado interno, lê-se: “O feedback da equipe sobre o novo app será usado no próximo deploy.” Sobre a linguagem do trecho, é correto afirmar que",
+     "options": [
+      "emprega apenas palavras de origem portuguesa, já incorporadas ao vocabulário oficial.",
+      "o termo “app” é uma derivação regressiva de “aplicativo”, processo de formação próprio do português.",
+      "os termos estrangeiros são proibidos pela norma-padrão em qualquer comunicado interno.",
+      "emprega estrangeirismos, comuns no meio técnico, substituíveis por retorno e implantação.",
+      "“feedback” e “deploy” são neologismos criados por composição por aglutinação."
+     ],
+     "answer": 3,
+     "explanation": "“Feedback”, “app” e “deploy” vêm do inglês: são estrangeirismos, aceitáveis para público técnico e substituíveis por palavras portuguesas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q07",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “retificar” é corrigir e “ratificar” é confirmar: forma parecida, sentido diferente (parônimos). Agora: o conselho confirmou o acordo assinado ontem. O conselho ___ o acordo.",
+     "options": [
+      "retificou",
+      "relativizou",
+      "ratificou"
+     ],
+     "answer": 2,
+     "explanation": "Confirmar = ratificar. Retificar seria corrigir o acordo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q08",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "“Iminente” significa prestes a acontecer, e “eminente”, ilustre. Na ata, “O risco de queda do sistema é eminente” está correto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "O risco está prestes a acontecer: “iminente”. “Eminente” qualifica pessoas ilustres.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q09",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Sessão é o tempo de uma reunião; seção é divisão ou departamento; cessão é o ato de ceder. Complete: “A ___ de crédito cuidará da ___ dos direitos.”",
+     "options": [
+      "seção / cessão",
+      "sessão / seção",
+      "cessão / sessão"
+     ],
+     "answer": 0,
+     "explanation": "Departamento = seção; o ato de ceder direitos = cessão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q10",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Sinônimo é a palavra que substitui outra no contexto sem mudar o sentido. Em “O banco vai ampliar o horário”, qual palavra substitui “ampliar”?",
+     "options": [
+      "reduzir",
+      "estender",
+      "manter"
+     ],
+     "answer": 1,
+     "explanation": "Ampliar o horário = estendê-lo. “Reduzir” é antônimo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q11",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "As palavras foram empregadas corretamente em todas as frases, EXCETO em:",
+     "options": [
+      "O gerente agiu com discrição ao tratar da dívida do cliente.",
+      "A diretoria vai ratificar o acordo firmado ontem.",
+      "O conserto do caixa eletrônico levou dois dias.",
+      "A sessão do conselho começou às 9h.",
+      "O ilustre e iminente economista fará a palestra de abertura."
+     ],
+     "answer": 4,
+     "explanation": "O economista ilustre é “eminente”; “iminente” é o que está prestes a ocorrer. Discrição (reserva), ratificar (confirmar), conserto (reparo) e sessão (reunião) estão corretos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q12",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No aviso “O atendimento presencial será suspenso temporariamente”, a substituição que mantém o sentido original é",
+     "options": [
+      "interrompido provisoriamente",
+      "encerrado definitivamente",
+      "transferido permanentemente",
+      "ampliado temporariamente",
+      "retomado provisoriamente"
+     ],
+     "answer": 0,
+     "explanation": "Suspenso = interrompido; temporariamente = provisoriamente. As outras trocam por termos de sentido diferente ou oposto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q13",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: usa-se “este” para o que ainda vai ser dito e “esse” para o que já foi dito: “O problema é este: faltou saldo.” / “Faltou saldo. Esse foi o problema.” Agora: complete “A meta foi batida. ___ resultado garante o bônus.”",
+     "options": [
+      "Este",
+      "Aquele",
+      "Esse"
+     ],
+     "answer": 2,
+     "explanation": "O resultado já foi mencionado (a meta batida): retomada, então “esse”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q14",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O relativo “cujo” indica posse e não é seguido de artigo: “O cliente cuja conta foi bloqueada”. Logo, “O cliente cuja a conta foi bloqueada” está correto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Depois de “cujo” não se usa artigo: “cuja conta”, nunca “cuja a conta”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q15",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Cujo” concorda com a coisa possuída: “a empresa cujos sócios”, “o banco cuja sede”. Complete: “A agência ___ diretor se aposentou será reformada.”",
+     "options": [
+      "cujo",
+      "cuja",
+      "que o seu"
+     ],
+     "answer": 0,
+     "explanation": "O possuído é “diretor” (masculino singular): “cujo diretor”. “Que o seu” não é aceito na norma-padrão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q16",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O artigo definido determina um ser já conhecido; o indefinido apresenta um ser novo. Em “Um cliente ligou; o cliente queria renegociar”, por que se troca “um” por “o”?",
+     "options": [
+      "o cliente agora é outro",
+      "o cliente já foi apresentado",
+      "o artigo é só um enfeite"
+     ],
+     "answer": 1,
+     "explanation": "Na primeira menção o cliente é novo (um); na segunda já é conhecido (o).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q17",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Está de acordo com a norma-padrão o emprego do pronome em:",
+     "options": [
+      "Os relatórios cujos os dados foram revisados serão publicados.",
+      "Os relatórios cujos dados foram revisados serão publicados.",
+      "Esta é a analista que eu confio nas informações.",
+      "Me envie o extrato até amanhã, por favor.",
+      "Entre eu e você não há divergência alguma."
+     ],
+     "answer": 1,
+     "explanation": "“Cujos dados”, sem artigo. Os erros: “cujos os”; “que eu confio” (o correto seria “em cujas informações eu confio”); pronome oblíquo no início da frase (Envie-me); e “entre eu” (depois de preposição, “entre mim e você”).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q18",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Num ofício, lê-se: “Nosso objetivo é ___: reduzir o tempo de espera nas agências.” Mais adiante: “Reduzir o tempo de espera — ___ é o desafio do semestre.” As lacunas ficam corretas, respectivamente, com",
+     "options": [
+      "esse – este",
+      "aquele – este",
+      "este – esse",
+      "isso – isto",
+      "esse – aquele"
+     ],
+     "answer": 2,
+     "explanation": "Na primeira, o pronome anuncia o que vem depois dos dois-pontos: “este”. Na segunda, retoma o que acabou de ser dito: “esse”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q19",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “intervir” se conjuga como “vir”: ele veio, ele interveio. Agora: complete o relatório: “O Banco Central ___ no câmbio ontem.”",
+     "options": [
+      "interviu",
+      "intervio",
+      "interveio"
+     ],
+     "answer": 2,
+     "explanation": "Como “ele veio”, “ele interveio”. “Interviu” seria o padrão de “ver” (viu), que não se aplica.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q20",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Os verbos ter e vir levam acento circunflexo na 3ª pessoa do plural do presente: “Eles têm conta” e “Eles vêm à agência”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "No singular: ele tem, ele vem; no plural: eles têm, eles vêm.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q21",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Manter” se conjuga como “ter”. Complete: “Os clientes ___ o saldo positivo.”",
+     "options": [
+      "mantêm",
+      "mantém",
+      "manteem"
+     ],
+     "answer": 0,
+     "explanation": "Plural, como “eles têm”: “eles mantêm”. “Mantém” é singular.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q22",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No plural de compostos com verbo + substantivo, só o substantivo varia: guarda-chuvas. No inventário, qual plural está correto?",
+     "options": [
+      "os portas-cartões",
+      "os porta-cartões",
+      "os portas-cartão"
+     ],
+     "answer": 1,
+     "explanation": "“Porta” é verbo (portar) e não varia; “cartão” vai para o plural.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q23",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Considerando a conjugação dos verbos derivados, a frase correta é:",
+     "options": [
+      "Se o gerente prever o problema, evitará prejuízos.",
+      "Quando o cliente vir à agência, será atendido.",
+      "O diretor reaveu os documentos perdidos.",
+      "Se o gerente previr o problema, evitará prejuízos.",
+      "Os seguranças deteram o suspeito na saída."
+     ],
+     "answer": 3,
+     "explanation": "“Prever” segue “ver”: se eu vir, se ele previr. Os erros: “prever” (previr), “vir” no lugar de “vier” (de vir), “reaveu” (reouve) e “deteram” (detiveram, como tiveram).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q24",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No inventário de uma agência, lê-se: “Foram comprados dois ___ e três ___.” As formas que completam corretamente as lacunas, no plural de “cofre-forte” e de “porta-retrato”, são",
+     "options": [
+      "cofre-fortes – portas-retratos",
+      "cofres-forte – porta-retratos",
+      "cofres-fortes – portas-retratos",
+      "cofre-fortes – porta-retrato",
+      "cofres-fortes – porta-retratos"
+     ],
+     "answer": 4,
+     "explanation": "Substantivo + adjetivo: os dois variam (cofres-fortes). Verbo + substantivo: só o substantivo varia (porta-retratos).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q25",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “O banco aprovou o crédito” (ativa) vira “O crédito foi aprovado pelo banco” (passiva analítica): o objeto vira sujeito e o verbo vai para ser + particípio. Agora: a passiva de “O gerente assinou os contratos” é",
+     "options": [
+      "Os contratos assinaram o gerente.",
+      "O gerente foi assinado pelos contratos.",
+      "Os contratos foram assinados pelo gerente."
+     ],
+     "answer": 2,
+     "explanation": "O objeto (os contratos) vira sujeito; “assinou” vira “foram assinados” (mesmo tempo); quem pratica vira agente da passiva.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q26",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Na voz passiva sintética, o verbo concorda com o sujeito: “Vendem-se imóveis” está correto, porque “imóveis” é o sujeito.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Equivale a “Imóveis são vendidos”: sujeito no plural, verbo no plural.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q27",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Na passiva sintética, o verbo concorda com o sujeito paciente. Complete: “___ novas agências no interior.”",
+     "options": [
+      "Abrem-se",
+      "Abre-se",
+      "Abrem-lhe"
+     ],
+     "answer": 0,
+     "explanation": "“Novas agências” é o sujeito (novas agências são abertas): verbo no plural.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q28",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para passar “Analisaram-se os pedidos” para a passiva analítica, mantendo o tempo verbal, escreve-se",
+     "options": [
+      "Os pedidos são analisados.",
+      "Os pedidos foram analisados.",
+      "Os pedidos analisaram."
+     ],
+     "answer": 1,
+     "explanation": "“Analisaram-se” está no pretérito perfeito: “foram analisados”. “São analisados” mudaria o tempo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q29",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Está na voz passiva sintética, de acordo com a norma-padrão, a frase:",
+     "options": [
+      "Divulgaram-se as novas regras do programa de crédito.",
+      "Divulgou-se as novas regras do programa de crédito.",
+      "As novas regras do programa de crédito foram divulgadas.",
+      "Precisa-se de analistas para o programa de crédito.",
+      "O programa de crédito divulgou as novas regras."
+     ],
+     "answer": 0,
+     "explanation": "Verbo transitivo direto + se, concordando com “as novas regras”. “Divulgou-se” erra a concordância; “foram divulgadas” é passiva analítica; em “precisa-se de” o se indetermina o sujeito; a última está na ativa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q30",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Num relatório de auditoria: “A auditoria identificou falhas no processo de cobrança.” Ao passar a frase para a voz passiva analítica, mantendo o tempo e o sentido, obtém-se:",
+     "options": [
+      "Falhas no processo de cobrança são identificadas pela auditoria.",
+      "Falhas no processo de cobrança foram identificadas pela auditoria.",
+      "Identificaram-se falhas no processo de cobrança.",
+      "Falhas no processo de cobrança foram identificados pela auditoria.",
+      "A auditoria foi identificada por falhas no processo de cobrança."
+     ],
+     "answer": 1,
+     "explanation": "Pretérito perfeito (identificou) → foram identificadas, concordando com “falhas”. “São” muda o tempo, “Identificaram-se” é passiva sintética e a última inverte o sentido.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q31",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “Se eu tivesse saldo, pagaria a conta”: o imperfeito do subjuntivo (tivesse) combina com o futuro do pretérito (pagaria). Agora: complete “Se o cliente ___ a senha, o sistema bloquearia o cartão.”",
+     "options": [
+      "errar",
+      "errou",
+      "errasse"
+     ],
+     "answer": 2,
+     "explanation": "“Bloquearia” (futuro do pretérito) pede o imperfeito do subjuntivo: “se errasse”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l3q32",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “Quando o sistema voltar, nós avisaremos”, o futuro do subjuntivo (voltar) combina com o futuro do presente (avisaremos).",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Ação futura condicionada a outra futura: futuro do subjuntivo + futuro do presente.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l3q33",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Complete com o tempo que combina com o futuro do subjuntivo: “Se a taxa cair, o banco ___ o crédito.”",
+     "options": [
+      "ampliará",
+      "ampliaria",
+      "ampliasse"
+     ],
+     "answer": 0,
+     "explanation": "“Se cair” (futuro do subjuntivo) pede futuro do presente: “ampliará”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l3q34",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O subjuntivo exprime hipótese ou desejo; o indicativo, um fato tido como certo. Em qual frase o verbo está no subjuntivo?",
+     "options": [
+      "Sei que o sistema voltou.",
+      "Espero que o sistema volte logo.",
+      "O sistema volta amanhã."
+     ],
+     "answer": 1,
+     "explanation": "“Espero que” expressa desejo e pede subjuntivo (volte). As outras afirmam fatos (indicativo).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l3q35",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A correlação entre tempos e modos verbais está de acordo com a norma-padrão em:",
+     "options": [
+      "Se a agência abrir mais cedo, os clientes esperariam menos.",
+      "Se a agência abrisse mais cedo, os clientes esperarão menos.",
+      "Se a agência abrisse mais cedo, os clientes esperariam menos.",
+      "Caso a agência abre mais cedo, os clientes esperarão menos.",
+      "Se a agência abrisse mais cedo, os clientes esperam menos."
+     ],
+     "answer": 2,
+     "explanation": "Imperfeito do subjuntivo (abrisse) com futuro do pretérito (esperariam). “Abrir” pediria “esperarão”; “caso” pede presente do subjuntivo (abra).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "prova"
+    },
+    {
+     "id": "u11l3q36",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "morfologia",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um e-mail, o analista escreveu: “Caso o cliente ___ a documentação até sexta, o crédito ___ liberado na semana seguinte.” Preenchem correta e respectivamente as lacunas:",
+     "options": [
+      "enviar – seria",
+      "envia – seria",
+      "enviasse – será",
+      "envie – será",
+      "enviou – seria"
+     ],
+     "answer": 3,
+     "explanation": "“Caso” pede presente do subjuntivo (envie), que combina com o futuro do presente (será). “Enviasse” pediria “seria”, não “será”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l3c6",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u11l4",
+   "order": 4,
+   "title": "Sintaxe",
+   "concepts": [
+    {
+     "id": "u11l4c1",
+     "title": "Termos da oração e referência",
+     "summary": "Sujeito é o termo com que o verbo concorda. Objeto direto completa o verbo sem preposição; o indireto, com preposição. Aposto explica um termo (Vitória, capital do ES,); vocativo chama o interlocutor (Senhor diretor,). Pronomes oblíquos retomam termos: em “recebi o boleto e paguei-o”, “o” retoma “o boleto” e é objeto direto."
+    },
+    {
+     "id": "u11l4c2",
+     "title": "Concordância verbal",
+     "summary": "O verbo concorda com o núcleo do sujeito, mesmo quando ele vem depois (Chegaram os documentos). Haver no sentido de existir ou de tempo passado é impessoal e fica no singular (Havia problemas; Deve haver soluções), assim como fazer indicando tempo (Faz dez anos). Existir, ao contrário, concorda (Existem riscos)."
+    },
+    {
+     "id": "u11l4c3",
+     "title": "Concordância nominal",
+     "summary": "O adjetivo concorda com o substantivo (documentos anexos, planilha anexa, cópias inclusas). “Meio” (= um pouco) e “menos” não variam; “bastante” varia quando acompanha substantivo (bastantes clientes). “É proibido” e “é necessário” não variam sem artigo (É proibido entrada) e concordam com ele (É proibida a entrada)."
+    },
+    {
+     "id": "u11l4c4",
+     "title": "Regência verbal e nominal",
+     "summary": "Assistir a (ver); aspirar a (desejar); visar a (ter como objetivo); obedecer a; ir e chegar a (e não “em”); preferir uma coisa a outra (sem “do que”); implicar algo (sem “em”), no sentido de acarretar. Nomes também têm regência: apto a, favorável a, residente em."
+    },
+    {
+     "id": "u11l4c5",
+     "title": "Coordenação e subordinação",
+     "summary": "Coordenadas são independentes: adição (e, nem), oposição (mas, porém), alternância (ou), conclusão (logo, portanto), explicação (pois). Subordinadas exercem função em outra oração: substantiva (É possível que chova), adjetiva (o cliente que ligou) ou adverbial (Embora chova, irei). Paralelismo: termos coordenados com a mesma estrutura."
+    },
+    {
+     "id": "u11l4c6",
+     "title": "Conectivos e valor semântico",
+     "summary": "Oposição (mas, porém, contudo, todavia, no entanto), concessão (embora, ainda que), causa (porque, visto que, como), conclusão (logo, portanto), condição (se, caso, desde que), finalidade (para que, a fim de que), conformidade (conforme, segundo). Trocar conectivos só mantém o sentido se o valor for o mesmo."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u11l4q01",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “Os clientes pagaram as faturas”, o sujeito é “Os clientes” (o verbo concorda com ele) e “as faturas” é o objeto direto. Agora: em “A gerente aprovou o empréstimo”, qual é o objeto direto?",
+     "options": [
+      "A gerente",
+      "o empréstimo",
+      "aprovou"
+     ],
+     "answer": 1,
+     "explanation": "Aprovou o quê? “O empréstimo”, sem preposição: objeto direto. “A gerente” é o sujeito.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q02",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “Vitória, capital do Espírito Santo, sedia o banco”, o trecho “capital do Espírito Santo” é aposto, pois explica o termo anterior.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Vem entre vírgulas e explica quem é Vitória: aposto explicativo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q03",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Vocativo é o termo usado para chamar o interlocutor e vem isolado por vírgula. Em qual frase há vocativo?",
+     "options": [
+      "Os clientes da agência foram avisados.",
+      "A agência, que fecha às 16h, avisou os clientes.",
+      "Senhores clientes, a agência fechará às 16h."
+     ],
+     "answer": 2,
+     "explanation": "“Senhores clientes” chama quem lê o aviso: vocativo. Nas outras frases, “clientes” é sujeito ou objeto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q04",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O pronome oblíquo retoma um termo já dito. Em “Recebi o boleto e paguei-o ontem”, o pronome “o” retoma",
+     "options": [
+      "o boleto",
+      "ontem",
+      "o pagamento"
+     ],
+     "answer": 0,
+     "explanation": "Paguei o quê? O boleto, retomado pelo pronome “o”, que funciona como objeto direto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q05",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "Na frase “Os analistas do banco entregaram ao diretor, ontem, o relatório final”, o termo “ao diretor” exerce a função de",
+     "options": [
+      "objeto direto.",
+      "sujeito simples.",
+      "adjunto adverbial de tempo.",
+      "aposto explicativo.",
+      "objeto indireto."
+     ],
+     "answer": 4,
+     "explanation": "Entregar algo (o relatório final: objeto direto) a alguém (ao diretor: objeto indireto, com preposição). “Ontem” é o adjunto de tempo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q06",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Num comunicado: “O novo aplicativo, lançado em março, já tem um milhão de usuários. A equipe o atualizou ontem.” Sobre os termos do trecho, é correto afirmar que",
+     "options": [
+      "o pronome “o” retoma “O novo aplicativo” e funciona como objeto direto de “atualizou”.",
+      "“lançado em março” é o sujeito da primeira oração, e “O novo aplicativo”, o objeto.",
+      "o pronome “o” retoma “um milhão de usuários” e funciona como sujeito de “atualizou”.",
+      "“A equipe” é vocativo, pois chama diretamente o leitor do comunicado interno.",
+      "“um milhão de usuários” é aposto de “O novo aplicativo”, pois vem logo depois dele."
+     ],
+     "answer": 0,
+     "explanation": "A equipe atualizou o quê? O aplicativo, retomado por “o”: objeto direto. “A equipe” é o sujeito de “atualizou”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q07",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o verbo concorda com o sujeito mesmo quando ele vem depois: “Chegaram os novos cartões”. Agora: complete “___ as faturas do mês passado.”",
+     "options": [
+      "Venceu",
+      "Venceram",
+      "Vence"
+     ],
+     "answer": 1,
+     "explanation": "O sujeito é “as faturas” (plural), então o verbo vai para o plural.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q08",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "O verbo haver, no sentido de existir, fica no singular. Por isso, “Haviam muitos clientes na fila” está correto.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Haver = existir é impessoal: “Havia muitos clientes na fila”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q09",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Fazer” indicando tempo decorrido também fica no singular: “Faz dois anos”. Complete: “___ três meses que o sistema não falha.”",
+     "options": [
+      "Fazem",
+      "Fizeram",
+      "Faz"
+     ],
+     "answer": 2,
+     "explanation": "Fazer indicando tempo é impessoal: “Faz três meses”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q10",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Existir”, diferente de “haver”, concorda com o sujeito: “Existem riscos”. Qual frase do relatório está correta?",
+     "options": [
+      "Existem falhas no processo.",
+      "Existe falhas no processo.",
+      "Houveram falhas no processo."
+     ],
+     "answer": 0,
+     "explanation": "“Falhas” é o sujeito de “existem”. Com “haver” seria “Houve falhas”, no singular.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q11",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A concordância verbal está de acordo com a norma-padrão em:",
+     "options": [
+      "Devem haver outras formas de reduzir as tarifas.",
+      "Devem existir outras formas de reduzir as tarifas.",
+      "Fazem dois anos que o banco não reajusta as tarifas.",
+      "Houveram reclamações sobre as novas tarifas.",
+      "Aluga-se salas comerciais próximas à agência."
+     ],
+     "answer": 1,
+     "explanation": "Com “existir”, o auxiliar concorda com o sujeito (outras formas). Haver e fazer impessoais passam o singular ao auxiliar (Deve haver; Faz dois anos; Houve). Na passiva sintética, “Alugam-se salas”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q12",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um relatório trazia a frase: “Faltou, no último trimestre, recursos para concluir os projetos.” A correção, de acordo com a norma-padrão, é:",
+     "options": [
+      "Faltou-se, no último trimestre, recursos para concluir os projetos.",
+      "Faltavam, no último trimestre, recurso para concluir os projetos.",
+      "Faltaram, no último trimestre, recursos para concluir os projetos.",
+      "Faltou, no último trimestre, recursos para concluírem os projetos.",
+      "Faltaram-se, no último trimestre, recursos para concluir os projetos."
+     ],
+     "answer": 2,
+     "explanation": "O sujeito é “recursos” (posposto): o verbo vai para o plural, sem “se”. “Faltavam … recurso” erra a concordância no sentido oposto.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q13",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “anexo” concorda com o substantivo: “Seguem anexas as planilhas”. Agora: complete “Seguem ___ os comprovantes de pagamento.”",
+     "options": [
+      "anexo",
+      "anexos",
+      "anexas"
+     ],
+     "answer": 1,
+     "explanation": "“Comprovantes” é masculino plural: “anexos”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q14",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "“Meio”, no sentido de “um pouco”, não varia: “A gerente ficou meio preocupada com a fila”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Como advérbio (um pouco), “meio” é invariável. Varia só como numeral: “meia hora”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q15",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Com artigo, “é proibido” concorda; sem artigo, fica invariável. Qual aviso está correto?",
+     "options": [
+      "É proibido a entrada de pessoas estranhas.",
+      "É proibida entrada de pessoas estranhas.",
+      "É proibida a entrada de pessoas estranhas."
+     ],
+     "answer": 2,
+     "explanation": "Com o artigo “a”, concorda: “proibida a entrada”. Sem artigo seria “É proibido entrada”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q16",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Bastante” varia quando acompanha substantivo (= muitos) e não varia quando acompanha adjetivo ou verbo (= muito). Complete: “Havia ___ clientes e eles estavam ___ satisfeitos.”",
+     "options": [
+      "bastantes / bastante",
+      "bastante / bastantes",
+      "bastantes / bastantes"
+     ],
+     "answer": 0,
+     "explanation": "Muitos clientes = bastantes clientes; muito satisfeitos = bastante satisfeitos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q17",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A concordância nominal está correta em:",
+     "options": [
+      "Seguem incluso as cópias dos contratos assinados.",
+      "A cliente ficou meia confusa com as novas tarifas.",
+      "Havia menas pessoas na fila hoje do que ontem.",
+      "Seguem inclusas as cópias dos contratos assinados.",
+      "Os documentos seguem anexo ao processo de crédito."
+     ],
+     "answer": 3,
+     "explanation": "“Inclusas” concorda com “cópias”. Os erros: “incluso” (inclusas), “meia confusa” (meio, advérbio), “menas” (não existe: menos) e “anexo” (anexos).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q18",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No aviso da agência lia-se: “É proibido a permanência de pessoas no caixa eletrônico após as 22h. Seguem anexo as normas de segurança.” Para adequar o aviso à norma-padrão, deve-se escrever",
+     "options": [
+      "“É proibido permanência” e “Seguem anexo as normas”.",
+      "“É proibida a permanência” e “Segue anexo as normas”.",
+      "“São proibidas a permanência” e “Seguem anexos as normas”.",
+      "“É proibido a permanência” e “Seguem anexas as normas”.",
+      "“É proibida a permanência” e “Seguem anexas as normas”."
+     ],
+     "answer": 4,
+     "explanation": "Com artigo, “proibida a permanência”; “anexas” concorda com “normas”. As outras corrigem só uma parte ou criam erros novos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q19",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “preferir” pede a preposição a e não aceita “do que”: “Prefiro o aplicativo à agência”. Agora: qual frase segue a norma-padrão?",
+     "options": [
+      "Prefiro poupar do que gastar.",
+      "Prefiro poupar a gastar.",
+      "Prefiro mais poupar que gastar."
+     ],
+     "answer": 1,
+     "explanation": "Preferir uma coisa a outra, sem “mais” e sem “do que”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q20",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "“Assistir”, no sentido de ver, pede a preposição a: “Os clientes assistiram ao vídeo de segurança”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Assistir a = ver. Sem preposição, “assistir” significa ajudar (o médico assistiu o paciente).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q21",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Verbos de movimento como “ir” e “chegar” pedem a preposição a na norma-padrão. Qual frase está correta?",
+     "options": [
+      "Os clientes chegaram na agência cedo.",
+      "Os clientes chegaram a agência cedo.",
+      "Os clientes chegaram à agência cedo."
+     ],
+     "answer": 2,
+     "explanation": "Chegar a + a agência = “à agência”. “Chegar em” é coloquial; e sem crase falta a preposição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q22",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "“Obedecer” pede a preposição a: obedecer às normas. Complete: “Todos devem obedecer ___ regulamento interno.”",
+     "options": [
+      "ao",
+      "o",
+      "do"
+     ],
+     "answer": 0,
+     "explanation": "Obedecer a + o regulamento = “ao regulamento”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q23",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Quanto à regência verbal, está correta a frase:",
+     "options": [
+      "A nova regra implicará aumento das tarifas.",
+      "A nova regra implicará em aumento das tarifas.",
+      "O analista aspira o cargo de gerente de TI.",
+      "Os funcionários assistiram a palestra sobre segurança.",
+      "O cliente esqueceu-se o cartão no caixa eletrônico."
+     ],
+     "answer": 0,
+     "explanation": "“Implicar” (acarretar) é transitivo direto: implicar algo. Os erros: “implicar em”, “aspira o cargo” (aspira ao cargo), “assistiram a palestra” (assistiram à palestra) e “esqueceu-se o cartão” (esqueceu o cartão ou esqueceu-se do cartão).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q24",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em um e-mail, a gerente escreveu: “Os candidatos aptos ___ vaga devem comparecer ___ entrevista, que visa ___ selecionar o melhor perfil.” As lacunas são preenchidas correta e respectivamente por",
+     "options": [
+      "a – a – à",
+      "à – à – a",
+      "da – na – a",
+      "à – na – à",
+      "na – à – a"
+     ],
+     "answer": 1,
+     "explanation": "Apto a + a vaga = à vaga; comparecer a + a entrevista = à entrevista; visar a + verbo, sem artigo: “visa a selecionar”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q25",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “O cliente pagou a fatura, mas o sistema não registrou”, as orações são coordenadas: cada uma tem sentido completo, e “mas” indica oposição. Agora: em “O sistema caiu, logo a fila aumentou”, a conjunção “logo” indica",
+     "options": [
+      "oposição",
+      "conclusão",
+      "alternância"
+     ],
+     "answer": 1,
+     "explanation": "A fila aumentou como consequência de o sistema cair: “logo” = portanto, conclusão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q26",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “É importante que o cliente confira o extrato”, a oração “que o cliente confira o extrato” é subordinada substantiva, pois funciona como sujeito de “é importante”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O que é importante? Que o cliente confira o extrato: oração subordinada substantiva subjetiva.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q27",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Oração subordinada adjetiva funciona como adjetivo de um nome e costuma começar por pronome relativo (que, o qual). Em qual frase há uma?",
+     "options": [
+      "O cliente ligou e voltou hoje.",
+      "Quando ligou, o cliente já sabia.",
+      "O cliente que ligou ontem voltou hoje."
+     ],
+     "answer": 2,
+     "explanation": "“Que ligou ontem” caracteriza “o cliente”, como um adjetivo. As outras têm coordenada aditiva e subordinada temporal.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q28",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Paralelismo: termos coordenados devem ter a mesma estrutura. Qual frase respeita o paralelismo?",
+     "options": [
+      "O banco quer reduzir custos e ampliar o crédito.",
+      "O banco quer reduzir custos e a ampliação do crédito.",
+      "O banco quer a redução de custos e ampliar o crédito."
+     ],
+     "answer": 0,
+     "explanation": "Os dois complementos de “quer” são verbos no infinitivo. Misturar infinitivo e substantivo quebra o paralelismo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q29",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "literal",
+     "stem": "No período “Embora a taxa tenha caído, o crédito continua caro”, a oração “Embora a taxa tenha caído” é subordinada adverbial",
+     "options": [
+      "causal.",
+      "condicional.",
+      "concessiva.",
+      "consecutiva.",
+      "temporal."
+     ],
+     "answer": 2,
+     "explanation": "“Embora” introduz um fato que poderia impedir o outro, mas não impede: concessão.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q30",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Em “É necessário que todos os funcionários concluam o treinamento até sexta”, a oração iniciada por “que” tem a mesma função sintática da oração iniciada por “que” em:",
+     "options": [
+      "Tenho certeza de que o relatório será enviado hoje.",
+      "O relatório que foi enviado hoje está incompleto.",
+      "Informei ao diretor que o relatório seria enviado.",
+      "Convém que o relatório seja enviado hoje.",
+      "O fato é que o relatório não foi enviado hoje."
+     ],
+     "answer": 3,
+     "explanation": "Nas duas, a oração é o sujeito (subjetiva): o que é necessário / o que convém. As outras são completiva nominal, adjetiva, objetiva direta e predicativa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q31",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “porém” e “contudo” indicam oposição: “A taxa caiu; porém, o crédito segue caro” = “A taxa caiu; contudo, o crédito segue caro”. Agora: qual conectivo pode substituir “porém” sem mudar o sentido?",
+     "options": [
+      "portanto",
+      "todavia",
+      "porque"
+     ],
+     "answer": 1,
+     "explanation": "“Todavia” também é adversativo. “Portanto” indica conclusão e “porque”, causa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l4q32",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “Desde que o cliente apresente o documento, o saque será liberado”, a locução “desde que” indica condição.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Equivale a “se o cliente apresentar”: condição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l4q33",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada conectivo ao valor que ele expressa:",
+     "pairs": [
+      {
+       "left": "embora",
+       "right": "Concessão"
+      },
+      {
+       "left": "visto que",
+       "right": "Causa"
+      },
+      {
+       "left": "a fim de que",
+       "right": "Finalidade"
+      },
+      {
+       "left": "conforme",
+       "right": "Conformidade"
+      }
+     ],
+     "explanation": "Embora = ainda que; visto que = porque; a fim de que = para que; conforme = segundo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l4q34",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para manter o sentido de “Como o sistema estava fora do ar, o atendimento atrasou”, o “Como” (causa) pode ser trocado por",
+     "options": [
+      "Embora",
+      "Caso",
+      "Visto que"
+     ],
+     "answer": 2,
+     "explanation": "“Visto que” também indica causa. “Embora” é concessão e “caso”, condição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l4q35",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Mantém-se o sentido original com a substituição do conectivo em:",
+     "options": [
+      "“Como choveu, a agência fechou” por “Embora chovesse, a agência fechou”.",
+      "“Se chover, a agência fechará” por “Porque choveu, a agência fechará”.",
+      "“Choveu, portanto a agência fechou” por “Choveu, porém a agência fechou”.",
+      "“Para que não falte energia, comprou-se um gerador” por “Porque faltou energia, comprou-se um gerador”.",
+      "“Ainda que chova, a agência abrirá” por “Mesmo que chova, a agência abrirá”."
+     ],
+     "answer": 4,
+     "explanation": "“Ainda que” e “mesmo que” são concessivos. As outras trocam causa por concessão, condição por causa, conclusão por oposição e finalidade por causa.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "prova"
+    },
+    {
+     "id": "u11l4q36",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "sintaxe",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "No relatório: “As vendas cresceram no semestre; ___, o lucro caiu, ___ os custos aumentaram mais que a receita.” Os conectivos que completam o trecho com coerência são, respectivamente,",
+     "options": [
+      "no entanto – porque",
+      "portanto – embora",
+      "além disso – a fim de que",
+      "por isso – caso",
+      "assim – ainda que"
+     ],
+     "answer": 0,
+     "explanation": "Vendas crescerem e lucro cair é uma oposição (no entanto); o aumento dos custos é a causa da queda (porque).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l4c6",
+     "level": "prova"
+    }
+   ]
+  },
+  {
+   "id": "u11l5",
+   "order": 5,
+   "title": "Pontuação e reescrita",
+   "concepts": [
+    {
+     "id": "u11l5c1",
+     "title": "Vírgula: o que não se separa",
+     "summary": "Não se separa por vírgula o sujeito do verbo, nem o verbo de seus complementos, mesmo quando o sujeito é longo: “Os clientes que chegaram antes das 10h receberam senha”. A vírgula separa os itens de uma enumeração."
+    },
+    {
+     "id": "u11l5c2",
+     "title": "Vírgula: intercalações e orações",
+     "summary": "A vírgula isola aposto, vocativo, expressões explicativas (isto é, por exemplo), adjunto adverbial deslocado (Ontem, o sistema caiu) e oração adjetiva explicativa (O Pix, que é gratuito, cresceu). A adjetiva restritiva não leva vírgula e separa um grupo: “Os clientes que têm cartão” são só alguns."
+    },
+    {
+     "id": "u11l5c3",
+     "title": "Outros sinais",
+     "summary": "Dois-pontos anunciam enumeração, explicação ou citação. Ponto e vírgula separa itens longos que já têm vírgula e orações coordenadas extensas. Travessões duplos e parênteses isolam comentários, como as vírgulas (o travessão com mais destaque). Aspas marcam citação literal."
+    },
+    {
+     "id": "u11l5c4",
+     "title": "Reescrita e equivalência",
+     "summary": "Na reescrita, confira duas coisas: o sentido se mantém e a frase continua correta. Trocas comuns: ativa e passiva, direto e indireto, conectivos de mesmo valor (embora = ainda que = apesar de), oração desenvolvida e reduzida (Quando terminou = Ao terminar) e junção de períodos com o conectivo certo."
+    },
+    {
+     "id": "u11l5c5",
+     "title": "Concisão, clareza e redundância",
+     "summary": "Texto claro e conciso evita palavras que não acrescentam nada. Pleonasmo vicioso repete a ideia sem efeito expressivo (subir para cima, elo de ligação, há anos atrás, surpresa inesperada). Prefira a ordem direta e corte rodeios (“a nível de”, “vimos por meio desta”)."
+    }
+   ],
+   "questions": [
+    {
+     "id": "u11l5q01",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: em “O gerente da agência, aprovou o crédito”, a vírgula está errada, porque separa o sujeito (O gerente da agência) do verbo. Agora: qual frase está pontuada corretamente?",
+     "options": [
+      "Os novos clientes da agência, receberam o cartão.",
+      "Os novos clientes, da agência receberam o cartão.",
+      "Os novos clientes da agência receberam o cartão."
+     ],
+     "answer": 2,
+     "explanation": "Sujeito e verbo ficam juntos, sem vírgula, por maior que seja o sujeito.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l5q02",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Em “Todos os relatórios produzidos no último trimestre, serão revisados”, a vírgula está correta porque o sujeito é longo.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 1,
+     "explanation": "Sujeito longo não autoriza vírgula antes do verbo: “Todos os relatórios produzidos no último trimestre serão revisados”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l5q03",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O verbo também não se separa do complemento por uma vírgula só. Qual frase está correta?",
+     "options": [
+      "O banco ofereceu aos clientes uma nova linha de crédito.",
+      "O banco ofereceu, aos clientes uma nova linha de crédito.",
+      "O banco ofereceu aos clientes, uma nova linha de crédito."
+     ],
+     "answer": 0,
+     "explanation": "As duas erradas põem uma vírgula isolada entre o verbo e seus complementos.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l5q04",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A vírgula separa os itens de uma enumeração. Qual frase está correta?",
+     "options": [
+      "O kit tem cartão senha, e manual.",
+      "O kit tem cartão, senha e manual.",
+      "O kit tem, cartão, senha e manual."
+     ],
+     "answer": 1,
+     "explanation": "Vírgula entre os itens; antes do “e” final, em geral, não. E nada de vírgula entre o verbo e o primeiro item.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l5q05",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A frase corretamente pontuada é:",
+     "options": [
+      "Os funcionários que concluíram o treinamento, receberão o certificado na sexta-feira.",
+      "Os funcionários que concluíram o treinamento receberão o certificado na sexta-feira.",
+      "Os funcionários, que concluíram o treinamento receberão o certificado na sexta-feira.",
+      "Os funcionários que concluíram, o treinamento receberão o certificado na sexta-feira.",
+      "Os funcionários que concluíram o treinamento receberão, o certificado na sexta-feira."
+     ],
+     "answer": 1,
+     "explanation": "Sem vírgulas: a oração “que concluíram o treinamento” é restritiva e faz parte do sujeito. As demais separam sujeito e verbo, abrem uma intercalação sem fechá-la ou separam o verbo de seu complemento.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q06",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Ao revisar o texto “A diretoria do banco, decidiu ampliar o horário das agências do interior”, o analista deve",
+     "options": [
+      "manter a vírgula, que isola corretamente o sujeito composto da oração.",
+      "acrescentar outra vírgula depois de “decidiu”, para isolar o verbo.",
+      "retirar a vírgula, que separa indevidamente o sujeito do verbo.",
+      "trocar a vírgula por ponto e vírgula, para marcar uma pausa mais longa.",
+      "acrescentar uma vírgula depois de “ampliar”, para separar o objeto."
+     ],
+     "answer": 2,
+     "explanation": "“A diretoria do banco” é o sujeito (simples, aliás) e não pode ser separado de “decidiu” por vírgula.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c1",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q07",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: a oração explicativa vai entre vírgulas e vale para todos (“Os clientes, que têm cartão, foram avisados”: todos têm cartão); a restritiva, sem vírgulas, separa um grupo (“Os clientes que têm cartão foram avisados”: só esses). Agora: em “Os funcionários que fizeram o curso foram promovidos”, quem foi promovido?",
+     "options": [
+      "todos os funcionários",
+      "nenhum funcionário",
+      "só os que fizeram o curso"
+     ],
+     "answer": 2,
+     "explanation": "Sem vírgulas, a oração é restritiva: separa, entre os funcionários, os que fizeram o curso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l5q08",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Adjunto adverbial deslocado para o início da frase costuma vir separado por vírgula: “Na próxima semana, o aplicativo será atualizado”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "A vírgula marca o deslocamento; com adjuntos curtos ela é facultativa, mas sempre aceita.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l5q09",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O aposto explicativo vai entre vírgulas. Qual frase está pontuada corretamente?",
+     "options": [
+      "O Banestes, banco do Espírito Santo, abriu concurso.",
+      "O Banestes banco do Espírito Santo, abriu concurso.",
+      "O Banestes, banco do Espírito Santo abriu concurso."
+     ],
+     "answer": 0,
+     "explanation": "O aposto “banco do Espírito Santo” precisa de vírgula antes e depois.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l5q10",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O vocativo é sempre isolado por vírgula. Qual frase do aviso está correta?",
+     "options": [
+      "Prezado cliente sua fatura vence amanhã.",
+      "Prezado cliente, sua fatura vence amanhã.",
+      "Prezado, cliente sua fatura vence amanhã."
+     ],
+     "answer": 1,
+     "explanation": "“Prezado cliente” é o vocativo inteiro; a vírgula vem depois dele.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l5q11",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Considere: I. “Os cartões, que foram bloqueados, serão substituídos.” II. “Os cartões que foram bloqueados serão substituídos.” É correto afirmar que",
+     "options": [
+      "as duas frases têm o mesmo sentido, pois a vírgula é facultativa nesse caso.",
+      "em I, só parte dos cartões foi bloqueada; em II, todos foram bloqueados.",
+      "a frase I está incorreta, pois não se usa vírgula antes do pronome que.",
+      "em I, todos os cartões foram bloqueados; em II, só os bloqueados serão substituídos.",
+      "a frase II está incorreta, pois a oração adjetiva sempre exige vírgulas."
+     ],
+     "answer": 3,
+     "explanation": "Em I, a oração é explicativa e vale para todos os cartões. Em II, é restritiva e separa os bloqueados dos demais. As duas estão corretas, com sentidos diferentes.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q12",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Num comunicado: “A partir de segunda-feira os clientes, que ainda não atualizaram o cadastro deverão procurar a agência.” Para que o trecho fique correto e indique que só parte dos clientes precisa ir à agência, deve-se",
+     "options": [
+      "manter a pontuação e pôr outra vírgula depois de “cadastro”, fechando a oração.",
+      "retirar a vírgula depois de “clientes” e pôr outra depois de “agência”.",
+      "pôr vírgulas depois de “segunda-feira” e de “cadastro”, mantendo a de “clientes”.",
+      "trocar a vírgula depois de “clientes” por dois-pontos, que anunciam a explicação.",
+      "pôr vírgula depois de “segunda-feira” e retirar a vírgula depois de “clientes”."
+     ],
+     "answer": 4,
+     "explanation": "Só parte dos clientes: oração restritiva, sem vírgulas. O adjunto deslocado “A partir de segunda-feira” ganha vírgula. Fechar a oração com vírgulas a tornaria explicativa (todos os clientes).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c2",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q13",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: os dois-pontos anunciam uma enumeração ou explicação: “Leve os documentos: RG, CPF e comprovante”. Agora: em “O motivo é simples: a fila diminuiu”, os dois-pontos introduzem",
+     "options": [
+      "uma citação",
+      "um vocativo",
+      "uma explicação"
+     ],
+     "answer": 2,
+     "explanation": "O que vem depois explica qual é o motivo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l5q14",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Travessões duplos podem isolar um comentário no meio da frase, no lugar das vírgulas: “O aplicativo — lançado em março — já tem um milhão de usuários”.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "O travessão duplo tem a mesma função das vírgulas, com mais destaque.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l5q15",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O ponto e vírgula separa itens longos de uma lista, sobretudo quando eles já têm vírgulas. Qual frase o usa corretamente?",
+     "options": [
+      "Participaram Ana, da TI; Bia, do jurídico; e Caio, do crédito.",
+      "Participaram Ana; da TI, Bia; do jurídico, e Caio, do crédito.",
+      "Participaram; Ana, da TI, Bia, do jurídico e Caio, do crédito."
+     ],
+     "answer": 0,
+     "explanation": "Cada item (nome, setor) já tem vírgula, então os itens se separam por ponto e vírgula.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l5q16",
+     "type": "match",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Associe cada sinal à sua função nos documentos:",
+     "pairs": [
+      {
+       "left": "Dois-pontos",
+       "right": "Anunciam enumeração ou explicação"
+      },
+      {
+       "left": "Ponto e vírgula",
+       "right": "Separa itens longos que já têm vírgula"
+      },
+      {
+       "left": "Aspas",
+       "right": "Marcam citação literal"
+      },
+      {
+       "left": "Parênteses",
+       "right": "Isolam informação acessória"
+      }
+     ],
+     "explanation": "Cada sinal organiza o texto de um jeito: anunciar, separar, citar e isolar.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l5q17",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Em “O novo sistema — prometido desde o ano passado — entrou em operação”, os travessões têm a função de",
+     "options": [
+      "isolar um comentário intercalado, com valor semelhante ao das vírgulas.",
+      "indicar a mudança de interlocutor em um diálogo.",
+      "marcar a citação literal da fala de outra pessoa.",
+      "separar o sujeito do verbo, procedimento exigido quando o sujeito é muito longo.",
+      "anunciar uma enumeração de itens relativos ao sistema."
+     ],
+     "answer": 0,
+     "explanation": "O trecho entre travessões é um comentário intercalado; poderia vir entre vírgulas ou parênteses. Travessão simples, no início da fala, é que marca diálogo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q18",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "O sinal de pontuação foi empregado corretamente em todas as frases, EXCETO em:",
+     "options": [
+      "Leve os seguintes documentos: RG, CPF e comprovante.",
+      "Os clientes: devem atualizar o cadastro até sexta.",
+      "O gerente foi claro: sem cadastro, não há crédito.",
+      "A agência (inaugurada em 1990) passará por reforma.",
+      "O diretor afirmou: “A meta foi cumprida.”"
+     ],
+     "answer": 1,
+     "explanation": "Os dois-pontos não podem separar o sujeito (Os clientes) do verbo. Nas demais, anunciam enumeração, explicação e citação, e os parênteses isolam informação acessória.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c3",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q19",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “Quando terminou o relatório, o analista saiu” pode virar “Ao terminar o relatório, o analista saiu”: a oração reduzida mantém o sentido. Agora: qual reescrita mantém o sentido de “Embora estivesse cansado, o caixa ficou até o fim”?",
+     "options": [
+      "Porque estava cansado, o caixa ficou até o fim.",
+      "Apesar de estar cansado, o caixa ficou até o fim.",
+      "Se estivesse cansado, o caixa ficaria até o fim."
+     ],
+     "answer": 1,
+     "explanation": "“Embora” e “apesar de” indicam concessão. As outras trocam por causa e condição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l5q20",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Juntar “O banco reduziu a tarifa” e “Os clientes aumentaram” como “O banco reduziu a tarifa, por isso os clientes aumentaram” cria entre as ideias uma relação de conclusão.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "“Por isso” apresenta o segundo fato como consequência do primeiro.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l5q21",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Juntando “A agência fechou cedo” e “Faltou energia”, com sentido de causa, obtém-se",
+     "options": [
+      "A agência fechou cedo, embora faltasse energia.",
+      "A agência fechou cedo para que faltasse energia.",
+      "A agência fechou cedo porque faltou energia."
+     ],
+     "answer": 2,
+     "explanation": "A falta de energia é a causa: “porque”. “Embora” daria concessão e “para que”, finalidade.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l5q22",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Trocar “Assim que o sistema voltar” por “Logo que o sistema voltar” mantém o sentido de",
+     "options": [
+      "tempo",
+      "condição",
+      "finalidade"
+     ],
+     "answer": 0,
+     "explanation": "“Assim que” e “logo que” indicam tempo (imediatamente depois de).",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l5q23",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "A reescrita que mantém o sentido e a correção de “O relatório foi entregue pela equipe antes do prazo, apesar das dificuldades” é:",
+     "options": [
+      "Como enfrentou dificuldades, a equipe entregou o relatório antes do prazo.",
+      "A equipe entregou o relatório antes do prazo combinado, portanto enfrentou dificuldades.",
+      "Embora tivesse enfrentado dificuldades, a equipe entregou o relatório antes do prazo.",
+      "Se enfrentasse dificuldades, a equipe entregaria o relatório antes do prazo.",
+      "A equipe entregou o relatório antes do prazo para que enfrentasse dificuldades."
+     ],
+     "answer": 2,
+     "explanation": "“Apesar de” é concessão, como “embora”. As outras transformam a relação em causa, conclusão, condição ou finalidade.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q24",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Considere as frases: A – “O banco lançou o aplicativo em março.” B – “O aplicativo já tem um milhão de usuários.” A junção que mantém o sentido e a correção é:",
+     "options": [
+      "O aplicativo que o banco lançou em março, já tem um milhão de usuários.",
+      "O banco lançou em março o aplicativo, cujo já tem um milhão de usuários.",
+      "O banco lançou em março o aplicativo, que já têm um milhão de usuários.",
+      "O aplicativo, que o banco lançou em março, já tem um milhão de usuários.",
+      "O aplicativo lançado pelo banco em março, onde já tem um milhão de usuários."
+     ],
+     "answer": 3,
+     "explanation": "A frase A vira oração adjetiva explicativa, entre vírgulas. Os erros: vírgula entre sujeito e verbo, “cujo” sem substantivo depois, “têm” no plural com sujeito singular (que = o aplicativo) e “onde” sem ideia de lugar, deixando a frase incompleta.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c4",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q25",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: “subir para cima” é pleonasmo vicioso: quem sobe só pode ir para cima. Agora: qual expressão também é redundante?",
+     "options": [
+      "taxa de juros",
+      "elo de ligação",
+      "conta corrente"
+     ],
+     "answer": 1,
+     "explanation": "Todo elo serve para ligar. “Taxa de juros” e “conta corrente” são expressões técnicas sem repetição.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "aprender",
+     "step": 1
+    },
+    {
+     "id": "u11l5q26",
+     "type": "truefalse",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "A frase “Há dois anos atrás o banco abriu a agência” é redundante, pois “há” e “atrás” indicam o mesmo tempo passado.",
+     "options": [
+      "Certo",
+      "Errado"
+     ],
+     "answer": 0,
+     "explanation": "Basta “Há dois anos” ou “Dois anos atrás”.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "aprender",
+     "step": 2
+    },
+    {
+     "id": "u11l5q27",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Concisão é dizer o mesmo com menos palavras. A versão mais concisa de “Realizamos a análise dos pedidos” é",
+     "options": [
+      "Fizemos a realização da análise dos pedidos.",
+      "Realizamos uma análise detalhada dos pedidos.",
+      "Analisamos os pedidos."
+     ],
+     "answer": 2,
+     "explanation": "O verbo “analisar” substitui “realizar a análise”. A última acrescenta uma informação nova (detalhada), não é a mesma frase mais curta.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "praticar",
+     "step": 2
+    },
+    {
+     "id": "u11l5q28",
+     "type": "quick",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Qual frase do e-mail está clara e sem redundância?",
+     "options": [
+      "O cliente reclamou da demora.",
+      "O cliente fez uma reclamação a respeito da demora que houve.",
+      "O cliente reclamou da demora demorada."
+     ],
+     "answer": 0,
+     "explanation": "A primeira diz tudo com o mínimo de palavras; as outras dão voltas ou repetem a ideia.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "praticar",
+     "step": 3
+    },
+    {
+     "id": "u11l5q29",
+     "type": "mcq5",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "excecao",
+     "stem": "A frase que NÃO apresenta redundância é:",
+     "options": [
+      "O gerente adiou a reunião para depois.",
+      "A surpresa inesperada foi o lucro do trimestre.",
+      "Os clientes encararam de frente o novo sistema.",
+      "O analista repetiu de novo a mesma explicação.",
+      "O gerente adiou a reunião para a próxima semana."
+     ],
+     "answer": 4,
+     "explanation": "“Para a próxima semana” informa quando, não repete “adiar”. Os pleonasmos: adiar para depois, surpresa inesperada, encarar de frente e repetir de novo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "prova"
+    },
+    {
+     "id": "u11l5q30",
+     "type": "case",
+     "topic": "Língua Portuguesa",
+     "subtopic": "pontuacao-reescrita",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um analista recebeu para revisar a frase: “Vimos, por meio desta, informar que a nível de sistema houve uma melhora significativa.” A reescrita mais clara e concisa, de acordo com a norma-padrão, é:",
+     "options": [
+      "Informamos que o sistema melhorou significativamente.",
+      "Vimos informar, por meio desta, que a nível de sistema houve melhora.",
+      "Informamos, por meio desta, que em nível de sistema houve uma melhora que foi significativa.",
+      "Vimos por meio desta informar que houve, ao nível do sistema, melhora significativa.",
+      "Por meio desta, vimos, a nível de sistema, informar uma melhora significativa."
+     ],
+     "answer": 0,
+     "explanation": "Sai o rodeio (“vimos, por meio desta”), sai o “a nível de” e o substantivo vira verbo (melhorou). As outras mantêm rodeios ou acrescentam palavras.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u11l5c5",
+     "level": "prova"
+    }
+   ]
+  }
+ ]
+}

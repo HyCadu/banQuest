@@ -550,3 +550,49 @@ continuavam lá depois de acertar.
    - Os botões dizem "(sem XP)" quando não há recompensa, e o resultado do treino livre diz por quê.
    - A tela "sem corações" só oferece "Revisar erros vencidos (ganhe 1 coração)" quando há erro vencido. Os erros de
      hoje só vencem amanhã, então, no dia em que os corações acabam, sobram esperar ou recarregar com gemas.
+
+## U2 e G1 juntas, com as oficiais ligadas a conceitos (0.12.0, 17/11/2026) — a pedido do dono
+O dono pediu a U2 (Programação e OO) e a G1 (Língua Portuguesa) na mesma rodada, validando tudo no fim, e enviou os PDFs
+das provas do Banestes de 2012 e 2024.
+1. **Uma branch e um PR para as duas unidades** (o CONTENT_PLAN sugere uma unidade por PR): foi o pedido do dono. Cada
+   unidade tem o seu pacote e o seu relatório de revisão, então dá para revisar uma de cada vez.
+2. **Mesmo formato da U1 (por conceitos):** 4 a 7 conceitos por lição, 2 exercícios de aprender e 2 de praticar por
+   conceito (passos 1, 2 e 3, um cenário por conceito) e questões de prova estilo FCC. U2: 26 conceitos e 154
+   exercícios. G1: 28 conceitos e 168 exercícios.
+3. **As 57 oficiais que esperavam por essas lições ganharam `concept`** (22 da U2 e 35 da G1), escolhido pelo assunto
+   que cada uma cobra. As que cobram temas fora do edital (ordenação, hash, complemento a dois, NetBeans, Mercurial,
+   Factory Method) ficaram no conceito mais próximo, como as do Oracle na U1. Tabelas nos relatórios de revisão.
+4. **Provas de 2012 (IDECAN) e 2024: só calibração, sem transcrição.** São do mesmo cargo, mas vieram sem gabarito, e a
+   regra do CLAUDE.md exige gabarito para `prova_real`. A de 2024 tem 4 alternativas, e o app e o validador esperam 5.
+   Transcrever as duas depende de o dono enviar os gabaritos e de decidir como tratar as questões de 4 alternativas.
+5. **Português: só norma-padrão sem divergência.** Onde a gramática admite duas formas (crase facultativa, "comparecer
+   a/em", "a maioria de" + verbo), a questão é montada para que a variação não decida a resposta.
+6. **Testes:** um teste de unidade novo valida todos os pacotes embutidos e confere que toda questão da U2 e da G1
+   (oficiais incluídas) tem conceito da lição. Os testes da harness que usavam a U2 como "unidade sem conteúdo" passaram
+   a usar a U3.
+
+## Provas Banestes 2012 (IDECAN) e 2024 (Instituto Access) (0.12.0, 17/11/2026) — a pedido do dono
+O dono enviou os gabaritos das duas provas do cargo que, na geração da U2 e da G1, tinham servido só para calibrar o estilo (decisão
+anterior, item 4), e depois o Guia de Conduta Ética do Banestes.
+1. **Duas provas novas em `content/provas`**, no mesmo formato das outras. O texto foi conferido contra o PDF (figura e
+   tabela viraram texto, com `depende_de_figura`); a resposta segue o gabarito e foi conferida resolvendo a questão. Um
+   script confere cada letra contra o gabarito oficial.
+   - **IDECAN · Banestes 2012** (`idecan-banestes-2012.json`, 60 questões). O arquivo do dono se chama "definitivo", mas
+     o documento diz **"GABARITO PRELIMINAR"**: entra com `gabarito: "preliminar"`, e o app mostra a etiqueta. Ficam
+     guardadas com `fora_do_edital`, sem ir ao app: COBOL (Q23–26 e Q37), tipos do Visual Basic clássico (Q30), banco
+     hierárquico (Q33), fases e artefatos do RUP (Q50–51) e atualidades do Espírito Santo de 2012 (Q13–16). Entram 47.
+   - **Instituto Access · Banestes 2024** (`access-banestes-2024.json`, 75 questões, gabarito definitivo retificado).
+     Ficam de fora as anuladas (Q12, Q32, Q43), a Q7 (pede a ideia principal da letra inteira de uma canção, que não
+     reproduzimos; as Q5 e Q6 entram só com o trecho citado) e a Q11 (depende da numeração de linhas do caderno). A Q63
+     (ASP clássico) fica guardada com `fora_do_edital`. Entram 74.
+2. **4 alternativas (escolha do dono): a questão fica como foi aplicada.** Os validadores (Python e Kotlin) passam a
+   aceitar 4 ou 5 alternativas só em questão `prova_real`; exercício de IA continua com 5. A tela já desenhava qualquer
+   número de alternativas até 5. Teste novo em `ContentTest`.
+3. **Guia de Conduta Ética (o dono: "é pré-requisito saber")**: as Q48 (os "Rs" da consciência ambiental, item 4.27.2) e
+   Q49 (composição do Conselho de Conduta Ética, item 8.3.1) foram conferidas contra o guia enviado (atualizado em 2020)
+   e entram em `u14l1`. O PDF do guia continua fora do repositório.
+4. **Onde entram:** Português em G1, Raciocínio em G2, Conhecimentos Bancários em G3 e G4, Inglês em `u10l4`, e TI nas
+   lições do tópico. Nas lições que já têm pacote por conceitos (U1, U2 e G1), cada questão ganhou o conceito mais
+   próximo. Pacote do app: de 205 para 326 questões.
+5. Banca nova no validador: "Instituto Access".
+

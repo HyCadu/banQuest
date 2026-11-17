@@ -311,8 +311,46 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Fique sem corações num dia sem erro vencido: a tela "Acabaram os corações" não mostra o botão de revisar erros.
       Com erro vencido, mostra "Revisar erros vencidos (ganhe 1 coração)".
 
+## BanQuest 0.12.0 — Unidade 2 e G1 Língua Portuguesa
+
+**35. Unidade 2: Programação e orientação a objetos**
+- [ ] Conclua as 5 lições da U1 (ou já tenha concluído): a **Unidade 2** abre, com as lições Fundamentos de programação,
+      Orientação a objetos, Princípios SOLID, Linguagens e plataformas e Testes, TDD e Git.
+- [ ] Na lição 1, o primeiro bloco começa com "Novo: Tipos e representação de números" e um exemplo resolvido.
+      Exercícios com código (Java, C#, Python, PHP e C) mostram o trecho com quebra de linha e recuo legíveis.
+- [ ] Depois dos 9 exercícios de ensino, vêm 3 questões de prova. Algumas são oficiais ("FGV · Banestes 2018 · …",
+      "FCC · …"), por exemplo a do try/catch/finally (FGV 2018 q68) e a do ciclo do TDD (FCC Teresina 2016 q40).
+- [ ] Na lição 4, cada linguagem (Java, C#, Python, PHP e C) tem o seu conceito; no exercício de completar do C, a
+      lacuna é o `%d` do printf.
+
+**36. G1: Língua Portuguesa**
+- [ ] Na Trilha, toque em **Gerais**: G1 não aparece mais como "Conteúdo chegando em breve", e a lição 1 (Ortografia e
+      crase) já vem aberta. G2 a G4 continuam "chegando".
+- [ ] Os textos com aspas curvas (“ ”), travessão (—) e crase aparecem sem caracteres estranhos.
+- [ ] Na lição 2 (Interpretação de texto), as questões oficiais da FGV Banestes 2018 e 2021 aparecem depois dos blocos
+      de ensino, com o texto-base no enunciado.
+- [ ] Respostas: o exercício de associar e o de completar funcionam como na U1; o "Não sei" aparece só nos de ensino.
+
+**37. As duas unidades juntas**
+- [ ] Depois de jogar uma lição de cada, o Perfil e o Praticar mostram os números das duas unidades novas.
+- [ ] O selo "não revisada" aparece em todos os exercícios novos (são de IA).
+- [ ] Um erro numa lição da U2 ou da G1 vai para o banco de erros e volta no treino, como na U1.
+
+## BanQuest 0.12.0 — provas Banestes 2012 e 2024
+
+**38. Questões das provas IDECAN 2012 e Instituto Access 2024**
+- [ ] Nas lições da U1, da U2 e da G1, entre as questões de prova aparecem algumas com a origem "IDECAN · Banestes 2012 ·
+      …" (com "gabarito preliminar") e "Instituto Access · Banestes 2024 · …".
+- [ ] As de 2024 têm **4 alternativas** (A a D), como na prova. Responder uma delas funciona como as outras: acerto, erro
+      e explicação.
+- [ ] Exemplos: G1 lição 1 (acentuação e hífen, 2024 Q13); G1 lição 2 (texto sobre neutralidade no jornalismo, 2024 Q1–3);
+      U1 lição 2 (comandos SQL, 2012 Q40); U2 lição 1 (vetor em C++, 2024 Q59, com o código formatado).
+- [ ] Tocar na origem abre "Sobre esta questão", com a prova, a situação do gabarito e o aviso de explicação não revisada.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
+Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
+conteúdo.
 
 ## Verificações automáticas já executadas
 Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem erros nem warnings; **135 testes
@@ -383,3 +421,13 @@ terminar, abandonar, partes, modo sem vidas e Não perturbe) e renders `s_exam_i
 Versão 0.10.1 (treino sem farm): `SrsEngineTest` (acerto antes do dia não adianta), `LessonRunTest` (treino sem XP) e
 `ProgressProcessorTest` (treino livre sem XP, coração, missão nem meta); harness com
 `treinoForaDoPrazoERevisaoLivreNaoDaoXpNemCoracaoENaoAdiantamARevisao` e render `s_nohearts_nada_vencido.png`.
+
+Versão 0.12.0 (U2 e G1): `./gradlew check` sem erros, com 196 testes unitários (inclui o teste que valida todos os
+pacotes embutidos e o conceito de cada questão da U2 e da G1); validador de conteúdo com 3 pacotes e 492 exercícios,
+sem erros (1 aviso antigo, u1l2q09); `validate_provas` com 218 questões OK; pacote de provas do app regerado (205
+questões, 83 com conceito); harness com 117 testes, todos passando. Saídas de código da U2 conferidas rodando Java 17,
+.NET 6 e Python 3.12.
+
+Versão 0.12.0 (provas Banestes 2012 e 2024): `./gradlew check` sem erros, com 197 testes unitários (inclui o de 4
+alternativas só em prova real); `validate_provas` com 353 questões OK; letras conferidas por script contra os dois
+gabaritos oficiais; pacote de provas do app com 326 questões; harness com 117 testes, todos passando.

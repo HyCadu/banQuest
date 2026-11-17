@@ -84,9 +84,10 @@ object ContentValidator {
         if (q.explanation.isBlank()) errors += "$at: explicação vazia"
         when (type) {
             null -> Unit
+            // Questão de prova real fica como foi aplicada: a Banestes 2024 tem 4 alternativas.
             QuestionType.Mcq5,
             QuestionType.Case,
-            QuestionType.CodeOutput -> options(q, 5..5, errors)
+            QuestionType.CodeOutput -> options(q, if (q.source == "prova_real") 4..5 else 5..5, errors)
             QuestionType.Quick -> options(q, 3..3, errors)
             QuestionType.FillBlank -> {
                 options(q, 4..5, errors)
