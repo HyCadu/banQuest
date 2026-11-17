@@ -70,7 +70,8 @@ A lição u11l1 (ortografia e crase) não tem questão oficial: nenhuma das prov
 Além das FGV, foram lidas as provas do Banestes de 2012 (IDECAN) e 2024. A de 2012 cobra concordância, reescrita,
 pontuação (travessão), coesão referencial, conectivos e finalidade do texto. A de 2024 cobra tipologia textual, tese,
 aposto, intertextualidade, pronome relativo, classificação de orações substantivas e acentuação, com 4 alternativas.
-Todos esses temas estão nas lições. **As duas não foram transcritas**: vieram sem gabarito.
+Todos esses temas estão nas lições. Com os gabaritos, as duas foram transcritas na 0.11.0 e somam 20 questões oficiais à
+G1 (8 de 2012 e 12 de 2024), todas ligadas a conceitos.
 
 ## Para o dono olhar com atenção
 

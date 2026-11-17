@@ -288,9 +288,21 @@
 - [ ] O selo "não revisada" aparece em todos os exercícios novos (são de IA).
 - [ ] Um erro numa lição da U2 ou da G1 vai para o banco de erros e volta no treino, como na U1.
 
+## BanQuest 0.11.0 — provas Banestes 2012 e 2024
+
+**38. Questões das provas IDECAN 2012 e Instituto Access 2024**
+- [ ] Nas lições da U1, da U2 e da G1, entre as questões de prova aparecem algumas com a origem "IDECAN · Banestes 2012 ·
+      …" (com "gabarito preliminar") e "Instituto Access · Banestes 2024 · …".
+- [ ] As de 2024 têm **4 alternativas** (A a D), como na prova. Responder uma delas funciona como as outras: acerto, erro
+      e explicação.
+- [ ] Exemplos: G1 lição 1 (acentuação e hífen, 2024 Q13); G1 lição 2 (texto sobre neutralidade no jornalismo, 2024 Q1–3);
+      U1 lição 2 (comandos SQL, 2012 Q40); U2 lição 1 (vetor em C++, 2024 Q59, com o código formatado).
+- [ ] Tocar na origem abre "Sobre esta questão", com a prova, a situação do gabarito e o aviso de explicação não revisada.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
-PLAN). As provas do Banestes de 2012 e 2024 não estão no app (faltam os gabaritos).
+PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
+conteúdo.
 
 ## Verificações automáticas já executadas
 Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem erros nem warnings; **135 testes
@@ -351,3 +363,7 @@ pacotes embutidos e o conceito de cada questão da U2 e da G1); validador de con
 sem erros (1 aviso antigo, u1l2q09); `validate_provas` com 218 questões OK; pacote de provas do app regerado (205
 questões, 83 com conceito); harness com 117 testes, todos passando. Saídas de código da U2 conferidas rodando Java 17,
 .NET 6 e Python 3.12.
+
+Versão 0.11.0 (provas Banestes 2012 e 2024): `./gradlew check` sem erros, com 197 testes unitários (inclui o de 4
+alternativas só em prova real); `validate_provas` com 353 questões OK; letras conferidas por script contra os dois
+gabaritos oficiais; pacote de provas do app com 326 questões; harness com 117 testes, todos passando.

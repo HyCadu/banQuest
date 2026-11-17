@@ -4,6 +4,35 @@
  "version": 1,
  "questions": [
   {
+   "id": "access-banestes-2024-q51",
+   "lesson": "u1l1",
+   "concept": "u1l1c1",
+   "type": "mcq5",
+   "topic": "Banco de dados",
+   "subtopic": "integridade",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Para que o banco de dados possua integridade é necessário que o projetista garanta isso durante a etapa de criação do diagrama ER e do dicionário de dados. Assinale a alternativa correta que contém os três os níveis de integridade que devem ser observados:",
+   "options": [
+    "Integridade da Entidade, Integridade de Domínio e Integridade Referencial.",
+    "Integridade de Relacionamento, Integridade de Domínio e Integridade Referencial.",
+    "Integridade da Cardinalidade, Integridade de Domínio e Integridade Referencial.",
+    "Integridade de Relacionamento, Integridade de Cardinalidade e Integridade Referencial."
+   ],
+   "answer": 0,
+   "explanation": "As três integridades clássicas: de entidade (chave primária única e não nula), de domínio (valores válidos para cada coluna) e referencial (chave estrangeira aponta para registro existente).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 51,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-teresina-2016-q54",
    "lesson": "u1l1",
    "concept": "u1l1c3",
@@ -186,6 +215,185 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 41,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q34",
+   "lesson": "u1l1",
+   "concept": "u1l1c4",
+   "type": "mcq5",
+   "topic": "Banco de dados",
+   "subtopic": "modelo relacional",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O modelo relacional se estabeleceu como o primeiro modelo de dados para aplicações comerciais. Assinale abaixo a alternativa que melhor define o conceito de Banco de Dados Relacionais.",
+   "options": [
+    "Os dados são percebidos pelo usuário como tabelas.",
+    "É um sistema computadorizado de armazenamento de registros.",
+    "É o mais próximo do meio de armazenamento físico.",
+    "Contém informações relativas a um tipo de entidade.",
+    "É o modelo mais próximo do usuário."
+   ],
+   "answer": 0,
+   "explanation": "No modelo relacional, o usuário enxerga os dados como tabelas (relações) com linhas e colunas. “Sistema computadorizado de armazenamento de registros” é a definição genérica de banco de dados.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 34,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q35",
+   "lesson": "u1l1",
+   "concept": "u1l1c4",
+   "type": "mcq5",
+   "topic": "Banco de dados",
+   "subtopic": "características das relações",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Na Modelagem de Dados Relacional, a definição atribuída a relações implica certas características que tornam uma relação diferente de um arquivo ou uma tabela. (Elmasri, 2011) NÃO apresenta característica do modelo relacional.",
+   "options": [
+    "Ordenação de tuplas em uma relação.",
+    "Interpretação (significado) de uma relação.",
+    "Cada registro é uma coleção de campos (atributos), cada qual contendo somente um valor.",
+    "Valores e NULL’s nas tuplas.",
+    "Ordem dos valores dentro de uma tupla e uma definição alternativa de relação."
+   ],
+   "answer": 2,
+   "explanation": "Elmasri lista como características das relações: ordenação das tuplas, ordem dos valores na tupla, valores e NULLs nas tuplas e interpretação da relação. A frase sobre registros e campos vem da descrição de outros modelos (rede e hierárquico).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 35,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q36",
+   "lesson": "u1l1",
+   "concept": "u1l1c1",
+   "type": "mcq5",
+   "topic": "Banco de dados",
+   "subtopic": "restrições de integridade",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O modelo relacional representa o Banco de Dados como uma coleção de relações. Informalmente, cada relação é semelhante a uma tabela de valores ou, até certo ponto, a um arquivo plano de registros. (Elmasri, 2011)\nAnalise as afirmativas que apresentam as características do modelo relacional.\nI. A restrição de integridade de entidade afirma que nenhum valor de chave primária pode ser NULL.\nII. A restrição de integridade referencial é especificada entre duas relações e usada para manter a consistência entre tuplas nas duas relações.\nIII. A restrição funcional estabelece um relacionamento funcional entre dois conjuntos de atributos X e Y.\nIV. A restrição de integridade referencial não pode ser especificada entre duas relações e ser usada para manter a consistência entre tuplas nas duas relações.\nV. As restrições de chave e as restrições de integridade são especificadas sobre as relações individuais.\nEstão corretas apenas as afirmativas",
+   "options": [
+    "I, II, V",
+    "II, IV",
+    "I, V",
+    "I, II, III, V",
+    "II, III"
+   ],
+   "answer": 3,
+   "explanation": "I (chave primária sem NULL), II (integridade referencial entre duas relações), III (dependência funcional entre X e Y) e V estão corretas. IV é a negação de II, portanto falsa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 36,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q52",
+   "lesson": "u1l2",
+   "concept": "u1l2c2",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "views e agregação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Ao executarmos o código abaixo, será criada uma VIEW, marque a opção que contém o resultado correto desta VIEW.",
+   "code": "create view Cliente_Pedido (ID, NomeCompleto, SomaPedido) as\nselect a.ID, (a.Nome || ' ' || a.Sobrenome), sum(b.Valor)\nfrom Cliente a\njoin Pedido b on (b.ID_Cliente = a.ID)\ngroup by a.ID, a.Nome, a.Sobrenome;",
+   "options": [
+    "Será uma tabela virtual que lista o ID, o nome completo e a soma dos valores dos pedidos para cada cliente.",
+    "Será uma tabela virtual que agrupa o ID, o nome completo, por valores dos pedidos para cada cliente.",
+    "Será uma tabela virtual que lista o ID, o nome completo, que soma valores total de pedidos dos clientes.",
+    "Será uma tabela virtual que agrupa o ID, o nome completo, excluindo e a soma dos valores dos pedidos dos clientes."
+   ],
+   "answer": 0,
+   "explanation": "A view junta Cliente e Pedido, concatena nome e sobrenome e, com o GROUP BY por cliente, mostra a soma dos pedidos de cada um. É uma tabela virtual: não guarda dados, executa a consulta quando é lida.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 52,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q53",
+   "lesson": "u1l2",
+   "concept": "u1l2c1",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "chave estrangeira",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Referente a criação Tabelas com SQL, observe o trecho abaixo. Esse código contém uma instrução que indica, se um registro for atualizado na tabela pai, os registros correspondentes nesta tabela também serão atualizados. Marque a alternativa que contém corretamente essa instrução.",
+   "code": "CREATE TABLE registro_entrada (\n  'id' INT(11) NOT NULL AUTO_INCREMENT ,\n  'valor_total' DECIMAL(9,2) NULL DEFAULT '0.00' ,\n  'data_entrada' DATE NULL DEFAULT NULL ,\n  'fornecedor_id' INT NOT NULL ,\n  PRIMARY KEY ('id') ,\n  FOREIGN KEY ('fornecedor_id')\n    REFERENCES 'supermercado'.'fornecedor' ('id')\n    ON DELETE CASCADE ON UPDATE CASCADE )",
+   "options": [
+    "ON DELETE CASCADE",
+    "UPDATE CASCADE",
+    "REFERENCES 'supermercado'.'fornecedor' ('id')",
+    "'fornecedor_id' INT NOT NULL ,"
+   ],
+   "answer": 1,
+   "explanation": "ON UPDATE CASCADE propaga para a tabela filha a alteração da chave na tabela pai (a alternativa B traz o trecho “UPDATE CASCADE”). ON DELETE CASCADE trata da exclusão, e REFERENCES apenas define a chave estrangeira.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 53,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q54",
+   "lesson": "u1l2",
+   "concept": "u1l2c2",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "junções",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "No trabalho de manipulado de dados, é comum uso de diversos comandos e recursos SQL. Assim sendo, marque a alternativa correta que contem a diferença entre os tipos de junção INNER JOIN e OUTER JOIN.",
+   "options": [
+    "INNER JOIN retorna apenas os registros que têm correspondência em ambas as tabelas, enquanto OUTER JOIN retorna todos os registros de ambas as tabelas, correspondentes ou não.",
+    "INNER JOIN retorna todos os registros de ambas as tabelas, correspondentes ou não, enquanto OUTER JOIN retorna apenas os registros que têm correspondência em ambas as tabelas.",
+    "INNER JOIN retorna todos os registros de ambas as tabelas, correspondentes ou não, enquanto OUTER JOIN retorna apenas os registros que têm correspondência em uma das tabelas.",
+    "INNER JOIN retorna apenas os registros que têm correspondência em uma das tabelas, enquanto OUTER JOIN retorna todos os registros de ambas as tabelas, correspondentes ou não."
+   ],
+   "answer": 0,
+   "explanation": "INNER JOIN traz só as linhas com correspondência nas duas tabelas. O OUTER JOIN preserva também as sem correspondência; a descrição de “todos de ambas” é a do FULL OUTER JOIN, enquanto LEFT e RIGHT preservam só um lado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 54,
     "gabarito": "definitivo"
    }
   },
@@ -406,6 +614,96 @@
     "prova": "Tipo 1",
     "numero": 51,
     "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q38",
+   "lesson": "u1l2",
+   "concept": "u1l2c2",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "junções",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "As consultas em SQL podem ser muito complexas. A forma básica do comando select, às vezes denominada mapeamento ou bloco select-from-where, é composta pelas três cláusulas SELECT, FROM e WHERE, e tem a seguinte forma: SELECT <lista atributos> FROM <lista tabelas> WHERE <condição>; sendo que o WHERE pode ser condicional. (Elmasri, 2011)\nAnalise a situação a seguir.\n“Para cada projeto localizado em ‘Mauá’, liste o número do projeto, o número do departamento que o controla e o sobrenome, endereço e data de nascimento do gerente do departamento.”\nAssinale a alternativa que exprime de forma correta essa solicitação.",
+   "options": [
+    "SELECT Projnumero, Dnum, Unome, Endereco, Datanasc FROM PROJETO, DEPARTAMENTO, FUNCIONARIO WHERE Dnum=Dnumero AND Cpf_gerente=Cpf AND Projlocal=’Mauá’",
+    "SELECT Projnumero, Dnum, Unome, Endereco, Datanasc; FROM PROJETO, DEPARTAMENTO, FUNCIONARIO; WHERE Dnum=Dnumero AND; Cpf_gerente=Cpf AND; Projlocal=’Mauá’",
+    "SELECT Projnumero, Dnum, Unome, Endereco, Datanasc FROM PROJETO, DEPARTAMENTO, FUNCIONARIO WHERE Dnum=Dnumero AND; Cpf_gerente=Cpf AND; Projlocal=’Mauá’",
+    "SELECT Projnumero, Dnum, Unome, Endereco, Datanasc FROM PROJETO, DEPARTAMENTO, FUNCIONARIO WHERE Dnum=Dnumero, Cpf_gerente=Cpf; Projlocal=’Mauá’",
+    "SELECT Projnumero, Dnum, Unome, Endereco, Datanasc FROM PROJETO, DEPARTAMENTO, FUNCIONARIO WHERE Dnum=Dnumero; Cpf_gerente=Cpf AND Projlocal=’Mauá’"
+   ],
+   "answer": 0,
+   "explanation": "As três condições (junção projeto–departamento, junção departamento–gerente e local Mauá) vão no WHERE ligadas por AND, com um único ponto e vírgula no fim. As outras põem “;” ou “,” no meio do comando, o que encerra ou quebra a instrução.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 38,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q39",
+   "lesson": "u1l2",
+   "concept": "u1l2c1",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "recursos da linguagem",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "A linguagem SQL possui uma série de recursos adicionais. São eles, EXCETO:",
+   "options": [
+    "Técnicas para escrever programas em várias linguagens de programação, que incluem instruções SQL para acessar um ou mais banco de dados.",
+    "Comandos de controle de transação.",
+    "Construções de linguagem para a criação de triggers.",
+    "Incorporação de recursos dos modelos orientados a objeto para ter capacidades mais poderosas, levando a sistemas relacionais avançados, conhecidos como objeto-relacional.",
+    "SQL e banco de dados não podem interagir com novas tecnologias, como XML, por exemplo."
+   ],
+   "answer": 4,
+   "explanation": "SQL embutida em linguagens, controle de transação, triggers e recursos objeto-relacionais são extensões reais da linguagem. A última é falsa: o padrão SQL e os SGBDs trabalham com XML (e JSON).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 39,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q40",
+   "lesson": "u1l2",
+   "concept": "u1l2c1",
+   "type": "mcq5",
+   "topic": "SQL",
+   "subtopic": "comandos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Relacione corretamente as colunas sobre os comandos em SQL.\n1. INSERT.\n2. DELETE.\n3. UPDATE.\n4. CREATE TABLE.\n5. SELECT.\n( ) Efetua consultas simples.\n( ) Especifica uma nova relação.\n( ) Remove tuplas de uma relação.\n( ) Acrescenta uma tupla a uma relação.\n( ) Modifica valores do atributo.\nA sequência está correta em",
+   "options": [
+    "1, 3, 5, 2, 4",
+    "2, 4, 3, 1, 5",
+    "5, 1, 2, 4, 3",
+    "5, 4, 2, 1, 3",
+    "3, 5, 4, 2, 1"
+   ],
+   "answer": 3,
+   "explanation": "Consultar = SELECT (5); nova relação = CREATE TABLE (4); remover tuplas = DELETE (2); acrescentar tupla = INSERT (1); modificar valores = UPDATE (3).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 40,
+    "gabarito": "preliminar"
    }
   },
   {
@@ -820,6 +1118,94 @@
    }
   },
   {
+   "id": "access-banestes-2024-q55",
+   "lesson": "u2l1",
+   "concept": "u2l1c6",
+   "type": "mcq5",
+   "topic": "Acesso a banco de dados",
+   "subtopic": "consultas parametrizadas",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um profissional de TI, está implementando um script Python para remover registros de uma tabela no banco de dados. O script usa “placeholders” e “parâmetros” para criar o comando SQL de remoção. Marque a opção que justifique corretamente a principal razão para usar placeholders e parametros em seu comando de remoção.",
+   "options": [
+    "Para evitar a duplicação de registros na tabela.",
+    "Para manter a integridade dos dados na tabela.",
+    "Gerenciar e garantir a portabilidade do código.",
+    "Para proteger contra injeções de SQL."
+   ],
+   "answer": 3,
+   "explanation": "Com placeholders, o valor vai separado do comando, e o driver não deixa o texto do usuário virar SQL: é a proteção contra injeção de SQL.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 55,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q59",
+   "lesson": "u2l1",
+   "concept": "u2l1c3",
+   "type": "code_output",
+   "topic": "C++",
+   "subtopic": "laços e vetores",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O trecho do código abaixo, foi desenvolvimento na linguagem C++, analise esse código e marque a opção que contém o resultado correto quando ele for executado.",
+   "code": "int main() {\n  int v[20] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19}, i;\n  for (i = 0; i < 10 ; i++) {\n    if (v[i] % 2 == 0) {\n      cout << v[i] << \" \";\n    }\n  }\n  return 0;\n}",
+   "options": [
+    "2 4 6 8 10",
+    "2 4 6 8 10 12 14 16 18",
+    "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+    "0 2 4 6 8"
+   ],
+   "answer": 3,
+   "explanation": "O laço percorre só os índices 0 a 9 e imprime os valores pares: 0 2 4 6 8 (o 0 também é par, e o 10 está no índice 10, fora do laço).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 59,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q73",
+   "lesson": "u2l1",
+   "concept": "u2l1c6",
+   "type": "mcq5",
+   "topic": "Ferramentas de desenvolvimento",
+   "subtopic": "IDE",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O ambiente de desenvolvimento e a escolha da linguagem de programação é fundamental para o sucesso de um projeto de software, influenciando diretamente sua “qualidade e eficiência”, assim no mundo da programação comumente chamamos o ambiente de desenvolvimento de IDE. Assinale a alternativa que corresponde corretamente ao significado de IDE.",
+   "options": [
+    "Ambiente de Desenvolvimento Instalado.",
+    "Ambiente de Desenvolvimento Inspecionado.",
+    "Ambiente de Desenvolvimento Integrado.",
+    "Ambiente de Desenvolvimento Interpretado."
+   ],
+   "answer": 2,
+   "explanation": "IDE é Integrated Development Environment: reúne editor, compilador ou interpretador, depurador e outras ferramentas num só programa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 73,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-dperr-2015-q42",
    "lesson": "u2l1",
    "concept": "u2l1c6",
@@ -1136,6 +1522,184 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q21",
+   "lesson": "u2l1",
+   "concept": "u2l1c3",
+   "type": "mcq5",
+   "topic": "Algoritmos",
+   "subtopic": "complexidade",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Sabendo que o algoritmo pode ser considerado como uma sequência de ações executáveis para obtenção de uma solução para um determinado tipo de problema e que pode ser mensurado para se obter um tempo de execução em relação a algumas variáveis, marque os 3 cenários apresentados pelo tempo de execução de um algoritmo.",
+   "options": [
+    "Complexidade quadrática, complexidade exponencial, dados desordenados.",
+    "Complexidade exponencial, dados desordenados, tamanho da entrada de dados.",
+    "Dados desordenados, complexidade quadrática, tamanho da entrada de dados.",
+    "Melhor caso, tamanho da entrada de dados, pior caso",
+    "Melhor caso, pior caso, caso médio."
+   ],
+   "answer": 4,
+   "explanation": "Na análise de algoritmos, o tempo de execução é estudado em três cenários: melhor caso, pior caso e caso médio. Quadrática e exponencial são ordens de complexidade, e o tamanho da entrada é a variável da análise, não um cenário.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 21,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q22",
+   "lesson": "u2l1",
+   "concept": "u2l1c4",
+   "type": "mcq5",
+   "topic": "Estruturas de dados",
+   "subtopic": "árvore de pesquisa",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Árvore de pesquisa é uma estrutura de dados eficiente para armazenar informação, sendo particularmente adequada quando existe a necessidade de considerar todos ou alguma combinação de registros. Assinale uma combinação correta desses registros.",
+   "options": [
+    "Acesso direto e sequencial eficientes, facilidade de inserção e retirada de registro, boa taxa de utilização de memória, utilização de memória primária e secundária.",
+    "Utilização de algoritmos de ordenação eficientes.",
+    "Utilização de estruturas de dados como lista, pilha e fila.",
+    "Não é necessário indexar os registros.",
+    "As operações de inserir, retirar e pesquisar são definidas."
+   ],
+   "answer": 0,
+   "explanation": "A frase segue a lista clássica (Ziviani) de requisitos que tornam a árvore de pesquisa adequada: acesso direto e sequencial eficientes, inserção e retirada fáceis, bom uso de memória e uso de memória primária e secundária.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 22,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q27",
+   "lesson": "u2l1",
+   "concept": "u2l1c3",
+   "type": "mcq5",
+   "topic": "Java",
+   "subtopic": "controle de fluxo",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Normalmente, as instruções em um programa são executadas uma após a outra na ordem em que são escritas. Tal processo denomina-se execução sequencial. Java dispõe de instruções que permitem ao programador especificar que a próxima instrução a ser executada não é necessariamente a próxima na sequência. Tal processo é conhecido como",
+   "options": [
+    "instrução goto.",
+    "comando break.",
+    "transferência de controle.",
+    "comando continue.",
+    "instrução Get."
+   ],
+   "answer": 2,
+   "explanation": "Desviar da ordem sequencial é a transferência de controle, feita por estruturas como if, switch e laços. goto é palavra reservada sem uso em Java; break e continue são exemplos de instruções, não o nome do processo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 27,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q28",
+   "lesson": "u2l1",
+   "concept": "u2l1c4",
+   "type": "mcq5",
+   "topic": "Java",
+   "subtopic": "arrays",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Um tópico importante em Java é a utilização de arrays, que são estruturas de dados, consistindo em itens de dados do mesmo tipo relacionados. Sabendo que array é um grupo de variáveis que contém valores que são do mesmo tipo, marque a alternativa que representa a declaração de um array em Java.",
+   "options": [
+    "Int a[ ].",
+    "Int a[10].",
+    "Int a[ ] new array().",
+    "Int a[ ] = new int[10].",
+    "Int a[ ] = new array()."
+   ],
+   "answer": 3,
+   "explanation": "Em Java, o array é criado com new e o tamanho: int a[] = new int[10]; (a prova escreve “Int” com maiúscula; em Java o tipo é int). int a[10] é sintaxe de C, e “new array()” não existe.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 28,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q61",
+   "lesson": "u2l2",
+   "concept": "u2l2c5",
+   "type": "mcq5",
+   "topic": "Orientação a objetos",
+   "subtopic": "polimorfismo",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Em um ambiente de desenvolvimento de software orientado a objetos, práticas de programação em Java, são fundamentais para o trabalho do desenvolver, podemos destacar a utilização do “polimorfismo”, em certas situações, sendo assim marque a alternativa correta que contem a principal vantagem do uso do polimorfismo, em programação orientada a objetos.",
+   "options": [
+    "Redução do acoplamento entre classes, promovendo uma arquitetura mais flexível e adaptável.",
+    "Fortalecimento da coesão entre classes, garantindo uma melhor organização e estruturação do código-fonte.",
+    "Simplificação da implementação de herança múltipla, permitindo que uma classe herde comportamentos de múltiplas superclasses.",
+    "Facilitação da implementação de métodos estáticos, otimizando o desempenho e a eficiência do código em tempo de execução."
+   ],
+   "answer": 0,
+   "explanation": "Com polimorfismo, o código depende de um tipo mais geral (superclasse ou interface) e aceita qualquer implementação, o que reduz o acoplamento. Java não tem herança múltipla de classes, e métodos estáticos não participam do polimorfismo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 61,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q62",
+   "lesson": "u2l2",
+   "concept": "u2l2c3",
+   "type": "mcq5",
+   "topic": "Orientação a objetos",
+   "subtopic": "herança e abstração",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Com base nos conceitos essenciais de programação orientada a objetos em Java, em relação entre herança e abstração, destacando como esses dois conceitos estão interligados e contribuem para a modelagem e organização eficientes de sistemas complexos, marque a opção que apresenta corretamente esse conceito.",
+   "options": [
+    "Herança é um tipo de abstração em Java.",
+    "Abstração é um tipo de herança em Java.",
+    "Herança e abstração são conceitos independentes em Java.",
+    "Herança e abstração são mutuamente exclusivas em Java."
+   ],
+   "answer": 0,
+   "explanation": "Gabarito definitivo: A. A herança generaliza o que é comum numa superclasse, o que é uma forma de abstração (classes abstratas e interfaces são o exemplo mais claro). Os dois conceitos andam juntos, não são independentes nem excludentes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 62,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-dperr-2015-q37",
    "lesson": "u2l2",
    "concept": "u2l2c5",
@@ -1199,6 +1763,66 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q29",
+   "lesson": "u2l2",
+   "concept": "u2l2c2",
+   "type": "mcq5",
+   "topic": "Orientação a objetos",
+   "subtopic": "métodos set",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Java é uma linguagem orientada a objetos e por padrão, os atributos da classe são confinados, permitindo que o acesso a eles seja apenas através dos métodos disponibilizados pela classe. Os métodos set, além de sua função principal, denominam-se métodos",
+   "options": [
+    "de consulta.",
+    "de acesso.",
+    "de obtenção.",
+    "de validação.",
+    "modificadores."
+   ],
+   "answer": 4,
+   "explanation": "Os métodos set alteram o valor do atributo: são os modificadores (mutators). Os get são os de acesso ou consulta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 29,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q56",
+   "lesson": "u2l2",
+   "concept": "u2l2c1",
+   "type": "mcq5",
+   "topic": "Orientação a objetos",
+   "subtopic": "origem",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Com o surgimento das linguagens de alto nível, tornaram-se possíveis operações do espaço de problema do mundo real, sendo modeladas por meio de estruturas de controle e dados predefinidos. Durante a década de 1970, novos conceitos foram introduzidos, surgindo novos métodos de projetos que deram origem a orientação de objetos como melhoria de processo. Esses métodos foram motivados por",
+   "options": [
+    "funções.",
+    "envio e recebimento de mensagens.",
+    "abstração e ocultação de informações.",
+    "criação de variáveis apenas em classes.",
+    "programas desenvolvidos apenas com objetos."
+   ],
+   "answer": 2,
+   "explanation": "Abstração e ocultação de informações (encapsulamento) motivaram os métodos que levaram à orientação a objetos. Envio de mensagens é um mecanismo da OO, não a motivação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 56,
+    "gabarito": "preliminar"
+   }
+  },
+  {
    "id": "fcc-dperr-2015-q52",
    "lesson": "u2l3",
    "concept": "u2l3c1",
@@ -1258,6 +1882,65 @@
     "prova": "Caderno P27, Tipo 001",
     "numero": 23,
     "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q48",
+   "lesson": "u2l3",
+   "concept": "u2l3c2",
+   "type": "mcq5",
+   "topic": "Padrões de projeto",
+   "subtopic": "conceito",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Todos os sistemas bem estruturados são repletos de padrões, pois fornecem uma solução comum para um problema básico em um determinado contexto. O termo padrão de projeto pode ser considerado como",
+   "options": [
+    "Frameworks.",
+    "mecanismo.",
+    "IDE.",
+    "metodologia de desenvolvimento.",
+    "lógica de programação."
+   ],
+   "answer": 1,
+   "explanation": "No Guia do Usuário da UML, “mecanismo” é o nome dado a um padrão de projeto aplicado a um conjunto de classes. Framework é um padrão de arquitetura maior; IDE é ferramenta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 48,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q57",
+   "lesson": "u2l4",
+   "concept": "u2l4c3",
+   "type": "mcq5",
+   "topic": "Python",
+   "subtopic": "bibliotecas",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Um desenvolvedor de software em uma empresa de tecnologia, durante seu trabalho, adiciona ao seu código a biblioteca “PyQt”, que oferece uma gama de recursos importantes para o desenvolvimento, assim sendo marque a opção que contem a alternativa correta sobre a função da biblioteca PyQt.",
+   "options": [
+    "fornecer uma interface de linha de comando para o usuário",
+    "facilitar a comunicação entre servidores e clientes em aplicações web.",
+    "criar e controlar os componentes da interface gráfica.",
+    "simplificar a criação de APIs RESTful em Python"
+   ],
+   "answer": 2,
+   "explanation": "PyQt liga o Python ao framework Qt, usado para criar interfaces gráficas de desktop (janelas, botões, formulários).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 57,
+    "gabarito": "definitivo"
    }
   },
   {
@@ -1509,6 +2192,346 @@
     "prova": "Caderno P27, Tipo 001",
     "numero": 40,
     "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q31",
+   "lesson": "u3l1",
+   "type": "mcq5",
+   "topic": "Processos de software",
+   "subtopic": "desenvolvimento de sistemas",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O desenvolvimento de sistemas de informação é um processo que envolve diferentes etapas, no intuito de construir um software, de forma a atingir os objetivos para os quais ele foi criado. Porém, a construção de um software necessita do uso de vários frameworks, destacando-se o SAD, que na sua construção, se refere à(ao)",
+   "options": [
+    "uso de camadas de persistências.",
+    "modelo MVC.",
+    "uso de determinada tecnologia ou linguagem após a análise.",
+    "união das etapas do desenvolvimento de um sistema tradicional em um só.",
+    "decisão da arquitetura necessária."
+   ],
+   "answer": 3,
+   "explanation": "Gabarito preliminar: D. A banca trata o SAD (desenvolvimento rápido de sistemas) como a abordagem que comprime as etapas do ciclo tradicional em um processo único e iterativo. A sigla é pouco usual; o termo mais conhecido é RAD.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 31,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q41",
+   "lesson": "u3l1",
+   "type": "mcq5",
+   "topic": "Processos de software",
+   "subtopic": "modelo em cascata",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "O paradigma do ciclo de vida clássico da engenharia de software, também conhecido como modelo em cascata, requer uma abordagem sistemática, sequencial ao desenvolvimento do software. Tal processo compreende as seguintes atividades, EXCETO:",
+   "options": [
+    "Análise.",
+    "Projeto.",
+    "Teste.",
+    "Refinamento do protótipo.",
+    "Manutenção."
+   ],
+   "answer": 3,
+   "explanation": "O cascata segue análise, projeto, codificação, teste e manutenção, sem voltar atrás. Refinar protótipo é atividade da prototipação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 41,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q42",
+   "lesson": "u3l1",
+   "type": "mcq5",
+   "topic": "Processos de software",
+   "subtopic": "modelos de processo",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Os métodos de engenharia de software proporcionam os detalhes de como fazer para construir o software, envolvendo um amplo conjunto de tarefas, incluindo: planejamento e estimativa de projeto, análise de requisitos de software e de sistemas, projeto da estrutura de dados, entre outros. Tal processo envolve um conjunto de etapas e métodos. NÃO se refere ao conjunto de etapas",
+   "options": [
+    "modelo em cascata.",
+    "prototipação.",
+    "modelo espiral.",
+    "técnicas de quarta geração.",
+    "análise de requisitos."
+   ],
+   "answer": 4,
+   "explanation": "Cascata, prototipação, espiral e técnicas de quarta geração são paradigmas (conjuntos de etapas) do processo, segundo Pressman. Análise de requisitos é uma atividade dentro deles.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 42,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q43",
+   "lesson": "u3l1",
+   "type": "mcq5",
+   "topic": "Processos de software",
+   "subtopic": "modelo espiral",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "O modelo espiral para a engenharia de software foi desenvolvido para abranger as melhores características, tanto do ciclo de vida clássico quanto da prototipação, possuindo como os demais, etapas ou atividades como, EXCETO:",
+   "options": [
+    "Planejamento.",
+    "Análise dos riscos.",
+    "Engenharia.",
+    "Avaliação do cliente.",
+    "Engenharia de sistemas."
+   ],
+   "answer": 4,
+   "explanation": "Na versão clássica de Pressman, cada volta da espiral tem planejamento, análise de riscos, engenharia e avaliação do cliente. Engenharia de sistemas é a primeira etapa do cascata.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 43,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q64",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "técnicas de elicitação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O levantamento de requisitos é uma etapa crucial no desenvolvimento de sistemas, pois é nessa fase que as necessidades do sistema são identificadas. Dentre as técnicas utilizadas para otimizar os resultados obtidos pelas entrevistas, assinale a alternativa correta.",
+   "options": [
+    "Diagramas de sequência são utilizados para representar interações entre objetos do sistema.",
+    "A prototipação rápida é usada para criar várias versões do sistema e validar os requisitos com os desenvolvedores.",
+    "A modelagem de processos de negócio é empregada para representar fluxos de trabalho e atividades dentro da organização.",
+    "O brainstorming estimula que as partes interessadas apresentem suas ideias sobre o sistema e como devem ser priorizadas."
+   ],
+   "answer": 3,
+   "explanation": "O brainstorming complementa as entrevistas: reúne as partes interessadas para gerar e priorizar ideias. Diagramas de sequência e modelagem de processos são técnicas de modelagem, e a prototipação valida os requisitos com os usuários, não com os desenvolvedores.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 64,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q65",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "JAD",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "No contexto de projetos que utilizam o Desenvolvimento de Aplicações Rápidas (RAD), a JAD (Joint Application Development) é uma técnica crucial para o levantamento de requisitos. Com base nisso, assinale a alternativa correta que descreve a JAD:",
+   "options": [
+    "Trata-se de oficinas de trabalho onde desenvolvedores e usuários discutem sobre o projeto e suas necessidades.",
+    "É um conjunto eficiente de técnicas que aceleram a implementação de ideias.",
+    "Aumenta a colaboração entre os desenvolvedores e os usuários, uma vez que estabelece um cronograma de trabalho.",
+    "É baseada em entrevistas e dinâmicas sociais em que os usuários interagem entre si para fornecer informações relevantes para os desenvolvedores."
+   ],
+   "answer": 0,
+   "explanation": "A JAD consiste em sessões de trabalho (workshops) estruturadas, com facilitador, em que usuários e desenvolvedores definem juntos os requisitos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 65,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q66",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "validação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considerando a importância da engenharia de requisitos para o desenvolvimento de sistemas, marque a alternativa que associa corretamente com atividade de “Validação” com seu respectivo objetivo:",
+   "options": [
+    "Levantar as necessidades para eliminar os requisitos do sistema.",
+    "Refere-se a garantir que o sistema atenda às necessidades do cliente e às expectativas do usuário.",
+    "Validação: comparar a implementação o código desenvolvido.",
+    "Garantir recursos humanos do projeto."
+   ],
+   "answer": 1,
+   "explanation": "Validar requisitos é confirmar que eles expressam o que o cliente e os usuários de fato precisam (“construir o produto certo”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 66,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q67",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "requisitos não funcionais",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Qual das seguintes técnicas de elicitação de requisitos, marque a alternativa mais apropriada para capturar requisitos não funcionais, como requisitos de desempenho, segurança e usabilidade.",
+   "options": [
+    "Análise de documentos.",
+    "Entrevistas.",
+    "Questionários.",
+    "Workshops colaborativos."
+   ],
+   "answer": 3,
+   "explanation": "Gabarito definitivo: D. Requisitos não funcionais envolvem várias partes interessadas (negócio, segurança, infraestrutura, usuários), e os workshops colaborativos as reúnem para negociar metas de desempenho, segurança e usabilidade.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 67,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q68",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "casos de uso",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Utilizar de estratégias como cenários, histórias de uso, aproxima o profissional de TI, com seu cliente e facilita a tarefa de elicitação de requisitos. Marque a alternativa que corresponde corretamente a técnicas de elicitação de requisitos descrita.",
+   "options": [
+    "Entrevistas.",
+    "Observação.",
+    "Prototipação.",
+    "Casos de uso."
+   ],
+   "answer": 3,
+   "explanation": "Cenários e histórias de uso descrevem a interação do usuário com o sistema, que é o que fazem os casos de uso.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 68,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q70",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "prototipação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A prototipação melhora a comunicação entre desenvolvedores e stakeholders, pois permite que os usuários visualizem e interajam com um modelo funcional do sistema. Isso leva a uma melhor compreensão dos requisitos e reduz o risco de mal-entendidos. Na construção dos protótipos o profissional de TI, enfrenta diversas dificuldades. Marque a alternativa que representa corretamente uma dificuldade para implantar a prototipação.",
+   "options": [
+    "Dificuldade em desenvolver protótipos que sejam representativos o suficiente do sistema final.",
+    "Aumento dos custos de desenvolvimento devido à necessidade de criar múltiplos protótipos.",
+    "Falta de suporte da equipe de TI, durante o processo de prototipação.",
+    "Limitações nas linguagens de programação para capturar requisitos não funcionais por meio de protótipos."
+   ],
+   "answer": 0,
+   "explanation": "Gabarito definitivo: A. O protótipo precisa ser simples e rápido, mas representativo o bastante para o usuário avaliar o sistema; achar esse equilíbrio é a dificuldade central da técnica.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 70,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q72",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "UML",
+   "subtopic": "diagramas estruturais",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "A UML inclui diagrama, que mostra a estrutura estática do sistema, instâncias específicas, componentes físicos do sistema e suas interações. Marque a alternativa que contém corretamente os principais tipos de diagramas de estrutura estática na UML.",
+   "options": [
+    "Diagrama de classe, diagrama de objeto e diagrama de atividade.",
+    "Diagrama de caso de uso, diagrama de componente e diagrama de implementação.",
+    "Diagrama de pacote, diagrama de perfil e diagrama de classe.",
+    "Diagrama de classe, diagrama de objeto e diagrama de componente."
+   ],
+   "answer": 3,
+   "explanation": "Classe (estrutura), objeto (instâncias específicas) e componente (partes físicas) são diagramas estruturais. Atividade e caso de uso são comportamentais.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 72,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q76",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "elicitação",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "No desenvolvimento de Sistemas, os \"Requisitos\" definem o que um sistema deverá fazer. As atividades relacionadas com a descoberta e entendimento dos requisitos de um sistema são chamadas de?",
+   "options": [
+    "Elicitação de Requisitos.",
+    "Engenharia de Requisitos.",
+    "Requisitos Funcionais.",
+    "Requisitos Não-Funcionais."
+   ],
+   "answer": 0,
+   "explanation": "Descobrir e entender os requisitos é a elicitação. Engenharia de requisitos é o processo inteiro (elicitação, análise, especificação, validação e gerência).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 76,
+    "gabarito": "definitivo"
    }
   },
   {
@@ -1903,6 +2926,151 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q47",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "UML",
+   "subtopic": "padrões e colaborações",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O padrão de projeto é representado por uma colaboração parametrizada, podendo ser utilizado para fazer uma modelagem interna dessa colaboração com um conjunto de diagramas. Assinale o conjunto de diagramas utilizado tipicamente para uma modelagem interna.",
+   "options": [
+    "Diagrama de classes.",
+    "Diagrama de atividade.",
+    "Diagrama de objeto.",
+    "Diagrama de componente.",
+    "Diagrama de implementação."
+   ],
+   "answer": 0,
+   "explanation": "Gabarito preliminar: A. Segundo o Guia do Usuário da UML (Booch, Rumbaugh e Jacobson), a estrutura interna de uma colaboração que representa um padrão é modelada principalmente com diagramas de classes (com diagramas de interação para o comportamento).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 47,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q49",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "Análise estruturada",
+   "subtopic": "metodologia estruturada",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A metodologia de desenvolvimento estruturado foi um dos métodos utilizados em processos de desenvolvimento de sistemas, sendo considerada como",
+   "options": [
+    "modelo de desenvolvimento experimental.",
+    "técnica de modelagem do conteúdo e do fluxo da informação.",
+    "forma simples de construir software.",
+    "padrão passado de profissional para profissional.",
+    "diagrama completo que contempla todo o sistema."
+   ],
+   "answer": 1,
+   "explanation": "A análise estruturada modela o conteúdo e o fluxo da informação, com diagramas de fluxo de dados e dicionário de dados.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 49,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q52",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "UML",
+   "subtopic": "finalidade",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "UML (Linguagem Unificada de Modelagem) é apenas uma linguagem, sendo parte de um método para desenvolvimento de software. É uma linguagem com aspectos e destinada a desenvolver itens como",
+   "options": [
+    "visualizar, modificar, elaborar, atualizar.",
+    "especificar, documentar, instalar, gerar pacotes.",
+    "construir, codificar, implementar, atualizar.",
+    "documentar, gerar pacotes, especificar, codificar.",
+    "visualizar, especificar, construir, documentar."
+   ],
+   "answer": 4,
+   "explanation": "A definição clássica: a UML é uma linguagem para visualizar, especificar, construir e documentar os artefatos de um sistema.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 52,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q53",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "UML",
+   "subtopic": "diagramas estruturais",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Os diagramas são meios utilizados para visualização dos blocos de construção; uma apresentação gráfica de um conjunto de elementos, geralmente representados como um gráfico conectado de vértices e arcos. Esses diagramas representam visões de modelos comuns. São diagramas que representam as partes estáticas de um sistema, EXCETO:",
+   "options": [
+    "Diagrama de classes.",
+    "Diagrama de objeto.",
+    "Diagrama de componente.",
+    "Diagrama de atividade.",
+    "Diagrama de implementação."
+   ],
+   "answer": 3,
+   "explanation": "Classes, objetos, componentes e implantação são diagramas estruturais (estáticos). O diagrama de atividade é comportamental (dinâmico).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 53,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q54",
+   "lesson": "u3l2",
+   "type": "mcq5",
+   "topic": "UML",
+   "subtopic": "diagrama de classes",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Diagrama de classe compartilha as mesmas propriedades dos demais diagramas. Seu conteúdo particular o diferencia dos outros diagramas. São itens contidos nos diagramas de classes, EXCETO:",
+   "options": [
+    "Casos de uso.",
+    "Classes.",
+    "Interfaces.",
+    "Colaborações.",
+    "Relacionamentos de dependência, generalização e associação."
+   ],
+   "answer": 0,
+   "explanation": "O diagrama de classes contém classes, interfaces, colaborações e relacionamentos. Casos de uso aparecem no diagrama de casos de uso.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 54,
+    "gabarito": "preliminar"
+   }
+  },
+  {
    "id": "fcc-dperr-2015-q51",
    "lesson": "u3l3",
    "type": "case",
@@ -2083,6 +3251,34 @@
    }
   },
   {
+   "id": "access-banestes-2024-q69",
+   "lesson": "u3l5",
+   "type": "mcq5",
+   "topic": "Requisitos",
+   "subtopic": "rastreabilidade",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "A Matriz de Rastreabilidade de Requisitos (MRR) é amplamente utilizada no gerenciamento de requisitos de software. Assinale a alternativa que representa corretamente seu significado.",
+   "options": [
+    "A MRR é uma ferramenta para gerenciar os custos associados aos requisitos do projeto.",
+    "A MRR é uma técnica para priorizar requisitos com base em sua importância para o sucesso do projeto.",
+    "A MRR é uma estrutura para rastrear a relação entre requisitos, desde sua origem até sua implementação e teste.",
+    "A MRR é uma metodologia para identificar e corrigir inconsistências entre os requisitos do sistema."
+   ],
+   "answer": 2,
+   "explanation": "A matriz liga cada requisito à sua origem e aos artefatos que o atendem (projeto, código, testes), o que permite avaliar o impacto de mudanças.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 69,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-dperr-2015-q48",
    "lesson": "u3l5",
    "type": "mcq5",
@@ -2169,6 +3365,148 @@
     "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 89,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q44",
+   "lesson": "u3l5",
+   "type": "mcq5",
+   "topic": "Métricas de software",
+   "subtopic": "pontos de função",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Métricas de software orientadas à função são medidas indiretas do software e do processo por meio do qual ele é desenvolvido, por não contar as linhas de código, e sim concentrar-se na funcionalidade ou utilidade do programa. São valores do domínio da informação determinantes para complexidade do software, EXCETO:",
+   "options": [
+    "Número de entradas do usuário.",
+    "Número de saída do usuário.",
+    "Número de consultas do usuário.",
+    "Número de arquivos.",
+    "Número de linhas de código."
+   ],
+   "answer": 4,
+   "explanation": "A análise por pontos de função conta entradas, saídas, consultas, arquivos internos e interfaces externas. Linhas de código são justamente o que as métricas orientadas à função deixam de lado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 44,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q55",
+   "lesson": "u3l5",
+   "type": "mcq5",
+   "topic": "Qualidade de software",
+   "subtopic": "garantia da qualidade",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A garantia da qualidade de software compreende uma variedade de tarefas associadas a atividades como\nI. diagrama de fluxo de dados.\nII. aplicação de métodos técnicos.\nIII. aplicação de padrões.\nIV. controle de mudanças.\nV. medição.\nEstão corretas apenas as alternativas",
+   "options": [
+    "II, III, IV, V",
+    "I, III, V",
+    "I, V",
+    "II, III",
+    "I, II, IV, V"
+   ],
+   "answer": 0,
+   "explanation": "Pressman associa a garantia da qualidade a métodos técnicos, revisões, testes, aplicação de padrões, controle de mudanças, medição e registro. Diagrama de fluxo de dados é técnica de modelagem, não atividade de qualidade.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 55,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q56",
+   "lesson": "u4l1",
+   "type": "mcq5",
+   "topic": "Desenvolvimento web",
+   "subtopic": "AJAX",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Entre as inúmeras opções de desenvolvimento de uma página dinâmica, contamos com o uso do Asynchronous JavaScript and XML – AJAX, onde é comun utilizado em formulários de pesquisa em tempo real, em sistemas de chat online, em sistemas de comentários dinâmicos em blogs, entre muitas outras aplicações web, utilizado para atualizar apenas parte da página Web. Referente ao AJAX, marque a alternativa correta.",
+   "options": [
+    "O AJAX baseia-se em tecnologias já disponíveis no lado servidor, entre elas a linguagem C#.",
+    "O AJAX baseia-se em tecnologias hibridas, entre elas a linguagem Java.",
+    "O AJAX baseia-se em tecnologias já disponíveis no lado cliente da navegação Web, entre elas a linguagem JavaScript.",
+    "O AJAX baseia-se em tecnologias já disponíveis no lado servidor, entre elas a linguagem de marcação de página HTML."
+   ],
+   "answer": 2,
+   "explanation": "AJAX usa tecnologias do navegador (JavaScript, XMLHttpRequest ou fetch, DOM) para buscar dados de forma assíncrona e atualizar parte da página.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 56,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q58",
+   "lesson": "u4l1",
+   "type": "mcq5",
+   "topic": "HTML",
+   "subtopic": "formulários",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considerando os princípios fundamentais do desenvolvimento web, temos a importância dos formulários na interação entre usuários e servidores, analise as afirmações a seguir e marque a alternativa correta no uso e a validação de formulários em HTML.",
+   "options": [
+    "Por ser o único elemento que viabiliza a interação com o servidor, o formulário deve permanecer isolado em uma página web, sem qualquer outra tag de conteúdo.",
+    "A validação é um processo que pode ocorrer tanto no lado cliente quanto no lado servidor.",
+    "Ao enviar dados para um servidor, é suficiente utilizar os campos presentes no próprio formulário, sem a necessidade de especificar qualquer ação adicional.",
+    "Quando for necessário enviar os dados para um servidor, basta utilizar os campos do próprio formulário, através da tag principal sendtoserver."
+   ],
+   "answer": 1,
+   "explanation": "A validação pode ser feita no navegador (atributos como required e JavaScript) e deve ser repetida no servidor, que não pode confiar no cliente. O envio usa os atributos action e method do form; não existe tag sendtoserver.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 58,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q60",
+   "lesson": "u4l1",
+   "type": "mcq5",
+   "topic": "CSS",
+   "subtopic": "@font-face",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considerando o avanço proporcionado pela CSS3 no campo de design de páginas da web, especialmente no que diz respeito à utilização de novos tipos de fontes por meio da regra @font-face, avalie as afirmativas a seguir e selecione a alternativa que apresenta as opções corretas.\nI. Por meio da regra @font-face, é viável incorporar novas fontes nas páginas web, permitindo que o navegador as localize conforme necessário.\nII. A única desvantagem da nova regra, @font-face, é descontinuar as famílias de fontes que não possuíam total suporte pelos navegadores.\nIII. A regra @font-face não manteve o suporte à declaração font-family. Com isso, não é possível indicar uma ou várias fontes alternativas caso a preferencial não esteja disponível.\nIV. A regra @font-face permite que novas fontes sejam criadas e utilizadas em páginas. Essa regra informa ao browser o local onde a fonte a ser utilizada se encontra, permitindo ainda que seja verificado se o usuário já possui a fonte em questão.",
+   "options": [
+    "Apenas III e IV.",
+    "Apenas I e II.",
+    "Apenas I e IV.",
+    "I, II, III e IV."
+   ],
+   "answer": 2,
+   "explanation": "@font-face indica onde baixar a fonte (src, com url() e local() para usar a instalada). I e IV estão corretas. II é falsa, e III também: a própria regra usa font-family, e as fontes alternativas continuam funcionando.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 60,
     "gabarito": "definitivo"
    }
   },
@@ -2383,6 +3721,35 @@
     "prova": "Tipo 1",
     "numero": 54,
     "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q32",
+   "lesson": "u4l1",
+   "type": "mcq5",
+   "topic": "HTML",
+   "subtopic": "tabelas",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "HTML (Hyper Text Markup Language) é uma linguagem utilizada na criação de páginas exibidas na Web, utilizando vários recursos para apresentação do conteúdo necessário. Alguns itens são exibidos nas páginas Web, como imagens, vídeos, entrada de dados e geração de relatórios que podem ser exibidos através de sistemas utilizados em ambiente Web. Sob o uso de HTML na construção de conteúdo a ser exibido na Web, assinale a opção utilizada para organizar dados em documentos HTML.",
+   "options": [
+    "Formulários.",
+    "Imagens.",
+    "Tabelas.",
+    "Listas ordenadas ou desordenadas.",
+    "Rótulos."
+   ],
+   "answer": 2,
+   "explanation": "Para organizar dados em linhas e colunas, o HTML usa tabelas (table, tr, td). Formulários servem para entrada de dados, e listas, para enumerar itens.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 32,
+    "gabarito": "preliminar"
    }
   },
   {
@@ -2624,6 +3991,34 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 42,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q71",
+   "lesson": "u4l4",
+   "type": "mcq5",
+   "topic": "Usabilidade",
+   "subtopic": "avaliação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Sobre métodos para avaliação de usabilidade, marque a alternativa correta, que corresponde as definições: “é realizada por especialistas em usabilidade que avaliam o sistema com base em diretrizes e heurísticas” e “envolve a interação direta dos usuários com o sistema em um ambiente controlado”.",
+   "options": [
+    "Testes de Usabilidade e Inspeção de Usabilidade.",
+    "Testes de Usabilidade e Pensar em Voz Alta.",
+    "Inspeção de Usabilidade e Análise de Tarefas.",
+    "Questionários de Satisfação do Usuário e Pensar em Voz Alta."
+   ],
+   "answer": 0,
+   "explanation": "A avaliação por especialistas com heurísticas é a inspeção de usabilidade; a interação de usuários reais em ambiente controlado é o teste de usabilidade. A alternativa A traz os dois, embora em ordem inversa à das definições.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 71,
     "gabarito": "definitivo"
    }
   },
@@ -3108,6 +4503,34 @@
    }
   },
   {
+   "id": "access-banestes-2024-q77",
+   "lesson": "u7l1",
+   "type": "mcq5",
+   "topic": "Governança de TI",
+   "subtopic": "stakeholders",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Governança Corporativa e a governança de TI, tem como um dos seus objetivos o sistema de relacionamento que envolve, principalmente, os stakeholders, profissionais de TIC, executivos e outros. Ela envolve processos, costumes, políticas e procedimentos que determinam as práticas corporativas atuais. Qual das alternativas representa corretamente o significado de stakeholders?",
+   "options": [
+    "Stakeholders são acionistas, executivos e conselheiros da empresa.",
+    "Stakeholders são partes interessadas ou envolvidas em um determinado projeto.",
+    "Stakeholders são programadores, DBA, gerente de projeto e desenvolvedores.",
+    "Stakeholders são órgãos governamentais que fiscalizam o projeto."
+   ],
+   "answer": 1,
+   "explanation": "Stakeholders são todas as partes interessadas, que afetam ou são afetadas pelo projeto ou pela organização. As outras alternativas citam só alguns grupos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 77,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q79",
    "lesson": "u7l1",
    "type": "mcq5",
@@ -3135,6 +4558,64 @@
     "prova": "Tipo 1",
     "numero": 79,
     "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q45",
+   "lesson": "u7l1",
+   "type": "mcq5",
+   "topic": "Gerência de projetos",
+   "subtopic": "elementos-chave",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "A gerência de projetos é a primeira camada do processo de engenharia de software por abranger todo o processo de desenvolvimento, do começo ao fim. NÃO é um elemento-chave deste processo",
+   "options": [
+    "Medidas e métricas.",
+    "Estilo de codificação.",
+    "Análise dos riscos.",
+    "Determinação de prazos.",
+    "Estimativa."
+   ],
+   "answer": 1,
+   "explanation": "Métricas, estimativas, análise de riscos e prazos (cronograma) são atividades de gerência de projeto. Estilo de codificação é assunto da construção do software.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 45,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q57",
+   "lesson": "u7l1",
+   "type": "mcq5",
+   "topic": "Gerência de projetos",
+   "subtopic": "planejamento",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "“A fase de planejamento, no desenvolvimento de sistemas, é o processo fundamental para compreender porque um sistema de informações deve ser construído e determinar como a equipe de projeto trabalhará para construí-lo.” (Dennis, Wixom, 2005)\nAssinale a alternativa que NÃO faz parte da fase de planejamento.",
+   "options": [
+    "Analisar viabilidade.",
+    "Desenvolver estratégia de análise.",
+    "Desenvolver plano de trabalho.",
+    "Identificar oportunidade.",
+    "Controlar e dirigir projeto."
+   ],
+   "answer": 1,
+   "explanation": "Em Dennis e Wixom, o planejamento inclui identificar a oportunidade, analisar a viabilidade, desenvolver o plano de trabalho, montar a equipe e controlar e dirigir o projeto. A estratégia de análise é o primeiro passo da fase seguinte, a análise.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 57,
+    "gabarito": "preliminar"
    }
   },
   {
@@ -3228,6 +4709,62 @@
    }
   },
   {
+   "id": "access-banestes-2024-q78",
+   "lesson": "u7l3",
+   "type": "mcq5",
+   "topic": "Governança de TI",
+   "subtopic": "TIC nos negócios",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O ambiente de negócio se caracteriza pela intensa competição, o que origina a necessidade de inovação constante e a busca diária pela eficiência operacional em detrimento da eficácia estratégica. Qual das alternativas é um exemplo correto de aplicação da TIC em um ambiente de negócios?",
+   "options": [
+    "Serviços de entrega de comida.",
+    "Redes sociais para compartilhamento de fotos.",
+    "Sistema de gestão empresarial (ERP).",
+    "Máquinas de lavar automáticas."
+   ],
+   "answer": 2,
+   "explanation": "O ERP integra os processos da empresa (finanças, compras, estoque, RH) e é o exemplo típico de TIC aplicada à gestão do negócio.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 78,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q80",
+   "lesson": "u7l3",
+   "type": "mcq5",
+   "topic": "Governança de TI",
+   "subtopic": "benefícios",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Quando os processos estão definidos, a empresa ganha vantagem competitiva, pois a inteligência estará no processo e qualquer um poderá executá-lo. Esse é um dos benefícios, da governança de TIC. Assinale a alternativa correta que contém outras vantagens da governança de TIC.",
+   "options": [
+    "Redução da transparência e prestação de contas.",
+    "Aumento dos custos operacionais.",
+    "Melhoria da eficiência e eficácia dos processos de negócio.",
+    "Aumento da resistência às mudanças tecnológicas."
+   ],
+   "answer": 2,
+   "explanation": "A governança de TIC alinha a TI ao negócio e melhora a eficiência e a eficácia dos processos. As outras alternativas descrevem efeitos contrários aos que ela busca.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 80,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-teresina-2016-q48",
    "lesson": "u7l3",
    "type": "mcq5",
@@ -3254,6 +4791,35 @@
     "cargo": "Técnico de Nível Superior – Analista de Sistemas",
     "prova": "Caderno P27, Tipo 001",
     "numero": 48,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q46",
+   "lesson": "u7l4",
+   "type": "mcq5",
+   "topic": "Gestão de riscos",
+   "subtopic": "análise de riscos",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "A análise de risco é composta por quatro atividades. NÃO apresenta uma atividade de análise de risco.",
+   "options": [
+    "Identificação.",
+    "Projeção.",
+    "Avaliação.",
+    "Codificação.",
+    "Administração."
+   ],
+   "answer": 3,
+   "explanation": "Em Pressman, a análise de riscos envolve identificação, projeção (estimativa), avaliação e administração (monitoração e controle) dos riscos. Codificação não faz parte.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 46,
     "gabarito": "preliminar"
    }
   },
@@ -3285,6 +4851,34 @@
     "prova": "Caderno P27, Tipo 001",
     "numero": 50,
     "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q79",
+   "lesson": "u8l1",
+   "type": "mcq5",
+   "topic": "Sistemas operacionais",
+   "subtopic": "conceito",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Um computador moderno consiste em um ou mais processadores, memória principal, discos, impressoras, um teclado, um mouse, um monitor, interfaces de rede e vários outros dispositivos de entrada e saída. Juntamente com os componentes de hardware, temos um software chamado de “Sistema Operacional”. Referente ao Sistema Operacional, marque a alternativa que representa corretamente o que é Sistema Operacional.",
+   "options": [
+    "Um software que cria gráficos e imagens.",
+    "Um dispositivo de hardware essencial para a execução de programas.",
+    "Uma interface de usuário para acessar a internet.",
+    "Um conjunto de programas que controla o funcionamento do computador"
+   ],
+   "answer": 3,
+   "explanation": "O sistema operacional é o software que gerencia o hardware (processador, memória, dispositivos) e oferece serviços aos programas. Não é hardware.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 79,
+    "gabarito": "definitivo"
    }
   },
   {
@@ -3589,6 +5183,34 @@
    }
   },
   {
+   "id": "access-banestes-2024-q75",
+   "lesson": "u9l1",
+   "type": "mcq5",
+   "topic": "Redes",
+   "subtopic": "modelo OSI",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "A camada responsável por estabelecer, gerenciar e encerrar as conexões entre os aplicativos em diferentes dispositivos, por um certo período de comunicação e garantindo que as comunicações possam ser estabelecidas, mantidas e finalizadas de forma adequada. É a camada?",
+   "options": [
+    "Camada de apresentação.",
+    "Camada de sessão.",
+    "Camada física.",
+    "Camada de rede."
+   ],
+   "answer": 1,
+   "explanation": "No modelo OSI, a camada 5 (sessão) abre, mantém e encerra os diálogos entre aplicações. Apresentação cuida do formato dos dados, e rede, do roteamento.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 75,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fcc-teresina-2016-q27",
    "lesson": "u9l1",
    "type": "mcq5",
@@ -3616,6 +5238,34 @@
     "prova": "Caderno P27, Tipo 001",
     "numero": 27,
     "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q74",
+   "lesson": "u9l2",
+   "type": "mcq5",
+   "topic": "Redes",
+   "subtopic": "camada de aplicação",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O modelo OSI (Open Systems Interconnection) é um modelo conceitual que descreve as funcionalidades de comunicação de rede em sistemas de computadores. Nas suas camadas, possui uma camada que contém uma série de protocolos comumente necessários para os usuários. Um protocolo amplamente utilizado é o HTTP (HyperText Transfer Protocol), que constitui a base para a World Wide Web. Quando um navegador deseja uma página da Web, ele envia o nome da página desejada ao servidor, utilizando o HTTP. Marque a alternativa que corresponde corretamente a essa camada?",
+   "options": [
+    "Camada de apresentação.",
+    "Camada de aplicação.",
+    "Camada de transporte.",
+    "Camada de enlace de dados."
+   ],
+   "answer": 1,
+   "explanation": "HTTP é protocolo da camada de aplicação, a que reúne os protocolos usados diretamente pelos programas do usuário.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 74,
+    "gabarito": "definitivo"
    }
   },
   {
@@ -3679,6 +5329,64 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q59",
+   "lesson": "u9l2",
+   "type": "mcq5",
+   "topic": "Redes",
+   "subtopic": "camadas",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "“Para prover uma estrutura para o projeto de protocolos de rede, projetistas de rede organizam protocolos – e o hardware e o software de rede implementam os protocolos – em camadas.” (Kurose, 2010)\nCada protocolo pertence a uma camada. “O protocolo IP (Internet Protocol) trabalha na camada _______________.” Tomando como base o modelo de cinco camadas, descrito em Kurose, assinale a alternativa que completa corretamente a afirmativa anterior.",
+   "options": [
+    "física",
+    "de aplicação",
+    "de rede",
+    "de transporte",
+    "de enlace"
+   ],
+   "answer": 2,
+   "explanation": "No modelo de cinco camadas de Kurose (aplicação, transporte, rede, enlace e física), o IP é o protocolo da camada de rede.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 59,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q60",
+   "lesson": "u9l2",
+   "type": "mcq5",
+   "topic": "Redes",
+   "subtopic": "IPv6",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Recentemente, foram comercializados os últimos blocos de endereços IP disponíveis. Um novo protocolo está em fase de adaptação para utilização nas redes de computadores. Assinale qual é esse novo protocolo que substituirá o protocolo de Internet (Internet Protocol – IP) em utilização.",
+   "options": [
+    "IPv6",
+    "IpV5",
+    "ICMP",
+    "IGMP",
+    "POP4"
+   ],
+   "answer": 0,
+   "explanation": "O esgotamento dos endereços IPv4 levou à adoção do IPv6, com endereços de 128 bits. ICMP e IGMP são protocolos auxiliares do IP, e POP4 não existe.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 60,
+    "gabarito": "preliminar"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q82",
    "lesson": "u9l4",
    "type": "case",
@@ -3706,6 +5414,35 @@
     "prova": "Tipo 1",
     "numero": 82,
     "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q58",
+   "lesson": "u10l1",
+   "type": "mcq5",
+   "topic": "Processamento de transações",
+   "subtopic": "estrutura",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Os sistemas de processamento de transações são projetados para processar solicitações de informações por usuários de um Banco de Dados ou solicitações para atualizá-lo. (Lewis, et al., 2003) São geralmente sistemas interativos nos quais os usuários enviam solicitações assíncronas de serviço. Identifique qual componente NÃO faz parte da estrutura de aplicações de processamento de transações.",
+   "options": [
+    "Processamento de E/S.",
+    "Lógica de aplicações.",
+    "Gerenciar transações.",
+    "Banco de dados.",
+    "Interface com o usuário."
+   ],
+   "answer": 4,
+   "explanation": "Gabarito preliminar: E. Na estrutura de aplicações de processamento de transações descrita na fonte citada, aparecem processamento de E/S, lógica da aplicação, gerenciamento de transações e banco de dados; a interface com o usuário fica fora dessa estrutura. A resposta depende da fonte, e outras obras incluem a apresentação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 58,
+    "gabarito": "preliminar"
    }
   },
   {
@@ -3765,6 +5502,325 @@
     "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 83,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q17",
+   "lesson": "u10l4",
+   "type": "mcq5",
+   "topic": "Inglês técnico",
+   "subtopic": "vocabulário bancário",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Match the two columns.\n1. Banking account.\n2. Savings account.\n3. Interests.\n4. Profit.\n5. Fine.\n( ) Ammount of money that must be paid as a penalty.\n( ) Income and expenses assigned to a person, business in a bank.\n( ) A banking account to supply money for future use.\n( ) Money made after all expenses are paid.\n( ) Money a lender charges to someone who borrows money.\nMark the option with the right sequence.",
+   "options": [
+    "5, 1, 2, 4, 3",
+    "1, 2, 4, 5, 3",
+    "2, 3, 1, 4, 5",
+    "3, 4, 2, 5, 1",
+    "4, 3, 5, 2, 1"
+   ],
+   "answer": 0,
+   "explanation": "Penalidade = fine (5); registro de receitas e despesas no banco = banking account (1); conta para uso futuro = savings account (2); o que sobra depois das despesas = profit (4); o que o credor cobra de quem toma emprestado = interests, juros (3).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 17,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q18",
+   "lesson": "u10l4",
+   "type": "mcq5",
+   "topic": "Inglês técnico",
+   "subtopic": "vocabulário bancário",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "They are some of the functions people have in a bank except for",
+   "options": [
+    "manager.",
+    "teller.",
+    "supervisor.",
+    "general manager.",
+    "salesman."
+   ],
+   "answer": 4,
+   "explanation": "Manager (gerente), teller (caixa), supervisor e general manager (gerente-geral) são funções de banco; salesman (vendedor) é a exceção pedida pelo “except for”.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 18,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q19",
+   "lesson": "u10l4",
+   "type": "mcq5",
+   "topic": "Inglês técnico",
+   "subtopic": "compreensão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Read the text to answer the question.\n\nComputer shopping\nIs computer shopping the way of the future? About 37% of American households now have personal computers. And shopping by computer (or “shopping on-line”) is interesting to more people every day. Already, shoppers can use their computers to order many different products, such as computer products, flowers, food, T-shirts, and posters. And new on-line shopping services appear every day. Soon people may be able to shop for anything, anytime, anywhere in the world.\n(Richards, Jack C. New Interchange 1. Cambridge University Press, 2000)\n\nIt is correct about the text that",
+   "options": [
+    "37% of the people in America use computer shopping.",
+    "Computer shopping and on-line shopping is the same.",
+    "On-line services are the most expensive services ever.",
+    "Shopping by computer will be popular in the future.",
+    "It is not possible to buy food products on-line."
+   ],
+   "answer": 1,
+   "explanation": "O texto diz “shopping by computer (or ‘shopping on-line’)”: as duas expressões são a mesma coisa. Os 37% são das casas com computador, não de quem compra on-line; o texto fala que comprar pelo computador interessa a mais gente, mas não afirma que será popular; e cita comida entre os produtos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 19,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q20",
+   "lesson": "u10l4",
+   "type": "mcq5",
+   "topic": "Inglês técnico",
+   "subtopic": "compreensão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Read the text to answer the question.\n\nComputer shopping\nIs computer shopping the way of the future? About 37% of American households now have personal computers. And shopping by computer (or “shopping on-line”) is interesting to more people every day. Already, shoppers can use their computers to order many different products, such as computer products, flowers, food, T-shirts, and posters. And new on-line shopping services appear every day. Soon people may be able to shop for anything, anytime, anywhere in the world.\n(Richards, Jack C. New Interchange 1. Cambridge University Press, 2000)\n\nWhich of the products can be acquired by computer, according to the text?",
+   "options": [
+    "Medicines.",
+    "Vehicles.",
+    "Clothes.",
+    "Advertisements.",
+    "Households."
+   ],
+   "answer": 2,
+   "explanation": "O texto cita T-shirts (camisetas), que são roupas (clothes). Remédios, veículos e anúncios não aparecem, e households são as casas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 20,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q13",
+   "lesson": "u11l1",
+   "concept": "u11l1c2",
+   "type": "mcq5",
+   "topic": "Ortografia",
+   "subtopic": "acentuação e hífen",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "“O português, assim como outras línguas neolatinas, apresenta acento gráfico. Toda palavra da língua portuguesa de duas ou mais sílabas possui uma sílaba tônica. Observe as sílabas tônicas das palavras arte, gentil, táxi e mocotó. Você constatou que a tonicidade recai sobre a sílaba inicial em arte, a final em gentil, a inicial em táxi e a final em mocotó. Além disso, notou que a sílaba tônica nem sempre recebe acento gráfico. Portanto, todas as palavras com duas ou mais sílabas terão acento tônico, mas nem sempre terão acento gráfico. A tonicidade está para a oralidade (fala) assim como o acento gráfico está para a escrita (grafia).” (Disponível em: michaelis.uol.com.br.)\nA respeito do período acima e seus conhecimentos acerca da língua portuguesa, é incorreto afirmar que",
+   "options": [
+    "A palavra hífen é acentuada, porém o plural da mesma não possui o acento gráfico.",
+    "É permitido pela língua portuguesa justificar a acentuação de “história” por duas regras distintas.",
+    "O acento no “i” e “u” tônicos não existe mais quando vierem depois de ditongos nas paroxítonas. Dessa forma, vocábulos como: feiúra, baiúca, bocaiúva e cauíla, ficam: feiura, baiuca, bocaiuva e cauila.",
+    "De acordo com as novas regras de acentuação, as palavras com “Pré” e “Pós” passaram a ser acentuadas quando forem tônicos, já no caso quando forem átonos, devem possuir hífen."
+   ],
+   "answer": 3,
+   "explanation": "A última inverte a regra: pré-, pós- e pró- tônicos se escrevem com acento e hífen (pré-natal, pós-graduação); átonos se juntam sem hífen (prever, pospor). As demais estão corretas: hífen/hifens; “história” como paroxítona terminada em ditongo ou proparoxítona eventual; e a queda do acento de i e u depois de ditongo nas paroxítonas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 13,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q1",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "tipologia",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: A Impostura da Neutralidade no Jornalismo\n\nNo contexto do jornalismo, a busca pela neutralidade é frequentemente mitificada como um ideal a ser alcançado pelos repórteres. Acredita-se que um bom jornalista deve ser imune a crenças, convicções e paixões pessoais, a fim de relatar os fatos de forma imparcial. No entanto, essa pretensa neutralidade é uma impostura perigosa que pode comprometer a base democrática do jornalismo.\n\nAutores e jornalistas têm desmascarado esse mito. Philip Meyer, em A Ética no Jornalismo, cita Katherine Carlton McAdams, que destaca que os jornalistas são pessoas reais com lealdades pessoais, mesmo quando atuam profissionalmente. A fantasia do “homem-de-Marte”, completamente alheio a influências pessoais, é irreal e prejudicial.\n\nCláudio Abramo, renomado jornalista brasileiro, também combateu essa ideia. Ele argumentou que considerar os jornalistas como seres à parte da humanidade é irracional e imoral. A neutralidade absoluta não existe, e os profissionais devem reconhecer suas próprias predisposições.\n\nEm resumo, a busca pela neutralidade no jornalismo deve ser substituída por uma busca pela transparência e pela consciência das influências pessoais. O repórter ideal não é aquele que se esconde atrás de uma suposta neutralidade, mas sim aquele que reconhece suas próprias crenças e as comunica de forma honesta ao público.\n(Bucci, Eugênio. Sobre ética e imprensa. São Paulo: Companhia das Letras, 2000. p. 96-98.)\n\nO texto supracitado é eminentemente",
+   "options": [
+    "um texto dissertativo-argumentativo, pois o autor apresenta suas ideias sobre um tema de forma clara, coesa, coerente e organizada, revelando a sua opinião.",
+    "um texto narrativo, pois esboça as ações de personagens num determinado tempo e espaço. Geralmente, ele é escrito em prosa e neles são narrados (contados) alguns fatos e acontecimentos.",
+    "um texto descritivo, que é um tipo textual que constrói um retrato verbal de algo ou de alguém, como um objeto, um lugar, uma pessoa, entre outros.",
+    "um tipo de texto que contém instruções ou explica como fazer alguma coisa. São exemplos de texto injuntivo as receitas de bolo, bulas de remédio, manuais de instruções, editais e propagandas."
+   ],
+   "answer": 0,
+   "explanation": "O autor defende uma tese (a neutralidade é uma impostura) com argumentos e citações de outros autores: texto dissertativo-argumentativo. Não há narração de fatos, descrição nem instruções.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 1,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q2",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "tese",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: A Impostura da Neutralidade no Jornalismo\n\nNo contexto do jornalismo, a busca pela neutralidade é frequentemente mitificada como um ideal a ser alcançado pelos repórteres. Acredita-se que um bom jornalista deve ser imune a crenças, convicções e paixões pessoais, a fim de relatar os fatos de forma imparcial. No entanto, essa pretensa neutralidade é uma impostura perigosa que pode comprometer a base democrática do jornalismo.\n\nAutores e jornalistas têm desmascarado esse mito. Philip Meyer, em A Ética no Jornalismo, cita Katherine Carlton McAdams, que destaca que os jornalistas são pessoas reais com lealdades pessoais, mesmo quando atuam profissionalmente. A fantasia do “homem-de-Marte”, completamente alheio a influências pessoais, é irreal e prejudicial.\n\nCláudio Abramo, renomado jornalista brasileiro, também combateu essa ideia. Ele argumentou que considerar os jornalistas como seres à parte da humanidade é irracional e imoral. A neutralidade absoluta não existe, e os profissionais devem reconhecer suas próprias predisposições.\n\nEm resumo, a busca pela neutralidade no jornalismo deve ser substituída por uma busca pela transparência e pela consciência das influências pessoais. O repórter ideal não é aquele que se esconde atrás de uma suposta neutralidade, mas sim aquele que reconhece suas próprias crenças e as comunica de forma honesta ao público.\n(Bucci, Eugênio. Sobre ética e imprensa. São Paulo: Companhia das Letras, 2000. p. 96-98.)\n\nA fundamental tese (motivação do assunto) alegada na parte retratada ao decorrer do texto é a de que:",
+   "options": [
+    "o noticiarista necessita se obedecer acima do céu e da terra em sua labuta.",
+    "a insistência na imparcialidade do jornalista pode ocasionar desastres à informação.",
+    "há acordo sobre o conhecimento de equanimidade em folha.",
+    "os repórteres necessitam ser fidedignos à reportagem antecedentemente de serem acurados a si mesmos e a seus chefes."
+   ],
+   "answer": 1,
+   "explanation": "A tese é que a pretensa neutralidade é “uma impostura perigosa que pode comprometer a base democrática do jornalismo”, isto é, insistir na imparcialidade absoluta prejudica a informação. As outras alternativas não correspondem ao texto.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 2,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q3",
+   "lesson": "u11l2",
+   "concept": "u11l2c3",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "coesão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto 1: A Impostura da Neutralidade no Jornalismo\n\nNo contexto do jornalismo, a busca pela neutralidade é frequentemente mitificada como um ideal a ser alcançado pelos repórteres. Acredita-se que um bom jornalista deve ser imune a crenças, convicções e paixões pessoais, a fim de relatar os fatos de forma imparcial. No entanto, essa pretensa neutralidade é uma impostura perigosa que pode comprometer a base democrática do jornalismo.\n\nAutores e jornalistas têm desmascarado esse mito. Philip Meyer, em A Ética no Jornalismo, cita Katherine Carlton McAdams, que destaca que os jornalistas são pessoas reais com lealdades pessoais, mesmo quando atuam profissionalmente. A fantasia do “homem-de-Marte”, completamente alheio a influências pessoais, é irreal e prejudicial.\n\nCláudio Abramo, renomado jornalista brasileiro, também combateu essa ideia. Ele argumentou que considerar os jornalistas como seres à parte da humanidade é irracional e imoral. A neutralidade absoluta não existe, e os profissionais devem reconhecer suas próprias predisposições.\n\nEm resumo, a busca pela neutralidade no jornalismo deve ser substituída por uma busca pela transparência e pela consciência das influências pessoais. O repórter ideal não é aquele que se esconde atrás de uma suposta neutralidade, mas sim aquele que reconhece suas próprias crenças e as comunica de forma honesta ao público.\n(Bucci, Eugênio. Sobre ética e imprensa. São Paulo: Companhia das Letras, 2000. p. 96-98.)\n\nSegundo as ideias do texto, os estudos de coesão, de coerência e de concisão, marque a alternativa que corrobora as ideias apresentadas.",
+   "options": [
+    "Podemos retirar do 1º parágrafo todos os operadores argumentativos, todos os conectivos interparagrafais e a concisão sem prejuízo de sentido.",
+    "Durante o texto, não foi utilizado nenhum conectivo interparagrafal.",
+    "Ao decorrer do texto foi utilizado termos com sentido anafórico de forma explícita para evitar a pobreza vocabular.",
+    "No texto, não há citação de repertório sociocultural. Tornando-se um texto pobre, superficial e dúbil."
+   ],
+   "answer": 2,
+   "explanation": "O texto retoma termos com anáforas explícitas (“essa pretensa neutralidade”, “esse mito”, “essa ideia”, “Ele”), evitando repetição. Há conectivos entre parágrafos (“No entanto”, “Em resumo”) e citações de autores, o que derruba B e D; retirar os operadores afetaria o sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 3,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q6",
+   "lesson": "u11l2",
+   "concept": "u11l2c6",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "intertextualidade",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Trecho da canção “Língua”, de Caetano Veloso, usada como Texto 2 na prova; aqui aparece só o fragmento citado na questão.)\n\nNo fragmento: “Gosto do Pessoa na pessoa da rosa no Rosa / E sei que a poesia está para a prosa / Assim como o amor está para a amizade / E quem há de negar que esta lhe é superior? / E quem há de negar que esta lhe é superior?”",
+   "options": [
+    "Nenhum autor citado no fragmento é brasileiro nato.",
+    "Não acontece intertextualidade no fragmento supracitado.",
+    "O termo amor e amizade tem o mesmo significado. Desta forma, o campo semântico dos sinônimos é bem plausível.",
+    "A estrofe acima apresenta reescrituras textuais, inclusive vários textos dentro de único texto."
+   ],
+   "answer": 3,
+   "explanation": "O trecho dialoga com Fernando Pessoa e com Guimarães Rosa (brasileiro) e retoma outros textos: há intertextualidade, com vários textos dentro de um. Amor e amizade são comparados, não sinônimos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q8",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "gênero",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: “O Auto da Compadecida 2” ganha data de estreia em 2024; veja\nSequência do filme de sucesso brasileiro chega aos cinemas ainda neste ano.\n\nA sequência da comédia de sucesso brasileira, “O Auto da Compadecida”, ganhou data de estreia. O longa chega aos cinemas brasileiros em 25 de dezembro.\n\nSelton Mello e Matheus Nachtergaele retornam como dupla Chicó e João Grilo em Taperoá, na Paraíba, onde se passou a história do primeiro filme. Virginia Cavendish, no papel de Rosinha, e do ator Enrique Diaz, como o cangaceiro Joaquim Brejeiro, também retornam à trama.\n\nNomes como Taís Araújo, Eduardo Sterblitch, Humberto Martins, Fabíula Nascimento, Luis Miranda, Juliano Cazarré e Luellem de Castro compõem o elenco.\n\nA produção é dirigida por Guel Arraes, também responsável pelo primeiro longa, e Flávia Lacerda. A sinopse oficial ainda não foi anunciada, mas Arraes garantiu que a trama será original, respeitando o universo criado por Ariano Suassuna.\n(Disponível em: cnnbrasil.com.br.)\n\nEm relação à tipologia textual, é correto afirmar que o texto",
+   "options": [
+    "apresenta a defesa dos pontos de vista dos autores da reportagem, sendo, dessa forma, dissertativo-argumentativo.",
+    "O texto não pode ser caracterizado como reportagem, pois não apresenta o ponto de vista do autor e entrevista com os atores atuantes na produção cinematográfica.",
+    "É uma notícia, pois caracteriza uma exposição de fatos relacionados ao cotidiano e atuais.",
+    "pode ser classificado como “post” de instagram, por ser pequeno e com linguagem coloquial e informal."
+   ],
+   "answer": 2,
+   "explanation": "O texto informa um fato atual (a data de estreia e o elenco), sem defender opinião e em linguagem formal: é uma notícia.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q9",
+   "lesson": "u11l2",
+   "concept": "u11l2c2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "inferência",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: “O Auto da Compadecida 2” ganha data de estreia em 2024; veja\nSequência do filme de sucesso brasileiro chega aos cinemas ainda neste ano.\n\nA sequência da comédia de sucesso brasileira, “O Auto da Compadecida”, ganhou data de estreia. O longa chega aos cinemas brasileiros em 25 de dezembro.\n\nSelton Mello e Matheus Nachtergaele retornam como dupla Chicó e João Grilo em Taperoá, na Paraíba, onde se passou a história do primeiro filme. Virginia Cavendish, no papel de Rosinha, e do ator Enrique Diaz, como o cangaceiro Joaquim Brejeiro, também retornam à trama.\n\nNomes como Taís Araújo, Eduardo Sterblitch, Humberto Martins, Fabíula Nascimento, Luis Miranda, Juliano Cazarré e Luellem de Castro compõem o elenco.\n\nA produção é dirigida por Guel Arraes, também responsável pelo primeiro longa, e Flávia Lacerda. A sinopse oficial ainda não foi anunciada, mas Arraes garantiu que a trama será original, respeitando o universo criado por Ariano Suassuna.\n(Disponível em: cnnbrasil.com.br.)\n\nEm relação à leitura do texto acima e suas corretas inferências, analise as afirmativas a seguir:\nI. Apesar de ser um novo filme, o enredo é totalmente baseado no livro original de Ariano Suassuna.\nII. É possível inferir do texto que Ariano Suassuna sentiu-se muito privilegiado ao saber que uma nova obra cinematográfica acerca de seu livro será feita.\nIII. Tanto o primeiro filme quanto o segundo são dirigidos por Guel Arraes, no qual afirma que suas obras têm roteiros originais respeitando o universo criado por Suassuna.\nAssinale",
+   "options": [
+    "se apenas a afirmativa I estiver correta.",
+    "I, II e III estão incorretas.",
+    "se apenas a afirmativa III estiver correta.",
+    "se apenas as afirmativas I e II estiverem corretas"
+   ],
+   "answer": 1,
+   "explanation": "I contraria o texto (a trama será original, apenas respeitando o universo de Suassuna). II não tem base no texto. III erra ao atribuir a Arraes a afirmação sobre “suas obras” e omite que o segundo filme tem codireção de Flávia Lacerda. Todas estão incorretas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 9,
     "gabarito": "definitivo"
    }
   },
@@ -4451,6 +6507,184 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q1",
+   "lesson": "u11l2",
+   "concept": "u11l2c2",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "compreensão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nAcerca das ideias expressas no texto, analise as afirmativas.\nI. As mudanças econômicas citadas no texto envolvem apenas a classe C, as outras classes servem apenas de parâmetro para mensurar tais mudanças.\nII. As mudanças econômicas tratam de uma previsão somente, o que não indica que sejam consideradas utópicas.\nIII. O crescimento de recursos trouxe transformações significativas às famílias brasileiras contribuindo para uma melhora na qualidade de vida.\nEstá(ão) correta(s) apenas a(s) afirmativa(s)",
+   "options": [
+    "I, II",
+    "I, III",
+    "II, III",
+    "II",
+    "III"
+   ],
+   "answer": 4,
+   "explanation": "I está errada: o texto cita mudanças em todas as faixas (A, B, C e E). II está errada: o texto não trata só de previsão, pois diz que as mudanças “já estão visíveis” e traz dados de 2003 a 2009. III está correta: o diretor afirma que, com mais recursos, as famílias buscaram qualidade de vida e inclusão.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 1,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q5",
+   "lesson": "u11l2",
+   "concept": "u11l2c3",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "coesão referencial",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nConsiderando o uso dos elementos de coesão textual no último parágrafo, está correta a relação referencial entre os elementos destacados indicada em",
+   "options": [
+    "famílias brasileiras / que possuem",
+    "Ao todo, / estes gastos apresentaram",
+    "na análise / entre as faixas de renda",
+    "a melhora / do que já possuíam",
+    "novidades, / aprimoramento"
+   ],
+   "answer": 0,
+   "explanation": "O pronome relativo “que” (em “que possuem rendimento médio”) retoma “famílias brasileiras”. Nos outros pares, um termo não retoma o outro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 5,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q7",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "linguagem",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nEm relação à linguagem utilizada no texto, pode ser identificado o emprego de linguagem",
+   "options": [
+    "formal e objetiva.",
+    "científica e formal.",
+    "técnica e coloquial.",
+    "formal e informal.",
+    "coloquial e subjetiva."
+   ],
+   "answer": 0,
+   "explanation": "É uma notícia que relata dados de uma pesquisa em norma-padrão e sem marcas de opinião pessoal: linguagem formal e objetiva.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 7,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q8",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "finalidade",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nTendo em vista os aspectos estruturais e conteúdo do texto, é correto afirmar que possui a finalidade de",
+   "options": [
+    "apresentar dados de uma pesquisa.",
+    "divulgar uma instituição, a Fecomércio-SP.",
+    "orientar sobre procedimentos econômicos.",
+    "identificar causas para a má distribuição de renda.",
+    "convencer o leitor a economizar recursos financeiros."
+   ],
+   "answer": 0,
+   "explanation": "O texto noticia os resultados de um estudo da Fecomércio-SP, com percentuais e valores. Não faz propaganda, não orienta e não tenta convencer.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 8,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q14",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Morfologia",
+   "subtopic": "formação e origem das palavras",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "“As chamadas línguas neolatinas (português, espanhol, francês, italiano e outras) tiveram a mesma origem: o latim falado pelos romanos, cujo império se estendeu por grande parte da Europa. Por isso, há vários casos em que uma palavra em português é muito parecida com sua tradução em outra língua neolatina. É o caso, por exemplo, do verbo perdoar. Veio do latim perdonare, formado de per (para) + donare (dar). Ou seja, perdoar, na sua origem, significa “para dar”. E assim a palavra latina perdonare foi parar em outras línguas neolatinas com esse mesmo significado de “para dar”: no francês: pardonner; no espanhol: perdonar; no italiano, perdonare.” (Disponível em: g1.globo.com.)\nCom relação ao texto apresentado acima e os conhecimentos acerca da derivação da língua, indique a alternativa correta:",
+   "options": [
+    "A língua portuguesa admite a escrita da palavra “quotidiano” e “cotidiano”, porém.",
+    "É admissível escrever catorze e quatorze, porém, a segunda somente é utilizada em Portugal.",
+    "A palavra academia vem do latim “akademía, «escola do jardim de Academo»”",
+    "A construção da palavra “alter ego” vem do grego alter (alter = outro), possuindo o sinônimo de “outra personalidade”, tendo origem nos teatros gregos os quais utilizavam máscaras e assim representavam personalidades."
+   ],
+   "answer": 0,
+   "explanation": "“Quotidiano” e “cotidiano” são formas registradas e corretas (a alternativa termina truncada, como na prova). “Quatorze” também se usa no Brasil; “akademía” é forma grega, não latina; e “alter ego” vem do latim (alter = outro).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 14,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q15",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Morfologia",
+   "subtopic": "neologismo",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Neologismo é o processo de criação de uma nova palavra na língua devido à necessidade de designar novos objetos ou novos conceitos ligados às diversas áreas: tecnologia, arte, economia, esportes etc. Um neologismo é criado através de processos diversos como: justaposição, aglutinação, prefixação, sufixação, abreviação, importação de vocábulos existentes em uma outra língua ou ainda, através de um novo sentido dado a uma palavra já existente. (Disponível em: significados.com.br.)\nAcerca dos conhecimentos sobre neologismo:",
+   "options": [
+    "O “neologismo popular” é criado por influenciadores, criando um novo tipo de comunicação e introduzindo no dia a dia palavras como: instagramer, youtuber e influencer.",
+    "O “neologismo literário” é a criação de novas palavras por escritores, compositores de música e poetas.",
+    "\"Neologismo estrangeiro\" ou \"estrangeirismo\" são as palavras de outro idioma incorporadas à língua. E se deve escrever igualmente da forma original, como soutien e ballet.",
+    "Quando a ciência é responsável pela atribuição de nomes aos novos aparelhos e máquinas inventados, e de introduzir novos termos técnicos na linguagem, dá-se o nome de “neologismo cientificista” ou \"neologismo de ficção científica”."
+   ],
+   "answer": 1,
+   "explanation": "O neologismo literário (ou estilístico) é criado por escritores, poetas e compositores, como os de Guimarães Rosa. O popular nasce do uso coletivo, não só de influenciadores; estrangeirismos podem ser aportuguesados (sutiã, balé); e os termos da ciência são neologismos técnicos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 15,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q15",
    "lesson": "u11l3",
    "concept": "u11l3c2",
@@ -4571,6 +6805,64 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q10",
+   "lesson": "u11l4",
+   "concept": "u11l4c5",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "orações substantivas",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "“É possível que não possamos comparecer ao evento hoje.”\nQual oração abaixo possui a mesma classificação que a oração acima:",
+   "options": [
+    "Eles têm certeza de que essa foi a melhor decisão.",
+    "É possível não irmos ao evento hoje.",
+    "É importante que saibamos o papel de cada um no projeto.",
+    "Tenho o desejo de que tudo se resolva da melhor maneira."
+   ],
+   "answer": 2,
+   "explanation": "Em “É possível que não possamos…”, a oração com “que” é o sujeito de “é possível”: subordinada substantiva subjetiva. O mesmo ocorre em “É importante que saibamos…”. A e D têm completivas nominais; em B, a oração é reduzida de infinitivo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 10,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q4",
+   "lesson": "u11l4",
+   "concept": "u11l4c1",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "aposto",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Texto 1: A Impostura da Neutralidade no Jornalismo\n\nNo contexto do jornalismo, a busca pela neutralidade é frequentemente mitificada como um ideal a ser alcançado pelos repórteres. Acredita-se que um bom jornalista deve ser imune a crenças, convicções e paixões pessoais, a fim de relatar os fatos de forma imparcial. No entanto, essa pretensa neutralidade é uma impostura perigosa que pode comprometer a base democrática do jornalismo.\n\nAutores e jornalistas têm desmascarado esse mito. Philip Meyer, em A Ética no Jornalismo, cita Katherine Carlton McAdams, que destaca que os jornalistas são pessoas reais com lealdades pessoais, mesmo quando atuam profissionalmente. A fantasia do “homem-de-Marte”, completamente alheio a influências pessoais, é irreal e prejudicial.\n\nCláudio Abramo, renomado jornalista brasileiro, também combateu essa ideia. Ele argumentou que considerar os jornalistas como seres à parte da humanidade é irracional e imoral. A neutralidade absoluta não existe, e os profissionais devem reconhecer suas próprias predisposições.\n\nEm resumo, a busca pela neutralidade no jornalismo deve ser substituída por uma busca pela transparência e pela consciência das influências pessoais. O repórter ideal não é aquele que se esconde atrás de uma suposta neutralidade, mas sim aquele que reconhece suas próprias crenças e as comunica de forma honesta ao público.\n(Bucci, Eugênio. Sobre ética e imprensa. São Paulo: Companhia das Letras, 2000. p. 96-98.)\n\nNo fragmento: “Cláudio Abramo, renomado jornalista brasileiro, também combateu essa ideia.” A parte “renomado jornalista brasileiro” pode ser representada por um",
+   "options": [
+    "sujeito simples.",
+    "adjunto adverbial de instrumento.",
+    "adjunto adnominal.",
+    "aposto."
+   ],
+   "answer": 3,
+   "explanation": "O termo entre vírgulas explica quem é Cláudio Abramo: é aposto explicativo. O sujeito é “Cláudio Abramo”. (Na prova, a parte vinha grifada; aqui ela aparece citada no enunciado.)",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 4,
     "gabarito": "definitivo"
    }
   },
@@ -4730,6 +7022,95 @@
    }
   },
   {
+   "id": "idecan-banestes-2012-q2",
+   "lesson": "u11l4",
+   "concept": "u11l4c3",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "concordância nominal",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\n“... cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.” Sobre as estruturas linguísticas empregadas e aspectos semânticos no trecho destacado é correto afirmar que",
+   "options": [
+    "“responsáveis” mantém concordância com “classe C”.",
+    "ao substituir a expressão “das famílias” por “da família”, o termo “responsáveis” também deve ser alterado.",
+    "a expressão “responsáveis por 51%” pode ser substituída, sem prejuízo, por “51% responsáveis”.",
+    "a característica “responsáveis” é atribuída a “rendimentos”.",
+    "a forma verbal “virá” admite, no trecho, a substituição de “do” por “ao”."
+   ],
+   "answer": 1,
+   "explanation": "“Responsáveis” está no plural porque concorda com “famílias”; no singular (“da família”), passaria a “responsável”. Não concorda com “classe C” (singular) nem com “rendimentos”; inverter para “51% responsáveis” muda o sentido; e “virá ao consumo” não faz sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 2,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q6",
+   "lesson": "u11l4",
+   "concept": "u11l4c6",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "conectivos",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nEm “Porém, na análise entre as faixas de renda,...”, “porém” introduz uma ideia de",
+   "options": [
+    "causa.",
+    "modo.",
+    "oposição.",
+    "finalidade.",
+    "explicação."
+   ],
+   "answer": 2,
+   "explanation": "“Porém” é conjunção adversativa: contrapõe o crescimento geral de 63,3% aos números bem diferentes por faixa de renda.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 6,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q5",
+   "lesson": "u11l5",
+   "concept": "u11l5c1",
+   "type": "mcq5",
+   "topic": "Pontuação",
+   "subtopic": "enumeração",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Trecho da canção “Língua”, de Caetano Veloso, usada como Texto 2 na prova; aqui aparece só o fragmento citado na questão.)\n\nNo fragmento: “Livros, discos, vídeos à mancheia”, marque a alternativa que melhor explica as regras gramaticais.",
+   "options": [
+    "Podemos fazer a retirada das vírgulas sem nenhum prejuízo sintático ou semântico.",
+    "A crase é opcional.",
+    "Os sujeitos são indeterminados, inexistentes e elípticos.",
+    "As vírgulas são obrigatórias para separação dos sujeitos compostos."
+   ],
+   "answer": 3,
+   "explanation": "Os termos “livros, discos, vídeos” formam uma enumeração, e a vírgula entre os itens é obrigatória (a banca os trata como núcleos de um sujeito composto). Tirar as vírgulas prejudica a leitura; “à mancheia” é locução adverbial feminina, com crase obrigatória.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 5,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q14",
    "lesson": "u11l5",
    "concept": "u11l5c5",
@@ -4850,6 +7231,206 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q3",
+   "lesson": "u11l5",
+   "concept": "u11l5c4",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "reescrita",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\nDentre as reescritas referentes ao trecho: “Entre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais.”, há correção gramatical e semântica em",
+   "options": [
+    "a partir de 2011 e 2020, o consumo per capita pode aumentar 30% para as faixas A e B e cerca de 50% para as demais.",
+    "o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais em 2011 e 2020.",
+    "entre 2011 e 2020, o consumo per capita devem aumentar 30% para as faixas A e B e ainda, cerca de 50% para as demais.",
+    "entre 2011 e 2020, o consumo per capita deve aumentar cerca de 30% para às faixas A e B e por volta de 50% para às demais.",
+    "entre 2011 e 2020, deve haver um aumento no consumo per capita de 30% para as faixas A e B e em torno de 50% para as demais."
+   ],
+   "answer": 4,
+   "explanation": "A última mantém o período (entre 2011 e 2020) e os valores, trocando o verbo por “deve haver um aumento”, sem erro. As outras mudam o sentido (“a partir de 2011 e 2020”, “em 2011 e 2020”), erram a concordância (“o consumo … devem”) ou usam crase indevida (“para às”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 3,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q4",
+   "lesson": "u11l5",
+   "concept": "u11l5c3",
+   "type": "mcq5",
+   "topic": "Pontuação",
+   "subtopic": "travessão",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Texto: Fecomércio: classe C irá impulsionar crescimento de 40% do PIB até 2020\n\nUm estudo realizado pela Federação do Comércio de Bens, Serviços e Turismo do Estado de São Paulo (Fecomércio-SP) divulgado nesta quarta-feira aponta que o Produto Interno Bruto (PIB) do Brasil deverá crescer 40% até 2020 e dos R$ 2 trilhões adicionados ao PIB até a data, cerca de R$ 1,4 milhão virá do consumo das famílias, principalmente da classe C (com rendimentos entre R$ 1,4 mil e R$ 7 mil), responsáveis por 51% do consumo total e que abrange 54% da população brasileira atualmente.\n\nEntre 2011 e 2020, o consumo per capita deve aumentar 30% para as faixas A e B e cerca de 50% para as demais. De acordo com a instituição, as mudanças já estão visíveis. Um dos exemplos é a alimentação. O brasileiro passou a comer mais vezes fora de casa, e com isso, o gasto com bares, restaurantes e lanchonetes apresentou alta de 26,6%, passando a R$ 145,59 por mês no período entre 2003 e 2009. Além disso, o consumo de carne bovina de boa qualidade subiu 4,2%; já o consumo de frango teve queda de 11,8%. O consumo de azeite de oliva cresceu 13,8% no mesmo período.\n\nPara o diretor executivo da entidade, Antônio Carlos Borges, além de consumir mais, as famílias estão gastando melhor e, com mais recursos, as famílias brasileiras passaram a buscar novidades, aprimoramento na qualidade de vida e a inclusão.\n\nDe acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstram as transformações na sociedade do País. Ao todo, estes gastos apresentaram alta de 63,3% entre 2003 e 2009. Porém, na análise entre as faixas de renda, a classe C ampliou os recursos destinados em 70%; já a classe E (rendimento familiar até R$ 900) apresentou alta de 312%. “Com mais recursos, as famílias brasileiras não se ativeram, simplesmente, à melhora do que já possuíam, mas passaram a buscar novidades, aprimoramento na qualidade de vida e inclusão”, afirmou Borges.\n\n(economia.terra.com.br, 29/02/2012)\n\n“De acordo com a Fecomércio, os gastos das famílias brasileiras – que possuem rendimento médio de R$ 2,9 mil entre todas as classes – com aparelhos celulares demonstra as transformações na sociedade do País.” O uso do duplo travessão no trecho destacado tem como justificativa",
+   "options": [
+    "indicar citação textual.",
+    "separar frase explicativa.",
+    "indicar mudança de interlocutor.",
+    "indicar interrupção do pensamento.",
+    "substituir a vírgula depois de um vocativo."
+   ],
+   "answer": 1,
+   "explanation": "Os travessões duplos isolam a oração explicativa “que possuem rendimento médio de R$ 2,9 mil…”, como fariam duas vírgulas. Citação usa aspas, e a mudança de interlocutor é marcada por travessão simples no diálogo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 4,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q18",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "dedução",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um laticínio tem apenas 3 produtos em sua linha de comercialização. Sabendo-se que o faturamento dos 3 produtos é maior que 1 milhão de reais por mês e que o produto 1 fatura apenas 100 mil reais por mês, assinale a alternativa correta sobre o faturamento mensal dos produtos 2 e 3.",
+   "options": [
+    "O produto 2 não fatura menos que 100 mil reais por mês.",
+    "O produto 3 fatura mais que 900 mil reais por mês.",
+    "A soma do faturamento por mês dos produtos 2 e 3 é maior que 900 mil reais por mês.",
+    "O produto 1 é o menor faturamento do laticínio."
+   ],
+   "answer": 2,
+   "explanation": "Se o total passa de 1 milhão e o produto 1 fatura 100 mil, os produtos 2 e 3 juntos faturam mais de 900 mil. Nada se pode afirmar sobre cada um separadamente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 18,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q25",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "relações de parentesco",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Dois pais, dois filhos, um avô e um neto dividiram x maçãs. Todos receberam uma única maçã inteira. Qual é o menor valor para x?",
+   "options": [
+    "7",
+    "6",
+    "5",
+    "3"
+   ],
+   "answer": 3,
+   "explanation": "Bastam três pessoas: avô, pai e neto. O avô e o pai são os dois pais; o pai e o neto são os dois filhos; há um avô e um neto. Logo, x = 3.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 25,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q27",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Em uma reunião no Banco X, o diretor de operações pergunta ao Chefe do Departamento de TI sobre os analistas do departamento. Sua resposta foi: “Todo cientista de dados do departamento é programador de Python.” Qual é a negação lógica da resposta do Chefe de Departamento de TI?",
+   "options": [
+    "Nenhum cientista de dados do departamento é programador de Python.",
+    "Todo cientista de dados do departamento não é programador de Python.",
+    "Algum cientista de dados do departamento é programador de Python.",
+    "Algum cientista de dados do departamento não é programador de Python."
+   ],
+   "answer": 3,
+   "explanation": "A negação de “Todo A é B” é “Algum A não é B”: basta um caso contrário para a afirmação deixar de ser verdadeira.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 27,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q28",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "conjuntos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em uma empresa de tecnologia há 12 analistas de TI que trabalham com pelo menos um de dois tipos de linguagens de programação: Python ou Java. Sabe-se que o número de analistas que trabalham com Java é o triplo do número daqueles que trabalham somente com Python e que o número dos que trabalham com Java e Python é a metade do número dos que trabalham somente com Java. Quantos analistas trabalham com Python e Java?",
+   "options": [
+    "1.",
+    "2.",
+    "3.",
+    "4."
+   ],
+   "answer": 2,
+   "explanation": "Sejam p (só Python), j (só Java) e b (os dois). b = j/2 e j + b = 3p, então 3j/2 = 3p e p = j/2. Como p + j + b = 12: 2j = 12, j = 6 e b = 3.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 28,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q29",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "silogismos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Em um banco sabe-se que todo desenvolvedor de sistemas é programador e que alguns programadores são especialistas em banco de dados. Pode-se afirmar que",
+   "options": [
+    "Todo programador é desenvolvedor de sistemas.",
+    "Existem especialistas em banco de dados que são programadores.",
+    "Todo programador é especialista em banco de dados.",
+    "Existem desenvolvedores de sistemas que são especialistas em banco de dados."
+   ],
+   "answer": 1,
+   "explanation": "“Alguns programadores são especialistas” equivale a “alguns especialistas são programadores”. Nada garante que algum desenvolvedor esteja entre esses especialistas, e as afirmações com “todo” invertem as premissas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 29,
     "gabarito": "definitivo"
    }
   },
@@ -5214,6 +7795,90 @@
    }
   },
   {
+   "id": "access-banestes-2024-q17",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "frações",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Três amigos decidiram cercar externa e internamente um grande terreno, dividindo-o em partes. O primeiro amigo começou logo cedo, pela manhã e cercou metade do terreno grande mais a metade do restante do terreno que sobrou, terminou na hora do almoço às 12h, e foi embora. O segundo amigo chegou às 14h. Em uma hora, cercou metade do que o primeiro amigo deixou sem cercar, e também um terço do que ainda restava sem cercar. O terceiro amigo, chegou somente às 17h. Ao ver que somente uma pequena parte do grande terreno ainda estava disponível para divisão, cercou o que sobrou, dividindo-a em mais 2 partes. Em quantas partes, no total após o trabalho dos 3 amigos, o grande terreno foi dividido?",
+   "options": [
+    "12 partes",
+    "10 partes",
+    "8 partes",
+    "6 partes"
+   ],
+   "answer": 3,
+   "explanation": "Cada cercamento cria uma parte. O primeiro faz 2 (metade do terreno e metade do restante), o segundo faz mais 2 (metade do que sobrou e um terço do que ainda restava) e o terceiro divide o resto em 2: 2 + 2 + 2 = 6 partes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 17,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q21",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "equações",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um caminhão que transporta alimentos para ajuda humanitária consegue levar até 1 tonelada de carga. Sabendo-se que os sacos de arroz armazenados têm a capacidade de 80kg e 50kg, qual o número mínimo de sacos de arroz que devem ser reunidos no caminhão para que se obtenha exatamente a carga máxima permitida para o veículo?",
+   "options": [
+    "10",
+    "12",
+    "14",
+    "20"
+   ],
+   "answer": 2,
+   "explanation": "80a + 50b = 1.000. Para usar menos sacos, quanto mais de 80 kg, melhor: a = 10 e b = 4 (800 + 200), total de 14. Com a = 5 seriam 17 sacos e com a = 0, 20; a só pode ser 0, 5 ou 10 para a conta fechar.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 21,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q24",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "equação do 1º grau",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "O gerente de um banco pergunta ao caixa quantas pessoas ele atendeu no expediente vespertino e o caixa, de forma enigmática, responde: “o total de pessoas que atendi é igual a sete oitavos desse total mais sete oitavos de uma pessoa”. Qual é o número de pessoas que o caixa atendeu?",
+   "options": [
+    "11",
+    "10",
+    "9",
+    "7"
+   ],
+   "answer": 3,
+   "explanation": "Chamando o total de x: x = 7x/8 + 7/8. Subtraindo 7x/8 dos dois lados, x/8 = 7/8, então x = 7 pessoas. Conferindo: 7/8 de 7 é 49/8, e 49/8 + 7/8 = 56/8 = 7.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 24,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q35",
    "lesson": "u12l2",
    "type": "mcq5",
@@ -5390,6 +8055,205 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q10",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "progressão",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "O saldo da conta bancária de Otávio no 1º dia do mês de novembro era de X reais. Após efetuar saques diários, a partir do referido dia, nos valores de R$20,00, R$40,00, R$60,00, R$80,00, R$100,00, ... e assim sucessivamente, Otávio verificou que, após o último saque efetuado naquele mês, sua conta apresentava um débito de R$460,00. O saldo inicial x dessa conta bancária era de",
+   "options": [
+    "R$8.840,00.",
+    "R$8.620,00.",
+    "R$7.820,00.",
+    "R$7.640,00.",
+    "R$7.560,00."
+   ],
+   "answer": 0,
+   "explanation": "Novembro tem 30 dias, com saques de 20, 40, …, 600. Soma: 20 × (1 + 2 + … + 30) = 20 × 465 = 9.300. Se o saldo ficou em −460, então X − 9.300 = −460 e X = 8.840.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 10,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q12",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "frações",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Renato sacou 2/3 do saldo de sua conta bancária. Em seguida, fez um depósito igual à metade do valor que restou e, então, voltou a fazer um novo saque, desta vez equivalente a 1/5 do saldo inicial. Se depois dessas movimentações, o saldo passou a ser de R$126,00, então o valor total sacado da conta bancária foi",
+   "options": [
+    "R$364,00.",
+    "R$294,00.",
+    "R$286,00.",
+    "R$256,00.",
+    "R$312,00."
+   ],
+   "answer": 0,
+   "explanation": "Com saldo inicial S: depois do saque sobra S/3; o depósito de S/6 leva a S/2; o saque de S/5 deixa 3S/10 = 126, então S = 420. Sacou 2/3 de 420 = 280 e mais 1/5 de 420 = 84: total de R$ 364.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 12,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q9",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "frações",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Num caixa eletrônico, estão disponíveis para saque, notas de R$20,00, R$50,00 e R$100,00. Considere que uma pessoa efetuou nesse caixa, um saque de R$480,00 em 10 notas, das quais 2/5 eram de R$50,00 e, das restantes, 1/3 eram de R$100,00. Sendo x, y e z os números respectivos de notas de R$20,00, R$50,00 e R$100,00, então",
+   "options": [
+    "x = y + 2",
+    "z = x – 2",
+    "y = 2x",
+    "z = 2y",
+    "x = y + z"
+   ],
+   "answer": 1,
+   "explanation": "y = 2/5 de 10 = 4 notas de R$ 50. Restam 6, e 1/3 delas são de R$ 100: z = 2. Sobram x = 4 notas de R$ 20. Conferindo: 80 + 200 + 200 = 480. Então z = x − 2 (2 = 4 − 2).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 9,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q22",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "escala",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em um mapa de certa cidade, em escala 1:12000 duas praças estão afastadas de 35 cm. Qual a distância real entre elas?",
+   "options": [
+    "420 metros",
+    "1.800 metros",
+    "3,6 km",
+    "4,2 km"
+   ],
+   "answer": 3,
+   "explanation": "35 cm × 12.000 = 420.000 cm = 4.200 m = 4,2 km. (420 m seria o resultado esquecendo um fator 10.)",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 22,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q23",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "velocidade média",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Saindo da capital do estado, A.G. viajou para o interior e visitou 3 cidades. A primeira cidade visitada fica a 120km da capital. A segunda cidade fica a 50 km de distância da primeira e, para chegar na terceira cidade, A.G. precisou viajar por mais 250 km. Ele gastou em cada um dos trechos da viagem de ida os seguintes tempos: 1º trecho: 2 horas, 2º trecho: 1 hora e 3º trecho: 4 horas. Para voltar a capital, A.G. fez uma viagem sem paradas e gastou somente 5 horas porque era final de semana e o trânsito estava leve. Qual a velocidade média da viagem na ida e na volta separadamente?",
+   "options": [
+    "48 km/h e 60 km/h",
+    "60 km/h e 72 km/h",
+    "64 km/h e 80 km/h",
+    "60 km/h e 84 km/h"
+   ],
+   "answer": 3,
+   "explanation": "Ida: 120 + 50 + 250 = 420 km em 7 h = 60 km/h. Volta: 420 km em 5 h = 84 km/h.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 23,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q26",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "porcentagens sucessivas",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um turista está viajando de carro entre duas cidades. No primeiro dia, o turista percorreu 30% de todo o trajeto e, no segundo dia, 20% do restante. Que porcentagem do trajeto ainda precisa ser percorrido?",
+   "options": [
+    "60%",
+    "56%",
+    "50%",
+    "45%"
+   ],
+   "answer": 1,
+   "explanation": "Depois do 1º dia restam 70%. No 2º, percorre 20% de 70% = 14%. Faltam 70% − 14% = 56%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 26,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q30",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "divisão proporcional",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um pai quer distribuir R$ 1.000,00 entre seus 3 filhos em partes proporcionais às suas idades, que são 2, 3 e 5 anos. Qual foi a quantia que o mais velho recebeu?",
+   "options": [
+    "R$ 300.",
+    "R$ 400.",
+    "R$ 450.",
+    "R$ 500."
+   ],
+   "answer": 3,
+   "explanation": "2 + 3 + 5 = 10 partes de R$ 100. O mais velho (5 anos) recebe 5 × 100 = R$ 500.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 30,
     "gabarito": "definitivo"
    }
   },
@@ -5574,6 +8438,90 @@
    }
   },
   {
+   "id": "access-banestes-2024-q16",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Estatística",
+   "subtopic": "leitura de gráficos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Observe a curva S de avanço do cronograma de uma obra, envolvendo o planejamento e o resultado da execução ao longo das semanas de 2024.\n\n[Gráfico, descrito em texto: curva S de avanço (%) por semana, de S14 (01/04/2024) a S23 (03/06/2024). Intervalo 1, o cronograma planejado, sobe de cerca de 13% em S14 para cerca de 20% em S16, 35% em S18, 43% em S20, 50% em S21 e 67% em S23. Intervalo 2, o avanço realizado, fica em 0,0% em S14, S15 e S16, vai a 9,5% em S17 e a 22,4% em S18. Intervalo 3, o caminho crítico projetado para as 3 semanas seguintes, parte de 22,4% em S18, passa por cerca de 30% em S19 e 38% em S20 e encontra a curva planejada em S21, perto de 50%.]\n\nIntervalo 1: cronograma planejado\nIntervalo 2: avanço realizado até a semana 18\nIntervalo 3: caminho crítico para as próximas 3 semanas\nSabendo-se que a obra está na SEMANA 18 (S18), assinale a alternativa correta.",
+   "options": [
+    "A obra está atrasada em seu avanço até a semana 18. A projeção é de retomar o avanço planejado na semana 21.",
+    "A obra deveria ter avançado em 15% até a semana 16, mas não houve progresso até esta semana.",
+    "O gráfico demonstra que o caminho crítico não conseguirá superar 35% de avanço até a semana 20.",
+    "A obra está adiantada na semana 18, tendo em vista o avanço começar atrasado mas recuperar o cronograma planejado para o período."
+   ],
+   "answer": 0,
+   "explanation": "Em S18 o realizado (22,4%) está abaixo do planejado (cerca de 35%): a obra está atrasada. O caminho crítico encontra a curva planejada em S21. O planejado em S16 era cerca de 20%, não 15%, e em S20 o caminho crítico passa de 35%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q19",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Estatística",
+   "subtopic": "tabelas e porcentagem",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "A tabela a seguir apresenta a média mensal dos custos de um escritório, apurados após 1 ano de funcionamento.\n\nTabela de custos mensais (× 1 mil reais): Aluguel 4,5; Custos com Pessoal 12,3; Contratos 0,9; Água 0,23; Energia 23,5; Serviços de Terceiros 50,1; Total da média mensal 91,53.\n\nEm relação à tabela dos custos mensais apresentada, assinale a alternativa correta.",
+   "options": [
+    "Não é possível aplicar um desvio padrão no conjunto de dados da tabela, pois não há distância dos valores em relação à média do conjunto, 12,3 mil reais.",
+    "O custo médio entre a água e a energia é maior que os custos com pessoal.",
+    "Embora seja um custo mensal baixo, os contratos correspondem a 9% do total da média mensal dos custos.",
+    "Uma redução de 10% nos custos com serviços de terceiros poderia impactar uma redução na média mensal dos custos, alcançando um valor próximo a 86 mil reais mensais."
+   ],
+   "answer": 3,
+   "explanation": "10% de 50,1 = 5,01; 91,53 − 5,01 = 86,52 mil, perto de 86 mil. A média de água e energia é (0,23 + 23,5)/2 ≈ 11,9, menor que 12,3; contratos são 0,9/91,53 ≈ 1%; e os valores variam bastante, então o desvio padrão existe.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 19,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q20",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Probabilidade",
+   "subtopic": "eventos sucessivos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "J.P. gosta de usar gravatas e o faz diariamente para ir ao trabalho. Ele guarda as suas gravatas em um armário com todas elas penduradas em cabides. Ele possui 2 gravatas de bolinhas, 3 gravatas listradas, 3 gravatas com estampas diversas e 5 gravatas lisas. Ao pegar suas gravatas logo cedo após se vestir, J.P. tem dificuldade em ver com clareza as gravatas penduradas no armário e, às vezes, escolhe a gravata de forma aleatória. Em certa manhã, J.P. desejava usar uma gravata lisa. Suponha que J.P. pega uma gravata, de forma aleatória, e, ao perceber que não é lisa, faz outra retirada, mas sem devolver a primeira gravata ao armário. Na segunda retirada, J.P. obtém então a gravata desejada (lisa). A probabilidade que o evento descrito ocorra é de (números percentuais aproximados):",
+   "options": [
+    "16,02%",
+    "25,64%",
+    "27,78%",
+    "32,04%"
+   ],
+   "answer": 1,
+   "explanation": "São 13 gravatas, 5 lisas e 8 não lisas. P(1ª não lisa) = 8/13; sem devolver, P(2ª lisa) = 5/12. Produto: 40/156 ≈ 25,64%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 20,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q38",
    "lesson": "u12l4",
    "type": "mcq5",
@@ -5750,6 +8698,203 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "idecan-banestes-2012-q11",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "arranjo",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Ao abrir uma conta bancária, um cliente deve escolher uma sequência de 3 sílabas distintas para formar uma senha. Quantas senhas diferentes poderão ser formadas por esse cliente, sabendo-se que a senha deverá ser feita escolhendo-se as sílabas de um total de 11 sílabas disponibilizadas pelo banco?",
+   "options": [
+    "720",
+    "1.060",
+    "1.220",
+    "660",
+    "990"
+   ],
+   "answer": 4,
+   "explanation": "A ordem importa e as sílabas não se repetem: 11 × 10 × 9 = 990 (arranjo de 11 elementos tomados 3 a 3).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "IDECAN",
+    "orgao": "Banestes",
+    "ano": 2012,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 11,
+    "gabarito": "preliminar"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q31",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "operadores",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Sistema Financeiro Nacional (SFN) organiza-se por intermédio de agentes normativos, supervisores e operadores. Quem são as instituições operadoras do SFN?",
+   "options": [
+    "As instituições operadoras do SFN são aquelas com foco na supervisão das demais instituições que ofertam serviços financeiros, observando se elas seguem as regras definidas pelos órgãos normativos.",
+    "Os operadores do SFN fazem o papel de intermediários e são representados pelas instituições que ofertam serviços financeiros.",
+    "Banco Central do Brasil (BC) e Comissão de Valores Mobiliários (CVM).",
+    "Os operadores do SFN são todos aqueles que trabalham na geração de implementação de resoluções e regras de funcionamento do sistema."
+   ],
+   "answer": 1,
+   "explanation": "Operadores são as instituições que lidam com o público e intermediam recursos (bancos, cooperativas, corretoras etc.). Supervisionar é papel de BC e CVM, e normatizar, do CMN.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 31,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q38",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "tipos de banco",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O banco é uma instituição financeira que, além de fazer a custódia de dinheiro, providencia diversos serviços financeiros para os seus clientes. Assinale a alternativa correta sobre os bancos.",
+   "options": [
+    "O banco comercial faz a intermediação da circulação de recursos entre poupadores e tomadores de empréstimo, e capta recursos por meio de depósitos (tanto a vista como a prazo).",
+    "O banco de investimento opera com depósitos à vista e a prazo, de médio e longo prazo.",
+    "O banco múltiplo atua exclusivamente com câmbio de moedas estrangeiras.",
+    "O banco de câmbio realiza empréstimos de capital de giro e(ou) de capital fixo para investimentos no exterior."
+   ],
+   "answer": 0,
+   "explanation": "Banco comercial capta depósitos à vista e a prazo e empresta. Banco de investimento não capta depósito à vista; banco múltiplo reúne várias carteiras; e banco de câmbio opera câmbio, não capital de giro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 38,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q39",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Regulação bancária",
+   "subtopic": "Índice de Basileia",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Para que medir o Índice de Basiléia em uma instituição bancária?",
+   "options": [
+    "Para assegurar que um banco tenha patrimônio líquido suficiente para absorver potenciais perdas.",
+    "Para medir o grau de internacionalização de um banco e a sua capacidade de realizar operações cambiais densas.",
+    "Para demonstrar o nível de aderência das práticas de uma instituição bancária às regulamentações impostas pelo Banco Central (BC) e pela Comissão de Valores Mobiliários (CVM).",
+    "Para garantir a aplicabilidade dos instrumentos de retenção monetária compulsória imposta pelo Banco Central aos bancos comerciais."
+   ],
+   "answer": 0,
+   "explanation": "O Índice de Basileia relaciona o capital do banco aos seus ativos ponderados pelo risco e mostra se ele tem patrimônio para absorver perdas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 39,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q41",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "CMN",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O Sistema Financeiro Nacional (SFN) é formado por um conjunto de instituições e órgãos que regulam e executam as operações financeiras no Brasil. O Conselho Monetário Nacional (CMN) é um órgão colegiado de caráter deliberativo e normativo que atua como a mais alta autoridade monetária do Brasil. Qual é a função do Conselho Monetário Nacional (CMN) no Sistema Financeiro Nacional?",
+   "options": [
+    "Regular o mercado de capitais no Brasil.",
+    "Definir a política monetária e cambial do país.",
+    "Fiscalizar as instituições financeiras privadas.",
+    "Gerenciar o orçamento público."
+   ],
+   "answer": 1,
+   "explanation": "O CMN formula as políticas da moeda e do crédito, incluindo as diretrizes monetária e cambial. Regular o mercado de capitais é papel da CVM; fiscalizar instituições, do Banco Central.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 41,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q42",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "composição do CMN",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "A estrutura e competências do CMN foram aprimoradas ao longo do tempo, refletindo a evolução do sistema financeiro e as necessidades da economia brasileira. Compreender a composição do CMN é fundamental para entender como são tomadas as decisões que impactam diretamente a economia brasileira. Qual é a composição atual do Conselho Monetário Nacional (CMN) do Brasil?",
+   "options": [
+    "Presidente da República, Ministros da Fazenda e do Planejamento.",
+    "Presidente do Banco Central, Ministros da Economia e da Casa Civil.",
+    "Presidente do Banco Central, Ministros da Fazenda e do Planejamento.",
+    "Presidente do Banco Central, Ministros da Economia e do Planejamento."
+   ],
+   "answer": 2,
+   "explanation": "Desde 2023, o CMN é formado pelo Ministro da Fazenda (que o preside), pela Ministra do Planejamento e Orçamento e pelo Presidente do Banco Central. O Ministério da Economia deixou de existir naquele ano.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 42,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q45",
+   "lesson": "u13l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "CVM",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "“CVM rejeita Termo de Compromisso com ex-diretores da Americanas S.A. – Em Recuperação Judicial. O Colegiado da Comissão de Valores Mobiliários (CVM), em reunião no dia 26/3/2024, analisou propostas de Termo de Compromisso dos seguintes processos administrativos sancionadores (PAS): O Colegiado da CVM acompanhou o parecer do CTC e rejeitou a proposta para celebração de Termo de Compromisso com Sergio Agapito Lires Rial e João Guerra Duarte Neto.” (Disponível em: gov.br/cvm.)\nCompreender o papel e as responsabilidades da Comissão de Valores Mobiliários (CVM) é essencial para quem atua ou se interessa pelo mercado de capitais, pois essa instituição desempenha um papel fundamental na proteção dos investidores e na manutenção da confiança no sistema financeiro nacional. Qual é a principal incumbência da Comissão de Valores Mobiliários (CVM) no contexto do mercado de capitais brasileiro?",
+   "options": [
+    "Implementar políticas fiscalizatórias voltadas à estabilidade macroeconômica.",
+    "Supervisionar as transações cambiais e transações internacionais de bens e serviços.",
+    "Estabelecer parâmetros normativos para a prestação de serviços financeiros e bancários",
+    "Regulamentar e fiscalizar as operações atinentes ao mercado de ações de companhias abertas."
+   ],
+   "answer": 3,
+   "explanation": "A CVM regula e fiscaliza o mercado de valores mobiliários, como as ações de companhias abertas, e pune irregularidades, como no caso citado. Câmbio e serviços bancários ficam com o Banco Central e o CMN.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 45,
     "gabarito": "definitivo"
    }
   },
@@ -5994,6 +9139,62 @@
    }
   },
   {
+   "id": "access-banestes-2024-q33",
+   "lesson": "u13l2",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "recolhimento compulsório",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Assinale a alternativa que indica uma das finalidades dos recolhimentos compulsórios feitos pelo Banco Central junto aos bancos.",
+   "options": [
+    "Prover linhas de crédito direcionada a microempreendedores e operações de financiamento imobiliário.",
+    "São “colchões de liquidez” que o Banco Central libera para uso em situações de calamidade pública, mediante decreto federal.",
+    "Recursos exclusivos para uso em operações de crédito rural, com foco na estabilidade do fluxo de exportações de commodities agrícolas.",
+    "Eles representam reservas de emergência que podem ser utilizadas pelas instituições financeiras em situações de crise, a critério do Banco Central."
+   ],
+   "answer": 3,
+   "explanation": "Os compulsórios regulam a liquidez da economia e funcionam como reserva que o Banco Central pode liberar ao sistema em momentos de crise, por decisão própria (sem decreto). Não são linhas de crédito direcionado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 33,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q44",
+   "lesson": "u13l2",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "Banco Central",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Banco Central do Brasil (BCB) é a instituição responsável por formular e executar a política monetária, regular o sistema financeiro nacional e zelar pela estabilidade econômica do país, ou seja, sua atuação abrange diversas áreas. Qual é a função primordial do Banco Central do Brasil (BCB) em relação à política monetária?",
+   "options": [
+    "Fiscalizar as instituições financeiras.",
+    "Regular o mercado de capitais.",
+    "Controlar a emissão de moeda e a liquidez da economia.",
+    "Gerenciar o orçamento público do governo federal."
+   ],
+   "answer": 2,
+   "explanation": "Na política monetária, o BCB controla a quantidade de moeda e a liquidez (emissão, compulsórios, operações com títulos e a Selic). Fiscalizar é outra função dele, mas não é política monetária.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 44,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2018-q25",
    "lesson": "u13l2",
    "type": "mcq5",
@@ -6080,6 +9281,258 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 23,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q34",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Fintechs",
+   "subtopic": "SEP e SCD",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Tendo sido regulamentadas por resoluções do Conselho Monetário Nacional (CMN) em 2018, as fintechs introduziram inovações nos mercados financeiros. O que diferencia uma SEP (Sociedade de Empréstimo entre pessoas) de uma SCD (Sociedade de Crédito Direto)?",
+   "options": [
+    "À SEP é permitido fazer captação de recursos do público, desde que eles estejam inteira e exclusivamente vinculados à operação de empréstimo, o que não é autorizado para uma SCD.",
+    "Enquanto a SCD atua no mercado como “peer-to-peer lending”, a SEP realiza operações de crédito com recursos privados de terceiros.",
+    "Uma SEP provê serviços de crédito, pagamento e gestão financeira; e uma SCD realiza serviços relacionados a negociação de dívidas, câmbio e multisserviços.",
+    "Ambas têm a mesma finalidade e agem da mesma forma no mercado. O que as diferencia é o valor permitido para as operações de crédito, sendo as operações da SEP limitadas a até R$ 15 mil por pessoa."
+   ],
+   "answer": 0,
+   "explanation": "A SEP faz o empréstimo entre pessoas (peer-to-peer): capta dos investidores recursos vinculados a cada operação. A SCD empresta só com capital próprio e não pode captar do público. A alternativa B inverte os papéis.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 34,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q35",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Mercado financeiro",
+   "subtopic": "mercado interbancário",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "No mercado interbancário, os bancos emprestam dinheiro uns aos outros com preço e taxa de juros definidos. Qual instrumento financeiro é usado para a captação de recursos entre instituições financeiras?",
+   "options": [
+    "CDB",
+    "CDI",
+    "LTN",
+    "RDB"
+   ],
+   "answer": 1,
+   "explanation": "O Certificado de Depósito Interfinanceiro (CDI) é o título das operações entre instituições financeiras. CDB e RDB captam do público; LTN é título público federal.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q36",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "CDC",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Assinale a alternativa correta sobre o Crédito Direto ao Consumidor (CDC).",
+   "options": [
+    "Os prazos de financiamento do CDC variam entre o mínimo de 24 e o máximo de 60 meses.",
+    "No CDC pós-fixado já se conhece o valor de todas as prestações no ato da compra.",
+    "Em caso de não pagamento do empréstimo, a financeira pode retomar o bem comprado.",
+    "O CDC é um contrato especial de arrendamento de bens duráveis com valor residual garantido."
+   ],
+   "answer": 2,
+   "explanation": "No CDC, o bem financiado costuma ficar alienado fiduciariamente à financeira, que pode retomá-lo se o cliente não pagar. Prestação conhecida desde o início é do CDC prefixado, e arrendamento com valor residual é leasing.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 36,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q37",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Investimentos",
+   "subtopic": "fundos de renda fixa",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Os fundos de investimento são instrumentos de formação de poupança muito interessantes para os investidores. Qual(is) o(s) fator(es) de risco associado(s) aos fundos de renda fixa?",
+   "options": [
+    "Variação dos preços das ações negociadas no mercado de capitais.",
+    "Fatores de risco variados, com liberdade de definição de concentração em qualquer um deles.",
+    "Riscos de atraso ou inadimplência no pagamento dos juros e amortizações pelos credores privados.",
+    "Variação da taxa de juros e (ou) do índice de preços."
+   ],
+   "answer": 3,
+   "explanation": "Fundos de renda fixa têm como principal fator de risco a variação dos juros e dos índices de preços. Ações são o risco dos fundos de ações, e liberdade de concentração descreve os multimercados.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 37,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q47",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Inovação financeira",
+   "subtopic": "criptoativos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "“Mercado de criptoativos vem se tornando importante aliado da globalização. Os criptoativos vêm rompendo barreiras e se tornando uma importante ferramenta na aceleração da globalização, transcendendo fronteiras tradicionais, gerando novas oportunidades ao comércio internacional e promovendo a inclusão financeira.” (Disponível em: exame.com.)\nA transformação digital no setor bancário e financeiro está sendo impulsionada pelo surgimento dos criptoativos, também conhecidos como criptomoedas ou moedas digitais. Eles representam uma ruptura significativa no modelo tradicional de moedas e transações, prometendo maior eficiência, transparência e acessibilidade ao sistema financeiro global. Compreender o impacto dos criptoativos é essencial para acompanhar as tendências emergentes do mercado. Qual é a característica fundamental dos criptoativos neste cenário de ruptura digital do setor bancário e financeiro?",
+   "options": [
+    "Centralização e controle governamental sobre as transações.",
+    "Dependência de intermediários tradicionais para realizar transações.",
+    "Utilização de tecnologias como blockchain para garantir segurança e privacidade.",
+    "Risco reduzido de volatilidade e flutuações de mercado."
+   ],
+   "answer": 2,
+   "explanation": "Criptoativos usam registro distribuído (blockchain) e criptografia, sem depender de um intermediário central. São conhecidos justamente pela alta volatilidade.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 47,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q50",
+   "lesson": "u13l3",
+   "type": "mcq5",
+   "topic": "Inovação financeira",
+   "subtopic": "Open Finance",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O open banking estimula a concorrência e a redução do custo do crédito, bem como muda o paradigma tecnológico do mercado bancário e dos serviços prestados pelos bancos. Em que consiste o open banking?",
+   "options": [
+    "Na integração eletrônica por meio de API’s dos sistemas de gestão (ERP’s) das instituições financeiras com o Banco Central do Brasil (BC).",
+    "É uma plataforma internacional integrada de serviços bancários com conversão automática de moedas para uso em operações de crédito para exportações e importações.",
+    "Em um sistema disponibilizado pelo Banco Central para uso por instituições financeiras de médio e pequeno porte para a oferta de crédito subsidiado e serviços bancários com custo reduzido.",
+    "No compartilhamento padronizado de dados e serviços por parte de instituições bancárias, mediante autorização dos clientes."
+   ],
+   "answer": 3,
+   "explanation": "Open banking (hoje Open Finance) é o compartilhamento padronizado de dados e serviços entre instituições, por APIs, sempre com o consentimento do cliente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 50,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q40",
+   "lesson": "u13l4",
+   "type": "mcq5",
+   "topic": "Mercado bancário",
+   "subtopic": "tendências",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "O mercado bancário desempenha um papel determinante na oferta de crédito para a economia e na estipulação da taxa de juros final ao consumidor/tomador de empréstimo. Assinale a alternativa que não apresenta tendência de ação atualmente presente nos bancos e no mercado bancário em geral.",
+   "options": [
+    "Maior competitividade no mercado financeiro.",
+    "Maior disponibilidade de instrumentos para as intermediações financeiras.",
+    "A abrangência de serviços e concentração de ofertas de crédito para as classes mais ricas da população.",
+    "Aprimoramento dos canais de atendimento e de oferta de serviços."
+   ],
+   "answer": 2,
+   "explanation": "A tendência é de inclusão financeira e mais concorrência (fintechs, Pix, Open Finance), não de concentrar o crédito nas classes mais ricas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 40,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q48",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Ética e sustentabilidade",
+   "subtopic": "consciência ambiental",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O Guia de Conduta Ética do Banestes estabelece os princípios e diretrizes fundamentais que norteiam o comportamento ético dos colaboradores e demais envolvidos nas atividades da instituição. Esse guia reflete os valores da instituição, buscando promover a integridade, transparência e responsabilidade em todas as interações e decisões tomadas no ambiente de trabalho. Quais são os “Rs” da consciência ambiental?",
+   "options": [
+    "Reduzir, reutilizar, reciclar e repensar.",
+    "Reciclar, repensar e restaurar.",
+    "Reciclar, reutilizar e responsabilizar.",
+    "Reutilizar e reciclar, somente."
+   ],
+   "answer": 0,
+   "explanation": "O Guia de Conduta Ética do Banestes (item 4.27.2, versão atualizada em 2020) manda “adotar os ‘Rs’ da consciência ambiental: reduzir, reutilizar, reciclar e repensar”. As outras listas omitem itens ou trazem termos que o guia não cita.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 48,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q49",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Guia de Conduta Ética do Banestes",
+   "subtopic": "Conselho de Conduta Ética",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O Guia de Conduta Ética do Banco Banestes é um documento que define os princípios fundamentais que devem guiar o comportamento dos colaboradores no ambiente de trabalho. Entre os aspectos abordados pelo guia, está a constituição do Conselho de Conduta Ética. O Conselho de Conduta Ética do Banco Banestes é composto por:",
+   "options": [
+    "2 (dois) membros titulares e 2 (dois) membros suplentes, indicados pela Diretoria; e 1 (um) membro titular e 1 (um) membro suplente, eleitos pelos empregados do SFB.",
+    "2 (dois) membros titulares e 2 (dois) membros suplentes, indicados pela Diretoria; e 2 (dois) membros titulares e 2 (dois) membros suplentes, eleitos pelos empregados do SFB.",
+    "2 (dois) membros titulares e 2 (dois) membros suplentes, indicados pelo Conselho anterior; e 2 (dois) membros titulares e 2 (dois) membros suplentes, eleitos pelos empregados do SFB.",
+    "3 (três) membros titulares e 3 (três) membros suplentes, indicados pela Diretoria; e 3 (três) membros titulares e 3 (três) membros suplentes, eleitos pelos empregados do SFB."
+   ],
+   "answer": 3,
+   "explanation": "Item 8.3.1 do Guia de Conduta Ética (versão atualizada em 2020): 3 membros titulares e 3 suplentes indicados pela Diretoria e 3 titulares e 3 suplentes eleitos pelos empregados do Sistema Financeiro Banestes (SFB). A composição é paritária, e o coordenador é designado pela Diretoria entre os titulares (item 8.2.1).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 49,
     "gabarito": "definitivo"
    }
   },
@@ -6200,6 +9653,34 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "access-banestes-2024-q46",
+   "lesson": "u14l3",
+   "type": "mcq5",
+   "topic": "Lavagem de dinheiro",
+   "subtopic": "legislação",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "No contexto jurídico, a lavagem de dinheiro representa um grave delito que envolve a conversão de valores provenientes de atividades criminosas em ativos aparentemente legítimos. Essa prática tem impacto significativo na segurança e integridade do sistema financeiro, sendo objeto de legislações específicas que visam combater e punir essa conduta. Qual é a principal lei que trata dos crimes de lavagem de dinheiro e financiamento do terrorismo no país?",
+   "options": [
+    "Lei nº 9.613/1998.",
+    "Lei nº 8.212/1991",
+    "Lei nº 8.213/1991",
+    "Lei nº 9.605/1998"
+   ],
+   "answer": 0,
+   "explanation": "A Lei nº 9.613/1998 trata dos crimes de lavagem de dinheiro e criou o Coaf. As Leis 8.212 e 8.213/1991 tratam da Seguridade e da Previdência Social, e a 9.605/1998 trata dos crimes ambientais.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "Instituto Access",
+    "orgao": "Banestes",
+    "ano": 2024,
+    "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
+    "numero": 46,
     "gabarito": "definitivo"
    }
   },
