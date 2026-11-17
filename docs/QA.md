@@ -10,7 +10,8 @@
 ## Roteiro principal (≈15 minutos)
 
 **1. Primeira tela = Trilha**
-- [ ] O app abre direto na **Trilha**, com ofensiva, gemas, corações e "dias para a prova" no topo, e a barra da meta do dia.
+- [ ] O app abre direto na **Trilha**, com ofensiva, gemas, corações e "dias para a prova" no topo.
+- [ ] O seletor **Específicos | Gerais** aparece abaixo do topo (ou dos avisos ativos), sem a antiga barra de XP com estrela nem espaço vazio no lugar dela. Confira nos temas claro e escuro e após concluir uma lição.
 - [ ] Banner roxo "Unidade 1 · Banco de dados" **fixo no topo** enquanto você rola; o nó atual pulsa com o balão "Começar" e o
       personagem (Guaiamum) fica ao lado.
 - [ ] Role até o fim: as Unidades 2 a 10 aparecem cinzas ("Conteúdo chegando em breve"). Toque num nó cinza: aparece uma

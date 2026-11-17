@@ -75,7 +75,6 @@ import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
-import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.NodeState
 import br.com.trilhati.ui.components.PathNode
 import br.com.trilhati.ui.components.StreakCalendar
@@ -100,7 +99,7 @@ private sealed interface PathDialog {
     data class UnitGuide(val unitId: String) : PathDialog
 }
 
-/** Aba Trilha: faixa de status, meta do dia e a trilha de unidades e lições. */
+/** Aba Trilha: faixa de status e a trilha de unidades e lições. */
 @Composable
 fun PathContent(
     state: AppState,
@@ -141,7 +140,6 @@ fun PathContent(
                 onHeartsClick = { dialog = PathDialog.Hearts },
                 onExamClick = { dialog = PathDialog.Exam },
             )
-            DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
             updateBanner?.let { release ->
                 br.com.trilhati.feature.update.UpdateBanner(
                     release, onDownload = { actions.openUpdate(release.apkUrl) }, onDismiss = { actions.dismissUpdate(release.versionCode) },
@@ -194,20 +192,6 @@ fun PathContent(
         PathDialog.Exam -> ExamDialog(state, onDismiss = { dialog = null })
         is PathDialog.UnitGuide -> state.course.firstOrNull { it.id == d.unitId }?.let { UnitGuideDialog(it, state, onDismiss = { dialog = null }) }
         null -> Unit
-    }
-}
-
-@Composable
-private fun DailyGoalBar(xpToday: Int, goal: Int) {
-    val c = Trilha.colors
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        GameIconView(GameIcon.Star, size = 22.dp)
-        GameProgressBar((xpToday.toFloat() / goal).coerceIn(0f, 1f), Modifier.weight(1f), color = c.warning, height = 12.dp)
-        Text(
-            if (xpToday >= goal) "Meta batida!" else "$xpToday/$goal XP",
-            style = MaterialTheme.typography.labelMedium,
-            color = if (xpToday >= goal) c.successText else c.inkSoft,
-        )
     }
 }
 
