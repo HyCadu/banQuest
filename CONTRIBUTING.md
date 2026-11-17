@@ -31,7 +31,10 @@ Quem não tem permissão de escrita no repositório trabalha num fork e abre o P
 
 ## O que o PR precisa ter
 
-- `./gradlew test lint` passando e, se mexeu em conteúdo, o validador sem erros.
+- A CI verde (check **CI ok** no PR). Ela roda sozinha em todo PR: `./gradlew check assembleDebug` (testes, lint e
+  validadores de conteúdo), `tools/sql-tests/run.sh` e o preview-harness. Jobs que não têm a ver com o que o PR muda
+  (ex.: SQL num PR de conteúdo) são pulados. As telas renderizadas pelo harness ficam no artefato `telas` da execução.
+  Rodar `./gradlew test lint` antes do push continua valendo: é mais rápido que esperar a CI.
 - `docs/QA.md` atualizado com o passo a passo para testar no celular, se mudou comportamento do app.
 - `docs/DECISIONS.md` atualizado, se houve decisão (com o link da issue).
 - Para conteúdo: o relatório da segunda revisão em `content/review/`.
@@ -64,5 +67,8 @@ Só o dono pode fazer isto, em GitHub > Settings > Branches > Add branch ruleset
 - Exigir pull request antes do merge, com **1 aprovação** e **revisão dos Code Owners**.
 - Bloquear force push e exclusão da branch.
 - Exigir que a branch esteja atualizada antes do merge.
+- Exigir que os status checks passem ("Require status checks to pass") e adicionar só o check **CI ok** (do workflow
+  `.github/workflows/ci.yml`). Ele só aparece na lista depois que o workflow rodou uma vez. Não adicione os outros
+  jobs: eles são pulados quando o PR não mexe no que conferem, e um check obrigatório pulado trava o merge.
 - Deixar o dono fora da regra (bypass), senão ele não consegue fazer merge dos próprios PRs, porque o GitHub não deixa
   ninguém aprovar o próprio PR.
