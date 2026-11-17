@@ -1,12 +1,22 @@
 package br.com.trilhati.domain.progress
 
 import br.com.trilhati.domain.model.CourseUnit
+import br.com.trilhati.domain.model.Track
 
 enum class LessonStatus { Locked, Available, Done, Perfect }
 
-/** Desbloqueio da trilha: concluir uma lição libera a seguinte; só a primeira não concluída fica disponível. */
+/**
+ * Desbloqueio da trilha: concluir uma lição libera a seguinte; só a primeira não concluída fica disponível. Cada trilha
+ * (Específicos e Gerais) anda sozinha: uma lição travada nos Específicos não trava os Gerais.
+ */
 object TrailEngine {
     fun statuses(units: List<CourseUnit>, progress: Map<String, LessonProgress>): Map<String, LessonStatus> {
+        val result = LinkedHashMap<String, LessonStatus>()
+        Track.entries.forEach { track -> result += trackStatuses(units.filter { it.track == track }, progress) }
+        return result
+    }
+
+    private fun trackStatuses(units: List<CourseUnit>, progress: Map<String, LessonProgress>): Map<String, LessonStatus> {
         val result = LinkedHashMap<String, LessonStatus>()
         var foundCurrent = false
         for (lesson in units.sortedBy { it.order }.flatMap { u -> u.lessons.sortedBy { it.order } }) {

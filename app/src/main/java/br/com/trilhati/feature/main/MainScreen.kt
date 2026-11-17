@@ -110,6 +110,7 @@ fun MainScreen(
                 if (runCatching { uriHandler.openUri(url) }.isFailure) viewModel.message("Não achei um navegador para baixar. O link: $url")
             },
             dismissUpdate = { viewModel.dismissUpdate(it) },
+            setTrack = { viewModel.setTrailTrack(it) },
             shareFriendCode = { code ->
                 val text = "Bora estudar para o concurso do Banestes no BanQuest? Me adiciona como amigo com o código $code."
                 val send = android.content.Intent(android.content.Intent.ACTION_SEND).setType("text/plain")

@@ -28,7 +28,6 @@ import br.com.trilhati.notify.Notifications
 import br.com.trilhati.notify.ReminderScheduler
 import br.com.trilhati.sound.Sfx
 import br.com.trilhati.sound.SoundPlayer
-import br.com.trilhati.ui.theme.ThemeMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Clock
 import java.time.LocalTime
@@ -117,6 +116,9 @@ class AppViewModel @Inject constructor(
 
     val settings: StateFlow<Settings> = settingsRepo.settings.stateIn(viewModelScope, SharingStarted.Eagerly, Settings())
 
+    /** As configurações já foram lidas do disco? Evita mostrar a escolha de tema por um instante a quem já escolheu. */
+    val settingsReady: StateFlow<Boolean> = settingsRepo.settings.map { true }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     private val _notificationsAllowed = MutableStateFlow(notifications.canPost())
 
     /** Se o Android deixa o app mostrar notificações (permissão e chave do sistema). Atualizado ao voltar para o app. */
@@ -204,7 +206,9 @@ class AppViewModel @Inject constructor(
         settingsRepo.setSounds(on)
         if (on) sounds.play(Sfx.Correct, true)
     }
-    fun setTheme(mode: ThemeMode) = viewModelScope.launch { settingsRepo.setTheme(mode) }
+    fun setPalette(palette: br.com.trilhati.ui.theme.ThemePalette) = viewModelScope.launch { settingsRepo.setPalette(palette) }
+    fun confirmThemeChoice(palette: br.com.trilhati.ui.theme.ThemePalette) = viewModelScope.launch { settingsRepo.confirmThemeChoice(palette) }
+    fun setTrailTrack(track: br.com.trilhati.domain.model.Track) = viewModelScope.launch { settingsRepo.setTrailTrack(track) }
     fun setReminderEnabled(on: Boolean) = viewModelScope.launch { settingsRepo.setReminderEnabled(on) }
     fun setReminderTime(time: LocalTime) = viewModelScope.launch {
         settingsRepo.setReminderMinutes(time.hour * 60 + time.minute)

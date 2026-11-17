@@ -22,6 +22,10 @@ import br.com.trilhati.feature.settings.SettingsContent
 import br.com.trilhati.feature.settings.SettingsCallbacks
 import br.com.trilhati.feature.settings.SettingsUi
 import br.com.trilhati.ui.mascot.MascotCharacter
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.test.captureToImage
+import androidx.compose.ui.test.onRoot
 import androidx.compose.foundation.layout.height
 import androidx.compose.ui.unit.dp
 import org.junit.Rule
@@ -46,6 +50,56 @@ class FlowShots {
     @Test fun trilhaProgress() = tab("t_path_progress.png", MainTab.Path, true, character = "Tartaruga")
     @Test fun trilhaDark() = tab("t_path_dark.png", MainTab.Path, true, dark = true, character = "Preguica")
     @Test fun practice() = tab("t_practice.png", MainTab.Practice, true)
+
+    // ---- Temas (0.8.0): Elétrico e Chiclete, trilha dos Gerais e escolha de tema
+    private val eletrico = br.com.trilhati.ui.theme.ThemePalette.Eletrico
+    private val chiclete = br.com.trilhati.ui.theme.ThemePalette.Chiclete
+    private fun stateOn(track: br.com.trilhati.domain.model.Track) = fakeState(true).let { it.copy(settings = it.settings.copy(trailTrack = track)) }
+    private fun pathShot(name: String, palette: br.com.trilhati.ui.theme.ThemePalette, track: br.com.trilhati.domain.model.Track) =
+        rule.shot(name, palette = palette) { MainContent(stateOn(track), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial()) }
+    @Test fun trilhaEletrico() = pathShot("th_path_eletrico.png", eletrico, br.com.trilhati.domain.model.Track.Specific)
+    @Test fun trilhaChiclete() = pathShot("th_path_chiclete.png", chiclete, br.com.trilhati.domain.model.Track.Specific)
+    @Test fun trilhaGeraisClaro() = pathShot("th_path_gerais.png", br.com.trilhati.ui.theme.ThemePalette.Claro, br.com.trilhati.domain.model.Track.General)
+    @Test fun trilhaGeraisEscuro() = pathShot("th_path_gerais_escuro.png", br.com.trilhati.ui.theme.ThemePalette.Escuro, br.com.trilhati.domain.model.Track.General)
+    @Test fun trilhaGeraisEletrico() = pathShot("th_path_gerais_eletrico.png", eletrico, br.com.trilhati.domain.model.Track.General)
+    @Test fun trilhaGeraisChiclete() = pathShot("th_path_gerais_chiclete.png", chiclete, br.com.trilhati.domain.model.Track.General)
+    @Test fun rankingEletrico() = rule.shot("th_ranking_eletrico.png", palette = eletrico) {
+        MainContent(fakeState(true), NOW_MS, AppActions(), snack, initialTab = MainTab.Ranking, animated = false, social = fakeSocial())
+    }
+    @Test fun lojaChiclete() = rule.shot("th_shop_chiclete.png", palette = chiclete) {
+        MainContent(fakeState(true), NOW_MS, AppActions(), snack, initialTab = MainTab.Shop, animated = false, social = fakeSocial())
+    }
+    @Test fun licaoEletrico() = rule.shot("th_lesson_eletrico.png", palette = eletrico) {
+        SessionContent(playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(2)), mutableStateOf(NOW_MS), MascotCharacter.Guaiamum, SessionActions(), {}, {}, {}, {}, animated = false)
+    }
+    @Test fun licaoChiclete() = rule.shot("th_lesson_chiclete.png", palette = chiclete) {
+        val p = playing(QuestionType.Mcq5)
+        SessionContent(p.copy(exercise = ExerciseState.Choice(p.question.answer), phase = Phase.Feedback(true, null, 15)), mutableStateOf(NOW_MS), MascotCharacter.Preguica, SessionActions(), {}, {}, {}, {}, animated = false)
+    }
+    @Test fun escolhaDeTema() = rule.shot("th_choice_claro.png") {
+        br.com.trilhati.feature.theme.ThemeChoiceScreen(br.com.trilhati.ui.theme.ThemePalette.Claro, MascotCharacter.Tartaruga, {}, {}, animated = false)
+    }
+    @Test fun escolhaDeTemaEletrico() = rule.shot("th_choice_eletrico.png", palette = eletrico) {
+        br.com.trilhati.feature.theme.ThemeChoiceScreen(eletrico, MascotCharacter.Tartaruga, {}, {}, animated = false)
+    }
+    /** Um quadro no meio da troca Específicos → Gerais (a animação roda; o resto da tela continua parado). */
+    @Test fun trocaDeTrilhaNoMeio() {
+        val track = mutableStateOf(br.com.trilhati.domain.model.Track.Specific)
+        rule.mainClock.autoAdvance = false
+        rule.setContent {
+            br.com.trilhati.ui.theme.TrilhaTheme(br.com.trilhati.ui.theme.ThemePalette.Claro) {
+                androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.background(br.com.trilhati.ui.theme.Trilha.colors.background)) {
+                    br.com.trilhati.feature.path.PathContent(stateOn(track.value), NOW_MS, AppActions(), animated = true)
+                }
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        track.value = br.com.trilhati.domain.model.Track.General
+        rule.mainClock.advanceTimeBy(200)
+        rule.onRoot().captureToImage().asAndroidBitmap().save("th_switch_mid.png")
+        rule.mainClock.advanceTimeBy(800)
+        rule.onRoot().captureToImage().asAndroidBitmap().save("th_switch_end.png")
+    }
     // Meio coração perdido: o contador mostra "3,5" com o coração rachado (no lugar de "3½").
     @Test fun trilhaHalfHeart() = rule.shot("t_path_half_heart.png") {
         val st = fakeState(true)

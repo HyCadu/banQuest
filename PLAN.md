@@ -61,6 +61,9 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
   4. **Preguiça** (marrom claro)
 - Cada personagem tem poses/estados: `idle`, `happy`, `sad`, `celebrate`, `sleepy` (lembrete). Transições com animação Compose (`animate*AsState`, `Animatable`).
 - Paleta própria: base azul-petróleo + acento âmbar + verde/vermelho de acerto/erro. Tokens em `ui/theme`. Suporte a modo escuro.
+- **Temas (0.9.0):** Claro, Escuro, Elétrico e Chiclete. Os dois novos seguem as referências do dono em 60/30/10, com o
+  fundo sempre na cor clara. O tema é escolhido na primeira entrada e trocado em Configurações › Tema (ver
+  `docs/DECISIONS.md`).
 - Tipografia: uma família arredondada (Nunito ou equivalente via Google Fonts downloadable) e uma monoespaçada para código.
 - Sons: gerados por script (ondas simples), originais, em `res/raw`: acerto, erro, combo, lição concluída, conquista, clique.
 
@@ -154,7 +157,7 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Onboarding:** boas-vindas → escolher personagem (pré-visualização animada) → nome → meta diária (Leve 50 / Regular 100 / Séria 200 / Intensa 300 XP) → horário do lembrete e permissão de notificação (Android 13+) → primeira lição guiada.
 
-**Trilha (home):** caminho em zigue-zague com nós por lição, cabeçalho fixo da unidade, nó atual pulsando, baú ao final de cada unidade, personagem ao lado do nó atual. Unidade seguinte desbloqueia ao concluir a anterior; ★ permitir "pular" com um teste de nivelamento (v1.1). Topo: ofensiva, gemas, corações, contagem regressiva para 21/02/2027.
+**Trilha (home):** caminho em zigue-zague com nós por lição, cabeçalho fixo da unidade, nó atual pulsando, baú ao final de cada unidade, personagem ao lado do nó atual. Unidade seguinte desbloqueia ao concluir a anterior; ★ permitir "pular" com um teste de nivelamento (v1.1). Topo: ofensiva, gemas, corações, contagem regressiva para 21/02/2027. **Duas trilhas (0.9.0):** seletor "Específicos | Gerais" logo abaixo do topo; cada trilha desbloqueia na sua ordem e tem as cores próprias, com troca animada.
 
 **Lição:** 8 exercícios (12 no formato por conceitos: blocos por conceito do exemplo resolvido à variação, e prova no fim; "Novo conceito" aberto na primeira vez; botão "Não sei" nos de ensino). Barra de progresso; botão Verificar; feedback em painel inferior (verde/vermelho) com explicação; Continuar. Erro custa 1 coração (½ nos exercícios de aprender e praticar do formato por conceitos; se o modo corações estiver ligado); erros voltam no fim da lição (+5 XP em vez de +10). Combo visual a partir de 3 acertos seguidos.
 
@@ -181,7 +184,7 @@ menos uma lição. Detalhes, regras anti-trapaça e esquema em `docs/PLANO_SOCIA
 
 **Perfil/estatísticas:** XP, ofensiva, precisão por tema (as 10 unidades), tempo médio por questão, histórico de 30 dias, conquistas.
 
-**Configurações:** personagem, meta, horário do lembrete, cronômetro, sons, vibração, tema, modo sem vidas, importar pacote de conteúdo, exportar/importar progresso, apagar dados.
+**Configurações:** personagem, meta, horário do lembrete, cronômetro, sons, vibração, tema (Claro, Escuro, Elétrico ou Chiclete), modo sem vidas, importar pacote de conteúdo, exportar/importar progresso, apagar dados.
 
 ## 8. Notificações (somente locais)
 
