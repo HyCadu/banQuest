@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "provas"
 OUT = ROOT / "app" / "src" / "main" / "assets" / "provas" / "provas-anteriores.json"
 CURRICULUM = ROOT / "app" / "src" / "main" / "java" / "br" / "com" / "trilhati" / "domain" / "model" / "Curriculum.kt"
-HIDDEN = {"versao_antiga", "fora_do_edital"}
+HIDDEN = {"versao_antiga", "fora_do_edital", "repetida"}
 
 
 def app_lessons() -> set[str]:

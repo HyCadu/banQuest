@@ -477,7 +477,7 @@ private fun UnitGuideDialog(unit: CourseUnit, state: AppState, onDismiss: () -> 
     val c = Trilha.colors
     TrilhaDialog(
         onDismiss = onDismiss,
-        title = "Unidade ${unit.order}: ${unit.title}",
+        title = "${unit.code}: ${unit.title}",
         content = {
             Column(
                 Modifier.fillMaxWidth().heightIn(max = 420.dp).verticalScroll(rememberScrollState()),

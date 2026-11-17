@@ -19,7 +19,9 @@ object TrailEngine {
     private fun trackStatuses(units: List<CourseUnit>, progress: Map<String, LessonProgress>): Map<String, LessonStatus> {
         val result = LinkedHashMap<String, LessonStatus>()
         var foundCurrent = false
-        for (lesson in units.sortedBy { it.order }.flatMap { u -> u.lessons.sortedBy { it.order } }) {
+        // Segue a ordem da trilha da prova, não o número da unidade: no Técnico, a Matemática financeira (u15) é a
+        // Unidade 3, depois de u16 e u17. Ordenar por número a punha antes de u16 e travava a Unidade 1 (0.14.0).
+        for (lesson in units.flatMap { u -> u.lessons.sortedBy { it.order } }) {
             val p = progress[lesson.id]
             result[lesson.id] = when {
                 p != null && p.completed -> if (p.perfect) LessonStatus.Perfect else LessonStatus.Done

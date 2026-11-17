@@ -64,7 +64,8 @@ class PastExamTest {
 
     @Test fun `mesma banca, orgao e ano com cargos diferentes viram provas diferentes`() {
         val exams = PastExams.from(listOf(q("FGV", "Banestes", 2018, 1, cargo = "Analista"), q("FGV", "Banestes", 2018, 1, cargo = "Técnico")), general)
-        assertEquals(listOf("fgv-banestes-2018", "fgv-banestes-2018-2"), exams.map { it.id })
+        // a segunda leva o cargo no id (0.14.0; antes era "-2")
+        assertEquals(listOf("fgv-banestes-2018", "fgv-banestes-2018-tecnico"), exams.map { it.id })
     }
 
     @Test fun `slug sem acentos nem simbolos`() {

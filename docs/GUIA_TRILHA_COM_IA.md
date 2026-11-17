@@ -267,6 +267,7 @@ Um arquivo por prova. Exemplo de uma questão:
   - `versao_citada_anterior`: cita uma versão anterior, mas a resposta não muda.
   - `fora_do_edital`: assunto que o edital não cita.
   - `depende_de_figura`: a figura virou texto descrito no enunciado.
+  - `repetida`: a mesma questão já está no app por outra prova (fica guardada, sem ir ao app).
   - `produto_especifico`: cobra um produto específico.
 - **Bancas aceitas:** FCC, FGV, IDECAN, CESPE, CEBRASPE, VUNESP e CESGRANRIO.
 - **Anuladas:** questões anuladas não entram.

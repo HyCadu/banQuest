@@ -65,12 +65,14 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
 
     /**
      * Provas anteriores para o modo da aba Praticar, montadas com todas as questões do pacote de provas, inclusive as que
-     * ainda esperam o conteúdo da lição (como as dos Gerais). Todas são de cargos de TI: a parte dos Gerais é a das
-     * unidades de Gerais do Analista.
+     * ainda esperam o conteúdo da lição (como as dos Gerais). A parte dos Gerais de cada prova é a do cargo dela.
      */
     val exams: List<PastExam> by lazy {
-        val generalUnits = TargetExam.AnalistaTi.general.map { it.unitId }.toSet()
-        PastExams.from(examPool) { it.lessonId.substringBefore('l') in generalUnits }
+        // Gerais e Específicos de cada prova seguem o cargo dela: a Matemática financeira é dos Específicos no Técnico.
+        PastExams.from(examPool) { q ->
+            val target = TargetExam.forCargo(q.ref?.cargo.orEmpty())
+            target.general.any { it.unitId == q.lessonId.substringBefore('l') }
+        }
     }
 
     /** As provas anteriores que valem para quem estuda para [target] ([PastExams.forTarget]). */
