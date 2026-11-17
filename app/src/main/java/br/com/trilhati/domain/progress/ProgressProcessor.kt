@@ -12,7 +12,11 @@ import br.com.trilhati.domain.srs.SrsEngine
 import br.com.trilhati.domain.streak.StreakEngine
 import java.time.LocalDate
 
-enum class SessionKind { Lesson, Practice }
+/**
+ * Tipo da sessão. [Exam] é a prova anterior da aba Praticar: conta como estudo do dia (ofensiva, meta e gemas de uma
+ * lição), tem o bônus de conclusão e não devolve coração (abrir a prova já custou um).
+ */
+enum class SessionKind { Lesson, Practice, Exam }
 
 /** Resumo de uma sessão terminada, vindo da tela de lição. */
 data class SessionResult(
@@ -62,8 +66,11 @@ object ProgressProcessor {
     ): ProcessedSession {
         val firstTry = result.records.filter { !it.retry }
         val isLesson = result.kind == SessionKind.Lesson
+        val isPractice = result.kind == SessionKind.Practice
+        // Lição e prova anterior concluídas contam como "estudo do dia" (ofensiva, meta, gemas e bônus de conclusão).
+        val completesStudy = isLesson || result.kind == SessionKind.Exam
         val xpFromAnswers = result.records.sumOf { it.xp }
-        val xpBonus = if (isLesson) XpEngine.completionXp(result.perfect) else 0
+        val xpBonus = if (completesStudy) XpEngine.completionXp(result.perfect) else 0
         val xpTotal = xpFromAnswers + xpBonus
         val totalTime = result.records.sumOf { it.timeMs }
         val targetsSum = result.records.sumOf { it.targetMs }
@@ -96,8 +103,8 @@ object ProgressProcessor {
             )
         }
 
-        // Ofensiva: só lição conta; treino apenas reconcilia dias perdidos.
-        val streakResult = if (isLesson) StreakEngine.onLessonCompleted(state.stats.streak, today)
+        // Ofensiva: lição e prova anterior contam; treino apenas reconcilia dias perdidos.
+        val streakResult = if (completesStudy) StreakEngine.onLessonCompleted(state.stats.streak, today)
         else StreakEngine.reconcile(state.stats.streak, today)
         val streakBefore = StreakEngine.displayCount(state.stats.streak, today)
 
@@ -106,7 +113,7 @@ object ProgressProcessor {
         val goalJustMet = !state.todayLog.goalMet && newDailyXp >= state.dailyGoalXp
         val todayLog = state.todayLog.copy(
             xp = newDailyXp,
-            lessons = state.todayLog.lessons + if (isLesson) 1 else 0,
+            lessons = state.todayLog.lessons + if (completesStudy) 1 else 0,
             goalMet = state.todayLog.goalMet || goalJustMet,
         )
 
@@ -118,7 +125,7 @@ object ProgressProcessor {
             pacedLessons = if (paced) 1 else 0,
             perfectLessons = if (isLesson && result.perfect) 1 else 0,
             correctAnswers = result.records.count { it.correct },
-            practiceSessions = if (isLesson) 0 else 1,
+            practiceSessions = if (isPractice) 1 else 0,
         )
         val completedQuests = mutableListOf<String>()
         val quests = state.todayQuests.map { qp ->
@@ -129,9 +136,10 @@ object ProgressProcessor {
         }
 
         // Estatísticas e recompensas.
-        val gemsEarned = (if (isLesson) ShopEngine.LESSON_GEMS + (if (result.perfect) ShopEngine.PERFECT_GEMS else 0) else 0) +
+        val gemsEarned = (if (completesStudy) ShopEngine.LESSON_GEMS + (if (result.perfect) ShopEngine.PERFECT_GEMS else 0) else 0) +
             if (goalJustMet) ShopEngine.DAILY_GOAL_GEMS else 0
-        val hearts = if (isLesson) state.stats.hearts else HeartsEngine.gain(state.stats.hearts, 1, nowMs)
+        // Só o treino de erros devolve coração (a prova anterior não: abrir já custou um).
+        val hearts = if (isPractice) HeartsEngine.gain(state.stats.hearts, 1, nowMs) else state.stats.hearts
         var stats = state.stats.copy(
             totalXp = state.stats.totalXp + xpTotal,
             gems = state.stats.gems + gemsEarned,
@@ -140,7 +148,7 @@ object ProgressProcessor {
             lessonsCompleted = state.stats.lessonsCompleted + if (isLesson) 1 else 0,
             perfectLessons = state.stats.perfectLessons + if (isLesson && result.perfect) 1 else 0,
             pacedLessons = state.stats.pacedLessons + if (paced) 1 else 0,
-            practiceSessions = state.stats.practiceSessions + if (isLesson) 0 else 1,
+            practiceSessions = state.stats.practiceSessions + if (isPractice) 1 else 0,
             reviewCorrect = state.stats.reviewCorrect + reviewCorrect,
             answeredTotal = state.stats.answeredTotal + result.records.size,
             totalTimeMs = state.stats.totalTimeMs + totalTime,
@@ -168,7 +176,7 @@ object ProgressProcessor {
             gemsEarned = gemsEarned + newAchievements.sumOf { it.rewardGems },
             streakBefore = streakBefore,
             streakAfter = StreakEngine.displayCount(stats.streak, today),
-            streakIncreased = isLesson && stats.streak.current > streakBefore,
+            streakIncreased = completesStudy && stats.streak.current > streakBefore,
             goalJustMet = goalJustMet,
             paced = paced,
             newAchievements = newAchievements,

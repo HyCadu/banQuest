@@ -4,7 +4,7 @@
   const chapters = [
     { name: "Trilha", title: ["Seu estudo,", "em modo jogo."], copy: "Aprenda Banco de Dados em lições curtas, encare questões de provas anteriores e ganhe XP com um guaiamum do Espírito Santo." },
     { name: "Lição", title: ["Um conceito,", "uma jogada."], copy: "Leia o conceito, pratique e confira a explicação. Nas questões de prova, o cronômetro ajuda você a descobrir o seu ritmo." },
-    { name: "Revisão", title: ["Errou hoje?", "Pratique de novo."], copy: "Na aba Praticar, os erros das lições voltam para revisão. Retome o assunto no seu tempo, inclusive sem internet depois de entrar no app." }
+    { name: "Revisão", title: ["Errou hoje?", "Pratique de novo."], copy: "Na aba Praticar, os erros das lições voltam para revisão, e as provas anteriores podem ser feitas inteiras, no ritmo de prova. Funciona sem internet depois de entrar no app." }
   ];
   const $ = selector => document.querySelector(selector);
   const stops = [...document.querySelectorAll("[data-stop]")];

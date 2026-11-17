@@ -25,8 +25,9 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
    internet e sincroniza depois. Sem anúncios, sem analytics, sem Firebase. Os outros veem só apelido, personagem, XP da
    semana e ofensiva — nunca o e-mail. A chave `service_role`/secret do Supabase **nunca** entra no app, no repositório
    ou no chat (só a publishable, em `gradle.properties`). Toda tabela tem RLS; escrita só por funções `security definer`.
-   Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE`, e as que o WorkManager traz
-   (`RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`).
+   Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE`, as que o WorkManager traz
+   (`RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`) e `ACCESS_NOTIFICATION_POLICY` (silenciar notificações durante a prova
+   anterior, pedido do dono na 0.10.0; o aluno libera nas configurações do Android).
 3. **Conteúdo de estudo é sensível a erros.** Toda questão gerada por IA entra com `source: "ia"` e `reviewed: false`, passa pelo validador e pela revisão técnica separada. O app mostra um selo "não revisada". Nunca invente norma, versão ou número de artigo; se não tiver certeza, reformule a questão para algo conceitual ou descarte.
 4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`, ou
    `"prova_real"` com `ref.banca` FCC).
@@ -34,7 +35,8 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
    `docs/CONTENT_PLAN.md`. O escopo de cada lição vem do edital (`docs/EDITAL.md`): onde o PLAN.md diverge, vale o
    edital. O simulado de 80 questões é a fase 10.
 6. **O cronômetro é o diferencial:** 3:00 por questão (configurável), nunca reprova a resposta, e o resumo final sempre mostra tempo médio por questão. No formato por conceitos os 3:00 valem para as questões de prova; praticar e aprender têm alvos menores, proporcionais ao ritmo escolhido.
-7. **Datas:** fuso `America/Sao_Paulo`, virada do dia à meia-noite local. A ofensiva conta ao concluir pelo menos uma lição.
+7. **Datas:** fuso `America/Sao_Paulo`, virada do dia à meia-noite local. A ofensiva conta ao concluir pelo menos uma lição
+   (ou uma prova anterior inteira, desde a 0.10.0).
 
 ## Convenções de conteúdo
 - Formato e schema: seção 5.1 do PLAN.md. Pacotes em `app/src/main/assets/content/`, um arquivo por unidade.

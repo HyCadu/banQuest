@@ -115,4 +115,16 @@ class LessonRunTest {
         assertTrue(s.records.last().correct); assertFalse(s.records.last().corrected)
         assertEquals(15, s.xp)
     }
+
+    @Test fun `prova anterior nao repete erros no fim e acaba depois de responder todas`() {
+        var s = LessonRun.start(TestData.questions(3), repeatMistakes = false)
+        s = LessonRun.answer(s, false, 60_000, 180_000)
+        s = LessonRun.answer(s, true, 60_000, 180_000)
+        s = LessonRun.answer(s, false, 60_000, 180_000)
+        assertTrue(s.finished)
+        assertEquals(3, s.records.size)
+        assertEquals(3, s.planned)
+        assertEquals(15, s.xp)
+        assertFalse(s.perfect)
+    }
 }

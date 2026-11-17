@@ -25,7 +25,15 @@ enum class QuestionSource { Autoral, Ia, FccReal, ProvaReal }
 enum class AnswerKey { Final, Preliminary, Unconfirmed }
 
 /** Prova de onde a questão saiu (banca, órgão, ano e número), para mostrar a etiqueta na lição. */
-data class ExamRef(val banca: String, val body: String, val year: Int, val number: Int, val answerKey: AnswerKey) {
+data class ExamRef(
+    val banca: String,
+    val body: String,
+    val year: Int,
+    val number: Int,
+    val answerKey: AnswerKey,
+    /** Cargo da prova (ex.: "Analista de Sistemas"); vazio nas questões adaptadas. */
+    val cargo: String = "",
+) {
     /** Ex.: "FGV · Banestes 2021 · questão 48". */
     val shortLabel: String get() = "$banca · $body $year · questão $number"
 

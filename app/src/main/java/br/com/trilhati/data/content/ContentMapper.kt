@@ -57,7 +57,7 @@ internal fun parseAnswerKey(value: String): AnswerKey? = when (value) {
     else -> null
 }
 
-private fun ExamRefDto.toDomain(): ExamRef? = parseAnswerKey(gabarito)?.let { ExamRef(banca, orgao, ano, numero, it) }
+private fun ExamRefDto.toDomain(): ExamRef? = parseAnswerKey(gabarito)?.let { ExamRef(banca, orgao, ano, numero, it, cargo) }
 
 private fun AdaptedFromDto.toDomain() = AdaptedFrom(id, ExamRef(banca, orgao, ano, numero, AnswerKey.Final))
 

@@ -213,6 +213,22 @@ class SocialSyncTest {
         assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
     }
 
+    @Test fun provaAnteriorInteiraEntraNoRanking() {
+        login()
+        val xp = runBlocking {
+            val qs = content.exams.first { it.id == "fgv-banestes-2018" }.questions(br.com.trilhati.domain.exam.ExamPart.Full)
+            var run = LessonRun.start(qs, repeatMistakes = false)
+            while (run.current != null) run = LessonRun.answer(run, true, 30_000, 180_000)
+            progress.applySession(SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect), today(), content.course)
+                .summary.totalXp
+        }
+        assertEquals(87 * 15 + 30, xp) // 87 questões: muito acima dos limites de lição (30 respostas, 210 XP)
+        assertTrue(runBlocking { sync.syncNow() } is ApiResult.Ok)
+        assertEquals(listOf("exam" to xp), server.sessions.map { it.kind to it.xp })
+        assertEquals(xp, meta().overview!!.global.single { it.isMe }.xp)
+        assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
+    }
+
     @Test fun sessaoForaDosLimitesSaiDaFilaSemTravar() {
         login()
         runBlocking {

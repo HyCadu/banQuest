@@ -61,6 +61,7 @@ fun MainScreen(
     onOpenErrors: () -> Unit,
     onOpenReview: () -> Unit,
     onOpenSettings: () -> Unit,
+    onOpenExam: (String) -> Unit = {},
 ) {
     val state by viewModel.state.collectAsState()
     val nowMs by viewModel.ticker.collectAsState(initial = 0L)
@@ -89,6 +90,7 @@ fun MainScreen(
     val actions = remember(viewModel) {
         AppActions(
             openLesson = onOpenLesson, openErrors = onOpenErrors, openReview = onOpenReview, openSettings = onOpenSettings,
+            openExam = onOpenExam,
             buy = viewModel::buy, claimQuest = viewModel::claimQuest, claimDailyChest = viewModel::claimDailyChest,
             claimUnitChest = viewModel::claimUnitChest, setCharacter = viewModel::setCharacter, setName = viewModel::setName,
             setGoal = viewModel::setGoal, message = viewModel::message,

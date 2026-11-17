@@ -48,18 +48,24 @@ create table if not exists public.study_sessions (
   id          uuid primary key,                       -- gerado no app: reenviar não duplica
   user_id     uuid not null references public.profiles (id) on delete cascade,
   day         date not null,
-  kind        text not null check (kind in ('lesson', 'practice')),
-  xp          int not null check (xp between 0 and 210),
-  answers     int not null check (answers between 1 and 30),
+  kind        text not null check (kind in ('lesson', 'practice', 'exam')),
+  xp          int not null check (xp between 0 and 1530),
+  answers     int not null check (answers between 1 and 100),
   duration_ms bigint not null check (duration_ms >= 0),
   created_at  timestamptz not null default now()
 );
 create index if not exists study_sessions_user_day_idx on public.study_sessions (user_id, day);
 create index if not exists study_sessions_day_idx on public.study_sessions (day);
--- 0.9.1: a lição por conceitos (12 exercícios) chega a 210 XP. O limite era 150 (lição antiga de 8 questões), e as
--- lições boas ficavam fora do ranking. Refaz a restrição para os bancos criados antes (rodar de novo não muda nada).
+-- Restrições refeitas para os bancos criados antes (rodar de novo não muda nada). Os limites de cada tipo ficam no
+-- submit_session; aqui vai só o teto geral.
+--   0.9.1: a lição por conceitos (12 exercícios) chega a 210 XP; antes o limite era 150 e as lições boas sumiam.
+--   0.10.0: prova anterior ('exam', aba Praticar), com até 100 respostas e 100 × 15 + 30 = 1530 XP.
+alter table public.study_sessions drop constraint if exists study_sessions_kind_check;
+alter table public.study_sessions add constraint study_sessions_kind_check check (kind in ('lesson', 'practice', 'exam'));
 alter table public.study_sessions drop constraint if exists study_sessions_xp_check;
-alter table public.study_sessions add constraint study_sessions_xp_check check (xp between 0 and 210);
+alter table public.study_sessions add constraint study_sessions_xp_check check (xp between 0 and 1530);
+alter table public.study_sessions drop constraint if exists study_sessions_answers_check;
+alter table public.study_sessions add constraint study_sessions_answers_check check (answers between 1 and 100);
 
 create table if not exists public.friend_requests (
   id           uuid primary key default gen_random_uuid(),
@@ -169,12 +175,13 @@ declare
   d date := public.today_brt();
   n int := 0;
 begin
-  if not (exists (select 1 from study_sessions where user_id = a and day = d and kind = 'lesson')
-          and exists (select 1 from study_sessions where user_id = b and day = d and kind = 'lesson')) then
+  -- conta o dia em que os dois concluíram uma lição ou uma prova anterior
+  if not (exists (select 1 from study_sessions where user_id = a and day = d and kind in ('lesson', 'exam'))
+          and exists (select 1 from study_sessions where user_id = b and day = d and kind in ('lesson', 'exam'))) then
     d := d - 1;
   end if;
-  while exists (select 1 from study_sessions where user_id = a and day = d and kind = 'lesson')
-    and exists (select 1 from study_sessions where user_id = b and day = d and kind = 'lesson') loop
+  while exists (select 1 from study_sessions where user_id = a and day = d and kind in ('lesson', 'exam'))
+    and exists (select 1 from study_sessions where user_id = b and day = d and kind in ('lesson', 'exam')) loop
     n := n + 1;
     d := d - 1;
     exit when n >= 3650;
@@ -242,16 +249,19 @@ language plpgsql volatile security definer set search_path = public, pg_temp as 
 declare
   uid uuid := public.require_profile();
   today date := public.today_brt();
-  -- lição: 12 exercícios × 15 XP + 20 de conclusão + 10 de perfeita = 210 (igual a SessionLimits no app)
-  max_xp int := case p_kind when 'lesson' then 210 when 'practice' then 120 else -1 end;
+  -- Iguais a SessionLimits no app. Lição: 12 exercícios × 15 XP + 20 de conclusão + 10 de perfeita = 210.
+  -- Prova anterior: 15 XP por resposta + 30, até 100 respostas.
+  max_answers int := case p_kind when 'exam' then 100 else 30 end;
+  max_xp int := case p_kind when 'lesson' then 210 when 'practice' then 120
+                            when 'exam' then coalesce(p_answers, 0) * 15 + 30 else -1 end;
 begin
   if exists (select 1 from study_sessions where id = p_id) then
     return json_build_object('ok', true, 'duplicate', true);
   end if;
   if max_xp < 0 then return json_build_object('ok', false, 'reason', 'invalid_kind'); end if;
   if p_day is null or p_day > today or p_day < today - 7 then return json_build_object('ok', false, 'reason', 'invalid_day'); end if;
+  if p_answers is null or p_answers not between 1 and max_answers then return json_build_object('ok', false, 'reason', 'invalid_answers'); end if;
   if p_xp is null or p_xp < 0 or p_xp > max_xp then return json_build_object('ok', false, 'reason', 'xp_limit'); end if;
-  if p_answers is null or p_answers not between 1 and 30 then return json_build_object('ok', false, 'reason', 'invalid_answers'); end if;
   if p_duration_ms is null or p_duration_ms < p_answers * 2000 then return json_build_object('ok', false, 'reason', 'too_fast'); end if;
   if (select count(*) from study_sessions where user_id = uid and day = p_day) >= 40 then
     return json_build_object('ok', false, 'reason', 'daily_limit');
@@ -399,8 +409,8 @@ language sql stable security definer set search_path = public, pg_temp as $$
          public.visible_streak(p.streak_current, p.last_study_day),
          coalesce((select sum(s.xp) from study_sessions s where s.user_id = p.id and s.day between t.ws and t.ws + 6), 0)::int,
          public.pair_streak(me.id, p.id),
-         exists (select 1 from study_sessions s where s.user_id = me.id and s.day = t.d and s.kind = 'lesson'),
-         exists (select 1 from study_sessions s where s.user_id = p.id and s.day = t.d and s.kind = 'lesson')
+         exists (select 1 from study_sessions s where s.user_id = me.id and s.day = t.d and s.kind in ('lesson', 'exam')),
+         exists (select 1 from study_sessions s where s.user_id = p.id and s.day = t.d and s.kind in ('lesson', 'exam'))
   from me cross join t
   join friendships f on f.user_a = me.id or f.user_b = me.id
   join profiles p on p.id = case when f.user_a = me.id then f.user_b else f.user_a end
