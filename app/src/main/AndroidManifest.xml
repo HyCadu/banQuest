@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Usada pelo WorkManager para só sincronizar quando há rede. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- "Silenciar notificações durante a prova" (pedido do dono, 0.10.0): liga e desliga o Não perturbe. O aluno libera o
+         acesso uma vez nas configurações do Android; sem isso o interruptor só abre essa tela. -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <!-- O WorkManager pede esta, mas o app não usa serviço em primeiro plano: removida. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
 

@@ -18,7 +18,8 @@ Ele lê a versão mais nova da tabela `app_releases` do Supabase (`supabase/migr
 1. **Gerar o APK assinado** (ver `docs/ASSINATURA.md`): `tools/build_apk.sh` → `dist/banquest-<versão>.apk`.
    O `versionCode` em `app/build.gradle.kts` precisa ser maior que o da versão anterior.
 2. **Se a versão mudou o SQL** (algum arquivo em `supabase/migrations/`), rode o arquivo alterado no **SQL Editor**
-   antes de anunciar. A 0.9.1 mudou o `0001_social.sql` (limite de XP da lição no ranking).
+   antes de anunciar. A 0.9.1 e a 0.10.0 mudaram o `0001_social.sql` (limite de XP da lição e provas anteriores no
+   ranking).
 3. **Subir o APK:** **Storage → apk → Upload file** e escolha o arquivo. Depois, nos três pontinhos do arquivo,
    **Get URL / Copy URL**. O link tem este formato:
    `https://fheldagijfrqqgjjfcdt.supabase.co/storage/v1/object/public/apk/banquest-0.5.1.apk`

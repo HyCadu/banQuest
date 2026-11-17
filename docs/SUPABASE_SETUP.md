@@ -33,9 +33,11 @@ Sem este passo, o app mostra: *"O banco do servidor ainda não foi configurado (
 
 Depois, rode também `supabase/migrations/0002_releases.sql` (aviso de versão nova; ver `docs/PUBLICAR_VERSAO.md`).
 
-**Banco criado antes da 0.9.1?** Rode o `0001_social.sql` inteiro de novo. Ele sobe o limite de XP da lição de 150
-para 210, porque a lição por conceitos (12 exercícios) chega a 210 XP e, com o limite antigo, as lições boas ficavam
-fora do ranking. Rodar de novo não apaga nada.
+**Banco criado antes da 0.10.0?** Rode o `0001_social.sql` inteiro de novo. Rodar de novo não apaga nada. Ele:
+- sobe o limite de XP da lição de 150 para 210 (0.9.1): a lição por conceitos (12 exercícios) chega a 210 XP e, com o
+  limite antigo, as lições boas ficavam fora do ranking;
+- aceita as provas anteriores da aba Praticar (0.10.0): sessões do tipo `exam`, com até 100 respostas, que também
+  contam para a ofensiva em dupla.
 
 ## 2. Configurar o envio de e-mail (SMTP próprio) — antes dos templates
 

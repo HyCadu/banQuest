@@ -183,7 +183,11 @@ class ProgressRepository @Inject constructor(
         dao.insertOutbox(
             OutboxSessionEntity(
                 id = java.util.UUID.randomUUID().toString(), day = today.toEpochDay(),
-                kind = if (result.kind == br.com.trilhati.domain.progress.SessionKind.Lesson) "lesson" else "practice",
+                kind = when (result.kind) {
+                    br.com.trilhati.domain.progress.SessionKind.Lesson -> "lesson"
+                    br.com.trilhati.domain.progress.SessionKind.Practice -> "practice"
+                    br.com.trilhati.domain.progress.SessionKind.Exam -> "exam"
+                },
                 xp = out.summary.totalXp, answers = result.records.size, durationMs = result.records.sumOf { it.timeMs },
                 streak = s.stats.streak.current, streakLongest = s.stats.streak.longest,
                 lastStudyDay = s.stats.streak.lastDay.toDay(), createdAtMs = now,

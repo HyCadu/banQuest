@@ -7,6 +7,9 @@ import br.com.trilhati.data.content.ContentRepository
 import br.com.trilhati.data.prefs.Settings
 import br.com.trilhati.data.prefs.SettingsRepository
 import br.com.trilhati.data.repo.ProgressRepository
+import br.com.trilhati.domain.exam.ExamPart
+import br.com.trilhati.domain.exam.ExamRules
+import br.com.trilhati.domain.exam.PastExam
 import br.com.trilhati.domain.hearts.HeartsEngine
 import br.com.trilhati.domain.lesson.LessonPlanner
 import br.com.trilhati.domain.lesson.LessonRun
@@ -47,6 +50,7 @@ class SessionViewModel @Inject constructor(
     private val sounds: br.com.trilhati.sound.SoundPlayer,
     private val notifications: br.com.trilhati.notify.Notifications,
     private val syncScheduler: br.com.trilhati.data.social.SyncScheduler,
+    private val focus: br.com.trilhati.notify.ExamFocus,
 ) : ViewModel() {
     private val source = SessionSource.fromRoute(savedState.get<String>("kind"))
     private val lessonId: String? = savedState.get<String>("id")?.takeIf { it != "-" }
@@ -79,6 +83,14 @@ class SessionViewModel @Inject constructor(
     private var outOfHearts = false
     private var finishing = false
 
+    // Prova anterior (aba Praticar): escolhida na tela de aviso; nada é gasto até "Começar".
+    private var exam: PastExam? = null
+    private var examPart = ExamPart.Full
+    private var examSilence: Boolean? = null
+    private var examHearts = 0
+    private var examHeartSpent = false
+    private var beginning = false
+
     init {
         viewModelScope.launch { start() }
     }
@@ -92,6 +104,11 @@ class SessionViewModel @Inject constructor(
         _character.value = snap.profile.character
         val now = clock.millis()
         val heartsNow = HeartsEngine.regen(snap.stats.hearts, now)
+        if (source == SessionSource.Exam) {
+            examHearts = heartsNow.halves
+            showExamIntro()
+            return
+        }
         val usesHearts = source == SessionSource.Lesson && !settings.noLives
         if (usesHearts && heartsNow.halves == 0) {
             _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false)
@@ -126,6 +143,7 @@ class SessionViewModel @Inject constructor(
                 val pool = done.mapNotNull(content::lesson).flatMap { it.questions }
                 questions = pool.shuffled(random).take(LessonRun.SIZE)
             }
+            SessionSource.Exam -> return
         }
         if (questions.isEmpty()) {
             _ui.value = SessionUi.Empty(
@@ -181,7 +199,79 @@ class SessionViewModel @Inject constructor(
             newConcept = !item.retry && item.question.id in introIds,
             halfHeart = heartHalves?.let { it % 2 == 1 } ?: false,
             helps = helps,
+            exam = source == SessionSource.Exam,
+            examHeartSpent = examHeartSpent,
         )
+    }
+
+    // ---------- prova anterior: tela de aviso
+
+    private fun showExamIntro() {
+        val found = exam ?: lessonId?.let(content::exam)
+        if (found == null) {
+            _ui.value = SessionUi.Empty("Prova não encontrada", "Ela não está mais no app. Volte e escolha outra prova.")
+            return
+        }
+        exam = found
+        if (examPart !in found.parts) examPart = ExamPart.Full
+        val silence = examSilence ?: settings.examSilence
+        examSilence = silence
+        val questions = found.questions(examPart)
+        _ui.value = SessionUi.ExamIntro(
+            title = found.title, cargo = found.cargo, answerKey = found.answerKey, parts = found.parts, part = examPart,
+            partSizes = found.parts.map { found.questions(it).size }, questionCount = questions.size,
+            estimatedMs = questions.sumOf { settings.paceConfig.targetMs(it) },
+            costHalves = ExamRules.openCostHalves(settings.noLives), canOpen = ExamRules.canOpen(examHearts, settings.noLives),
+            silence = silence, silenceAllowed = focus.hasAccess(),
+        )
+    }
+
+    fun pickExamPart(part: ExamPart) {
+        if (_ui.value !is SessionUi.ExamIntro) return
+        examPart = part
+        showExamIntro()
+    }
+
+    /** Interruptor "Silenciar notificações durante a prova" (fica lembrado para as próximas provas). */
+    fun setExamSilence(on: Boolean) {
+        if (_ui.value !is SessionUi.ExamIntro) return
+        examSilence = on
+        viewModelScope.launch { settingsRepo.setExamSilence(on) }
+        showExamIntro()
+    }
+
+    /** Tela do Android onde se libera o acesso ao Não perturbe. */
+    fun silenceAccessIntent(): android.content.Intent = focus.accessIntent()
+
+    /** Ao voltar das configurações do Android: confere de novo se o acesso ao Não perturbe foi liberado. */
+    fun refreshExamSilenceAccess() {
+        if (_ui.value is SessionUi.ExamIntro) showExamIntro()
+    }
+
+    /** "Começar": gasta o coração (a não ser no modo sem vidas), liga o Não perturbe se pedido e abre a prova. */
+    fun beginExam() {
+        val found = exam ?: return
+        val intro = _ui.value as? SessionUi.ExamIntro ?: return
+        if (beginning) return
+        beginning = true
+        _ui.value = intro.copy(starting = true)
+        viewModelScope.launch {
+            val snap = progress.snapshot(clock.today()).first()
+            val now = clock.millis()
+            val halves = HeartsEngine.regen(snap.stats.hearts, now).halves
+            if (!ExamRules.canOpen(halves, settings.noLives)) {
+                beginning = false
+                _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false, forExam = true)
+                return@launch
+            }
+            val cost = ExamRules.openCostHalves(settings.noLives)
+            if (cost > 0) progress.loseHeart(cost)
+            examHeartSpent = cost > 0
+            if (examSilence == true) focus.silence()
+            title = found.title(examPart)
+            run = LessonRun.start(found.questions(examPart), repeatMistakes = false)
+            enterQuestion()
+        }
     }
 
     private fun sfx(sound: br.com.trilhati.sound.Sfx) = sounds.play(sound, settings.sounds)
@@ -316,12 +406,20 @@ class SessionViewModel @Inject constructor(
         finishing = true
         val r = checkNotNull(run)
         _ui.value = SessionUi.Saving
+        // A prova acabou: desliga o Não perturbe antes de mostrar o resultado.
+        if (source == SessionSource.Exam) focus.restore()
         viewModelScope.launch {
-            val kind = if (source == SessionSource.Lesson) SessionKind.Lesson else SessionKind.Practice
-            val unitId = lessonId?.let { content.lesson(it)?.unitId }
-            val result = SessionResult(kind, lessonId.takeIf { source == SessionSource.Lesson }, unitId, r.records, r.bestCombo, r.perfect)
+            val kind = when (source) {
+                SessionSource.Lesson -> SessionKind.Lesson
+                SessionSource.Exam -> SessionKind.Exam
+                SessionSource.Errors, SessionSource.Review -> SessionKind.Practice
+            }
+            val lessonOnly = lessonId.takeIf { source == SessionSource.Lesson }
+            val unitId = lessonOnly?.let { content.lesson(it)?.unitId }
+            // Só chega aqui com todas as questões respondidas: na prova anterior, é o único caminho que dá XP.
+            val result = SessionResult(kind, lessonOnly, unitId, r.records, r.bestCombo, r.perfect)
             val processed = progress.applySession(result, clock.today(), content.course)
-            if (kind == SessionKind.Lesson) notifications.clear()
+            if (kind != SessionKind.Practice) notifications.clear()
             // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
             syncScheduler.syncSoon()
             sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
@@ -345,5 +443,10 @@ class SessionViewModel @Inject constructor(
             outOfHearts = false
             start()
         }
+    }
+
+    /** Saiu da tela (terminou ou abandonou a prova): o Não perturbe ligado pela prova não pode ficar ligado. */
+    override fun onCleared() {
+        focus.restore()
     }
 }

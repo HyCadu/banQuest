@@ -275,6 +275,29 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Num segundo celular, com uma conta amiga, o seu XP aparece atualizado. Se os dois fizeram lição hoje, a
       ofensiva em dupla conta o dia.
 
+## BanQuest 0.10.0 — provas anteriores na aba Praticar
+
+Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supabase (`docs/PUBLICAR_VERSAO.md`).
+
+**36. Provas anteriores**
+- [ ] Na aba **Praticar**, abaixo de "Revisão livre", aparece **Provas anteriores** com quatro provas: FGV Banestes 2021
+      e 2018, FCC Prefeitura de Teresina 2016 (gabarito preliminar) e FCC DPE-RR 2015 (gabarito não confirmado).
+- [ ] Toque em FGV Banestes 2018: aparece o aviso, ainda sem gastar nada. Ele mostra o número de questões, o tempo
+      estimado, "Começar gasta 1 coração", "Errar não tira coração" e "O XP só vem se você responder todas".
+- [ ] Escolha **Específicos**: o número de questões e o tempo mudam (37 questões, cerca de 1h51). Volte ao app sem
+      começar: os corações continuam os mesmos.
+- [ ] Toque em **Começar prova**: o contador de corações cai 1. Na prova não aparece coração no topo. Erre uma questão:
+      nenhum coração some, e a questão não volta no fim.
+- [ ] No meio da prova, toque no X: o aviso diz que você não ganha XP e que o coração não volta. Saia: o XP do Perfil
+      não muda.
+- [ ] Faça uma prova curta até o fim (FCC DPE-RR 2015): aparece "Prova concluída!" com XP, precisão e acertos. As
+      erradas aparecem em **Praticar erros**. A ofensiva do dia conta, e o XP entra no Ranking depois de sincronizar.
+- [ ] Com só meio coração (ou nenhum), **Começar** leva à tela "Acabaram os corações", que explica que abrir uma
+      prova gasta 1 coração inteiro. No **Modo sem vidas**, o aviso diz que começar não gasta coração.
+- [ ] **Silenciar notificações:** ligue o interruptor. Na primeira vez, o Android abre a tela de acesso ao Não perturbe:
+      permita para o BanQuest e volte. Comece a prova: o Não perturbe liga (ícone na barra do Android). Termine ou saia:
+      ele desliga. Se o Não perturbe já estava ligado antes, ele continua ligado depois.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
@@ -336,3 +359,10 @@ Versão 0.9.1 (lições por conceitos no ranking): `./gradlew check` sem erros n
 (`SocialRulesTest` confere que o limite de XP da lição é exatamente o XP da melhor lição de 12 exercícios);
 `tools/sql-tests/run.sh` passando, inclusive reaplicando o 0001 sobre um banco com o limite antigo; harness com 118
 testes, entre eles `licaoPorConceitosPerfeitaEntraNoRanking` (lição real de 12 exercícios, 210 XP, chega ao ranking).
+
+Versão 0.10.0 (provas anteriores): `./gradlew check` sem erros nem warnings; testes unitários de `PastExamTest`
+(agrupamento, partes, regras de abrir e tempo), `LessonRunTest` (prova sem repetir erros), `ProgressProcessorTest` (XP
+e ofensiva da prova, sem devolver coração) e `SocialRulesTest` (limites do tipo `exam`); `tools/sql-tests/run.sh` com
+as provas no servidor e na ofensiva em dupla; harness com integração da prova (aviso, coração ao começar, XP só ao
+terminar, abandonar, partes, modo sem vidas e Não perturbe) e renders `s_exam_intro*.png`, `s_exam_mode.png`,
+`s_exam_result.png`, `s_nohearts_exam.png` e `t_practice.png`.

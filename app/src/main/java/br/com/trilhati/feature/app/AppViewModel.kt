@@ -105,7 +105,7 @@ class AppViewModel @Inject constructor(
             progress.ensureReady(day)
             emitAll(
                 combine(progress.snapshot(day), progress.observeQuests(day), settingsRepo.settings, content.courseFlow) { snap, quests, settings, course ->
-                    AppState(day, course, snap, quests, settings)
+                    AppState(day, course, snap, quests, settings, content.exams)
                 },
             )
         }

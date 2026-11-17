@@ -178,4 +178,36 @@ class ProgressProcessorTest {
         assertEquals(0, s.stats.perfectLessons)
         assertEquals(2, s.stats.firstTryCorrect)
     }
+
+    /** Prova anterior: [correctPattern] na ordem, sem repetir erros (como no modo da aba Praticar). */
+    private fun exam(correctPattern: List<Boolean>, timeMs: Long = 60_000): SessionResult {
+        var run = LessonRun.start(TestData.questions(correctPattern.size, "u3l1"), repeatMistakes = false)
+        correctPattern.forEach { run = LessonRun.answer(run, it, timeMs, 180_000) }
+        assertTrue(run.finished)
+        return SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect)
+    }
+
+    @Test fun `prova concluida da xp das respostas e de conclusao, conta como estudo e nao devolve coracao`() {
+        val hearts = HeartsState(3, nowMs)
+        val result = exam(List(30) { it % 3 != 0 }) // 20 acertos rápidos e 10 erros
+        val out = apply(freshState(stats = Stats(hearts = hearts)), result)
+        val s = out.state
+        assertEquals(20 * 15 + 20, out.summary.totalXp) // sem o bônus de gabarito
+        assertEquals(out.summary.totalXp, s.stats.totalXp)
+        assertEquals(hearts, s.stats.hearts) // abrir já custou um coração; terminar não devolve
+        assertEquals(1, s.stats.streak.current)
+        assertTrue(out.summary.streakIncreased)
+        assertEquals(1, s.todayLog.lessons) // conta como estudo do dia (lembretes e ofensiva em dupla)
+        assertEquals(0, s.stats.lessonsCompleted)
+        assertEquals(0, s.stats.practiceSessions)
+        assertTrue(s.lessonProgress.isEmpty())
+        assertEquals(ShopEngine.LESSON_GEMS + 20 /* meta de 100 XP */ + gemsFromAchievements(out), s.stats.gems)
+        // os erros vão para a revisão espaçada (aparecem em "Praticar erros")
+        assertEquals(10, s.questionStats.values.count { it.card.active })
+    }
+
+    @Test fun `prova gabaritada soma o bonus de perfeicao`() {
+        val out = apply(freshState(), exam(List(5) { true }))
+        assertEquals(5 * 15 + 30, out.summary.totalXp)
+    }
 }

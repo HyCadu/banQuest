@@ -192,6 +192,37 @@ class FlowShots {
         session("s_exam_feedback.png", examPlaying(q.id, ExerciseState.Choice(wrong), Phase.Feedback(false, q.options[q.answer], 0)))
     }
 
+    // Provas anteriores (aba Praticar): aviso antes de começar, questão sem corações, resultado e sem coração para abrir.
+    private fun examIntro(id: String, part: br.com.trilhati.domain.exam.ExamPart, silence: Boolean = false, allowed: Boolean = false): SessionUi.ExamIntro {
+        val e = pastExams.first { it.id == id }
+        val qs = e.questions(part)
+        return SessionUi.ExamIntro(
+            e.title, e.cargo, e.answerKey, e.parts, part, e.parts.map { e.questions(it).size }, qs.size, qs.sumOf { PaceConfig().targetMs(it) },
+            costHalves = 2, canOpen = true, silence = silence, silenceAllowed = allowed,
+        )
+    }
+    @Test fun sExamIntro() = session("s_exam_intro.png", examIntro("fgv-banestes-2018", br.com.trilhati.domain.exam.ExamPart.Specific))
+    @Test fun sExamIntroSilence() = session("s_exam_intro_silence.png", examIntro("fcc-dpe-rr-2015", br.com.trilhati.domain.exam.ExamPart.Full, silence = true))
+    @Test fun sExamPlaying() = session(
+        "s_exam_mode.png",
+        examPlaying("fgv-banestes-2018-q64", ExerciseState.Choice(1)).copy(title = "FGV · Banestes 2018 · Específicos", hearts = null, exam = true, examHeartSpent = true),
+    )
+    @Test fun sNoHeartsExam() = session("s_nohearts_exam.png", SessionUi.NoHearts(120, 840_000, endedMidLesson = false, forExam = true))
+    @Test fun sExamResult() {
+        val e = pastExams.first { it.id == "fgv-banestes-2018" }
+        val qs = e.questions(br.com.trilhati.domain.exam.ExamPart.Specific)
+        var run = LessonRun.start(qs, repeatMistakes = false)
+        qs.forEachIndexed { i, _ -> run = LessonRun.answer(run, i % 4 != 1, if (i % 3 == 0) 170_000 else 110_000, 180_000) }
+        val state = fakeState(true)
+        val sr = SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect)
+        // A prova não mexe nas lições: as unidades concluídas antes e depois são as mesmas (sem baú).
+        val out = ProgressProcessor.apply(
+            ProgressState(state.snapshot.stats, state.snapshot.lessonProgress, emptyMap(), DailyLog(TODAY, 40), state.quests, emptySet(), 100),
+            sr, TODAY, NOW_MS, { 0 }, 0,
+        )
+        session("s_exam_result.png", SessionUi.Finished(e.title(br.com.trilhati.domain.exam.ExamPart.Specific), SessionSource.Exam, out, run, PaceConfig()))
+    }
+
     @Test fun result() {
         val qs = course[0].lessons[0].questions.take(8)
         var run = LessonRun.start(qs)

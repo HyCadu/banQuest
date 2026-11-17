@@ -190,8 +190,15 @@ class FakeSupabase(private val clock: Clock) : HttpTransport {
         val answers = a.getValue("p_answers").jsonPrimitive.int
         val duration = a.getValue("p_duration_ms").jsonPrimitive.long
         val day = LocalDate.parse(a.str("p_day"))
-        val max = if (kind == "lesson") 210 else 120 // iguais ao submit_session do 0001_social.sql
+        // Iguais ao submit_session do 0001_social.sql.
+        val (max, maxAnswers) = when (kind) {
+            "lesson" -> 210 to 30
+            "practice" -> 120 to 30
+            "exam" -> answers * 15 + 30 to 100
+            else -> return ok(buildJsonObject { put("ok", false); put("reason", "invalid_kind") })
+        }
         val reason = when {
+            answers !in 1..maxAnswers -> "invalid_answers"
             xp !in 0..max -> "xp"
             duration < answers * 2_000L -> "too_fast"
             day.isAfter(today()) || day.isBefore(today().minusDays(7)) -> "day"
@@ -252,7 +259,7 @@ class FakeSupabase(private val clock: Clock) : HttpTransport {
             }
         }
         val me = profiles.getValue(uid)
-        val lessonToday = { id: String -> sessions.any { it.user == id && it.day == today() && it.kind == "lesson" } }
+        val lessonToday = { id: String -> sessions.any { it.user == id && it.day == today() && it.kind in setOf("lesson", "exam") } }
         return buildJsonObject {
             put("profile", profileJson(me))
             put("week_start", today().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).toString())

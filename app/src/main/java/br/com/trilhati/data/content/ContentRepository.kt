@@ -2,9 +2,13 @@ package br.com.trilhati.data.content
 
 import android.content.Context
 import android.util.Log
+import br.com.trilhati.domain.exam.PastExam
+import br.com.trilhati.domain.exam.PastExams
 import br.com.trilhati.domain.model.CourseUnit
+import br.com.trilhati.domain.model.Curriculum
 import br.com.trilhati.domain.model.Lesson
 import br.com.trilhati.domain.model.Question
+import br.com.trilhati.domain.model.Track
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -44,6 +48,20 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
     private var lessonsById: Map<String, Lesson> = emptyMap()
     private var questionsById: Map<String, Question> = emptyMap()
 
+    /** Questões de provas anteriores do pacote embutido (lidas uma vez). */
+    private val examPool: List<Question> by lazy { examQuestions() }
+
+    /**
+     * Provas anteriores para o modo da aba Praticar, montadas com todas as questões do pacote de provas, inclusive as que
+     * ainda esperam o conteúdo da lição (como as dos Gerais).
+     */
+    val exams: List<PastExam> by lazy {
+        val generalUnits = Curriculum.units.filter { it.track == Track.General }.map { it.id }.toSet()
+        PastExams.from(examPool) { it.lessonId.substringBefore('l') in generalUnits }
+    }
+
+    fun exam(id: String): PastExam? = exams.firstOrNull { it.id == id }
+
     fun lesson(id: String): Lesson? = index().let { lessonsById[id] }
     fun question(id: String): Question? = index().let { questionsById[id] }
     fun questions(ids: Collection<String>): List<Question> = index().let { ids.mapNotNull { questionsById[it] } }
@@ -55,7 +73,9 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
 
     private fun reindex(course: List<CourseUnit>) {
         lessonsById = course.flatMap { it.lessons }.associateBy { it.id }
-        questionsById = lessonsById.values.flatMap { it.questions }.associateBy { it.id }
+        // As questões de prova que ainda não estão numa lição também entram: os erros da prova anterior vão para
+        // "Praticar erros", que busca as questões por id.
+        questionsById = examPool.associateBy { it.id } + lessonsById.values.flatMap { it.questions }.associateBy { it.id }
     }
 
     fun parse(name: String, text: String): PackLoad {
@@ -111,7 +131,7 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
             .mapNotNull { (load, isImported) -> (load as? PackLoad.Ok)?.let { Triple(it, isImported, it.pack.version) } }
             .groupBy { it.first.unit.id }
             .values.map { candidates -> candidates.maxWith(compareBy({ it.third }, { it.second })).first.unit }
-        return CourseAssembler.assemble(chosen, examQuestions()).also { reindex(it) }
+        return CourseAssembler.assemble(chosen, examPool).also { reindex(it) }
     }
 
     /** Questões de provas anteriores embutidas. Um pacote inválido é ignorado inteiro (com log). */

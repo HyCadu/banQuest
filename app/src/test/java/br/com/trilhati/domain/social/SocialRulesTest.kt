@@ -84,6 +84,20 @@ class SocialRulesTest {
         assertTrue(SessionLimits.accepts("practice", practiceXp, practiceAnswers, 16_000, today, today))
     }
 
+    @Test fun `prova anterior gabaritada da maior prova cabe nos limites e um XP a mais nao`() {
+        val answers = 87 // FGV Banestes 2018, a maior prova do pacote (o teste de integração confere com o pacote real)
+        var run = LessonRun.start(TestData.questions(answers), repeatMistakes = false)
+        while (run.current != null) run = LessonRun.answer(run, true, 2_000, 180_000)
+        val xp = run.xp + XpEngine.completionXp(run.perfect)
+        assertEquals(SessionLimits.examMaxXp(answers), xp)
+        assertTrue(SessionLimits.accepts("exam", xp, answers, answers * SessionLimits.MIN_MS_PER_ANSWER, today, today))
+        assertFalse(SessionLimits.accepts("exam", xp + 1, answers, answers * SessionLimits.MIN_MS_PER_ANSWER, today, today))
+        assertTrue(SessionLimits.accepts("exam", SessionLimits.examMaxXp(100), 100, 200_000, today, today))
+        assertFalse(SessionLimits.accepts("exam", 50, 101, 202_000, today, today))
+        // lição e treino continuam limitados a 30 respostas
+        assertFalse(SessionLimits.accepts("lesson", 50, 31, 62_000, today, today))
+    }
+
     @Test fun `primeira sincronizacao`() {
         assertEquals(InitialSync.UploadLocal, InitialSyncRule.decide(localHasProgress = true, cloudExists = false))
         assertEquals(InitialSync.UploadLocal, InitialSyncRule.decide(localHasProgress = false, cloudExists = false))
