@@ -91,12 +91,16 @@ class SessionViewModel @Inject constructor(
     private var examHeartSpent = false
     private var beginning = false
 
+    /** O treino dá XP e coração? Só o de erros vencidos (0.10.1); o treino livre e a revisão livre são só estudo. */
+    private var rewarded = true
+
     init {
         viewModelScope.launch { start() }
     }
 
     private suspend fun start() {
         _ui.value = SessionUi.Loading
+        rewarded = true
         settings = settingsRepo.settings.first()
         val today = clock.today()
         progress.ensureReady(today)
@@ -111,7 +115,7 @@ class SessionViewModel @Inject constructor(
         }
         val usesHearts = source == SessionSource.Lesson && !settings.noLives
         if (usesHearts && heartsNow.halves == 0) {
-            _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false)
+            _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false, dueErrors = snap.dueCount)
             return
         }
         heartHalves = if (usesHearts) heartsNow.halves else null
@@ -133,11 +137,15 @@ class SessionViewModel @Inject constructor(
                     .groupBy { it.conceptId }.values.map { it.first().id }.toSet()
             }
             SessionSource.Errors -> {
-                title = "Praticar erros"
-                val ids = progress.dueIds(today, LessonRun.SIZE).ifEmpty { progress.bankIds(LessonRun.SIZE) }
-                questions = content.questions(ids).shuffled(random)
+                // Com erros vencidos, é a revisão espaçada (dá XP e coração). Sem nenhum vencido, os mais antigos viram
+                // treino livre: dá para estudar, mas sem recompensa (senão dava para repetir sem fim).
+                val due = progress.dueIds(today, LessonRun.SIZE)
+                rewarded = due.isNotEmpty()
+                title = if (rewarded) "Praticar erros" else "Treino livre"
+                questions = content.questions(due.ifEmpty { progress.bankIds(LessonRun.SIZE) }).shuffled(random)
             }
             SessionSource.Review -> {
+                rewarded = false
                 title = "Revisão livre"
                 val done = snap.lessonProgress.values.filter { it.completed }.map { it.lessonId }.toSet()
                 val pool = done.mapNotNull(content::lesson).flatMap { it.questions }
@@ -152,7 +160,7 @@ class SessionViewModel @Inject constructor(
             )
             return
         }
-        run = LessonRun.start(questions)
+        run = LessonRun.start(questions, awardsXp = rewarded)
         enterQuestion()
     }
 
@@ -261,7 +269,7 @@ class SessionViewModel @Inject constructor(
             val halves = HeartsEngine.regen(snap.stats.hearts, now).halves
             if (!ExamRules.canOpen(halves, settings.noLives)) {
                 beginning = false
-                _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false, forExam = true)
+                _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, now), endedMidLesson = false, forExam = true, dueErrors = snap.dueCount)
                 return@launch
             }
             val cost = ExamRules.openCostHalves(settings.noLives)
@@ -394,7 +402,7 @@ class SessionViewModel @Inject constructor(
         when {
             outOfHearts -> viewModelScope.launch {
                 val snap = progress.snapshot(clock.today()).first()
-                _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, clock.millis()), endedMidLesson = true)
+                _ui.value = SessionUi.NoHearts(snap.stats.gems, HeartsEngine.msUntilNext(snap.stats.hearts, clock.millis()), endedMidLesson = true, dueErrors = snap.dueCount)
             }
             r.finished -> finish()
             else -> enterQuestion()
@@ -412,7 +420,7 @@ class SessionViewModel @Inject constructor(
             val kind = when (source) {
                 SessionSource.Lesson -> SessionKind.Lesson
                 SessionSource.Exam -> SessionKind.Exam
-                SessionSource.Errors, SessionSource.Review -> SessionKind.Practice
+                SessionSource.Errors, SessionSource.Review -> if (rewarded) SessionKind.Practice else SessionKind.FreeReview
             }
             val lessonOnly = lessonId.takeIf { source == SessionSource.Lesson }
             val unitId = lessonOnly?.let { content.lesson(it)?.unitId }
@@ -423,7 +431,7 @@ class SessionViewModel @Inject constructor(
             // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
             syncScheduler.syncSoon()
             sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
-            _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig)
+            _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig, rewarded = rewarded)
         }
     }
 

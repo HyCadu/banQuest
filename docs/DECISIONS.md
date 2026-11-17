@@ -525,3 +525,28 @@ possível, uma opção para silenciar as notificações durante a prova.
 6. **Limite conhecido:** se o Android encerrar o app no meio de uma prova longa (por exemplo, com o app muito tempo em
    segundo plano), a prova recomeça do aviso e o coração gasto não volta. Guardar a prova em andamento fica para
    depois, se fizer falta.
+
+## Treino de erros sem farm (0.10.1, 17/11/2026) — decisão do dono
+Um amigo do dono achou o bug: na aba Praticar dava para repetir o treino sem fim. Ele também estranhou que os erros
+continuavam lá depois de acertar.
+1. **Por que acontecia:**
+   - **Erro que não sai:** acertar uma vez só reagenda a questão. Ela sai dos "erros guardados" depois de acertar as 4
+     revisões (1, 3, 7 e 14 dias). Isso é de propósito, mas a tela não explicava.
+   - **Treinar os mais antigos:** sem nada vencido, o botão repetia as mesmas questões. Cada rodada dava até 120 XP e
+     +1 coração, e cada acerto adiantava a revisão espaçada mesmo fora do prazo. Em 4 rodadas seguidas a questão "se
+     formava" em minutos, em vez de 25 dias.
+   - **Revisão livre:** também dava XP e +1 coração a cada rodada, sem limite.
+   - **Efeito:** XP infinito no ranking e corações infinitos (lição de graça).
+2. **Escolha do dono: "só vencidas valem".**
+   - XP e o coração do treino vêm só da revisão das questões vencidas (`SessionKind.Practice`).
+   - O treino sem nada vencido ("Treino livre") e a "Revisão livre" continuam liberados para estudar, mas viram
+     `SessionKind.FreeReview`: não dão XP, coração, missão nem meta, e não vão para o ranking. As respostas valem 0
+     XP já na hora (`LessonRun.start(awardsXp = false)`).
+   - Errar no treino livre ainda volta o cartão para o começo.
+3. **Revisão espaçada de verdade:** acertar antes do dia da revisão não adianta o cartão (`SrsEngine.onAnswer`). Vale
+   em qualquer sessão (lição, treino e prova). A conquista de revisão conta só as revisões no dia certo.
+4. **Telas:**
+   - A aba Praticar explica que cada erro sai depois de 4 revisões certas, em dias diferentes.
+   - Os botões dizem "(sem XP)" quando não há recompensa, e o resultado do treino livre diz por quê.
+   - A tela "sem corações" só oferece "Revisar erros vencidos (ganhe 1 coração)" quando há erro vencido. Os erros de
+     hoje só vencem amanhã, então, no dia em que os corações acabam, sobram esperar ou recarregar com gemas.

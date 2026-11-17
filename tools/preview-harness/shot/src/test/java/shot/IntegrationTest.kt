@@ -207,19 +207,60 @@ class IntegrationTest {
         assertEquals(3, s.stats.hearts.hearts) // 2 erros de primeira em questão de prova = 2 corações
         assertEquals(2, s.errorBankSize)
         assertEquals(0, s.dueCount) // revisão só amanhã
-        // Treino de erros: usa o banco mesmo sem vencidas
+        // Amanhã os 2 erros vencem: a revisão deles devolve 1 coração e dá XP.
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(4) } // em 24 h os corações voltaram; fica com 3
+        assertEquals(2, snap().dueCount)
+        val xpBefore = snap().stats.totalXp
         val practice = play(newVm("errors"))
+        assertTrue(practice.rewarded)
         assertEquals(2, practice.run.records.size)
         s = snap()
         assertEquals(4, s.stats.hearts.hearts)
         assertEquals(1, s.stats.practiceSessions)
-        // acertou no treino: a revisão sobe para o intervalo de 3 dias. Amanhã nada vence; em 3 dias, vence.
-        clock.instant = clock.instant.plusSeconds(24 * 3600)
-        runBlocking { progress.ensureReady(today()) }
-        assertEquals(0, snap().dueCount)
+        assertTrue(s.stats.totalXp > xpBefore)
+        // acertou na revisão: ela sobe para o intervalo de 3 dias. Amanhã nada vence; em 3 dias, vence.
+        assertEquals(0, s.dueCount)
+        assertEquals(2, s.errorBankSize) // continua guardado até acertar as 4 revisões
         clock.instant = clock.instant.plusSeconds(2 * 24 * 3600)
         runBlocking { progress.ensureReady(today()) }
+        assertEquals(0, snap().dueCount)
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()) }
         assertEquals(2, snap().dueCount)
+    }
+
+    /** Bug relatado por um amigo do dono (0.10.1): dava para repetir o treino sem fim e ganhar XP e corações. */
+    @Test fun treinoForaDoPrazoERevisaoLivreNaoDaoXpNemCoracaoENaoAdiantamARevisao() {
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(4) } // 3 corações
+        play(newVm("lesson", "u1l2"), wrongOnFirstExam = 2) // 2 erros (vencem amanhã) = 1 coração
+        val before = snap()
+        val cards = before.questionStats.values.filter { it.card.active }.associate { it.questionId to it.card }
+        assertEquals(2, cards.size)
+        repeat(3) { round ->
+            val free = play(newVm("errors")) // nada vencido: treino livre com os mais antigos
+            assertFalse("rodada $round", free.rewarded)
+            assertEquals("Treino livre", free.title)
+            assertEquals(0, free.processed.summary.totalXp)
+            assertTrue(free.run.records.all { it.xp == 0 })
+        }
+        val review = play(newVm("review"))
+        assertFalse(review.rewarded)
+        assertEquals(0, review.processed.summary.totalXp)
+        val after = snap()
+        assertEquals(before.stats.totalXp, after.stats.totalXp)
+        assertEquals(before.stats.hearts.halves, after.stats.hearts.halves) // nenhum coração ganho
+        assertEquals(before.stats.practiceSessions, after.stats.practiceSessions)
+        assertEquals(cards, after.questionStats.filterKeys { it in cards }.mapValues { it.value.card }) // revisão não adiantou
+        assertEquals(1, runBlocking { db.progressDao().outbox(10) }.size) // só a lição vai para o ranking
+        // Sem erro vencido, a tela "sem corações" não oferece o treino que não devolveria coração.
+        runBlocking { progress.loseHeart(10) }
+        val blocked = newVm("lesson", "u1l1").let { vm -> await("sem corações") { vm.ui.value as? SessionUi.NoHearts } }
+        assertEquals(0, blocked.dueErrors)
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(10) } // em 24 h os corações voltariam
+        val tomorrow = newVm("lesson", "u1l1").let { vm -> await("sem corações") { vm.ui.value as? SessionUi.NoHearts } }
+        assertEquals(2, tomorrow.dueErrors)
     }
 
     @Test fun semCoracoesNaoComecaLicaoMasTreinoFunciona() {
@@ -503,7 +544,8 @@ class IntegrationTest {
         assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_PRIORITY, nm.currentInterruptionFilter)
         play(vm)
         assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALL, nm.currentInterruptionFilter)
-        assertTrue(runBlocking { settings.settings.first() }.examSilence) // a escolha fica lembrada
+        // a escolha fica lembrada (a gravação no DataStore é assíncrona: espera ela terminar)
+        await("interruptor gravado") { runBlocking { settings.settings.first() }.examSilence.takeIf { it } }
     }
 
     @Test fun silencioNaoMexeQuandoONaoPerturbeJaEstavaLigado() {
@@ -536,6 +578,8 @@ class IntegrationTest {
     @Test fun treinoTambemEntraNaFilaComoPractice() {
         runBlocking { progress.ensureReady(today()) }
         play(newVm("lesson", "u1l2"), wrongOnFirst = 1)
+        clock.instant = clock.instant.plusSeconds(24 * 3600) // o erro vence amanhã
+        runBlocking { progress.ensureReady(today()) }
         play(newVm("errors"))
         val kinds = runBlocking { db.progressDao().outbox(10) }.map { it.kind }.sorted()
         assertEquals(listOf("lesson", "practice"), kinds)

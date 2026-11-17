@@ -180,12 +180,13 @@ class ProgressRepository @Inject constructor(
         dao.upsertQuests(s.todayQuests.map { it.toEntity() })
         dao.upsertAchievements(out.summary.newAchievements.map { AchievementEntity(it.id, now) })
         // Fila para o servidor: alimenta o ranking da semana e a ofensiva em dupla (enviada pelo SyncWorker).
-        dao.insertOutbox(
+        // O treino sem recompensa não tem XP nem conta para a ofensiva: não vai para o servidor.
+        if (result.kind != br.com.trilhati.domain.progress.SessionKind.FreeReview) dao.insertOutbox(
             OutboxSessionEntity(
                 id = java.util.UUID.randomUUID().toString(), day = today.toEpochDay(),
                 kind = when (result.kind) {
                     br.com.trilhati.domain.progress.SessionKind.Lesson -> "lesson"
-                    br.com.trilhati.domain.progress.SessionKind.Practice -> "practice"
+                    br.com.trilhati.domain.progress.SessionKind.Practice, br.com.trilhati.domain.progress.SessionKind.FreeReview -> "practice"
                     br.com.trilhati.domain.progress.SessionKind.Exam -> "exam"
                 },
                 xp = out.summary.totalXp, answers = result.records.size, durationMs = result.records.sumOf { it.timeMs },

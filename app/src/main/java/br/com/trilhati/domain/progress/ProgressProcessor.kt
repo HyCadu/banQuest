@@ -13,10 +13,14 @@ import br.com.trilhati.domain.streak.StreakEngine
 import java.time.LocalDate
 
 /**
- * Tipo da sessão. [Exam] é a prova anterior da aba Praticar: conta como estudo do dia (ofensiva, meta e gemas de uma
- * lição), tem o bônus de conclusão e não devolve coração (abrir a prova já custou um).
+ * Tipo da sessão.
+ * - [Practice]: treino de erros **vencidos** (revisão espaçada). Dá XP e devolve 1 coração.
+ * - [Exam]: prova anterior da aba Praticar. Conta como estudo do dia (ofensiva, meta e gemas de uma lição), tem o bônus de
+ *   conclusão e não devolve coração (abrir a prova já custou um).
+ * - [FreeReview]: treino sem nada vencido ("Treinar os mais antigos") e revisão livre. Serve para estudar, mas não dá
+ *   XP, coração, missão, meta nem ranking (0.10.1: antes dava para repetir sem fim e ganhar XP e corações).
  */
-enum class SessionKind { Lesson, Practice, Exam }
+enum class SessionKind { Lesson, Practice, Exam, FreeReview }
 
 /** Resumo de uma sessão terminada, vindo da tela de lição. */
 data class SessionResult(
@@ -67,9 +71,11 @@ object ProgressProcessor {
         val firstTry = result.records.filter { !it.retry }
         val isLesson = result.kind == SessionKind.Lesson
         val isPractice = result.kind == SessionKind.Practice
+        // Treino sem nada vencido e revisão livre: só estudo, sem recompensa nenhuma.
+        val rewarded = result.kind != SessionKind.FreeReview
         // Lição e prova anterior concluídas contam como "estudo do dia" (ofensiva, meta, gemas e bônus de conclusão).
         val completesStudy = isLesson || result.kind == SessionKind.Exam
-        val xpFromAnswers = result.records.sumOf { it.xp }
+        val xpFromAnswers = if (rewarded) result.records.sumOf { it.xp } else 0
         val xpBonus = if (completesStudy) XpEngine.completionXp(result.perfect) else 0
         val xpTotal = xpFromAnswers + xpBonus
         val totalTime = result.records.sumOf { it.timeMs }
@@ -82,7 +88,8 @@ object ProgressProcessor {
         for (r in firstTry) {
             val q = r.question
             val before = questionStats[q.id] ?: QuestionStat(q.id, q.lessonId)
-            if (result.kind == SessionKind.Practice && r.correct && before.card.active) reviewCorrect++
+            // Conquista "revisão de erros": só conta a revisão no dia certo (cartão vencido).
+            if (isPractice && r.correct && SrsEngine.isDue(before.card, today)) reviewCorrect++
             questionStats[q.id] = before.copy(
                 times = before.times + 1,
                 correct = before.correct + if (r.correct) 1 else 0,
@@ -117,14 +124,14 @@ object ProgressProcessor {
             goalMet = state.todayLog.goalMet || goalJustMet,
         )
 
-        // Missões do dia.
+        // Missões do dia (o treino sem recompensa não avança nenhuma).
         val event = QuestEvent(
             xp = xpTotal,
             lessons = if (isLesson) 1 else 0,
-            bestCombo = result.bestCombo,
+            bestCombo = if (rewarded) result.bestCombo else 0,
             pacedLessons = if (paced) 1 else 0,
             perfectLessons = if (isLesson && result.perfect) 1 else 0,
-            correctAnswers = result.records.count { it.correct },
+            correctAnswers = if (rewarded) result.records.count { it.correct } else 0,
             practiceSessions = if (isPractice) 1 else 0,
         )
         val completedQuests = mutableListOf<String>()
@@ -138,7 +145,7 @@ object ProgressProcessor {
         // Estatísticas e recompensas.
         val gemsEarned = (if (completesStudy) ShopEngine.LESSON_GEMS + (if (result.perfect) ShopEngine.PERFECT_GEMS else 0) else 0) +
             if (goalJustMet) ShopEngine.DAILY_GOAL_GEMS else 0
-        // Só o treino de erros devolve coração (a prova anterior não: abrir já custou um).
+        // Só o treino de erros vencidos devolve coração (a prova anterior não: abrir já custou um; o treino livre também não).
         val hearts = if (isPractice) HeartsEngine.gain(state.stats.hearts, 1, nowMs) else state.stats.hearts
         var stats = state.stats.copy(
             totalXp = state.stats.totalXp + xpTotal,

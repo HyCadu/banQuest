@@ -60,7 +60,14 @@ sealed interface SessionUi {
     data class Empty(val title: String, val message: String) : SessionUi
 
     /** Sem corações: não dá para começar (ou continuar) uma lição, ou abrir uma prova anterior ([forExam]). */
-    data class NoHearts(val gems: Int, val msUntilNext: Long?, val endedMidLesson: Boolean, val forExam: Boolean = false) : SessionUi
+    data class NoHearts(
+        val gems: Int,
+        val msUntilNext: Long?,
+        val endedMidLesson: Boolean,
+        val forExam: Boolean = false,
+        /** Erros vencidos agora: só com eles "Praticar erros" devolve um coração (0.10.1). */
+        val dueErrors: Int = 0,
+    ) : SessionUi
 
     /**
      * Aviso antes da prova anterior: as regras (abrir gasta 1 coração, errar não tira coração, XP só ao terminar), a
@@ -133,5 +140,7 @@ sealed interface SessionUi {
         val processed: ProcessedSession,
         val run: LessonRunState,
         val pace: PaceConfig,
+        /** `false` no treino livre e na revisão livre: só estudo, sem XP nem coração. */
+        val rewarded: Boolean = true,
     ) : SessionUi
 }

@@ -76,7 +76,9 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
                 "Como funciona",
                 "Toda questão que você erra volta para revisão depois de ${SrsEngine.INTERVALS_DAYS[0]}, " +
                     "${SrsEngine.INTERVALS_DAYS[1]}, ${SrsEngine.INTERVALS_DAYS[2]} e ${SrsEngine.INTERVALS_DAYS[3]} dias, se você for acertando. " +
-                    "Errou de novo? O ciclo recomeça. Terminar um treino devolve 1 coração.",
+                    "Ela só sai dos erros guardados depois de acertar as ${SrsEngine.INTERVALS_DAYS.size} revisões, cada uma no seu dia. " +
+                    "Errou de novo? O ciclo recomeça. XP e 1 coração vêm só da revisão das vencidas; treinar antes do dia " +
+                    "e a revisão livre servem para estudar, sem XP.",
             )
         }
         MascotSays(
@@ -97,12 +99,18 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
             Counter("Vencidas", due, GameIcon.Clock)
             Counter("Erros guardados", bank, GameIcon.Target)
         }
+        if (bank > 0) {
+            Text(
+                "Cada erro sai daqui depois de ${SrsEngine.INTERVALS_DAYS.size} revisões certas, em dias diferentes.",
+                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
+            )
+        }
         when {
             due > 0 -> ChunkyButton("Treinar erros ($due)", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
-            bank > 0 -> ChunkyButton("Treinar os mais antigos", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
+            bank > 0 -> ChunkyButton("Treinar os mais antigos (sem XP)", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
         }
         ChunkyButton(
-            "Revisão livre", actions.openReview, Modifier.fillMaxWidth(), ChunkyStyle.Secondary,
+            "Revisão livre (sem XP)", actions.openReview, Modifier.fillMaxWidth(), ChunkyStyle.Secondary,
             enabled = state.hasAnyCompletedLesson,
         )
         if (!state.hasAnyCompletedLesson) {
