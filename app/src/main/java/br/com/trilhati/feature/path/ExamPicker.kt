@@ -54,7 +54,6 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.domain.exam.TargetExam
-import br.com.trilhati.domain.model.CourseUnit
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
@@ -153,16 +152,14 @@ fun ExamOptionCard(exam: TargetExam, selected: Boolean, today: LocalDate, onClic
 }
 
 /**
- * Painel de provas que desce do chip, com a trilha escurecida atrás. Tocar numa prova troca a trilha e fecha; tocar fora
- * ou voltar também fecha. Traz o que o antigo diálogo do relógio dizia: a data, o formato e o ritmo para fechar a trilha.
+ * Painel de provas que desce do chip, com a trilha escurecida atrás: só os cartões das provas (data, dias e formato), sem
+ * texto a mais (pedido do dono). Tocar numa prova troca a trilha e fecha; tocar fora ou voltar também fecha.
  */
 @Composable
 fun ExamPanel(
     visible: Boolean,
     selected: TargetExam,
     today: LocalDate,
-    course: List<CourseUnit>,
-    completedLessons: Set<String>,
     onPick: (TargetExam) -> Unit,
     onDismiss: () -> Unit,
     topOffset: Dp,
@@ -197,31 +194,10 @@ fun ExamPanel(
                             ExamOptionCard(exam, exam == selected, today, { onPick(exam) }, Modifier.fillMaxWidth())
                         }
                     }
-                    Text(
-                        "Cada prova tem a sua trilha de Específicos. Os Gerais são os mesmos nas duas, e o que você já estudou neles vale para as duas.",
-                        style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
-                    )
-                    PaceLine(selected, today, course, completedLessons)
                 }
             }
         }
     }
-}
-
-/** Ritmo para fechar a trilha antes da prova (o texto do antigo diálogo do relógio). */
-@Composable
-private fun PaceLine(exam: TargetExam, today: LocalDate, course: List<CourseUnit>, completedLessons: Set<String>) {
-    val lessons = course.flatMap { it.lessons }
-    val done = lessons.count { it.id in completedLessons }
-    val ready = lessons.count { it.hasContent }
-    val days = exam.daysLeft(today)
-    val remaining = (lessons.size - done).coerceAtLeast(0)
-    val perWeek = if (days <= 0) remaining else kotlin.math.ceil(remaining * 7.0 / days).toInt()
-    Text(
-        "Prova em ${exam.date.format(DATE)} (domingo), de manhã. Você concluiu $done de ${lessons.size} lições desta trilha " +
-            "($ready já têm questões). Para fechar antes da prova: cerca de $perWeek ${if (perWeek == 1) "lição" else "lições"} por semana.",
-        style = MaterialTheme.typography.bodySmall, color = Trilha.colors.ink,
-    )
 }
 
 /**

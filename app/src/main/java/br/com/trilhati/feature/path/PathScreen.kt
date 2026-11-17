@@ -206,8 +206,6 @@ fun PathContent(
         visible = examPanel,
         selected = state.targetExam,
         today = state.today,
-        course = state.course,
-        completedLessons = state.snapshot.lessonProgress.filterValues { it.completed }.keys,
         onPick = { exam ->
             examPanel = false
             if (exam != state.targetExam) actions.setTargetExam(exam)

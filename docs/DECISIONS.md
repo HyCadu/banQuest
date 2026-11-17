@@ -601,8 +601,8 @@ anterior, item 4), e depois o Guia de Conduta Ética do Banestes.
 O dono quis que a namorada, que faz a prova de Técnico Bancário do Banestes (FCC, 24/01/2027), usasse o mesmo app. Ele
 aprovou um mockup e respondeu as dúvidas antes do código.
 1. **Um app só, com a prova escolhida num chip no topo da Trilha** (mecânica de troca de curso; visual nosso). O chip
-   mostra o emblema da prova e os dias que faltam; tocar abre um painel com as duas provas (data, dias, formato) e o ritmo
-   para fechar a trilha. Separar em dois apps foi descartado: dois APKs, dois avisos de versão, Gerais duplicados e
+   mostra o emblema da prova e os dias que faltam; tocar abre um painel só com os cartões das duas provas (data, dias,
+   formato); o dono pediu para tirar os textos extras. Separar em dois apps foi descartado: dois APKs, dois avisos de versão, Gerais duplicados e
    ranking dividido.
 2. **Cabeçalho mais limpo:** o chip absorveu o relógio da contagem regressiva, e as gemas saíram do topo (o saldo fica na
    Loja). Ficaram prova, ofensiva e corações.
