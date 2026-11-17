@@ -149,20 +149,25 @@ class IntegrationTest {
 
     @Test fun conteudoCarregaDosAssets() {
         assertEquals(14, content.course.size) // 10 Específicos + 4 Gerais
-        // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 26 de provas anteriores.
+        // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 36 de provas anteriores
+        // (26 da FCC e da FGV, 6 da IDECAN 2012 e 4 do Instituto Access 2024).
         val u1 = content.course[0].lessons.flatMap { it.questions }
-        assertEquals(196, u1.size)
-        assertEquals(26, u1.count { it.isFromExam })
+        assertEquals(206, u1.size)
+        assertEquals(36, u1.count { it.isFromExam })
+        // U2 (154 + 35 oficiais) e G1 (168 + 55 oficiais), com as provas de 2012 e 2024 da 0.11.0.
+        assertEquals(189, content.course[1].lessons.sumOf { it.questions.size })
+        assertEquals(223, content.course[10].lessons.sumOf { it.questions.size })
         // Nas lições por conceito, toda questão de prova está ligada a um conceito da lição: sem isso o planejador
         // nunca a sorteia (aconteceu com as 20 oficiais das lições 2 a 5 na 0.8.1).
-        content.course[0].lessons.forEach { l ->
+        content.course.flatMap { it.lessons }.forEach { l ->
             val ids = l.concepts.map { it.id }.toSet()
             if (ids.isNotEmpty()) l.questions.filter { it.isFromExam }.forEach { q -> assertTrue("${q.id} sem conceito da ${l.id}", q.conceptId in ids) }
         }
         assertNotNull(content.lesson("u1l3")); assertNotNull(content.question("u1l1q01"))
+        assertNotNull(content.question("u2l4q05")); assertNotNull(content.question("u11l2q01"))
         assertEquals("FGV · Banestes 2021 · questão 48", content.question("fgv-banestes-2021-q48")?.ref?.label)
         // Unidade sem pacote continua "chegando", mesmo tendo questões de prova esperando por ela.
-        assertFalse(content.lesson("u2l1")!!.hasContent)
+        assertFalse(content.lesson("u3l1")!!.hasContent)
     }
 
     @Test fun licaoPerfeitaDeTodosOsTiposGravaTudo() {
@@ -308,7 +313,9 @@ class IntegrationTest {
         assertEquals(1, TrailEngine.completedUnitCount(content.course, s.lessonProgress))
         assertEquals(60, runBlocking { progress.claimUnitChest("u1") })
         assertNull(runBlocking { progress.claimUnitChest("u1") })
-        assertEquals(LessonStatus.Locked, TrailEngine.statuses(content.course, s.lessonProgress)["u2l1"]) // u2 sem conteúdo
+        val st = TrailEngine.statuses(content.course, s.lessonProgress)
+        assertEquals(LessonStatus.Available, st["u2l1"]) // a U2 tem pacote desde a 0.10.0
+        assertEquals(LessonStatus.Locked, st["u3l1"]) // u3 sem conteúdo
     }
 
     @Test fun ofensivaPerdidaEConsomeCongelamento() {
@@ -430,16 +437,21 @@ class IntegrationTest {
 
     @Test fun provasDoPacoteViramProvasAnterioresQueCabemNoServidor() {
         val exams = content.exams
-        assertEquals(listOf("fgv-banestes-2021", "fgv-banestes-2018", "fcc-prefeitura-de-teresina-2016", "fcc-dpe-rr-2015"), exams.map { it.id })
-        assertEquals(listOf(57, 87, 35, 26), exams.map { it.size })
+        assertEquals(
+            listOf("instituto-access-banestes-2024", "fgv-banestes-2021", "fgv-banestes-2018", "fcc-prefeitura-de-teresina-2016", "fcc-dpe-rr-2015", "idecan-banestes-2012"),
+            exams.map { it.id },
+        )
+        assertEquals(listOf(74, 57, 87, 35, 26, 47), exams.map { it.size })
         exams.forEach { e ->
             assertTrue("${e.id} cabe no limite do servidor", e.size <= br.com.trilhati.domain.social.SessionLimits.EXAM_MAX_ANSWERS)
             assertEquals(e.size, e.specific.size + e.general.size)
             assertTrue(e.questions(br.com.trilhati.domain.exam.ExamPart.Full).zipWithNext().all { (a, b) -> a.ref!!.number < b.ref!!.number })
         }
-        assertEquals(37 to 50, exams[1].specific.size to exams[1].general.size)
-        assertEquals(3, exams[1].parts.size)
-        assertEquals(1, exams[3].parts.size)
+        assertEquals(37 to 50, exams[2].specific.size to exams[2].general.size)
+        assertEquals(29 to 45, exams[0].specific.size to exams[0].general.size) // Banestes 2024: 4 alternativas
+        assertEquals(3, exams[2].parts.size)
+        assertEquals(1, exams[4].parts.size)
+        assertTrue(exams[0].questions(br.com.trilhati.domain.exam.ExamPart.Full).all { it.options.size == 4 })
     }
 
     @Test fun provaAvisaAntesGastaUmCoracaoAoComecarNaoTiraCoracaoPorErroEDaXpSoAoTerminar() {
@@ -613,17 +625,17 @@ class IntegrationTest {
     }
 
     @Test fun importarPacoteDeConteudoEntraNaTrilha() {
-        // Simula um pacote da Unidade 2 trocando os ids do pacote da Unidade 1.
+        // Simula um pacote da Unidade 3 (ainda sem pacote embutido) trocando os ids do pacote da Unidade 1.
         val u1 = java.io.File("../../../app/src/main/assets/content/u1-banco-de-dados.json").readText()
-        val u2 = u1.replace("\"u1l", "\"u2l").replace("\"id\": \"u1\"", "\"id\": \"u2\"").replace("\"order\": 1,\n  \"title\": \"Banco de dados\"", "\"order\": 2,\n  \"title\": \"Programação (teste)\"")
-            .replace("\"pack\": \"u1-banco-de-dados\"", "\"pack\": \"u2-teste\"")
-        val result = content.importPack(u2)
+        val u3 = u1.replace("\"u1l", "\"u3l").replace("\"id\": \"u1\"", "\"id\": \"u3\"").replace("\"order\": 1,\n  \"title\": \"Banco de dados\"", "\"order\": 3,\n  \"title\": \"Engenharia (teste)\"")
+            .replace("\"pack\": \"u1-banco-de-dados\"", "\"pack\": \"u3-teste\"")
+        val result = content.importPack(u3)
         assertTrue("$result", result is br.com.trilhati.data.content.PackLoad.Ok)
-        assertTrue(content.course[1].hasContent)
+        assertTrue(content.course[2].hasContent)
         assertEquals(1, content.importedPacks().size)
         assertTrue(content.importPack("{ quebrado") is br.com.trilhati.data.content.PackLoad.Invalid)
         content.removeImported(content.importedPacks().first().fileName)
-        assertFalse(content.course[1].hasContent)
+        assertFalse(content.course[2].hasContent)
     }
 
     @Test fun notificacaoDeLembreteAparece() {

@@ -6,9 +6,11 @@ com cronômetro de 3:00 por questão.
 
 - **Baixar e conhecer:** https://hycadu.github.io/banquest/
 - **Estado atual:**
-  - Unidade 1 (Banco de Dados) completa, no formato por conceitos;
-  - questões de provas anteriores reais (FGV e FCC) dentro das lições;
-  - as outras unidades e os Conhecimentos Gerais aguardam conteúdo.
+  - Unidade 1 (Banco de Dados), Unidade 2 (Programação e OO) e G1 (Língua Portuguesa) completas, no formato por
+    conceitos;
+  - questões de provas anteriores reais (FGV, FCC, IDECAN e Instituto Access) dentro das lições e inteiras na aba
+    Praticar;
+  - as unidades 3 a 10 e os Gerais G2 a G4 aguardam conteúdo.
 
 ## Como colaborar
 
