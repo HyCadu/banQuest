@@ -54,6 +54,11 @@ O link precisa ser `https`. Link `http` ou com espaço é recusado pelo banco e 
 
 ## E o site de divulgação?
 
+O site fica em **https://hycadu.github.io/banquest/**. O workflow `.github/workflows/site.yml` publica
+`site-banquest/dist` no GitHub Pages sempre que algo nessa pasta muda na `main`. Uma vez só, antes da primeira
+publicação: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Para publicar de novo sem mudar nada:
+**Actions → Site no GitHub Pages → Run workflow**.
+
 O site (`site-banquest/dist/`) lê a mesma função `latest_release()` ao abrir e troca sozinho todos os botões "Baixar"
 pelo `apk_url` da versão mais nova. Publicando como acima, o site já baixa a versão nova, sem editar nada.
 - O link só é aceito se estiver neste Supabase, no bucket público `apk`, com `https` e terminando em `.apk`. Link de
