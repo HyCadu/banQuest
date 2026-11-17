@@ -13,7 +13,7 @@ LESSONS = {f"u{u}l{l}" for u, n in enumerate(LESSONS_PER_UNIT, 1) for l in range
 TYPES = {"mcq5", "case", "code_output"}          # questões reais entram só nesses tipos (transcrição fiel)
 STYLES = {"conceitual", "literal", "caso_pratico", "excecao"}
 FLAGS = {"versao_antiga", "versao_citada_anterior", "produto_especifico", "fora_do_edital", "depende_de_figura"}
-BANCAS = {"FCC", "FGV", "IDECAN", "CESPE", "CEBRASPE", "VUNESP", "CESGRANRIO"}
+BANCAS = {"FCC", "FGV", "IDECAN", "Instituto Access", "CESPE", "CEBRASPE", "VUNESP", "CESGRANRIO"}
 JUNK = re.compile(r"pcimark|pciconcursos|www\.|Tipo 1 – Cor|Página \d+|[-]|\s__\s*$|\w-\n\w")
 
 def main(folder: Path) -> int:
@@ -42,10 +42,12 @@ def main(folder: Path) -> int:
             if q.get("style") not in STYLES: err(f"style inválido: {q.get('style')}")
             if q.get("difficulty") not in (1, 2, 3): err("difficulty deve ser 1, 2 ou 3")
             opts = q.get("options", [])
-            if len(opts) != 5 or any(not str(o).strip() for o in opts): err("precisa de 5 alternativas não vazias")
+            # 5 alternativas (FCC, FGV, IDECAN) ou 4 (Banestes 2024): a questão fica como foi aplicada.
+            if len(opts) not in (4, 5) or any(not str(o).strip() for o in opts): err("precisa de 4 ou 5 alternativas não vazias")
             if len({o.strip().lower() for o in opts}) != len(opts): err("alternativas repetidas")
             if any(len(o) > 350 for o in opts): err("alternativa longa demais (engoliu texto vizinho do PDF?)")
-            if q.get("answer_letter") not in list("ABCDE") or "ABCDE".index(q["answer_letter"]) != q.get("answer"):
+            letters = "ABCDE"[:len(opts)]
+            if q.get("answer_letter") not in list(letters) or letters.index(q["answer_letter"]) != q.get("answer"):
                 err("answer e answer_letter não batem")
             if len(q.get("stem", "").strip()) < 25: err("enunciado curto demais (faltou contexto?)")
             if q.get("type") == "code_output" and not q.get("code"): err('code_output exige "code"')

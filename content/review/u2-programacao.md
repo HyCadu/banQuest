@@ -72,8 +72,9 @@ nunca as sorteia). Algumas cobram assuntos que o edital não lista e foram para 
 
 Além das 22 oficiais, foram lidas as provas do Banestes de 2012 (IDECAN, arquivo `banestes2011_prova.pdf`) e 2024
 (4 alternativas por questão) para o mesmo cargo. Elas cobram leitura de código Java e C/C++, polimorfismo, herança e
-abstração, e acesso a banco com parâmetros em Python, temas que este pacote cobre. **As duas não foram transcritas para
-`content/provas`**: os PDFs vieram sem gabarito.
+abstração, e acesso a banco com parâmetros em Python, temas que este pacote cobre. Com os gabaritos enviados depois, as
+duas foram transcritas na 0.11.0 (`content/provas/idecan-banestes-2012.json` e `access-banestes-2024.json`), e as
+questões delas que caem na U2 entraram ligadas aos conceitos desta unidade.
 
 ## Para o dono olhar com atenção
 

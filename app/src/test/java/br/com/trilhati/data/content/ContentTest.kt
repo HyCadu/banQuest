@@ -33,7 +33,8 @@ class ContentTest {
         val exam = parseProvas().toDomain()
         val course = CourseAssembler.assemble(packs.mapNotNull { it.toDomain() }, exam)
         // U2 e G1 (u11) chegaram na 0.10.0; as oficiais que esperavam por elas entram ligadas a um conceito da lição.
-        listOf("u2" to 22, "u11" to 35).forEach { (id, official) ->
+        // 0.11.0: + IDECAN Banestes 2012 e Instituto Access Banestes 2024 (U2: 22 + 13; G1: 35 + 20).
+        listOf("u2" to 35, "u11" to 55).forEach { (id, official) ->
             val unit = course.first { it.id == id }
             assertTrue(unit.lessons.all { it.hasContent && it.concepts.isNotEmpty() })
             assertEquals(id, official, unit.lessons.sumOf { l -> l.questions.count { it.isFromExam } })
@@ -198,6 +199,17 @@ class ContentTest {
         val u2Exam = exam.count { it.lessonId.startsWith("u2l") }
         assertTrue(u2Exam > 0)
         assertEquals(u2Exam, course[1].lessons.sumOf { l -> l.questions.count { it.isFromExam } })
+    }
+
+    @Test fun `questao de prova real aceita 4 alternativas, e a de IA continua exigindo 5`() {
+        val pack = parseProvas()
+        val q = pack.questions.first { it.type == "mcq5" && it.answer < 4 }
+        assertEquals(emptyList<String>(), ContentValidator.validate(pack.copy(questions = listOf(q.copy(options = q.options.take(4))))))
+        assertTrue(ContentValidator.validate(pack.copy(questions = listOf(q.copy(options = q.options.take(3))))).any { "alternativas" in it })
+        val u1 = parseU1()
+        val ia = u1.lessons[0].questions.first { it.type == "mcq5" && it.answer < 4 }
+        val iaWith4 = u1.copy(lessons = listOf(u1.lessons[0].copy(questions = listOf(ia.copy(options = ia.options.take(4))))))
+        assertTrue(ContentValidator.validate(iaWith4).any { "alternativas" in it })
     }
 
     @Test fun `validador reprova questao de prova sem referencia ou fora da trilha`() {

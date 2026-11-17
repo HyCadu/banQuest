@@ -147,13 +147,14 @@ class IntegrationTest {
 
     @Test fun conteudoCarregaDosAssets() {
         assertEquals(14, content.course.size) // 10 Específicos + 4 Gerais
-        // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 26 de provas anteriores.
+        // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 36 de provas anteriores
+        // (26 da FCC e da FGV, 6 da IDECAN 2012 e 4 do Instituto Access 2024).
         val u1 = content.course[0].lessons.flatMap { it.questions }
-        assertEquals(196, u1.size)
-        assertEquals(26, u1.count { it.isFromExam })
-        // U2 (154 + 22 oficiais) e G1 (168 + 35 oficiais) chegaram na 0.10.0.
-        assertEquals(176, content.course[1].lessons.sumOf { it.questions.size })
-        assertEquals(203, content.course[10].lessons.sumOf { it.questions.size })
+        assertEquals(206, u1.size)
+        assertEquals(36, u1.count { it.isFromExam })
+        // U2 (154 + 35 oficiais) e G1 (168 + 55 oficiais), com as provas de 2012 e 2024 da 0.11.0.
+        assertEquals(189, content.course[1].lessons.sumOf { it.questions.size })
+        assertEquals(223, content.course[10].lessons.sumOf { it.questions.size })
         // Nas lições por conceito, toda questão de prova está ligada a um conceito da lição: sem isso o planejador
         // nunca a sorteia (aconteceu com as 20 oficiais das lições 2 a 5 na 0.8.1).
         content.course.flatMap { it.lessons }.forEach { l ->

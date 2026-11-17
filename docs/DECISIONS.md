@@ -480,3 +480,29 @@ das provas do Banestes de 2012 e 2024.
 6. **Testes:** um teste de unidade novo valida todos os pacotes embutidos e confere que toda questão da U2 e da G1
    (oficiais incluídas) tem conceito da lição. Os testes da harness que usavam a U2 como "unidade sem conteúdo" passaram
    a usar a U3.
+
+## Provas Banestes 2012 (IDECAN) e 2024 (Instituto Access) (0.11.0, 17/11/2026) — a pedido do dono
+O dono enviou os gabaritos das duas provas do cargo que, na 0.10.0, tinham servido só para calibrar o estilo (decisão
+anterior, item 4), e depois o Guia de Conduta Ética do Banestes.
+1. **Duas provas novas em `content/provas`**, no mesmo formato das outras. O texto foi conferido contra o PDF (figura e
+   tabela viraram texto, com `depende_de_figura`); a resposta segue o gabarito e foi conferida resolvendo a questão. Um
+   script confere cada letra contra o gabarito oficial.
+   - **IDECAN · Banestes 2012** (`idecan-banestes-2012.json`, 60 questões). O arquivo do dono se chama "definitivo", mas
+     o documento diz **"GABARITO PRELIMINAR"**: entra com `gabarito: "preliminar"`, e o app mostra a etiqueta. Ficam
+     guardadas com `fora_do_edital`, sem ir ao app: COBOL (Q23–26 e Q37), tipos do Visual Basic clássico (Q30), banco
+     hierárquico (Q33), fases e artefatos do RUP (Q50–51) e atualidades do Espírito Santo de 2012 (Q13–16). Entram 47.
+   - **Instituto Access · Banestes 2024** (`access-banestes-2024.json`, 75 questões, gabarito definitivo retificado).
+     Ficam de fora as anuladas (Q12, Q32, Q43), a Q7 (pede a ideia principal da letra inteira de uma canção, que não
+     reproduzimos; as Q5 e Q6 entram só com o trecho citado) e a Q11 (depende da numeração de linhas do caderno). A Q63
+     (ASP clássico) fica guardada com `fora_do_edital`. Entram 74.
+2. **4 alternativas (escolha do dono): a questão fica como foi aplicada.** Os validadores (Python e Kotlin) passam a
+   aceitar 4 ou 5 alternativas só em questão `prova_real`; exercício de IA continua com 5. A tela já desenhava qualquer
+   número de alternativas até 5. Teste novo em `ContentTest`.
+3. **Guia de Conduta Ética (o dono: "é pré-requisito saber")**: as Q48 (os "Rs" da consciência ambiental, item 4.27.2) e
+   Q49 (composição do Conselho de Conduta Ética, item 8.3.1) foram conferidas contra o guia enviado (atualizado em 2020)
+   e entram em `u14l1`. O PDF do guia continua fora do repositório.
+4. **Onde entram:** Português em G1, Raciocínio em G2, Conhecimentos Bancários em G3 e G4, Inglês em `u10l4`, e TI nas
+   lições do tópico. Nas lições que já têm pacote por conceitos (U1, U2 e G1), cada questão ganhou o conceito mais
+   próximo. Pacote do app: de 205 para 326 questões.
+5. Banca nova no validador: "Instituto Access".
+
