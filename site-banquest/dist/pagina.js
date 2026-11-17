@@ -102,7 +102,6 @@
   });
   showcase.addEventListener("pointercancel", () => { draggedFrom = null; });
   $("#phone").addEventListener("click", openScreen);
-  $("#enlarge").addEventListener("click", openScreen);
   $("#dismiss").addEventListener("click", () => lightbox.close());
   lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.close(); });
   lightbox.addEventListener("close", schedule);
