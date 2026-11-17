@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "pack": "u1-banco-de-dados",
- "version": 3,
+ "version": 4,
  "unit": {
   "id": "u1",
   "order": 1,
@@ -1273,7 +1273,9 @@
      "answer": 1,
      "explanation": "GRANT e REVOKE controlam permissões e fazem parte da DCL. DML manipula dados, DDL define estruturas e TCL controla transações (COMMIT, ROLLBACK, SAVEPOINT).",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "prova"
     },
     {
      "id": "u1l2q02",
@@ -1293,7 +1295,9 @@
      "answer": 2,
      "explanation": "UPDATE altera dados já existentes e é DML. Os demais criam, alteram ou removem objetos do esquema.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "prova"
     },
     {
      "id": "u1l2q03",
@@ -1313,7 +1317,9 @@
      "answer": 3,
      "explanation": "Atomicidade: a transação é feita por inteiro ou não é feita. Como não houve COMMIT, o SGBD desfaz o efeito do primeiro UPDATE na recuperação. Durabilidade só se aplica ao que foi confirmado.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "prova"
     },
     {
      "id": "u1l2q04",
@@ -1333,7 +1339,9 @@
      "answer": 4,
      "explanation": "Durabilidade garante a persistência do que foi confirmado. Disponibilidade não faz parte da sigla ACID.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "prova"
     },
     {
      "id": "u1l2q05",
@@ -1354,7 +1362,9 @@
      "answer": 4,
      "explanation": "O ROLLBACK TO s1 desfaz apenas o que veio depois do SAVEPOINT (o valor 3). Os valores 1 (autocommit) e 2 (confirmado no COMMIT) permanecem.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c4",
+     "level": "prova"
     },
     {
      "id": "u1l2q06",
@@ -1374,7 +1384,9 @@
      "answer": 0,
      "explanation": "READ UNCOMMITTED admite os três fenômenos; READ COMMITTED impede só a leitura suja; REPEATABLE READ impede também a não repetível; SERIALIZABLE impede os três. READ ONLY não é nível de isolamento.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c5",
+     "level": "prova"
     },
     {
      "id": "u1l2q07",
@@ -1394,7 +1406,9 @@
      "answer": 3,
      "explanation": "WHERE filtra linhas antes do agrupamento e não aceita funções de agregação. HAVING filtra os grupos já formados, por exemplo HAVING COUNT(*) > 5.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "prova"
     },
     {
      "id": "u1l2q08",
@@ -1414,7 +1428,9 @@
      "answer": 1,
      "explanation": "LEFT JOIN preserva os clientes sem pedido. COUNT(p.id) ignora nulos e devolve zero para eles; COUNT(*) contaria a linha gerada pela junção e devolveria 1. INNER JOIN descarta quem não tem pedido e CROSS JOIN gera produto cartesiano.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "prova"
     },
     {
      "id": "u1l2q09",
@@ -1431,7 +1447,9 @@
      "answer": 1,
      "explanation": "Comparações com NULL resultam em UNKNOWN, não em verdadeiro. Para testar nulidade usa-se IS NULL ou IS NOT NULL.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "prova"
     },
     {
      "id": "u1l2q10",
@@ -1452,7 +1470,496 @@
      "answer": 3,
      "explanation": "ALTER TABLE ... ADD COLUMN modifica a estrutura de uma tabela existente (DDL). UPDATE e INSERT mexem nos dados; CREATE criaria uma tabela nova.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "prova"
+    },
+    {
+     "id": "u1l2q11",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: INSERT INTO livro (id) VALUES (1) cadastra uma linha. CREATE TABLE cria a tabela; ALTER TABLE muda sua estrutura. Agora: A biblioteca já tem LIVRO e quer cadastrar um exemplar. Qual comando acrescenta a linha?",
+     "explanation": "INSERT. CREATE TABLE: Cria uma tabela. INSERT: Insere linhas. ALTER TABLE: Muda a estrutura de uma tabela. GRANT: Concede privilégios.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "CREATE TABLE",
+      "INSERT",
+      "GRANT"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l2q12",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "GRANT concede permissões. A biblioteca quer permitir que consulta leia LIVRO. Qual comando concede esse acesso?",
+     "explanation": "GRANT concede permissões. A biblioteca quer permitir que consulta leia LIVRO. GRANT é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "INSERT",
+      "ALTER TABLE",
+      "GRANT"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l2q13",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A coluna paginas já existe. Para corrigir seu valor no livro 8, qual comando altera dados existentes?",
+     "explanation": "UPDATE altera dados; ALTER TABLE muda a estrutura.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "UPDATE",
+      "ALTER TABLE",
+      "DROP TABLE"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l2q14",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de comandos e estrutura ao seu significado:",
+     "explanation": "CREATE TABLE: Cria uma tabela. INSERT: Insere linhas. ALTER TABLE: Muda a estrutura de uma tabela. GRANT: Concede privilégios.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c1",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "CREATE TABLE",
+       "right": "Cria uma tabela"
+      },
+      {
+       "left": "INSERT",
+       "right": "Insere linhas"
+      },
+      {
+       "left": "ALTER TABLE",
+       "right": "Muda a estrutura de uma tabela"
+      }
+     ]
+    },
+    {
+     "id": "u1l2q15",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: GROUP BY leitor_id forma um grupo por leitor; HAVING COUNT(*) > 2 mantém só grupos com mais de dois empréstimos. Agora: A biblioteca conta empréstimos por leitor e só quer grupos com mais de 4. Qual cláusula filtra os grupos?",
+     "explanation": "HAVING. WHERE: Filtra linhas antes do agrupamento. HAVING: Filtra grupos já formados. LEFT JOIN: Preserva as linhas da esquerda. IS NULL: Testa ausência de valor.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "WHERE",
+      "ORDER BY",
+      "HAVING"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l2q16",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "IS NULL testa ausência de valor. Um empréstimo ainda não tem devolucao. Qual condição o encontra?",
+     "explanation": "IS NULL testa ausência de valor. Um empréstimo ainda não tem devolucao. devolucao IS NULL é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "devolucao IS NULL",
+      "devolucao = NULL",
+      "devolucao <> NULL"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l2q17",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um LEFT JOIN preserva leitores sem empréstimo, com e.id NULL. COUNT(coluna) ignora NULL. Para contar zero para esses leitores, usa",
+     "explanation": "COUNT(e.id) ignora os nulos; COUNT(*) contaria a linha preservada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "COUNT(*)",
+      "COUNT(e.id)",
+      "COUNT(l.id)"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l2q18",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de filtros, grupos e junções ao seu significado:",
+     "explanation": "WHERE: Filtra linhas antes do agrupamento. HAVING: Filtra grupos já formados. LEFT JOIN: Preserva as linhas da esquerda. IS NULL: Testa ausência de valor.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c2",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "WHERE",
+       "right": "Filtra linhas antes do agrupamento"
+      },
+      {
+       "left": "HAVING",
+       "right": "Filtra grupos já formados"
+      },
+      {
+       "left": "LEFT JOIN",
+       "right": "Preserva as linhas da esquerda"
+      }
+     ]
+    },
+    {
+     "id": "u1l2q19",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: uma reserva precisa baixar o exemplar e registrar o empréstimo. Pela atomicidade, se uma parte falha, a transação inteira é desfeita. Agora: A biblioteca baixa um exemplar e cria um empréstimo na mesma transação. Se a segunda operação falha, qual propriedade exige desfazer a primeira?",
+     "explanation": "Atomicidade. Atomicidade: Tudo ou nada na transação. Consistência: Preservação das regras de integridade. Durabilidade: Persistência do que foi confirmado. Isolamento: Limita interferências entre transações.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Atomicidade",
+      "Durabilidade",
+      "Disponibilidade"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l2q20",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Consistência preserva regras de integridade. A biblioteca exige exemplares_disponiveis >= 0. Ao concluir uma transação, essa regra deve",
+     "explanation": "Consistência preserva regras de integridade. A biblioteca exige exemplares_disponiveis >= 0. continuar satisfeita é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "ser ignorada após COMMIT",
+      "continuar satisfeita",
+      "valer só na interface"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l2q21",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Após o COMMIT de um empréstimo, uma falha não deve apagar o registro confirmado. A persistência é garantida pela",
+     "explanation": "Durabilidade vale após a confirmação; atomicidade evita operações pela metade.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Atomicidade",
+      "Disponibilidade",
+      "Durabilidade"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l2q22",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de propriedades acid ao seu significado:",
+     "explanation": "Atomicidade: Tudo ou nada na transação. Consistência: Preservação das regras de integridade. Durabilidade: Persistência do que foi confirmado. Isolamento: Limita interferências entre transações.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c3",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Atomicidade",
+       "right": "Tudo ou nada na transação"
+      },
+      {
+       "left": "Consistência",
+       "right": "Preservação das regras de integridade"
+      },
+      {
+       "left": "Durabilidade",
+       "right": "Persistência do que foi confirmado"
+      }
+     ]
+    },
+    {
+     "id": "u1l2q23",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: BEGIN; cadastra uma reserva; ROLLBACK. Como não houve confirmação, a reserva é desfeita. Agora: A biblioteca criou reservas numa transação ainda aberta e quer cancelar todas elas. Qual comando desfaz as alterações?",
+     "explanation": "ROLLBACK. COMMIT: Confirma a transação. ROLLBACK: Desfaz alterações não confirmadas. SAVEPOINT: Marca um ponto de retorno. ROLLBACK TO: Desfaz até o ponto marcado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c4",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "COMMIT",
+      "ROLLBACK",
+      "SAVEPOINT"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l2q24",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "ROLLBACK TO desfaz até um ponto marcado. Depois de criar a reserva A, a biblioteca marca s1 e cria B. Quer cancelar só B e continuar a transação. Usa",
+     "explanation": "ROLLBACK TO desfaz até um ponto marcado. Depois de criar a reserva A, a biblioteca marca s1 e cria B. Quer cancelar só B e continuar a transação. ROLLBACK TO s1 é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c4",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "COMMIT",
+      "ROLLBACK",
+      "ROLLBACK TO s1"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l2q25",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A sequência é: BEGIN; cria A; SAVEPOINT s1; cria B; ROLLBACK TO s1; COMMIT. ROLLBACK TO desfaz só o que veio depois do ponto. O que fica gravado?",
+     "explanation": "B é desfeita no retorno a s1. A continua na transação e é confirmada.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c4",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Só A",
+      "A e B",
+      "Só B"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l2q26",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de confirmação e pontos de retorno ao seu significado:",
+     "explanation": "COMMIT: Confirma a transação. ROLLBACK: Desfaz alterações não confirmadas. SAVEPOINT: Marca um ponto de retorno. ROLLBACK TO: Desfaz até o ponto marcado.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c4",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "COMMIT",
+       "right": "Confirma a transação"
+      },
+      {
+       "left": "ROLLBACK",
+       "right": "Desfaz alterações não confirmadas"
+      },
+      {
+       "left": "SAVEPOINT",
+       "right": "Marca um ponto de retorno"
+      }
+     ]
+    },
+    {
+     "id": "u1l2q27",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: uma sessão lê um prazo que outra ainda não confirmou. Essa é uma leitura suja: o prazo ainda pode ser desfeito. Agora: Um atendente muda o prazo, outro lê esse valor e o primeiro desfaz a mudança. Ler dado não confirmado é uma",
+     "explanation": "Leitura suja. Leitura suja: Leitura de valor não confirmado. Leitura não repetível: Outro valor ao reler a mesma linha. Leitura fantasma: Mudança no conjunto de linhas de uma busca. SERIALIZABLE: Nível mais estrito de isolamento do padrão SQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c5",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Leitura fantasma",
+      "Durabilidade",
+      "Leitura suja"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l2q28",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Leitura não repetível é encontrar outro valor ao reler a mesma linha. O prazo era dia 5; outra transação muda para dia 8 e confirma. A releitura encontra dia 8. Ocorreu",
+     "explanation": "Leitura não repetível é encontrar outro valor ao reler a mesma linha. O prazo era dia 5; outra transação muda para dia 8 e confirma. A releitura encontra dia 8. leitura não repetível é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c5",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "leitura não repetível",
+      "leitura suja",
+      "leitura fantasma"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l2q29",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Duas buscas por reservas de amanhã retornam conjuntos diferentes porque outra transação inseriu e confirmou uma reserva entre elas. O fenômeno é",
+     "explanation": "A inserção confirmada muda o conjunto da busca. Não é uma leitura suja.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c5",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Leitura suja",
+      "Leitura fantasma",
+      "Atomicidade"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l2q30",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de isolamento e concorrência ao seu significado:",
+     "explanation": "Leitura suja: Leitura de valor não confirmado. Leitura não repetível: Outro valor ao reler a mesma linha. Leitura fantasma: Mudança no conjunto de linhas de uma busca. SERIALIZABLE: Nível mais estrito de isolamento do padrão SQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l2c5",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Leitura suja",
+       "right": "Leitura de valor não confirmado"
+      },
+      {
+       "left": "Leitura não repetível",
+       "right": "Outro valor ao reler a mesma linha"
+      },
+      {
+       "left": "Leitura fantasma",
+       "right": "Mudança no conjunto de linhas de uma busca"
+      }
+     ]
+    }
+   ],
+   "concepts": [
+    {
+     "id": "u1l2c1",
+     "title": "Comandos e estrutura",
+     "summary": "CREATE TABLE: Cria uma tabela. INSERT: Insere linhas. ALTER TABLE: Muda a estrutura de uma tabela. GRANT: Concede privilégios."
+    },
+    {
+     "id": "u1l2c2",
+     "title": "Filtros, grupos e junções",
+     "summary": "WHERE: Filtra linhas antes do agrupamento. HAVING: Filtra grupos já formados. LEFT JOIN: Preserva as linhas da esquerda. IS NULL: Testa ausência de valor."
+    },
+    {
+     "id": "u1l2c3",
+     "title": "Propriedades ACID",
+     "summary": "Atomicidade: Tudo ou nada na transação. Consistência: Preservação das regras de integridade. Durabilidade: Persistência do que foi confirmado. Isolamento: Limita interferências entre transações."
+    },
+    {
+     "id": "u1l2c4",
+     "title": "Confirmação e pontos de retorno",
+     "summary": "COMMIT: Confirma a transação. ROLLBACK: Desfaz alterações não confirmadas. SAVEPOINT: Marca um ponto de retorno. ROLLBACK TO: Desfaz até o ponto marcado."
+    },
+    {
+     "id": "u1l2c5",
+     "title": "Isolamento e concorrência",
+     "summary": "Leitura suja: Leitura de valor não confirmado. Leitura não repetível: Outro valor ao reler a mesma linha. Leitura fantasma: Mudança no conjunto de linhas de uma busca. SERIALIZABLE: Nível mais estrito de isolamento do padrão SQL."
     }
    ]
   },
@@ -1479,7 +1986,9 @@
      "answer": 4,
      "explanation": "A correlação é a referência a colunas da consulta externa. Otimizadores podem reescrevê-la em junção, mas a semântica é de avaliação por linha da consulta externa.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "prova"
     },
     {
      "id": "u1l3q02",
@@ -1499,7 +2008,9 @@
      "answer": 1,
      "explanation": "EXISTS testa a existência e não multiplica linhas. O INNER JOIN repete o cliente a cada pedido. As alternativas com NOT IN e LEFT JOIN ... IS NULL retornam os clientes SEM pedidos.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "prova"
     },
     {
      "id": "u1l3q03",
@@ -1519,7 +2030,9 @@
      "answer": 1,
      "explanation": "Se a lista contém NULL, id NOT IN (...) nunca é verdadeiro, pois a comparação com NULL é desconhecida. Prefira NOT EXISTS ou filtre os nulos na subconsulta.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c2",
+     "level": "prova"
     },
     {
      "id": "u1l3q04",
@@ -1539,7 +2052,9 @@
      "answer": 1,
      "explanation": "A CTE é declarada com WITH nome AS (consulta). OVER e PARTITION BY pertencem às funções de janela; HAVING filtra grupos; UNION combina resultados.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "prova"
     },
     {
      "id": "u1l3q05",
@@ -1559,7 +2074,9 @@
      "answer": 4,
      "explanation": "Hierarquias de profundidade desconhecida pedem recursão: a parte âncora seleciona a raiz e a parte recursiva busca os filhos até não haver mais linhas novas.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "prova"
     },
     {
      "id": "u1l3q06",
@@ -1579,7 +2096,9 @@
      "answer": 3,
      "explanation": "RANK e DENSE_RANK repetem o número nos empates. NTILE divide em faixas e LAG acessa a linha anterior.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "prova"
     },
     {
      "id": "u1l3q07",
@@ -1600,7 +2119,9 @@
      "answer": 0,
      "explanation": "RANK deixa um salto após o empate (1, 1, 3); DENSE_RANK não deixa (1, 1, 2). Para a nota 80, r = 3 e d = 2.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "prova"
     },
     {
      "id": "u1l3q08",
@@ -1620,7 +2141,9 @@
      "answer": 4,
      "explanation": "LAG olha para trás e LEAD olha para frente. FIRST_VALUE devolve o primeiro valor da janela.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "prova"
     },
     {
      "id": "u1l3q09",
@@ -1640,7 +2163,9 @@
      "answer": 1,
      "explanation": "Funções de janela agregam sem colapsar linhas. PARTITION BY define o grupo (vendedor) e ORDER BY faz o total ser acumulado em ordem cronológica.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "prova"
     },
     {
      "id": "u1l3q10",
@@ -1670,7 +2195,496 @@
      ],
      "explanation": "ROW_NUMBER é sempre único; RANK deixa lacunas após empates; DENSE_RANK não deixa; LEAD olha para a próxima linha, ao contrário de LAG.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "prova"
+    },
+    {
+     "id": "u1l3q11",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: EXISTS testa se há atendimento do cliente atual. Se há dois atendimentos, o teste é verdadeiro uma só vez para a linha desse cliente. Agora: A oficina usa EXISTS para buscar clientes com atendimento. Cada cliente aparece uma vez na consulta externa. Três atendimentos do mesmo cliente fazem esse cliente aparecer",
+     "explanation": "Uma vez. Subconsulta: Consulta dentro de outra consulta. Correlação: Referência a uma coluna da consulta externa. EXISTS: Testa se a subconsulta encontra linhas. NOT EXISTS: Testa a ausência de linhas correspondentes.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Três vezes",
+      "Nenhuma vez",
+      "Uma vez"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l3q12",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "A subconsulta correlacionada usa uma coluna externa. Em EXISTS (SELECT 1 FROM atendimento a WHERE a.cliente_id = c.id), a referência externa é",
+     "explanation": "A subconsulta correlacionada usa uma coluna externa. c.id é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "c.id",
+      "a.cliente_id",
+      "SELECT 1"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l3q13",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A condição a.cliente_id = c.id liga a subconsulta ao cliente externo c. Sem essa condição, e havendo algum atendimento, EXISTS selecionaria",
+     "explanation": "Sem correlação, o teste só pergunta se existe algum atendimento no banco.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Só clientes atendidos",
+      "Todos os clientes",
+      "Nenhum cliente"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l3q14",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de subconsultas e correlação ao seu significado:",
+     "explanation": "Subconsulta: Consulta dentro de outra consulta. Correlação: Referência a uma coluna da consulta externa. EXISTS: Testa se a subconsulta encontra linhas. NOT EXISTS: Testa a ausência de linhas correspondentes.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c1",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Subconsulta",
+       "right": "Consulta dentro de outra consulta"
+      },
+      {
+       "left": "Correlação",
+       "right": "Referência a uma coluna da consulta externa"
+      },
+      {
+       "left": "EXISTS",
+       "right": "Testa se a subconsulta encontra linhas"
+      }
+     ]
+    },
+    {
+     "id": "u1l3q15",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: 9 <> 7 é verdadeiro, mas 9 <> NULL é desconhecido. Em NOT IN, todas as exclusões precisam ser verdadeiras; o NULL impede essa conclusão. Agora: Comparações com NULL resultam em desconhecido. Por isso, na lista (7, NULL), o filtro 9 NOT IN (7, NULL) resulta em",
+     "explanation": "UNKNOWN. IS NULL: Testa ausência de valor. NOT EXISTS: Verdadeiro quando a subconsulta não encontra linha. UNKNOWN: Resultado desconhecido de uma comparação. NOT IN com NULL: Pode impedir que o filtro seja verdadeiro.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c2",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "UNKNOWN",
+      "TRUE",
+      "FALSE"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l3q16",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "NOT EXISTS testa ausência de correspondência. A oficina quer clientes sem atendimento. A subconsulta deve procurar atendimentos",
+     "explanation": "NOT EXISTS testa ausência de correspondência. A oficina quer clientes sem atendimento. do cliente atual é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c2",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "de qualquer cliente",
+      "do cliente atual",
+      "com valor maior que zero"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l3q17",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Para o veículo 12, nenhum atendimento satisfaz a.veiculo_id = 12. Há outras linhas com veiculo_id NULL. NOT EXISTS com essa condição inclui o veículo 12?",
+     "explanation": "NOT EXISTS considera as linhas que satisfazem a condição. Os nulos não correspondem a 12.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c2",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Não, qualquer NULL impede",
+      "Só se a tabela estiver vazia",
+      "Sim, não há correspondência"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l3q18",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de ausência e valores nulos ao seu significado:",
+     "explanation": "IS NULL: Testa ausência de valor. NOT EXISTS: Verdadeiro quando a subconsulta não encontra linha. UNKNOWN: Resultado desconhecido de uma comparação. NOT IN com NULL: Pode impedir que o filtro seja verdadeiro.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c2",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "IS NULL",
+       "right": "Testa ausência de valor"
+      },
+      {
+       "left": "NOT EXISTS",
+       "right": "Verdadeiro quando a subconsulta não encontra linha"
+      },
+      {
+       "left": "UNKNOWN",
+       "right": "Resultado desconhecido de uma comparação"
+      }
+     ]
+    },
+    {
+     "id": "u1l3q19",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: para percorrer uma árvore a partir de Administração, a âncora seleciona Administração e a parte recursiva procura seus filhos. Agora: Uma árvore de setores começa em Oficina. Na CTE recursiva, a âncora define o início. Qual setor ela deve buscar?",
+     "explanation": "Oficina. WITH: Nomeia uma consulta na instrução. Âncora: Define o ponto inicial da recursão. Parte recursiva: Busca os próximos níveis. CTE: Nome utilizável na mesma instrução SQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Todos os atendimentos",
+      "Oficina",
+      "Só os últimos subsetores"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l3q20",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "WITH nomeia uma consulta para uso na mesma instrução. A oficina definiu WITH abertas AS (...). Esse nome pode ser usado",
+     "explanation": "WITH nomeia uma consulta para uso na mesma instrução. A oficina definiu WITH abertas AS (...). na consulta principal dessa instrução é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "em qualquer conexão futura",
+      "como tabela permanente",
+      "na consulta principal dessa instrução"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l3q21",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A oficina quer listar filhos, netos e demais descendentes numa árvore sem ciclos e com profundidade variável. Depois da âncora, a parte recursiva deve",
+     "explanation": "A parte recursiva avança na hierarquia a partir dos setores já alcançados.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Buscar filhos dos setores encontrados",
+      "Repetir apenas a raiz",
+      "Somar os códigos dos setores"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l3q22",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de ctes e hierarquias ao seu significado:",
+     "explanation": "WITH: Nomeia uma consulta na instrução. Âncora: Define o ponto inicial da recursão. Parte recursiva: Busca os próximos níveis. CTE: Nome utilizável na mesma instrução SQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c3",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "WITH",
+       "right": "Nomeia uma consulta na instrução"
+      },
+      {
+       "left": "Âncora",
+       "right": "Define o ponto inicial da recursão"
+      },
+      {
+       "left": "Parte recursiva",
+       "right": "Busca os próximos níveis"
+      }
+     ]
+    },
+    {
+     "id": "u1l3q23",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: totais 20, 20 e 10 recebem RANK 1, 1 e 3. Os empatados dividem a posição; a próxima posição tem um salto. Agora: Mecânicos fizeram 12, 12 e 9 serviços. RANK repete a posição nos empates e deixa saltos. Em ordem decrescente, a sequência é",
+     "explanation": "1, 1, 3. ROW_NUMBER: Número distinto para cada linha. RANK: Empates com salto posterior. DENSE_RANK: Empates sem salto posterior. Desempate: Critério adicional para ordenar valores iguais.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "1, 2, 3",
+      "1, 1, 2",
+      "1, 1, 3"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l3q24",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "ROW_NUMBER dá números diferentes até nos empates. Dois mecânicos empataram na produtividade. Para decidir de forma estável qual recebe o menor número, acrescenta-se",
+     "explanation": "ROW_NUMBER dá números diferentes até nos empates. Dois mecânicos empataram na produtividade. um critério de desempate na ordenação é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "um critério de desempate na ordenação",
+      "um COMMIT",
+      "um ROLLBACK"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l3q25",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "DENSE_RANK repete posições nos empates, sem saltos. Agora os totais são 15, 10 e 10. Em ordem decrescente, as posições são",
+     "explanation": "O primeiro total recebe 1; os dois seguintes, iguais, recebem 2.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "1, 2, 3",
+      "1, 2, 2",
+      "1, 1, 2"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l3q26",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de numeração e empates ao seu significado:",
+     "explanation": "ROW_NUMBER: Número distinto para cada linha. RANK: Empates com salto posterior. DENSE_RANK: Empates sem salto posterior. Desempate: Critério adicional para ordenar valores iguais.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c4",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "ROW_NUMBER",
+       "right": "Número distinto para cada linha"
+      },
+      {
+       "left": "RANK",
+       "right": "Empates com salto posterior"
+      },
+      {
+       "left": "DENSE_RANK",
+       "right": "Empates sem salto posterior"
+      }
+     ]
+    },
+    {
+     "id": "u1l3q27",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: com custos 10, 30 e 50 em ordem, LAG(custo) na segunda linha devolve 10, o valor anterior. Agora: Os custos dos serviços, por data e id, são 40, 70 e 20. LAG(custo) lê a linha anterior. Na segunda linha, devolve",
+     "explanation": "40. LAG: Acessa uma linha anterior. LEAD: Acessa uma linha posterior. PARTITION BY: Separa grupos de cálculo da janela. OVER: Define a janela de cálculo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "40",
+      "70",
+      "20"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l3q28",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "PARTITION BY separa grupos independentes. Para comparar cada serviço ao anterior do mesmo mecânico, a janela deve particionar por",
+     "explanation": "PARTITION BY separa grupos independentes. mecanico_id é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "custo",
+      "mecanico_id",
+      "data sem o mecânico"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l3q29",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "SUM(custo) com ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW soma do início até a linha atual. Para custos 40, 70 e 20 nessa ordem, na segunda linha o acumulado é",
+     "explanation": "O acumulado é 40 + 70. A janela preserva uma linha por serviço.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "130",
+      "70",
+      "110"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l3q30",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de vizinhas e acumulados ao seu significado:",
+     "explanation": "LAG: Acessa uma linha anterior. LEAD: Acessa uma linha posterior. PARTITION BY: Separa grupos de cálculo da janela. OVER: Define a janela de cálculo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l3c5",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "LAG",
+       "right": "Acessa uma linha anterior"
+      },
+      {
+       "left": "LEAD",
+       "right": "Acessa uma linha posterior"
+      },
+      {
+       "left": "PARTITION BY",
+       "right": "Separa grupos de cálculo da janela"
+      }
+     ]
+    }
+   ],
+   "concepts": [
+    {
+     "id": "u1l3c1",
+     "title": "Subconsultas e correlação",
+     "summary": "Subconsulta: Consulta dentro de outra consulta. Correlação: Referência a uma coluna da consulta externa. EXISTS: Testa se a subconsulta encontra linhas. NOT EXISTS: Testa a ausência de linhas correspondentes."
+    },
+    {
+     "id": "u1l3c2",
+     "title": "Ausência e valores nulos",
+     "summary": "IS NULL: Testa ausência de valor. NOT EXISTS: Verdadeiro quando a subconsulta não encontra linha. UNKNOWN: Resultado desconhecido de uma comparação. NOT IN com NULL: Pode impedir que o filtro seja verdadeiro."
+    },
+    {
+     "id": "u1l3c3",
+     "title": "CTEs e hierarquias",
+     "summary": "WITH: Nomeia uma consulta na instrução. Âncora: Define o ponto inicial da recursão. Parte recursiva: Busca os próximos níveis. CTE: Nome utilizável na mesma instrução SQL."
+    },
+    {
+     "id": "u1l3c4",
+     "title": "Numeração e empates",
+     "summary": "ROW_NUMBER: Número distinto para cada linha. RANK: Empates com salto posterior. DENSE_RANK: Empates sem salto posterior. Desempate: Critério adicional para ordenar valores iguais."
+    },
+    {
+     "id": "u1l3c5",
+     "title": "Vizinhas e acumulados",
+     "summary": "LAG: Acessa uma linha anterior. LEAD: Acessa uma linha posterior. PARTITION BY: Separa grupos de cálculo da janela. OVER: Define a janela de cálculo."
     }
    ]
   },
@@ -1697,7 +2711,9 @@
      "answer": 0,
      "explanation": "As variáveis são declaradas em DECLARE, a lógica fica entre BEGIN e EXCEPTION, o tratamento de erros em EXCEPTION e o bloco termina em END. As seções DECLARE e EXCEPTION são opcionais.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "prova"
     },
     {
      "id": "u1l4q02",
@@ -1717,7 +2733,9 @@
      "answer": 2,
      "explanation": "%TYPE copia o tipo de uma coluna; %ROWTYPE copia a linha inteira. Contar linhas afetadas é papel do atributo de cursor %ROWCOUNT.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "prova"
     },
     {
      "id": "u1l4q03",
@@ -1737,7 +2755,9 @@
      "answer": 2,
      "explanation": "SELECT ... INTO exige exatamente uma linha: nenhuma gera NO_DATA_FOUND e mais de uma gera TOO_MANY_ROWS.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c2",
+     "level": "prova"
     },
     {
      "id": "u1l4q04",
@@ -1757,7 +2777,9 @@
      "answer": 3,
      "explanation": "Com MVCC cada transação enxerga uma versão consistente dos dados; leitores não bloqueiam escritores e vice-versa em operações comuns.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "prova"
     },
     {
      "id": "u1l4q05",
@@ -1777,7 +2799,9 @@
      "answer": 4,
      "explanation": "No MVCC, UPDATE e DELETE deixam versões antigas que o VACUUM limpa. ANALYZE só atualiza estatísticas e REINDEX reconstrói índices; TRUNCATE apagaria todos os dados.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "prova"
     },
     {
      "id": "u1l4q06",
@@ -1797,7 +2821,9 @@
      "answer": 2,
      "explanation": "O comando MERGE foi introduzido no PostgreSQL 15. Até então era comum usar INSERT ... ON CONFLICT para cenários de upsert.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "prova"
     },
     {
      "id": "u1l4q07",
@@ -1817,7 +2843,9 @@
      "answer": 0,
      "explanation": "No modelo multitenant, vários PDBs compartilham a instância e os processos do CDB, mas cada um tem seus dados e usuários isolados.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "prova"
     },
     {
      "id": "u1l4q08",
@@ -1837,7 +2865,9 @@
      "answer": 2,
      "explanation": "O H2 é leve e muito usado em testes e prototipação justamente por não exigir servidor dedicado, embora também ofereça modo servidor.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "prova"
     },
     {
      "id": "u1l4q09",
@@ -1857,7 +2887,9 @@
      "answer": 1,
      "explanation": "Triggers disparam automaticamente no banco e têm acesso aos valores antigo e novo (OLD/NEW ou :OLD/:NEW). CHECK só valida valores, não grava auditoria.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "prova"
     },
     {
      "id": "u1l4q10",
@@ -1876,7 +2908,496 @@
      ],
      "explanation": "O cabeçalho declara nome, parâmetro e retorno; o corpo fica entre os delimitadores $$ com BEGIN ... END; e a linguagem é informada ao final.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "prova"
+    },
+    {
+     "id": "u1l4q11",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: DECLARE v_total NUMBER; BEGIN v_total := 0; END; declara a variável antes dos comandos, na seção DECLARE. Agora: A clínica quer declarar v_total antes de executar os comandos de um bloco Oracle. Qual seção usa?",
+     "explanation": "DECLARE. DECLARE: Declara variáveis. BEGIN: Inicia os comandos do bloco. EXCEPTION: Inicia o tratamento de erros. END: Encerra o bloco.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "DECLARE",
+      "EXCEPTION",
+      "END"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l4q12",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "BEGIN inicia os comandos; END encerra o bloco. No bloco da clínica, depois do último comando e do eventual tratamento de erros, usa-se",
+     "explanation": "BEGIN inicia os comandos; END encerra o bloco. END é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "DECLARE",
+      "END",
+      "BEGIN"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l4q13",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "%TYPE acompanha o tipo de uma coluna; %ROWTYPE descreve uma linha inteira. Para guardar só o nome com o tipo da coluna paciente.nome, usa",
+     "explanation": "%TYPE acompanha o tipo da coluna. %ROWTYPE seria um registro completo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "v_nome paciente%ROWTYPE",
+      "v_nome NUMBER",
+      "v_nome paciente.nome%TYPE"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l4q14",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de blocos e registros pl/sql ao seu significado:",
+     "explanation": "DECLARE: Declara variáveis. BEGIN: Inicia os comandos do bloco. EXCEPTION: Inicia o tratamento de erros. END: Encerra o bloco.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c1",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "DECLARE",
+       "right": "Declara variáveis"
+      },
+      {
+       "left": "BEGIN",
+       "right": "Inicia os comandos do bloco"
+      },
+      {
+       "left": "EXCEPTION",
+       "right": "Inicia o tratamento de erros"
+      }
+     ]
+    },
+    {
+     "id": "u1l4q15",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: SELECT nome INTO v_nome busca um único paciente. Sem linhas, gera NO_DATA_FOUND; com várias, TOO_MANY_ROWS. Agora: No PL/SQL, SELECT nome INTO v_nome espera exatamente uma linha. A busca por id não encontrou paciente. Qual exceção ocorre?",
+     "explanation": "NO_DATA_FOUND. Uma linha: Preenche a variável normalmente. Nenhuma linha: Gera NO_DATA_FOUND. Mais de uma linha: Gera TOO_MANY_ROWS. SELECT INTO simples: Espera exatamente uma linha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c2",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "TOO_MANY_ROWS",
+      "NO_DATA_FOUND",
+      "Nenhuma exceção"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l4q16",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "SELECT INTO simples espera uma linha. Uma busca por sobrenome encontrou três pacientes. Qual exceção indica linhas em excesso?",
+     "explanation": "SELECT INTO simples espera uma linha. Uma busca por sobrenome encontrou três pacientes. TOO_MANY_ROWS é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c2",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "NO_DATA_FOUND",
+      "Nenhuma exceção",
+      "TOO_MANY_ROWS"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l4q17",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "COUNT(*) sem GROUP BY devolve uma linha com a contagem. SELECT COUNT(*) INTO v_total FROM paciente WHERE ativo = 1 não encontra pacientes ativos. O que acontece?",
+     "explanation": "A agregação sem GROUP BY produz uma linha com zero; não gera NO_DATA_FOUND.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c2",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "v_total recebe 0",
+      "NO_DATA_FOUND",
+      "TOO_MANY_ROWS"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l4q18",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de select into e exceções ao seu significado:",
+     "explanation": "Uma linha: Preenche a variável normalmente. Nenhuma linha: Gera NO_DATA_FOUND. Mais de uma linha: Gera TOO_MANY_ROWS. SELECT INTO simples: Espera exatamente uma linha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c2",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Uma linha",
+       "right": "Preenche a variável normalmente"
+      },
+      {
+       "left": "Nenhuma linha",
+       "right": "Gera NO_DATA_FOUND"
+      },
+      {
+       "left": "Mais de uma linha",
+       "right": "Gera TOO_MANY_ROWS"
+      }
+     ]
+    },
+    {
+     "id": "u1l4q19",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: enquanto uma sessão atualiza o cadastro, uma leitura comum vê uma versão visível anterior. O MVCC permite trabalhar com essas versões. Agora: No PostgreSQL, uma leitura comum pode acessar uma versão visível enquanto outra sessão atualiza a linha. Isso é possível graças ao",
+     "explanation": "MVCC. MVCC: Controle por versões de linhas. VACUUM: Torna reutilizável espaço de versões removíveis. ANALYZE: Atualiza estatísticas do planejador. UPDATE: Pode deixar versões antigas da linha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "TRUNCATE",
+      "DROP TABLE",
+      "MVCC"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l4q20",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "ANALYZE atualiza estatísticas usadas pelo planejador. Após mudar muito a distribuição de dados da clínica, qual rotina atualiza essas estimativas?",
+     "explanation": "ANALYZE atualiza estatísticas usadas pelo planejador. ANALYZE é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "ANALYZE",
+      "GRANT",
+      "TRUNCATE"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l4q21",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O VACUUM comum trata versões antigas removíveis. Após executá-lo, o principal resultado esperado é",
+     "explanation": "VACUUM comum não garante encolher o arquivo; ele torna espaço reutilizável no banco.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Encolhimento obrigatório do arquivo",
+      "Espaço disponível para reutilização",
+      "Remoção de todas as linhas atuais"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l4q22",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de mvcc e manutenção ao seu significado:",
+     "explanation": "MVCC: Controle por versões de linhas. VACUUM: Torna reutilizável espaço de versões removíveis. ANALYZE: Atualiza estatísticas do planejador. UPDATE: Pode deixar versões antigas da linha.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c3",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "MVCC",
+       "right": "Controle por versões de linhas"
+      },
+      {
+       "left": "VACUUM",
+       "right": "Torna reutilizável espaço de versões removíveis"
+      },
+      {
+       "left": "ANALYZE",
+       "right": "Atualiza estatísticas do planejador"
+      }
+     ]
+    },
+    {
+     "id": "u1l4q23",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: um trigger de auditoria reage à mudança de um cadastro e grava o valor antigo e o novo. A ação acontece no banco. Agora: A clínica exige auditoria de alterações mesmo quando vêm de aplicações diferentes. Qual recurso reage ao UPDATE dentro do banco?",
+     "explanation": "Trigger. Função: Rotina que pode devolver um resultado. Trigger: Reage automaticamente a um evento. MERGE: Escolhe ações entre origem e destino. RETURN: Devolve o resultado de uma função.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Trigger",
+      "Comentário no código",
+      "SELECT isolado"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l4q24",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "RETURN devolve o resultado de uma função. A função da clínica calcula p * 2. Com p = 6, RETURN p * 2 devolve",
+     "explanation": "RETURN devolve o resultado de uma função. A função da clínica calcula p * 2. 12 é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "6",
+      "12",
+      "3"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l4q25",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "MERGE compara registros recebidos com os existentes e escolhe ações condicionais. A decisão entre atualizar uma correspondência e inserir um registro novo depende",
+     "explanation": "A condição de junção e as cláusulas WHEN orientam as ações de MERGE.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Do tamanho do arquivo",
+      "Da ordem dos nomes das colunas",
+      "Da correspondência entre origem e destino"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l4q26",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de funções, gatilhos e merge ao seu significado:",
+     "explanation": "Função: Rotina que pode devolver um resultado. Trigger: Reage automaticamente a um evento. MERGE: Escolhe ações entre origem e destino. RETURN: Devolve o resultado de uma função.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c4",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Função",
+       "right": "Rotina que pode devolver um resultado"
+      },
+      {
+       "left": "Trigger",
+       "right": "Reage automaticamente a um evento"
+      },
+      {
+       "left": "MERGE",
+       "right": "Escolhe ações entre origem e destino"
+      }
+     ]
+    },
+    {
+     "id": "u1l4q27",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: um CDB reúne dois PDBs, um para cada ambiente. O CDB é o contêiner e os PDBs são os bancos plugáveis. Agora: No Oracle multitenant, a clínica organiza ambientes em PDBs. O contêiner que reúne esses bancos é o",
+     "explanation": "CDB. CDB: Contêiner de bancos no Oracle. PDB: Banco plugável dentro do contêiner. H2 embutido: Banco no processo da aplicação. H2 em memória: Pode guardar dados de um teste descartável.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Índice",
+      "CDB",
+      "Trigger"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l4q28",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "H2 pode rodar embutido no processo da aplicação, inclusive em memória. Para um teste descartável sem servidor separado, esse uso é",
+     "explanation": "H2 pode rodar embutido no processo da aplicação, inclusive em memória. possível com H2 é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "obrigatoriamente externo",
+      "exclusivo do Oracle",
+      "possível com H2"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l4q29",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "H2 pode funcionar embutido e em memória. A clínica o usa em testes, mas a produção usa comandos específicos do PostgreSQL. Só esse teste garante compatibilidade completa?",
+     "explanation": "H2 ajuda em testes, mas não reproduz todos os recursos de outro SGBD.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Não, os dialetos podem diferir",
+      "Sim, todo SQL é igual",
+      "Sim, memória elimina diferenças"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l4q30",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de oracle multitenant e h2 ao seu significado:",
+     "explanation": "CDB: Contêiner de bancos no Oracle. PDB: Banco plugável dentro do contêiner. H2 embutido: Banco no processo da aplicação. H2 em memória: Pode guardar dados de um teste descartável.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l4c5",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "CDB",
+       "right": "Contêiner de bancos no Oracle"
+      },
+      {
+       "left": "PDB",
+       "right": "Banco plugável dentro do contêiner"
+      },
+      {
+       "left": "H2 embutido",
+       "right": "Banco no processo da aplicação"
+      }
+     ]
+    }
+   ],
+   "concepts": [
+    {
+     "id": "u1l4c1",
+     "title": "Blocos e registros PL/SQL",
+     "summary": "DECLARE: Declara variáveis. BEGIN: Inicia os comandos do bloco. EXCEPTION: Inicia o tratamento de erros. END: Encerra o bloco."
+    },
+    {
+     "id": "u1l4c2",
+     "title": "SELECT INTO e exceções",
+     "summary": "Uma linha: Preenche a variável normalmente. Nenhuma linha: Gera NO_DATA_FOUND. Mais de uma linha: Gera TOO_MANY_ROWS. SELECT INTO simples: Espera exatamente uma linha."
+    },
+    {
+     "id": "u1l4c3",
+     "title": "MVCC e manutenção",
+     "summary": "MVCC: Controle por versões de linhas. VACUUM: Torna reutilizável espaço de versões removíveis. ANALYZE: Atualiza estatísticas do planejador. UPDATE: Pode deixar versões antigas da linha."
+    },
+    {
+     "id": "u1l4c4",
+     "title": "Funções, gatilhos e MERGE",
+     "summary": "Função: Rotina que pode devolver um resultado. Trigger: Reage automaticamente a um evento. MERGE: Escolhe ações entre origem e destino. RETURN: Devolve o resultado de uma função."
+    },
+    {
+     "id": "u1l4c5",
+     "title": "Oracle multitenant e H2",
+     "summary": "CDB: Contêiner de bancos no Oracle. PDB: Banco plugável dentro do contêiner. H2 embutido: Banco no processo da aplicação. H2 em memória: Pode guardar dados de um teste descartável."
     }
    ]
   },
@@ -1903,7 +3424,9 @@
      "answer": 2,
      "explanation": "A tabela fato guarda as medidas e as chaves das dimensões. As dimensões descrevem o contexto (quem, o quê, onde, quando).",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "prova"
     },
     {
      "id": "u1l5q02",
@@ -1923,7 +3446,9 @@
      "answer": 3,
      "explanation": "O snowflake normaliza as dimensões (por exemplo, produto, categoria e departamento em tabelas separadas). O estrela as mantém desnormalizadas.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "prova"
     },
     {
      "id": "u1l5q03",
@@ -1943,7 +3468,9 @@
      "answer": 1,
      "explanation": "Dados atômicos podem ser agregados a qualquer momento; o contrário não é possível. Misturar granularidades na mesma fato gera contagens duplicadas e resultados incorretos.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "prova"
     },
     {
      "id": "u1l5q04",
@@ -1973,7 +3500,9 @@
      ],
      "explanation": "Drill down e roll up mudam o nível de detalhe; slice e dice recortam o cubo, respectivamente por uma dimensão e por várias.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c2",
+     "level": "prova"
     },
     {
      "id": "u1l5q05",
@@ -1993,7 +3522,9 @@
      "answer": 2,
      "explanation": "O data mart é um subconjunto analítico focado em um assunto ou departamento. Pode ser alimentado a partir do DW corporativo ou diretamente das fontes.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "prova"
     },
     {
      "id": "u1l5q06",
@@ -2013,7 +3544,9 @@
      "answer": 0,
      "explanation": "O esquema rígido definido antes da carga (schema-on-write) é típico do data warehouse tradicional. O data lake guarda dados brutos e aplica a estrutura na leitura.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "prova"
     },
     {
      "id": "u1l5q07",
@@ -2033,7 +3566,9 @@
      "answer": 3,
      "explanation": "As quatro categorias clássicas de NoSQL são chave-valor, documentos, famílias de colunas e grafos. O modelo relacional com esquema rígido é a base do SQL.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "prova"
     },
     {
      "id": "u1l5q08",
@@ -2053,7 +3588,9 @@
      "answer": 0,
      "explanation": "Documentos (como JSON) acomodam estrutura variável e aninhada e permitem consulta por campos internos. Em chave-valor puro o valor é opaco ao SGBD.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "prova"
     },
     {
      "id": "u1l5q09",
@@ -2073,7 +3610,9 @@
      "answer": 1,
      "explanation": "O data steward responde pelo significado e pela qualidade dos dados no negócio. O DBA cuida da operação técnica do banco.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "prova"
     },
     {
      "id": "u1l5q10",
@@ -2093,7 +3632,496 @@
      "answer": 4,
      "explanation": "No ELT os dados brutos são carregados primeiro e transformados no destino, aproveitando seu poder de processamento. No ETL a transformação vem antes da carga.",
      "source": "ia",
-     "reviewed": false
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "prova"
+    },
+    {
+     "id": "u1l5q11",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: uma linha da fato guarda 2 unidades e R$ 18 de um item vendido; a dimensão produto informa a descrição desse item. Agora: Uma rede de mercados analisa vendas. Quantidade e valor são medidas; produto e loja dão contexto. Em qual tabela ficam as medidas?",
+     "explanation": "Fato. Fato: Medidas e chaves das dimensões. Dimensão: Contexto para analisar as medidas. Granularidade: O que cada linha da fato representa. Floco de neve: Dimensões normalizadas em tabelas relacionadas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Dimensão de produto",
+      "Fato",
+      "Dimensão de loja"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l5q12",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "No floco de neve, dimensões são normalizadas. A rede separou categoria da dimensão produto numa tabela relacionada. Isso aproxima o modelo do",
+     "explanation": "No floco de neve, dimensões são normalizadas. A rede separou categoria da dimensão produto numa tabela relacionada. floco de neve é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "produto cartesiano",
+      "log transacional",
+      "floco de neve"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l5q13",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A granularidade escolhida é uma linha por item de cupom. Para preservar esse significado, a fato deve registrar em cada linha",
+     "explanation": "Misturar totais de cupom com itens na mesma fato compromete as agregações.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Um item de um cupom",
+      "O total anual da rede",
+      "Um cadastro de produto"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l5q14",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-1",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de fatos, dimensões e granularidade ao seu significado:",
+     "explanation": "Fato: Medidas e chaves das dimensões. Dimensão: Contexto para analisar as medidas. Granularidade: O que cada linha da fato representa. Floco de neve: Dimensões normalizadas em tabelas relacionadas.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c1",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Fato",
+       "right": "Medidas e chaves das dimensões"
+      },
+      {
+       "left": "Dimensão",
+       "right": "Contexto para analisar as medidas"
+      },
+      {
+       "left": "Granularidade",
+       "right": "O que cada linha da fato representa"
+      }
+     ]
+    },
+    {
+     "id": "u1l5q15",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: passar do total de 2025 para cada mês de 2025 aumenta o detalhe. Esse movimento é drill down. Agora: O relatório mostra totais anuais. Drill down aumenta o detalhe. Ao abrir um ano em seus meses, a rede faz",
+     "explanation": "Drill down. Drill down: Do resumo para o detalhe. Roll up: Do detalhe para o resumo. Slice: Recorte por um valor de uma dimensão. Dice: Recorte por várias dimensões.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c2",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Roll up",
+      "Slice",
+      "Drill down"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l5q16",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Roll up resume do detalhe para um nível maior. A rede troca totais por cidade por totais por estado. Essa operação é",
+     "explanation": "Roll up resume do detalhe para um nível maior. A rede troca totais por cidade por totais por estado. roll up é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c2",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "roll up",
+      "drill down",
+      "slice"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l5q17",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Dice recorta várias dimensões. A rede escolhe duas regiões, três categorias e um intervalo de meses ao mesmo tempo. Essa operação é",
+     "explanation": "O recorte combina valores de várias dimensões, formando um subcubo.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c2",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Roll up",
+      "Dice",
+      "Drill down"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l5q18",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-2",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de operações olap ao seu significado:",
+     "explanation": "Drill down: Do resumo para o detalhe. Roll up: Do detalhe para o resumo. Slice: Recorte por um valor de uma dimensão. Dice: Recorte por várias dimensões.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c2",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Drill down",
+       "right": "Do resumo para o detalhe"
+      },
+      {
+       "left": "Roll up",
+       "right": "Do detalhe para o resumo"
+      },
+      {
+       "left": "Slice",
+       "right": "Recorte por um valor de uma dimensão"
+      }
+     ]
+    },
+    {
+     "id": "u1l5q19",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o DW reúne análises de toda a rede; um data mart de estoque concentra o assunto estoque. Agora: A rede cria um repositório analítico voltado apenas para compras. Esse recorte por área caracteriza um",
+     "explanation": "Data mart. Data warehouse: Integração de dados para análise. Data mart: Recorte analítico por assunto ou área. Data lake: Dados de formatos variados, inclusive brutos. Schema-on-read: Estrutura aplicada na leitura.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Data mart",
+      "Trigger",
+      "Índice"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l5q20",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Data lake admite dados brutos e formatos variados. A rede quer guardar imagens e logs antes da preparação analítica. O repositório adequado é",
+     "explanation": "Data lake admite dados brutos e formatos variados. A rede quer guardar imagens e logs antes da preparação analítica. data lake é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "uma chave estrangeira",
+      "data lake",
+      "apenas a dimensão calendário"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l5q21",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "O lake recebe imagens e logs brutos. Schema-on-read aplica a estrutura ao interpretar os dados. Nessa abordagem, a estrutura é aplicada",
+     "explanation": "A interpretação acontece na leitura. Isso não elimina catálogo, qualidade ou controle de acesso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Obrigatoriamente antes da ingestão",
+      "Apenas ao apagar os arquivos",
+      "Na leitura para uso"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l5q22",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-3",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de dw, data mart e data lake ao seu significado:",
+     "explanation": "Data warehouse: Integração de dados para análise. Data mart: Recorte analítico por assunto ou área. Data lake: Dados de formatos variados, inclusive brutos. Schema-on-read: Estrutura aplicada na leitura.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c3",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Data warehouse",
+       "right": "Integração de dados para análise"
+      },
+      {
+       "left": "Data mart",
+       "right": "Recorte analítico por assunto ou área"
+      },
+      {
+       "left": "Data lake",
+       "right": "Dados de formatos variados, inclusive brutos"
+      }
+     ]
+    },
+    {
+     "id": "u1l5q23",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: um documento de produto contém nome, lista de cores e medidas. O modelo de documentos permite consultar esses campos internos. Agora: A rede guarda fichas de produtos com listas e campos variáveis e consulta seus campos internos. Qual modelo se ajusta a esse uso?",
+     "explanation": "Documentos. Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Chave-valor opaco",
+      "Documentos",
+      "Grafo de fornecedores"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l5q24",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Grafos representam nós e relações. Para explorar caminhos entre fornecedores e mercados, o modelo que destaca essas conexões é",
+     "explanation": "Grafos representam nós e relações. grafos é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "chave-valor opaco",
+      "cubo OLAP",
+      "grafos"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l5q25",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "Um cache associa cada código de sessão a um valor e o consulta sempre pelo código. Qual modelo atende diretamente a esse padrão?",
+     "explanation": "O padrão é buscar o valor por uma chave; não exige explorar relações.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "Chave-valor",
+      "Grafo",
+      "Cubo OLAP"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l5q26",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-4",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de modelos nosql ao seu significado:",
+     "explanation": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c4",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Chave-valor",
+       "right": "Acesso a um valor pela chave"
+      },
+      {
+       "left": "Documentos",
+       "right": "Campos e estruturas aninhadas"
+      },
+      {
+       "left": "Grafos",
+       "right": "Nós ligados por relações"
+      }
+     ]
+    },
+    {
+     "id": "u1l5q27",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "Exemplo: o data steward define com a área de vendas o significado de receita líquida e as verificações de qualidade desse dado. Agora: A rede precisa definir o significado de venda cancelada e suas regras de qualidade. Qual papel cuida desse significado no negócio?",
+     "explanation": "Data steward. Data steward: Cuida do significado e da qualidade no domínio. ETL: Transforma antes de carregar. ELT: Carrega antes de transformar. Governança: Define responsabilidades e regras de uso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "aprender",
+     "step": 1,
+     "options": [
+      "Administrador de rede",
+      "Servidor de arquivos",
+      "Data steward"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "u1l5q28",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 1,
+     "style": "caso_pratico",
+     "stem": "ETL transforma antes de carregar. A rede padroniza códigos das lojas antes de carregar o DW. Esse fluxo é",
+     "explanation": "ETL transforma antes de carregar. A rede padroniza códigos das lojas antes de carregar o DW. ETL é a resposta que aplica essa regra.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "aprender",
+     "step": 2,
+     "options": [
+      "ETL",
+      "ELT",
+      "DDL"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "u1l5q29",
+     "type": "quick",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "caso_pratico",
+     "stem": "A rede primeiro carrega arquivos no destino e depois usa esse ambiente para padronizar códigos. Transformar depois da carga caracteriza",
+     "explanation": "ELT carrega antes de transformar. Em ETL, a transformação acontece antes da carga.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "praticar",
+     "step": 3,
+     "options": [
+      "ETL",
+      "ELT",
+      "DDL"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "u1l5q30",
+     "type": "match",
+     "topic": "BD",
+     "subtopic": "conceito-5",
+     "difficulty": 2,
+     "style": "conceitual",
+     "stem": "Retome o cenário da lição e associe cada termo de governança e integração ao seu significado:",
+     "explanation": "Data steward: Cuida do significado e da qualidade no domínio. ETL: Transforma antes de carregar. ELT: Carrega antes de transformar. Governança: Define responsabilidades e regras de uso.",
+     "source": "ia",
+     "reviewed": false,
+     "concept": "u1l5c5",
+     "level": "praticar",
+     "step": 3,
+     "pairs": [
+      {
+       "left": "Data steward",
+       "right": "Cuida do significado e da qualidade no domínio"
+      },
+      {
+       "left": "ETL",
+       "right": "Transforma antes de carregar"
+      },
+      {
+       "left": "ELT",
+       "right": "Carrega antes de transformar"
+      }
+     ]
+    }
+   ],
+   "concepts": [
+    {
+     "id": "u1l5c1",
+     "title": "Fatos, dimensões e granularidade",
+     "summary": "Fato: Medidas e chaves das dimensões. Dimensão: Contexto para analisar as medidas. Granularidade: O que cada linha da fato representa. Floco de neve: Dimensões normalizadas em tabelas relacionadas."
+    },
+    {
+     "id": "u1l5c2",
+     "title": "Operações OLAP",
+     "summary": "Drill down: Do resumo para o detalhe. Roll up: Do detalhe para o resumo. Slice: Recorte por um valor de uma dimensão. Dice: Recorte por várias dimensões."
+    },
+    {
+     "id": "u1l5c3",
+     "title": "DW, data mart e data lake",
+     "summary": "Data warehouse: Integração de dados para análise. Data mart: Recorte analítico por assunto ou área. Data lake: Dados de formatos variados, inclusive brutos. Schema-on-read: Estrutura aplicada na leitura."
+    },
+    {
+     "id": "u1l5c4",
+     "title": "Modelos NoSQL",
+     "summary": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL."
+    },
+    {
+     "id": "u1l5c5",
+     "title": "Governança e integração",
+     "summary": "Data steward: Cuida do significado e da qualidade no domínio. ETL: Transforma antes de carregar. ELT: Carrega antes de transformar. Governança: Define responsabilidades e regras de uso."
     }
    ]
   }

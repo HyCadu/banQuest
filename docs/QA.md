@@ -264,3 +264,12 @@ Versão 0.7.3: `./gradlew check` sem erros nem warnings; 185 testes unitários; 
 
 > Limite: nada disso substitui abrir o app num aparelho. Animações, vibração, toque, TalkBack e a virada de dia real só
 > você consegue validar.
+
+
+### Banco de dados por conceitos — pacote v4
+
+- Abrir as lições 2 a 5 de Banco de Dados (concluir a anterior para liberar a próxima). Cada uma tem 5 conceitos e 30 exercícios no banco.
+- Conferir o resumo de novo conceito e os blocos: exemplo resolvido, aplicação guiada e variação, seguidos por questões de prova. A sessão continua selecionando 3 conceitos e até 12 exercícios, além das repetições de erros.
+- Repetir a lição: os 2 conceitos ainda não vistos devem receber prioridade. Conferir também os pares e as explicações de acerto/erro.
+- Conferir que o histórico das questões q01–q10 foi mantido e que os itens novos mostram o selo de não revisada.
+- Validação estrutural adicional em JavaScript: 170 IDs únicos, conceitos, níveis, passos, alternativas, pares e balanceamento de escolhas rápidas sem erros. O validador Python e o build Android não foram executados neste ambiente, que não disponibiliza Python utilizável.
