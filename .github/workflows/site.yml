@@ -1,0 +1,36 @@
+# Publica o site de divulgação (site-banquest/dist) no GitHub Pages: https://hycadu.github.io/banquest/
+# Roda quando algo em site-banquest/dist muda na main (ou à mão, em Actions → Site no GitHub Pages → Run workflow).
+# Uma vez só, antes da primeira publicação: Settings → Pages → Build and deployment → Source: GitHub Actions.
+name: Site no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site-banquest/dist/**"
+      - ".github/workflows/site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site-banquest/dist
+      - id: deployment
+        uses: actions/deploy-pages@v5
