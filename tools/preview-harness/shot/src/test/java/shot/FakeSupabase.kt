@@ -190,7 +190,7 @@ class FakeSupabase(private val clock: Clock) : HttpTransport {
         val answers = a.getValue("p_answers").jsonPrimitive.int
         val duration = a.getValue("p_duration_ms").jsonPrimitive.long
         val day = LocalDate.parse(a.str("p_day"))
-        val max = if (kind == "lesson") 150 else 120
+        val max = if (kind == "lesson") 210 else 120 // iguais ao submit_session do 0001_social.sql
         val reason = when {
             xp !in 0..max -> "xp"
             duration < answers * 2_000L -> "too_fast"

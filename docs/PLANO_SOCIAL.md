@@ -86,8 +86,8 @@ progress_snapshots(user_id PK, version bigint, payload jsonb, device_id text, up
 ```
 
 **Funções (RPC):**
-- `submit_session(id, day, kind, xp, answers, duration_ms, streak, longest)`: limites (lição ≤ 150 XP, treino ≤ 120;
-  pelo menos 3 s por resposta; dia = hoje ou ontem em Brasília; no máximo 40 sessões por dia). Idempotente pelo `id`.
+- `submit_session(id, day, kind, xp, answers, duration_ms, streak, longest)`: limites (lição ≤ 210 XP, treino ≤ 120;
+  pelo menos 2 s por resposta; dia entre hoje − 7 e hoje em Brasília; no máximo 40 sessões por dia). Idempotente pelo `id`.
 - `weekly_ranking(scope 'global'|'friends')`: XP da semana atual. Na lista geral entra quem tem `show_in_global`;
   amigos aparecem para os amigos mesmo ocultos.
 - `request_friend(user_id)` e `respond_request(id, accept)`: pedido pelo ranking precisa ser aceito.

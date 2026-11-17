@@ -49,13 +49,17 @@ create table if not exists public.study_sessions (
   user_id     uuid not null references public.profiles (id) on delete cascade,
   day         date not null,
   kind        text not null check (kind in ('lesson', 'practice')),
-  xp          int not null check (xp between 0 and 150),
+  xp          int not null check (xp between 0 and 210),
   answers     int not null check (answers between 1 and 30),
   duration_ms bigint not null check (duration_ms >= 0),
   created_at  timestamptz not null default now()
 );
 create index if not exists study_sessions_user_day_idx on public.study_sessions (user_id, day);
 create index if not exists study_sessions_day_idx on public.study_sessions (day);
+-- 0.9.1: a lição por conceitos (12 exercícios) chega a 210 XP. O limite era 150 (lição antiga de 8 questões), e as
+-- lições boas ficavam fora do ranking. Refaz a restrição para os bancos criados antes (rodar de novo não muda nada).
+alter table public.study_sessions drop constraint if exists study_sessions_xp_check;
+alter table public.study_sessions add constraint study_sessions_xp_check check (xp between 0 and 210);
 
 create table if not exists public.friend_requests (
   id           uuid primary key default gen_random_uuid(),
@@ -238,7 +242,8 @@ language plpgsql volatile security definer set search_path = public, pg_temp as 
 declare
   uid uuid := public.require_profile();
   today date := public.today_brt();
-  max_xp int := case p_kind when 'lesson' then 150 when 'practice' then 120 else -1 end;
+  -- lição: 12 exercícios × 15 XP + 20 de conclusão + 10 de perfeita = 210 (igual a SessionLimits no app)
+  max_xp int := case p_kind when 'lesson' then 210 when 'practice' then 120 else -1 end;
 begin
   if exists (select 1 from study_sessions where id = p_id) then
     return json_build_object('ok', true, 'duplicate', true);
