@@ -19,6 +19,8 @@ for f in "$ROOT"/supabase/migrations/*.sql; do
   "${PSQL[@]}" -d trilha -f "$f"
   "${PSQL[@]}" -d trilha -f "$f"   # de novo: o SQL precisa poder ser reaplicado
 done
+# banco criado antes da 0.9.1 (lição até 150 XP): rodar o 0001 de novo tem de subir o limite da tabela para 210
+"${PSQL[@]}" -d trilha -c "alter table public.study_sessions drop constraint study_sessions_xp_check, add constraint study_sessions_xp_check check (xp between 0 and 150)"
 # o dono pode rodar o 0001 de novo depois do 0002: isso não pode tirar a permissão do latest_release()
 "${PSQL[@]}" -d trilha -f "$ROOT/supabase/migrations/0001_social.sql"
 export PGOPTIONS="-c client_min_messages=notice"

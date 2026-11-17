@@ -1,5 +1,9 @@
 package br.com.trilhati.domain.social
 
+import br.com.trilhati.domain.TestData
+import br.com.trilhati.domain.lesson.LessonPlanner
+import br.com.trilhati.domain.lesson.LessonRun
+import br.com.trilhati.domain.lesson.XpEngine
 import java.time.LocalDate
 import java.time.ZoneId
 import org.junit.Assert.assertEquals
@@ -40,8 +44,8 @@ class SocialRulesTest {
     private val today = LocalDate.of(2026, 11, 18)
 
     @Test fun `limites iguais aos do servidor`() {
-        assertTrue(SessionLimits.accepts("lesson", 150, 8, 16_000, today, today))
-        assertFalse(SessionLimits.accepts("lesson", 151, 8, 16_000, today, today))
+        assertTrue(SessionLimits.accepts("lesson", 210, 12, 24_000, today, today))
+        assertFalse(SessionLimits.accepts("lesson", 211, 12, 24_000, today, today))
         assertTrue(SessionLimits.accepts("practice", 120, 8, 16_000, today, today))
         assertFalse(SessionLimits.accepts("practice", 121, 8, 16_000, today, today))
         assertFalse(SessionLimits.accepts("lesson", 50, 8, 15_999, today, today))
@@ -50,6 +54,34 @@ class SocialRulesTest {
         assertTrue(SessionLimits.accepts("lesson", 50, 8, 16_000, today.minusDays(7), today))
         assertFalse(SessionLimits.accepts("lesson", 50, 8, 16_000, today.minusDays(8), today))
         assertFalse(SessionLimits.accepts("boss", 50, 8, 16_000, today, today))
+    }
+
+    /** Joga uma sessão inteira com [LessonRun] e devolve o XP e o número de respostas, como o app envia. */
+    private fun play(size: Int, correctFirstTry: Boolean, lesson: Boolean): Pair<Int, Int> {
+        var run = LessonRun.start(TestData.questions(size))
+        while (run.current != null) run = LessonRun.answer(run, correctFirstTry || run.current!!.retry, 2_000, 180_000)
+        val bonus = if (lesson) XpEngine.completionXp(run.perfect) else 0
+        return (run.xp + bonus) to run.records.size
+    }
+
+    @Test fun `a melhor licao por conceitos cabe no limite e chega ao ranking`() {
+        val (xp, answers) = play(LessonPlanner.SIZE, correctFirstTry = true, lesson = true)
+        assertEquals(SessionLimits.LESSON_MAX_XP, xp) // o teto é exatamente a lição perfeita, nem mais nem menos
+        assertTrue(SessionLimits.accepts("lesson", xp, answers, answers * SessionLimits.MIN_MS_PER_ANSWER, today, today))
+    }
+
+    @Test fun `licao com todos os erros repetidos cabe no limite de respostas`() {
+        val (xp, answers) = play(LessonPlanner.SIZE, correctFirstTry = false, lesson = true)
+        assertEquals(2 * LessonPlanner.SIZE, answers)
+        assertTrue(SessionLimits.accepts("lesson", xp, answers, answers * SessionLimits.MIN_MS_PER_ANSWER, today, today))
+    }
+
+    @Test fun `licao antiga e o melhor treino cabem nos limites`() {
+        val (lessonXp, lessonAnswers) = play(LessonRun.SIZE, correctFirstTry = true, lesson = true)
+        assertTrue(SessionLimits.accepts("lesson", lessonXp, lessonAnswers, 16_000, today, today))
+        val (practiceXp, practiceAnswers) = play(LessonRun.SIZE, correctFirstTry = true, lesson = false)
+        assertEquals(SessionLimits.PRACTICE_MAX_XP, practiceXp)
+        assertTrue(SessionLimits.accepts("practice", practiceXp, practiceAnswers, 16_000, today, today))
     }
 
     @Test fun `primeira sincronizacao`() {

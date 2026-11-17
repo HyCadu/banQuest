@@ -33,6 +33,10 @@ Sem este passo, o app mostra: *"O banco do servidor ainda não foi configurado (
 
 Depois, rode também `supabase/migrations/0002_releases.sql` (aviso de versão nova; ver `docs/PUBLICAR_VERSAO.md`).
 
+**Banco criado antes da 0.9.1?** Rode o `0001_social.sql` inteiro de novo. Ele sobe o limite de XP da lição de 150
+para 210, porque a lição por conceitos (12 exercícios) chega a 210 XP e, com o limite antigo, as lições boas ficavam
+fora do ranking. Rodar de novo não apaga nada.
+
 ## 2. Configurar o envio de e-mail (SMTP próprio) — antes dos templates
 
 O painel **não deixa editar os templates** sem um SMTP próprio. Aparece o aviso *"Set up custom SMTP to edit templates"*.

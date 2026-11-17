@@ -80,9 +80,9 @@ select tst.err($$select public.make_friends('a0000000-0000-0000-0000-00000000000
 -- =====================================================================================================================
 -- 2. Sessões e limites anti-trapaça
 -- =====================================================================================================================
-select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 150, 8, 16000, 1, 1, public.today_brt())->>'ok')::boolean, 'lição com XP máximo (150) aceita');
-select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 150, 8, 16000, 1, 1, public.today_brt())->>'duplicate')::boolean, 'reenviar a mesma sessão não duplica');
-select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 151, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'lição acima de 150 XP recusada');
+select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 210, 12, 24000, 1, 1, public.today_brt())->>'ok')::boolean, 'lição com XP máximo (210: 12 exercícios por conceitos) aceita');
+select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 210, 12, 24000, 1, 1, public.today_brt())->>'duplicate')::boolean, 'reenviar a mesma sessão não duplica');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 211, 12, 24000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'lição acima de 210 XP recusada');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'practice', 121, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'treino acima de 120 XP recusado');
 select tst.ok((public.submit_session(gen_random_uuid(), public.today_brt(), 'practice', 120, 8, 16000, 1, 1, public.today_brt())->>'ok')::boolean, 'treino com 120 XP aceito');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt() + 1, 'lesson', 50, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'invalid_day', 'dia no futuro recusado');
@@ -111,8 +111,8 @@ select tst.study(public.today_brt(), 'lesson', 80);
 -- 3. Ranking da semana
 -- =====================================================================================================================
 select set_config('request.jwt.claim.sub', :'ana', false);
-select tst.ok((select xp from public.weekly_ranking('global') where friend_state = 'me') = 270,
-              'XP da semana soma as sessões aceitas desta semana (150 + 120; a de 7 dias atrás é da semana passada)');
+select tst.ok((select xp from public.weekly_ranking('global') where friend_state = 'me') = 330,
+              'XP da semana soma as sessões aceitas desta semana (210 + 120; a de 7 dias atrás é da semana passada)');
 select tst.ok((select pos from public.weekly_ranking('global') where friend_state = 'me') = 1, 'Ana em 1º no geral');
 select tst.ok(not exists (select 1 from public.weekly_ranking('global') where display_name = 'Caio'), 'quem está oculto não aparece no geral');
 select tst.ok((select count(*) from public.weekly_ranking('friends')) = 1, 'sem amigos, o ranking de amigos só tem você');

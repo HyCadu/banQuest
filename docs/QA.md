@@ -263,6 +263,18 @@
 - [ ] Com "Remover animações" ligado no Android (Acessibilidade), a troca é imediata.
 - [ ] Com o TalkBack, o seletor diz "Trilha Específicos" e "Trilha Gerais" e qual está selecionada.
 
+## BanQuest 0.9.1 — lições por conceitos no ranking
+
+Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supabase (`docs/PUBLICAR_VERSAO.md`).
+
+**35. Lição boa entra no ranking**
+- [ ] Anote seu XP da semana na aba **Ranking**.
+- [ ] Faça uma lição da U1 acertando quase tudo de primeira (9 ou mais dos 12 exercícios). No resultado, o XP fica
+      entre 160 e 210.
+- [ ] Volte ao Ranking e toque em ↻: o XP da semana subiu exatamente o XP da lição. Na 0.9.0 ele não mudava.
+- [ ] Num segundo celular, com uma conta amiga, o seu XP aparece atualizado. Se os dois fizeram lição hoje, a
+      ofensiva em dupla conta o dia.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
@@ -319,3 +331,8 @@ Versão 0.9.0 (temas e trilha dos Gerais juntos com a 0.8.2): `./gradlew check` 
 unitários (inclui `ContrastTest` nos quatro temas e nas trilhas dos Gerais, `TrailEngineTest` com as duas trilhas e
 `LegacyPaletteTest`); validador de conteúdo sem erros (1 aviso); pacote de provas com 205 questões (123 dos Específicos
 e 82 dos Gerais, esperando conteúdo); harness com 117 testes e renders `th_*.png` e `site_*.png`.
+
+Versão 0.9.1 (lições por conceitos no ranking): `./gradlew check` sem erros nem warnings, com 198 testes unitários
+(`SocialRulesTest` confere que o limite de XP da lição é exatamente o XP da melhor lição de 12 exercícios);
+`tools/sql-tests/run.sh` passando, inclusive reaplicando o 0001 sobre um banco com o limite antigo; harness com 118
+testes, entre eles `licaoPorConceitosPerfeitaEntraNoRanking` (lição real de 12 exercícios, 210 XP, chega ao ranking).

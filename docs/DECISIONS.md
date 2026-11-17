@@ -164,8 +164,8 @@ construir sem responder antes:
    `authenticated`. O app só lê o próprio perfil e o próprio retrato, e todo o resto passa por funções
    `security definer` com `search_path` fixo. As funções internas (`are_friends`, `pair_streak`…) não podem ser
    chamadas pelo app.
-7. **Anti-trapaça "confiança + limites"**, iguais no app (`SessionLimits`) e no servidor: até 150 XP por lição e 120
-   por treino, no mínimo 2 s por resposta, data entre hoje − 7 e hoje, e 40 sessões por dia. O id da sessão é um UUID
+7. **Anti-trapaça "confiança + limites"**, iguais no app (`SessionLimits`) e no servidor: até 210 XP por lição (150 até a
+   0.9.0, ver "Limite de XP da lição no ranking") e 120 por treino, no mínimo 2 s por resposta, data entre hoje − 7 e hoje, e 40 sessões por dia. O id da sessão é um UUID
    gerado no app, então reenviar não duplica. Uma sessão que o app já sabe que será recusada sai da fila, para não
    travar as seguintes.
 8. **Progresso na nuvem = retrato JSON** no mesmo formato do backup, com versão otimista (`expected_version`). Se outro
@@ -460,3 +460,24 @@ animação fluida.
    relevo, para continuar visível quando a cor da trilha é clara.
 7. **Animação da troca.** A trilha desliza para o lado da trilha escolhida, com esmaecimento, e as cores se misturam em
    0,5 s. O botão do seletor desliza com efeito de mola. Se o aparelho pedir para remover animações, a troca é imediata.
+
+## Limite de XP da lição no ranking (0.9.1, 17/11/2026) — a pedido do dono
+O dono perguntou se o ranking estava atualizando. Não estava: as lições boas no formato por conceitos não chegavam ao
+servidor.
+1. **Causa.** O limite anti-trapaça da lição (decisão 7 do social) era 150 XP, a lição perfeita no formato antigo
+   (8 questões × 15 + 20 de conclusão + 10 de perfeita). A lição por conceitos tem 12 exercícios
+   (`LessonPlanner.SIZE`) e chega a 210 XP. Acima de 150, o app tirava a sessão da fila sem enviar, e o servidor
+   recusaria do mesmo jeito. Num teste com 4 lições da U1 (12, 10, 8 e 6 acertos de primeira), o app somou 690 XP e
+   o ranking recebeu 140. Isso afetava também a ofensiva em dupla (o servidor só conta o dia com lição recebida) e o
+   "Pódio da semana". XP, nível e ofensiva individual não eram afetados.
+2. **Correção.** O limite da lição passou para **210** no app (`SessionLimits.LESSON_MAX_XP`), no `submit_session` e
+   na restrição da tabela `study_sessions`. A mudança fica no próprio `0001_social.sql`, que pode ser reaplicado: uma
+   migration separada seria desfeita por quem rodasse o 0001 de novo. O 0001 refaz a restrição da tabela, então
+   rodá-lo de novo atualiza um banco criado antes.
+3. **Para não voltar a acontecer:** o `SocialRulesTest` joga a melhor lição possível de `LessonPlanner.SIZE`
+   exercícios e exige que o limite seja exatamente o XP dela. Se o tamanho da lição ou o XP mudarem, o teste falha. O
+   pior caso de respostas (todas erradas e repetidas, 24) também cabe no limite de 30. A harness tem um teste de ponta
+   a ponta com uma lição real de 12 exercícios, e o `tools/sql-tests/run.sh` simula um banco antigo antes de reaplicar
+   o 0001.
+4. **O que já se perdeu não volta.** As sessões recusadas saíram da fila do aparelho. O ranking das semanas passadas
+   fica como está, e o desta semana passa a contar a partir da atualização.
