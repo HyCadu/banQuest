@@ -151,7 +151,8 @@ class FlowShots {
     @Test fun sTf() = session("s_tf.png", playing(QuestionType.TrueFalse, exercise = ExerciseState.Choice(0)))
     @Test fun sDark() = session("s_mcq_dark.png", playing(QuestionType.Mcq5, exercise = ExerciseState.Choice(1)), dark = true)
     @Test fun sOver() { val p = playing(QuestionType.Mcq5); session("s_over.png", p.copy(startedAtMs = NOW_MS - 200_000, combo = 0)) }
-    @Test fun sNoHearts() = session("s_nohearts.png", SessionUi.NoHearts(120, 1_240_000, true))
+    @Test fun sNoHearts() = session("s_nohearts.png", SessionUi.NoHearts(120, 1_240_000, true, dueErrors = 2))
+    @Test fun sNoHeartsNothingDue() = session("s_nohearts_nada_vencido.png", SessionUi.NoHearts(120, 1_240_000, true))
 
     // Questões de provas anteriores: etiqueta da prova e selo "explicação não revisada".
     private val exam by lazy {

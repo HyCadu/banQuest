@@ -298,6 +298,19 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       permita para o BanQuest e volte. Comece a prova: o Não perturbe liga (ícone na barra do Android). Termine ou saia:
       ele desliga. Se o Não perturbe já estava ligado antes, ele continua ligado depois.
 
+## BanQuest 0.10.1 — treino de erros sem farm
+
+**37. Só a revisão das vencidas dá XP e coração**
+- [ ] Erre 2 questões numa lição. Na aba Praticar: "Vencidas 0", "Erros guardados 2" e o texto "Cada erro sai daqui
+      depois de 4 revisões certas, em dias diferentes". O botão diz **"Treinar os mais antigos (sem XP)"**.
+- [ ] Faça esse treino duas vezes seguidas, acertando tudo: nenhuma resposta mostra "+XP", o resultado diz "Treino
+      para estudar: sem XP e sem coração", e o XP do Perfil e os corações não mudam. Os erros continuam guardados.
+- [ ] **Revisão livre (sem XP)**: mesma coisa, sem XP e sem coração.
+- [ ] No dia seguinte, os 2 erros aparecem como **Vencidas**. "Treinar erros (2)" dá XP e devolve 1 coração. Depois
+      disso, as vencidas voltam a 0 e os erros continuam guardados (a próxima revisão é em 3 dias).
+- [ ] Fique sem corações num dia sem erro vencido: a tela "Acabaram os corações" não mostra o botão de revisar erros.
+      Com erro vencido, mostra "Revisar erros vencidos (ganhe 1 coração)".
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
@@ -366,3 +379,7 @@ e ofensiva da prova, sem devolver coração) e `SocialRulesTest` (limites do tip
 as provas no servidor e na ofensiva em dupla; harness com integração da prova (aviso, coração ao começar, XP só ao
 terminar, abandonar, partes, modo sem vidas e Não perturbe) e renders `s_exam_intro*.png`, `s_exam_mode.png`,
 `s_exam_result.png`, `s_nohearts_exam.png` e `t_practice.png`.
+
+Versão 0.10.1 (treino sem farm): `SrsEngineTest` (acerto antes do dia não adianta), `LessonRunTest` (treino sem XP) e
+`ProgressProcessorTest` (treino livre sem XP, coração, missão nem meta); harness com
+`treinoForaDoPrazoERevisaoLivreNaoDaoXpNemCoracaoENaoAdiantamARevisao` e render `s_nohearts_nada_vencido.png`.

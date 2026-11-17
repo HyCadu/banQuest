@@ -29,6 +29,8 @@ data class LessonRunState(
     val queue: List<LessonItem>,
     val planned: Int,
     val repeatMistakes: Boolean = true,
+    /** `false` no treino sem recompensa (nada vencido ou revisão livre): as respostas valem 0 XP. */
+    val awardsXp: Boolean = true,
     val completed: Int = 0,
     val combo: Int = 0,
     val bestCombo: Int = 0,
@@ -65,8 +67,11 @@ object LessonRun {
         return chosen.shuffled(random)
     }
 
-    fun start(questions: List<Question>, repeatMistakes: Boolean = true): LessonRunState =
-        LessonRunState(queue = questions.map { LessonItem(it, retry = false) }, planned = questions.size, repeatMistakes = repeatMistakes)
+    fun start(questions: List<Question>, repeatMistakes: Boolean = true, awardsXp: Boolean = true): LessonRunState =
+        LessonRunState(
+            queue = questions.map { LessonItem(it, retry = false) }, planned = questions.size,
+            repeatMistakes = repeatMistakes, awardsXp = awardsXp,
+        )
 
     /**
      * Registra a resposta da questão atual. Erro na primeira vez recoloca a questão no fim da fila (uma vez só).
@@ -77,7 +82,7 @@ object LessonRun {
     fun answer(state: LessonRunState, correct: Boolean, timeMs: Long, targetMs: Long, corrected: Boolean = false): LessonRunState {
         val item = state.current ?: return state
         val fixed = corrected && !correct
-        val xp = XpEngine.answerXp(correct, item.retry, timeMs, fixed)
+        val xp = if (state.awardsXp) XpEngine.answerXp(correct, item.retry, timeMs, fixed) else 0
         val record = AnswerRecord(item.question, correct, item.retry, timeMs, targetMs, xp, fixed)
         val rest = state.queue.drop(1)
         val requeue = state.repeatMistakes && !correct && !fixed && !item.retry

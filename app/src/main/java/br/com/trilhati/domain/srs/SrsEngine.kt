@@ -18,12 +18,14 @@ object SrsEngine {
     /**
      * Atualiza o cartão depois de uma resposta.
      * - Errou: o cartão (re)começa no primeiro intervalo.
-     * - Acertou com cartão ativo: sobe um degrau; depois do último intervalo o item "se forma" e sai do banco de erros.
+     * - Acertou com cartão vencido: sobe um degrau; depois do último intervalo o item "se forma" e sai do banco de erros.
+     * - Acertou antes do dia da revisão: nada muda (0.10.1). Senão, treinar a mesma questão várias vezes no mesmo dia
+     *   a "formava" em minutos, e a revisão espaçada perdia o sentido.
      * - Acertou sem cartão: nada acontece (a questão nunca foi errada).
      */
     fun onAnswer(card: SrsCard, correct: Boolean, today: LocalDate): SrsCard {
         if (!correct) return SrsCard(0, today.plusDays(INTERVALS_DAYS[0].toLong()))
-        if (!card.active) return card
+        if (!card.active || !isDue(card, today)) return card
         val next = card.index + 1
         return if (next >= INTERVALS_DAYS.size) SrsCard() else SrsCard(next, today.plusDays(INTERVALS_DAYS[next].toLong()))
     }
