@@ -380,6 +380,22 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       **"Qual prova você vai fazer?"**, com o botão Começar desligado até escolher.
 - [ ] Escolha Técnico Bancário e toque em Começar: a Trilha abre no Técnico.
 
+## BanQuest 0.14.0 — provas de Técnico Bancário (FGV 2018 e 2023)
+
+**43. No Técnico Bancário**
+- [ ] Praticar › Provas anteriores mostra **FGV · Banestes 2023** (63 questões, Específicos e Gerais) e **FGV · Banestes
+      2018** de Técnico (72 questões) inteiras, e as provas de TI do Banestes com "Só Gerais".
+- [ ] Abrindo a de 2023: a escolha de partes oferece Prova inteira, Específicos e Gerais. A Q15 (hexágono), a Q17 (quadro
+      de peças) e a Q25 (gráfico de consumo) trazem a figura descrita no enunciado.
+- [ ] Em questões de Português de 2018 (ex.: Q6, Q16, Q18), os termos sublinhados aparecem entre colchetes, com o aviso
+      no início do enunciado.
+
+**44. No Analista de TI**
+- [ ] As provas de Técnico aparecem com "Só Gerais"; a de 2018 tem também questões de Matemática financeira (juros,
+      descontos, Price e SAC).
+- [ ] Na G1 (Português), as lições ganharam questões oficiais "FGV · Banestes 2018 · …" e "FGV · Banestes 2023 · …" de
+      Técnico Bancário.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar

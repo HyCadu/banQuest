@@ -6197,6 +6197,68 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q20",
+   "lesson": "u11l2",
+   "concept": "u11l2c3",
+   "type": "mcq5",
+   "topic": "Coesão",
+   "subtopic": "anáfora e catáfora",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nTodas as frases abaixo apresentam elementos sublinhados que estabelecem coesão com elementos anteriores (anáfora); a frase em que o elemento sublinhado se refere a um elemento futuro do texto (catáfora) é:",
+   "options": [
+    "“A civilização converteu a solidão num dos bens mais preciosos [que] a alma humana pode desejar”",
+    "“Todo o problema da vida é [este]: como romper a própria solidão”",
+    "“É sobretudo na solidão que se sente a vantagem de viver com alguém [que] saiba pensar”",
+    "“O homem ama a companhia, mesmo que seja apenas [a] de uma vela que queima”",
+    "“As pessoas que nunca têm tempo são [aquelas] que produzem menos”."
+   ],
+   "answer": 1,
+   "explanation": "Em B, “este” anuncia o que vem depois dos dois-pontos (“como romper a própria solidão”): é catáfora. Nas outras, o termo retoma algo já dito (os bens, alguém, a companhia, as pessoas): anáfora.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 20,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q8",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Interpretação de texto",
+   "subtopic": "crítica do autor",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Evandro Lins e Silva é autor da seguinte frase: “A prisão é uma incubadora cara, eficaz e prolífica para a geração e crescimento de marginais, aperfeiçoados pelo convívio com outros marginais já reincidentes”. A crítica na frase se dirige essencialmente para:",
+   "options": [
+    "o sistema prisional",
+    "o Código Penal brasileiro",
+    "a estrutura policial",
+    "os marginais reincidentes",
+    "as injustiças sociais."
+   ],
+   "answer": 0,
+   "explanation": "A frase chama a prisão de “incubadora” de marginais: o alvo da crítica é o sistema prisional, que em vez de recuperar acaba formando criminosos pelo convívio com reincidentes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q1",
    "lesson": "u11l2",
    "concept": "u11l2c3",
@@ -6507,6 +6569,285 @@
    }
   },
   {
+   "id": "fgv-banestes-2023-tb-q1",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Tipologia textual",
+   "subtopic": "texto normativo",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Assinale o segmento textual abaixo que deve ser incluído entre os textos normativos.",
+   "options": [
+    "Gastos públicos podem também significar investimentos e não desperdício.",
+    "Todos os militares estão obrigados a respeitar os superiores.",
+    "Os caminhões foram amontoando-se na estrada até fecharem completamente o trânsito.",
+    "Todos estavam preocupados diante da ação policial, que costumava ser forte e rápida.",
+    "As ordens judiciais devem ser obedecidas."
+   ],
+   "answer": 4,
+   "explanation": "Texto normativo prescreve conduta: diz o que deve ou não ser feito (“As ordens judiciais devem ser obedecidas”). Pelo gabarito, B descreve uma obrigação já existente (informa como as coisas são), A opina, e C e D narram ou descrevem.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 1,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q11",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Narração",
+   "subtopic": "marco inicial da narrativa",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Analise o texto a seguir: “A rua estava cheia de gente, pois havia um festival de cinema na pequena cidade. Via-se logo que se tratava de pessoas que não conheciam o local. Entre esses visitantes, um estacionou o seu carro diante da porta da minha garagem. Tentei chamá-lo, mas o perdi no meio da aglomeração. Telefonei para a polícia local, mas não havia viatura disponível. Perdoei o transgressor mentalmente e fui dormir”. O segmento que serve de marco inicial da narrativa é:",
+   "options": [
+    "A rua estava cheia de gente.",
+    "havia um festival de cinema na pequena cidade.",
+    "se tratava de pessoas que não conheciam o local.",
+    "um estacionou o seu carro diante da porta da minha garagem.",
+    "Tentei chamá-lo."
+   ],
+   "answer": 3,
+   "explanation": "Os primeiros trechos descrevem o cenário (rua cheia, festival, visitantes). A história começa de fato quando um visitante estaciona diante da garagem: é o fato que desencadeia as ações seguintes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 11,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q2",
+   "lesson": "u11l2",
+   "concept": "u11l2c4",
+   "type": "mcq5",
+   "topic": "Sentido das palavras",
+   "subtopic": "adjetivos objetivos e subjetivos",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Na descrição de uma paisagem, o autor do texto empregou os seguintes pares de palavras: céu azul, mar agitado, aves ruidosas, ruído agradável, águas cálidas, atmosfera barroca, nuvens densas... Entre todos os adjetivos empregados, os dois que pertencem a um grupo diferente dos demais, são",
+   "options": [
+    "céu azul / mar agitado.",
+    "aves ruidosas / ruído agradável.",
+    "atmosfera barroca / nuvens densas.",
+    "ruído agradável / atmosfera barroca.",
+    "águas cálidas / aves ruidosas."
+   ],
+   "answer": 3,
+   "explanation": "“Agradável” e “barroca” expressam a impressão ou o julgamento de quem descreve (adjetivos subjetivos). Os demais (azul, agitado, ruidosas, cálidas, densas) indicam características que se observam nos próprios seres.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 2,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q3",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Texto dissertativo",
+   "subtopic": "argumento por oposição",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Os livros didáticos ensinam que os textos dissertativos discutem um tema, defendem uma opinião, contrariam uma ideia oposta, fornecem informações etc. Assinale a frase que se estrutura pela oposição a um outro pensamento ou opinião.",
+   "options": [
+    "Gastos públicos podem também significar investimentos e não desperdício.",
+    "Como diz a sabedoria popular, mais vale a quem Deus ajuda do que quem cedo madruga.",
+    "Economize para o futuro!",
+    "Uma única vela pode acender outras mil sem perder a sua força.",
+    "Amar profundamente em uma direção nos torna mais amorosos em todas as outras."
+   ],
+   "answer": 0,
+   "explanation": "“Gastos públicos podem também significar investimentos e não desperdício” rebate uma ideia corrente (a de que gasto público é desperdício). As outras afirmam, aconselham ou comparam sem contrariar outra opinião.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 3,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q5",
+   "lesson": "u11l2",
+   "concept": "u11l2c3",
+   "type": "mcq5",
+   "topic": "Coesão",
+   "subtopic": "retomada por expressão sinônima",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Observe a frase seguinte: “É natural que os franceses considerem suas trufas as melhores, com uma teimosia própria dos compatriotas de Charles de Gaulle. Todo aquele versado na matéria sabe que o tartufo branco italiano, natural do país, é muito superior àquelas”. Nessa frase, dois termos que mantêm relações de coesão, são",
+   "options": [
+    "teimosia / matéria.",
+    "àquelas / compatriotas.",
+    "franceses / compatriotas de Charles de Gaulle.",
+    "país / franceses.",
+    "natural / aquele."
+   ],
+   "answer": 2,
+   "explanation": "“Compatriotas de Charles de Gaulle” retoma “franceses” com outras palavras, um recurso de coesão. “Àquelas” retoma “trufas”, não “compatriotas”; os outros pares não se referem um ao outro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 5,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q6",
+   "lesson": "u11l2",
+   "concept": "u11l2c2",
+   "type": "mcq5",
+   "topic": "Inferência",
+   "subtopic": "conclusão autorizada pelo texto",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "De todas as notícias de jornais abaixo transcritas, assinale aquela que mostra uma inferência adequada.",
+   "options": [
+    "Houve um pequeno tremor de terra no Chile / os vinhos chilenos vão ter o preço reduzido.",
+    "Haverá eleição no próximo domingo / o candidato eleito vai ter o apoio do Congresso.",
+    "O combustível vai subir de preço / o preço dos veículos vai despencar.",
+    "O passageiro transportava seu computador / o passageiro estava com seu trabalho atrasado.",
+    "O motorista comprou novos óculos / óculos velhos trazem problemas de vários tipos."
+   ],
+   "answer": 4,
+   "explanation": "Quem compra óculos novos permite inferir que os velhos já não serviam bem. As outras conclusões não decorrem do fato: tremor não baixa o preço do vinho, eleição não garante apoio do Congresso, combustível caro não derruba o preço dos carros e levar o computador não indica trabalho atrasado.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q7",
+   "lesson": "u11l2",
+   "concept": "u11l2c3",
+   "type": "mcq5",
+   "topic": "Coerência",
+   "subtopic": "relação de causa",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "As frases abaixo foram retiradas de para-choques de caminhões. Assinale a frase que é acompanhada da causa adequada dessa frase, que dá coerência a ela.",
+   "options": [
+    "Sou filho do dono do mundo / é filho de alguém muito rico.",
+    "Graças a Deus que só um dos candidatos pode ganhar! / caso contrário, após as eleições, continuariam brigando.",
+    "Os direitos do homem são três: ver, ouvir e calar / o homem tem autoridade fora de sua casa.",
+    "Seja realista, exija o impossível / declaração de apoio à monarquia.",
+    "Quem sabe sobe / o estudo e a cultura são fontes de progresso."
+   ],
+   "answer": 4,
+   "explanation": "“Quem sabe sobe” ganha coerência pela ideia de que estudo e cultura levam ao progresso. As outras explicações não combinam com a frase (filho do “dono do mundo” é brincadeira com Deus; a frase de D é um lema revolucionário, não monarquista).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 7,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q8",
+   "lesson": "u11l2",
+   "concept": "u11l2c4",
+   "type": "mcq5",
+   "topic": "Vocabulário",
+   "subtopic": "vozes dos animais",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Um aluno do ensino fundamental decidiu dar voz aos animais que estavam presentes em sua redação. Assinale a opção em que o verbo utilizado está adequado ao nome do animal.",
+   "options": [
+    "a galinha balia.",
+    "o peru bramia.",
+    "o lobo uivava.",
+    "a vaca rosnava.",
+    "o cavalo silvava."
+   ],
+   "answer": 2,
+   "explanation": "O lobo uiva. A galinha cacareja (quem bale é a ovelha), o peru gorgoleja, a vaca muge e o cavalo relincha (silvar é próprio da cobra).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 8,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q9",
+   "lesson": "u11l2",
+   "concept": "u11l2c1",
+   "type": "mcq5",
+   "topic": "Descrição",
+   "subtopic": "estratégia descritiva",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Veja a seguinte descrição: “Fábio é um rapaz bonito: cabelo louro esvoaçante, esteticamente desgrenhado, olhos claros sobre um nariz afilado, lábios finos, tórax largo, cintura estreita e pernas alongadas, numa figura que em nada faz adivinhar sua bondade interior”. Sobre a estratégia descritiva desse texto, assinale a afirmativa correta.",
+   "options": [
+    "As características fornecidas são todas do aspecto físico.",
+    "A descrição segue o plano do todo para as partes.",
+    "A estrutura descritiva vai de longe para perto.",
+    "A descrição mostra traços positivos e negativos de Fábio.",
+    "O personagem é descrito no tempo passado."
+   ],
+   "answer": 1,
+   "explanation": "O texto apresenta Fábio no todo (“um rapaz bonito”) e depois detalha as partes: cabelo, olhos, nariz, lábios, tórax, cintura e pernas. Não é tudo físico (cita a bondade interior), não há traços negativos e o verbo está no presente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "idecan-banestes-2012-q1",
    "lesson": "u11l2",
    "concept": "u11l2c2",
@@ -6778,6 +7119,285 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q11",
+   "lesson": "u11l3",
+   "concept": "u11l3c4",
+   "type": "mcq5",
+   "topic": "Flexão nominal",
+   "subtopic": "grau do adjetivo",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "A frase que NÃO apresenta qualquer forma de superlativação de um adjetivo é:",
+   "options": [
+    "Sou extraordinariamente paciente desde que as coisas sejam feitas do meu jeito",
+    "A lealdade a um partido reduz o maior dos homens ao nível mesquinho das massas",
+    "O ouro é um metal amarelo ultra-apreciado",
+    "Uma besteira menor, consciente, pode impedir uma besteira grande pra cachorro, inconsciente",
+    "Veja o meu caso: saí do nada e cheguei à extrema pobreza."
+   ],
+   "answer": 4,
+   "explanation": "Em E, “extrema” é adjetivo comum ligado ao substantivo “pobreza”, sem intensificar outro adjetivo. Há superlativação em A (extraordinariamente paciente), B (o maior dos homens), C (ultra-apreciado) e D (grande pra cachorro, forma popular).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 11,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q15",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Formação de palavras",
+   "subtopic": "prefixo de negação",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nO adjetivo ilimitado corresponde à locução “sem limites”; a locução com igual estrutura que NÃO corresponde ao adjetivo abaixo destacado é:",
+   "options": [
+    "Os turistas ficaram [inertes] durante a ação policial / sem ação",
+    "O turista [incauto] ficou assustado com a ação policial / sem cautela",
+    "O vocalista da banda saiu [ileso] do acidente / sem ferimento",
+    "O presidente da Coreia passou [incógnito] pela França / sem ser percebido",
+    "O novo livro do autor estava ainda [inédito] / sem editor."
+   ],
+   "answer": 4,
+   "explanation": "“Inédito” é o que ainda não foi publicado, não “sem editor”. As outras correspondências estão certas: inerte (sem ação), incauto (sem cautela), ileso (sem ferimento), incógnito (sem ser reconhecido).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 15,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q16",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Formação de palavras",
+   "subtopic": "sufixo diminutivo",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\n“Se no Brasil a ética chegou a esse ponto, imagine a [etiqueta], que é a pequena ética”. A autora da frase, Danuza Leão, se refere à forma (etiqueta) que perdeu o valor diminutivo e passou a designar uma outra realidade. A frase abaixo em que o vocábulo sublinhado conservou o valor diminutivo é:",
+   "options": [
+    "Ao ser perguntado sobre em que dia da semana estava, teve que consultar a [folhinha] na parede da sala",
+    "Saía sempre às sextas para tomar uma [cervejinha] com os amigos",
+    "A propaganda aconselhava o uso de [camisinha]",
+    "Alguns espectadores visitam os atores no [camarim]",
+    "Após a chuva, havia [gotículas] de água no vidro dos carros."
+   ],
+   "answer": 4,
+   "explanation": "“Gotículas” são gotas pequenas: o sufixo mantém a ideia de tamanho. Folhinha (calendário), camisinha (preservativo) e camarim viraram outras palavras; em “cervejinha” o diminutivo é afetivo, não de tamanho.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q17",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Formação de palavras",
+   "subtopic": "radical -logia",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nUm ex-governador do estado do Amazonas disse o seguinte: “Defenda a [ecologia], mas não encha o saco”. (Gilberto Mestrinho) O vocábulo sublinhado, composto do radical-logia (“estudo”), se refere aos estudos de defesa do meio ambiente; o vocábulo abaixo, com esse mesmo radical, que tem seu significado corretamente indicado é:",
+   "options": [
+    "Antropologia: estudo do homem como representante do sexo masculino",
+    "Etimologia: estudo das raças humanas",
+    "Meteorologia: estudo dos impactos de meteoros sobre a Terra",
+    "Ginecologia: estudo das doenças privativas das mulheres",
+    "Fisiologia: estudo das forças atuantes na natureza."
+   ],
+   "answer": 3,
+   "explanation": "Ginecologia é o estudo das doenças e do sistema reprodutor feminino. Antropologia estuda o ser humano (não só o homem do sexo masculino), etimologia a origem das palavras, meteorologia o tempo e o clima, fisiologia o funcionamento dos seres vivos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 17,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q18",
+   "lesson": "u11l3",
+   "concept": "u11l3c2",
+   "type": "mcq5",
+   "topic": "Parônimos e homônimos",
+   "subtopic": "de encontro a / ao encontro de",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nA frase abaixo em que houve troca [indevida] entre parônimos ou homônimos é:",
+   "options": [
+    "“A evolução da técnica chegou ao ponto de tornar-nos [inermes] diante da técnica” / inertes",
+    "“Quem [aspira] a grandes coisas também deve sofrer muito” / expira",
+    "“Aquele que não deixa nada ao [acaso] raramente fará coisas de modo errado, mas fará pouquíssimas coisas” / ocaso",
+    "“Fala como sábio a um ignorante e este te dirá que tens pouco bom [senso]” / censo",
+    "“Ao entrar em um restaurante, todo cliente espera satisfazer desejos de ordem física e emocional. Os cardápios devem vir [de encontro a] essas necessidades” / ao encontro de."
+   ],
+   "answer": 4,
+   "explanation": "“Ir de encontro a” é chocar-se, ir contra; “ir ao encontro de” é atender, estar de acordo. Os cardápios devem ir ao encontro das necessidades. Nas outras, a palavra usada está certa: inermes (sem defesa), aspira (deseja), acaso (sorte), senso (juízo).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 18,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q19",
+   "lesson": "u11l3",
+   "concept": "u11l3c2",
+   "type": "mcq5",
+   "topic": "Sinônimos",
+   "subtopic": "sentido no contexto",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nA frase abaixo em que o termo sublinhado tem um sinônimo indicado corretamente é:",
+   "options": [
+    "“A razão nos é dada para [discernir] o bem e o mal” / julgar",
+    "“Quem decide praticar o mal, encontra sempre um [pretexto]” / castigo",
+    "“Poucas vezes falta [engenho] à maldade” / trabalho",
+    "“A educação seria a arte de parecer [inofensivo]” / inocente",
+    "“Não pode haver educação onde não há [discrição]” / reserva."
+   ],
+   "answer": 4,
+   "explanation": "Discrição é reserva, comedimento. Discernir é distinguir (não julgar), pretexto é desculpa (não castigo), engenho é habilidade, talento (não trabalho), inofensivo é o que não faz mal (inocente é quem não tem culpa).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 19,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q4",
+   "lesson": "u11l3",
+   "concept": "u11l3c1",
+   "type": "mcq5",
+   "topic": "Morfologia",
+   "subtopic": "locução adjetiva",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nA frase em que a substituição dos termos sublinhados por um adjetivo é feita de forma adequada é:",
+   "options": [
+    "Um beijo [de minha mãe] fez de mim um pintor / maternal",
+    "O importante na obra [de arte]: o espanto / arteira",
+    "Toda arte é imitação [da natureza] / naturalista",
+    "Apreciar os defeitos [do próximo] é ter talento? / alheios",
+    "Avalia-se a inteligência [de um indivíduo] pela quantidade de incertezas que ele é capaz de suportar / individualista."
+   ],
+   "answer": 3,
+   "explanation": "“Os defeitos do próximo” = “os defeitos alheios”: “alheio” é o adjetivo que corresponde a “do outro”. Nas demais o adjetivo muda o sentido: “de minha mãe” não é “maternal” (que tem jeito de mãe), “arteira” é travessa, “naturalista” e “individualista” são outras ideias.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 4,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q5",
+   "lesson": "u11l3",
+   "concept": "u11l3c3",
+   "type": "mcq5",
+   "topic": "Pronomes",
+   "subtopic": "eu ou mim",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "A frase em que se deveria usar a forma EU em lugar de MIM é:",
+   "options": [
+    "Um desejo de minha avó fez de mim um artista",
+    "Há muitas diferenças entre mim e a minha futura mulher",
+    "Para mim, ver filmes antigos é a maior diversão",
+    "Entre mim viajar ou descansar, prefiro o descanso",
+    "Separamo-nos, mas sempre de mim se lembra."
+   ],
+   "answer": 3,
+   "explanation": "Usa-se “eu” quando o pronome é sujeito de um verbo no infinitivo: “Entre eu viajar ou descansar”. Depois de preposição, sem verbo de que seja sujeito, o certo é “mim” (entre mim e ela, para mim, de mim).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 5,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q9",
+   "lesson": "u11l3",
+   "concept": "u11l3c4",
+   "type": "mcq5",
+   "topic": "Flexão verbal",
+   "subtopic": "verbos defectivos",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "“Não sei ver nada do que vejo; vejo bem apenas o que relembro e tenho inteligência apenas nas minhas lembranças”. (Rousseau) A relação ver/vejo só NÃO se repete de forma correta no seguinte par:",
+   "options": [
+    "rir / rio",
+    "trazer / trago",
+    "requerer / requeiro",
+    "deter / detenho",
+    "reaver / reavejo."
+   ],
+   "answer": 4,
+   "explanation": "“Reaver” é defectivo: só se conjuga nas formas em que o verbo “haver” tem a letra v (reavemos, reaveis). Não existe “reavejo”. Rio, trago, requeiro e detenho são as primeiras pessoas corretas de rir, trazer, requerer e deter.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q9",
    "lesson": "u11l3",
    "concept": "u11l3c1",
@@ -6805,6 +7425,37 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 9,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q12",
+   "lesson": "u11l3",
+   "concept": "u11l3c3",
+   "type": "mcq5",
+   "topic": "Classes de palavras",
+   "subtopic": "menos: pronome ou advérbio",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Assinale a frase abaixo em que o vocábulo menos mostra uma classe gramatical diferente das demais.",
+   "options": [
+    "O candidato estava com menos disposição para o estudo.",
+    "Os operários trabalham menos a cada ano.",
+    "Os atletas treinaram menos para essa prova.",
+    "Meus filhos sempre leram menos que os primos.",
+    "Os estrangeiros sempre se mostraram menos animados."
+   ],
+   "answer": 0,
+   "explanation": "Em “menos disposição”, “menos” acompanha um substantivo: é pronome indefinido (determinante). Nas outras, modifica verbo (trabalham, treinaram, leram) ou adjetivo (animados): é advérbio.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 12,
     "gabarito": "definitivo"
    }
   },
@@ -6960,6 +7611,192 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q10",
+   "lesson": "u11l4",
+   "concept": "u11l4c1",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "ordem direta",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A frase abaixo que apresenta seus termos em ordem direta é:",
+   "options": [
+    "O medo tem muitos olhos e enxerga coisas nos subterrâneos",
+    "Sai mais barato para a nação sustentar a família imperial",
+    "O grande inimigo da raça humana é o nacionalismo",
+    "Onça, quando dá o bote, é porque já olhou tudo que tinha de olhar",
+    "Nasce um otário por minuto."
+   ],
+   "answer": 0,
+   "explanation": "Ordem direta é sujeito, verbo e complementos: “O medo (sujeito) tem (verbo) muitos olhos (objeto)”. Nas outras o sujeito vem depois do verbo (“Nasce um otário”, “Sai mais barato... sustentar”), ou é deslocado (“O grande inimigo... é o nacionalismo”, em que o sujeito é “o nacionalismo”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 10,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q12",
+   "lesson": "u11l4",
+   "concept": "u11l4c1",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "expressão expletiva é que",
+   "difficulty": 3,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nEm frases como Quanto [é que] custa este livro? a expressão sublinhada (verbo ser + que) tem valor enfático, podendo ser retirada da frase sem prejuízo do conteúdo. A frase abaixo em que isso NÃO ocorre é:",
+   "options": [
+    "É o cargo que permite conhecer o homem",
+    "Foram os discípulos que deram autoridade a Aristóteles",
+    "A verdade é que até mesmo os poderosos podem precisar dos fracos",
+    "Quem toma conta da bolsa é que tem o poder",
+    "Onde existem muitos no comando é que nasce a confusão."
+   ],
+   "answer": 2,
+   "explanation": "Em “A verdade é que...”, o “é” é o verbo principal e o “que” introduz a oração predicativa: tirar “é que” desfaz a frase. Nas outras, “é que” só realça um termo e pode sair (“O cargo permite conhecer o homem”, “Os discípulos deram autoridade...”).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 12,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q14",
+   "lesson": "u11l4",
+   "concept": "u11l4c6",
+   "type": "mcq5",
+   "topic": "Conectivos",
+   "subtopic": "retificação e explicação",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\n“O poder não satisfaz, [ou melhor], é como a droga e sempre exige doses maiores”. Nessa frase a função da expressão sublinhada é:",
+   "options": [
+    "ratificar uma afirmação errada",
+    "ampliar uma informação com nova informação",
+    "explicar melhor algo escrito antes",
+    "exemplificar o fato comunicado anteriormente",
+    "corrigir um erro anterior."
+   ],
+   "answer": 2,
+   "explanation": "“Ou melhor” introduz uma formulação mais precisa do que acabou de ser dito: o autor não corrige um erro nem acrescenta outro fato, ele explica melhor a ideia de que o poder não satisfaz, comparando-o à droga.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 14,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q3",
+   "lesson": "u11l4",
+   "concept": "u11l4c6",
+   "type": "mcq5",
+   "topic": "Conectivos",
+   "subtopic": "valor semântico",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Todas as frases abaixo apresentam dois componentes separados por um sinal de pontuação. Desconsiderando a pontuação, indique a frase em que esse sinal foi substituído de forma adequada por um conectivo:",
+   "options": [
+    "Sabedoria é saber o que fazer; virtude é fazer / pois",
+    "Não é preciso muito para ser um produtor de coelhos. Você coloca um casal numa gaiola e é tudo / então",
+    "O capital é como água. Sempre flui por onde encontra menos obstáculos / logo",
+    "Dinheiro é igual a táxi: quando mais você precisa, ele não aparece / porém",
+    "Chega de homenagens. Eu quero o dinheiro / que."
+   ],
+   "answer": 4,
+   "explanation": "“Chega de homenagens, que eu quero o dinheiro”: o “que” tem valor explicativo (= pois) e liga bem as duas partes. Nas outras, o conectivo muda a relação: em A não há causa, em C e D a relação não é de conclusão nem de oposição, e em B “então” não cabe no lugar do ponto.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 3,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q6",
+   "lesson": "u11l4",
+   "concept": "u11l4c1",
+   "type": "mcq5",
+   "topic": "Sintaxe",
+   "subtopic": "ordem dos termos",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nO período abaixo em que os dois termos sublinhados NÃO podem trocar de posição é:",
+   "options": [
+    "[A arte] é [a mais bela das mentiras;]",
+    "[O importante na obra de arte] é [o espanto;]",
+    "[A forma] segue [a emoção;]",
+    "[A obra de arte]: [uma interrupção do tempo;]",
+    "Na arte não existe [passado] nem [futuro]."
+   ],
+   "answer": 2,
+   "explanation": "Em “A forma segue a emoção”, um termo é sujeito e o outro é objeto: trocar dá “A emoção segue a forma”, o contrário. Nas demais os termos são equivalentes (sujeito e predicativo ligados por “ser”, ou termos coordenados) e a troca mantém o sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q7",
+   "lesson": "u11l4",
+   "concept": "u11l4c5",
+   "type": "mcq5",
+   "topic": "Subordinação",
+   "subtopic": "oração reduzida e desenvolvida",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\n“Talvez um dia seja bom [relembrar este dia]”. (Virgílio) A forma de oração desenvolvida adequada correspondente à oração sublinhada acima é:",
+   "options": [
+    "relembrarmos este dia",
+    "a relembrança deste dia",
+    "que relembremos este dia",
+    "que relembrássemos este dia",
+    "uma nova lembrança deste dia."
+   ],
+   "answer": 2,
+   "explanation": "A oração reduzida de infinitivo “relembrar este dia” vira desenvolvida com “que” e o verbo no presente do subjuntivo, combinando com “seja bom”: “Talvez um dia seja bom que relembremos este dia”. O imperfeito (relembrássemos) pediria “seria bom”.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 7,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q11",
    "lesson": "u11l4",
    "concept": "u11l4c6",
@@ -7018,6 +7855,37 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 7,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q10",
+   "lesson": "u11l4",
+   "concept": "u11l4c6",
+   "type": "mcq5",
+   "topic": "Relações lógicas",
+   "subtopic": "causa e consequência",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Assinale a opção com duas ações em sequência que mostram uma relação de causa e consequência.",
+   "options": [
+    "João olhou o cartaz e teve vontade de ir ao cinema.",
+    "Choveu durante a noite e as ruas ficaram alagadas.",
+    "Cada vez que via as fotos, começava a chorar.",
+    "Viu a paisagem e lembrou-se da cidade onde nascera.",
+    "Jogou na loteria e imaginou o que faria com aquela fortuna."
+   ],
+   "answer": 1,
+   "explanation": "A chuva (causa) fez as ruas ficarem alagadas (consequência). Nas outras, a segunda ação é uma reação pessoal ou um pensamento que vem depois, sem relação necessária de causa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 10,
     "gabarito": "definitivo"
    }
   },
@@ -7169,6 +8037,68 @@
     "cargo": "Analista de Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 6,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q1",
+   "lesson": "u11l5",
+   "concept": "u11l5c5",
+   "type": "mcq5",
+   "topic": "Redação",
+   "subtopic": "clareza e ordem",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Observe a frase: “Todas as paixões nos fazem cometer erros, mas os mais ridículos nos faz cometer o amor”. Sobre a escritura dessa frase, a observação adequada é:",
+   "options": [
+    "a conjunção “mas” deveria ser substituída por “e”, já que não há oposição entre as frases",
+    "a forma verbal “faz cometer” deveria ser substituída por “fazem cometer”, pois o sujeito das duas frases é o mesmo",
+    "a forma “mais ridículos” deveria ser substituída por “mais ridículas”, pois o adjetivo se refere ao substantivo “paixões”",
+    "a frase “os mais ridículos nos faz cometer o amor” deveria ser substituída por “o amor nos faz cometer os mais ridículos”, em função de clareza",
+    "o termo “Todas as paixões” deveria ser substituído por “As paixões” já que o termo “todas” é perfeitamente dispensável."
+   ],
+   "answer": 3,
+   "explanation": "Na frase original o sujeito de “faz cometer” é “o amor”, mas ele vem no fim e o leitor tropeça. A ordem direta (“o amor nos faz cometer os mais ridículos”) deixa claro quem pratica a ação; as outras trocas mudariam o sentido ou criariam erro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 1,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q2",
+   "lesson": "u11l5",
+   "concept": "u11l5c4",
+   "type": "mcq5",
+   "topic": "Reescrita",
+   "subtopic": "equivalência de sentido",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nReescrevendo as frases abaixo, mantido o sentido original, com a eliminação das formas negativas sublinhadas, a forma INADEQUADA da nova frase é:",
+   "options": [
+    "[Nada] é mais revolucionário que dinheiro sobrando / Tudo é menos revolucionário que dinheiro sobrando",
+    "A única certeza do planejamento é que as coisas [nunca] ocorrem como foram planejadas / A única certeza do planejamento é que as coisas sempre ocorrem diferente do que foram planejadas",
+    "Tudo o que o dinheiro resolve [não] é problema / Tudo o que o dinheiro resolve é solução",
+    "[Não] emprestes a teu irmão com juros / Empresta a teu irmão sem juros",
+    "É raro alguém ouvir aquilo que [não] quer ouvir / É frequente alguém ouvir aquilo que quer ouvir."
+   ],
+   "answer": 2,
+   "explanation": "“O que o dinheiro resolve não é problema” diz que aquilo deixa de ser problema; “é solução” afirma outra coisa (que aquilo resolve algo). Nas demais, a troca da negação por um antônimo (tudo/menos, sempre/diferente, com/sem, raro/frequente) mantém o sentido.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 2,
     "gabarito": "definitivo"
    }
   },
@@ -7675,6 +8605,186 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q42",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "silogismo",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Em certa empresa são verdadeiras as afirmações:\n• Qualquer gerente é mulher.\n• Nenhuma mulher sabe trocar uma lâmpada.\nÉ correto concluir que, nessa empresa:",
+   "options": [
+    "algum gerente é homem",
+    "há gerente que sabe trocar uma lâmpada",
+    "todo homem sabe trocar uma lâmpada",
+    "todas as mulheres são gerentes",
+    "nenhum gerente sabe trocar uma lâmpada."
+   ],
+   "answer": 4,
+   "explanation": "Todo gerente está dentro do grupo das mulheres, e nenhuma mulher sabe trocar lâmpada. Logo nenhum gerente sabe. As outras não decorrem das premissas (nada se diz sobre os homens, nem que toda mulher é gerente).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 42,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q43",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação da conjunção",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Considere a afirmação: “João não trabalha e Maria fica em casa.” A negação dessa afirmação é:",
+   "options": [
+    "João não trabalha e Maria não fica em casa",
+    "João trabalha e Maria fica em casa",
+    "João trabalha e Maria não fica em casa",
+    "João trabalha ou Maria não fica em casa",
+    "João trabalha ou Maria fica em casa."
+   ],
+   "answer": 3,
+   "explanation": "A negação de “p e q” é “não p ou não q” (De Morgan). Negar “João não trabalha” dá “João trabalha”; negar “Maria fica em casa” dá “Maria não fica em casa”: “João trabalha ou Maria não fica em casa”.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 43,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q44",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "ordenação",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em uma corrida de carros os pilotos X e Y largaram em 5º e 7º lugares, respectivamente. Durante a corrida, X fez duas ultrapassagens, depois Y fez 4 ultrapassagens e, em seguida, X fez três ultrapassagens. Não houve nenhuma ultrapassagem por parte dos outros pilotos e a corrida terminou. Considere as afirmativas:\n• X ganhou a corrida.\n• Y chegou em 4º.\n• Quem largou em 3º chegou em 5º.\n• Quem largou em 2º chegou na mesma posição.\nÉ/são verdadeira(s):",
+   "options": [
+    "nenhuma",
+    "apenas uma",
+    "apenas duas",
+    "apenas três",
+    "todas."
+   ],
+   "answer": 3,
+   "explanation": "Largada: 1º a, 2º b, 3º c, 4º d, 5º X, 6º e, 7º Y. X passa d e c (3º). Y passa e, d, c e X (3º; X fica 4º). X passa Y, b e a: chega em 1º. Final: X, a, b, Y, c, d, e. Verdadeiras: X venceu, Y em 4º e c (3º na largada) em 5º. Quem largou em 2º (b) terminou em 3º. São três.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 44,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q46",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "negação da condicional",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considere a afirmação: “Quem rouba é preso. ” A negação dessa afirmação é:",
+   "options": [
+    "Alguém rouba e não é preso",
+    "Quem não é preso não roubou",
+    "Quem não rouba não é preso",
+    "Quem rouba não é preso",
+    "Alguém não rouba ou não é preso."
+   ],
+   "answer": 0,
+   "explanation": "“Quem rouba é preso” equivale a “se alguém rouba, então é preso”. A negação de “se p, então q” é “p e não q”: basta existir alguém que rouba e não é preso.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 46,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q47",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "posições em mesa",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Mário, que mora em Vitória, está reunido com os amigos Fábio, Hélio e Sérgio, sentados em volta de uma mesa quadrada. Entre os seus amigos, um mora em Guarapari, outro em Colatina e outro em Linhares. Sabe-se que:\n• Fábio está à direita de Mário.\n• Hélio está à direita de quem mora em Guarapari.\n• Sérgio não mora em Colatina e está em frente a Fábio.\nÉ correto concluir que:",
+   "options": [
+    "Fábio mora em Guarapari e Sérgio em Linhares",
+    "Fábio mora em Colatina e Sérgio em Linhares",
+    "Fábio mora em Linhares e Sérgio em Guarapari",
+    "Hélio mora em Colatina e Sérgio em Guarapari",
+    "Hélio mora em Linhares e Sérgio em Guarapari."
+   ],
+   "answer": 0,
+   "explanation": "Ponha Mário num lado da mesa; Fábio fica à sua direita, Sérgio em frente a Fábio e Hélio em frente a Mário. Para quem está no lugar de Fábio, a direita é o lugar de Hélio: logo Fábio mora em Guarapari. Sérgio não mora em Colatina, então mora em Linhares, e Hélio em Colatina.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 47,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q49",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica",
+   "subtopic": "associação de atributos",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Três pessoas com idades de 30, 40 e 50 anos estão sentadas em três poltronas, uma ao lado da outra (esquerda, meio e direita). Uma poltrona é preta, outra é azul e outra é marrom. Sabe-se que:\n• A pessoa mais velha não está na poltrona preta.\n• A pessoa da poltrona do meio é mais jovem que a da poltrona da direita.\n• A poltrona marrom está à direita da ocupada pela pessoa mais velha.\nÉ correto concluir que:",
+   "options": [
+    "a poltrona do meio está ocupada pela pessoa de 40 anos",
+    "a poltrona azul está imediatamente à esquerda da preta",
+    "a pessoa mais jovem está na poltrona marrom",
+    "a pessoa de 40 anos é vizinha da que está na poltrona azul",
+    "a poltrona preta é a do meio."
+   ],
+   "answer": 2,
+   "explanation": "A mais velha (50) não pode estar no meio (o meio é mais jovem que a direita) nem na direita (a marrom fica à direita dela): está na esquerda, que não é preta, então é azul. Meio 30 e direita 40. A marrom fica logo à direita da mais velha, no meio: a pessoa mais jovem está na marrom.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 49,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q27",
    "lesson": "u12l1",
    "type": "mcq5",
@@ -7791,6 +8901,96 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 31,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q17",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Conjuntos",
+   "subtopic": "ou lógico com tabela",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um material didático usado para ensinar crianças sobre sólidos é composto por 30 peças entre esferas, cubos e cilindros. Cada uma dessas peças tem cor única. A distribuição de peças e cores é apresentada no quadro a seguir.\nEsferas: 2 azuis, 6 vermelhas e 2 amarelas.\nCubos: 3 azuis, 4 vermelhos e 5 amarelos.\nCilindros: 4 azuis, 1 vermelho e 3 amarelos. A quantidade de peças que não são vermelhas ou são cilindros é",
+   "options": [
+    "19.",
+    "20.",
+    "23.",
+    "24.",
+    "27."
+   ],
+   "answer": 1,
+   "explanation": "Não vermelhas: 30 − (6 + 4 + 1) = 19. O “ou” inclui também os cilindros vermelhos, que ainda não foram contados: mais 1. Total: 20.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 17,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q21",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Lógica proposicional",
+   "subtopic": "disjunções verdadeiras",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Sejam p, q e r proposições simples e ∼p, ∼q e ∼r, respectivamente, as suas negações. As seguintes proposições compostas têm valor lógico verdadeiro:\np ∨ q\nq ∨ ∼r\nr ∨ ∼p\nPode-se concluir que o conjunto de proposições simples logicamente verdadeiras é dado por",
+   "options": [
+    "{p}.",
+    "{q}.",
+    "{r}.",
+    "{p, q}.",
+    "{q, r}."
+   ],
+   "answer": 1,
+   "explanation": "Suponha q falsa: de p ∨ q, p é verdadeira; de r ∨ ∼p, r é verdadeira; mas então q ∨ ∼r fica falsa. Logo q é verdadeira em qualquer caso. Com q verdadeira, p e r podem ser verdadeiras ou falsas: só q é certa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 21,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q24",
+   "lesson": "u12l1",
+   "type": "mcq5",
+   "topic": "Conjuntos",
+   "subtopic": "complementar e união",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Sejam A e B dois conjuntos finitos tais que A∪B = {1, 2, 3, 4, 5, 6, 7} e {1, 2, 5} é o conjunto de elementos que estão em A e não estão em B. O conjunto dos elementos que não estão em A ou estão em B é",
+   "options": [
+    "{3, 4}.",
+    "{3, 6}.",
+    "{3, 4, 6}.",
+    "{4, 6, 7}.",
+    "{3, 4, 6, 7}."
+   ],
+   "answer": 4,
+   "explanation": "O universo considerado é A ∪ B = {1,…,7}. Quem não está em A ou está em B é tudo, menos o que está só em A ({1, 2, 5}): sobram {3, 4, 6, 7}.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 24,
     "gabarito": "definitivo"
    }
   },
@@ -7999,6 +9199,96 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q41",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "operações com tempo",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Para montar certo aparelho um operário demora 25 minutos. Trabalhando continuamente, para montar 10 aparelhos esse operário gastará:",
+   "options": [
+    "4 horas",
+    "4 horas e 10 minutos",
+    "4 horas e 20 minutos",
+    "4 horas e meia",
+    "4 horas e 40 minutos."
+   ],
+   "answer": 1,
+   "explanation": "Cada aparelho leva 25 minutos, então 10 aparelhos levam 10 × 25 = 250 minutos. Como 240 minutos são 4 horas, sobram 10: 4 horas e 10 minutos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 41,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q45",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "problemas",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Maria e Joana começaram, no mesmo dia, a ler um mesmo livro com 300 páginas. Maria lê 12 páginas por dia e Joana lê 15 páginas por dia. Quando Joana terminar o livro, o número de páginas que Maria ainda terá para ler é:",
+   "options": [
+    "75",
+    "60",
+    "48",
+    "45",
+    "36."
+   ],
+   "answer": 1,
+   "explanation": "Joana termina em 300/15 = 20 dias. Nesse tempo Maria lê 20 × 12 = 240 páginas; faltam 300 − 240 = 60.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 45,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q48",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "unidades de volume e massa",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "1 cm³ de gesso tem 1,4 g de massa.\nA massa de 1 m³ de gesso é:",
+   "options": [
+    "1,4 kg",
+    "14 kg",
+    "140 kg",
+    "1400 kg",
+    "14000 kg."
+   ],
+   "answer": 3,
+   "explanation": "1 m = 100 cm, então 1 m³ = 100³ = 1.000.000 cm³. Massa: 1.000.000 × 1,4 g = 1.400.000 g = 1.400 kg.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 48,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q26",
    "lesson": "u12l2",
    "type": "mcq5",
@@ -8055,6 +9345,66 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q15",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Geometria",
+   "subtopic": "área por subtração",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "A figura ilustra um hexágono convexo obtido a partir de dois cortes retilíneos sobre um quadrado de lado 7 cm. (Na figura, um corte vai do lado esquerdo, a 3 cm da base, até o lado de cima; o outro vai do lado de cima até o lado direito, também a 3 cm da base; no lado de cima sobra 1 cm entre os dois cortes.) Se cada um desses cortes começou e terminou em pontos pertencentes a lados do quadrado, a área desse hexágono, em cm², mede",
+   "options": [
+    "34.",
+    "34,5.",
+    "35.",
+    "36,5.",
+    "37."
+   ],
+   "answer": 4,
+   "explanation": "Os cortes tiram dois triângulos retângulos com um cateto de 4 cm (7 − 3) cada. Os outros catetos ficam no lado de cima e somam 7 − 1 = 6 cm. Área retirada: 4·a/2 + 4·(6 − a)/2 = 12. Hexágono: 49 − 12 = 37 cm².",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 15,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q19",
+   "lesson": "u12l2",
+   "type": "mcq5",
+   "topic": "Aritmética",
+   "subtopic": "dízimas periódicas",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Alguns dos números que podem ser escritos na forma de fração apresentam periodicidade quando representados na forma decimal. Isto é, a partir de uma certa casa decimal, um dígito (ou uma sequência de dígitos) passa a se repetir infinitamente. Como exemplo, temos: 1/13 = 0,076923076923076923076…\nNessa representação decimal, o 1232º dígito após a vírgula é",
+   "options": [
+    "7.",
+    "6.",
+    "3.",
+    "2.",
+    "0."
+   ],
+   "answer": 0,
+   "explanation": "O período de 1/13 tem 6 algarismos (076923). 1232 = 6 × 205 + 2: o 1232º dígito é o 2º do período, que é 7.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 19,
     "gabarito": "definitivo"
    }
   },
@@ -8408,6 +9758,126 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q21",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "grandezas inversamente proporcionais",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em um terminal de autoatendimento bancário há apenas cédulas de R$ 10,00, R$ 20,00 e R$ 50,00. As quantidades de cada um dos três tipos de cédula na máquina são inversamente proporcionais aos seus valores. Se há 272 cédulas ao todo, então a quantidade total de dinheiro armazenado no terminal é:",
+   "options": [
+    "R$ 3.600,00",
+    "R$ 3.960,00",
+    "R$ 4.050,00",
+    "R$ 4.240,00",
+    "R$ 4.800,00."
+   ],
+   "answer": 4,
+   "explanation": "Quantidades inversas a 10, 20 e 50 ficam na razão 1/10 : 1/20 : 1/50 = 10 : 5 : 2 (17 partes). 272 ÷ 17 = 16, então são 160, 80 e 32 cédulas. Total: 160×10 + 80×20 + 32×50 = 1.600 + 1.600 + 1.600 = R$ 4.800,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 21,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q27",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "variação de partes de um todo",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Uma carteira é formada exclusivamente por ações da VALE3 e da PETR4. Da quantidade total de ações dessa carteira, 75% correspondem a PETR4. Novas ações da VALE3 foram adquiridas e incorporadas a essa carteira. Com isso, a quantidade de ações da VALE3 na carteira aumentou 50%. Com relação à nova quantidade total de ações na carteira, as da PETR4 passaram a representar, aproximadamente:",
+   "options": [
+    "50%",
+    "57%",
+    "60%",
+    "63%",
+    "67%."
+   ],
+   "answer": 4,
+   "explanation": "Em 100 ações: 75 PETR4 e 25 VALE3. As VALE3 aumentam 50% e viram 37,5; total 112,5. PETR4 passa a 75/112,5 ≈ 66,7% ≈ 67%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 27,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q35",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "lucro e prejuízo",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Maria comprou duas bicicletas iguais, pagando R$ 360,00 em cada uma delas. Algum tempo depois, vendeu ambas: uma com lucro de 10% sobre o preço de venda e a outra com 15% de prejuízo sobre o preço de compra. Nessa transação de compra e venda das bicicletas, Maria:",
+   "options": [
+    "teve lucro de aproximadamente 2%",
+    "teve lucro de exatamente 5%",
+    "não teve lucro e nem prejuízo",
+    "teve prejuízo de exatamente 5%",
+    "teve prejuízo de aproximadamente 2%."
+   ],
+   "answer": 4,
+   "explanation": "Lucro de 10% sobre a venda: custo = 90% da venda, venda = 360/0,9 = 400. Prejuízo de 15% sobre a compra: venda = 360 × 0,85 = 306. Recebeu 706 por 720 investidos: prejuízo de 14, cerca de 1,9% (≈ 2%).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q50",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "porcentagem de porcentagem",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em uma população de mosquitos, 70% são transmissores do vírus da dengue e os outros não. Dos mosquitos transmissores, 40% estão infectados com o vírus da dengue e os outros não. Nessa população de mosquitos, os que NÃO transmitem o vírus da dengue são:",
+   "options": [
+    "30%",
+    "42%",
+    "60%",
+    "64%",
+    "72%."
+   ],
+   "answer": 4,
+   "explanation": "Não transmitem: os 30% que não são transmissores mais os transmissores não infectados, 60% de 70% = 42%. Total: 30% + 42% = 72%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 50,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q30",
    "lesson": "u12l3",
    "type": "mcq5",
@@ -8434,6 +9904,126 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 30,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q13",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "divisão de tempo",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Sílvio foi de carro de Cachoeiro de Itapemirim até Vitória passando por Guarapari. Ele deu início a sua viagem às 6h13min e chegou ao seu destino às 8h48min. Se o tempo gasto no trajeto de Guarapari até Vitória é 2/3 do tempo consumido de Cachoeiro de Itapemirim até Guarapari, conclui-se que Sílvio chegou a Guarapari às",
+   "options": [
+    "6h44min.",
+    "7h15min.",
+    "7h31min.",
+    "7h46min.",
+    "7h50min."
+   ],
+   "answer": 3,
+   "explanation": "De 6h13 a 8h48 são 155 minutos. Se o primeiro trecho leva t, o segundo leva 2t/3: t + 2t/3 = 155, 5t/3 = 155, t = 93 min. 6h13 + 1h33 = 7h46.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 13,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q14",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "problema com porcentagens",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Uma caixa continha apenas bolas pretas e brancas. 80% das bolas eram pretas. Foram então retiradas da caixa 5 bolas de cada cor, o que fez com que a porcentagem de bolas pretas remanescentes em seu interior subisse para 87,5%. Com base nessas informações, pode-se afirmar que, antes da retirada, o número de bolas brancas na caixa estava entre",
+   "options": [
+    "4 e 14.",
+    "14 e 24.",
+    "24 e 34.",
+    "34 e 44.",
+    "44 e 54."
+   ],
+   "answer": 0,
+   "explanation": "Com N bolas, há 0,8N pretas. Depois: (0,8N − 5)/(N − 10) = 0,875 → 0,8N − 5 = 0,875N − 8,75 → 0,075N = 3,75 → N = 50. Brancas: 20% de 50 = 10, que está entre 4 e 14.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 14,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q20",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Proporção",
+   "subtopic": "velocidade e distância",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Um trem que se desloca com velocidade constante é capaz de percorrer 210 quilômetros em 3 horas e meia. Se essa velocidade fosse aumentada em 10%, o trem seria capaz de percorrer, em 4 horas e 15 minutos, a distância máxima de",
+   "options": [
+    "279,5km.",
+    "280,5km.",
+    "281,0km.",
+    "281,5km.",
+    "282,0km."
+   ],
+   "answer": 1,
+   "explanation": "Velocidade: 210/3,5 = 60 km/h. Com 10% a mais, 66 km/h. Em 4h15 (4,25 h): 66 × 4,25 = 280,5 km.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 20,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q23",
+   "lesson": "u12l3",
+   "type": "mcq5",
+   "topic": "Porcentagem",
+   "subtopic": "conjuntos e porcentagem",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Em um grupo de pessoas, há 16 homens. Ao todo, são 28 cidadãos brasileiros nesse grupo, entre os quais, 15 são mulheres. Sabe-se que 30% dos indivíduos do grupo não têm cidadania brasileira. Com relação ao total de pessoas no grupo, pode-se afirmar que a porcentagem de indivíduos que são estrangeiros ou são mulheres é",
+   "options": [
+    "22,5%.",
+    "45,0%.",
+    "67,5%.",
+    "75,0%.",
+    "90,0%."
+   ],
+   "answer": 2,
+   "explanation": "28 brasileiros são 70% do grupo: 40 pessoas, 12 estrangeiras. Mulheres: 40 − 16 = 24, sendo 15 brasileiras e 9 estrangeiras. Estrangeiros ou mulheres: 12 + 24 − 9 = 27 = 67,5%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 23,
     "gabarito": "definitivo"
    }
   },
@@ -8698,6 +10288,66 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 35,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q22",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Contagem",
+   "subtopic": "números com condição nos algarismos",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "A quantidade de números inteiros e positivos formados por 2 algarismos cuja diferença vale 4 é igual a",
+   "options": [
+    "5.",
+    "6.",
+    "10.",
+    "11.",
+    "15."
+   ],
+   "answer": 3,
+   "explanation": "Dezena maior: 40, 51, 62, 73, 84, 95 (6). Unidade maior: 15, 26, 37, 48, 59 (5). Total: 11 números.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 22,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q25",
+   "lesson": "u12l4",
+   "type": "mcq5",
+   "topic": "Estatística",
+   "subtopic": "leitura de gráfico",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "O gráfico a seguir ilustra informações sobre o consumo per capita anual de refrigerantes pela população norte-americana de 2010 a 2019.\nConsumo per capita anual, em litros: 2010: 172; 2012: 165; 2014: 156; 2016: 117; 2018: 114; 2019: 111.\n(Fonte: veja.abril.br/economia. Acesso: janeiro de 2023.)\nCom base nos valores apresentados, avalie as seguintes declarações: I. A taxa média de redução do consumo per capita anual por ano se manteve constante entre os anos de 2016 e 2019. II. A maior redução do consumo per capita em litros se deu de 2014 para 2016. III. O consumo per capita anual em 2015 foi menor do que em 2014. De acordo com os dados, está correto o que se afirma em",
+   "options": [
+    "apenas I.",
+    "apenas II.",
+    "apenas I e II.",
+    "apenas II e III.",
+    "I, II e III."
+   ],
+   "answer": 1,
+   "explanation": "I: de 2016 a 2018 caiu 3 litros em 2 anos (1,5 por ano) e de 2018 a 2019 caiu 3 em 1 ano: a taxa não foi constante. II: a maior queda é 156 → 117 (39 litros), de 2014 para 2016. III: não há dado de 2015. Só II.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 25,
     "gabarito": "definitivo"
    }
   },
@@ -9627,6 +11277,36 @@
    }
   },
   {
+   "id": "fgv-banestes-2018-tb-q65",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Guia de Conduta Ética do Banestes",
+   "subtopic": "presentes e benefícios",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Acerca do tratamento dado pelo Código de Conduta Ética do Sistema Financeiro Banestes (SFB) ao regime de presentes e outros benefícios recebidos pelos seus profissionais, analise as afirmativas a seguir. I. É dever do profissional do SFB recusar presentes, favores, promessas, valor em espécie, benefícios, serviços e materiais, de quem quer que seja, para si ou para terceiros, que possam representar benefício pessoal. II. É permitido ao profissional do SFB aceitar franquia na participação em eventos institucionais e refeições com objetivo estritamente comercial e relevante para os negócios do SFB, desde que não sejam frequentes e, se possível, de promoção recíproca entre as partes. III. Caso o profissional do SFB receba presentes que excedam ao valor de R$ 100,00, deve informar, por escrito, e entregá-los mediante recibo ao Conselho de Conduta Ética, para oportuna destinação a instituições filantrópicas, a critério dos servidores lotados no mesmo órgão administrativo do donatário. Está correto o que se afirma em:",
+   "options": [
+    "somente II",
+    "somente III",
+    "somente I e II",
+    "somente I e III",
+    "I, II e III."
+   ],
+   "answer": 4,
+   "explanation": "As três regras estavam no Código de Conduta Ética do Sistema Financeiro Banestes vigente em 2018: recusar presentes que gerem benefício pessoal, aceitar eventos e refeições de caráter comercial com moderação e entregar ao Conselho de Conduta Ética presentes acima do valor fixado. Confira no guia atual, que pode ter mudado os detalhes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 65,
+    "gabarito": "definitivo"
+   }
+  },
+  {
    "id": "fgv-banestes-2021-q16",
    "lesson": "u14l1",
    "type": "mcq5",
@@ -9653,6 +11333,36 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 16,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q51",
+   "lesson": "u14l1",
+   "type": "mcq5",
+   "topic": "Guia de Conduta Ética do Banestes",
+   "subtopic": "relacionamento com clientes",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Tendo por base as previsões do Guia de Conduta Ética do Banestes para o relacionamento com o cliente e os usuários, assinale (V) para afirmativa verdadeira e (F) para a falsa. ( ) É vedado induzir os clientes ou usuários a erro, assegurar ou sugerir a existência de garantia de resultados futuros ou a isenção de risco. ( ) Deve-se evitar a transferência de contas de clientes por motivo de movimentação no quadro de gerentes entre agências. ( ) Caso o cliente do Banestes seja cidadão dos Estados Unidos da América, o Banestes terá de fornecer dados da conta desse cliente ao Fisco norte americano (IRS) em cumprimento às regras do FATCA (Foreign Account Tax Compliance Act). As afirmativas, são, respectivamente,",
+   "options": [
+    "F, F e F.",
+    "F, F e V.",
+    "V, F e F.",
+    "V, V e F.",
+    "V, V e V."
+   ],
+   "answer": 4,
+   "explanation": "As três estão corretas: é vedado induzir o cliente a erro ou prometer resultado sem risco; deve-se evitar transferir contas por causa da troca de gerentes; e, pelo FATCA, contas de cidadãos americanos são informadas ao fisco dos Estados Unidos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 51,
     "gabarito": "definitivo"
    }
   },
@@ -9741,6 +11451,2376 @@
     "cargo": "Analista em Tecnologia da Informação – Desenvolvimento de Sistemas",
     "prova": "Tipo 1",
     "numero": 19,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q22",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Juros simples",
+   "subtopic": "juros de mora",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Caso certa dívida não seja paga na data do seu vencimento, sobre ela haverá a incidência de juros de 12% a.m.. Se essa dívida for quitada com menos de um mês de atraso, o regime utilizado será o de juros simples. Considerando-se o mês comercial (30 dias), se o valor dessa dívida era R$ 3.000,00 no vencimento, para quitá-la com 8 dias de atraso, será preciso desembolsar:",
+   "options": [
+    "R$ 3.096,00",
+    "R$ 3.144,00",
+    "R$ 3.192,00",
+    "R$ 3.200,00",
+    "R$ 3.252,00."
+   ],
+   "answer": 0,
+   "explanation": "Juros simples de 12% a.m. por 8 dias do mês comercial: 3.000 × 0,12 × 8/30 = 96. Valor a pagar: 3.000 + 96 = R$ 3.096,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 22,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q24",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Taxas",
+   "subtopic": "taxa real",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "O INPC (Índice Nacional de Preços ao Consumidor) é um indicador auferido mensalmente pelo IBGE que mede a variação de preços de um conjunto de produtos e serviços. Esse índice é utilizado pelo Governo como parâmetro para os reajustes de salários dos trabalhadores brasileiros. Se, em determinado ano, o salário mínimo nacional for reajustado (aumentado) em 6,89% e, nesse mesmo período, o INPC for de 5%, então o aumento real do poder de compra do salário mínimo será de:",
+   "options": [
+    "1,78%",
+    "1,80%",
+    "1,85%",
+    "1,89%",
+    "1,90%."
+   ],
+   "answer": 1,
+   "explanation": "Ganho real: (1 + aumento)/(1 + inflação) − 1 = 1,0689/1,05 − 1 = 1,018 − 1 = 1,8%. Não basta subtrair (6,89 − 5 = 1,89%): a inflação também incide sobre o aumento.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 24,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q25",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Juros compostos",
+   "subtopic": "interpolação de fatores",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "A tabela a seguir apresenta alguns resultados aproximados para 1,07ⁿ em função de n.\nn = 6,0 → 1,07ⁿ = 1,501\nn = 7,0 → 1,07ⁿ = 1,606\nAinda que as potências não aumentem de forma linear, é possível obter uma boa aproximação para 1,07^6,2 por meio de regra de três aplicada sobre os intervalos entre os valores apresentados. Aplicando-se essa técnica, a aproximação obtida é:",
+   "options": [
+    "1,508",
+    "1,510",
+    "1,522",
+    "1,530",
+    "1,535."
+   ],
+   "answer": 2,
+   "explanation": "Entre n = 6 e n = 7 o fator sobe 1,606 − 1,501 = 0,105. Para n = 6,2 andamos 0,2 do intervalo: 1,501 + 0,2 × 0,105 = 1,501 + 0,021 = 1,522.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 25,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q26",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Taxas",
+   "subtopic": "nominal e efetiva",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um contrato de empréstimo é firmado com taxa anual de juros de 24% capitalizados trimestralmente sob regime de juros compostos. A taxa semestral efetiva nessa contratação é:",
+   "options": [
+    "12,00%",
+    "12,25%",
+    "12,36%",
+    "12,44%",
+    "12,56%."
+   ],
+   "answer": 2,
+   "explanation": "24% ao ano capitalizados trimestralmente = 6% ao trimestre (taxa proporcional). Um semestre tem 2 trimestres: 1,06² − 1 = 1,1236 − 1 = 12,36% ao semestre.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 26,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q29",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Juros compostos",
+   "subtopic": "montante com saque",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um capital de R$ 2.000,00 é aplicado a juros compostos de 10% ao mês. Depois de 3 meses de capitalização sem que houvesse qualquer retirada, o detentor desse montante faz um saque de R$ 562,00 e o restante do dinheiro continua a ser capitalizado nas mesmas condições. Dois meses após essa retirada, o valor acumulado na aplicação é:",
+   "options": [
+    "R$ 2.466,00",
+    "R$ 2.480,00",
+    "R$ 2.500,00",
+    "R$ 2.541,00",
+    "R$ 2.626,00."
+   ],
+   "answer": 3,
+   "explanation": "Após 3 meses: 2.000 × 1,1³ = 2.662. Com o saque fica 2.662 − 562 = 2.100. Mais 2 meses: 2.100 × 1,21 = R$ 2.541,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 29,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q30",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Juros compostos",
+   "subtopic": "rotativo do cartão",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "João recebeu sua fatura do cartão de crédito no valor de R$ 4.000,00 e, no dia do vencimento, pagou o valor mínimo exigido (que corresponde a 15% do valor total). O restante foi quitado um mês depois. Se a administradora do cartão de João cobra juros de 216% ao ano com capitalização mensal, sob regime de juros compostos, então o valor pago no ato da liquidação da dívida foi:",
+   "options": [
+    "R$ 4.000,00",
+    "R$ 4.012,00",
+    "R$ 4.100,00",
+    "R$ 4.120,00",
+    "R$ 4.230,00."
+   ],
+   "answer": 1,
+   "explanation": "216% ao ano com capitalização mensal = 18% ao mês. Pagou 15% (600) e ficaram 3.400, que um mês depois viraram 3.400 × 1,18 = R$ 4.012,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 30,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q33",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Juros compostos",
+   "subtopic": "prazo equivalente",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um capital de R$ 2.662,00 é capitalizado sob regime de juros compostos, ao longo de 4 meses, à taxa efetiva de 10% ao mês, produzindo um montante M. Para que R$ 2.000,00 produzam o mesmo montante M, ele deve ser capitalizado nessas mesmas condições durante um período igual a:",
+   "options": [
+    "8 meses",
+    "7 meses",
+    "6 meses",
+    "4 meses",
+    "3 meses."
+   ],
+   "answer": 1,
+   "explanation": "2.662 = 2.000 × 1,331 = 2.000 × 1,1³. Então M = 2.000 × 1,1³ × 1,1⁴ = 2.000 × 1,1⁷: são 7 meses.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 33,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q39",
+   "lesson": "u15l1",
+   "type": "mcq5",
+   "topic": "Rentabilidade",
+   "subtopic": "média ponderada de aplicações",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Alberto aplicou um capital C da seguinte forma: a) 40% de C em papéis de Renda Fixa (R.F.); b) 60% de C em Letra de Crédito Imobiliário (L.C.I.). Ao longo de um ano, nenhum novo depósito foi feito em qualquer das duas modalidades de aplicação. Nesse mesmo período, não houve qualquer resgate. Se as taxas efetivas de rendimento da R.F. e da L.C.I., no período referido, foram de 15% a.a. e 10% a.a., respectivamente, então essa estratégia conjunta de aplicação possibilitou a Alberto uma rentabilidade total sobre o capital C de:",
+   "options": [
+    "25%",
+    "19%",
+    "15%",
+    "12%",
+    "5%."
+   ],
+   "answer": 3,
+   "explanation": "A rentabilidade da carteira é a média ponderada: 0,40 × 15% + 0,60 × 10% = 6% + 6% = 12%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 39,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q23",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Séries de pagamentos",
+   "subtopic": "carência e prestações antecipadas",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Antônia faz um empréstimo bancário de R$ 10.000,00, que será quitado em 5 prestações mensais antecipadas de R$ 1.400,00 cada uma e um pagamento final junto com a última prestação. O banco cobra juros efetivos de 7% a.m. sob regime de capitalização composta e estipula um período de carência de dois meses. O valor do pagamento final é:\nDado: 1,07⁵ = 1,40",
+   "options": [
+    "R$ 69,80",
+    "R$ 72,20",
+    "R$ 722,00",
+    "R$ 6.980,00",
+    "R$ 7.220,00."
+   ],
+   "answer": 3,
+   "explanation": "Com carência de dois meses, as 5 prestações vencem nos meses 2 a 6 e o pagamento final no mês 6. Levando tudo ao mês 6: dívida 10.000 × 1,07⁶ = 10.000 × 1,40 × 1,07 = 14.980; prestações 1.400 × (1,07⁵ − 1)/0,07 = 1.400 × 0,40/0,07 = 8.000. Falta 14.980 − 8.000 = R$ 6.980,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 23,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q32",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Desconto",
+   "subtopic": "comercial simples",
+   "difficulty": 1,
+   "style": "caso_pratico",
+   "stem": "Um título de valor nominal igual a R$ 12.000,00 sofre desconto comercial simples dois meses antes do seu vencimento. Se a taxa de desconto é de 54% ao ano, o valor líquido recebido nessa operação corresponde a:",
+   "options": [
+    "R$ 1.080,00",
+    "R$ 2.160,00",
+    "R$ 5.520,00",
+    "R$ 10.920,00",
+    "R$ 11.460,00."
+   ],
+   "answer": 3,
+   "explanation": "54% ao ano = 4,5% ao mês. Desconto comercial simples: 12.000 × 0,045 × 2 = 1.080. Valor líquido: 12.000 − 1.080 = R$ 10.920,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q34",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Séries de pagamentos",
+   "subtopic": "taxa de série antecipada",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Um equipamento eletrodoméstico custa R$ 175,00 à vista, mas pode ser adquirido a prazo por intermédio de três prestações antecipadas mensais iguais e consecutivas de R$ 100,00. A taxa de juros efetiva composta ao mês cobrada nesse financiamento é de:",
+   "options": [
+    "100%",
+    "80%",
+    "75%",
+    "72%",
+    "36%."
+   ],
+   "answer": 0,
+   "explanation": "A 1ª prestação é paga na compra, então financia-se 175 − 100 = 75 com duas parcelas de 100. Testando 100% a.m.: 100/2 + 100/4 = 50 + 25 = 75. A taxa é 100% ao mês.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 34,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q36",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Desconto",
+   "subtopic": "comercial composto",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Uma duplicata tem valor nominal de R$ 4.000,00 e vencerá daqui a dois meses. Se ela for descontada hoje pelas regras do desconto comercial composto, à taxa de desconto de 10% ao mês, o valor descontado será:",
+   "options": [
+    "R$ 760,00",
+    "R$ 800,00",
+    "R$ 2.400,00",
+    "R$ 3.200,00",
+    "R$ 3.240,00."
+   ],
+   "answer": 4,
+   "explanation": "No desconto comercial composto o valor atual é N × (1 − d)ⁿ: 4.000 × 0,9² = 4.000 × 0,81 = R$ 3.240,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 36,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q38",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Desconto",
+   "subtopic": "comercial e racional compostos",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Um título foi descontado dois meses antes de seu vencimento, com taxa de desconto composto igual a 20% ao mês. Como o desconto foi comercial, o valor atual correspondeu a R$ 1.843,20. Caso o desconto tivesse sido racional, o valor resgatado seria:",
+   "options": [
+    "R$ 1.900,00",
+    "R$ 1.980,00",
+    "R$ 2.000,00",
+    "R$ 2.100,00",
+    "R$ 2.120,00."
+   ],
+   "answer": 2,
+   "explanation": "Comercial composto: 1.843,20 = N × 0,8², então N = 1.843,20/0,64 = 2.880. Racional composto: A = N/(1,2)² = 2.880/1,44 = R$ 2.000,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 38,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q40",
+   "lesson": "u15l2",
+   "type": "mcq5",
+   "topic": "Desconto",
+   "subtopic": "desconto bancário com IOF e taxa",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Um título de crédito com valor nominal de R$ 9.000,00 foi descontado 20 dias antes do seu vencimento, segundo as regras do desconto bancário, à taxa simples de desconto de 6% ao mês. Sobre essa operação, houve cobrança de IOF (Imposto sobre Operações Financeiras), com alíquota simples de 3% ao ano. Houve ainda a cobrança de uma taxa fixa de serviço bancário de 2%. Sabendo-se que essas duas cobranças incidiram sobre o valor nominal do título, e considerando-se o ano comercial, o valor descontado foi:",
+   "options": [
+    "R$ 8.190,00",
+    "R$ 8.437,50",
+    "R$ 8.445,00",
+    "R$ 8.485,50",
+    "R$ 8.512,00."
+   ],
+   "answer": 2,
+   "explanation": "Tudo sobre o valor nominal: desconto 9.000 × 6% × 20/30 = 360; IOF 9.000 × 3% × 20/360 = 15; taxa 9.000 × 2% = 180. Valor descontado: 9.000 − 360 − 15 − 180 = R$ 8.445,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 40,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q28",
+   "lesson": "u15l3",
+   "type": "mcq5",
+   "topic": "Amortização",
+   "subtopic": "Tabela Price",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Um empréstimo deverá ser quitado em 6 prestações mensais iguais de R$ 670,00, segundo o Sistema de Amortização Francês (Tabela Price), com a primeira prestação vencendo um mês após a contratação. A taxa de juros nominal é de 60% ao ano, com capitalização mensal. O saldo devedor imediatamente após o pagamento da 1ª prestação será:\nDado: 1,05⁶ = 1,34",
+   "options": [
+    "R$ 2.900,00",
+    "R$ 2.830,00",
+    "R$ 2.800,00",
+    "R$ 2.730,00",
+    "R$ 2.700,00."
+   ],
+   "answer": 0,
+   "explanation": "60% a.a. com capitalização mensal = 5% a.m. Valor financiado: 670 × (1 − 1/1,05⁶)/0,05 = 670 × (1 − 1/1,34)/0,05 = 3.400. Depois de um mês o saldo é 3.400 × 1,05 = 3.570; pagando 670, sobra R$ 2.900,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 28,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q31",
+   "lesson": "u15l3",
+   "type": "mcq5",
+   "topic": "Amortização",
+   "subtopic": "SAC",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Um financiamento no valor de R$ 8.000,00 foi contratado e deverá ser quitado em 5 prestações mensais e consecutivas, vencendo a primeira delas um mês após a data da contratação do financiamento. Foi adotado o Sistema de Amortizações Constantes (SAC) a uma taxa de juros efetiva de 4,5% ao mês. O valor da 2ª prestação será:",
+   "options": [
+    "R$ 1.960,00",
+    "R$ 1.888,00",
+    "R$ 1.816,00",
+    "R$ 1.744,00",
+    "R$ 1.672,00."
+   ],
+   "answer": 1,
+   "explanation": "No SAC a amortização é fixa: 8.000/5 = 1.600. Após a 1ª prestação o saldo é 6.400; os juros da 2ª são 6.400 × 4,5% = 288. Prestação: 1.600 + 288 = R$ 1.888,00.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 31,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q37",
+   "lesson": "u15l3",
+   "type": "mcq5",
+   "topic": "Amortização",
+   "subtopic": "SAC",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Para adquirir um carro, Gabriel financiou o valor de R$ 36.000,00 a ser quitado em 120 prestações mensais e consecutivas. A primeira prestação, no valor de R$ 1.308,00, venceu um mês após a contratação do financiamento. Se o sistema adotado foi o de Amortizações Constantes (SAC), a taxa de juros mensal efetiva aplicada a essa transação é:",
+   "options": [
+    "3,0%",
+    "2,8%",
+    "2,7%",
+    "2,5%",
+    "2,4%."
+   ],
+   "answer": 1,
+   "explanation": "Amortização constante: 36.000/120 = 300. A 1ª prestação é amortização + juros sobre o saldo inteiro: 1.308 − 300 = 1.008 de juros. Taxa: 1.008/36.000 = 2,8% ao mês.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 37,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q36",
+   "lesson": "u16l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "instituições bancárias",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Sobre o sistema financeiro nacional e o mercado bancário, assinale a instituição listada a seguir que é considerada uma instituição bancária.",
+   "options": [
+    "Caixa Econômica Federal.",
+    "Associação de poupança e empréstimo.",
+    "Sociedade de crédito, financiamento e investimento.",
+    "Sociedade de crédito imobiliário.",
+    "Sociedade de arrendamento mercantil."
+   ],
+   "answer": 0,
+   "explanation": "Caixa econômica capta depósitos à vista e cria moeda: é instituição bancária (monetária). Associações de poupança e empréstimo, financeiras (SCFI), sociedades de crédito imobiliário e de arrendamento mercantil são instituições não bancárias.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 36,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q37",
+   "lesson": "u16l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "banco múltiplo",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Entre as seguintes carteiras distribuídas entre as instituições do grupo Banestes, assinale a que é obrigatória para o Banestes ser classificado como um banco múltiplo.",
+   "options": [
+    "Investimento.",
+    "Distribuidora de Títulos e Valores Mobiliários.",
+    "Crédito, financiamento e investimento.",
+    "Crédito imobiliário.",
+    "Arrendamento mercantil."
+   ],
+   "answer": 0,
+   "explanation": "Banco múltiplo precisa de pelo menos duas carteiras, e uma delas tem de ser comercial ou de investimento. Das opções, só a de investimento cumpre essa exigência.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 37,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q38",
+   "lesson": "u16l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "CMN e Copom",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Sobre o Conselho Monetário Nacional (CMN) e o Comitê de Política Monetária (Copom), analise as afirmativas a seguir. I. São objetivos do CMN a estabilidade da moeda e o desenvolvimento econômico e social do país. II. São órgãos supervisores sob a esfera de competência do CMN: o Banco Central do Brasil (BCB), a Comissão de Valores Mobiliários (CVM) e a Superintendência de Seguros Privados (Susep). III. A principal decisão de cada reunião do Copom é a definição da taxa de juros Selic pelo Banco Central do Brasil (BCB). Está correto o que se afirma em",
+   "options": [
+    "I, apenas.",
+    "I e II, apenas.",
+    "I e III, apenas.",
+    "II e III, apenas.",
+    "I, II e III."
+   ],
+   "answer": 2,
+   "explanation": "I e III estão corretas: o CMN busca a estabilidade da moeda e o desenvolvimento, e o Copom define a meta da Selic. II está errada: a Susep fica sob o CNSP (seguros), não sob o CMN.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 38,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q39",
+   "lesson": "u16l1",
+   "type": "mcq5",
+   "topic": "Sistema Financeiro Nacional",
+   "subtopic": "Banco Central",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação ao Banco Central do Brasil (BCB), assinale (V) para a afirmativa verdadeira e (F) para a falsa. ( ) A partir da Lei Complementar nº 179/2021, o BCB passou a ter autonomia para contratar servidores e definir salários. ( ) O BCB tem a missão institucional de garantir a estabilidade do poder de compra da moeda, zelar por um sistema financeiro sólido, eficiente e competitivo, e fomentar o bem-estar econômico da sociedade. ( ) O BCB se submete a auditoria independente. As afirmativas são, respectivamente,",
+   "options": [
+    "F, F e F.",
+    "F, V e V.",
+    "F, F e V.",
+    "V, F e V.",
+    "V, V e V."
+   ],
+   "answer": 1,
+   "explanation": "Pelo gabarito: F, V, V. A LC 179/2021 deu autonomia ao Banco Central com mandatos fixos para diretoria, mas não o liberou para contratar servidores e fixar salários por conta própria. A missão citada é a oficial e o BC tem auditoria independente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 39,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q52",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "remuneração da poupança",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "A remuneração atual da caderneta de poupança possui um componente básico, baseado na taxa referencial (TR), e um adicional, dependente da política monetária corrente. O parâmetro de política monetária utilizado no cálculo é a:",
+   "options": [
+    "taxa do CDI – Certificado de Depósito Interbancário",
+    "meta da taxa Selic",
+    "meta de inflação",
+    "taxa Selic diária",
+    "rentabilidade média das NTN-B’s."
+   ],
+   "answer": 1,
+   "explanation": "Pela regra em vigor desde 2012, a poupança rende TR mais um adicional ligado à meta da Selic: 0,5% ao mês se a meta for maior que 8,5% ao ano, ou 70% da meta da Selic se for igual ou menor.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 52,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q53",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "fiança bancária",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A fiança bancária é uma operação tradicional no mercado brasileiro, em que um banco, por meio da “carta de fiança”, assume o papel de fiador de uma outra companhia numa operação comercial, concorrência pública ou de crédito. Do ponto de vista dos riscos envolvidos para as partes, há mitigação do risco:",
+   "options": [
+    "de crédito envolvido entre o fiador (banco) e o afiançado (empresa)",
+    "de mercado envolvido entre a empresa afiançada e sua contraparte – um fornecedor, por exemplo",
+    "operacional envolvido entre a empresa afiançada e sua contraparte – um fornecedor, por exemplo",
+    "de crédito envolvido entre a empresa afiançada e sua contraparte – um fornecedor, por exemplo",
+    "de mercado envolvido entre o fiador (banco) e o afiançado (empresa)."
+   ],
+   "answer": 3,
+   "explanation": "Na fiança bancária o banco garante a obrigação da empresa diante de quem negocia com ela (um fornecedor, por exemplo). Quem ganha proteção é essa contraparte: diminui o risco de crédito de a empresa não pagar.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 53,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q56",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "Fundo Garantidor de Créditos",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "O Fundo Garantidor de Créditos (FGC) é uma entidade privada, sem fins lucrativos, e que administra um mecanismo de proteção aos correntistas, poupadores e investidores. Sua função primordial é a recuperação dos depósitos ou créditos mantidos em instituição financeira, até determinado valor, em caso de:",
+   "options": [
+    "fusão, cisão ou aquisição",
+    "abertura de capital",
+    "fechamento de capital",
+    "oferta pública inicial",
+    "intervenção, liquidação ou falência."
+   ],
+   "answer": 4,
+   "explanation": "O FGC devolve depósitos e créditos garantidos, até o limite por CPF ou CNPJ e por instituição, quando a instituição sofre intervenção, liquidação extrajudicial ou falência (ou o Banco Central reconhece sua insolvência).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 56,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q57",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "cartão de crédito",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "O cartão de crédito é um meio de pagamento que permite ao cliente pagar compras ou serviços até um limite de crédito previamente definido no contrato de uso do cartão. O ideal é que o cliente sempre pague suas faturas nas datas acordadas – o valor inteiro ou pelo menos um percentual do valor devido. Esse procedimento evita:",
+   "options": [
+    "o cancelamento do cartão de crédito",
+    "o cancelamento da conta-corrente do cliente",
+    "a entrada no crédito rotativo",
+    "a entrada no Sistema de Proteção ao Crédito (SPC)",
+    "um processo junto ao Banco Central."
+   ],
+   "answer": 2,
+   "explanation": "Quem paga só uma parte da fatura financia o restante no crédito rotativo, uma das linhas mais caras do mercado. Pagar a fatura em dia evita entrar no rotativo.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 57,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q62",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Investimentos",
+   "subtopic": "poupança, CDB e imposto de renda",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Será parte de seu trabalho no Banestes o atendimento a clientes com determinados perfis. Suponha que um cliente com certa disponibilidade de recursos e perfil mais conservador (mais avesso ao risco) lhe pergunte sobre a possibilidade de atingir a maior rentabilidade possível, líquida de imposto de renda, durante o próximo ano. Se as projeções do Banestes indicarem a Selic em 8%, a taxa do CDI em 8% e a TR (taxa referencial) em 3% para o próximo ano, você deve dizer ao cliente que é melhor:",
+   "options": [
+    "investir em títulos do Tesouro Nacional que rendem a Selic",
+    "aplicar num CDB 100% CDI emitido pelo próprio Banestes",
+    "aplicar em letras financeiras se a rentabilidade projetada também for de 8%",
+    "aplicar numa caderneta de poupança fornecida pelo próprio Banestes",
+    "aplicar num CDB 100% Selic emitido pelo próprio Banestes."
+   ],
+   "answer": 3,
+   "explanation": "Com a meta da Selic em 8% (até 8,5%), a poupança rende TR + 70% da Selic = 3% + 5,6% = 8,6%, isento de IR. CDB e títulos que rendem 8% pagam IR (15% a 22,5%) e ficam abaixo de 7% líquidos. Para o conservador, a poupança rende mais.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 62,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q64",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Crédito",
+   "subtopic": "Custo Efetivo Total",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Recomenda-se que, antes de contratar uma operação de crédito, o consumidor pesquise as diversas opções disponíveis, pois as condições da operação podem variar de uma instituição para outra. Para facilitar a comparação entre as ofertas, o Conselho Monetário Nacional (CMN) determinou que as instituições financeiras e sociedades de arrendamento mercantil, antes da contratação da operação, divulguem ao consumidor:",
+   "options": [
+    "a taxa de juros do contrato",
+    "o custo efetivo total",
+    "a taxa de juros do contrato e a projeção para o CDI",
+    "a taxa de juros do contrato e a projeção para a Selic",
+    "o spread cobrado e embutido na taxa de juros."
+   ],
+   "answer": 1,
+   "explanation": "O CMN obriga a informar o Custo Efetivo Total (CET) antes de contratar crédito: ele soma juros, tarifas, tributos e seguros numa taxa só, o que permite comparar ofertas de bancos diferentes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 64,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q47",
+   "lesson": "u16l2",
+   "type": "mcq5",
+   "topic": "Produtos bancários",
+   "subtopic": "cobertura do FGC",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "Um cliente do Banestes quer fazer uma aplicação financeira, mas exige que a aplicação conte com proteção do Fundo Garantidor de Crédito (FGC). As opções a seguir apresentam aplicações que podem ser oferecidas a esse cliente, à exceção de uma. Assinale-a.",
+   "options": [
+    "Depósito de poupança.",
+    "Recibo de Depósito Bancário (RDB).",
+    "Certificado de Depósito Bancário (CDB).",
+    "Fundos de Investimento.",
+    "Letras de câmbio."
+   ],
+   "answer": 3,
+   "explanation": "Fundos de investimento não têm garantia do FGC: o risco é do cotista. Poupança, RDB, CDB e letras de câmbio são cobertos, até o limite por CPF ou CNPJ e por instituição.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 47,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q51",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "Copom e mesa de operações",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Em referência aos papéis exercidos pelo Copom e pela mesa de operações do mercado aberto do Banco Central do Brasil, com relação à taxa Selic, é estabelecido que:",
+   "options": [
+    "a mesa de operações determina a meta para a Selic e o Copom é responsável por manter a taxa diária próxima da meta",
+    "o Copom determina a meta para a Selic e é também responsável por manter a taxa diária próxima da meta",
+    "o Copom determina a meta para a Selic e a mesa de operações é responsável por manter a taxa diária próxima da meta",
+    "a mesa de operações determina a meta para a Selic e é também responsável por manter a taxa diária próxima da meta",
+    "o Copom persegue uma meta estabelecida pelo Conselho Monetário Nacional (CMN)."
+   ],
+   "answer": 2,
+   "explanation": "O Copom define a meta da Selic; a mesa de operações de mercado aberto do Banco Central compra e vende títulos públicos para manter a Selic diária perto da meta. O CMN fixa a meta de inflação, não a da Selic.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 51,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q54",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "operações de mercado aberto",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Em 7 de fevereiro de 2018, o Copom reduziu a meta da taxa Selic para 6,75% ao ano. Em termos práticos, isso significa que a mesa de operações de mercado aberto do Banco Central deve atuar para que a Selic diária fique próxima dessa meta. Se a Selic diária estiver em 7% num certo dia, a mesa de operações do Banco Central deve:",
+   "options": [
+    "comprar títulos públicos no mercado e mantê-los em sua carteira, até que a taxa diária atinja a meta de 6,75%",
+    "vender títulos públicos de sua carteira no mercado, até que a taxa diária atinja a meta de 6,75%",
+    "emitir títulos no mercado até que a taxa diária atinja a meta de 6,75%",
+    "imprimir mais papel-moeda",
+    "pleitear uma mudança no superávit primário."
+   ],
+   "answer": 0,
+   "explanation": "Selic diária acima da meta indica falta de dinheiro no mercado. Para baixá-la, o Banco Central compra títulos públicos: paga em reservas, aumenta a liquidez e o juro cai até perto de 6,75%.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 54,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q55",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Política monetária",
+   "subtopic": "operações de mercado aberto",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "O mecanismo pelo qual a mesa de operações de mercado aberto do Banco Central persegue a meta da Selic definida pelo Copom é denominado “operações de mercado aberto”. Se num certo dia a mesa de operações vendeu títulos públicos que estavam na carteira do Banco Central - uma típica operação de mercado aberto - o efeito na economia seria:",
+   "options": [
+    "uma contração na oferta de moeda e consequente diminuição da Selic diária",
+    "um aumento na oferta de moeda e consequente aumento da Selic diária",
+    "uma expansão da base monetária",
+    "uma contração na oferta de moeda e consequente aumento da Selic diária",
+    "um aumento na oferta de moeda e consequente diminuição da Selic diária."
+   ],
+   "answer": 3,
+   "explanation": "Ao vender títulos, o Banco Central recebe reservas dos bancos e retira moeda de circulação: a oferta de moeda se contrai e a Selic diária sobe.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 55,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q58",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Mercado de capitais",
+   "subtopic": "valores mobiliários",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "O mercado de capitais é um sistema de distribuição de valores mobiliários que visa proporcionar liquidez aos títulos de emissão de empresas e viabilizar seu processo de capitalização. É constituído pelas bolsas, corretoras e outras instituições financeiras autorizadas, e seus produtos principais incluem:",
+   "options": [
+    "certificados de depósitos bancários e letras financeiras",
+    "títulos emitidos pelo Tesouro Nacional",
+    "cartas de fiança e garantias",
+    "empréstimos-ponte e financiamentos de projetos",
+    "ações e debêntures."
+   ],
+   "answer": 4,
+   "explanation": "Os produtos típicos do mercado de capitais são valores mobiliários emitidos por empresas, como ações e debêntures. CDB e letras financeiras são captação bancária; títulos do Tesouro, fiança e financiamentos não são valores mobiliários de empresas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 58,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q59",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Câmbio",
+   "subtopic": "intervenção do Banco Central",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Se a taxa de câmbio estiver num patamar muito baixo, por exemplo, R$ 2,00 por dólar americano, e o Banco Central desejar realizar uma intervenção para aproximar a taxa de R$ 3,00, é preciso que a instituição:",
+   "options": [
+    "venda dólares no mercado de câmbio à vista",
+    "venda dólares no mercado de câmbio futuro",
+    "fique comprada num swap cambial reverso",
+    "fique comprada num swap cambial tradicional",
+    "realize a emissão de títulos cambiais no mercado."
+   ],
+   "answer": 2,
+   "explanation": "Para o real se desvalorizar (dólar subir de R$ 2 para R$ 3) o Banco Central precisa aumentar a demanda por dólar. No swap cambial reverso ele fica comprado na variação do dólar (recebe a variação cambial e paga juros), o efeito equivalente a comprar dólares no mercado futuro.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 59,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q60",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Câmbio",
+   "subtopic": "swap cambial reverso",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O Banco Central possui autorização para realizar intervenções no mercado de câmbio e um dos instrumentos para tal consiste num acordo em que o Banco Central paga aos investidores os juros do período e recebe em troca a variação da taxa de câmbio. Trata-se da seguinte operação:",
+   "options": [
+    "compra de dólar pronto",
+    "venda de dólar pronto",
+    "swap cambial reverso",
+    "swap cambial",
+    "venda futura de dólar."
+   ],
+   "answer": 2,
+   "explanation": "No swap cambial tradicional o Banco Central paga a variação cambial e recebe juros (efeito de venda de dólar). No reverso é o contrário: paga os juros e recebe a variação do câmbio.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 60,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q40",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Mercado de capitais",
+   "subtopic": "CVM",
+   "difficulty": 2,
+   "style": "excecao",
+   "stem": "No mercado de capitais, as seguintes instituições são reguladas pela Comissão de Valores Mobiliários (CVM), à exceção de uma. Assinale-a.",
+   "options": [
+    "Bolsa de Valores.",
+    "Fundos de Investimento.",
+    "Sociedades de Capitalização.",
+    "Auditores Independentes.",
+    "Agências Classificadoras de Risco (Rating)."
+   ],
+   "answer": 2,
+   "explanation": "Sociedades de capitalização são reguladas pela Susep. Bolsas, fundos de investimento, auditores independentes e agências de rating atuam no mercado de valores mobiliários e estão sob a CVM.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 40,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q44",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Mercado de capitais",
+   "subtopic": "títulos e acesso do investidor",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Quanto a noções do mercado de capitais (“mercado de valores mobiliários”), assinale (V) para afirmativa verdadeira e (F) para a falsa. ( ) No mercado de capitais, os títulos (valores mobiliários) resultantes do investimento que estabelecem uma relação de crédito e débito entre as partes tomadora e poupadora, constituem-se em títulos patrimoniais ou de capital. ( ) No mercado de capitais, o investidor que adquiriu uma ação pode, passado um prazo pré-estabelecido, solicitar o resgate do valor da ação diretamente à empresa. ( ) No mercado de capitais, os investidores não podem adquirir os títulos (valores mobiliários) indiretamente. As afirmativas são, respectivamente,",
+   "options": [
+    "F, F e F.",
+    "F, V e V.",
+    "F, F e V.",
+    "V, F e F.",
+    "V, V e V."
+   ],
+   "answer": 0,
+   "explanation": "As três são falsas: título de crédito e débito é de dívida (debênture), não patrimonial; a empresa não recompra a ação a pedido do investidor (ele vende na bolsa); e é possível investir indiretamente, por fundos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 44,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q45",
+   "lesson": "u16l3",
+   "type": "mcq5",
+   "topic": "Câmbio",
+   "subtopic": "mercado de câmbio",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Quanto a noções do mercado de câmbio, analise os itens a seguir. I. O mercado de câmbio é regulamentado e fiscalizado pelo Banco Central do Brasil (BCB) em conjunto com a Comissão de Valores Mobiliários (CVM). II. As taxas de compra e venda de moeda estrangeira no mercado de câmbio brasileiro são livremente pactuadas entre as partes. III. As pessoas físicas e as pessoas jurídicas podem comprar e vender moeda estrangeira, sem limitação de valor, desde que observada a legislação, as diretrizes estabelecidas pelo Conselho Monetário Nacional (CMN) e a regulamentação editada pelo Banco Central do Brasil (BCB). Está correto o que se afirma em",
+   "options": [
+    "III, apenas.",
+    "I e II, apenas.",
+    "I e III, apenas.",
+    "II e III, apenas.",
+    "I, II e III."
+   ],
+   "answer": 3,
+   "explanation": "II e III estão corretas: as taxas são livremente pactuadas e pessoas físicas e jurídicas podem operar sem limite de valor, seguindo as normas. I está errada: o mercado de câmbio é regulado pelo CMN e fiscalizado pelo Banco Central, sem a CVM.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 45,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q52",
+   "lesson": "u16l4",
+   "type": "mcq5",
+   "topic": "Inovação financeira",
+   "subtopic": "fintechs, IPs, Open Finance e Pix",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação à ruptura digital no SFN (Sistema Financeiro Nacional) promovida pelas Fintechs de crédito; pelas IPs (Instituições de Pagamento); pelo “Open Finance” (sistema financeiro aberto); e pelo PIX, assinale a afirmativa correta.",
+   "options": [
+    "As Fintechs de crédito não necessitam de autorização do Banco Central do Brasil (BCB) para operarem.",
+    "Em relação às Fintechs de crédito, a Sociedade de Empréstimo entre Pessoas (SEP) pode fazer captação de recursos do público, desde que eles estejam inteira e exclusivamente vinculados à operação de empréstimo.",
+    "As IPs podem conceder empréstimos e financiamentos a seus clientes.",
+    "No “Open Finance”, é obrigatória a participação de todas as instituições autorizadas a funcionar pelo Banco Central do Brasil (BCB).",
+    "Empresas podem ser tarifadas no envio de pagamentos ou transferências via PIX, mas não podem ser tarifadas no recebimento de pagamentos ou transferências via PIX."
+   ],
+   "answer": 1,
+   "explanation": "A SEP pode captar recursos do público desde que vinculados à operação de empréstimo que intermedeia. Erradas: fintechs de crédito precisam de autorização do Banco Central; IP não concede empréstimo; a participação no Open Finance é obrigatória só para parte das instituições; empresas podem ser tarifadas também ao receber Pix.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 52,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q53",
+   "lesson": "u16l4",
+   "type": "mcq5",
+   "topic": "Inovação financeira",
+   "subtopic": "fintechs, IPs, Open Finance e Pix",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "Em relação à ruptura digital no SFN (Sistema Financeiro Nacional) promovida pelas Fintechs de crédito; pelas IPs (Instituições de Pagamento); pelo “Open Finance” (sistema financeiro aberto); e pelo PIX, assinale a afirmativa correta.",
+   "options": [
+    "Em relação às Fintechs de crédito, a Sociedade de Crédito Direto (SCD) pode prestar os serviços de análise de crédito para terceiros, cobrança de crédito de terceiros, mas não pode realizar operações de crédito com recursos próprios.",
+    "As IPs não podem gerir conta de pagamento.",
+    "No “Open Finance”, os clientes de produtos e serviços financeiros podem compartilhar suas informações entre diferentes instituições autorizadas pelo Banco Central do Brasil (BCB).",
+    "No “Open Finance”, a movimentação de contas bancárias de uma instituição só pode ser realizada a partir do aplicativo ou site dessa instituição.",
+    "É indispensável cadastrar uma chave para fazer ou receber um PIX."
+   ],
+   "answer": 2,
+   "explanation": "No Open Finance o cliente autoriza o compartilhamento dos seus dados entre instituições. Erradas: a SCD empresta com capital próprio; IP gere conta de pagamento; dá para iniciar pagamentos de outra instituição; e o Pix pode ser feito sem chave, com agência e conta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 53,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q54",
+   "lesson": "u16l4",
+   "type": "mcq5",
+   "topic": "Inovação financeira",
+   "subtopic": "Pix e Open Finance",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Em relação à ruptura digital no SFN (Sistema Financeiro Nacional) promovida pelo “Open Finance” (sistema financeiro aberto); e pelo PIX, assinale a afirmativa correta.",
+   "options": [
+    "No “Open Finance”, o compartilhamento de informações depende da concordância da instituição detentora dessas informações.",
+    "No “Open Finance”, o compartilhamento de informações só pode ser interrompido ao final do prazo estabelecido para o compartilhamento.",
+    "O PIX funciona 24 horas por dia, sete dias por semana, exceto feriados.",
+    "O PIX é o pagamento instantâneo brasileiro criado pelo Banco Central do Brasil (BCB) em que os recursos são transferidos entre contas em poucos segundos.",
+    "No âmbito do PIX, aplicam-se aos microempreendedores individuais (MEI) e empresários individuais (EI) as mesmas regras de pessoa jurídica."
+   ],
+   "answer": 3,
+   "explanation": "O Pix é o pagamento instantâneo criado pelo Banco Central: o dinheiro cai em segundos, 24 horas por dia, todos os dias, inclusive feriados. No Open Finance o cliente decide o compartilhamento e pode cancelá-lo quando quiser.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 54,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q49",
+   "lesson": "u16l5",
+   "type": "mcq5",
+   "topic": "Prevenção à lavagem de dinheiro",
+   "subtopic": "situações suspeitas e PEP",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "Quanto a noções básicas sobre os crimes de lavagem ou ocultação de bens, direitos e valores, assinale (V) para a afirmativa verdadeira e (F) para a falsa. ( ) O fato de um cliente do Banestes tentar fechar um câmbio de exportação no qual o preço do produto exportado está por um valor de 40% do preço internacional do produto constitui situação que precisa ser tratada para a prevenção à lavagem de dinheiro e ao financiamento do terrorismo (PLD/FT). ( ) O fato de ocorrerem saques em espécie da conta de um cliente do Banestes que recebeu diversos depósitos por transferência eletrônica de várias origens em curto período de tempo constitui situação que precisa ser tratada para a prevenção à lavagem de dinheiro e ao financiamento do terrorismo (PLD/FT). ( ) Um cliente brasileiro do Banestes que é diretor presidente de uma grande empresa privada precisa ser tratado como pessoa exposta politicamente (PEP) constante nas normas de prevenção à lavagem de dinheiro e ao financiamento do terrorismo (PLD/FT) editadas pelos órgãos reguladores e fiscalizadores. As afirmativas são, respectivamente,",
+   "options": [
+    "F, F e F.",
+    "F, F e V.",
+    "V, F e F.",
+    "V, V e F.",
+    "V, V e V."
+   ],
+   "answer": 3,
+   "explanation": "Exportar por 40% do preço internacional e sacar em espécie logo depois de receber muitas transferências são sinais clássicos de lavagem. Presidente de empresa privada não é pessoa exposta politicamente: PEP é quem ocupa cargo ou função pública relevante (e seus familiares e próximos). V, V, F.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 49,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q50",
+   "lesson": "u16l5",
+   "type": "mcq5",
+   "topic": "Prevenção à lavagem de dinheiro",
+   "subtopic": "obrigações dos bancos e sanções",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação à prevenção da utilização do sistema financeiro para os atos ilícitos, em conformidade com a Lei nº 9.613/1998, analise as afirmativas a seguir. I. O Banestes, por ser considerado um banco de menor porte (segmento S3 da definição do Banco Central do Brasil), pode adotar políticas, procedimentos e controles internos para o cumprimento da obrigação de comunicação de atividades suspeitas proporcionalmente menores que os bancos maiores (S1 e S2). II. As operações com indícios de ilicitudes devem ser comunicadas pelo Banestes ao Conselho de Controle de Atividades Financeiras (Coaf), atual Unidade de Inteligência Financeira (UIF), e ao cliente do Banestes a que se refira a operação. III. Se o Banestes não cumprir com as obrigações relacionadas à lavagem ou à ocultação de bens, direitos e valores, poderá ter cassada ou suspensa sua autorização para funcionamento. Está correto o que se afirma em",
+   "options": [
+    "II, apenas.",
+    "I e II, apenas.",
+    "I e III, apenas.",
+    "II e III, apenas.",
+    "I, II e III."
+   ],
+   "answer": 2,
+   "explanation": "I e III estão corretas: os controles podem ser proporcionais ao porte e ao risco da instituição, e quem descumpre a Lei 9.613/1998 pode ter a autorização cassada ou suspensa. II está errada: a operação suspeita é comunicada ao Coaf, e é proibido avisar o cliente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 50,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q41",
+   "lesson": "u16l6",
+   "type": "mcq5",
+   "topic": "Seguros",
+   "subtopic": "regras de seguros de pessoas e de automóvel",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação a seguros e previdência, assinale a afirmativa correta.",
+   "options": [
+    "No seguro de acidentes pessoais, o suicídio, ou sua tentativa, não é equiparado a acidente pessoal, para fins de pagamento de indenização.",
+    "No seguro prestamista que estabelece indenização para quitação, amortização ou pagamento de um determinado número de parcelas de uma dívida, podem estar incluídas coberturas de desemprego involuntário ou voluntário.",
+    "O seguro de automóvel na modalidade de valor de mercado referenciado estabelece o pagamento de quantia fixa estipulada pelas partes no ato da contratação do seguro.",
+    "Em seguro de automóveis, a seguradora não pode estabelecer um prazo máximo para o segurado comunicar o sinistro.",
+    "O “seguro popular” é igual ao “microsseguro”, ambos são direcionados para as necessidades específicas das famílias de baixa renda."
+   ],
+   "answer": 3,
+   "explanation": "A seguradora não pode fixar prazo máximo para o aviso do sinistro. Erradas: no seguro de acidentes pessoais o suicídio ou sua tentativa é equiparado a acidente; o prestamista cobre desemprego involuntário, não voluntário; o valor de mercado referenciado segue uma tabela, não uma quantia fixa; seguro popular e microsseguro são coisas diferentes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 41,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q42",
+   "lesson": "u16l6",
+   "type": "mcq5",
+   "topic": "Previdência complementar",
+   "subtopic": "planos e tributação",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação à previdência e aos seguros, assinale a afirmativa correta.",
+   "options": [
+    "Todos os planos de previdência complementar aberta dão direito ao resgate antecipado.",
+    "Os planos de previdência complementar aberta não são passíveis de portabilidade.",
+    "No Vida Gerador de Benefício Livres (VGBL), o imposto de renda incide sobre o valor total a ser resgatado ou recebido sob a forma de renda; já no Plano Gerador de Benefício Livres (PGBL), o imposto de renda incide apenas sobre os rendimentos.",
+    "Nos planos de fundos de pensão organizados por associações ou entidades de classe, estas associações ou entidades de classe têm de fazer contribuições conjuntamente às feitas pelos associados.",
+    "Nos planos de benefícios de contribuição definida (CD) dos fundos de pensão, não se tem assegurado o valor do benefício que o participante vai receber no futuro."
+   ],
+   "answer": 4,
+   "explanation": "No plano de contribuição definida só a contribuição é conhecida; o benefício depende do saldo acumulado. Erradas: nem todo plano permite resgate antecipado; há portabilidade; o IR é o contrário (VGBL só nos rendimentos, PGBL no valor total); nos planos instituídos a associação não é obrigada a contribuir.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 42,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q61",
+   "lesson": "u16l7",
+   "type": "mcq5",
+   "topic": "Regulação",
+   "subtopic": "autorregulação bancária",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Em 2008 foi constituído um sistema de normas pelas próprias instituições financeiras, com compromissos de conduta estabelecidos para que o mercado atue de forma ainda mais eficaz, clara e transparente, em benefício do consumidor e da sociedade. O comprometimento com as normas em questão é voluntário por parte das instituições financeiras brasileiras, sendo um exemplo de:",
+   "options": [
+    "adequação ao acordo da Basileia",
+    "cumprimento das resoluções do Banco Central",
+    "supervisão bancária",
+    "autorregulação bancária",
+    "cumprimento das normas do mercado de capitais."
+   ],
+   "answer": 3,
+   "explanation": "O Sistema de Autorregulação Bancária foi criado pela Febraban em 2008: normas que os próprios bancos assumem voluntariamente, além do que a lei e o Banco Central exigem.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 61,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q48",
+   "lesson": "u16l7",
+   "type": "mcq5",
+   "topic": "Regulação",
+   "subtopic": "autorregulação bancária",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Quanto à autorregulação bancária, analise os itens a seguir. I. A autorregulação bancária vigente no Brasil constitui-se de um conjunto de compromissos básicos de adesão obrigatória, podendo ser complementado por outro conjunto de compromissos adicionais de adesão voluntária. II. As sistemáticas de autorregulação bancária vigentes no Brasil têm eixos normativos de: relacionamento com o consumidor, prevenção a ilícitos e responsabilidade socioambiental. III. As regras de autorregulação bancária são supervisionadas pelo Banco Central do Brasil (BCB). Está correto o que se afirma em",
+   "options": [
+    "I, apenas.",
+    "I e II, apenas.",
+    "I e III, apenas.",
+    "II e III, apenas.",
+    "I, II e III."
+   ],
+   "answer": 1,
+   "explanation": "I e II estão corretas, conforme o gabarito. III está errada: a autorregulação é conduzida pelas próprias instituições, por meio da Febraban, e não é supervisionada pelo Banco Central.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 48,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q55",
+   "lesson": "u16l7",
+   "type": "mcq5",
+   "topic": "Regulação",
+   "subtopic": "Resolução CMN 4.949/2021",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Em relação ao que a Resolução CMN nº 4.949, de 30/09/2021, estabelece para o Banestes, assinale (V) para a afirmativa verdadeira e (F) para a falsa. ( ) O Banestes deve adotar o previsto na Resolução nas fases de contratação e de pós-contratação de produtos e de serviços, estando desobrigado na fase de pré-contratação. ( ) A necessidade de o Banestes assegurar a identificação dos usuários finais beneficiários de pagamento ou transferência em demonstrativos e extratos de contas de depósitos não se aplica para contas de pagamento pré-pagas. ( ) O Banestes não pode recusar o recebimento de documentos mediante pagamento por meio de cheque. As afirmativas são, respectivamente,",
+   "options": [
+    "F, F e F.",
+    "V, V e F",
+    "V, F e V",
+    "F, V e V",
+    "V, V e V."
+   ],
+   "answer": 0,
+   "explanation": "Pelo gabarito, as três são falsas. A resolução cobre todas as fases da relação com o cliente, inclusive a pré-contratação (oferta e informação); a exigência de identificar o beneficiário nos extratos não tem a exceção afirmada; e a banca também considerou falsa a proibição de recusar cheque.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 55,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q72",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Atendimento",
+   "subtopic": "momentos da verdade",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Todo atendimento passa por momentos da verdade, que são os contatos entre o cliente e as empresas. Esses contatos são preciosos porque:",
+   "options": [
+    "são avaliados apenas nos primeiros momentos",
+    "criam as condições para que as objeções sejam vencidas",
+    "podem favorecer uma venda, se forem de boa qualidade",
+    "são construídos unicamente pelos profissionais de atendimento",
+    "podem ser uniformizados e replicados no momento da verdade."
+   ],
+   "answer": 2,
+   "explanation": "Momento da verdade é cada contato em que o cliente forma uma impressão da empresa. Bem conduzidos, criam confiança e favorecem a venda; eles acontecem em toda a relação e envolvem também o cliente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 72,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q74",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Atendimento",
+   "subtopic": "satisfação do cliente",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Com relação à satisfação do cliente, pode-se dizer que é:",
+   "options": [
+    "o fruto do julgamento do colaborador de atendimento",
+    "o resultado da criação de uma expectativa alta",
+    "o encantamento do cliente com o que ele recebeu do serviço",
+    "o conjunto de percepções do serviço positivas e comuns aos clientes",
+    "a relação entre o que o cliente percebeu do serviço e o que ele esperava."
+   ],
+   "answer": 4,
+   "explanation": "Satisfação é a comparação entre o que o cliente esperava e o que percebeu do serviço: percepção igual ou acima da expectativa gera satisfação; abaixo, insatisfação.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 74,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q77",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Serviços",
+   "subtopic": "características dos serviços",
+   "difficulty": 3,
+   "style": "excecao",
+   "stem": "(Na prova, os termos entre colchetes aparecem sublinhados.)\nOs serviços possuem quatro características principais: a imaterialidade ou intangibilidade, a inseparabilidade, a perecibilidade e a variabilidade dos produtos financeiros com as suas respectivas premissas, que afetam a elaboração de programas de marketing pelos bancos. A opção que se mostra [incompatível] com a característica específica dos serviços mencionados é:",
+   "options": [
+    "os produtos bancários vendidos são intangíveis, pois não podem ser vistos, nem sentidos, nem ouvidos, sendo que a percepção de qualidade se faz pelas imagens tangíveis das instalações, funcionários e equipamentos das agências do banco",
+    "a característica da inseparabilidade na venda de serviços financeiros ocorre porque a pessoa encarregada de prestar o serviço é parte dele, e, na maioria das vezes, o cliente também está presente quando o serviço é executado, havendo a interação entre eles",
+    "na área da prestação de serviços de assistência 24 horas, a variabilidade está presente, por exemplo, quando se solicita um reboque ou um chaveiro; pelo fato de dependerem de quem os fornece, de onde e quando serão fornecidos, tais serviços não são padronizados",
+    "de forma diferenciada dos produtos tangíveis, os serviços financeiros não podem ser estocados e, portanto, se não forem realizados no momento adequado, perdem a finalidade, o que caracteriza sua perecibilidade",
+    "a imaterialidade dos serviços se evidencia quando um determinado serviço precisa ser realizado por um prestador específico, sendo o serviço produzido e consumido simultaneamente, inclusive com a participação ativa do cliente, o que pode vir a afetar os resultados."
+   ],
+   "answer": 4,
+   "explanation": "A alternativa E descreve a inseparabilidade (serviço produzido e consumido ao mesmo tempo, com o cliente presente), não a imaterialidade. As outras associam corretamente intangibilidade, inseparabilidade, variabilidade e perecibilidade.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 77,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q80",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Serviços",
+   "subtopic": "intangibilidade",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Os serviços diferem dos produtos por terem características próprias. Em razão das características dos serviços, o técnico bancário deve estar ciente de que:",
+   "options": [
+    "o cliente não julgará os aspectos físicos e tangíveis",
+    "o serviço não tem como ser experimentado antes da compra",
+    "a participação do cliente na produção dos serviços deve ser voluntária",
+    "a produção de um serviço é feita antecipadamente, permitindo que o serviço esteja armazenado",
+    "o fornecimento de serviços é uniforme e sem variabilidade."
+   ],
+   "answer": 1,
+   "explanation": "Serviço é intangível: não dá para experimentar antes de comprar. Por isso o cliente julga pelos sinais tangíveis (instalações, pessoas, atendimento), o serviço não é estocável e varia conforme quem o presta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 80,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q57",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Atendimento",
+   "subtopic": "boas práticas",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Um conhecido provérbio diz que tudo o que se faz bem é objeto de trabalho prévio e de agir de forma metodológica, com foco nos resultados. Um bom exemplo em vendas é entender como a interação com os clientes mudou ao longo do tempo, passando do contato presencial a outras opções, inclusive digitais, usadas atualmente. Em relação ao tema, avalie se, tanto no passado quanto hoje em dia, as boas práticas incluem: I. concentrar a atenção em clientes indecisos. II. dar mais atenção aos clientes com maior potencial de compra. III. ter um projeto bem estruturado de atendimento aos clientes. Está correto o que se afirma em",
+   "options": [
+    "I, apenas.",
+    "II, apenas.",
+    "III, apenas.",
+    "I e II, apenas.",
+    "II e III, apenas."
+   ],
+   "answer": 2,
+   "explanation": "Em qualquer época, ter um projeto estruturado de atendimento é boa prática. Concentrar a atenção nos indecisos ou só nos de maior potencial descuida dos demais clientes.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 57,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q59",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Atendimento",
+   "subtopic": "etiqueta empresarial",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "As empresas modernas tratam com muito cuidado de suas normas éticas e das normas de conduta de seus funcionários nos ambientes interno e externo, com especial atenção ao relacionamento com os pares e a sociedade e ao trato comercial, o que invariavelmente é registrado em códigos específicos, como os Códigos de Ética e de Conduta. Essas regras compõem o que chamamos de",
+   "options": [
+    "atributos morais.",
+    "liberdade de expressão.",
+    "visão empresarial.",
+    "designação comercial.",
+    "etiqueta empresarial."
+   ],
+   "answer": 4,
+   "explanation": "O conjunto de normas de conduta e de relacionamento registradas em códigos de ética e de conduta é chamado de etiqueta empresarial.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 59,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q60",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Serviços",
+   "subtopic": "serviço como produto",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Produto é, no entendimento contemporâneo, a composição de um bem mais um serviço. Bem é uma coisa material e tangível, ou seja, algo que podemos ter, tocar e vender; já os serviços são imateriais e intangíveis, ou seja, não conseguimos pegar ou ter, mas podemos medi-los, atribuir valor. Por esse motivo, serviços também podem ser vendidos, o que comumente faz com que sejam chamados popularmente de produtos. Um exemplo de um serviço (coisa intangível e imaterial) que pode ser medido e vendido é",
+   "options": [
+    "uma nota de dinheiro.",
+    "um talão de cheques.",
+    "um equipamento.",
+    "um produto financeiro.",
+    "uma nota fiscal."
+   ],
+   "answer": 3,
+   "explanation": "Um produto financeiro (um investimento, um seguro, uma conta) é intangível e pode ser medido e vendido. Nota de dinheiro, talão de cheques, equipamento e nota fiscal são bens materiais.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 60,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q61",
+   "lesson": "u17l1",
+   "type": "mcq5",
+   "topic": "Atendimento",
+   "subtopic": "momentos da verdade",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Instituições financeiras têm estratégias distintas para atrair e manter os seus clientes. Em comum, todas desenvolvem ações para satisfazer os seus clientes nos chamados Momentos da Verdade, que são todas as oportunidades de contato e interação da empresa com os clientes, inclusive quando há ações comerciais, dúvidas, reclamações etc. Nestes momentos, os clientes",
+   "options": [
+    "apresentam sugestões de melhorias e registram suas queixas.",
+    "julgam a qualidade dos produtos e serviços da empresa.",
+    "verificam os preços cobrados e os comparam com os da concorrência.",
+    "respondem a pesquisas de satisfação e a inquéritos estatísticos.",
+    "buscam novas oportunidades de relacionamento."
+   ],
+   "answer": 1,
+   "explanation": "Em cada momento da verdade o cliente avalia a qualidade do que recebe: são essas experiências que formam a imagem que ele tem dos produtos e do atendimento da empresa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 61,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q75",
+   "lesson": "u17l2",
+   "type": "mcq5",
+   "topic": "Comportamento do consumidor",
+   "subtopic": "valor percebido",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Para um cliente, o serviço tem valor se:",
+   "options": [
+    "o preço for apropriado ao praticado no mercado",
+    "o custo financeiro do serviço estiver dentro do seu orçamento",
+    "os benefícios financeiros e emocionais forem percebidos como satisfatórios",
+    "o somatório de benefícios for maior que os custos financeiros e emocionais",
+    "o atendimento for à altura da satisfação financeira e emocional."
+   ],
+   "answer": 3,
+   "explanation": "Valor para o cliente é a diferença entre tudo o que ele recebe (benefícios) e tudo o que ele dá (custos financeiros, de tempo, de esforço, emocionais). O serviço tem valor quando os benefícios superam os custos.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 75,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q69",
+   "lesson": "u17l2",
+   "type": "mcq5",
+   "topic": "Valor para o cliente",
+   "subtopic": "vantagem competitiva",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Os clientes compram produtos e serviços que tenham valor. Valor é um conceito que pode variar de pessoa para pessoa, mas quando as empresas compreendem o que ele significa para os clientes e passam a direcionar suas estratégias para cada vez mais criar valor, estabelecem os diferenciais que a fazem ser por eles preferidas. Esses diferenciais são chamados de",
+   "options": [
+    "vantagem competitiva.",
+    "independência comercial.",
+    "excelência em serviços.",
+    "foco no processo.",
+    "marketing de oportunidades."
+   ],
+   "answer": 0,
+   "explanation": "Os diferenciais que fazem os clientes preferirem uma empresa, por entregar mais valor que a concorrência, são a vantagem competitiva.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 69,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q71",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Vendas",
+   "subtopic": "apresentação do produto",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Em vendas, ao apresentar um produto bancário, o técnico bancário deve:",
+   "options": [
+    "focar na necessidade do cliente",
+    "deixar que o cliente controle a entrevista",
+    "usar linguagem culta e sofisticada para causar boa impressão",
+    "mostrar ao comprador o máximo de conhecimento técnico sobre o produto",
+    "manter um clima de simpatia para que o cliente não faça objeções."
+   ],
+   "answer": 0,
+   "explanation": "Vender bem é resolver a necessidade do cliente: a apresentação parte do que ele precisa, não de mostrar conhecimento técnico, linguagem rebuscada ou de fugir das objeções.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 71,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q76",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Marketing",
+   "subtopic": "mix de marketing: promoção",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "Uma ação que faz parte do mix de marketing, muito utilizada pelas organizações que prestam serviços, como é o caso das instituições bancárias, representada pela oferta de incentivos e vantagens para os clientes, e que visa a aumentar significativamente as vendas é a(o):",
+   "options": [
+    "promoção",
+    "publicidade",
+    "propaganda",
+    "merchandising",
+    "posicionamento."
+   ],
+   "answer": 0,
+   "explanation": "Promoção de vendas são incentivos de curto prazo (descontos, brindes, bônus) para estimular a compra. Propaganda e publicidade comunicam a marca; posicionamento é a imagem que se quer ocupar na mente do cliente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 76,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q78",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Marketing",
+   "subtopic": "variáveis controláveis e incontroláveis",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "A atividade de gestão de marketing de um banco lida com o ambiente externo e com o ambiente interno. São muitas as variáveis que interferem nos processos de negócios, sendo que diversas delas encontram-se fora do controle da empresa. Um exemplo de variável incontrolável pelo banco é:",
+   "options": [
+    "o mix de marketing",
+    "a localização das filiais",
+    "o marketing institucional",
+    "o site da empresa na internet",
+    "a situação social, econômica e cultural do país."
+   ],
+   "answer": 4,
+   "explanation": "A situação social, econômica e cultural do país pertence ao ambiente externo: o banco não a controla, só se adapta. Mix de marketing, filiais, marketing institucional e site são decisões da própria empresa.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 78,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2018-tb-q79",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Vendas",
+   "subtopic": "conhecimento do produto",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Em vendas, o conhecimento dos produtos e serviços bancários é imprescindível, por permitir que:",
+   "options": [
+    "o vendedor passe autoridade ao discorrer sobre o acúmulo de informações que ele detém",
+    "o comprador perceba a profundidade do conhecimento do vendedor",
+    "o vendedor mostre segurança e habilidade para responder objeções",
+    "o comprador obtenha as informações técnicas que só o vendedor pode dar",
+    "comprador e vendedor possam estar em equilíbrio com relação às informações."
+   ],
+   "answer": 2,
+   "explanation": "Conhecer bem produtos e serviços dá ao vendedor segurança para orientar o cliente e responder às objeções. O objetivo não é exibir conhecimento nem guardar informações que só ele tem.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2018,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 79,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q62",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Gestão comercial",
+   "subtopic": "motivação da equipe",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Equipes comerciais são formadas por pessoas. Um dos grandes desafios é motivá-las. Com tal objetivo, a despeito das individualidades, é fundamental que os gestores criem o ambiente e o clima necessários à motivação, permitindo, por exemplo, que se estabeleçam",
+   "options": [
+    "competições, menos com os concorrentes.",
+    "as bases para melhorar as remunerações.",
+    "metas comerciais mais fáceis de atingir.",
+    "relatórios de vendas mais compreensíveis.",
+    "alianças sinceras e produtivas entre colaboradores e seus líderes."
+   ],
+   "answer": 4,
+   "explanation": "O clima que motiva vem da confiança: alianças sinceras e produtivas entre colaboradores e líderes. Metas fáceis, relatórios ou competições internas não criam motivação por si.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 62,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q64",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Vendas",
+   "subtopic": "pós-venda",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "As técnicas de vendas de produtos financeiros podem ser definidas como um conjunto de metodologias e práticas aplicadas em todas as etapas do processo de vendas. Elas têm como objetivos potencializar as chances de vendas e aumentar o número de fechamentos; nesse processo, há também etapas posteriores, como as que visam a",
+   "options": [
+    "reter e fidelizar os clientes.",
+    "converter clientes.",
+    "prospectar vendas.",
+    "nutrir vendas.",
+    "captar novos clientes."
+   ],
+   "answer": 0,
+   "explanation": "Depois do fechamento vem o pós-venda, que busca reter e fidelizar o cliente. Prospectar, captar, nutrir e converter são etapas anteriores à venda.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 64,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q65",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Marketing",
+   "subtopic": "4 P’s",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "O mix de marketing, também chamado de 4 P’s do marketing, é um conceito explorado desde a década de 1960, definindo estratégias comerciais das empresas. Ao longo do tempo, o P que representava a “praça” (ou o “ponto de venda”) evoluiu para um conceito mais amplo que engloba o local onde as vendas ocorrem e a logística. O P que representa o Preço continua muito importante, assim como o P do produto. O último P representa",
+   "options": [
+    "a Promoção.",
+    "o Perfil do Cliente.",
+    "a Percepção.",
+    "a Promessa.",
+    "o Planejamento."
+   ],
+   "answer": 0,
+   "explanation": "Os 4 P’s são Produto, Preço, Praça (ponto de venda e distribuição) e Promoção (comunicação e incentivos).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 65,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q67",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Gestão comercial",
+   "subtopic": "metas de vendas",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "Os orçamentos de vendas são realizados com base em técnicas de orçamentação que procuram estabelecer metas comerciais realistas, mas desafiadoras, para as equipes comerciais. Metas são",
+   "options": [
+    "indicadores de gestão.",
+    "objetivos abstratos do que se quer atingir.",
+    "planos de ação comercial.",
+    "valores a atingir em um espaço de tempo definido.",
+    "objetivos qualitativos do que se quer atingir."
+   ],
+   "answer": 2,
+   "explanation": "O gabarito oficial é C: a banca tratou a meta como parte do plano de ação comercial, o que se executa para chegar ao objetivo. A definição mais comum nos livros (valor a atingir num prazo definido) aparece em D; vale conhecer a leitura da banca.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 67,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q68",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Gestão comercial",
+   "subtopic": "ações motivacionais internas",
+   "difficulty": 3,
+   "style": "conceitual",
+   "stem": "A gestão comercial de vendas de serviços financeiros exige que os gestores acompanhem a performance do cumprimento das metas individuais e coletivas. Há inúmeras formas de incentivar as vendas, como, por exemplo, com ações direcionadas ao relacionamento com os clientes. Entretanto, ações motivacionais estruturadas com as equipes internas são igualmente importantes. Avalie se as afirmativas a seguir, acerca de tais ações internas, estão corretas. I. Propiciam o reconhecimento dos melhores, aqueles que batem as metas. II. Estimulam competições sadias que envolvam a equipe em disputas, desafios e premiações. III. Permitem que os inevitáveis conflitos internos se potencializem, o que ajuda a equipe a superar as metas. Está correto o que se afirma em",
+   "options": [
+    "I, apenas.",
+    "II, apenas.",
+    "I e III, apenas.",
+    "II e III, apenas.",
+    "I, II e III."
+   ],
+   "answer": 1,
+   "explanation": "Pelo gabarito, só II: ações motivacionais estruturadas envolvem toda a equipe em desafios e premiações sadias. A banca não aceitou I (o foco não é só premiar quem já bate a meta) e III é errada, porque potencializar conflitos prejudica a equipe.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 68,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q70",
+   "lesson": "u17l3",
+   "type": "mcq5",
+   "topic": "Planejamento comercial",
+   "subtopic": "análise ambiental",
+   "difficulty": 2,
+   "style": "literal",
+   "stem": "O correto entendimento das necessidades dos clientes e de como fazer para criar produtos e serviços de valor é tarefa fundamental dos gestores de vendas. Para alcançar esse objetivo, uma etapa importante do planejamento comercial é realizada por meio da análise da concorrência e das influências externas (oportunidades e ameaças), permitindo que a empresa possa compreender melhor os seus pontos fortes e fracos. Chamamos essa etapa de estudo do mercado de",
+   "options": [
+    "definição da visão comercial.",
+    "orçamentação comercial.",
+    "planejamento de metas comerciais.",
+    "análise ambiental.",
+    "definição de objetivos comerciais."
+   ],
+   "answer": 3,
+   "explanation": "Analisar o ambiente externo (concorrência, oportunidades e ameaças) e interno (forças e fraquezas) é a análise ambiental, base de ferramentas como a matriz SWOT.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 70,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q56",
+   "lesson": "u17l5",
+   "type": "mcq5",
+   "topic": "CRM",
+   "subtopic": "cadastro de clientes",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Uma preocupação das empresas é com a perda de clientes. Por isso, além de prospectar novos clientes para repor as eventuais perdas e fazer de tudo para manter os clientes ativos, as empresas também fazem esforços para reativar clientes perdidos ao longo do tempo, o que significa não os deixar sem contato frequente. Entretanto, para que isso ocorra a contento, as empresas devem",
+   "options": [
+    "fazer ações de marketing na mídia.",
+    "enviar felicitações em datas comemorativas.",
+    "manter atualizados os cadastros de clientes.",
+    "contratar empresas de ativação de clientes.",
+    "fazer promoções."
+   ],
+   "answer": 2,
+   "explanation": "Para reativar clientes perdidos é preciso conseguir falar com eles: sem cadastro atualizado (endereço, telefone, e-mail, histórico), nenhuma ação de contato funciona.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 56,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q58",
+   "lesson": "u17l5",
+   "type": "mcq5",
+   "topic": "CRM",
+   "subtopic": "marketing de relacionamento",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Nas empresas de referência do mercado, as ações comerciais são planejadas, coordenadas e controladas. Por exemplo, os bancos de dados de clientes têm registros dos contatos realizados, dos assuntos tratados, do histórico de transações etc. Estes dados são convertidos em informações que permitem um planejamento comercial voltado a cada cliente, o que facilita, sobretudo, a estruturação das estratégias de",
+   "options": [
+    "oferta de benefícios.",
+    "contatos do call-center.",
+    "seleção de pessoas na área comercial.",
+    "produção de brindes.",
+    "marketing de relacionamento."
+   ],
+   "answer": 4,
+   "explanation": "Registrar contatos e transações para planejar a abordagem de cada cliente é a base do marketing de relacionamento, que busca relações duradouras e personalizadas.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 58,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q63",
+   "lesson": "u17l5",
+   "type": "mcq5",
+   "topic": "Gestão de carteira",
+   "subtopic": "segmentação de clientes",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "A gestão de carteiras de clientes exige análise, coerência e competência profissional, para que se perceba o que fazer com cada grupo de clientes, já que as demandas, as estratégias e as oportunidades de negócios podem ser bem diferentes. Uma ação que os gestores comerciais de sucesso fazem para ampliar os resultados das suas carteiras é",
+   "options": [
+    "enviar aos clientes, várias vezes por ano, ofertas de descontos.",
+    "entender quem pode ser um cliente fiel ou infiel para dosar os esforços comerciais com cada um.",
+    "mostrar que os produtos têm valor agregado e preços competitivos.",
+    "segmentar a base de clientes, entendendo características comuns ou aproximadas (econômicas, sociais etc.)",
+    "estabelecer metas desafiadoras."
+   ],
+   "answer": 3,
+   "explanation": "Segmentar a carteira, agrupando clientes por características parecidas, permite uma estratégia para cada grupo e amplia os resultados. Descontos, metas ou discurso de valor não organizam a carteira.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 63,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q66",
+   "lesson": "u17l5",
+   "type": "mcq5",
+   "topic": "Reclamações",
+   "subtopic": "reclamação como oportunidade",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Há um consenso segundo o qual clientes que reclamam da qualidade dos serviços prestados também são importantes para as empresas. Esse entendimento se explica pelo fato de que tais reclamações",
+   "options": [
+    "permitem que se evitem processos judiciais.",
+    "podem provir de clientes que também são clientes de concorrentes.",
+    "acabam contaminando a impressão de outros clientes.",
+    "identificam clientes que devem ser evitados.",
+    "podem, se usadas corretamente, ser oportunidade de melhoria dos processos comerciais."
+   ],
+   "answer": 4,
+   "explanation": "A reclamação mostra onde o processo falha. Bem tratada, vira oportunidade de melhorar o serviço e até de recuperar a confiança do cliente.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 66,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q26",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Aplicativos de escritório",
+   "subtopic": "colunas no Word",
+   "difficulty": 3,
+   "style": "literal",
+   "stem": "Considere as seguintes afirmativas sobre o uso de colunas num documento MS Word 2016. I. Na guia Layout de Página, é permitido usar o recurso Colunas para inserir numa forma retangular (caixa) um texto explicativo dividido em duas ou mais colunas. II. Nove é o número máximo de colunas permitido num trecho. III. É possível estabelecer larguras diferentes para cada coluna. Está correto o que se afirma somente em",
+   "options": [
+    "I.",
+    "II.",
+    "III.",
+    "I e II.",
+    "II e III."
+   ],
+   "answer": 2,
+   "explanation": "Larguras diferentes por coluna são permitidas (III). O recurso Colunas formata o texto da página, não o conteúdo de uma caixa de texto (I), e o limite de colunas não é nove: depende da largura da página (II).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 26,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q27",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Aplicativos de escritório",
+   "subtopic": "animação e transição de slides",
+   "difficulty": 1,
+   "style": "conceitual",
+   "stem": "Os termos Animação e Transição são usados frequentemente em aplicativos dedicados à apresentação de slides. Assinale a afirmativa correta a respeito das funções associadas a esses termos em alguns desses aplicativos.",
+   "options": [
+    "Quando utilizados no PowerPoint e no Impress, são termos sinônimos, pois não há diferenças significativas entre as funções a eles associadas.",
+    "O PowerPoint não usa o termo Transição em sua interface.",
+    "O Impress não usa o termo Transição em sua interface.",
+    "A Transição estabelece a ordem dos slides durante uma apresentação.",
+    "A Animação aplica-se a elementos específicos de um slide."
+   ],
+   "answer": 4,
+   "explanation": "Transição é o efeito na passagem de um slide para o outro; animação é o efeito aplicado a um elemento dentro do slide (texto, imagem, forma). Os dois termos aparecem no PowerPoint e no Impress.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 27,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q28",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Aplicativos de escritório",
+   "subtopic": "área de impressão no Excel",
+   "difficulty": 2,
+   "style": "caso_pratico",
+   "stem": "João cuida de uma planilha MS Excel que contém dados de um relatório a ser impresso. Esses dados estão localizados em cinco regiões da planilha, preestabelecidas e distintas entre si. Porém, há outras regiões que estão preenchidas com dados auxiliares, que não devem aparecer no relatório impresso. O trabalho de João é criar uma variedade de cenários manipulando os valores dos dados auxiliares e imprimir o relatório repetidamente de acordo com cada uma dessas variações introduzidas. Nesse processo, João usa comandos de selecionar/copiar/colar intensamente na manipulação dos dados auxiliares. Para acelerar a impressão, de modo a não ter que selecionar os trechos visíveis a cada impressão, uma boa dica para João, nesse caso, é utilizar",
+   "options": [
+    "o recurso Área de Impressão na guia Layout da Página.",
+    "o recurso Mala Direta na guia Inserir.",
+    "o recurso Segmentação de Dados na guia Inserir.",
+    "o recurso Tabela Dinâmica na guia Inserir.",
+    "uma nova planilha para cada versão do relatório."
+   ],
+   "answer": 0,
+   "explanation": "Definir a Área de Impressão (guia Layout da Página) fixa as regiões que saem no papel; os dados auxiliares ficam de fora sem precisar selecionar tudo a cada impressão.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 28,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q29",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Planilhas",
+   "subtopic": "referências relativas e absolutas",
+   "difficulty": 3,
+   "style": "caso_pratico",
+   "stem": "Considere uma planilha (aba) Calc que exibe, nas células A1, B1, C1, A2, B2, C2, A3, B3, C3, respectivamente, os valores 60, 20, 65, 30, 45, 10, 25, 5, 30. Para todas as demais células da planilha, o valor é 0. Dado que a célula C3 foi copiada da célula A1 por meio de Ctrl+C/Ctrl+V, assinale a fórmula originalmente contida na célula A1.",
+   "options": [
+    "=A2+B1+$C2",
+    "=A$2+B1+C$2",
+    "=$A2+A3-B3+$C2",
+    "=$A$2+B1+$C2",
+    "=$A$2+$B$1+$C2"
+   ],
+   "answer": 3,
+   "explanation": "De A1 para C3 a fórmula desce 2 linhas e anda 2 colunas; só o que não tem $ muda. Em D: =$A$2+B1+$C2 em A1 dá 30 + 20 + 10 = 60 (o valor de A1) e em C3 vira =$A$2+D3+$C4 = 30 + 0 + 0 = 30 (o valor de C3).",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 29,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q30",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Sistemas operacionais",
+   "subtopic": "arquivos e pastas no Windows",
+   "difficulty": 2,
+   "style": "conceitual",
+   "stem": "Considere as afirmativas a seguir a respeito de arquivos e pastas no contexto do Windows. I. Um arquivo não pode ter tamanho zero. II. Todo arquivo deve ter uma extensão como, por exemplo, “teste.docx”. III. O nome completo de um arquivo contém o caminho (path) das pastas que o contêm. Está correto apenas o que se afirma em",
+   "options": [
+    "I.",
+    "II.",
+    "III.",
+    "I e II.",
+    "II e III."
+   ],
+   "answer": 2,
+   "explanation": "Um arquivo pode ter 0 bytes (um .txt vazio) e a extensão não é obrigatória. O nome completo inclui o caminho das pastas (C:\\Pasta\\arquivo.docx). Só III está correta.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 30,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q32",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Sistemas operacionais",
+   "subtopic": "Explorador de Arquivos",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "João conectou um pen drive no seu notebook com Windows, e precisa descobrir o espaço utilizado e a capacidade total desse dispositivo. No Explorador de Arquivos, depois de clicar com o botão direito do mouse na identificação do pen drive, João deve escolher a opção",
+   "options": [
+    "Gerenciamento.",
+    "Propriedades.",
+    "Resumo.",
+    "Segurança.",
+    "Utilização."
+   ],
+   "answer": 1,
+   "explanation": "Clicando com o botão direito na unidade e escolhendo Propriedades, o Windows mostra espaço usado, espaço livre e capacidade total do pen drive.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 32,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q34",
+   "lesson": "u19l2",
+   "type": "mcq5",
+   "topic": "Sistemas operacionais",
+   "subtopic": "atalhos do Windows",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "No contexto do Windows, assinale a opção que permite examinar as janelas (e/ou programas) abertas e, a partir daí, escolher a janela que você deseja visualizar.",
+   "options": [
+    "Alt + T",
+    "Alt + Tab",
+    "Ctlr + Alt + Delete",
+    "Ctrl + J",
+    "F1"
+   ],
+   "answer": 1,
+   "explanation": "Alt + Tab mostra as janelas abertas e alterna entre elas. Ctrl + Alt + Delete abre a tela de segurança; F1 costuma abrir a ajuda.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 34,
+    "gabarito": "definitivo"
+   }
+  },
+  {
+   "id": "fgv-banestes-2023-tb-q33",
+   "lesson": "u19l3",
+   "type": "mcq5",
+   "topic": "Internet",
+   "subtopic": "cookies",
+   "difficulty": 1,
+   "style": "literal",
+   "stem": "No contexto dos navegadores de Internet, assinale a definição mais adequada para o termo cookie.",
+   "options": [
+    "Um arquivo armazenado no seu computador por um website, usado para registrar dados sobre a sua utilização.",
+    "Um arquivo que adiciona novas funcionalidades ao browser instalado na sua máquina.",
+    "Um histórico de navegação na web gravado pelo browser.",
+    "Um item de segurança que torna sua navegação mais segura por meio de criptografia.",
+    "Uma funcionalidade adicional instalada pelo browser, usualmente utilizada por websites comerciais."
+   ],
+   "answer": 0,
+   "explanation": "Cookie é um pequeno arquivo que o site grava no navegador para lembrar dados da visita (login, preferências, carrinho). Extensões acrescentam funções, o histórico é outra coisa e a criptografia vem do HTTPS.",
+   "source": "prova_real",
+   "reviewed": false,
+   "ref": {
+    "banca": "FGV",
+    "orgao": "Banestes",
+    "ano": 2023,
+    "cargo": "Técnico Bancário",
+    "prova": "Tipo 1",
+    "numero": 33,
     "gabarito": "definitivo"
    }
   }

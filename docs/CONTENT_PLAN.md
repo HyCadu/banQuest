@@ -269,8 +269,10 @@ prova em 24/01/2027 (70 questões, 4 h). Os Gerais são os mesmos do Analista (G
 Ordem sugerida, pelos pontos: `u16` (30 de 110 pontos), `u17`, a G2 e a G5 (servem às duas provas), `u18`, `u19`.
 `u16` e a G3 (`u13`) cobrem o mesmo Sistema Financeiro Nacional: gere as duas juntas, sem repetir conceitos.
 
-Provas anteriores: as do pacote são de cargos de TI; quem estuda para o Técnico vê só a parte de Conhecimentos Gerais das
-provas do Banestes. Provas de Técnico Bancário entram quando o dono enviar os PDFs.
+Provas anteriores (0.14.0): **FGV · Banestes 2018 e 2023 de Técnico Bancário** (`content/provas/fgv-banestes-*-tecnico.json`).
+Quem estuda para o Técnico vê essas duas inteiras e, das provas de TI, só os Conhecimentos Gerais; o Analista vê as de
+Técnico só com os Gerais dele. Oficiais que já esperam pelas lições do Técnico: `u16` 30 (l1 4, l2 7, l3 9, l4 3, l5 2,
+l6 2, l7 3), `u17` 24, `u19` 8, e mais 17 de Matemática financeira (`u15`, lições 1 a 3) e 24 de Raciocínio (`u12`).
 
 ## Lições densas
 

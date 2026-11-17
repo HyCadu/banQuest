@@ -19,6 +19,7 @@ import java.time.ZoneId
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import br.com.trilhati.domain.exam.ExamPart
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -172,12 +173,19 @@ class IntegrationTest {
         assertEquals(listOf("u11", "u12", "u13", "u14"), general.map { it.id })
         assertEquals(content.course(ti).first { it.id == "u11" }.lessons, general.first().lessons)
         // Provas anteriores: o Técnico vê só as do Banestes (as que têm Gerais), só a parte dos Gerais
-        val all = content.exams(ti)
+        // Provas anteriores (0.14.0): as de Técnico Bancário vêm inteiras para o Técnico; as de TI, só com os Gerais.
         val forTb = content.exams(tb)
-        assertEquals(all.filter { it.general.isNotEmpty() }.map { it.id }, forTb.map { it.id })
-        assertTrue(forTb.isNotEmpty() && forTb.all { it.specific.isEmpty() && it.general.isNotEmpty() })
-        assertTrue(forTb.all { "Banestes" in it.body })
+        val own = forTb.filter { br.com.trilhati.domain.exam.TargetExam.forCargo(it.cargo) == tb }
+        assertEquals(listOf("fgv-banestes-2023", "fgv-banestes-2018-tecnico-bancario"), own.map { it.id })
+        assertEquals(listOf(63, 72), own.map { it.size }) // sem anuladas, imagens, versões antigas, fora do edital e repetida
+        assertEquals(listOf(ExamPart.Full, ExamPart.Specific, ExamPart.General), own.first().parts)
+        val others = forTb - own.toSet()
+        assertTrue(others.isNotEmpty() && others.all { it.specific.isEmpty() && "Banestes" in it.body })
         assertNull(content.exam("fcc-dpe-rr-2015", tb))
+        // O Analista vê as de Técnico só com os Gerais dele, inclusive a matemática financeira (G5)
+        val tbForTi = content.exam("fgv-banestes-2018-tecnico-bancario", ti)!!
+        assertTrue(tbForTi.specific.isEmpty())
+        assertTrue(tbForTi.general.any { it.lessonId.startsWith("u15") } && tbForTi.general.none { it.lessonId.startsWith("u16") })
     }
 
     @Test fun perguntaDaProvaSoParaQuemEstaComecando() = runBlocking {
@@ -203,9 +211,10 @@ class IntegrationTest {
         val u1 = content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[0].lessons.flatMap { it.questions }
         assertEquals(206, u1.size)
         assertEquals(36, u1.count { it.isFromExam })
-        // U2 (154 + 35 oficiais) e G1 (168 + 55 oficiais), com as provas de 2012 e 2024 da 0.11.0.
+        // U2 (154 + 35 oficiais) e G1 (168 + 55 oficiais), com as provas de 2012 e 2024 da 0.11.0; e mais 30 oficiais
+        // de Português das provas de Técnico Bancário de 2018 e 2023 (0.14.0).
         assertEquals(189, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[1].lessons.sumOf { it.questions.size })
-        assertEquals(223, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[10].lessons.sumOf { it.questions.size })
+        assertEquals(253, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[10].lessons.sumOf { it.questions.size })
         // Nas lições por conceito, toda questão de prova está ligada a um conceito da lição: sem isso o planejador
         // nunca a sorteia (aconteceu com as 20 oficiais das lições 2 a 5 na 0.8.1).
         content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi).flatMap { it.lessons }.forEach { l ->
@@ -487,19 +496,28 @@ class IntegrationTest {
     @Test fun provasDoPacoteViramProvasAnterioresQueCabemNoServidor() {
         val exams = content.exams
         assertEquals(
-            listOf("instituto-access-banestes-2024", "fgv-banestes-2021", "fgv-banestes-2018", "fcc-prefeitura-de-teresina-2016", "fcc-dpe-rr-2015", "idecan-banestes-2012"),
+            listOf(
+                "instituto-access-banestes-2024", "fgv-banestes-2023", "fgv-banestes-2021", "fgv-banestes-2018",
+                "fgv-banestes-2018-tecnico-bancario", "fcc-prefeitura-de-teresina-2016", "fcc-dpe-rr-2015", "idecan-banestes-2012",
+            ),
             exams.map { it.id },
         )
-        assertEquals(listOf(74, 57, 87, 35, 26, 47), exams.map { it.size })
+        assertEquals(listOf(74, 63, 57, 87, 72, 35, 26, 47), exams.map { it.size })
         exams.forEach { e ->
             assertTrue("${e.id} cabe no limite do servidor", e.size <= br.com.trilhati.domain.social.SessionLimits.EXAM_MAX_ANSWERS)
             assertEquals(e.size, e.specific.size + e.general.size)
             assertTrue(e.questions(br.com.trilhati.domain.exam.ExamPart.Full).zipWithNext().all { (a, b) -> a.ref!!.number < b.ref!!.number })
         }
-        assertEquals(37 to 50, exams[2].specific.size to exams[2].general.size)
+        fun byId(id: String) = exams.first { it.id == id }
+        assertEquals(37 to 50, byId("fgv-banestes-2018").specific.size to byId("fgv-banestes-2018").general.size)
         assertEquals(29 to 45, exams[0].specific.size to exams[0].general.size) // Banestes 2024: 4 alternativas
-        assertEquals(3, exams[2].parts.size)
-        assertEquals(1, exams[4].parts.size)
+        // Técnico Bancário: matemática financeira, informática, bancários e vendas são Específicos; Português,
+        // Raciocínio e o Guia de Conduta Ética, Gerais.
+        val tb18 = byId("fgv-banestes-2018-tecnico-bancario")
+        assertTrue(tb18.specific.all { it.lessonId.substringBefore('l') in setOf("u15", "u16", "u17") })
+        assertTrue(tb18.general.all { it.lessonId.substringBefore('l') in setOf("u11", "u12", "u14") })
+        assertEquals(3, byId("fgv-banestes-2018").parts.size)
+        assertEquals(1, byId("fcc-dpe-rr-2015").parts.size)
         assertTrue(exams[0].questions(br.com.trilhati.domain.exam.ExamPart.Full).all { it.options.size == 4 })
     }
 

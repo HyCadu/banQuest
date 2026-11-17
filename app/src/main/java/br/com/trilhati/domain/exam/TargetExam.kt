@@ -67,6 +67,15 @@ enum class TargetExam(
         val DEFAULT = AnalistaTi
 
         fun fromId(id: String?): TargetExam? = entries.firstOrNull { it.id == id }
+
+        /**
+         * A prova a que pertence o cargo de uma prova anterior ([br.com.trilhati.domain.model.ExamRef.cargo]): "Técnico
+         * Bancário" é do Técnico; os demais (cargos de TI) contam como do Analista.
+         */
+        fun forCargo(cargo: String): TargetExam =
+            if (java.text.Normalizer.normalize(cargo, java.text.Normalizer.Form.NFD).replace(Regex("\\p{M}+"), "")
+                    .contains("tecnico bancario", ignoreCase = true)
+            ) TecnicoBancario else AnalistaTi
     }
 }
 

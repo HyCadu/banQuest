@@ -34,7 +34,8 @@ class ContentTest {
         val course = CourseAssembler.assemble(packs.mapNotNull { it.toDomain() }, exam)
         // U2 e G1 (u11) chegaram na 0.10.0; as oficiais que esperavam por elas entram ligadas a um conceito da lição.
         // 0.11.0: + IDECAN Banestes 2012 e Instituto Access Banestes 2024 (U2: 22 + 13; G1: 35 + 20).
-        listOf("u2" to 35, "u11" to 55).forEach { (id, official) ->
+        // 0.14.0: + FGV Banestes 2018 e 2023 de Técnico Bancário (G1: + 19 + 11).
+        listOf("u2" to 35, "u11" to 85).forEach { (id, official) ->
             val unit = course.first { it.id == id }
             assertTrue(unit.lessons.all { it.hasContent && it.concepts.isNotEmpty() })
             assertEquals(id, official, unit.lessons.sumOf { l -> l.questions.count { it.isFromExam } })
