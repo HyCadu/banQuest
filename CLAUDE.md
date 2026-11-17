@@ -3,7 +3,7 @@
 Leia `PLAN.md` antes de qualquer trabalho. Ele é a especificação; este arquivo são as regras de trabalho.
 
 ## Projeto
-**BanQuest** (antes "Trilha TI"; o pacote continua `br.com.trilhati`): app Android de estudo, offline-first e com amigos (versão social: `docs/PLANO_SOCIAL.md`), estilo trilha gamificada, para estudar os **Conhecimentos Específicos** do cargo Analista de TI – Desenvolvimento de Sistemas do Banestes (banca FCC). Prova em 21/02/2027. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
+**BanQuest** (antes "Trilha TI"; o pacote continua `br.com.trilhati`): app Android de estudo, offline-first e com amigos (versão social: `docs/PLANO_SOCIAL.md`), estilo trilha gamificada, para estudar para dois cargos do concurso do Banestes (banca FCC): **Analista de TI – Desenvolvimento de Sistemas** (prova em 21/02/2027) e, desde a 0.13.0, **Técnico Bancário** (prova em 24/01/2027). O aluno escolhe a prova no chip do topo da Trilha; os Conhecimentos Gerais são comuns às duas. Idioma do app e do código de UI: **português do Brasil**. Nomes de classes e funções em inglês.
 
 ## Stack
 Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, WorkManager, kotlinx.serialization. `minSdk 26`.
@@ -31,10 +31,10 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
 3. **Conteúdo de estudo é sensível a erros.** Toda questão gerada por IA entra com `source: "ia"` e `reviewed: false`, passa pelo validador e pela revisão técnica separada. O app mostra um selo "não revisada". Nunca invente norma, versão ou número de artigo; se não tiver certeza, reformule a questão para algo conceitual ou descarte.
 4. **Não afirme que uma questão é "da FCC"** a menos que o dono a tenha fornecido (`source: "fcc_real"`, ou
    `"prova_real"` com `ref.banca` FCC).
-5. **Escopo da v1:** Conhecimentos Específicos de TI (U1–U10) e Conhecimentos Gerais (G1–G4, `u11`–`u14`), conforme
-   `docs/CONTENT_PLAN.md`. O escopo de cada lição vem do edital (`docs/EDITAL.md`): onde o PLAN.md diverge, vale o
-   edital. O simulado de 80 questões é a fase 10.
-6. **O cronômetro é o diferencial:** 3:00 por questão (configurável), nunca reprova a resposta, e o resumo final sempre mostra tempo médio por questão. No formato por conceitos os 3:00 valem para as questões de prova; praticar e aprender têm alvos menores, proporcionais ao ritmo escolhido.
+5. **Escopo da v1:** Conhecimentos Específicos de TI (U1–U10), Conhecimentos Gerais (G1–G5, `u11`–`u15`) e, desde a
+   0.13.0, os Específicos do Técnico Bancário (`u16`–`u19` e `u15`), conforme `docs/CONTENT_PLAN.md`. O escopo de cada
+   lição vem do edital (`docs/EDITAL.md` e `docs/EDITAL_TECNICO_BANCARIO.md`): onde o PLAN.md diverge, vale o edital. O simulado de 80 questões é a fase 10.
+6. **O cronômetro é o diferencial:** 3:00 por questão no Analista e 3:25 no Técnico Bancário (o ritmo da prova; configurável), nunca reprova a resposta, e o resumo final sempre mostra tempo médio por questão. No formato por conceitos os 3:00 valem para as questões de prova; praticar e aprender têm alvos menores, proporcionais ao ritmo escolhido.
 7. **Datas:** fuso `America/Sao_Paulo`, virada do dia à meia-noite local. A ofensiva conta ao concluir pelo menos uma lição
    (ou uma prova anterior inteira, desde a 0.10.0).
 
@@ -59,7 +59,7 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
   **Aprender fazendo:** exercício de ensino nunca cobra o que ainda não foi mostrado. O enunciado traz a regra ou um
   exemplo resolvido, e a resposta sai do raciocínio, não do chute. Um cenário por conceito, e passos (`step`) 1 =
   exemplo resolvido, 2 = aplicar, 3 = variar.
-- Mantenha cada lição dentro dos tópicos que o Anexo IV do edital cita para o cargo 04.
+- Mantenha cada lição dentro dos tópicos que o Anexo IV do edital cita para o cargo (04 no Analista, TB no Técnico Bancário).
 
 ## Comandos
 ```

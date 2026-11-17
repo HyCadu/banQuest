@@ -116,7 +116,7 @@ data class Lesson(
     fun concept(id: String?): Concept? = id?.let { wanted -> concepts.firstOrNull { it.id == wanted } }
 }
 
-/** As duas trilhas do app: Conhecimentos Específicos (U1–U10) e Conhecimentos Gerais (G1–G4, `u11`–`u14`). */
+/** As duas trilhas de cada prova: Conhecimentos Específicos e Conhecimentos Gerais ([br.com.trilhati.domain.exam.TargetExam]). */
 enum class Track { Specific, General }
 
 /** Unidade da trilha. Chamada `CourseUnit` para não colidir com `kotlin.Unit`. */
@@ -127,9 +127,8 @@ data class CourseUnit(
     val editalTopics: List<String>,
     val lessons: List<Lesson>,
     val track: Track = Track.Specific,
+    /** Rótulo curto da posição na trilha da prova: "Unidade 3" nos Específicos, "G2" nos Gerais ([br.com.trilhati.domain.exam.ExamCourse]). */
+    val code: String = "Unidade $order",
 ) {
     val hasContent: Boolean get() = lessons.any { it.hasContent }
-
-    /** Rótulo curto: "Unidade 3" nos Específicos, "G2" nos Gerais. */
-    val code: String get() = if (track == Track.General) "G${order - Curriculum.SPECIFIC_UNITS}" else "Unidade $order"
 }

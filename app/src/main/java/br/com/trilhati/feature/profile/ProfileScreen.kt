@@ -112,7 +112,7 @@ fun ProfileContent(state: AppState, actions: AppActions, modifier: Modifier = Mo
 
         // Estatísticas
         SectionTitle("Estatísticas")
-        val target = state.settings.paceTargetMs
+        val target = state.settings.effectivePaceMs
         val avg = stats.averageTimeMs
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             StatCard("Ofensiva", "${state.streakCount} d", "recorde ${stats.streak.longest} d", GameIcon.Flame, Modifier.weight(1f))

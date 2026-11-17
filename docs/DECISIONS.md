@@ -596,3 +596,32 @@ anterior, item 4), e depois o Guia de Conduta Ética do Banestes.
    próximo. Pacote do app: de 205 para 326 questões.
 5. Banca nova no validador: "Instituto Access".
 
+
+## Escolha de prova: Analista de TI ou Técnico Bancário (0.13.0, 17/11/2026) — a pedido do dono
+O dono quis que a namorada, que faz a prova de Técnico Bancário do Banestes (FCC, 24/01/2027), usasse o mesmo app. Ele
+aprovou um mockup e respondeu as dúvidas antes do código.
+1. **Um app só, com a prova escolhida num chip no topo da Trilha** (mecânica de troca de curso; visual nosso). O chip
+   mostra o emblema da prova e os dias que faltam; tocar abre um painel com as duas provas (data, dias, formato) e o ritmo
+   para fechar a trilha. Separar em dois apps foi descartado: dois APKs, dois avisos de versão, Gerais duplicados e
+   ranking dividido.
+2. **Cabeçalho mais limpo:** o chip absorveu o relógio da contagem regressiva, e as gemas saíram do topo (o saldo fica na
+   Loja). Ficaram prova, ofensiva e corações.
+3. **Primeira entrada:** a pergunta "Qual prova você vai fazer?" vem logo depois da escolha do tema, só para quem está
+   começando (decisão do dono). Quem já usava o app (tema escolhido antes) continua no Analista, sem pergunta.
+4. **Só o emblema muda** de uma prova para a outra (decisão do dono); as cores da trilha seguem o tema.
+5. **Cronômetro segue a prova** (decisão do dono): 3:00 no Analista (4 h / 80) e 3:25 no Técnico (4 h / 70). O 2:30
+   escolhido nas Configurações continua valendo nas duas. O 3:00 que as versões antigas gravavam passa a "segue a prova".
+6. **Progresso único.** O currículo virou um catálogo (`u1`–`u19`) e cada prova escolhe as suas unidades
+   (`TargetExam`/`ExamCourse`): uma lição feita vale em qualquer prova que a tenha. Os Gerais são os mesmos; a
+   Matemática financeira é dos Gerais no Analista e dos Específicos no Técnico.
+7. **G2 dividida** em Raciocínio (`u12`, 4 lições) e Matemática financeira (`u15`, 4 lições; o Técnico vê as 3 primeiras,
+   sem VPL e TIR). Sem perda de progresso nem de questão oficial: a G2 não tinha conteúdo, e as 49 oficiais dela estavam
+   nas lições 1–4. Os rótulos ("Unidade 3", "G2") passam a vir da posição na trilha da prova.
+8. **Específicos do Técnico** (`u16`–`u19` e a `u15`) entram como "em preparação", com aviso e botão para os Gerais. O
+   conteúdo vem em PRs próprias (decisão do dono: a 0.13.0 é só o seletor).
+9. **Provas anteriores:** o Técnico vê só a parte de Conhecimentos Gerais das provas do Banestes (as do pacote são de TI);
+   o cartão diz "Só Gerais". O id da prova não muda.
+10. **A prova escolhida vai no retrato que sincroniza** (campo `targetExam` do backup, opcional): volta ao trocar de
+    celular e no importar/exportar. Sem mudança no SQL do Supabase nem migração do Room. O ranking e os limites do
+    servidor não mudam.
+11. Conquistas de unidade concluída contam as unidades das duas trilhas, sem repetir (`TrailEngine.completedUnitCount`).

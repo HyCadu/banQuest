@@ -75,6 +75,10 @@ import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
 import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.NodeState
 import br.com.trilhati.ui.components.PathNode
@@ -96,7 +100,6 @@ private val ZigZag = listOf(0, 52, 80, 52, 0, -52, -80, -52)
 private sealed interface PathDialog {
     data object Streak : PathDialog
     data object Hearts : PathDialog
-    data object Exam : PathDialog
     data class UnitGuide(val unitId: String) : PathDialog
 }
 
@@ -111,9 +114,15 @@ fun PathContent(
     showReminderPrompt: Boolean = false,
     pairsAtRisk: List<Pair<String, Int>> = emptyList(),
     updateBanner: br.com.trilhati.domain.update.ReleaseInfo? = null,
+    /** Começa com o painel de provas aberto (prévias da harness). */
+    initialExamPanelOpen: Boolean = false,
 ) {
     var dialog by remember { mutableStateOf<PathDialog?>(null) }
-    val stats = state.snapshot.stats
+    var examPanel by remember { mutableStateOf(initialExamPanelOpen) }
+    // Onde termina a faixa do topo (o painel de provas desce dali), medido em relação à tela da Trilha.
+    var rootTopPx by remember { androidx.compose.runtime.mutableFloatStateOf(0f) }
+    var headerBottomPx by remember { androidx.compose.runtime.mutableFloatStateOf(0f) }
+    val density = androidx.compose.ui.platform.LocalDensity.current
     val character = MascotCharacter.entries.firstOrNull { it.name == state.snapshot.profile.character } ?: MascotCharacter.Guaiamum
     val hearts = state.hearts(nowMs)
 
@@ -129,17 +138,20 @@ fun PathContent(
     val baseColors = Trilha.colors
     val generalColors = remember(baseColors) { baseColors.forGeneralTrack() }
     CompositionLocalProvider(LocalTrilhaColors provides lerp(baseColors, generalColors, mix)) {
-    Column(modifier.fillMaxSize()) {
+    Box(modifier.fillMaxSize().onGloballyPositioned { rootTopPx = it.positionInRoot().y }) {
+    Column(Modifier.fillMaxSize()) {
         Column(Modifier.padding(horizontal = Spacing.screen).padding(top = Spacing.sm), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             TopStatusBar(
-                streak = state.streakCount, gems = stats.gems, hearts = hearts, daysToExam = state.daysToExam,
+                streak = state.streakCount, hearts = hearts,
+                examChip = {
+                    ExamChip(state.targetExam, state.daysToExam, expanded = examPanel, onClick = { examPanel = !examPanel })
+                },
+                modifier = Modifier.onGloballyPositioned { headerBottomPx = it.positionInRoot().y + it.size.height },
                 halfHeart = state.heartsHalf(nowMs),
                 showHearts = !state.settings.noLives,
                 studiedToday = state.todayLog.lessons > 0,
                 onStreakClick = { dialog = PathDialog.Streak },
-                onGemsClick = actions.openShop,
                 onHeartsClick = { dialog = PathDialog.Hearts },
-                onExamClick = { dialog = PathDialog.Exam },
             )
             DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
             updateBanner?.let { release ->
@@ -171,7 +183,11 @@ fun PathContent(
                 contentPadding = PaddingValues(horizontal = Spacing.screen, vertical = Spacing.sm),
                 verticalArrangement = Arrangement.spacedBy(0.dp),
             ) {
-                state.course.filter { it.track == shown }.forEach { unit ->
+                val units = state.course.filter { it.track == shown }
+                if (units.none { it.hasContent }) {
+                    item(key = "preparing") { PreparingNote(state, shown, actions) }
+                }
+                units.forEach { unit ->
                     unitItems(unit, state, character, actions, animated, onOpenGuide = { dialog = PathDialog.UnitGuide(unit.id) })
                 }
                 item(key = "end") {
@@ -186,12 +202,25 @@ fun PathContent(
             }
         }
     }
+    ExamPanel(
+        visible = examPanel,
+        selected = state.targetExam,
+        today = state.today,
+        course = state.course,
+        completedLessons = state.snapshot.lessonProgress.filterValues { it.completed }.keys,
+        onPick = { exam ->
+            examPanel = false
+            if (exam != state.targetExam) actions.setTargetExam(exam)
+        },
+        onDismiss = { examPanel = false },
+        topOffset = with(density) { (headerBottomPx - rootTopPx).coerceAtLeast(0f).toDp() },
+    )
+    }
     }
 
     when (val d = dialog) {
         PathDialog.Streak -> StreakDialog(state, onDismiss = { dialog = null })
         PathDialog.Hearts -> HeartsDialog(state, nowMs, actions, onDismiss = { dialog = null })
-        PathDialog.Exam -> ExamDialog(state, onDismiss = { dialog = null })
         is PathDialog.UnitGuide -> state.course.firstOrNull { it.id == d.unitId }?.let { UnitGuideDialog(it, state, onDismiss = { dialog = null }) }
         null -> Unit
     }
@@ -409,31 +438,40 @@ private fun PairRiskBanner(pairs: List<Pair<String, Int>>, onOpen: () -> Unit) {
     }
 }
 
+/**
+ * Aviso no topo de uma trilha sem nenhuma lição pronta (os Específicos do Técnico Bancário na 0.13.0): diz que o conteúdo
+ * está em preparação e leva para a outra trilha, que já tem o que estudar.
+ */
 @Composable
-private fun ExamDialog(state: AppState, onDismiss: () -> Unit) {
+private fun PreparingNote(state: AppState, shown: Track, actions: AppActions) {
     val c = Trilha.colors
-    val lessonsWithContent = state.course.sumOf { u -> u.lessons.count { it.hasContent } }
-    val allLessons = state.course.sumOf { it.lessons.size }
-    val done = state.snapshot.lessonProgress.values.count { it.completed }
-    val days = state.daysToExam
-    val remainingAll = (allLessons - done).coerceAtLeast(0)
-    val perWeek = if (days <= 0) remainingAll else kotlin.math.ceil(remainingAll * 7.0 / days).toInt()
-    TrilhaDialog(
-        onDismiss = onDismiss,
-        title = if (days == 0) "A prova é hoje!" else "Faltam $days ${if (days == 1) "dia" else "dias"}",
-        content = {
-            Text(
-                "Prova do Banestes: 21/02/2027 (domingo), de manhã. São 80 questões em 4 horas, 3:00 por questão em média.",
-                style = MaterialTheme.typography.bodyMedium, color = c.ink,
+    val other = if (shown == Track.Specific) Track.General else Track.Specific
+    val otherReady = state.course.any { it.track == other && it.hasContent }
+    Column(
+        Modifier.fillMaxWidth().padding(bottom = Spacing.md)
+            .background(c.surface, RoundedCornerShape(20.dp)).border(2.dp, c.outline, RoundedCornerShape(20.dp)).padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Text(
+            "As lições desta trilha estão em preparação",
+            Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = c.ink,
+        )
+        Text(
+            if (otherReady) {
+                "Elas chegam nas próximas versões. Enquanto isso, comece pelos ${if (other == Track.General) "Gerais" else "Específicos"}: " +
+                    "o que você estudar lá já vale para a sua prova."
+            } else {
+                "Elas chegam nas próximas versões."
+            },
+            style = MaterialTheme.typography.bodyMedium, color = c.inkSoft,
+        )
+        if (otherReady) {
+            ChunkyButton(
+                if (other == Track.General) "Ir para os Gerais" else "Ir para os Específicos",
+                { actions.setTrack(other) }, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, minHeight = 44.dp,
             )
-            Text(
-                "Você concluiu $done de $allLessons lições da trilha ($lessonsWithContent já têm questões). " +
-                    "Para fechar a trilha antes da prova, mantenha cerca de $perWeek ${if (perWeek == 1) "lição" else "lições"} por semana.",
-                style = MaterialTheme.typography.bodyMedium, color = c.inkSoft,
-            )
-        },
-        actions = { ChunkyButton("Bora!", onDismiss, Modifier.fillMaxWidth()) },
-    )
+        }
+    }
 }
 
 @Composable
@@ -464,7 +502,7 @@ private fun UnitGuideDialog(unit: CourseUnit, state: AppState, onDismiss: () -> 
                     }
                 }
                 if (unit.editalTopics.isNotEmpty()) {
-                    Text("Tópicos do edital (Anexo IV, cargo 04)", style = MaterialTheme.typography.titleSmall, color = c.primaryText, modifier = Modifier.padding(top = 6.dp))
+                    Text("Tópicos do edital (Anexo IV, ${if (state.targetExam == br.com.trilhati.domain.exam.TargetExam.AnalistaTi) "cargo 04" else state.targetExam.title})", style = MaterialTheme.typography.titleSmall, color = c.primaryText, modifier = Modifier.padding(top = 6.dp))
                     Text(unit.editalTopics.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
                 }
             }

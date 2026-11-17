@@ -4,11 +4,11 @@ import android.content.Context
 import android.util.Log
 import br.com.trilhati.domain.exam.PastExam
 import br.com.trilhati.domain.exam.PastExams
+import br.com.trilhati.domain.exam.ExamCourse
+import br.com.trilhati.domain.exam.TargetExam
 import br.com.trilhati.domain.model.CourseUnit
-import br.com.trilhati.domain.model.Curriculum
 import br.com.trilhati.domain.model.Lesson
 import br.com.trilhati.domain.model.Question
-import br.com.trilhati.domain.model.Track
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -37,13 +37,25 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
     private val json = Json { ignoreUnknownKeys = true }
     private val importDir get() = File(context.filesDir, IMPORT_DIR)
 
-    private val _course: MutableStateFlow<List<CourseUnit>> by lazy { MutableStateFlow(build()) }
+    private val _catalog: MutableStateFlow<List<CourseUnit>> by lazy { MutableStateFlow(build()) }
 
-    /** A trilha completa, reemitida quando um pacote é importado ou removido. */
-    val courseFlow: StateFlow<List<CourseUnit>> get() = _course.asStateFlow()
+    /**
+     * O catálogo completo (todas as unidades das duas provas), reemitido quando um pacote é importado ou removido. A
+     * trilha de cada prova sai dele em [course].
+     */
+    val catalogFlow: StateFlow<List<CourseUnit>> get() = _catalog.asStateFlow()
 
-    /** Valor atual da trilha. Lições sem pacote vêm sem questões. */
-    val course: List<CourseUnit> get() = _course.value
+    /** Valor atual do catálogo. Lições sem pacote vêm sem questões. */
+    val catalog: List<CourseUnit> get() = _catalog.value
+
+    /** A trilha da prova [exam] (Específicos e Gerais), montada a partir do catálogo atual. */
+    fun course(exam: TargetExam): List<CourseUnit> = ExamCourse.courseFor(exam, catalog)
+
+    /**
+     * As trilhas de todas as provas, juntas (uma unidade pode aparecer mais de uma vez). Serve para contar unidades
+     * concluídas nas conquistas sem depender da prova escolhida ([br.com.trilhati.domain.progress.TrailEngine]).
+     */
+    val allCourses: List<CourseUnit> get() = TargetExam.entries.flatMap { course(it) }
 
     private var lessonsById: Map<String, Lesson> = emptyMap()
     private var questionsById: Map<String, Question> = emptyMap()
@@ -53,14 +65,18 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
 
     /**
      * Provas anteriores para o modo da aba Praticar, montadas com todas as questões do pacote de provas, inclusive as que
-     * ainda esperam o conteúdo da lição (como as dos Gerais).
+     * ainda esperam o conteúdo da lição (como as dos Gerais). Todas são de cargos de TI: a parte dos Gerais é a das
+     * unidades de Gerais do Analista.
      */
     val exams: List<PastExam> by lazy {
-        val generalUnits = Curriculum.units.filter { it.track == Track.General }.map { it.id }.toSet()
+        val generalUnits = TargetExam.AnalistaTi.general.map { it.unitId }.toSet()
         PastExams.from(examPool) { it.lessonId.substringBefore('l') in generalUnits }
     }
 
-    fun exam(id: String): PastExam? = exams.firstOrNull { it.id == id }
+    /** As provas anteriores que valem para quem estuda para [target] ([PastExams.forTarget]). */
+    fun exams(target: TargetExam): List<PastExam> = PastExams.forTarget(exams, target)
+
+    fun exam(id: String, target: TargetExam): PastExam? = exams(target).firstOrNull { it.id == id }
 
     fun lesson(id: String): Lesson? = index().let { lessonsById[id] }
     fun question(id: String): Question? = index().let { questionsById[id] }
@@ -68,7 +84,7 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
     fun allQuestions(): List<Question> = index().let { questionsById.values.toList() }
 
     private fun index() {
-        if (lessonsById.isEmpty()) reindex(course)
+        if (lessonsById.isEmpty()) reindex(catalog)
     }
 
     private fun reindex(course: List<CourseUnit>) {
@@ -115,7 +131,7 @@ class ContentRepository @Inject constructor(@ApplicationContext private val cont
     }
 
     private fun reload() {
-        _course.value = build()
+        _catalog.value = build()
     }
 
     private fun build(): List<CourseUnit> {

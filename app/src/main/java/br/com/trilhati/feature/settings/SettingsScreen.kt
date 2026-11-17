@@ -69,7 +69,7 @@ data class SettingsUi(
 data class SettingsCallbacks(
     val onBack: () -> Unit = {},
     val onTimerMode: (TimerMode) -> Unit = {},
-    val onPaceTarget: (Long) -> Unit = {},
+    val onPaceTarget: (Long?) -> Unit = {},
     val onCaseFour: (Boolean) -> Unit = {},
     val onNoLives: (Boolean) -> Unit = {},
     val onHaptics: (Boolean) -> Unit = {},
@@ -245,7 +245,11 @@ fun SettingsContent(ui: SettingsUi, callbacks: SettingsCallbacks, modifier: Modi
             }
             Text("Tempo por questão", style = MaterialTheme.typography.titleSmall, color = c.ink)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                PillChoice("3:00 · prova", settings.paceTargetMs == PaceConfig.STANDARD_MS, { callbacks.onPaceTarget(PaceConfig.STANDARD_MS) }, Modifier.weight(1f))
+                // O ritmo da prova segue a prova escolhida: 3:00 no Analista, 3:25 no Técnico Bancário.
+                PillChoice(
+                    "${br.com.trilhati.domain.pace.PaceEngine.format(settings.targetExam.paceTargetMs)} · prova", settings.paceTargetMs == null,
+                    { callbacks.onPaceTarget(null) }, Modifier.weight(1f),
+                )
                 PillChoice("2:30 · folga", settings.paceTargetMs == PaceConfig.TIGHT_MS, { callbacks.onPaceTarget(PaceConfig.TIGHT_MS) }, Modifier.weight(1f))
             }
             SwitchRow("Caso prático com 4:00", null, settings.caseFourMinutes, callbacks.onCaseFour)

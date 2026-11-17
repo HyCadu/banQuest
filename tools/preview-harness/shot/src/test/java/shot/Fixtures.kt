@@ -43,12 +43,21 @@ val pastExams by lazy {
     br.com.trilhati.domain.exam.PastExams.from(questions) { it.lessonId.removePrefix("u").substringBefore("l").toInt() > 10 }
 }
 
-val course by lazy {
+/** Catálogo com o pacote da U1 (todas as unidades das duas provas). */
+val catalog by lazy {
     val dto = Json { ignoreUnknownKeys = true }.decodeFromString(PackDto.serializer(), File("../../../app/src/main/assets/content/u1-banco-de-dados.json").readText())
     CourseAssembler.assemble(listOfNotNull(dto.toDomain()))
 }
 
-fun fakeState(progress: Boolean, character: String = "Guaiamum", noLives: Boolean = false): AppState {
+/** Trilha do Analista de TI (a prova padrão). */
+val course by lazy { br.com.trilhati.domain.exam.ExamCourse.courseFor(br.com.trilhati.domain.exam.TargetExam.AnalistaTi, catalog) }
+
+fun fakeState(
+    progress: Boolean,
+    character: String = "Guaiamum",
+    noLives: Boolean = false,
+    exam: br.com.trilhati.domain.exam.TargetExam = br.com.trilhati.domain.exam.TargetExam.AnalistaTi,
+): AppState {
     val lessons = if (progress) mapOf(
         "u1l1" to LessonProgress("u1l1", "u1", 1, 100, 1, 1),
         "u1l2" to LessonProgress("u1l2", "u1", 1, 75, 0, 1),
@@ -71,7 +80,10 @@ fun fakeState(progress: Boolean, character: String = "Guaiamum", noLives: Boolea
     val quests = br.com.trilhati.domain.quest.QuestEngine.questsFor(TODAY).mapIndexed { i, d ->
         QuestProgress(TODAY, d.id, if (progress) (if (i == 0) d.target else d.target / 2) else 0, claimed = false)
     }
-    return AppState(TODAY, course, snap, quests, Settings(noLives = noLives), pastExams)
+    return AppState(
+        TODAY, br.com.trilhati.domain.exam.ExamCourse.courseFor(exam, catalog), snap, quests, Settings(noLives = noLives, targetExam = exam),
+        br.com.trilhati.domain.exam.PastExams.forTarget(pastExams, exam),
+    )
 }
 
 /** Ranking, amigos e pedidos de exemplo (nomes fictícios), como se tivessem vindo do `social_overview`. */

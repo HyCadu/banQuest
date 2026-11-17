@@ -20,19 +20,10 @@
         <item quantity="one">Ofensiva de %1$d dia</item>
         <item quantity="other">Ofensiva de %1$d dias</item>
     </plurals>
-    <plurals name="stat_gems_description">
-        <item quantity="one">%1$d gema</item>
-        <item quantity="other">%1$d gemas</item>
-    </plurals>
     <plurals name="stat_hearts_description">
         <item quantity="one">%1$d coração</item>
         <item quantity="other">%1$d corações</item>
     </plurals>
-    <plurals name="stat_exam_description">
-        <item quantity="one">%1$d dia para a prova</item>
-        <item quantity="other">%1$d dias para a prova</item>
-    </plurals>
-    <string name="exam_days_short">%1$d d</string>
     <string name="pace_ahead">Folga %1$s</string>
     <string name="pace_behind">Atraso %1$s</string>
     <string name="pace_ring_description">Tempo da questão: %1$s</string>

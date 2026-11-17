@@ -147,19 +147,68 @@ class IntegrationTest {
         assertEquals(3, runBlocking { progress.observeQuests(today()).first() }.size)
     }
 
+    @Test fun provaEscolhidaMudaTrilhaRitmoEProvasAnteriores() {
+        val tb = br.com.trilhati.domain.exam.TargetExam.TecnicoBancario
+        val ti = br.com.trilhati.domain.exam.TargetExam.AnalistaTi
+        runBlocking {
+            assertEquals(ti, settings.settings.first().targetExam)
+            assertEquals(180_000L, settings.settings.first().paceConfig.perQuestionMs)
+            settings.setTargetExam(tb)
+            val s = settings.settings.first()
+            assertEquals(tb, s.targetExam)
+            assertEquals(205_000L, s.paceConfig.perQuestionMs) // 3:25
+            // 2:30 escolhido nas Configurações vale nas duas provas; voltar ao padrão segue a prova de novo
+            settings.setPaceTarget(br.com.trilhati.domain.pace.PaceConfig.TIGHT_MS)
+            assertEquals(150_000L, settings.settings.first().paceConfig.perQuestionMs)
+            settings.setPaceTarget(null)
+            assertEquals(205_000L, settings.settings.first().paceConfig.perQuestionMs)
+        }
+        // Trilha do Técnico: Específicos dele ainda sem conteúdo, Gerais iguais aos do Analista (com o Português pronto)
+        val course = content.course(tb)
+        val specific = course.filter { it.track == br.com.trilhati.domain.model.Track.Specific }
+        assertEquals(listOf("u16", "u17", "u15", "u18", "u19"), specific.map { it.id })
+        assertTrue(specific.none { it.hasContent })
+        val general = course.filter { it.track == br.com.trilhati.domain.model.Track.General }
+        assertEquals(listOf("u11", "u12", "u13", "u14"), general.map { it.id })
+        assertEquals(content.course(ti).first { it.id == "u11" }.lessons, general.first().lessons)
+        // Provas anteriores: o Técnico vê só as do Banestes (as que têm Gerais), só a parte dos Gerais
+        val all = content.exams(ti)
+        val forTb = content.exams(tb)
+        assertEquals(all.filter { it.general.isNotEmpty() }.map { it.id }, forTb.map { it.id })
+        assertTrue(forTb.isNotEmpty() && forTb.all { it.specific.isEmpty() && it.general.isNotEmpty() })
+        assertTrue(forTb.all { "Banestes" in it.body })
+        assertNull(content.exam("fcc-dpe-rr-2015", tb))
+    }
+
+    @Test fun perguntaDaProvaSoParaQuemEstaComecando() = runBlocking {
+        // Quem já usava (tema escolhido antes da 0.13.0) não vê a pergunta.
+        assertFalse(settings.settings.first().examChoicePending)
+        settings.confirmThemeChoice(br.com.trilhati.ui.theme.ThemePalette.Claro)
+        assertTrue(settings.settings.first().examChoicePending)
+        // trocar o tema depois não pergunta de novo
+        settings.setTargetExam(br.com.trilhati.domain.exam.TargetExam.TecnicoBancario)
+        assertFalse(settings.settings.first().examChoicePending)
+        settings.confirmThemeChoice(br.com.trilhati.ui.theme.ThemePalette.Escuro)
+        assertFalse(settings.settings.first().examChoicePending)
+        // o 3:00 gravado pelas versões antigas vira "segue a prova"
+        settings.eraseAll()
+        settings.setPaceTarget(br.com.trilhati.domain.pace.PaceConfig.STANDARD_MS)
+        assertNull(settings.settings.first().paceTargetMs)
+    }
+
     @Test fun conteudoCarregaDosAssets() {
-        assertEquals(14, content.course.size) // 10 Específicos + 4 Gerais
+        assertEquals(15, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi).size) // 10 Específicos + 5 Gerais (G2 dividida)
         // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 36 de provas anteriores
         // (26 da FCC e da FGV, 6 da IDECAN 2012 e 4 do Instituto Access 2024).
-        val u1 = content.course[0].lessons.flatMap { it.questions }
+        val u1 = content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[0].lessons.flatMap { it.questions }
         assertEquals(206, u1.size)
         assertEquals(36, u1.count { it.isFromExam })
         // U2 (154 + 35 oficiais) e G1 (168 + 55 oficiais), com as provas de 2012 e 2024 da 0.11.0.
-        assertEquals(189, content.course[1].lessons.sumOf { it.questions.size })
-        assertEquals(223, content.course[10].lessons.sumOf { it.questions.size })
+        assertEquals(189, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[1].lessons.sumOf { it.questions.size })
+        assertEquals(223, content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[10].lessons.sumOf { it.questions.size })
         // Nas lições por conceito, toda questão de prova está ligada a um conceito da lição: sem isso o planejador
         // nunca a sorteia (aconteceu com as 20 oficiais das lições 2 a 5 na 0.8.1).
-        content.course.flatMap { it.lessons }.forEach { l ->
+        content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi).flatMap { it.lessons }.forEach { l ->
             val ids = l.concepts.map { it.id }.toSet()
             if (ids.isNotEmpty()) l.questions.filter { it.isFromExam }.forEach { q -> assertTrue("${q.id} sem conceito da ${l.id}", q.conceptId in ids) }
         }
@@ -196,7 +245,7 @@ class IntegrationTest {
         assertEquals(today().toEpochDay(), outbox[0].day); assertEquals(1, outbox[0].streak)
         assertEquals(1, s.dailyLogs.getValue(today()).lessons)
         // desbloqueou a próxima
-        val st = TrailEngine.statuses(content.course, s.lessonProgress)
+        val st = TrailEngine.statuses(content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi), s.lessonProgress)
         assertEquals(LessonStatus.Perfect, st["u1l1"]); assertEquals(LessonStatus.Available, st["u1l2"])
         assertEquals(LessonStatus.Locked, st["u1l3"])
         // missões avançaram
@@ -310,10 +359,10 @@ class IntegrationTest {
         repeat(5) { i -> play(newVm("lesson", "u1l${i + 1}")) }
         val s = snap()
         assertTrue("unit1" in s.achievements)
-        assertEquals(1, TrailEngine.completedUnitCount(content.course, s.lessonProgress))
+        assertEquals(1, TrailEngine.completedUnitCount(content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi), s.lessonProgress))
         assertEquals(60, runBlocking { progress.claimUnitChest("u1") })
         assertNull(runBlocking { progress.claimUnitChest("u1") })
-        val st = TrailEngine.statuses(content.course, s.lessonProgress)
+        val st = TrailEngine.statuses(content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi), s.lessonProgress)
         assertEquals(LessonStatus.Available, st["u2l1"]) // a U2 tem pacote desde a 0.10.0
         assertEquals(LessonStatus.Locked, st["u3l1"]) // u3 sem conteúdo
     }
@@ -456,7 +505,7 @@ class IntegrationTest {
 
     @Test fun provaAvisaAntesGastaUmCoracaoAoComecarNaoTiraCoracaoPorErroEDaXpSoAoTerminar() {
         runBlocking { progress.ensureReady(today()) }
-        val exam = content.exam("fcc-dpe-rr-2015")!!
+        val exam = content.exam("fcc-dpe-rr-2015", br.com.trilhati.domain.exam.TargetExam.AnalistaTi)!!
         val vm = newVm("exam", exam.id)
         val ui = intro(vm)
         assertEquals(exam.size, ui.questionCount)
@@ -631,11 +680,11 @@ class IntegrationTest {
             .replace("\"pack\": \"u1-banco-de-dados\"", "\"pack\": \"u3-teste\"")
         val result = content.importPack(u3)
         assertTrue("$result", result is br.com.trilhati.data.content.PackLoad.Ok)
-        assertTrue(content.course[2].hasContent)
+        assertTrue(content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[2].hasContent)
         assertEquals(1, content.importedPacks().size)
         assertTrue(content.importPack("{ quebrado") is br.com.trilhati.data.content.PackLoad.Invalid)
         content.removeImported(content.importedPacks().first().fileName)
-        assertFalse(content.course[2].hasContent)
+        assertFalse(content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi)[2].hasContent)
     }
 
     @Test fun notificacaoDeLembreteAparece() {

@@ -32,6 +32,10 @@ enum class GameIcon {
 
     /** Coração rachado: meio coração perdido (o próximo erro de ensino quebra este coração). */
     HeartCracked,
+
+    /** Emblemas das provas (chip da Trilha, 0.13.0): código `</>` para o Analista de TI e prédio de banco para o Técnico. */
+    ExamCode,
+    ExamBank,
 }
 
 /** Cores de um ícone: preenchimento principal, detalhe e contorno. */
@@ -64,6 +68,8 @@ private fun GameIcon.defaults(): IconColors = when (this) {
     GameIcon.Book -> IconColors(Color(0xFF6B3FD6), Color(0xFFFFFFFF), InkIcon)
     GameIcon.Close -> IconColors(Color(0xFFFFFFFF), Color(0xFFFFFFFF), InkIcon)
     GameIcon.Snowflake -> IconColors(Color(0xFF8FD6FF), Color(0xFFFFFFFF), InkIcon)
+    GameIcon.ExamCode -> IconColors(Color(0xFF6B3FD6), Color(0xFFFFFFFF), InkIcon)
+    GameIcon.ExamBank -> IconColors(Color(0xFF0E8C7F), Color(0xFFFFFFFF), InkIcon)
 }
 
 /**
@@ -166,6 +172,28 @@ private fun DrawScope.drawGameIcon(icon: GameIcon, c: IconColors) {
             val line = Path().apply { crack.forEachIndexed { i, (x, y) -> if (i == 0) moveTo(x, y) else lineTo(x, y) } }
             drawPath(line, o, style = Stroke(2.6f, cap = StrokeCap.Round, join = StrokeJoin.Round))
             drawPath(heart, o, style = Stroke(LINE, cap = StrokeCap.Round, join = StrokeJoin.Round))
+        }
+
+        GameIcon.ExamCode -> {
+            roundRectShape(Rect(4f, 4f, 44f, 44f), 11f, c.main, o)
+            val brackets = Path().apply {
+                moveTo(19f, 15f); lineTo(11f, 24f); lineTo(19f, 33f)
+                moveTo(29f, 15f); lineTo(37f, 24f); lineTo(29f, 33f)
+            }
+            drawPath(brackets, c.accent, style = Stroke(4.2f, cap = StrokeCap.Round, join = StrokeJoin.Round))
+        }
+
+        GameIcon.ExamBank -> {
+            roundRectShape(Rect(4f, 4f, 44f, 44f), 11f, c.main, o)
+            val building = Path().apply {
+                moveTo(11f, 20f); lineTo(24f, 12f); lineTo(37f, 20f)
+                moveTo(15f, 21f); lineTo(15f, 31f)
+                moveTo(21f, 21f); lineTo(21f, 31f)
+                moveTo(27f, 21f); lineTo(27f, 31f)
+                moveTo(33f, 21f); lineTo(33f, 31f)
+                moveTo(11f, 35f); lineTo(37f, 35f)
+            }
+            drawPath(building, c.accent, style = Stroke(3.4f, cap = StrokeCap.Round, join = StrokeJoin.Round))
         }
 
         GameIcon.Heart -> {

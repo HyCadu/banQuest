@@ -37,7 +37,10 @@ object TrailEngine {
     fun isUnitComplete(unit: CourseUnit, progress: Map<String, LessonProgress>): Boolean =
         unit.lessons.isNotEmpty() && unit.lessons.all { l -> l.hasContent && progress[l.id]?.completed == true }
 
-    /** Unidades totalmente concluídas, mapeadas para os ids das lições (para o cálculo de conquistas). */
+    /**
+     * Unidades totalmente concluídas (para o cálculo de conquistas). Conta ids distintos: as trilhas das duas provas
+     * podem vir juntas, com os Gerais repetidos, e uma unidade conta se estiver completa em qualquer uma delas.
+     */
     fun completedUnitCount(units: List<CourseUnit>, progress: Map<String, LessonProgress>): Int =
-        units.count { isUnitComplete(it, progress) }
+        units.filter { isUnitComplete(it, progress) }.map { it.id }.toSet().size
 }

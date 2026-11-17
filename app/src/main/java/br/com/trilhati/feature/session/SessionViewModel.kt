@@ -215,7 +215,7 @@ class SessionViewModel @Inject constructor(
     // ---------- prova anterior: tela de aviso
 
     private fun showExamIntro() {
-        val found = exam ?: lessonId?.let(content::exam)
+        val found = exam ?: lessonId?.let { content.exam(it, settings.targetExam) }
         if (found == null) {
             _ui.value = SessionUi.Empty("Prova não encontrada", "Ela não está mais no app. Volte e escolha outra prova.")
             return
@@ -426,7 +426,7 @@ class SessionViewModel @Inject constructor(
             val unitId = lessonOnly?.let { content.lesson(it)?.unitId }
             // Só chega aqui com todas as questões respondidas: na prova anterior, é o único caminho que dá XP.
             val result = SessionResult(kind, lessonOnly, unitId, r.records, r.bestCombo, r.perfect)
-            val processed = progress.applySession(result, clock.today(), content.course)
+            val processed = progress.applySession(result, clock.today(), content.allCourses)
             if (kind != SessionKind.Practice) notifications.clear()
             // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
             syncScheduler.syncSoon()

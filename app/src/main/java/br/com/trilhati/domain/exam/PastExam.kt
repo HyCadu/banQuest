@@ -65,6 +65,18 @@ object PastExams {
         }
     }
 
+    /**
+     * As provas anteriores que valem para quem estuda para [target]. Todas as do pacote são de cargos de TI: o Analista
+     * vê todas, inteiras; o Técnico Bancário vê só as que têm Conhecimentos Gerais, e só essa parte (mesmo edital de
+     * Gerais), com o mesmo id para a rota da sessão.
+     */
+    fun forTarget(exams: List<PastExam>, target: TargetExam): List<PastExam> = when (target) {
+        TargetExam.AnalistaTi -> exams
+        TargetExam.TecnicoBancario -> exams.filter { it.general.isNotEmpty() }.map { exam ->
+            exam.copy(cargo = "Só os Conhecimentos Gerais da prova de ${exam.cargo}", specific = emptyList())
+        }
+    }
+
     /** O gabarito menos firme entre as questões (se uma for preliminar, a prova é preliminar). */
     private fun worstKey(questions: List<Question>): AnswerKey =
         questions.mapNotNull { it.ref?.answerKey }.maxByOrNull { it.ordinal } ?: AnswerKey.Final

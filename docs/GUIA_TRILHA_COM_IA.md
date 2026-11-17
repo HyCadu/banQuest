@@ -29,17 +29,21 @@ arquivo à conversa.
 
 ## Parte 2 — Para a IA: o que é o BanQuest
 
-App Android de estudo gamificado (trilha, XP, ofensiva, corações) para o concurso do **Banestes, cargo Analista de TI –
-Desenvolvimento de Sistemas, banca FCC, prova em 21/02/2027**. Idioma: português do Brasil.
+App Android de estudo gamificado (trilha, XP, ofensiva, corações) para o concurso do **Banestes, banca FCC**, com duas
+provas à escolha: **Analista de TI – Desenvolvimento de Sistemas** (21/02/2027) e **Técnico Bancário** (24/01/2027).
+Idioma: português do Brasil.
 
-A prova tem 50 questões de Conhecimentos Específicos (peso 2) e 30 de Conhecimentos Gerais (peso 1), em 4 horas. O app
-treina o **ritmo de prova: 3:00 por questão**.
+A prova do Analista tem 50 questões de Conhecimentos Específicos (peso 2) e 30 de Conhecimentos Gerais (peso 1), em 4
+horas: **3:00 por questão**. A do Técnico tem 40 de Específicos (peso 2) e os mesmos 30 de Gerais, em 4 horas: **3:25 por
+questão**.
 
 O conteúdo fica em duas trilhas:
-- **Específicos:** unidades U1 a U10 (ids `u1` a `u10`).
-- **Gerais:** G1 a G4 (ids `u11` a `u14`).
+- **Específicos do Analista:** unidades U1 a U10 (ids `u1` a `u10`).
+- **Específicos do Técnico Bancário:** ids `u16` a `u19`, mais a Matemática financeira (`u15`, lições 1 a 3).
+- **Gerais (as duas provas):** G1 a G5 (ids `u11` a `u15`; a G5, Matemática financeira, só nos Gerais do Analista).
 
-O escopo de cada lição vem do edital (Anexo IV, cargo 04). Não inclua assuntos que o edital não cita.
+O escopo de cada lição vem do edital: Anexo IV, cargo 04, em `docs/EDITAL.md` (Analista) e cargo TB em
+`docs/EDITAL_TECNICO_BANCARIO.md` (Técnico). Não inclua assuntos que o edital não cita.
 
 Você pode receber três tipos de pedido. Cada um tem um formato de saída:
 
@@ -287,12 +291,17 @@ Use estes ids. As lições estão na ordem da trilha.
 | `u9` Redes | Fundamentos e meios de transmissão · TCP/IP e protocolos · Roteamento, VLAN e SDN · Cabeamento e Wi-Fi · QoS, VoIP e multicast |
 | `u10` Serviços, monitoramento e nuvem | Servidores e serviços · Gerência de redes e monitoramento · Computação em nuvem · Inglês técnico |
 | `u11` (G1) Língua Portuguesa | Ortografia e crase · Interpretação de texto · Morfologia · Sintaxe · Pontuação e reescrita |
-| `u12` (G2) Raciocínio, estatística e mat. financeira | Lógica de relações · Aritmética · Proporção e porcentagem · Estatística e contagem · Juros e taxas · Descontos e séries · Amortização · Avaliação de projetos |
+| `u12` (G2) Raciocínio lógico e estatística | Lógica de relações · Aritmética · Proporção e porcentagem · Estatística e contagem |
 | `u13` (G3) Atualidades do mercado financeiro | Sistema Financeiro Nacional · Política monetária · Mercado e inovação · Cidadania financeira e cenários |
 | `u14` (G4) Ética, compliance e ESG | Ética e integridade · Governança e compliance · Corrupção, fraude e dados · ESG e sustentabilidade |
+| `u15` (G5) Matemática financeira | Juros e taxas · Descontos e séries · Amortização · Avaliação de projetos (o Técnico vê só as 3 primeiras) |
+| `u16` Conhecimentos bancários e securitários (Técnico) | Sistema Financeiro Nacional · Produtos e serviços bancários · Mercado financeiro e política monetária · Pix, Open Finance e inovação · Lavagem de dinheiro e COAF · Seguros, previdência, capitalização e consórcio · Regulação e perfil do cliente |
+| `u17` Vendas, negociação e atendimento (Técnico) | Atendimento ao cliente · Comportamento do consumidor · Vendas, prospecção e fidelização · Negociação · CRM, reclamações e canais digitais |
+| `u18` Probabilidade e estatística (Técnico) | Dados, amostragem e gráficos · Medidas de posição e dispersão · Probabilidade · Condicional e distribuição normal |
+| `u19` Informática e comportamentos digitais (Técnico) | LGPD no setor bancário · Hardware, software e sistemas · Internet, redes e nuvem · Google Workspace · Segurança digital e golpes · Inteligência artificial |
 
 Os tópicos do edital de cada lição, com as observações de densidade e risco, estão em `docs/CONTENT_PLAN.md`. A
-transcrição do edital está em `docs/EDITAL.md`.
+transcrição dos editais está em `docs/EDITAL.md` (Analista) e `docs/EDITAL_TECNICO_BANCARIO.md` (Técnico).
 
 ---
 
