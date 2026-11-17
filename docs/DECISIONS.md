@@ -625,3 +625,7 @@ aprovou um mockup e respondeu as dúvidas antes do código.
     celular e no importar/exportar. Sem mudança no SQL do Supabase nem migração do Room. O ranking e os limites do
     servidor não mudam.
 11. Conquistas de unidade concluída contam as unidades das duas trilhas, sem repetir (`TrailEngine.completedUnitCount`).
+
+## DCM v1.1
+
+17/11/2026 — Fundador aprovou o Dictadure Colaboration Model v1.1: Contributors, tarefas livres e compartilhadas, autonomia de roteiro, revisão comunitária opcional, sem prazos, mural no README/site e aprovação centralizada. Inclui tarefa aprovada da tela de simulado de Cyber Segurança. Ver [DCM](DCM.md).

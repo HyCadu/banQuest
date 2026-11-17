@@ -22,7 +22,7 @@ só organiza o trabalho dentro do repositório.
 1. **Prova nova (PDF):** transcreva em `content/provas/<banca>-<orgao>-<ano>.json` (Parte 5.2 do guia). Rode
    `python3 tools/validate_provas.py` e `python3 tools/build_provas.py`. Nunca edite `app/src/main/assets/provas/` à mão.
 2. **Lição:**
-   - mostre o plano ao dono antes do JSON: conceitos em ordem, o cenário de cada um e a quantidade por nível;
+   - defina e registre o plano antes do JSON: conceitos em ordem, cenário e quantidade por nível; o Contributor pode decidir sem aprovação prévia do fundador;
    - gere no pacote da unidade (`app/src/main/assets/content/uN-<nome>.json`, Parte 5.1);
    - uma unidade por vez, lição por lição.
 3. **Valide:** `python3 tools/validate_content.py app/src/main/assets/content/`, até zerar os erros. Leia os avisos.

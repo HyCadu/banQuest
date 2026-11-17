@@ -1,0 +1,20 @@
+name: Improvement
+description: Melhorar o que já existe
+labels: ["Improvement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Bem-vindo! Todos podem contribuir. Novas tarefas aguardam aprovação do fundador."
+  - type: textarea
+    id: proposta
+    attributes:
+      label: "O que podemos melhorar?"
+      description: "Conte com suas palavras."
+    validations:
+      required: true
+  - type: textarea
+    id: apoio
+    attributes:
+      label: "Materiais ou sugestões (opcional)"
+      description: "Links, exemplos ou como você gostaria de ajudar."
+

@@ -72,3 +72,7 @@ Só o dono pode fazer isto, em GitHub > Settings > Branches > Add branch ruleset
   jobs: eles são pulados quando o PR não mexe no que conferem, e um check obrigatório pulado trava o merge.
 - Deixar o dono fora da regra (bypass), senão ele não consegue fazer merge dos próprios PRs, porque o GitHub não deixa
   ninguém aprovar o próprio PR.
+
+## DCM — colaboração aberta
+
+Leia [docs/DCM.md](docs/DCM.md). Comente `/participar` numa tarefa Available ou In progress; não há exclusividade nem prazo. Novas ideias aguardam aprovação do fundador. A revisão comunitária é opcional; a conferência do conteúdo e a CI continuam necessárias. O Contributor define o roteiro da lição. Sem Git? Anexe os arquivos e relatório na Issue para outro Contributor integrar. Apenas o fundador aprova e faz merge.

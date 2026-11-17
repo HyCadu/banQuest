@@ -10,3 +10,7 @@ Vale para qualquer agente que trabalhe neste repositório (Claude Code, Codex, C
   conceitos da Unidade 1: aprender, praticar e prova, nos passos 1, 2 e 3.
 - **Segredos:** a chave `service_role` do Supabase e a chave de assinatura do APK nunca entram no repositório nem na
   conversa.
+
+## DCM v1.1
+
+Siga `docs/DCM.md`: trabalhe em tarefas aprovadas; Contributors escolhem livremente e compartilham tarefas. Roteiros de conteúdo não exigem aprovação prévia. A revisão comunitária é opcional, mas mantenha a revisão técnica, CI e aprovação final do fundador. Nunca faça merge.

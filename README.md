@@ -34,3 +34,13 @@ python3 tools/validate_content.py app/src/main/assets/content/
 ```
 
 Stack: Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore e WorkManager. Backend social no Supabase.
+
+## Contributors
+
+**Open-source não precisa ser exclusivamente para programadores.** Conheça o [DCM](docs/DCM.md) e [escolha uma tarefa](https://github.com/HyCadu/banQuest/issues).
+
+[![HyCadu](https://github.com/HyCadu.png?size=64)](https://github.com/HyCadu)
+
+**[@HyCadu](https://github.com/HyCadu)** — Founder & Lead Maintainer.
+
+Veja o [mural de Contributors](CONTRIBUTORS.md).
