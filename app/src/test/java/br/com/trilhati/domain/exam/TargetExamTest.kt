@@ -142,4 +142,20 @@ class TargetExamTest {
         // o Analista vê do Técnico os Gerais dele, inclusive a matemática financeira (G5)
         assertEquals(listOf(1, 21), forTi.single { it.id == tbExam.id }.questions(ExamPart.Full).map { it.ref?.number })
     }
+
+    @Test fun `trilha do tecnico destrava pela ordem da prova e nao pelo numero da unidade`() {
+        // u16 (Unidade 1 do Técnico) com conteúdo; u15 (Unidade 3) sem. A u15 tem número menor, mas vem depois.
+        val withU16 = Curriculum.units.map { info ->
+            TestData.unit(info.order, info.lessonTitles.size, withContent = info.id == "u16")
+        }
+        val statuses = TrailEngine.statuses(ExamCourse.courseFor(TargetExam.TecnicoBancario, withU16), emptyMap())
+        assertEquals(LessonStatus.Available, statuses["u16l1"])
+        assertEquals(LessonStatus.Locked, statuses["u16l2"])
+        assertEquals(LessonStatus.Locked, statuses["u15l1"])
+        // concluída a u16, a próxima da trilha é a u17 (Unidade 2), ainda sem conteúdo: trava ali
+        val done = (1..7).associate { "u16l$it" to LessonProgress("u16l$it", "u16", timesCompleted = 1) }
+        val after = TrailEngine.statuses(ExamCourse.courseFor(TargetExam.TecnicoBancario, withU16), done)
+        assertEquals(LessonStatus.Done, after["u16l7"])
+        assertEquals(LessonStatus.Locked, after["u17l1"])
+    }
 }

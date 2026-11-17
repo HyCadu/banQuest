@@ -655,4 +655,8 @@ O dono enviou as provas Tipo 1 e os gabaritos definitivos de Técnico Bancário 
    com as 30 oficiais de bancários ligadas aos conceitos. O pacote é gerado por `tools/gen_u16.py` a partir de
    `content/source/u16_*.py`: escrever a alternativa certa primeiro e deixar o gerador espalhar a posição evita viés de
    posição. Revisão em `content/review/u16-conhecimentos-bancarios.md`.
+9. **Correção: a Unidade 1 do Técnico abria travada.** O `TrailEngine` ordenava as unidades pelo número (`order`), e não
+   pela ordem da trilha da prova. No Técnico, a Matemática financeira (`u15`, sem conteúdo) é a Unidade 3, mas pelo número
+   vinha antes de `u16` e travava tudo depois dela. Agora a ordem é a da trilha (`ExamCourse`), com teste de domínio e de
+   integração. O guia da unidade também passou a usar o rótulo da trilha ("Unidade 1", "G1") em vez do número interno.
 
