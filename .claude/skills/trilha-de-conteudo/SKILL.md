@@ -22,7 +22,7 @@ só organiza o trabalho dentro do repositório.
 1. **Prova nova (PDF):** transcreva em `content/provas/<banca>-<orgao>-<ano>.json` (Parte 5.2 do guia). Rode
    `python3 tools/validate_provas.py` e `python3 tools/build_provas.py`. Nunca edite `app/src/main/assets/provas/` à mão.
 2. **Lição:**
-   - defina e registre o plano antes do JSON: conceitos em ordem, cenário e quantidade por nível; o Contributor pode decidir sem aprovação prévia do fundador;
+   - defina e registre o plano antes do JSON: conceitos em ordem, cenário e quantidade por nível; o Contributor pode decidir sem aprovação prévia do Revisor;
    - gere no pacote da unidade (`app/src/main/assets/content/uN-<nome>.json`, Parte 5.1);
    - uma unidade por vez, lição por lição.
 3. **Valide:** `python3 tools/validate_content.py app/src/main/assets/content/`, até zerar os erros. Leia os avisos.
@@ -32,7 +32,7 @@ só organiza o trabalho dentro do repositório.
    - grave o relatório em `content/review/<pack>.md` (Parte 8.2).
 5. **Testes:** rode `./gradlew test lint`. Se a contagem de questões mudou, ajuste `ContentTest` e a harness
    (`tools/preview-harness`).
-6. **PR:** branch `content/<unidade>`, um PR por lição ou prova, e pare. Só o dono faz o merge (`CONTRIBUTING.md`).
+6. **PR:** branch `content/<unidade>`, um PR por lição ou prova, e pare. Só o Revisor aprova e faz o merge (`CONTRIBUTING.md`).
 
 ## Lembretes que mais escapam
 

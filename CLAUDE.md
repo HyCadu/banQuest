@@ -94,6 +94,6 @@ Execute apenas a Fase 0 do PLAN.md (projeto Gradle, Compose, Hilt, Room, Clock i
 catálogo de versões, teste e lint passando), faça o commit e pare para minha revisão.
 ```
 
-## DCM v1.1
+## DCM v1.2
 
-Siga `docs/DCM.md`: trabalhe em tarefas aprovadas; Contributors escolhem livremente e compartilham tarefas. Roteiros de conteúdo não exigem aprovação prévia. A revisão comunitária é opcional, mas mantenha a revisão técnica, CI e aprovação final do fundador. Nunca faça merge.
+Siga `docs/DCM.md`: trabalhe em tarefas aprovadas; Contributors escolhem livremente e compartilham tarefas. Roteiros de conteúdo não exigem aprovação prévia. A revisão comunitária é opcional, mas mantenha a revisão técnica, CI e aprovação final do Revisor (Reviewer). Nunca faça merge.

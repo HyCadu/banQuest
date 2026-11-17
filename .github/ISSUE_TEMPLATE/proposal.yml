@@ -4,7 +4,7 @@ labels: ["Proposal"]
 body:
   - type: markdown
     attributes:
-      value: "Bem-vindo! Todos podem contribuir. Novas tarefas aguardam aprovação do fundador."
+      value: "Bem-vindo! Todos podem contribuir. Novas tarefas aguardam aprovação do Revisor."
   - type: textarea
     id: proposta
     attributes:

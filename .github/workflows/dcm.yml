@@ -36,7 +36,7 @@ jobs:
               return result['data']
           e=json.load(open(os.environ['GITHUB_EVENT_PATH'])); issue=e['issue']; repo=os.environ['GITHUB_REPOSITORY']; owner=repo.split('/')[0]
           if repo.lower()!='hycadu/banquest': raise SystemExit(0)
-          actor=e['sender']['login'].lower(); founder=actor=='hycadu'; action=e['action']; n=os.environ['DCM_PROJECT_NUMBER']; url=issue['html_url']
+          actor=e['sender']['login'].lower(); reviewer=actor=='hycadu'; action=e['action']; n=os.environ['DCM_PROJECT_NUMBER']; url=issue['html_url']
           current=json.loads(gh('api',f'repos/{repo}/issues/{issue["number"]}'))
           approved=any(x['name']=='dcm:approved' for x in current['labels'])
           p=gql('query($owner:String!,$n:Int!){user(login:$owner){projectV2(number:$n){id fields(first:100){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}',owner=owner,n=int(n))['user']['projectV2']; pid=p['id']
@@ -47,14 +47,14 @@ jobs:
           if 'comment' in e:
               cmd=e['comment']['body'].strip().lower()
               if current['state']!='open': raise SystemExit(0)
-              if cmd=='/aprovar-tarefa' and founder and old in (None,'Ideas'):
+              if cmd=='/aprovar-tarefa' and reviewer and old in (None,'Ideas'):
                   gh('issue','edit',str(issue['number']),'--repo',repo,'--add-label','dcm:approved'); target='Available'
               elif approved and cmd=='/participar' and old in ('Available','In progress'): target='In progress'
               elif approved and cmd=='/revisao' and old=='In progress': target='Review'
               elif approved and cmd=='/entregar' and old in ('In progress','Review'): target='Approval'
           elif action=='opened' and not item and current['state']=='open': target='Available' if approved else 'Ideas'
-          elif action=='reopened' and founder: target='Available' if approved else 'Ideas'
-          elif action=='closed' and founder and approved and current.get('state_reason')=='completed' and current['state']=='closed': target='Done'
+          elif action=='reopened' and reviewer: target='Available' if approved else 'Ideas'
+          elif action=='closed' and reviewer and approved and current.get('state_reason')=='completed' and current['state']=='closed': target='Done'
           if not target: raise SystemExit(0)
           if not item:
               item=gql('mutation($p:ID!,$c:ID!){addProjectV2ItemById(input:{projectId:$p,contentId:$c}){item{id}}}',p=pid,c=issue['node_id'])['addProjectV2ItemById']['item']

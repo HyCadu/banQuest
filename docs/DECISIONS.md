@@ -628,4 +628,15 @@ aprovou um mockup e respondeu as dúvidas antes do código.
 
 ## DCM v1.1
 
-17/11/2026 — Fundador aprovou o Dictadure Colaboration Model v1.1: Contributors, tarefas livres e compartilhadas, autonomia de roteiro, revisão comunitária opcional, sem prazos, mural no README/site e aprovação centralizada. Inclui tarefa aprovada da tela de simulado de Cyber Segurança. Ver [DCM](DCM.md).
+17/11/2026 — O Revisor aprovou o Dictadure Colaboration Model v1.1: Contributors, tarefas livres e compartilhadas, autonomia de roteiro, revisão comunitária opcional, sem prazos, mural no README/site e aprovação centralizada. Inclui tarefa aprovada da tela de simulado de Cyber Segurança. Ver [DCM](DCM.md).
+
+## DCM v1.2 — nomenclatura Reviewer (17/11/2026)
+
+Atualização de nomenclatura solicitada pelo Revisor para deixar explícito o papel de governança sem mudar poderes ou regras.
+
+1. **Título público:** `Reviewer (Revisor)` substitui Founder, Founder & Lead Maintainer e Fundador nos materiais de governança do DCM, README, CONTRIBUTORS, templates de Issues, instruções de agentes, skill de conteúdo e mural do site.
+2. **Responsabilidades preservadas:** o Reviewer mantém exatamente a autoridade anterior para definir estratégia, prioridades e aprovação de tarefas; a aprovação final e o merge continuam centralizados nele. Code Owners, proteção da `main`, permissões de escrita, revisão técnica, CI e a regra contra push direto à `main` não mudam.
+3. **Automação preservada:** o workflow continua autorizando os mesmos atos exclusivamente à conta GitHub `@HyCadu`; o nome interno do ator foi atualizado de `founder` para `reviewer`, sem ampliar permissões.
+4. **Identidade visual:** o marcador de coroa foi substituído por escudo de verificação no mural do site, sem alterar ícones ou mecânicas do aplicativo.
+
+Ver [DCM v1.2](DCM.md). Nenhuma funcionalidade do app foi alterada.

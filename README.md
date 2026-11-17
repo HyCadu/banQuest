@@ -21,9 +21,9 @@ por questão no Analista e 3:25 no Técnico.
   aprendizado da Unidade 1 e a transcrever provas anteriores no formato do app. O passo a passo está em
   [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - **Código:** leia o [`CLAUDE.md`](CLAUDE.md) (regras e comandos) e o [`PLAN.md`](PLAN.md) (especificação). Todo
-  trabalho entra por pull request, e quem aprova é o dono do projeto.
+  trabalho entra por pull request, e quem aprova é o Revisor (Reviewer).
 
-O que entra no app e quando é decisão do dono (veja o [`CONTRIBUTING.md`](CONTRIBUTING.md)).
+O que entra no app e quando é decisão do Revisor (veja o [`CONTRIBUTING.md`](CONTRIBUTING.md)).
 
 ## Rodar o projeto
 
@@ -41,6 +41,6 @@ Stack: Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore e WorkManager.
 
 [![HyCadu](https://github.com/HyCadu.png?size=64)](https://github.com/HyCadu)
 
-**[@HyCadu](https://github.com/HyCadu)** — Founder & Lead Maintainer.
+**[@HyCadu](https://github.com/HyCadu)** — Reviewer (Revisor).
 
 Veja o [mural de Contributors](CONTRIBUTORS.md).
