@@ -1,4 +1,4 @@
-# Plano de conteúdo — Específicos (U1–U10) e Gerais (G1–G4)
+# Plano de conteúdo — Específicos do Analista (U1–U10), Gerais (G1–G5) e Técnico Bancário
 
 Mapa para planejar a geração. Não é conteúdo. Fonte do escopo: [EDITAL.md](EDITAL.md) (Anexo IV,
 transcrito). Onde o PLAN.md §6 e o edital divergem, vale o edital.
@@ -22,9 +22,10 @@ também eliminam, porque a média ponderada mínima é 6,00. Por isso entram na 
 | 10 | Serviços, monitoramento e nuvem | 4 | 40 | a fazer | alta (l1, l2) | médio (RFCs) |
 | | **Subtotal Específicos** | **48** | **480** | U1 e U2 prontas | | |
 | G1 | Língua Portuguesa | 5 | 50 | **pronta (0.12.0)**, por conceitos (168 exercícios, 28 conceitos) | alta | baixo |
-| G2 | Raciocínio lógico, estatística e matemática financeira | 8 | 80 | a fazer | alta | baixo (cálculo conferível) |
+| G2 | Raciocínio lógico e estatística (`u12`) | 4 | 40 | a fazer, serve às duas provas | alta | baixo (cálculo conferível) |
 | G3 | Atualidades do mercado financeiro | 4 | 40 | a fazer | alta | **alto** (envelhece rápido) |
 | G4 | Ética, compliance e ESG | 4 | 40 | a fazer | média | médio (guia do Banestes) |
+| G5 | Matemática financeira (`u15`; no Técnico, Unidade 3, lições 1–3) | 4 | 40 | a fazer, serve às duas provas | alta | baixo (cálculo conferível) |
 | | **Subtotal Gerais** | **21** | **210** | G1 pronta | | |
 | | **Total** | **69** | **690** | 3 unidades prontas (U1, U2, G1) | | |
 
@@ -179,7 +180,12 @@ palavras, tema de TI) dentro do enunciado, e pergunta sobre ideia principal, inf
 de pronome ou sentido de palavra no contexto. Usa o tipo `mcq5` atual, sem mudar o app. Os trechos são autorais, não
 copiados de sites ou documentação.
 
-## Conhecimentos Gerais (G1–G4)
+## Conhecimentos Gerais (G1–G5)
+
+**0.13.0:** a antiga G2 (8 lições) foi dividida em G2 Raciocínio lógico e estatística (`u12`, lições 1–4) e G5
+Matemática financeira (`u15`, as lições 5–8 de antes, agora 1–4). Assim as mesmas lições servem às duas provas: no
+Técnico Bancário a matemática financeira é dos Específicos. Nenhuma questão oficial precisou mudar de lição (todas as da
+G2 estavam nas lições 1–4).
 
 Pedido do colaborador: incluir as matérias comuns. **Muda o escopo da v1** (CLAUDE.md, regra 5, e PLAN §2 diziam "só
 Específicos"); o merge deste plano é a aprovação do dono. IDs nos pacotes: `u11` a `u14`, porque o validador e o
@@ -199,7 +205,9 @@ conceitos, 168 exercícios e as 35 oficiais da FGV ligadas a conceitos. Textos d
 | l4 Sintaxe | morfossintaxe, concordância nominal e verbal, regência nominal e verbal, coordenação e subordinação, conectivos | `mcq5`, `excecao` | a mais cobrada da FCC em Português |
 | l5 Pontuação e reescrita | pontuação, redação (frases corretas e incorretas, reorganização de períodos, equivalência de estruturas) | `mcq5` | estilo "reescrita mantém o sentido e a correção" |
 
-### G2 — Raciocínio lógico, estatística e matemática financeira (`u12`)
+### G2 — Raciocínio lógico e estatística (`u12`) e G5 — Matemática financeira (`u15`)
+
+Na tabela, l5 a l8 são as lições 1 a 4 da `u15`.
 | Lição | Tópicos | Tipos | Observação |
 |---|---|---|---|
 | l1 Lógica de relações | relações arbitrárias, dedução, raciocínio verbal, sequencial, espacial e temporal | `case` | estilo FCC clássico |
@@ -211,7 +219,8 @@ conceitos, 168 exercícios e as 35 oficiais da FGV ligadas a conceitos. Textos d
 | l7 Amortização | Price, SAC, Sistema Misto | `case`, `match` | |
 | l8 Avaliação de projetos | fluxo de caixa, valor presente e futuro, VPL, TIR | `case` | liga com U7l4 (ROI, TCO) |
 
-Matemática financeira tem 4 lições porque é a parte mais larga do edital de Raciocínio. Questões de cálculo: conferir cada
+Matemática financeira tem 4 lições porque é a parte mais larga do edital de Raciocínio. O Técnico Bancário vê só as 3
+primeiras (o edital dele não cita VPL, TIR nem capitalização contínua). Questões de cálculo: conferir cada
 resultado com script antes de gravar (o validador não confere contas).
 
 ### G3 — Atualidades do mercado financeiro (`u13`)
@@ -243,6 +252,25 @@ A trilha hoje é **uma fila só**: a primeira lição sem conteúdo trava tudo d
 3. Desbloqueio livre por unidade. Perde a sensação de trilha.
 
 Também muda o Perfil (precisão por tema) e, na Fase 10, o simulado passa a poder ter 80 questões (30 + 50), como a prova.
+
+## Técnico Bancário (0.13.0)
+
+Segunda prova no app, escolhida no chip do topo da Trilha. Edital transcrito em [EDITAL_TECNICO_BANCARIO.md](EDITAL_TECNICO_BANCARIO.md);
+prova em 24/01/2027 (70 questões, 4 h). Os Gerais são os mesmos do Analista (G1–G4). Os Específicos, com peso 2:
+
+| Un. | Id | Tema | Lições | Questões na prova | Estado | Risco factual |
+|---|---|---|---|---|---|---|
+| 1 | `u16` | Conhecimentos bancários e securitários | 7 | 15 | a fazer | **alto** (Res. CMN 4.966/2021, PLD/FT, COAF) |
+| 2 | `u17` | Vendas, negociação e atendimento | 5 | 10 | a fazer | baixo |
+| 3 | `u15` | Matemática financeira (lições 1–3, a mesma G5 do Analista) | 3 | 5 | a fazer | baixo |
+| 4 | `u18` | Probabilidade e estatística | 4 | 5 | a fazer | baixo |
+| 5 | `u19` | Informática e comportamentos digitais | 6 | 5 | a fazer | médio (Google Workspace e IA mudam rápido) |
+
+Ordem sugerida, pelos pontos: `u16` (30 de 110 pontos), `u17`, a G2 e a G5 (servem às duas provas), `u18`, `u19`.
+`u16` e a G3 (`u13`) cobrem o mesmo Sistema Financeiro Nacional: gere as duas juntas, sem repetir conceitos.
+
+Provas anteriores: as do pacote são de cargos de TI; quem estuda para o Técnico vê só a parte de Conhecimentos Gerais das
+provas do Banestes. Provas de Técnico Bancário entram quando o dono enviar os PDFs.
 
 ## Lições densas
 

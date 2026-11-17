@@ -22,7 +22,7 @@ class ExamCountdownTest {
     @Test
     fun `depois da prova nunca fica negativo`() {
         assertEquals(0, clockAt("2027-03-10T12:00:00Z").daysToExam())
-        assertEquals(-17L, clockAt("2027-03-10T12:00:00Z").daysUntil(EXAM_DATE))
+        assertEquals(-17L, clockAt("2027-03-10T12:00:00Z").daysUntil(br.com.trilhati.domain.exam.TargetExam.AnalistaTi.date))
     }
 
     @Test

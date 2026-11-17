@@ -30,6 +30,11 @@ data class Backup(
     val achievements: List<AchievementEntity> = emptyList(),
     val shop: ShopStateEntity? = null,
     val packs: List<PackMetaEntity> = emptyList(),
+    /**
+     * Prova escolhida ([br.com.trilhati.domain.exam.TargetExam.id], 0.13.0). Vem das configurações, não do banco; backups
+     * e retratos antigos não têm e ficam no Analista.
+     */
+    val targetExam: String? = null,
 ) {
     companion object {
         const val FORMAT = "trilha-ti-backup"

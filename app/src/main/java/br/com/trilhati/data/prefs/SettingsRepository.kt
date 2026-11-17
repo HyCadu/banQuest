@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import br.com.trilhati.domain.exam.TargetExam
 import br.com.trilhati.domain.pace.PaceConfig
 import br.com.trilhati.domain.pace.TimerMode
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -20,7 +21,8 @@ private val Context.settingsStore by preferencesDataStore(name = "settings")
 /** Preferências do aluno (PLAN.md §7, Configurações). */
 data class Settings(
     val timerMode: TimerMode = TimerMode.Pace,
-    val paceTargetMs: Long = PaceConfig.STANDARD_MS,
+    /** Tempo-alvo escolhido nas Configurações; `null` segue o padrão da prova ([TargetExam.paceTargetMs]). */
+    val paceTargetMs: Long? = null,
     val caseFourMinutes: Boolean = false,
     val noLives: Boolean = false,
     val haptics: Boolean = true,
@@ -36,10 +38,17 @@ data class Settings(
     val trailTrack: br.com.trilhati.domain.model.Track = br.com.trilhati.domain.model.Track.Specific,
     /** Ligar o Não perturbe do Android durante as provas anteriores (interruptor na tela antes da prova). */
     val examSilence: Boolean = false,
+    /** A prova que o aluno estuda (chip no topo da Trilha, 0.13.0). */
+    val targetExam: TargetExam = TargetExam.DEFAULT,
+    /** Falta perguntar a prova? Só para quem acabou de escolher o tema na primeira entrada; quem já usava continua no Analista. */
+    val examChoicePending: Boolean = false,
 ) {
     val reminderTime: java.time.LocalTime get() = java.time.LocalTime.of(reminderMinutes / 60, reminderMinutes % 60)
 
-    val paceConfig: PaceConfig get() = PaceConfig(timerMode, paceTargetMs, caseFourMinutes)
+    /** Tempo-alvo por questão que vale agora: o escolhido ou o da prova. */
+    val effectivePaceMs: Long get() = paceTargetMs ?: targetExam.paceTargetMs
+
+    val paceConfig: PaceConfig get() = PaceConfig(timerMode, effectivePaceMs, caseFourMinutes)
 }
 
 @Singleton
@@ -60,13 +69,16 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         val themeChosen = booleanPreferencesKey("theme_chosen")
         val trailTrack = stringPreferencesKey("trail_track")
         val examSilence = booleanPreferencesKey("exam_silence")
+        val targetExam = stringPreferencesKey("target_exam")
+        val examChoicePending = booleanPreferencesKey("exam_choice_pending")
     }
 
     val settings: Flow<Settings> = context.settingsStore.data.map { p -> p.toSettings() }
 
     private fun Preferences.toSettings() = Settings(
         timerMode = this[Keys.timerMode]?.let { runCatching { TimerMode.valueOf(it) }.getOrNull() } ?: TimerMode.Pace,
-        paceTargetMs = this[Keys.paceTarget]?.takeIf { it == PaceConfig.STANDARD_MS || it == PaceConfig.TIGHT_MS } ?: PaceConfig.STANDARD_MS,
+        // Até a 0.12.0 o 3:00 ficava gravado como escolha; agora ele é o padrão do Analista e passa a seguir a prova.
+        paceTargetMs = this[Keys.paceTarget]?.takeIf { it == PaceConfig.TIGHT_MS },
         caseFourMinutes = this[Keys.caseFour] ?: false,
         noLives = this[Keys.noLives] ?: false,
         haptics = this[Keys.haptics] ?: true,
@@ -80,10 +92,13 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         trailTrack = this[Keys.trailTrack]?.let { runCatching { br.com.trilhati.domain.model.Track.valueOf(it) }.getOrNull() }
             ?: br.com.trilhati.domain.model.Track.Specific,
         examSilence = this[Keys.examSilence] ?: false,
+        targetExam = TargetExam.fromId(this[Keys.targetExam]) ?: TargetExam.DEFAULT,
+        examChoicePending = this[Keys.examChoicePending] ?: false,
     )
 
     suspend fun setTimerMode(mode: TimerMode) = context.settingsStore.edit { it[Keys.timerMode] = mode.name }
-    suspend fun setPaceTarget(ms: Long) = context.settingsStore.edit { it[Keys.paceTarget] = ms }
+    /** `null` volta ao padrão da prova. */
+    suspend fun setPaceTarget(ms: Long?) = context.settingsStore.edit { if (ms == null) it.remove(Keys.paceTarget) else it[Keys.paceTarget] = ms }
     suspend fun setCaseFourMinutes(on: Boolean) = context.settingsStore.edit { it[Keys.caseFour] = on }
     suspend fun setNoLives(on: Boolean) = context.settingsStore.edit { it[Keys.noLives] = on }
     suspend fun setHaptics(on: Boolean) = context.settingsStore.edit { it[Keys.haptics] = on }
@@ -95,10 +110,18 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
     /** Grava o tema da primeira entrada (mesmo que o aluno só tenha confirmado o que já vinha marcado). */
     suspend fun confirmThemeChoice(palette: br.com.trilhati.ui.theme.ThemePalette) = context.settingsStore.edit {
         it[Keys.palette] = palette.name
+        // Quem está escolhendo o tema agora é novo no app: a pergunta da prova vem em seguida.
+        if (it[Keys.themeChosen] != true) it[Keys.examChoicePending] = true
         it[Keys.themeChosen] = true
     }
     suspend fun setTrailTrack(track: br.com.trilhati.domain.model.Track) = context.settingsStore.edit { it[Keys.trailTrack] = track.name }
     suspend fun setExamSilence(on: Boolean) = context.settingsStore.edit { it[Keys.examSilence] = on }
+
+    /** Troca a prova (chip da Trilha ou primeira entrada) e encerra a pergunta da primeira entrada. */
+    suspend fun setTargetExam(exam: TargetExam) = context.settingsStore.edit {
+        it[Keys.targetExam] = exam.id
+        it.remove(Keys.examChoicePending)
+    }
     suspend fun eraseAll() = context.settingsStore.edit { it.clear() }
 }
 

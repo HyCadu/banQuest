@@ -99,6 +99,22 @@ class A11yTest {
         assertClickablesLabeled("escolha de tema")
     }
 
+    @Test fun escolhaDeProvaTemRotulos() {
+        rule.setContent { TrilhaTheme { br.com.trilhati.feature.path.ExamChoiceScreen(null, TODAY, MascotCharacter.Guaiamum, {}, {}, animated = false) } }
+        assertClickablesLabeled("escolha de prova")
+    }
+
+    @Test fun painelDeProvasTemRotulos() {
+        rule.mainClock.autoAdvance = false
+        rule.setContent {
+            TrilhaTheme {
+                br.com.trilhati.feature.path.PathContent(fakeState(true), NOW_MS, AppActions(), animated = false, initialExamPanelOpen = true)
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        assertClickablesLabeled("painel de provas")
+    }
+
     @Test fun avisoDaProvaAnteriorTemRotulos() {
         val e = pastExams.first { it.id == "fgv-banestes-2018" }
         val part = br.com.trilhati.domain.exam.ExamPart.Full

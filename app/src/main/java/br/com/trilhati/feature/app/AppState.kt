@@ -11,7 +11,6 @@ import br.com.trilhati.domain.progress.QuestProgress
 import br.com.trilhati.domain.progress.TrailEngine
 import br.com.trilhati.domain.streak.StreakEngine
 import br.com.trilhati.domain.streak.StreakStatus
-import br.com.trilhati.domain.time.daysToExam
 import java.time.LocalDate
 
 /** Tudo que as abas precisam para se desenhar. Reemitido quando o banco, as preferências ou o dia mudam. */
@@ -26,7 +25,9 @@ data class AppState(
     val exams: List<br.com.trilhati.domain.exam.PastExam> = emptyList(),
 ) {
     val statuses: Map<String, LessonStatus> = TrailEngine.statuses(course, snapshot.lessonProgress)
-    val daysToExam: Int = daysToExam(today)
+    /** A prova que o aluno estuda (chip da Trilha). */
+    val targetExam: br.com.trilhati.domain.exam.TargetExam get() = settings.targetExam
+    val daysToExam: Int = settings.targetExam.daysLeft(today)
     val streakCount: Int = StreakEngine.displayCount(snapshot.stats.streak, today)
     val streakStatus: StreakStatus = StreakEngine.status(snapshot.stats.streak, today)
     val todayLog: DailyLog = snapshot.dailyLogs[today] ?: DailyLog(today)
@@ -102,4 +103,6 @@ data class AppActions(
     val dismissUpdate: (versionCode: Int) -> Unit = {},
     // Trilha (Específicos ou Gerais)
     val setTrack: (br.com.trilhati.domain.model.Track) -> Unit = {},
+    /** Troca a prova (chip no topo da Trilha). */
+    val setTargetExam: (br.com.trilhati.domain.exam.TargetExam) -> Unit = {},
 )

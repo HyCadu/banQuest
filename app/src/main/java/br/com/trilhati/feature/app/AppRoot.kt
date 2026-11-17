@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavType
@@ -52,6 +53,18 @@ fun AppRoot() {
                 br.com.trilhati.feature.theme.ThemeChoiceScreen(
                     selected = selected, character = character,
                     onPick = { appViewModel.setPalette(it) }, onConfirm = { appViewModel.confirmThemeChoice(selected) },
+                )
+            }
+            // Logo depois do tema, quem está começando escolhe a prova (0.13.0). Quem já usava fica no Analista.
+            settings.examChoicePending -> {
+                val state by appViewModel.state.collectAsState()
+                val character = br.com.trilhati.ui.mascot.MascotCharacter.entries
+                    .firstOrNull { it.name == state?.snapshot?.profile?.character } ?: br.com.trilhati.ui.mascot.MascotCharacter.Guaiamum
+                var picked by androidx.compose.runtime.saveable.rememberSaveable { androidx.compose.runtime.mutableStateOf<String?>(null) }
+                val exam = br.com.trilhati.domain.exam.TargetExam.fromId(picked)
+                br.com.trilhati.feature.path.ExamChoiceScreen(
+                    selected = exam, today = appViewModel.today(), character = character,
+                    onPick = { picked = it.id }, onConfirm = { exam?.let { appViewModel.setTargetExam(it) } },
                 )
             }
             else -> MainNav(appViewModel)

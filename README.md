@@ -1,8 +1,9 @@
 # BanQuest
 
-App Android de estudo gamificado para o concurso do **Banestes, cargo Analista de TI – Desenvolvimento de Sistemas**
-(prova em 21/02/2027). Lições curtas em trilha, XP, ofensiva, ranking com amigos e um diferencial: o **ritmo de prova**,
-com cronômetro de 3:00 por questão.
+App Android de estudo gamificado para o concurso do **Banestes** (FCC), com duas provas à escolha no topo da Trilha:
+**Analista de TI – Desenvolvimento de Sistemas** (prova em 21/02/2027) e **Técnico Bancário** (prova em 24/01/2027).
+Lições curtas em trilha, XP, ofensiva, ranking com amigos e um diferencial: o **ritmo de prova**, com cronômetro de 3:00
+por questão no Analista e 3:25 no Técnico.
 
 - **Baixar e conhecer:** https://hycadu.github.io/banquest/
 - **Estado atual:**
@@ -10,7 +11,8 @@ com cronômetro de 3:00 por questão.
     conceitos;
   - questões de provas anteriores reais (FGV, FCC, IDECAN e Instituto Access) dentro das lições e inteiras na aba
     Praticar;
-  - as unidades 3 a 10 e os Gerais G2 a G4 aguardam conteúdo.
+  - as unidades 3 a 10, os Gerais G2 a G5 e os Específicos do Técnico Bancário aguardam conteúdo
+    ([`docs/CONTENT_PLAN.md`](docs/CONTENT_PLAN.md)).
 
 ## Como colaborar
 

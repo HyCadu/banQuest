@@ -25,6 +25,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
@@ -57,8 +58,19 @@ class SyncRepository @Inject constructor(
     private val content: ContentRepository,
     private val notifications: Notifications,
     private val clock: Clock,
+    private val settings: br.com.trilhati.data.prefs.SettingsRepository,
 ) {
     private val lock = Mutex()
+
+    /** O progresso deste aparelho, com a prova escolhida (que fica nas configurações): vai junto no retrato. */
+    private suspend fun localBackup(): br.com.trilhati.data.backup.Backup =
+        progress.exportBackup().copy(targetExam = settings.settings.first().targetExam.id)
+
+    /** Restaura um retrato: o progresso e, se ele trouxer, a prova escolhida. */
+    private suspend fun restore(backup: br.com.trilhati.data.backup.Backup, today: LocalDate) {
+        progress.importBackup(backup, today)
+        backup.targetExam?.let { br.com.trilhati.domain.exam.TargetExam.fromId(it) }?.let { settings.setTargetExam(it) }
+    }
     private val json = Json { ignoreUnknownKeys = true }
 
     val state: Flow<SocialState> = combine(auth.session, store.meta, dao.observeOutboxCount()) { session, meta, pending ->
@@ -90,7 +102,7 @@ class SyncRepository @Inject constructor(
             is ApiResult.Ok -> pulled.value
             is ApiResult.Err -> return@withLock pulled
         }
-        val local = progress.exportBackup()
+        val local = localBackup()
         val localHasProgress = (local.stats?.totalXp ?: 0) > 0 || (local.stats?.lessonsCompleted ?: 0) > 0
         val cloudStats = cloud?.let { decodeCloud(it) }?.stats
         val sameTotals = cloudStats != null && cloudStats.totalXp == (local.stats?.totalXp ?: 0) &&
@@ -103,8 +115,8 @@ class SyncRepository @Inject constructor(
             }
             InitialSync.DownloadCloud -> {
                 val backup = cloud?.let { decodeCloud(it) } ?: return@withLock ApiResult.Err(ErrorKind.Server, "O progresso salvo na nuvem está corrompido.")
-                progress.importBackup(backup, today)
-                store.setSnapshot(cloud.version, hashOf(progress.exportBackup()))
+                restore(backup, today)
+                store.setSnapshot(cloud.version, hashOf(localBackup()))
             }
             InitialSync.AskUser -> cloud?.let { store.setConflict(conflictOf(it, local)) }
         }
@@ -123,7 +135,7 @@ class SyncRepository @Inject constructor(
         flushOutbox(today)?.let { return@withLock fail(it) }
         pushStreak(today)?.let { return@withLock fail(it) }
         if (store.current().conflict == null) {
-            val push = pushLocked(progress.exportBackup(), store.current().snapshotVersion)
+            val push = pushLocked(localBackup(), store.current().snapshotVersion)
             if (push is ApiResult.Err) return@withLock fail(push)
         }
         when (val overview = refreshOverviewLocked()) {
@@ -158,7 +170,7 @@ class SyncRepository @Inject constructor(
     }
 
     private suspend fun pushStreak(today: LocalDate): ApiResult.Err? {
-        val stats = progress.exportBackup().stats ?: return null
+        val stats = localBackup().stats ?: return null
         val streak = br.com.trilhati.domain.streak.StreakState(
             stats.streakCurrent, stats.streakLongest, LocalDate.ofEpochDay(stats.streakLastDay).takeIf { stats.streakLastDay >= 0 },
             stats.freezes,
@@ -197,7 +209,7 @@ class SyncRepository @Inject constructor(
     suspend fun resolveConflict(keepLocal: Boolean): ApiResult<Unit> = lock.withLock {
         val today = clock.today()
         val result = if (keepLocal) {
-            pushLocked(progress.exportBackup(), expectedVersion = -1)
+            pushLocked(localBackup(), expectedVersion = -1)
         } else {
             when (val pulled = api.pullSnapshot()) {
                 is ApiResult.Err -> pulled
@@ -205,8 +217,8 @@ class SyncRepository @Inject constructor(
                     val cloud = pulled.value
                     val backup = cloud?.let { decodeCloud(it) }
                     if (cloud != null && backup != null) {
-                        progress.importBackup(backup, today)
-                        store.setSnapshot(cloud.version, hashOf(progress.exportBackup()))
+                        restore(backup, today)
+                        store.setSnapshot(cloud.version, hashOf(localBackup()))
                     }
                     ApiResult.Ok(Unit)
                 }
@@ -242,7 +254,7 @@ class SyncRepository @Inject constructor(
         val last = overview.lastWeek ?: return
         if (!PodiumRule.earned(last.pos, last.participants, last.xp)) return
         val weekStart = runCatching { LocalDate.parse(overview.weekStart).minusWeeks(1) }.getOrNull() ?: return
-        val fresh = progress.awardPodium(weekStart, content.course)
+        val fresh = progress.awardPodium(weekStart, content.allCourses)
         fresh.forEach { notifications.postSocial("Conquista: ${it.title}", "Você terminou a semana em ${last.pos}º lugar. +${it.rewardGems} gemas!") }
     }
 
@@ -261,7 +273,7 @@ class SyncRepository @Inject constructor(
 
     /** Há algo deste aparelho que ainda não chegou à nuvem? (avisar antes de sair da conta) */
     suspend fun hasUnsyncedChanges(): Boolean =
-        dao.outbox(1).isNotEmpty() || hashOf(progress.exportBackup()) != store.current().lastPushedHash
+        dao.outbox(1).isNotEmpty() || hashOf(localBackup()) != store.current().lastPushedHash
 
     /** Sai da conta e limpa o progresso deste aparelho (ele está guardado na nuvem). */
     suspend fun signOut() {

@@ -121,24 +121,33 @@ class ContentTest {
         )
     }
 
-    @Test fun `trilhas completas tem 14 unidades e 69 licoes, com conteudo so na unidade 1`() {
-        val course = CourseAssembler.assemble(listOfNotNull(parseU1().toDomain()))
-        assertEquals(14, course.size)
-        assertEquals(69, course.sumOf { it.lessons.size })
-        assertEquals(48, course.filter { it.track == br.com.trilhati.domain.model.Track.Specific }.sumOf { it.lessons.size })
-        assertEquals("G2", course[11].code)
-        assertEquals("u14l4", course[13].lessons[3].id)
-        assertTrue(course[0].lessons.all { it.hasContent })
-        assertTrue(course.drop(1).none { it.hasContent })
-        assertEquals("u1l1", course[0].lessons[0].id)
-        assertEquals("u10l4", course[9].lessons[3].id)
+    @Test fun `catalogo tem 19 unidades e 91 licoes, com conteudo so na unidade 1`() {
+        val catalog = CourseAssembler.assemble(listOfNotNull(parseU1().toDomain()))
+        assertEquals(19, catalog.size)
+        assertEquals(91, catalog.sumOf { it.lessons.size })
+        assertEquals("u14l4", catalog[13].lessons[3].id)
+        assertTrue(catalog[0].lessons.all { it.hasContent })
+        assertTrue(catalog.drop(1).none { it.hasContent })
+        assertEquals("u1l1", catalog[0].lessons[0].id)
+        assertEquals("u10l4", catalog[9].lessons[3].id)
+    }
+
+    @Test fun `trilha do analista mantem as 48 licoes de especificos e os gerais ganham a G5`() {
+        val catalog = CourseAssembler.assemble(listOfNotNull(parseU1().toDomain()))
+        val course = br.com.trilhati.domain.exam.ExamCourse.courseFor(br.com.trilhati.domain.exam.TargetExam.AnalistaTi, catalog)
+        val specific = course.filter { it.track == br.com.trilhati.domain.model.Track.Specific }
+        val general = course.filter { it.track == br.com.trilhati.domain.model.Track.General }
+        assertEquals(48, specific.sumOf { it.lessons.size })
+        assertEquals(21, general.sumOf { it.lessons.size })
+        assertEquals(listOf("G1", "G2", "G3", "G4", "G5"), general.map { it.code })
+        assertEquals(listOf("u11", "u12", "u13", "u14", "u15"), general.map { it.id })
+        assertEquals("Unidade 10", specific.last().code)
     }
 
     @Test fun `curriculo segue a distribuicao do plano`() {
-        assertEquals(listOf(5, 5, 5, 5, 4, 6, 5, 4, 5, 4, 5, 8, 4, 4), Curriculum.units.map { it.lessonTitles.size })
-        // U1–U10 na trilha dos Específicos; G1–G4 (u11–u14) na dos Gerais.
-        assertTrue(Curriculum.units.take(10).all { it.track == br.com.trilhati.domain.model.Track.Specific })
-        assertTrue(Curriculum.units.drop(10).all { it.track == br.com.trilhati.domain.model.Track.General })
+        // u1–u10 (Analista), u11–u15 (Gerais, com a G2 dividida em u12 e u15) e u16–u19 (Técnico Bancário).
+        assertEquals(listOf(5, 5, 5, 5, 4, 6, 5, 4, 5, 4, 5, 4, 4, 4, 4, 7, 5, 4, 6), Curriculum.units.map { it.lessonTitles.size })
+        assertEquals((1..19).map { "u$it" }, Curriculum.units.map { it.id })
     }
 
     @Test fun `validador reprova json com problemas`() {

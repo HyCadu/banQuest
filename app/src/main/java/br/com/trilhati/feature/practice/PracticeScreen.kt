@@ -122,7 +122,13 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
                 InfoButton(
                     "Provas anteriores",
                     "Provas de concursos passados, só com as questões que valem para o edital atual. Abrir uma prova gasta " +
-                        "1 coração, errar não tira coração e o XP só vem se você responder todas as questões.",
+                        "1 coração, errar não tira coração e o XP só vem se você responder todas as questões." +
+                        if (state.targetExam == br.com.trilhati.domain.exam.TargetExam.TecnicoBancario) {
+                            " As provas daqui são de cargos de TI: para o Técnico Bancário aparecem só os Conhecimentos Gerais, " +
+                                "que são os mesmos do seu edital."
+                        } else {
+                            ""
+                        },
                 )
             }
             state.exams.forEach { exam -> ExamCard(exam, state.settings.paceConfig) { actions.openExam(exam.id) } }
@@ -149,7 +155,11 @@ private fun ExamCard(exam: PastExam, pace: PaceConfig, onClick: () -> Unit) {
     val c = Trilha.colors
     val all = exam.questions(ExamPart.Full)
     val time = ExamRules.durationLabel(all.sumOf { pace.targetMs(it) })
-    val parts = if (exam.parts.size > 1) "Específicos e Gerais" else "Específicos"
+    val parts = when {
+        exam.specific.isNotEmpty() && exam.general.isNotEmpty() -> "Específicos e Gerais"
+        exam.specific.isEmpty() -> "Só Gerais" // o Técnico Bancário vê só os Gerais das provas de TI
+        else -> "Específicos"
+    }
     val key = when (exam.answerKey) {
         AnswerKey.Final -> null
         AnswerKey.Preliminary -> "Gabarito preliminar"

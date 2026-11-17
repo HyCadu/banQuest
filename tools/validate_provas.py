@@ -6,8 +6,9 @@ Uso: python3 tools/validate_provas.py [content/provas]
 import json, re, sys
 from pathlib import Path
 
-# Lições por unidade: Específicos u1–u10 (Curriculum.kt, PLAN.md §6) e Gerais u11–u14 (G1–G4, docs/CONTENT_PLAN.md).
-LESSONS_PER_UNIT = [5, 5, 5, 5, 4, 6, 5, 4, 5, 4, 5, 8, 4, 4]
+# Lições por unidade (Curriculum.kt, docs/CONTENT_PLAN.md): Específicos do Analista u1–u10, Gerais u11–u15 (a G2 virou
+# u12 Raciocínio + u15 Matemática financeira na 0.13.0) e Específicos do Técnico Bancário u16–u19.
+LESSONS_PER_UNIT = [5, 5, 5, 5, 4, 6, 5, 4, 5, 4, 5, 4, 4, 4, 4, 7, 5, 4, 6]
 UNITS = {f"u{i}" for i in range(1, len(LESSONS_PER_UNIT) + 1)}
 LESSONS = {f"u{u}l{l}" for u, n in enumerate(LESSONS_PER_UNIT, 1) for l in range(1, n + 1)}
 TYPES = {"mcq5", "case", "code_output"}          # questões reais entram só nesses tipos (transcrição fiel)

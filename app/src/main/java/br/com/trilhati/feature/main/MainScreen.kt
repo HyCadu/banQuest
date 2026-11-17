@@ -113,6 +113,7 @@ fun MainScreen(
             },
             dismissUpdate = { viewModel.dismissUpdate(it) },
             setTrack = { viewModel.setTrailTrack(it) },
+            setTargetExam = { viewModel.setTargetExam(it) },
             shareFriendCode = { code ->
                 val text = "Bora estudar para o concurso do Banestes no BanQuest? Me adiciona como amigo com o código $code."
                 val send = android.content.Intent(android.content.Intent.ACTION_SEND).setType("text/plain")

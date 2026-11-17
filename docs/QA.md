@@ -347,6 +347,39 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       U1 lição 2 (comandos SQL, 2012 Q40); U2 lição 1 (vetor em C++, 2024 Q59, com o código formatado).
 - [ ] Tocar na origem abre "Sobre esta questão", com a prova, a situação do gabarito e o aviso de explicação não revisada.
 
+## BanQuest 0.13.0 — escolha de prova (Analista de TI ou Técnico Bancário)
+
+**39. Quem já usava o app (atualizando por cima)**
+- [ ] Ao abrir, **não** aparece pergunta de prova: a Trilha abre direto, no Analista de TI, com todo o progresso.
+- [ ] O topo mostra três coisas: à esquerda o **chip da prova** (emblema `</>` e "N d"), à direita a ofensiva e os
+      corações. As gemas não aparecem mais no topo; o saldo está na Loja.
+- [ ] Os Gerais agora têm **G1 a G5**: a G2 virou "Raciocínio lógico e estatística" (4 lições) e a G5 é
+      "Matemática financeira" (4 lições). Lições já feitas continuam feitas.
+
+**40. Chip e painel de provas**
+- [ ] Toque no chip: desce o painel "Qual prova você vai fazer?" com Analista de TI (21/02/2027, 80 questões) e Técnico
+      Bancário (24/01/2027, 70 questões), cada um com os dias que faltam. A atual tem o ✓; a seta do chip vira para cima.
+- [ ] Tocar fora do painel, ou no voltar do Android, fecha sem trocar nada.
+- [ ] Toque em **Técnico Bancário**: o painel fecha, o chip vira o prédio de banco com "N d" (cerca de 4 semanas a menos).
+- [ ] Específicos do Técnico: aviso "As lições desta trilha estão em preparação" com o botão **Ir para os Gerais**; as
+      unidades Conhecimentos bancários e securitários, Vendas…, Matemática financeira, Probabilidade e Informática
+      aparecem travadas.
+- [ ] Gerais do Técnico: G1 a G4, com o mesmo progresso do Português de antes.
+- [ ] Volte para Analista de TI pelo chip: a trilha de TI volta igual.
+
+**41. Cronômetro, provas anteriores e sincronização**
+- [ ] No Técnico, Configurações › Cronômetro mostra "3:25 · prova"; no Analista, "3:00 · prova". O "2:30 · folga" vale
+      nas duas.
+- [ ] No Técnico, Praticar › Provas anteriores mostra só as do Banestes, com "Só Gerais"; abrir uma traz só as questões
+      de Português, Raciocínio, Atualidades e Ética. O (i) explica por quê.
+- [ ] Escolha o Técnico, espere sincronizar, saia da conta e entre de novo (ou entre em outro celular): o app volta no
+      Técnico Bancário.
+
+**42. Conta nova (como a namorada vai ver)**
+- [ ] Instale num celular sem o app (ou apague os dados), entre com uma conta nova e escolha o tema: em seguida aparece
+      **"Qual prova você vai fazer?"**, com o botão Começar desligado até escolher.
+- [ ] Escolha Técnico Bancário e toque em Começar: a Trilha abre no Técnico.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar

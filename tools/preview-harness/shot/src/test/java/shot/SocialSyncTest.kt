@@ -52,6 +52,7 @@ class SocialSyncTest {
     private lateinit var auth: AuthRepository
     private lateinit var store: SyncStore
     private lateinit var sync: SyncRepository
+    private lateinit var settings: br.com.trilhati.data.prefs.SettingsRepository
     private val email = "carlos@exemplo.com"
 
     @Before fun setUp() {
@@ -60,6 +61,8 @@ class SocialSyncTest {
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).allowMainThreadQueries().build()
         progress = ProgressRepository(db, db.progressDao(), clock)
         content = ContentRepository(context)
+        settings = br.com.trilhati.data.prefs.SettingsRepository(context)
+        runBlocking { settings.eraseAll() }
         server = FakeSupabase(clock)
         val config = SupabaseConfig("https://teste.supabase.co", "sb_publishable_teste")
         val authStore = AuthStore(context)
@@ -67,7 +70,7 @@ class SocialSyncTest {
         runBlocking { authStore.clear(); store.clearAccount(); progress.ensureReady(today()) }
         auth = AuthRepository(SupabaseAuthApi(config, server, clock), authStore, clock)
         val notifications = br.com.trilhati.notify.Notifications(context).also { it.createChannels() }
-        sync = SyncRepository(SupabaseSocialApi(config, server, auth), auth, store, progress, db.progressDao(), content, notifications, clock)
+        sync = SyncRepository(SupabaseSocialApi(config, server, auth), auth, store, progress, db.progressDao(), content, notifications, clock, settings)
     }
 
     @After fun tearDown() = db.close()
@@ -79,7 +82,7 @@ class SocialSyncTest {
         val questions = content.lesson(lessonId)!!.questions.take(8)
         var run = LessonRun.start(questions)
         repeat(questions.size) { run = LessonRun.answer(run, true, 60_000, 180_000) }
-        progress.applySession(SessionResult(SessionKind.Lesson, lessonId, "u1", run.records, run.bestCombo, run.perfect), today(), content.course)
+        progress.applySession(SessionResult(SessionKind.Lesson, lessonId, "u1", run.records, run.bestCombo, run.perfect), today(), content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi))
     }
 
     private fun login(name: String = "Carlos", mascot: String = "Tartaruga"): InitialSync = runBlocking {
@@ -147,6 +150,25 @@ class SocialSyncTest {
         assertEquals(2, server.sessions.size)
     }
 
+    @Test fun provaEscolhidaVaiNoRetratoEVoltaNoAparelhoNovo() {
+        studyLesson("u1l1")
+        assertEquals(InitialSync.UploadLocal, login())
+        assertTrue(runBlocking { sync.syncNow() } is ApiResult.Ok)
+        val version = server.snapshots.getValue(uid()).version
+
+        // trocar a prova muda o retrato: ele sobe de novo, com a prova
+        runBlocking { settings.setTargetExam(br.com.trilhati.domain.exam.TargetExam.TecnicoBancario) }
+        assertTrue(runBlocking { sync.syncNow() } is ApiResult.Ok)
+        assertEquals(version + 1, server.snapshots.getValue(uid()).version)
+        assertTrue("tecnico-bancario" in server.snapshots.getValue(uid()).payload.toString())
+
+        // "celular novo": configurações zeradas (Analista), e o retrato da nuvem traz a prova de volta
+        runBlocking { sync.signOut(); settings.eraseAll() }
+        assertEquals(br.com.trilhati.domain.exam.TargetExam.AnalistaTi, runBlocking { settings.settings.first() }.targetExam)
+        assertEquals(InitialSync.DownloadCloud, login())
+        assertEquals(br.com.trilhati.domain.exam.TargetExam.TecnicoBancario, runBlocking { settings.settings.first() }.targetExam)
+    }
+
     @Test fun conflitoEntreAparelhosDeixaEscolher() {
         login()
         runBlocking { sync.syncNow() }
@@ -199,7 +221,7 @@ class SocialSyncTest {
         assertEquals(LessonPlanner.SIZE, questions.size)
         var run = LessonRun.start(questions)
         while (run.current != null) run = LessonRun.answer(run, true, 30_000, 180_000)
-        progress.applySession(SessionResult(SessionKind.Lesson, lessonId, "u1", run.records, run.bestCombo, run.perfect), today(), content.course)
+        progress.applySession(SessionResult(SessionKind.Lesson, lessonId, "u1", run.records, run.bestCombo, run.perfect), today(), content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi))
             .summary.totalXp
     }
 
@@ -219,7 +241,7 @@ class SocialSyncTest {
             val qs = content.exams.first { it.id == "fgv-banestes-2018" }.questions(br.com.trilhati.domain.exam.ExamPart.Full)
             var run = LessonRun.start(qs, repeatMistakes = false)
             while (run.current != null) run = LessonRun.answer(run, true, 30_000, 180_000)
-            progress.applySession(SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect), today(), content.course)
+            progress.applySession(SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect), today(), content.course(br.com.trilhati.domain.exam.TargetExam.AnalistaTi))
                 .summary.totalXp
         }
         assertEquals(87 * 15 + 30, xp) // 87 questões: muito acima dos limites de lição (30 respostas, 210 XP)

@@ -6,8 +6,9 @@ import br.com.trilhati.domain.model.Lesson
 import br.com.trilhati.domain.model.Question
 
 /**
- * Monta as trilhas completas (Específicos e Gerais) juntando o esqueleto do currículo com as questões dos pacotes.
- * Lições sem pacote ficam sem questões e aparecem como "conteúdo chegando".
+ * Monta o catálogo completo (todas as unidades das duas provas) juntando o esqueleto do currículo com as questões dos
+ * pacotes. Lições sem pacote ficam sem questões e aparecem como "conteúdo chegando". A trilha de cada prova sai deste
+ * catálogo em [br.com.trilhati.domain.exam.ExamCourse].
  *
  * As questões de provas anteriores ([examQuestions]) entram no banco da lição indicada, mas só nas lições que já têm
  * questões do pacote: assim nenhuma lição vira uma lição de 1 ou 2 questões, e as que estão esperando entram sozinhas
@@ -27,7 +28,7 @@ object CourseAssembler {
                 val extra = examByLesson[id].orEmpty()
                 if (lesson.hasContent && extra.isNotEmpty()) lesson.copy(questions = (lesson.questions + extra).distinctBy { it.id }) else lesson
             }
-            CourseUnit(info.id, info.order, pack?.title ?: info.title, pack?.editalTopics.orEmpty(), lessons, info.track)
+            CourseUnit(info.id, info.order, pack?.title ?: info.title, pack?.editalTopics.orEmpty(), lessons)
         }
     }
 }

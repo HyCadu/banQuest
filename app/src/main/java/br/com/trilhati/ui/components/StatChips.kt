@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -24,7 +23,7 @@ import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
 import br.com.trilhati.ui.theme.Trilha
 
-/** Pílula com ícone + número (ofensiva, gemas, corações, dias para a prova). */
+/** Pílula com ícone + número (ofensiva e corações no topo da Trilha). */
 @Composable
 fun StatChip(
     icon: GameIcon,
@@ -57,18 +56,18 @@ fun StatChip(
     }
 }
 
-/** Faixa do topo da trilha: ofensiva, gemas, corações e contagem regressiva da prova. */
+/**
+ * Faixa do topo da trilha (0.13.0): o chip da prova ([examChip], com os dias que faltam) e, à direita, a ofensiva e os
+ * corações. As gemas saíram daqui: o saldo fica na Loja.
+ */
 @Composable
 fun TopStatusBar(
     streak: Int,
-    gems: Int,
     hearts: Int,
-    daysToExam: Int,
+    examChip: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     onStreakClick: (() -> Unit)? = null,
-    onGemsClick: (() -> Unit)? = null,
     onHeartsClick: (() -> Unit)? = null,
-    onExamClick: (() -> Unit)? = null,
     showHearts: Boolean = true,
     studiedToday: Boolean = true,
     /** Meio coração além de [hearts]: mostra o coração rachado. */
@@ -76,26 +75,21 @@ fun TopStatusBar(
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        examChip()
+        Spacer(Modifier.weight(1f))
         StatChip(
             GameIcon.Flame, streak.toString(),
             pluralStringResource(R.plurals.stat_streak_description, streak, streak) + if (studiedToday) "" else ", ainda não estudou hoje",
             onClick = onStreakClick, dimmed = !studiedToday,
         )
-        StatChip(GameIcon.Gem, gems.toString(), pluralStringResource(R.plurals.stat_gems_description, gems, gems), onClick = onGemsClick)
         if (showHearts) {
             // Meio coração: "4,5" e o ícone rachado.
             val text = if (halfHeart) "$hearts,5" else hearts.toString()
             val description = pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts) + if (halfHeart) " e meio" else ""
             StatChip(if (halfHeart) GameIcon.HeartCracked else GameIcon.Heart, text, description, onClick = onHeartsClick)
         }
-        StatChip(
-            GameIcon.Clock,
-            stringResource(R.string.exam_days_short, daysToExam),
-            pluralStringResource(R.plurals.stat_exam_description, daysToExam, daysToExam),
-            onClick = onExamClick,
-        )
     }
 }

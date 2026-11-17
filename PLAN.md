@@ -7,7 +7,7 @@ Documento de referência para o Claude Code. Leia junto com `CLAUDE.md`. Onde ho
 
 ## 1. Contexto e objetivo
 
-Um app Android de estudo, offline-first e com amigos, no estilo de trilha gamificada de aprendizado de idiomas, para estudar o concurso do Banestes (banca FCC), cargo **Analista de TI – Desenvolvimento de Sistemas**.
+Um app Android de estudo, offline-first e com amigos, no estilo de trilha gamificada de aprendizado de idiomas, para estudar o concurso do Banestes (banca FCC), cargo **Analista de TI – Desenvolvimento de Sistemas**. Desde a 0.13.0 também serve ao cargo **Técnico Bancário** (prova em 24/01/2027): o aluno escolhe a prova, os Gerais são comuns e cada prova tem a sua trilha de Específicos (`docs/EDITAL_TECNICO_BANCARIO.md`, `docs/CONTENT_PLAN.md`).
 
 Fatos do concurso que guiam o produto (do edital nº 01/2027):
 
@@ -45,7 +45,7 @@ Fatos do concurso que guiam o produto (do edital nº 01/2027):
 - Backup/exportação do progresso em JSON.
 
 ### Fora da v1 (não implementar agora)
-- ~~Conhecimentos Gerais~~: **entraram na v1** em 15/11/2026 (G1–G4, ver `docs/CONTENT_PLAN.md`).
+- ~~Conhecimentos Gerais~~: **entraram na v1** em 15/11/2026 (G1–G4, ver `docs/CONTENT_PLAN.md`; na 0.13.0 a G2 foi dividida e a matemática financeira virou a G5).
 - Simulado de 80 questões / 4 h (planejado para v1.1; ver Fase 10).
 - Anúncios, compras, analytics, Firebase, "cutucar" amigos, chat.
 - Outros cargos (Suporte, Segurança) além de reaproveitar o conteúdo comum.
@@ -157,7 +157,7 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Onboarding:** boas-vindas → escolher personagem (pré-visualização animada) → nome → meta diária (Leve 50 / Regular 100 / Séria 200 / Intensa 300 XP) → horário do lembrete e permissão de notificação (Android 13+) → primeira lição guiada.
 
-**Trilha (home):** caminho em zigue-zague com nós por lição, cabeçalho fixo da unidade, nó atual pulsando, baú ao final de cada unidade, personagem ao lado do nó atual. Unidade seguinte desbloqueia ao concluir a anterior; ★ permitir "pular" com um teste de nivelamento (v1.1). Topo: ofensiva, gemas, corações, contagem regressiva para 21/02/2027. **Duas trilhas (0.9.0):** seletor "Específicos | Gerais" logo abaixo do topo; cada trilha desbloqueia na sua ordem e tem as cores próprias, com troca animada.
+**Trilha (home):** caminho em zigue-zague com nós por lição, cabeçalho fixo da unidade, nó atual pulsando, baú ao final de cada unidade, personagem ao lado do nó atual. Unidade seguinte desbloqueia ao concluir a anterior; ★ permitir "pular" com um teste de nivelamento (v1.1). Topo (0.13.0): chip da prova (emblema e dias que faltam; abre o painel para trocar entre Analista de TI e Técnico Bancário), ofensiva e corações; as gemas ficam na Loja. **Duas trilhas (0.9.0):** seletor "Específicos | Gerais" logo abaixo do topo; cada trilha desbloqueia na sua ordem e tem as cores próprias, com troca animada.
 
 **Lição:** 8 exercícios (12 no formato por conceitos: blocos por conceito do exemplo resolvido à variação, e prova no fim; "Novo conceito" aberto na primeira vez; botão "Não sei" nos de ensino). Barra de progresso; botão Verificar; feedback em painel inferior (verde/vermelho) com explicação; Continuar. Erro custa 1 coração (½ nos exercícios de aprender e praticar do formato por conceitos; se o modo corações estiver ligado); erros voltam no fim da lição (+5 XP em vez de +10). Combo visual a partir de 3 acertos seguidos.
 

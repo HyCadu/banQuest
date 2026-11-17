@@ -1,5 +1,7 @@
 package br.com.trilhati.feature.app
 
+import br.com.trilhati.domain.exam.ExamCourse
+import br.com.trilhati.domain.exam.TargetExam
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -45,6 +47,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -104,12 +107,16 @@ class AppViewModel @Inject constructor(
         flow {
             progress.ensureReady(day)
             emitAll(
-                combine(progress.snapshot(day), progress.observeQuests(day), settingsRepo.settings, content.courseFlow) { snap, quests, settings, course ->
-                    AppState(day, course, snap, quests, settings, content.exams)
+                combine(progress.snapshot(day), progress.observeQuests(day), settingsRepo.settings, content.catalogFlow) { snap, quests, settings, catalog ->
+                    val exam = settings.targetExam
+                    AppState(day, ExamCourse.courseFor(exam, catalog), snap, quests, settings, content.exams(exam))
                 },
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /** Dia de hoje no fuso do app (data da primeira entrada). */
+    fun today(): java.time.LocalDate = clock.today()
 
     /** Relógio de 1 s, para contagens regressivas (próximo coração, fim da semana do ranking). */
     val ticker: Flow<Long> = clock.millisFlow(1_000)
@@ -198,7 +205,10 @@ class AppViewModel @Inject constructor(
     fun setGoal(xp: Int) = viewModelScope.launch { progress.setDailyGoal(xp) }
 
     fun setTimerMode(mode: TimerMode) = viewModelScope.launch { settingsRepo.setTimerMode(mode) }
-    fun setPaceTarget(ms: Long) = viewModelScope.launch { settingsRepo.setPaceTarget(ms) }
+    fun setPaceTarget(ms: Long?) = viewModelScope.launch { settingsRepo.setPaceTarget(ms) }
+
+    /** Troca a prova (chip da Trilha ou primeira entrada). O progresso é um só; muda a trilha de Específicos. */
+    fun setTargetExam(exam: TargetExam) = viewModelScope.launch { settingsRepo.setTargetExam(exam) }
     fun setCaseFourMinutes(on: Boolean) = viewModelScope.launch { settingsRepo.setCaseFourMinutes(on) }
     fun setNoLives(on: Boolean) = viewModelScope.launch { settingsRepo.setNoLives(on) }
     fun setHaptics(on: Boolean) = viewModelScope.launch { settingsRepo.setHaptics(on) }
@@ -328,7 +338,7 @@ class AppViewModel @Inject constructor(
     // ---------- dados
 
     fun exportProgress(uri: Uri) = viewModelScope.launch {
-        val text = BackupCodec.encode(progress.exportBackup())
+        val text = BackupCodec.encode(progress.exportBackup().copy(targetExam = settingsRepo.settings.first().targetExam.id))
         message(if (documents.write(uri, text)) "Progresso exportado. Guarde o arquivo em um lugar seguro." else "Não consegui gravar o arquivo.")
     }
 
@@ -338,6 +348,7 @@ class AppViewModel @Inject constructor(
             is BackupRead.Invalid -> message("Backup recusado: ${read.reason}.")
             is BackupRead.Ok -> {
                 progress.importBackup(read.backup, clock.today())
+                read.backup.targetExam?.let { TargetExam.fromId(it) }?.let { settingsRepo.setTargetExam(it) }
                 message("Progresso restaurado!")
                 syncScheduler.syncSoon()
             }

@@ -82,6 +82,32 @@ class FlowShots {
     @Test fun escolhaDeTemaEletrico() = rule.shot("th_choice_eletrico.png", palette = eletrico) {
         br.com.trilhati.feature.theme.ThemeChoiceScreen(eletrico, MascotCharacter.Tartaruga, {}, {}, animated = false)
     }
+    // ---- Escolha de prova (0.13.0): chip no topo, painel aberto, trilha do Técnico e primeira entrada
+    private val tb = br.com.trilhati.domain.exam.TargetExam.TecnicoBancario
+    private fun panelShot(name: String, exam: br.com.trilhati.domain.exam.TargetExam, palette: br.com.trilhati.ui.theme.ThemePalette = br.com.trilhati.ui.theme.ThemePalette.Claro) =
+        rule.shot(name, palette = palette) {
+            br.com.trilhati.feature.path.PathContent(fakeState(true, exam = exam), NOW_MS, AppActions(), animated = false, initialExamPanelOpen = true)
+        }
+    @Test fun painelDeProvas() = panelShot("x_panel_analista.png", br.com.trilhati.domain.exam.TargetExam.AnalistaTi)
+    @Test fun painelDeProvasTecnicoEscuro() = panelShot("x_panel_tecnico_escuro.png", tb, br.com.trilhati.ui.theme.ThemePalette.Escuro)
+    @Test fun painelDeProvasChiclete() = panelShot("x_panel_chiclete.png", tb, chiclete)
+    @Test fun trilhaDoTecnico() = rule.shot("x_path_tecnico.png") {
+        MainContent(fakeState(false, exam = tb), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
+    }
+    @Test fun trilhaDoTecnicoGerais() = rule.shot("x_path_tecnico_gerais.png", palette = eletrico) {
+        val st = fakeState(false, exam = tb)
+        MainContent(st.copy(settings = st.settings.copy(trailTrack = br.com.trilhati.domain.model.Track.General)), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
+    }
+    @Test fun praticarDoTecnico() = rule.shot("x_practice_tecnico.png") {
+        MainContent(fakeState(true, exam = tb), NOW_MS, AppActions(), snack, initialTab = MainTab.Practice, animated = false, social = fakeSocial())
+    }
+    @Test fun escolhaDeProva() = rule.shot("x_choice.png") {
+        br.com.trilhati.feature.path.ExamChoiceScreen(null, TODAY, MascotCharacter.Tartaruga, {}, {}, animated = false)
+    }
+    @Test fun escolhaDeProvaMarcada() = rule.shot("x_choice_tecnico_escuro.png", dark = true) {
+        br.com.trilhati.feature.path.ExamChoiceScreen(tb, TODAY, MascotCharacter.Tartaruga, {}, {}, animated = false)
+    }
+
     /** Um quadro no meio da troca Específicos → Gerais (a animação roda; o resto da tela continua parado). */
     @Test fun trocaDeTrilhaNoMeio() {
         val track = mutableStateOf(br.com.trilhati.domain.model.Track.Specific)
