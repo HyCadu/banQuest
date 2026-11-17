@@ -25,11 +25,12 @@ class ContentTest {
         assertEquals(emptyList<String>(), ContentValidator.validate(parseU1()))
     }
 
-    @Test fun `unidade 1 tem 5 licoes, a primeira por conceitos e as outras com 10 questoes`() {
+    @Test fun `unidade 1 tem 5 licoes por conceitos, a primeira com 50 exercicios e as outras com 30`() {
         val pack = parseU1()
         assertEquals(5, pack.lessons.size)
         assertEquals(50, pack.lessons[0].questions.size)
-        assertTrue(pack.lessons.drop(1).all { it.questions.size == 10 && it.concepts.isEmpty() })
+        assertTrue(pack.lessons.all { it.concepts.isNotEmpty() })
+        assertTrue(pack.lessons.drop(1).all { it.questions.size == 30 && it.concepts.size == 5 })
     }
 
     @Test fun `licao piloto tem conceitos e cada um passa por aprender, praticar e prova`() {
@@ -90,7 +91,7 @@ class ContentTest {
         val unit = parseU1().toDomain()
         assertNotNull(unit)
         val all = unit!!.lessons.flatMap { it.questions }
-        assertEquals(90, all.size)
+        assertEquals(170, all.size)
         assertTrue(all.all { it.source == QuestionSource.Ia && !it.reviewed && it.showUnreviewedBadge })
     }
 
