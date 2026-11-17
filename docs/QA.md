@@ -273,3 +273,17 @@ Versão 0.7.3: `./gradlew check` sem erros nem warnings; 185 testes unitários; 
 - Repetir a lição: os 2 conceitos ainda não vistos devem receber prioridade. Conferir também os pares e as explicações de acerto/erro.
 - Conferir que o histórico das questões q01–q10 foi mantido e que os itens novos mostram o selo de não revisada.
 - Validação estrutural adicional em JavaScript: 170 IDs únicos, conceitos, níveis, passos, alternativas, pares e balanceamento de escolhas rápidas sem erros. O validador Python e o build Android não foram executados neste ambiente, que não disponibiliza Python utilizável.
+
+## BanQuest 0.8.2 — questões oficiais nas lições 2 a 5
+
+**34. Questões de prova de verdade nas lições 2 a 5 de Banco de Dados**
+- [ ] Na lição 2 (SQL), depois dos blocos de ensino, aparecem questões com a origem "FCC · …" ou "FGV · Banestes …".
+      Exemplos: ALTER TABLE (FCC DPE-RR 2015), classificação de COMMIT/CREATE/REVOKE (FCC Teresina 2016), JOIN com
+      UNION (FGV Banestes 2018).
+- [ ] Nas lições 3, 4 e 5 também aparecem questões oficiais (subconsultas, PostgreSQL e Oracle, star schema).
+- [ ] A questão oficial só aparece quando o conceito dela já foi ensinado nesta sessão ou numa anterior.
+- [ ] Um exercício adaptado de uma questão oficial nunca aparece na mesma sessão que a original.
+
+Versão 0.8.2: `./gradlew check` sem erros nem warnings, com 185 testes unitários; validador de conteúdo sem erros (1
+aviso); harness com 98 testes, incluindo a conferência de que toda questão de prova das lições por conceitos tem
+conceito da lição.

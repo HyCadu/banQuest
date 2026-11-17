@@ -192,6 +192,7 @@
   {
    "id": "fcc-dperr-2015-q45",
    "lesson": "u1l2",
+   "concept": "u1l2c1",
    "type": "case",
    "topic": "SQL",
    "subtopic": "DDL",
@@ -223,6 +224,7 @@
   {
    "id": "fcc-teresina-2016-q60",
    "lesson": "u1l2",
+   "concept": "u1l2c1",
    "type": "mcq5",
    "topic": "SQL",
    "subtopic": "DDL, DML, DCL e TCL",
@@ -253,6 +255,7 @@
   {
    "id": "fgv-banestes-2018-q56",
    "lesson": "u1l2",
+   "concept": "u1l2c5",
    "type": "mcq5",
    "topic": "Concorrência",
    "subtopic": "compatibilidade de locks",
@@ -283,6 +286,7 @@
   {
    "id": "fgv-banestes-2018-q58",
    "lesson": "u1l2",
+   "concept": "u1l2c2",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "outer join e UNION",
@@ -314,6 +318,7 @@
   {
    "id": "fgv-banestes-2021-q37",
    "lesson": "u1l2",
+   "concept": "u1l2c5",
    "type": "mcq5",
    "topic": "Transações",
    "subtopic": "isolamento",
@@ -344,6 +349,7 @@
   {
    "id": "fgv-banestes-2021-q49",
    "lesson": "u1l2",
+   "concept": "u1l2c1",
    "type": "mcq5",
    "topic": "SQL",
    "subtopic": "chaves estrangeiras",
@@ -374,6 +380,7 @@
   {
    "id": "fgv-banestes-2021-q51",
    "lesson": "u1l2",
+   "concept": "u1l2c2",
    "type": "mcq5",
    "topic": "SQL",
    "subtopic": "comparação com NULL",
@@ -404,6 +411,7 @@
   {
    "id": "fgv-banestes-2018-q64",
    "lesson": "u1l3",
+   "concept": "u1l3c2",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "INSERT com NOT EXISTS",
@@ -435,6 +443,7 @@
   {
    "id": "fgv-banestes-2018-q65",
    "lesson": "u1l3",
+   "concept": "u1l3c1",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "DELETE com EXISTS",
@@ -466,6 +475,7 @@
   {
    "id": "fgv-banestes-2018-q66",
    "lesson": "u1l3",
+   "concept": "u1l3c1",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "UPDATE com subconsulta",
@@ -497,6 +507,7 @@
   {
    "id": "fgv-banestes-2021-q47",
    "lesson": "u1l3",
+   "concept": "u1l3c2",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "GROUP BY sem junção",
@@ -528,6 +539,7 @@
   {
    "id": "fgv-banestes-2021-q48",
    "lesson": "u1l3",
+   "concept": "u1l3c2",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "NOT EXISTS e NULL",
@@ -559,6 +571,7 @@
   {
    "id": "fgv-banestes-2021-q50",
    "lesson": "u1l3",
+   "concept": "u1l3c1",
    "type": "code_output",
    "topic": "SQL",
    "subtopic": "DELETE com subconsultas",
@@ -590,6 +603,7 @@
   {
    "id": "fcc-dperr-2015-q46",
    "lesson": "u1l4",
+   "concept": "u1l4c3",
    "type": "case",
    "topic": "PostgreSQL",
    "subtopic": "backup lógico",
@@ -620,6 +634,7 @@
   {
    "id": "fcc-teresina-2016-q59",
    "lesson": "u1l4",
+   "concept": "u1l4c3",
    "type": "mcq5",
    "topic": "Desempenho",
    "subtopic": "índices",
@@ -650,6 +665,7 @@
   {
    "id": "fgv-banestes-2018-q55",
    "lesson": "u1l4",
+   "concept": "u1l4c5",
    "type": "mcq5",
    "topic": "Oracle",
    "subtopic": "index-organized table",
@@ -680,6 +696,7 @@
   {
    "id": "fgv-banestes-2018-q61",
    "lesson": "u1l4",
+   "concept": "u1l4c5",
    "type": "mcq5",
    "topic": "Oracle e DB2",
    "subtopic": "tabelas temporárias",
@@ -710,6 +727,7 @@
   {
    "id": "fgv-banestes-2018-q62",
    "lesson": "u1l4",
+   "concept": "u1l4c5",
    "type": "code_output",
    "topic": "Oracle",
    "subtopic": "ROWNUM",
@@ -741,6 +759,7 @@
   {
    "id": "fgv-banestes-2018-q63",
    "lesson": "u1l4",
+   "concept": "u1l4c5",
    "type": "code_output",
    "topic": "Oracle",
    "subtopic": "DUAL e produto cartesiano",
@@ -772,6 +791,7 @@
   {
    "id": "fcc-teresina-2016-q57",
    "lesson": "u1l5",
+   "concept": "u1l5c1",
    "type": "mcq5",
    "topic": "Data warehouse",
    "subtopic": "esquema estrela",

@@ -62,7 +62,8 @@ def check_options(where, q, expected):
         err(where, f"esperava {expected} alternativas, achei {len(opts)}")
     if isinstance(expected, tuple) and not (expected[0] <= len(opts) <= expected[1]):
         err(where, f"esperava de {expected[0]} a {expected[1]} alternativas, achei {len(opts)}")
-    if len({norm(o) for o in opts}) != len(opts):
+    # Só minúsculas e espaços: símbolos contam ("x = NULL" e "x <> NULL" são alternativas diferentes).
+    if len({re.sub(r"\s+", " ", o.lower()).strip() for o in opts}) != len(opts):
         err(where, "alternativas repetidas")
     ans = q.get("answer")
     if not isinstance(ans, int) or isinstance(ans, bool) or not (0 <= ans < len(opts)):
@@ -280,7 +281,13 @@ def pack_statistics(path, pack, questions):
             warn(where, f"questões de exceção em {exc_n / total:.0%} (meta ao menos ~10%)")
         if lit_n / total < 0.10:
             warn(where, f"questões literais em {lit_n / total:.0%} (meta ao menos ~10%)")
-    stems = [(q.get("id", "?"), norm(q.get("stem", "") + " " + (q.get("code") or ""))) for q in questions_all]
+    # Compara o conteúdo do item, não só o enunciado: no associar e no ordenar o enunciado é uma instrução padrão e o
+    # que distingue um exercício do outro são os pares e as linhas.
+    def body(q):
+        pairs = " ".join(f"{p.get('left', '')} {p.get('right', '')}" for p in q.get("pairs") or [] if isinstance(p, dict))
+        lines = " ".join(l for l in q.get("lines") or [] if isinstance(l, str))
+        return norm(" ".join([q.get("stem", ""), q.get("code") or "", pairs, lines]))
+    stems = [(q.get("id", "?"), body(q)) for q in questions_all]
     for i in range(len(stems)):
         for j in range(i + 1, len(stems)):
             r = difflib.SequenceMatcher(None, stems[i][1], stems[j][1]).ratio()

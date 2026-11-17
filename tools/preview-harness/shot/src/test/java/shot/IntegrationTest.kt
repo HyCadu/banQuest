@@ -83,12 +83,14 @@ class IntegrationTest {
     private fun play(
         vm: SessionViewModel,
         wrongOnFirst: Int = 0,
+        wrongOnFirstExam: Int = 0, // erra as primeiras N questões de prova (as de ensino vêm antes na lição)
         slipOnMatch: Boolean = false,
         feedbacks: MutableList<Pair<QuestionType, Phase.Feedback>>? = null,
         dontKnowOn: (br.com.trilhati.domain.model.Question) -> Boolean = { false },
         helpSeen: MutableList<Pair<br.com.trilhati.domain.model.Question, Boolean>>? = null,
     ): SessionUi.Finished {
         var wrongLeft = wrongOnFirst
+        var examWrongLeft = wrongOnFirstExam
         var slip = slipOnMatch
         var guard = 0
         while (guard++ < 80) {
@@ -116,8 +118,9 @@ class IntegrationTest {
                             vm.check()
                         }
                         else -> {
-                            val goWrong = wrongLeft > 0 && !ui.retry
-                            if (goWrong) wrongLeft--
+                            val examWrong = examWrongLeft > 0 && q.level == br.com.trilhati.domain.model.QuestionLevel.Exam
+                            val goWrong = !ui.retry && (wrongLeft > 0 || examWrong)
+                            if (goWrong) { if (wrongLeft > 0) wrongLeft-- else examWrongLeft-- }
                             vm.select(if (goWrong) (q.answer + 1) % q.options.size else q.answer); idle(); vm.check()
                         }
                     }
@@ -144,10 +147,16 @@ class IntegrationTest {
 
     @Test fun conteudoCarregaDosAssets() {
         assertEquals(10, content.course.size)
-        // 90 exercícios do pacote da unidade 1 (a u1l1 já no formato por conceitos) + 26 de provas anteriores.
+        // 170 exercícios do pacote da unidade 1 (as 5 lições no formato por conceitos) + 26 de provas anteriores.
         val u1 = content.course[0].lessons.flatMap { it.questions }
-        assertEquals(116, u1.size)
+        assertEquals(196, u1.size)
         assertEquals(26, u1.count { it.isFromExam })
+        // Nas lições por conceito, toda questão de prova está ligada a um conceito da lição: sem isso o planejador
+        // nunca a sorteia (aconteceu com as 20 oficiais das lições 2 a 5 na 0.8.1).
+        content.course[0].lessons.forEach { l ->
+            val ids = l.concepts.map { it.id }.toSet()
+            if (ids.isNotEmpty()) l.questions.filter { it.isFromExam }.forEach { q -> assertTrue("${q.id} sem conceito da ${l.id}", q.conceptId in ids) }
+        }
         assertNotNull(content.lesson("u1l3")); assertNotNull(content.question("u1l1q01"))
         assertEquals("FGV · Banestes 2021 · questão 48", content.question("fgv-banestes-2021-q48")?.ref?.label)
         // Unidade sem pacote continua "chegando", mesmo tendo questões de prova esperando por ela.
@@ -190,10 +199,10 @@ class IntegrationTest {
 
     @Test fun errosCustamCoracaoViramBancoDeErrosETreinoDevolveCoracao() {
         runBlocking { progress.ensureReady(today()) }
-        val fin = play(newVm("lesson", "u1l2"), wrongOnFirst = 2)
+        val fin = play(newVm("lesson", "u1l2"), wrongOnFirstExam = 2)
         assertFalse(fin.run.perfect)
         var s = snap()
-        assertEquals(3, s.stats.hearts.hearts) // 2 erros de primeira = 2 corações
+        assertEquals(3, s.stats.hearts.hearts) // 2 erros de primeira em questão de prova = 2 corações
         assertEquals(2, s.errorBankSize)
         assertEquals(0, s.dueCount) // revisão só amanhã
         // Treino de erros: usa o banco mesmo sem vencidas
@@ -360,7 +369,7 @@ class IntegrationTest {
         assertEquals(9, snap().stats.hearts.halves)
         assertEquals("4 corações e meio", br.com.trilhati.domain.hearts.HeartsEngine.description(snap().stats.hearts))
         assertEquals("4,5", br.com.trilhati.domain.hearts.HeartsEngine.display(snap().stats.hearts))
-        play(newVm("lesson", "u1l2"), wrongOnFirst = 1) // u1l2 só tem questões de prova
+        play(newVm("lesson", "u1l2"), wrongOnFirstExam = 1) // erra a primeira questão de prova da u1l2
         assertEquals(7, snap().stats.hearts.halves)
     }
 

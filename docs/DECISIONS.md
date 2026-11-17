@@ -417,3 +417,16 @@ O resumo do resultado continua mostrando o tempo médio por questão (regra 6).
 4. **Detalhes.** A instrução do associar ficou "Toque num termo e na definição". O botão "Não sei" some quando o estoque
    chega a zero.
 
+
+## Questões oficiais ligadas aos conceitos das lições 2 a 5 (0.8.2, 17/11/2026)
+Com as lições 2 a 5 da U1 no formato por conceitos (pacote v4), o planejador só sorteia questão de prova que tenha um
+conceito da lição (`LessonPlanner.exam`). As 20 questões oficiais dessas lições (FCC e FGV) estavam sem `concept` e, na
+0.8.1, nunca apareciam. O validador acusava isso, mas não tinha rodado no ambiente em que o pacote v4 foi gerado.
+1. **Cada questão ganhou o conceito mais próximo do assunto que ela cobra** (lista em
+   `content/review/u1-provas-conceitos.md`). Questões sobre recursos do Oracle e do DB2 que não são multitenant (IOT,
+   ROWNUM, DUAL, tabelas temporárias) ficaram em "Oracle multitenant e H2", o conceito de SGBDs específicos da lição 4.
+2. **Validador:** as alternativas são comparadas sem descartar símbolos ("x = NULL" e "x <> NULL" são diferentes), e
+   a comparação de enunciados inclui os pares do associar e as linhas do ordenar. Antes, a instrução padrão do
+   associar ("Retome o cenário da lição e associe…") gerava 2 erros e 174 avisos falsos.
+3. **Testes:** o teste de integração confere que toda questão de prova de uma lição por conceitos tem conceito da
+   lição. Os testes que contavam 90 exercícios ou supunham "a u1l2 só tem prova" foram atualizados para o pacote v4.
