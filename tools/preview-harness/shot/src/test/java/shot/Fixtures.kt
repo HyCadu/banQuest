@@ -107,10 +107,15 @@ fun fakeSocial(
     )
 }
 
-fun ComposeContentTestRule.shot(name: String, dark: Boolean = false, content: @Composable () -> Unit) {
+fun ComposeContentTestRule.shot(
+    name: String,
+    dark: Boolean = false,
+    palette: br.com.trilhati.ui.theme.ThemePalette? = null,
+    content: @Composable () -> Unit,
+) {
     mainClock.autoAdvance = false
     setContent {
-        TrilhaTheme(if (dark) ThemeMode.Dark else ThemeMode.Light) { Box(Modifier.background(Trilha.colors.background)) { content() } }
+        TrilhaTheme(palette ?: if (dark) br.com.trilhati.ui.theme.ThemePalette.Escuro else br.com.trilhati.ui.theme.ThemePalette.Claro) { Box(Modifier.background(Trilha.colors.background)) { content() } }
     }
     mainClock.advanceTimeBy(300)
     onRoot().captureToImage().asAndroidBitmap().save(name)

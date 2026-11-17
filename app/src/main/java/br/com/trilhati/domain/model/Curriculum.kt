@@ -1,10 +1,11 @@
 package br.com.trilhati.domain.model
 
 /**
- * Esqueleto da trilha (PLAN.md §6): 10 unidades e 48 lições dos Conhecimentos Específicos do cargo 04.
+ * Esqueleto das trilhas (PLAN.md §6 e docs/CONTENT_PLAN.md): 10 unidades e 48 lições dos Conhecimentos Específicos do
+ * cargo 04, e 4 unidades e 21 lições dos Conhecimentos Gerais.
  * As questões chegam nos pacotes de conteúdo; lições sem pacote aparecem como "em breve".
  */
-data class UnitInfo(val id: String, val order: Int, val title: String, val lessonTitles: List<String>)
+data class UnitInfo(val id: String, val order: Int, val title: String, val lessonTitles: List<String>, val track: Track = Track.Specific)
 
 object Curriculum {
     val units: List<UnitInfo> = listOf(
@@ -18,9 +19,18 @@ object Curriculum {
         unit(8, "Sistemas operacionais", "Processos, threads e sincronização", "Memória, E/S e armazenamento", "Linux", "Windows, AD e virtualização"),
         unit(9, "Redes de computadores", "Fundamentos e meios de transmissão", "TCP/IP e protocolos", "Roteamento, VLAN e SDN", "Cabeamento e Wi-Fi", "QoS, VoIP e multicast"),
         unit(10, "Serviços, monitoramento e nuvem", "Servidores e serviços", "Gerência de redes e monitoramento", "Computação em nuvem", "Inglês técnico"),
+        // Conhecimentos Gerais (docs/CONTENT_PLAN.md): G1–G4, ids u11–u14. Ficam na segunda trilha.
+        unit(11, "Língua Portuguesa", "Ortografia e crase", "Interpretação de texto", "Morfologia", "Sintaxe", "Pontuação e reescrita"),
+        unit(12, "Raciocínio lógico, estatística e matemática financeira", "Lógica de relações", "Aritmética", "Proporção e porcentagem", "Estatística e contagem", "Juros e taxas", "Descontos e séries", "Amortização", "Avaliação de projetos"),
+        unit(13, "Atualidades do mercado financeiro", "Sistema Financeiro Nacional", "Política monetária", "Mercado e inovação", "Cidadania financeira e cenários"),
+        unit(14, "Ética, compliance e ESG", "Ética e integridade", "Governança e compliance", "Corrupção, fraude e dados", "ESG e sustentabilidade"),
     )
 
-    private fun unit(order: Int, title: String, vararg lessons: String) = UnitInfo("u$order", order, title, lessons.toList())
+    /** U1–U10 são Específicos; daí em diante, Gerais. */
+    const val SPECIFIC_UNITS = 10
+
+    private fun unit(order: Int, title: String, vararg lessons: String) =
+        UnitInfo("u$order", order, title, lessons.toList(), if (order > SPECIFIC_UNITS) Track.General else Track.Specific)
 
     fun lessonId(unitOrder: Int, lessonOrder: Int) = "u${unitOrder}l$lessonOrder"
 

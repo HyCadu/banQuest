@@ -236,8 +236,35 @@
 - [ ] Repetição de um erro mostra a ficha "Repetição · 5 XP".
 - [ ] Com o estoque de "Não sei" em zero, o botão some.
 
+## BanQuest 0.9.0 — temas e trilha dos Gerais
+
+**31. Escolha do tema na primeira entrada**
+- [ ] Ao abrir depois de atualizar (ou numa instalação nova, depois do login), aparece **"Escolha o seu tema"** com
+      quatro cartões: Claro, Escuro, Elétrico e Chiclete. Cada um mostra uma miniatura e a faixa 60/30/10.
+- [ ] Vem marcado o tema que você já usava (ou o claro/escuro do aparelho). Tocar num cartão já pinta a tela com ele.
+      Embaixo aparece "Dá para trocar quando quiser em Configurações › Tema."
+- [ ] Toque em **Começar**: vai para a Trilha. Feche e abra o app: a escolha não aparece de novo e o tema continua.
+
+**32. Temas nas Configurações**
+- [ ] Configurações › **Tema** mostra os quatro temas em duas colunas; o atual vem marcado. Trocar muda o app inteiro
+      na hora.
+- [ ] Elétrico: fundo branco, cor principal azul (botões, lição atual, faixa da unidade) e limão nas lições concluídas.
+- [ ] Chiclete: fundo creme, cor principal rosa com texto escuro e azul nas lições concluídas.
+- [ ] Nos dois temas novos, passe por Trilha, uma lição (acerto e erro), Resultado, Praticar, Ranking, Loja e Perfil:
+      o fundo é sempre claro e nenhum texto fica difícil de ler.
+
+**33. Trilha dos Gerais**
+- [ ] No topo da Trilha, o seletor **Específicos | Gerais**. Toque em Gerais: a trilha desliza para o lado, as cores
+      mudam aos poucos e o botão do seletor desliza junto.
+- [ ] Os Gerais mostram G1 Língua Portuguesa, G2 Raciocínio lógico, estatística e matemática financeira, G3
+      Atualidades do mercado financeiro e G4 Ética, compliance e ESG, todas como "Conteúdo chegando em breve".
+- [ ] As cores dos Gerais são outras: Claro e Escuro verde-água, Elétrico limão, Chiclete azul.
+- [ ] Volte para Específicos: a U1 continua de onde estava. Feche e abra o app: a Trilha abre na última trilha usada.
+- [ ] Com "Remover animações" ligado no Android (Acessibilidade), a troca é imediata.
+- [ ] Com o TalkBack, o seletor diz "Trilha Específicos" e "Trilha Gerais" e qual está selecionada.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 2 a 10, simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
+Conteúdo das Unidades 2 a 10 e dos Gerais (G1 a G4), simulado de prova, teste de nivelamento e missão mensal (v1.1 do PLAN).
 
 ## Verificações automáticas já executadas
 Versão 0.4.0: `./gradlew check assembleDebug assembleRelease lintRelease` sem erros nem warnings; **135 testes
@@ -287,3 +314,8 @@ Versão 0.7.3: `./gradlew check` sem erros nem warnings; 185 testes unitários; 
 Versão 0.8.2: `./gradlew check` sem erros nem warnings, com 185 testes unitários; validador de conteúdo sem erros (1
 aviso); harness com 98 testes, incluindo a conferência de que toda questão de prova das lições por conceitos tem
 conceito da lição.
+
+Versão 0.9.0 (temas e trilha dos Gerais juntos com a 0.8.2): `./gradlew check` sem erros nem warnings; 195 testes
+unitários (inclui `ContrastTest` nos quatro temas e nas trilhas dos Gerais, `TrailEngineTest` com as duas trilhas e
+`LegacyPaletteTest`); validador de conteúdo sem erros (1 aviso); pacote de provas com 205 questões (123 dos Específicos
+e 82 dos Gerais, esperando conteúdo); harness com 117 testes e renders `th_*.png` e `site_*.png`.

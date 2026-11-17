@@ -17,7 +17,29 @@ import androidx.core.view.WindowCompat
 /** `true` quando o aluno desligou as animações do sistema (Acessibilidade > Remover animações). */
 val LocalReducedMotion = staticCompositionLocalOf { false }
 
-enum class ThemeMode { System, Light, Dark }
+/**
+ * Os quatro temas do app: [Claro] e [Escuro] (roxo e turquesa, os de sempre) e [Eletrico] e [Chiclete] (referências
+ * 60/30/10 do dono, sempre com fundo claro).
+ */
+enum class ThemePalette(val displayName: String) {
+    Claro("Claro"),
+    Escuro("Escuro"),
+    Eletrico("Elétrico"),
+    Chiclete("Chiclete"),
+}
+
+/** Tokens de cor de cada tema. */
+fun paletteColors(palette: ThemePalette): TrilhaColors = when (palette) {
+    ThemePalette.Claro -> LightTrilhaColors
+    ThemePalette.Escuro -> DarkTrilhaColors
+    ThemePalette.Eletrico -> EletricoColors
+    ThemePalette.Chiclete -> ChicleteColors
+}
+
+/** Tema em uso: o escolhido, ou, enquanto o aluno não escolheu, Claro ou Escuro conforme o aparelho. */
+@Composable
+fun resolvePalette(palette: ThemePalette?): ThemePalette =
+    palette ?: if (isSystemInDarkTheme()) ThemePalette.Escuro else ThemePalette.Claro
 
 /** Acesso aos tokens: `Trilha.colors.primary`. */
 object Trilha {
@@ -26,13 +48,9 @@ object Trilha {
 }
 
 @Composable
-fun TrilhaTheme(mode: ThemeMode = ThemeMode.System, content: @Composable () -> Unit) {
-    val dark = when (mode) {
-        ThemeMode.System -> isSystemInDarkTheme()
-        ThemeMode.Light -> false
-        ThemeMode.Dark -> true
-    }
-    val c = if (dark) DarkTrilhaColors else LightTrilhaColors
+fun TrilhaTheme(palette: ThemePalette? = null, content: @Composable () -> Unit) {
+    val c = paletteColors(resolvePalette(palette))
+    val dark = c.isDark
     val scheme = if (dark) {
         darkColorScheme(
             primary = c.primary, onPrimary = c.onPrimary, primaryContainer = c.primarySoft, onPrimaryContainer = c.ink,

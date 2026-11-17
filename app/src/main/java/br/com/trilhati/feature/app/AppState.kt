@@ -96,4 +96,6 @@ data class AppActions(
     // Atualização do app
     val openUpdate: (url: String) -> Unit = {},
     val dismissUpdate: (versionCode: Int) -> Unit = {},
+    // Trilha (Específicos ou Gerais)
+    val setTrack: (br.com.trilhati.domain.model.Track) -> Unit = {},
 )

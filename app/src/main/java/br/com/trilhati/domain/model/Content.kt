@@ -108,6 +108,9 @@ data class Lesson(
     fun concept(id: String?): Concept? = id?.let { wanted -> concepts.firstOrNull { it.id == wanted } }
 }
 
+/** As duas trilhas do app: Conhecimentos Específicos (U1–U10) e Conhecimentos Gerais (G1–G4, `u11`–`u14`). */
+enum class Track { Specific, General }
+
 /** Unidade da trilha. Chamada `CourseUnit` para não colidir com `kotlin.Unit`. */
 data class CourseUnit(
     val id: String,
@@ -115,6 +118,10 @@ data class CourseUnit(
     val title: String,
     val editalTopics: List<String>,
     val lessons: List<Lesson>,
+    val track: Track = Track.Specific,
 ) {
     val hasContent: Boolean get() = lessons.any { it.hasContent }
+
+    /** Rótulo curto: "Unidade 3" nos Específicos, "G2" nos Gerais. */
+    val code: String get() = if (track == Track.General) "G${order - Curriculum.SPECIFIC_UNITS}" else "Unidade $order"
 }

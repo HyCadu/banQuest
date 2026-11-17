@@ -6,7 +6,7 @@ import br.com.trilhati.domain.model.Lesson
 import br.com.trilhati.domain.model.Question
 
 /**
- * Monta a trilha completa (10 unidades, 48 lições) juntando o esqueleto do currículo com as questões dos pacotes.
+ * Monta as trilhas completas (Específicos e Gerais) juntando o esqueleto do currículo com as questões dos pacotes.
  * Lições sem pacote ficam sem questões e aparecem como "conteúdo chegando".
  *
  * As questões de provas anteriores ([examQuestions]) entram no banco da lição indicada, mas só nas lições que já têm
@@ -27,7 +27,7 @@ object CourseAssembler {
                 val extra = examByLesson[id].orEmpty()
                 if (lesson.hasContent && extra.isNotEmpty()) lesson.copy(questions = (lesson.questions + extra).distinctBy { it.id }) else lesson
             }
-            CourseUnit(info.id, info.order, pack?.title ?: info.title, pack?.editalTopics.orEmpty(), lessons)
+            CourseUnit(info.id, info.order, pack?.title ?: info.title, pack?.editalTopics.orEmpty(), lessons, info.track)
         }
     }
 }

@@ -189,7 +189,7 @@ private fun StartBubble(modifier: Modifier = Modifier) {
 /** Cabeçalho de unidade da trilha ("Unidade 1 · Banco de dados"). Fica cinza quando a unidade ainda não tem conteúdo. */
 @Composable
 fun UnitBanner(
-    unitNumber: Int,
+    code: String,
     title: String,
     subtitle: String,
     modifier: Modifier = Modifier,
@@ -202,7 +202,7 @@ fun UnitBanner(
     val edge = if (locked) c.lockedEdge else c.primaryEdge
     val textColor = if (locked) c.onLocked else c.onPrimary
     val clickModifier = if (onClick == null) Modifier else Modifier
-        .semantics(mergeDescendants = true) { role = Role.Button; contentDescription = "Unidade $unitNumber, $title. Toque para ver o guia." }
+        .semantics(mergeDescendants = true) { role = Role.Button; contentDescription = "$code, $title. Toque para ver o guia." }
         .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, onClick = onClick)
     Box(modifier.fillMaxWidth().then(clickModifier)) {
         Box(Modifier.matchParentSize().padding(top = Spacing.edge).background(edge, shape))
@@ -215,7 +215,7 @@ fun UnitBanner(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(1f)) {
-                Text("UNIDADE $unitNumber", style = MaterialTheme.typography.labelMedium, color = textColor.copy(alpha = 0.85f))
+                Text(code.uppercase(), style = MaterialTheme.typography.labelMedium, color = textColor.copy(alpha = 0.85f))
                 Text(title, style = MaterialTheme.typography.titleLarge, color = textColor)
                 Text(subtitle, style = MaterialTheme.typography.bodySmall, color = textColor.copy(alpha = 0.9f))
             }

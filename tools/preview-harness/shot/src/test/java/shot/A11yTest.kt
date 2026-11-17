@@ -94,6 +94,11 @@ class A11yTest {
 
     @Test fun licaoMultiplaEscolha() = session(QuestionType.Mcq5, ExerciseState.Choice(1))
     @Test fun licaoPares() = session(QuestionType.Match, ExerciseState.Match(listOf(1, 0, 3, 2)))
+    @Test fun escolhaDeTemaTemRotulos() {
+        rule.setContent { TrilhaTheme { br.com.trilhati.feature.theme.ThemeChoiceScreen(br.com.trilhati.ui.theme.ThemePalette.Eletrico, MascotCharacter.Guaiamum, {}, {}, animated = false) } }
+        assertClickablesLabeled("escolha de tema")
+    }
+
     @Test fun licaoOrdenar() = session(QuestionType.OrderCode, ExerciseState.Order(listOf(4, 3, 2, 1, 0)))
     // Escolha rápida de aprender, com o botão "Dica" do conceito (u1l1).
     @Test fun licaoEscolhaRapidaComDica() = session(QuestionType.Quick, ExerciseState.Choice(1))
