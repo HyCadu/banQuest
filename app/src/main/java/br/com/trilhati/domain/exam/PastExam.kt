@@ -49,7 +49,7 @@ data class PastExam(
 object PastExams {
     /**
      * Agrupa as questões de provas anteriores por prova (banca, órgão, ano e cargo), da mais recente para a mais antiga.
-     * [isGeneral] diz se a questão é dos Conhecimentos Gerais (unidades G1–G4).
+     * [isGeneral] diz se a questão é dos Conhecimentos Gerais do cargo daquela prova.
      */
     fun from(questions: List<Question>, isGeneral: (Question) -> Boolean): List<PastExam> {
         val groups = questions.filter { it.ref != null }
@@ -59,21 +59,28 @@ object PastExams {
         val used = mutableSetOf<String>()
         return groups.map { (key, qs) ->
             val base = slug("${key.banca} ${key.body} ${key.year}")
-            val id = generateSequence(1) { it + 1 }.map { n -> if (n == 1) base else "$base-$n" }.first { used.add(it) }
+            // Duas provas do mesmo órgão e ano (cargos diferentes): a segunda leva o cargo no id.
+            val id = (sequenceOf(base, "$base-${slug(key.cargo)}") + generateSequence(2) { it + 1 }.map { n -> "$base-$n" })
+                .first { used.add(it) }
             val (general, specific) = qs.partition(isGeneral)
             PastExam(id, key.banca, key.body, key.year, key.cargo, worstKey(qs), specific, general)
         }
     }
 
     /**
-     * As provas anteriores que valem para quem estuda para [target]. Todas as do pacote são de cargos de TI: o Analista
-     * vê todas, inteiras; o Técnico Bancário vê só as que têm Conhecimentos Gerais, e só essa parte (mesmo edital de
-     * Gerais), com o mesmo id para a rota da sessão.
+     * As provas anteriores que valem para quem estuda para [target] (0.13.0): as do próprio cargo, inteiras; as do outro
+     * cargo, só com as questões dos Gerais de [target] (o edital de Gerais é o mesmo), com o mesmo id para a rota da
+     * sessão. Uma prova do outro cargo sem nenhuma questão desses Gerais some da lista.
      */
-    fun forTarget(exams: List<PastExam>, target: TargetExam): List<PastExam> = when (target) {
-        TargetExam.AnalistaTi -> exams
-        TargetExam.TecnicoBancario -> exams.filter { it.general.isNotEmpty() }.map { exam ->
-            exam.copy(cargo = "Só os Conhecimentos Gerais da prova de ${exam.cargo}", specific = emptyList())
+    fun forTarget(exams: List<PastExam>, target: TargetExam): List<PastExam> {
+        val general = target.general.map { it.unitId }.toSet()
+        return exams.mapNotNull { exam ->
+            if (TargetExam.forCargo(exam.cargo) == target) return@mapNotNull exam
+            val questions = (exam.specific + exam.general)
+                .filter { it.lessonId.substringBefore('l') in general }
+                .sortedBy { it.ref?.number ?: Int.MAX_VALUE }
+            if (questions.isEmpty()) null
+            else exam.copy(cargo = "Só os Conhecimentos Gerais da prova de ${exam.cargo}", specific = emptyList(), general = questions)
         }
     }
 

@@ -1,0 +1,4087 @@
+{
+  "schema": 1,
+  "pack": "u16-conhecimentos-bancarios",
+  "version": 1,
+  "unit": {
+    "id": "u16",
+    "order": 16,
+    "title": "Conhecimentos bancários e securitários",
+    "editalTopics": [
+      "Sistema Financeiro Nacional: estrutura, órgãos normativos, supervisores e operadores",
+      "Instituições financeiras e de pagamento; produtos e serviços bancários; captação e aplicação de recursos",
+      "Mercado financeiro e de capitais; política monetária, Copom, juros, inflação e indicadores",
+      "Open Finance, Pix, meios eletrônicos de pagamento e inovação",
+      "Prevenção à lavagem de dinheiro e ao financiamento do terrorismo; COAF",
+      "Seguros, previdência complementar aberta, capitalização, bancassurance e consórcio",
+      "Regulação e supervisão; adequação ao perfil do cliente; portabilidade; Resolução CMN nº 4.966/2021"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "u16l1",
+      "order": 1,
+      "title": "Sistema Financeiro Nacional",
+      "concepts": [
+        {
+          "id": "u16l1c1",
+          "title": "Estrutura do SFN",
+          "summary": "O SFN tem três níveis. Normativos fazem as regras: CMN (moeda, crédito e mercado de capitais), CNSP (seguros privados) e CNPC (previdência fechada). Supervisores fiscalizam: Banco Central e CVM (sob o CMN), Susep (sob o CNSP) e Previc (sob o CNPC). Operadores fazem os negócios: bancos, cooperativas, corretoras, seguradoras."
+        },
+        {
+          "id": "u16l1c2",
+          "title": "Conselho Monetário Nacional",
+          "summary": "O CMN é o órgão máximo do SFN: fixa as diretrizes das políticas monetária, de crédito e cambial e define a meta de inflação. É formado pelo Ministro da Fazenda, que o preside, pelo Ministro do Planejamento e Orçamento e pelo Presidente do Banco Central. O CMN decide; quem executa é o Banco Central."
+        },
+        {
+          "id": "u16l1c3",
+          "title": "Banco Central do Brasil",
+          "summary": "O Banco Central executa a política monetária, emite a moeda, guarda as reservas dos bancos (banco dos bancos), regula e fiscaliza as instituições financeiras e administra o sistema de pagamentos. Pela Lei Complementar 179/2021, tem autonomia: presidente e diretores com mandatos fixos de 4 anos, não coincidentes com o do Presidente da República. Sua missão inclui a estabilidade do poder de compra da moeda e um sistema financeiro sólido e eficiente."
+        },
+        {
+          "id": "u16l1c4",
+          "title": "Instituições bancárias e não bancárias",
+          "summary": "Instituições bancárias (monetárias) recebem depósitos à vista e, ao emprestar, criam moeda: bancos comerciais, bancos múltiplos com carteira comercial, caixas econômicas e cooperativas de crédito. As não bancárias não captam depósito à vista: bancos de investimento, financeiras (sociedades de crédito, financiamento e investimento), sociedades de crédito imobiliário e de arrendamento mercantil, corretoras e distribuidoras."
+        },
+        {
+          "id": "u16l1c5",
+          "title": "Banco múltiplo",
+          "summary": "Banco múltiplo é uma única instituição com pelo menos duas carteiras: comercial, de investimento, de crédito imobiliário, de crédito, financiamento e investimento, ou de arrendamento mercantil. Uma delas tem de ser comercial ou de investimento. Com carteira comercial, pode captar depósitos à vista."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l1q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "normativos, supervisores e operadores",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o CMN cria a regra, o Banco Central fiscaliza se ela é cumprida e o banco que capta e empresta é operador. Um banco abre uma agência e passa a captar depósitos. No SFN, ele é:",
+          "options": [
+            "operador",
+            "órgão normativo",
+            "órgão supervisor"
+          ],
+          "answer": 0,
+          "explanation": "Quem faz as operações com o público (captar, emprestar, intermediar) é operador. Normativos fazem regras e supervisores fiscalizam.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l1q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "normativos, supervisores e operadores",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Os supervisores ficam sob um normativo: Banco Central e CVM sob o CMN, Susep sob o CNSP. Por essa estrutura, a Susep responde ao CNSP, e não ao CMN.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A Susep fiscaliza seguros, capitalização e previdência aberta seguindo as regras do Conselho Nacional de Seguros Privados (CNSP).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l1q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "normativos, supervisores e operadores",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada entidade ao seu papel no SFN:",
+          "pairs": [
+            {
+              "left": "CMN",
+              "right": "Normativo da moeda e do crédito"
+            },
+            {
+              "left": "CVM",
+              "right": "Supervisora do mercado de valores mobiliários"
+            },
+            {
+              "left": "Susep",
+              "right": "Supervisora de seguros e capitalização"
+            },
+            {
+              "left": "Cooperativa de crédito",
+              "right": "Operadora"
+            }
+          ],
+          "explanation": "CMN dita as regras; CVM e Susep fiscalizam cada um o seu mercado; a cooperativa opera, atendendo os cooperados.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l1q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "normativos, supervisores e operadores",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma seguradora lança um plano de previdência aberta, vendido a qualquer pessoa. Quem fiscaliza essa seguradora?",
+          "options": [
+            "Previc",
+            "Susep",
+            "CVM"
+          ],
+          "answer": 1,
+          "explanation": "Previdência aberta (seguradoras e entidades abertas) é fiscalizada pela Susep. A Previc cuida da previdência fechada, os fundos de pensão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l1q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "normativos, supervisores e operadores",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Na estrutura do Sistema Financeiro Nacional, são órgãos normativos:",
+          "options": [
+            "CMN, CNSP e CNPC.",
+            "CMN, Banco Central e CVM.",
+            "Banco Central, CVM e Susep.",
+            "CNSP, Susep e Previc.",
+            "CMN, Copom e Febraban."
+          ],
+          "answer": 0,
+          "explanation": "Os três conselhos (CMN, CNSP e CNPC) são os normativos. Banco Central, CVM, Susep e Previc são supervisores; o Copom é comitê do Banco Central e a Febraban é associação dos bancos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l1q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CMN",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o CMN decide a regra (a meta de inflação) e o Banco Central a executa. Quem define a meta de inflação que o Banco Central deve perseguir?",
+          "options": [
+            "o Copom",
+            "a Febraban",
+            "o CMN"
+          ],
+          "answer": 2,
+          "explanation": "A meta de inflação é fixada pelo CMN. O Copom define a Selic para cumprir essa meta; a Febraban é associação de bancos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l1q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CMN",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "O CMN tem três membros: o Ministro da Fazenda (presidente), o Ministro do Planejamento e Orçamento e o Presidente do Banco Central. Logo, o CMN é presidido pelo Presidente do Banco Central.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Quem preside o CMN é o Ministro da Fazenda; o Presidente do Banco Central é um dos membros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l1q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CMN",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O governo quer mudar uma regra geral sobre crédito que vale para todas as instituições financeiras. Normas desse tipo costumam sair como:",
+          "options": [
+            "resolução do CMN",
+            "circular da Febraban",
+            "ata do Copom"
+          ],
+          "answer": 0,
+          "explanation": "O CMN edita resoluções com as regras gerais do sistema. Atas do Copom tratam da Selic; a Febraban não edita normas oficiais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l1q09",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CMN",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada órgão ao que ele faz:",
+          "pairs": [
+            {
+              "left": "CMN",
+              "right": "Fixa diretrizes e a meta de inflação"
+            },
+            {
+              "left": "Copom",
+              "right": "Define a meta da Selic"
+            },
+            {
+              "left": "Banco Central",
+              "right": "Executa a política monetária"
+            },
+            {
+              "left": "CVM",
+              "right": "Fiscaliza o mercado de valores mobiliários"
+            }
+          ],
+          "explanation": "Cada órgão tem seu papel: o CMN decide as diretrizes, o Copom fixa a Selic, o Banco Central executa e a CVM cuida do mercado de capitais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l1q10",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CMN",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "O Conselho Monetário Nacional (CMN) definiu a meta de inflação dos próximos anos. Sobre esse órgão, é correto afirmar que",
+          "options": [
+            "executa diretamente as operações de mercado aberto para manter a taxa Selic na meta.",
+            "é presidido pelo Ministro da Fazenda e inclui o Presidente do Banco Central.",
+            "é formado pelos diretores do Banco Central e se reúne a cada quarenta e cinco dias.",
+            "fiscaliza as seguradoras e as entidades de previdência complementar aberta do país.",
+            "tem como membros os presidentes dos bancos públicos federais e da Febraban."
+          ],
+          "answer": 1,
+          "explanation": "O CMN tem três membros (Fazenda, Planejamento e Banco Central). Quem opera o mercado aberto é a mesa do Banco Central; o comitê de diretores que se reúne a cada 45 dias é o Copom; seguros e previdência aberta ficam com a Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c2",
+          "level": "prova"
+        },
+        {
+          "id": "u16l1q11",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "funções e autonomia",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quando falta dinheiro a um banco no fim do dia, ele pode recorrer ao Banco Central, que funciona como banco dos bancos. Qual destas funções também é do Banco Central?",
+          "options": [
+            "fixar a meta de inflação",
+            "emitir o papel-moeda",
+            "fiscalizar as seguradoras"
+          ],
+          "answer": 1,
+          "explanation": "O Banco Central emite a moeda. A meta de inflação é do CMN e as seguradoras são fiscalizadas pela Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l1q12",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "funções e autonomia",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A Lei Complementar 179/2021 deu mandatos fixos de 4 anos ao presidente e aos diretores do Banco Central. Por isso, um novo Presidente da República não troca a diretoria do BC logo que assume.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Os mandatos não coincidem com o do Presidente da República: essa é a base da autonomia do Banco Central.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l1q13",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "funções e autonomia",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um banco descumpre uma regra prudencial e sofre processo administrativo. Qual órgão fiscaliza e pune o banco?",
+          "options": [
+            "o CMN",
+            "o Copom",
+            "o Banco Central"
+          ],
+          "answer": 2,
+          "explanation": "Fiscalizar e punir as instituições financeiras é papel do Banco Central. O CMN faz as regras e o Copom fixa a Selic.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l1q14",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "funções e autonomia",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ao explicar o papel do Banco Central a um cliente, o técnico deve dizer que a missão do BC é garantir:",
+          "options": [
+            "a estabilidade do poder de compra da moeda",
+            "o lucro dos bancos públicos",
+            "os juros de cada contrato"
+          ],
+          "answer": 0,
+          "explanation": "A missão do Banco Central é a estabilidade da moeda e um sistema financeiro sólido; ele não define o juro de cada contrato nem garante lucro de bancos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l1q15",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "funções e autonomia",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Sobre o Banco Central do Brasil, assinale a afirmativa correta.",
+          "options": [
+            "Define a meta de inflação, que depois é só homologada pelo CMN.",
+            "Supervisiona as seguradoras, junto com a Susep.",
+            "Executa a política monetária e fiscaliza os bancos.",
+            "Regula as ofertas públicas de ações, no lugar da CVM.",
+            "Tem a diretoria trocada a cada novo Presidente da República."
+          ],
+          "answer": 2,
+          "explanation": "O BC executa a política monetária e supervisiona as instituições financeiras. A meta de inflação é do CMN, seguros são da Susep, ações são da CVM e, desde a LC 179/2021, os mandatos não coincidem com o presidencial.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c3",
+          "level": "prova"
+        },
+        {
+          "id": "u16l1q16",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de instituição",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o banco comercial recebe depósitos à vista (conta corrente), por isso é instituição bancária; a financeira capta só a prazo e não é. Uma cooperativa de crédito que mantém contas à vista dos cooperados é:",
+          "options": [
+            "instituição não bancária",
+            "instituição bancária",
+            "órgão supervisor"
+          ],
+          "answer": 1,
+          "explanation": "Cooperativas de crédito captam depósitos à vista dos cooperados: entram no grupo das instituições bancárias.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l1q17",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de instituição",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A sociedade de arrendamento mercantil (leasing) é instituição não bancária. Portanto, ela capta depósitos à vista, como um banco comercial.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Instituição não bancária justamente não capta depósitos à vista. O leasing se financia de outras formas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l1q18",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de instituição",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada instituição à sua característica:",
+          "pairs": [
+            {
+              "left": "Caixa econômica",
+              "right": "Bancária, capta depósitos à vista"
+            },
+            {
+              "left": "Banco de investimento",
+              "right": "Financia capital de giro e fixo"
+            },
+            {
+              "left": "Financeira (SCFI)",
+              "right": "Crédito direto ao consumidor"
+            },
+            {
+              "left": "Corretora",
+              "right": "Intermedeia títulos e valores mobiliários"
+            }
+          ],
+          "explanation": "Caixa econômica é bancária; banco de investimento, financeira e corretora são não bancárias, cada uma com seu foco de negócio.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l1q19",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de instituição",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma empresa precisa de financiamento de longo prazo para máquinas e quer contratar com instituição que não capta depósito à vista. Qual destas atende ao critério?",
+          "options": [
+            "uma caixa econômica",
+            "um banco comercial",
+            "um banco de investimento"
+          ],
+          "answer": 2,
+          "explanation": "Banco de investimento financia empresas a médio e longo prazo e não capta depósitos à vista. Caixa econômica e banco comercial captam.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l1q20",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de instituição",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Entre as instituições a seguir, é instituição não bancária, isto é, não capta depósitos à vista:",
+          "options": [
+            "o banco comercial.",
+            "a caixa econômica.",
+            "a cooperativa de crédito.",
+            "a sociedade de crédito imobiliário.",
+            "o banco múltiplo com carteira comercial."
+          ],
+          "answer": 3,
+          "explanation": "A sociedade de crédito imobiliário financia imóveis com recursos a prazo e não recebe depósitos à vista. As demais captam depósitos à vista e são bancárias.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l1q21",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carteiras",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um banco com carteiras comercial e de crédito imobiliário é múltiplo: tem duas carteiras e uma é comercial. Qual combinação também forma um banco múltiplo?",
+          "options": [
+            "investimento e arrendamento mercantil",
+            "crédito imobiliário e arrendamento",
+            "só a carteira comercial"
+          ],
+          "answer": 0,
+          "explanation": "Investimento + arrendamento são duas carteiras, e uma delas (investimento) é das obrigatórias. Só uma carteira não basta, e imobiliário + arrendamento não têm comercial nem investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l1q22",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carteiras",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para ser banco múltiplo, basta ter duas carteiras quaisquer, como crédito imobiliário e arrendamento mercantil.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Além de ter duas carteiras, uma delas precisa ser comercial ou de investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l1q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carteiras",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um grupo quer criar um banco múltiplo com as carteiras de crédito imobiliário e de crédito, financiamento e investimento. O pedido:",
+          "options": [
+            "atende, porque são duas carteiras",
+            "não atende, falta carteira comercial ou de investimento",
+            "atende, se tiver agências"
+          ],
+          "answer": 1,
+          "explanation": "As duas carteiras escolhidas não incluem a comercial nem a de investimento, exigidas para o banco múltiplo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l1q24",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carteiras",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um banco múltiplo tem as carteiras de investimento e de financiamento, mas não a comercial. Ele pode oferecer conta corrente (depósito à vista)?",
+          "options": [
+            "sim, todo banco múltiplo pode",
+            "sim, se tiver três carteiras",
+            "não, isso exige carteira comercial"
+          ],
+          "answer": 2,
+          "explanation": "Captar depósitos à vista é próprio da carteira comercial; sem ela, o banco múltiplo não oferece conta corrente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l1q25",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carteiras",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O grupo financeiro Delta quer reunir suas operações num banco múltiplo. Entre as combinações de carteiras a seguir, a única que atende às regras é",
+          "options": [
+            "crédito imobiliário e arrendamento mercantil.",
+            "crédito, financiamento e investimento, apenas.",
+            "arrendamento mercantil e corretora de câmbio.",
+            "crédito imobiliário, apenas.",
+            "comercial e crédito imobiliário."
+          ],
+          "answer": 4,
+          "explanation": "São necessárias pelo menos duas carteiras, uma delas comercial ou de investimento. Só a combinação comercial + crédito imobiliário cumpre as duas condições (corretora de câmbio nem é carteira de banco múltiplo).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l1c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u16l2",
+      "order": 2,
+      "title": "Produtos e serviços bancários",
+      "concepts": [
+        {
+          "id": "u16l2c1",
+          "title": "Contas e poupança",
+          "summary": "Na conta corrente (depósito à vista) o dinheiro é movimentado livremente. A poupança rende a TR mais 0,5% ao mês quando a meta da Selic é maior que 8,5% ao ano, ou a TR mais 70% da meta da Selic quando ela está em 8,5% ou menos. Para pessoa física é isenta de imposto de renda, e o rendimento é creditado no aniversário mensal do depósito."
+        },
+        {
+          "id": "u16l2c2",
+          "title": "Cartões e meios de pagamento",
+          "summary": "No cartão de crédito o cliente compra até o limite e paga na fatura; pagar menos que o total leva o saldo ao crédito rotativo, que só pode ser usado até a fatura seguinte; depois, o banco deve oferecer um parcelamento com juros menores. No cartão de débito o valor sai da conta na hora. O pré-pago usa saldo carregado antes."
+        },
+        {
+          "id": "u16l2c3",
+          "title": "Crédito e CET",
+          "summary": "Linhas comuns: crédito pessoal, consignado (parcela descontada na folha ou no benefício, por isso juros menores), CDC (financia a compra de um bem) e cheque especial (limite automático na conta, juros altos). Antes de contratar, o banco deve informar o Custo Efetivo Total (CET), que soma juros, tarifas, tributos e seguros. É o CET que permite comparar ofertas."
+        },
+        {
+          "id": "u16l2c4",
+          "title": "Investimentos bancários",
+          "summary": "CDB e RDB são depósitos a prazo emitidos por bancos; o CDB pode ser negociado com outro investidor, o RDB não. LCI e LCA têm lastro em crédito imobiliário e do agronegócio e são isentas de IR para pessoa física. Letras de câmbio são emitidas por financeiras. CDB e letras de câmbio pagam IR pela tabela regressiva: 22,5% até 180 dias, 20% até 360, 17,5% até 720 e 15% acima disso."
+        },
+        {
+          "id": "u16l2c5",
+          "title": "Fundo Garantidor de Créditos",
+          "summary": "O FGC é uma entidade privada, mantida pelas instituições associadas, que devolve ao cliente depósitos e alguns títulos quando a instituição sofre intervenção, liquidação ou falência. Cobre até R$ 250 mil por CPF ou CNPJ em cada instituição ou conglomerado, com teto de R$ 1 milhão a cada 4 anos. Garante conta corrente, poupança, CDB, RDB, LCI, LCA e letras de câmbio; não garante fundos de investimento, ações, títulos públicos nem previdência."
+        },
+        {
+          "id": "u16l2c6",
+          "title": "Fiança bancária",
+          "summary": "Na fiança bancária o banco garante, por uma carta de fiança, que a empresa cliente vai cumprir uma obrigação com terceiros (um fornecedor, um contrato público, um aluguel). Se a empresa não cumprir, o banco paga e depois cobra dela. Pelo serviço, o banco cobra uma comissão da empresa afiançada."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l2q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conta corrente e poupança",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: com a meta da Selic em 10% ao ano (acima de 8,5%), a poupança rende TR + 0,5% ao mês. Se a meta da Selic for 7% ao ano, o adicional da poupança passa a ser:",
+          "options": [
+            "70% da meta da Selic",
+            "0,5% ao mês, sempre",
+            "100% do CDI"
+          ],
+          "answer": 0,
+          "explanation": "Com a meta em até 8,5% ao ano, o adicional é 70% da meta da Selic: 4,9% ao ano, além da TR.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conta corrente e poupança",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A poupança de pessoa física paga imposto de renda pela tabela regressiva, como o CDB.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O rendimento da poupança é isento de IR para pessoa física. O CDB é que segue a tabela regressiva.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q03",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conta corrente e poupança",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente depositou na poupança no dia 10. Quando o rendimento desse depósito é creditado?",
+          "options": [
+            "no último dia útil do mês",
+            "no dia 10 do mês seguinte",
+            "todos os dias, como no CDB"
+          ],
+          "answer": 1,
+          "explanation": "A poupança rende uma vez por mês, na data de aniversário do depósito.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conta corrente e poupança",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com a meta da Selic em 12% ao ano, quanto a poupança rende além da TR?",
+          "options": [
+            "70% de 12% ao ano",
+            "12% ao ano",
+            "0,5% ao mês"
+          ],
+          "answer": 2,
+          "explanation": "Meta acima de 8,5%: vale a regra antiga, TR + 0,5% ao mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l2q05",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "cartões e rotativo",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a fatura é de R$ 1.000. Pagando R$ 1.000 não há juros; pagando só R$ 300, os R$ 700 restantes entram no crédito rotativo. Um cliente com fatura de R$ 2.000 paga R$ 2.000 na data. Ele entra no rotativo?",
+          "options": [
+            "não, ele pagou o total",
+            "sim, sempre que usa o cartão",
+            "sim, se parcelou alguma compra"
+          ],
+          "answer": 0,
+          "explanation": "Só entra no rotativo o saldo da fatura que não foi pago. Quem paga o total em dia não paga juros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q06",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "cartões e rotativo",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No cartão de débito, o valor da compra sai da conta corrente do cliente no momento da compra.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O débito usa o saldo da conta na hora; quem paga depois, na fatura, é o crédito.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q07",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "cartões e rotativo",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada forma de pagamento à sua característica:",
+          "pairs": [
+            {
+              "left": "Cartão de crédito",
+              "right": "Paga depois, na fatura"
+            },
+            {
+              "left": "Cartão de débito",
+              "right": "Sai da conta na hora"
+            },
+            {
+              "left": "Cartão pré-pago",
+              "right": "Usa saldo carregado antes"
+            },
+            {
+              "left": "Crédito rotativo",
+              "right": "Saldo da fatura não pago"
+            }
+          ],
+          "explanation": "Crédito é pagamento posterior; débito é imediato; o pré-pago depende de recarga; o rotativo financia o que ficou da fatura.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "cartões e rotativo",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente pagou só o mínimo da fatura de março. Em abril, o saldo que estava no rotativo e continua sem pagamento:",
+          "options": [
+            "fica no rotativo sem prazo",
+            "deve ir para um parcelamento com juros menores",
+            "é perdoado pelo banco"
+          ],
+          "answer": 1,
+          "explanation": "O rotativo só pode ser usado até o vencimento da fatura seguinte; depois, o banco deve oferecer parcelamento em condições mais vantajosas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l2q09",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "linhas de crédito",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a oferta A tem juros de 2% ao mês e tarifas altas; a B, 2,1% sem tarifas. Para comparar, use o CET, que soma juros e todos os encargos. Qual número o cliente deve comparar entre as propostas?",
+          "options": [
+            "só a taxa de juros",
+            "o valor da primeira parcela",
+            "o CET de cada proposta"
+          ],
+          "answer": 2,
+          "explanation": "O CET inclui juros, tarifas, impostos e seguros; a taxa de juros sozinha pode esconder custos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q10",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "linhas de crédito",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No consignado a parcela é descontada direto da folha de pagamento ou do benefício. Isso reduz o risco do banco e costuma baratear os juros.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Com o desconto em folha, a inadimplência é menor e o banco pode cobrar juros menores que no crédito pessoal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q11",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "linhas de crédito",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada linha de crédito à sua característica:",
+          "pairs": [
+            {
+              "left": "Consignado",
+              "right": "Parcela descontada na folha"
+            },
+            {
+              "left": "CDC",
+              "right": "Financia a compra de um bem"
+            },
+            {
+              "left": "Cheque especial",
+              "right": "Limite automático na conta"
+            },
+            {
+              "left": "Crédito pessoal",
+              "right": "Empréstimo sem destino definido"
+            }
+          ],
+          "explanation": "Cada linha tem uma garantia e um uso; o cheque especial é das mais caras e deve ser usado por pouco tempo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q12",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "linhas de crédito",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente usa o cheque especial há meses para fechar o mês. Qual a orientação mais adequada?",
+          "options": [
+            "trocar a dívida por uma linha mais barata",
+            "manter, pois não tem parcelas",
+            "aumentar o limite do cheque especial"
+          ],
+          "answer": 0,
+          "explanation": "Trocar uma dívida cara (cheque especial) por uma mais barata, como consignado ou crédito pessoal, reduz o custo; aumentar o limite só aumenta a dívida.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l2q13",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CDB, LCI, LCA e IR",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um CDB resgatado com 100 dias paga 22,5% de IR sobre o rendimento; com 800 dias, 15%. Um CDB resgatado com 500 dias paga:",
+          "options": [
+            "22,5%",
+            "17,5%",
+            "15%"
+          ],
+          "answer": 1,
+          "explanation": "500 dias está na faixa de 361 a 720 dias: alíquota de 17,5%.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q14",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CDB, LCI, LCA e IR",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para pessoa física, LCI e LCA são isentas de imposto de renda.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A isenção vale para pessoa física; por isso LCI e LCA costumam pagar taxas nominais menores que o CDB.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q15",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CDB, LCI, LCA e IR",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente quer um título bancário que possa vender para outro investidor antes do vencimento. Entre CDB e RDB:",
+          "options": [
+            "o RDB pode ser negociado",
+            "nenhum dos dois",
+            "o CDB pode ser negociado"
+          ],
+          "answer": 2,
+          "explanation": "O CDB é transferível; o RDB é nominativo e não pode ser negociado com terceiros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q16",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CDB, LCI, LCA e IR",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada aplicação à sua característica:",
+          "pairs": [
+            {
+              "left": "LCA",
+              "right": "Lastro no agronegócio"
+            },
+            {
+              "left": "LCI",
+              "right": "Lastro em crédito imobiliário"
+            },
+            {
+              "left": "RDB",
+              "right": "Não pode ser transferido"
+            },
+            {
+              "left": "Letra de câmbio",
+              "right": "Emitida por financeiras"
+            }
+          ],
+          "explanation": "LCA e LCI se diferenciam pelo lastro; o RDB não circula; a letra de câmbio é o título típico das financeiras.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l2q17",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "CDB, LCI, LCA e IR",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente aplicou R$ 10.000,00 num CDB e resgatou após 400 dias, com rendimento bruto de R$ 1.200,00. O imposto de renda retido foi de",
+          "options": [
+            "R$ 210,00.",
+            "R$ 180,00.",
+            "R$ 240,00.",
+            "R$ 270,00.",
+            "R$ 1.750,00."
+          ],
+          "answer": 0,
+          "explanation": "400 dias cai na faixa de 361 a 720 dias, alíquota de 17,5%, aplicada só sobre o rendimento: 0,175 × 1.200 = R$ 210,00.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l2q18",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "FGC",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quem tem R$ 300 mil em CDB de um banco que quebra recebe do FGC até R$ 250 mil. Um cliente tem R$ 100 mil na poupança e R$ 200 mil em CDB no mesmo banco, que é liquidado. Quanto o FGC garante?",
+          "options": [
+            "R$ 250 mil",
+            "R$ 300 mil",
+            "R$ 100 mil"
+          ],
+          "answer": 0,
+          "explanation": "O limite é de R$ 250 mil por CPF na instituição, somando todos os produtos garantidos que ele tem nela.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q19",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "FGC",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Cotas de fundos de investimento têm garantia do FGC até R$ 250 mil por cotista.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Fundos de investimento não têm cobertura do FGC: o risco das aplicações do fundo é do cotista.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q20",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "FGC",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente quer aplicar R$ 400 mil com garantia do FGC sobre todo o valor. Ela deve:",
+          "options": [
+            "deixar tudo na poupança",
+            "dividir entre instituições de grupos diferentes",
+            "aplicar num fundo de renda fixa"
+          ],
+          "answer": 1,
+          "explanation": "O limite é por instituição ou conglomerado: dividindo entre grupos diferentes, cada parcela fica coberta até R$ 250 mil.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q21",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "FGC",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Qual destas aplicações não tem cobertura do FGC?",
+          "options": [
+            "LCA",
+            "RDB",
+            "título do Tesouro Direto"
+          ],
+          "answer": 2,
+          "explanation": "Títulos públicos são garantidos pelo Tesouro Nacional, não pelo FGC. LCA e RDB são cobertos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l2q22",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carta de fiança",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a empresa X compra matéria-prima a prazo e o fornecedor pede garantia; o banco emite a carta de fiança. Se X não pagar, quem paga o fornecedor?",
+          "options": [
+            "o banco, que depois cobra de X",
+            "ninguém, a fiança é só para licitação",
+            "o próprio fornecedor"
+          ],
+          "answer": 0,
+          "explanation": "O banco é o fiador: honra a obrigação perante o fornecedor e depois cobra o valor da empresa afiançada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c6",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l2q23",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carta de fiança",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na fiança bancária, o banco cobra uma comissão da empresa afiançada pela garantia que presta.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A comissão remunera o risco que o banco assume ao garantir a obrigação do cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c6",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l2q24",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carta de fiança",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Numa licitação, o órgão público exige garantia de que a empresa vencedora vai entregar a obra. Que produto bancário atende a essa exigência?",
+          "options": [
+            "título de capitalização",
+            "carta de fiança bancária",
+            "CDB"
+          ],
+          "answer": 1,
+          "explanation": "A carta de fiança é usada como garantia em licitações e contratos; CDB e capitalização não garantem obrigações de terceiros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c6",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l2q25",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "carta de fiança",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Na fiança concedida à empresa Alfa num contrato com a empresa Beta, o banco assume o risco de:",
+          "options": [
+            "Beta não pagar o banco",
+            "o banco quebrar",
+            "Alfa não cumprir o contrato com Beta"
+          ],
+          "answer": 2,
+          "explanation": "O banco garante a obrigação da Alfa (afiançada) perante a Beta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l2c6",
+          "level": "praticar",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "u16l3",
+      "order": 3,
+      "title": "Mercado financeiro e política monetária",
+      "concepts": [
+        {
+          "id": "u16l3c1",
+          "title": "Copom e taxa Selic",
+          "summary": "O Comitê de Política Monetária (Copom), formado pelo presidente e pelos diretores do Banco Central, se reúne a cada 45 dias e define a meta da taxa Selic, o principal instrumento para levar a inflação à meta fixada pelo CMN (medida pelo IPCA). Juros mais altos encarecem o crédito, reduzem o consumo e seguram os preços; juros mais baixos estimulam a economia."
+        },
+        {
+          "id": "u16l3c2",
+          "title": "Operações de mercado aberto",
+          "summary": "Para manter a Selic diária perto da meta, a mesa de operações do Banco Central compra e vende títulos públicos (operações de mercado aberto). Comprar títulos põe dinheiro no mercado: a liquidez aumenta e o juro diário cai. Vender títulos tira dinheiro do mercado: a liquidez diminui e o juro sobe."
+        },
+        {
+          "id": "u16l3c3",
+          "title": "Compulsório e redesconto",
+          "summary": "Além do mercado aberto, o Banco Central usa o depósito compulsório (parte dos depósitos que os bancos são obrigados a recolher ao BC: quanto maior, menos dinheiro para emprestar) e o redesconto (empréstimo do BC aos bancos para cobrir falta de liquidez). Compulsório maior contrai o crédito; menor, expande."
+        },
+        {
+          "id": "u16l3c4",
+          "title": "Mercado de capitais e CVM",
+          "summary": "No mercado de capitais as empresas captam recursos de longo prazo emitindo valores mobiliários: ações (o investidor vira sócio) e debêntures (o investidor empresta à empresa). No mercado primário o título é emitido; no secundário, negociado entre investidores na bolsa. Quem regula e fiscaliza é a CVM: bolsas, fundos de investimento, auditores independentes e agências de rating. Seguradoras e sociedades de capitalização ficam com a Susep."
+        },
+        {
+          "id": "u16l3c5",
+          "title": "Mercado de câmbio",
+          "summary": "O mercado de câmbio troca reais por moedas estrangeiras. É regulado pelo CMN e fiscalizado pelo Banco Central; as taxas são livres, combinadas entre as partes, e pessoas e empresas podem operar sem limite de valor, por instituições autorizadas. Para segurar a alta do dólar, o BC vende dólares ou faz swap cambial tradicional (ele paga a variação do dólar); para segurar a queda, compra dólares ou faz swap reverso (ele recebe a variação)."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l3q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Copom e Selic",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: com a inflação acima da meta, o Copom sobe a Selic para frear o consumo. Se a inflação estiver bem abaixo da meta e a economia fraca, o mais provável é que o Copom:",
+          "options": [
+            "reduza a meta da Selic",
+            "aumente a meta da Selic",
+            "mude a meta de inflação"
+          ],
+          "answer": 0,
+          "explanation": "Juros menores barateiam o crédito e estimulam a economia. A meta de inflação não é do Copom, é do CMN.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l3q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Copom e Selic",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "O Copom é formado pelo presidente e pelos diretores do Banco Central e se reúne, em regra, a cada 45 dias.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "São oito reuniões por ano, cerca de uma a cada 45 dias, com o presidente e os diretores do BC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l3q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Copom e Selic",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada peça da política monetária ao seu papel:",
+          "pairs": [
+            {
+              "left": "CMN",
+              "right": "Fixa a meta de inflação"
+            },
+            {
+              "left": "Copom",
+              "right": "Fixa a meta da Selic"
+            },
+            {
+              "left": "Mesa de operações do BC",
+              "right": "Mantém a Selic diária perto da meta"
+            },
+            {
+              "left": "IPCA",
+              "right": "Índice oficial da meta de inflação"
+            }
+          ],
+          "explanation": "O CMN dá o alvo, o Copom escolhe o juro, a mesa do BC executa e o IPCA mede a inflação oficial.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l3q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Copom e Selic",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Depois de uma alta da Selic, o que tende a acontecer com o crédito ao consumidor?",
+          "options": [
+            "fica mais barato",
+            "fica mais caro e a procura cai",
+            "não muda, a Selic só vale entre bancos"
+          ],
+          "answer": 1,
+          "explanation": "A Selic é a referência básica de juros: quando sobe, os bancos encarecem o crédito e a demanda diminui.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l3q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Copom e Selic",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "A respeito da política monetária no Brasil, NÃO é correto afirmar que",
+          "options": [
+            "o CMN fixa a meta de inflação, medida pelo IPCA.",
+            "o Copom fixa a meta de inflação e o CMN, a taxa Selic.",
+            "o Copom é formado pela diretoria do Banco Central.",
+            "a meta da taxa Selic é definida pelo Copom.",
+            "juros mais altos tendem a frear o consumo."
+          ],
+          "answer": 1,
+          "explanation": "Os papéis estão trocados: o CMN fixa a meta de inflação e o Copom, a meta da Selic. As outras frases estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l3q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "mercado aberto",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o BC vende títulos, os bancos pagam com suas reservas e sobra menos dinheiro no mercado: o juro sobe. Se o BC comprar títulos dos bancos, o efeito é:",
+          "options": [
+            "menos dinheiro e juro em alta",
+            "nenhum efeito sobre o juro",
+            "mais dinheiro no mercado e juro em queda"
+          ],
+          "answer": 2,
+          "explanation": "Comprando títulos, o BC paga os bancos com reservas: a liquidez aumenta e o juro diário cai.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l3q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "mercado aberto",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Quando a Selic diária fica abaixo da meta, a mesa do Banco Central deve vender títulos para enxugar a liquidez.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Juro abaixo da meta indica sobra de dinheiro; vendendo títulos, o BC recolhe esse excesso e o juro sobe à meta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l3q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "mercado aberto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A meta da Selic é 10% ao ano e a taxa diária está em 9,8%. Qual operação a mesa do BC deve fazer?",
+          "options": [
+            "vender títulos públicos",
+            "comprar títulos públicos",
+            "emitir papel-moeda"
+          ],
+          "answer": 0,
+          "explanation": "Taxa abaixo da meta: há dinheiro sobrando. Vender títulos retira liquidez e faz a taxa subir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l3q09",
+          "type": "order_code",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "mercado aberto",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ordene o que acontece quando o Banco Central vende títulos no mercado aberto:",
+          "lines": [
+            "O Banco Central vende títulos públicos aos bancos",
+            "Os bancos pagam com suas reservas",
+            "Sobra menos dinheiro para emprestar entre bancos",
+            "A taxa de juros diária sobe"
+          ],
+          "explanation": "Venda de títulos → saída de reservas → menos liquidez → juro mais alto. Na compra, o caminho é o inverso.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l3q10",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "mercado aberto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Num dia em que sobram reservas no sistema e a Selic diária cai abaixo da meta, a mesa de operações do Banco Central tende a",
+          "options": [
+            "comprar títulos públicos, injetando ainda mais liquidez no sistema.",
+            "reduzir a meta da Selic na mesma hora, sem esperar o Copom.",
+            "vender títulos públicos para retirar liquidez do sistema.",
+            "aumentar o recolhimento compulsório sobre os depósitos de poupança.",
+            "emitir papel-moeda e entregá-lo aos bancos com falta de reservas."
+          ],
+          "answer": 2,
+          "explanation": "A mesa não muda a meta (isso é do Copom): ela vende títulos para enxugar o excesso de reservas e levar a taxa diária de volta à meta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c2",
+          "level": "prova"
+        },
+        {
+          "id": "u16l3q11",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos de política monetária",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: se o compulsório sobe, os bancos recolhem mais ao BC e têm menos para emprestar. Se o Banco Central reduzir o compulsório, o crédito tende a:",
+          "options": [
+            "diminuir",
+            "aumentar",
+            "não mudar"
+          ],
+          "answer": 1,
+          "explanation": "Com compulsório menor, sobra mais dinheiro nos bancos para conceder crédito.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l3q12",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos de política monetária",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No redesconto, o Banco Central empresta recursos a uma instituição financeira que precisa de liquidez.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O redesconto é o empréstimo de assistência do BC aos bancos, o papel de banco dos bancos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l3q13",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos de política monetária",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada instrumento ao seu efeito:",
+          "pairs": [
+            {
+              "left": "Compulsório maior",
+              "right": "Menos dinheiro para emprestar"
+            },
+            {
+              "left": "Compra de títulos pelo BC",
+              "right": "Mais liquidez"
+            },
+            {
+              "left": "Venda de títulos pelo BC",
+              "right": "Menos liquidez"
+            },
+            {
+              "left": "Redesconto",
+              "right": "Socorro de liquidez a um banco"
+            }
+          ],
+          "explanation": "Compulsório e mercado aberto regulam a quantidade de dinheiro; o redesconto atende um banco com falta de caixa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l3q14",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos de política monetária",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para conter uma alta forte do crédito sem mexer na Selic, o Banco Central pode:",
+          "options": [
+            "reduzir o compulsório",
+            "comprar títulos públicos",
+            "elevar o compulsório"
+          ],
+          "answer": 2,
+          "explanation": "Compulsório maior prende recursos no BC e reduz o crédito. Reduzir o compulsório e comprar títulos fariam o contrário.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l3q15",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos de política monetária",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ao resumir os instrumentos de política monetária para um cliente, um analista escreveu cinco frases. Está correta a frase:",
+          "options": [
+            "O redesconto é o empréstimo que o cliente faz diretamente ao Banco Central.",
+            "A compra de títulos pelo Banco Central retira dinheiro da economia.",
+            "O compulsório é recolhido pelos bancos ao Tesouro Nacional.",
+            "O aumento do compulsório reduz os recursos que os bancos podem emprestar.",
+            "A venda de títulos pelo Banco Central reduz a taxa de juros."
+          ],
+          "answer": 3,
+          "explanation": "O compulsório é recolhido ao Banco Central e, quanto maior, menos sobra para emprestar. O redesconto é para bancos; comprar títulos injeta dinheiro; vender títulos faz o juro subir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c3",
+          "level": "prova"
+        },
+        {
+          "id": "u16l3q16",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "ações, debêntures e CVM",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quem compra ação vira sócio e pode receber dividendos; quem compra debênture empresta à empresa e recebe juros. Um investidor quer emprestar a uma empresa e receber juros. Ele deve comprar:",
+          "options": [
+            "debêntures",
+            "ações",
+            "cotas de consórcio"
+          ],
+          "answer": 0,
+          "explanation": "A debênture é título de dívida da empresa; a ação é participação no capital.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l3q17",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "ações, debêntures e CVM",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na abertura de capital (IPO), as ações são vendidas no mercado primário e o dinheiro vai para a empresa.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "No primário a empresa emite e recebe os recursos; depois, as ações circulam no secundário, entre investidores.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l3q18",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "ações, debêntures e CVM",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada termo à sua definição:",
+          "pairs": [
+            {
+              "left": "Ação",
+              "right": "Participação no capital"
+            },
+            {
+              "left": "Debênture",
+              "right": "Dívida da empresa com o investidor"
+            },
+            {
+              "left": "Mercado primário",
+              "right": "Emissão de novos títulos"
+            },
+            {
+              "left": "Mercado secundário",
+              "right": "Negociação entre investidores"
+            }
+          ],
+          "explanation": "Ações e debêntures são os valores mobiliários típicos; primário é a emissão, secundário é a revenda.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l3q19",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "ações, debêntures e CVM",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma agência de classificação de risco (rating) passa a avaliar debêntures. Quem a regula?",
+          "options": [
+            "a Susep",
+            "a CVM",
+            "o Copom"
+          ],
+          "answer": 1,
+          "explanation": "Agências de rating, bolsas, fundos e auditores independentes atuam no mercado de valores mobiliários, sob a CVM.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l3q20",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "ações, debêntures e CVM",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "No mercado de capitais, a negociação, na bolsa, de ações já emitidas entre investidores ocorre no mercado",
+          "options": [
+            "primário.",
+            "monetário.",
+            "de câmbio.",
+            "interbancário.",
+            "secundário."
+          ],
+          "answer": 4,
+          "explanation": "Ações já emitidas que trocam de mãos entre investidores estão no mercado secundário; o primário é a emissão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l3q21",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "câmbio e swaps",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: com o dólar subindo rápido, o BC vende dólares e a cotação desacelera. Se o dólar estiver caindo demais e o BC quiser segurar a queda, ele deve:",
+          "options": [
+            "vender dólares",
+            "baixar o compulsório",
+            "comprar dólares"
+          ],
+          "answer": 2,
+          "explanation": "Comprando dólares, o BC aumenta a procura pela moeda estrangeira e segura a queda da cotação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l3q22",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "câmbio e swaps",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No Brasil, o Banco Central fixa a taxa de câmbio de cada operação feita pelos bancos.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "As taxas de câmbio são livres, combinadas entre as partes. O BC divulga a PTAX, uma média de referência, mas não fixa o preço das operações.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l3q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "câmbio e swaps",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma importadora teme a alta do dólar. O Banco Central anuncia leilões de swap cambial tradicional. Nesses contratos, o BC:",
+          "options": [
+            "paga a variação do dólar e recebe juros",
+            "recebe a variação do dólar e paga juros",
+            "vende dólares em espécie"
+          ],
+          "answer": 0,
+          "explanation": "No swap tradicional o BC assume a posição vendida em dólar: paga a variação cambial e recebe juros. É o efeito de uma venda de dólar no futuro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l3q24",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "câmbio e swaps",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada atuação do Banco Central ao seu efeito no dólar:",
+          "pairs": [
+            {
+              "left": "Venda de dólar à vista",
+              "right": "Segura a alta"
+            },
+            {
+              "left": "Compra de dólar à vista",
+              "right": "Segura a queda"
+            },
+            {
+              "left": "Swap tradicional",
+              "right": "BC paga a variação cambial"
+            },
+            {
+              "left": "Swap reverso",
+              "right": "BC recebe a variação cambial"
+            }
+          ],
+          "explanation": "Vender dólar e swap tradicional seguram a alta; comprar dólar e swap reverso seguram a queda.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l3c5",
+          "level": "praticar",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "u16l4",
+      "order": 4,
+      "title": "Pix, Open Finance e inovação",
+      "concepts": [
+        {
+          "id": "u16l4c1",
+          "title": "Pix",
+          "summary": "O Pix é o pagamento instantâneo criado pelo Banco Central: a transferência cai em segundos, 24 horas por dia, todos os dias, inclusive fins de semana e feriados. A chave (CPF, CNPJ, e-mail, celular ou aleatória) é opcional: dá para pagar com agência e conta ou por QR Code. Para pessoa física, enviar e receber é gratuito nos usos comuns; empresas podem ser tarifadas, inclusive ao receber."
+        },
+        {
+          "id": "u16l4c2",
+          "title": "Open Finance",
+          "summary": "No Open Finance o cliente autoriza o compartilhamento dos seus dados (cadastro, contas, crédito, investimentos) entre instituições autorizadas pelo Banco Central, para conseguir ofertas melhores. O consentimento é do cliente, tem prazo e finalidade e pode ser cancelado a qualquer momento. O Open Finance também permite iniciar um pagamento a partir de outro aplicativo. A participação é obrigatória para as maiores instituições e voluntária para as demais."
+        },
+        {
+          "id": "u16l4c3",
+          "title": "Fintechs de crédito: SCD e SEP",
+          "summary": "As fintechs de crédito são autorizadas e reguladas pelo Banco Central. A Sociedade de Crédito Direto (SCD) empresta com capital próprio, por plataforma eletrônica, e não capta depósitos do público. A Sociedade de Empréstimo entre Pessoas (SEP) liga quem empresta a quem toma (peer-to-peer): pode receber recursos do público, mas só vinculados a cada operação de empréstimo."
+        },
+        {
+          "id": "u16l4c4",
+          "title": "Instituições de pagamento",
+          "summary": "Instituição de pagamento (IP) presta serviços de pagamento: conta de pagamento, cartão pré-pago, emissão de cartão, maquininha (credenciadora), transferências. A IP não é instituição financeira: não pode emprestar nem usar o saldo dos clientes, que fica separado do patrimônio dela, e esse saldo não tem garantia do FGC. Conforme o porte, precisa de autorização do Banco Central."
+        },
+        {
+          "id": "u16l4c5",
+          "title": "Criptoativos",
+          "summary": "Criptoativos (como o bitcoin) não são emitidos nem garantidos por um banco central e não têm lastro: o valor depende da confiança de quem os negocia e oscila muito. Pela Lei 14.478/2022, as prestadoras de serviços de ativos virtuais (corretoras de cripto) dependem de autorização, e o Banco Central é o regulador. Isso não torna o criptoativo moeda oficial nem garante o investimento."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l4q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Pix",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um Pix enviado num domingo de Páscoa cai na hora, como numa segunda-feira. Uma cliente faz um Pix às 23h de um feriado. O dinheiro chega:",
+          "options": [
+            "no próximo dia útil",
+            "em segundos",
+            "em até dois dias úteis"
+          ],
+          "answer": 1,
+          "explanation": "O Pix funciona 24 horas por dia, todos os dias, sem esperar dia útil.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l4q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Pix",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para receber um Pix, é obrigatório ter uma chave cadastrada.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "A chave só facilita; também se paga e recebe Pix informando agência e conta, ou por QR Code.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l4q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Pix",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada forma de identificar o recebedor no Pix:",
+          "pairs": [
+            {
+              "left": "Chave CPF",
+              "right": "Dado da pessoa física"
+            },
+            {
+              "left": "Chave CNPJ",
+              "right": "Dado da empresa"
+            },
+            {
+              "left": "Chave aleatória",
+              "right": "Código gerado sem dado pessoal"
+            },
+            {
+              "left": "Agência e conta",
+              "right": "Pagamento sem chave"
+            }
+          ],
+          "explanation": "As chaves são apelidos da conta; sem chave, o Pix vai com os dados bancários do recebedor.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l4q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Pix",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma loja (pessoa jurídica) quer saber se o banco pode cobrar tarifa quando ela recebe pagamentos via Pix. A resposta é:",
+          "options": [
+            "não, o Pix é sempre gratuito",
+            "só à noite e nos feriados",
+            "sim, empresas podem ser tarifadas ao receber"
+          ],
+          "answer": 2,
+          "explanation": "A gratuidade obrigatória é para pessoas físicas nos usos comuns; empresas podem pagar tarifa, também no recebimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l4q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Pix",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Um cliente tirou dúvidas sobre o Pix com o técnico. Entre as informações a seguir, NÃO está correta a de que o Pix",
+          "options": [
+            "exige chave cadastrada de quem recebe o pagamento.",
+            "funciona 24 horas, inclusive em fins de semana e feriados.",
+            "pode ser feito com agência e conta, sem chave.",
+            "pode ser tarifado para empresas, também ao receber.",
+            "foi criado e é regulado pelo Banco Central."
+          ],
+          "answer": 0,
+          "explanation": "A chave é opcional: dá para pagar e receber Pix com agência e conta ou QR Code. As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l4q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Open Finance",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um cliente autoriza o banco B a ver seu histórico de crédito no banco A e recebe uma taxa menor. Quem decide se os dados vão ser compartilhados?",
+          "options": [
+            "o próprio cliente",
+            "o banco A",
+            "o Banco Central"
+          ],
+          "answer": 0,
+          "explanation": "O compartilhamento depende do consentimento do cliente, não da vontade da instituição que guarda os dados.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l4q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Open Finance",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Depois de autorizar o compartilhamento no Open Finance, o cliente só pode cancelar no fim do prazo combinado.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O consentimento pode ser revogado a qualquer momento pelo cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l4q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Open Finance",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente quer pagar uma compra pelo aplicativo de uma fintech, debitando a conta que tem em outro banco, sem abrir o app desse banco. No Open Finance, isso se chama:",
+          "options": [
+            "portabilidade de salário",
+            "iniciação de pagamento",
+            "compensação de cheques"
+          ],
+          "answer": 1,
+          "explanation": "A iniciação de pagamento permite que uma instituição dispare um pagamento a partir da conta do cliente em outra, com o consentimento dele.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l4q09",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Open Finance",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um banco pequeno quer saber se é obrigado a participar do Open Finance. Em regra:",
+          "options": [
+            "sim, todas as autorizadas",
+            "não, só fintechs participam",
+            "não, a obrigação é das maiores instituições"
+          ],
+          "answer": 2,
+          "explanation": "A participação é obrigatória para as instituições de maior porte; as demais podem aderir voluntariamente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l4q10",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "SCD e SEP",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: na SEP, vários investidores financiam juntos o empréstimo de um tomador pela plataforma. Uma fintech empresta apenas com o próprio capital, por aplicativo. Ela é uma:",
+          "options": [
+            "SCD (Sociedade de Crédito Direto)",
+            "SEP (Empréstimo entre Pessoas)",
+            "instituição de pagamento"
+          ],
+          "answer": 0,
+          "explanation": "Emprestar com capital próprio por meio eletrônico é o modelo da SCD.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l4q11",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "SCD e SEP",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Fintechs de crédito, como SCD e SEP, podem funcionar sem autorização do Banco Central.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "SCD e SEP são instituições financeiras e precisam de autorização do Banco Central para funcionar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l4q12",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "SCD e SEP",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada instituição ao seu modelo de negócio:",
+          "pairs": [
+            {
+              "left": "SCD",
+              "right": "Empresta com capital próprio"
+            },
+            {
+              "left": "SEP",
+              "right": "Liga investidores e tomadores"
+            },
+            {
+              "left": "Instituição de pagamento",
+              "right": "Conta de pagamento e pré-pago"
+            },
+            {
+              "left": "Banco comercial",
+              "right": "Depósitos à vista e crédito"
+            }
+          ],
+          "explanation": "Cada tipo de instituição tem um modelo: a SCD usa capital próprio; a SEP intermedeia; a IP só faz pagamentos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l4q13",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "SCD e SEP",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma SEP recebe dinheiro de investidores para financiar o empréstimo de um pequeno comerciante. Essa captação é permitida?",
+          "options": [
+            "não, a SEP nunca recebe recursos",
+            "sim, vinculada a essa operação",
+            "sim, e a SEP usa como quiser"
+          ],
+          "answer": 1,
+          "explanation": "A SEP só pode receber recursos vinculados às operações de empréstimo que intermedeia.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l4q14",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "SCD e SEP",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma fintech conecta, pela sua plataforma, investidores que querem emprestar e pequenas empresas que precisam de crédito, sem usar capital próprio. Essa instituição é uma",
+          "options": [
+            "Sociedade de Crédito Direto (SCD).",
+            "Sociedade de Empréstimo entre Pessoas (SEP).",
+            "instituição de pagamento emissora de moeda eletrônica.",
+            "sociedade de crédito imobiliário.",
+            "administradora de consórcio."
+          ],
+          "answer": 1,
+          "explanation": "Intermediar empréstimos entre investidores e tomadores, sem capital próprio, é o modelo da SEP. A SCD empresta com o próprio capital.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u16l4q15",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instituições de pagamento",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a carteira digital guarda o saldo do cliente numa conta de pagamento, mas não pode emprestar esse dinheiro. Uma empresa que só oferece maquininhas de cartão para lojistas é:",
+          "options": [
+            "um banco comercial",
+            "uma sociedade de crédito direto",
+            "uma instituição de pagamento"
+          ],
+          "answer": 2,
+          "explanation": "Credenciar lojistas para aceitar cartões (maquininha) é serviço de pagamento, típico de IP.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l4q16",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instituições de pagamento",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Uma instituição de pagamento pode conceder empréstimos usando o saldo das contas de pagamento dos clientes.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "A IP não é instituição financeira: o saldo dos clientes fica separado e não pode ser emprestado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l4q17",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instituições de pagamento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente guarda dinheiro na carteira digital de uma instituição de pagamento. Esse saldo:",
+          "options": [
+            "fica separado do patrimônio da IP",
+            "é emprestado a outros clientes",
+            "tem garantia do FGC"
+          ],
+          "answer": 0,
+          "explanation": "O saldo em conta de pagamento é separado do patrimônio da IP; não é emprestado e não é coberto pelo FGC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l4q18",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instituições de pagamento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma IP quer passar a oferecer empréstimo pessoal aos clientes. O caminho regular é:",
+          "options": [
+            "emprestar o saldo das contas",
+            "parceria com instituição financeira ou nova autorização",
+            "só pedir registro na CVM"
+          ],
+          "answer": 1,
+          "explanation": "Crédito é atividade de instituição financeira: a IP precisa de um parceiro autorizado ou de outra autorização do Banco Central.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l4q19",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instituições de pagamento",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Sobre as instituições de pagamento (IPs), é correto afirmar que",
+          "options": [
+            "captam depósitos a prazo do público, como os bancos comerciais e múltiplos.",
+            "não precisam de autorização do Banco Central em nenhum caso.",
+            "gerem contas de pagamento e emitem pré-pagos, mas não emprestam.",
+            "têm o saldo das contas de pagamento garantido pelo FGC.",
+            "podem aplicar o saldo dos clientes em empréstimos a terceiros."
+          ],
+          "answer": 2,
+          "explanation": "IP faz serviços de pagamento; não capta depósito, não empresta e o saldo dos clientes não tem FGC. Conforme o porte, depende de autorização do BC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l4q20",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "criptoativos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o real é emitido e garantido pelo Banco Central; o bitcoin não tem emissor central nem lastro. Um cliente pergunta se o bitcoin tem garantia de conversão em reais. A resposta é:",
+          "options": [
+            "sim, pelo Banco Central",
+            "sim, pelo FGC até R$ 250 mil",
+            "não, o valor depende da confiança do mercado"
+          ],
+          "answer": 2,
+          "explanation": "Criptoativo não tem garantia de conversão nem lastro; o preço é definido pela oferta e procura.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l4q21",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "criptoativos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Pela Lei 14.478/2022, as corretoras de criptoativos (prestadoras de serviços de ativos virtuais) passaram a depender de autorização para funcionar, e o Banco Central é o regulador.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O marco legal dos criptoativos regula quem presta serviços com esses ativos; não garante o ativo em si.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l4q22",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "criptoativos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um investidor perdeu 40% num criptoativo em uma semana. Ele pode acionar o FGC?",
+          "options": [
+            "não, cripto não tem cobertura do FGC",
+            "sim, até R$ 250 mil",
+            "sim, se usou corretora autorizada"
+          ],
+          "answer": 0,
+          "explanation": "O FGC cobre depósitos e alguns títulos bancários, em caso de quebra da instituição; não cobre perda de valor de criptoativos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l4q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "criptoativos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ao orientar um cliente conservador interessado em criptoativos, o técnico deve destacar principalmente:",
+          "options": [
+            "a isenção de imposto de renda",
+            "a alta volatilidade e a falta de garantia",
+            "a garantia do Banco Central"
+          ],
+          "answer": 1,
+          "explanation": "Para um perfil conservador, o ponto central é o risco: o preço oscila muito e não há garantia.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l4q24",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "criptoativos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Sobre os criptoativos no Brasil, assinale a afirmativa correta.",
+          "options": [
+            "São moeda de curso legal, como o real.",
+            "Contam com a garantia do FGC quando comprados em corretora.",
+            "São emitidos e garantidos pelo Banco Central.",
+            "Não têm emissor central nem lastro.",
+            "Têm valor fixado diariamente pela CVM."
+          ],
+          "answer": 3,
+          "explanation": "Criptoativos não são moeda oficial, não têm garantia do FGC nem do Banco Central e não têm preço fixado por nenhum órgão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l4c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u16l5",
+      "order": 5,
+      "title": "Lavagem de dinheiro e COAF",
+      "concepts": [
+        {
+          "id": "u16l5c1",
+          "title": "Etapas da lavagem",
+          "summary": "Lavagem de dinheiro é dar aparência legal a recursos de origem ilícita. Costuma seguir três etapas: colocação (o dinheiro entra no sistema, por exemplo em depósitos fracionados em espécie), ocultação ou estratificação (muitas transações para apagar o rastro) e integração (o dinheiro volta à economia formal, em imóveis, empresas ou investimentos, já com aparência legal)."
+        },
+        {
+          "id": "u16l5c2",
+          "title": "Lei 9.613/1998",
+          "summary": "A Lei 9.613/1998 define o crime de lavagem: ocultar ou dissimular a natureza, origem, localização, disposição, movimentação ou propriedade de bens, direitos ou valores vindos, direta ou indiretamente, de infração penal. Desde a Lei 12.683/2012 vale qualquer infração penal antecedente (antes havia uma lista fechada de crimes). A mesma lei criou o Coaf e listou as pessoas obrigadas a prevenir a lavagem, como bancos e corretoras."
+        },
+        {
+          "id": "u16l5c3",
+          "title": "Deveres das instituições",
+          "summary": "Bancos e demais pessoas obrigadas devem identificar e conhecer os clientes (cadastro atualizado), registrar as operações, monitorar as que fogem do perfil e comunicar ao Coaf as operações suspeitas, sem avisar o cliente. Os controles são proporcionais ao porte e ao risco da instituição (abordagem baseada em risco)."
+        },
+        {
+          "id": "u16l5c4",
+          "title": "Coaf e sanções",
+          "summary": "O Coaf (Conselho de Controle de Atividades Financeiras), vinculado ao Banco Central como Unidade de Inteligência Financeira (UIF), recebe as comunicações, analisa e produz relatórios de inteligência para as autoridades. Quem descumpre os deveres da lei sofre sanções administrativas: advertência, multa, inabilitação de administradores e cassação ou suspensão da autorização para funcionar."
+        },
+        {
+          "id": "u16l5c5",
+          "title": "Sinais de alerta e PEP",
+          "summary": "Sinais de alerta: movimentação incompatível com a renda, muitos depósitos fracionados em espécie, entradas de várias origens seguidas de saques em dinheiro, preços de exportação ou importação muito fora do mercado, recusa em informar dados. Pessoa exposta politicamente (PEP) é quem ocupa ou ocupou, nos últimos cinco anos, cargo ou função pública relevante, além de familiares e colaboradores próximos: exige diligência reforçada. Dirigente de empresa privada não é PEP só por isso."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l5q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "colocação, ocultação e integração",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: depositar R$ 9 mil por dia em contas diferentes para não chamar atenção é colocação. Comprar um imóvel com o dinheiro já com aparência legal corresponde a qual etapa?",
+          "options": [
+            "colocação",
+            "ocultação",
+            "integração"
+          ],
+          "answer": 2,
+          "explanation": "Na integração o dinheiro volta à economia formal, em bens e negócios, como se tivesse origem legítima.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l5q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "colocação, ocultação e integração",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na etapa de ocultação (estratificação), o objetivo é dificultar o rastreamento do dinheiro por meio de muitas transações.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Transferências em cadeia, entre contas, empresas e países, servem para afastar o dinheiro da sua origem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l5q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "colocação, ocultação e integração",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada ação à etapa da lavagem:",
+          "pairs": [
+            {
+              "left": "Depósitos fracionados em espécie",
+              "right": "Colocação"
+            },
+            {
+              "left": "Transferências em cadeia entre países",
+              "right": "Ocultação"
+            },
+            {
+              "left": "Compra de uma empresa com o dinheiro",
+              "right": "Integração"
+            }
+          ],
+          "explanation": "Entrar no sistema, apagar o rastro e voltar à economia: as três etapas, nessa ordem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l5q04",
+          "type": "order_code",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "colocação, ocultação e integração",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ordene as etapas clássicas da lavagem de dinheiro:",
+          "lines": [
+            "Colocação: o dinheiro ilícito entra no sistema",
+            "Ocultação: muitas operações apagam o rastro",
+            "Integração: o dinheiro volta à economia com aparência legal"
+          ],
+          "explanation": "Primeiro o dinheiro entra, depois é escondido em várias operações e, por fim, reaparece como se fosse legal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l5q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "colocação, ocultação e integração",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente faz vários depósitos em espécie, de valores um pouco abaixo do que chamaria atenção, em agências diferentes no mesmo dia. Essa conduta é típica da etapa de",
+          "options": [
+            "integração.",
+            "ocultação.",
+            "compensação.",
+            "custódia.",
+            "colocação."
+          ],
+          "answer": 4,
+          "explanation": "Fracionar depósitos em espécie para introduzir o dinheiro no sistema financeiro é a colocação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l5q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "crime de lavagem",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quem esconde a origem de dinheiro desviado de um contrato público pratica lavagem, porque o dinheiro veio de infração penal. Esconder a origem de dinheiro de qualquer infração penal configura lavagem?",
+          "options": [
+            "sim, qualquer infração antecedente serve",
+            "não, só tráfico e terrorismo",
+            "não, só crimes financeiros"
+          ],
+          "answer": 0,
+          "explanation": "Desde a Lei 12.683/2012 não há mais lista fechada: qualquer infração penal pode ser antecedente da lavagem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l5q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "crime de lavagem",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para a Lei 9.613/1998, há lavagem mesmo quando o bem vem indiretamente da infração penal.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A lei fala em bens provenientes, direta ou indiretamente, de infração penal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l5q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "crime de lavagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Antes de 2012, a Lei 9.613/1998 trazia uma lista fechada de crimes antecedentes. O que mudou com a Lei 12.683/2012?",
+          "options": [
+            "a lavagem deixou de ser crime",
+            "qualquer infração penal passou a contar",
+            "só o tráfico passou a contar"
+          ],
+          "answer": 1,
+          "explanation": "A lista de crimes antecedentes foi eliminada: agora basta que o dinheiro venha de qualquer infração penal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l5q09",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "crime de lavagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "João recebe propina, compra gado em nome de terceiros e o revende logo depois para justificar o dinheiro. Segundo a Lei 9.613/1998, isso é:",
+          "options": [
+            "apenas sonegação fiscal",
+            "conduta lícita, houve venda real",
+            "lavagem, pois dissimula a origem"
+          ],
+          "answer": 2,
+          "explanation": "A compra e venda serve para dar aparência legal ao dinheiro da propina: é dissimular a origem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l5q10",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "crime de lavagem",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "De acordo com a Lei nº 9.613/1998, o crime de lavagem de dinheiro consiste em",
+          "options": [
+            "ocultar ou dissimular a origem de bens vindos de infração penal.",
+            "deixar de declarar ao fisco rendimentos de origem lícita recebidos no ano.",
+            "movimentar em espécie, num único dia, valor acima de R$ 10 mil em agência.",
+            "manter contas em nome próprio em mais de uma instituição financeira.",
+            "fazer operações de câmbio por meio de instituição autorizada."
+          ],
+          "answer": 0,
+          "explanation": "O núcleo do crime é ocultar ou dissimular bens vindos de infração penal. As outras condutas, em si, não configuram lavagem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c2",
+          "level": "prova"
+        },
+        {
+          "id": "u16l5q11",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conhecer, registrar e comunicar",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o banco nota depósitos incompatíveis com a renda de um cliente e comunica ao Coaf sem avisá-lo. Depois de comunicar uma operação suspeita, o banco deve:",
+          "options": [
+            "não avisar o cliente",
+            "avisar o cliente no mesmo dia",
+            "bloquear todas as contas dele"
+          ],
+          "answer": 0,
+          "explanation": "A comunicação ao Coaf é sigilosa: dar ciência ao cliente atrapalharia a apuração.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l5q12",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conhecer, registrar e comunicar",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Manter o cadastro do cliente atualizado faz parte das obrigações de prevenção à lavagem de dinheiro.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Sem conhecer o cliente (renda, atividade, origem dos recursos), não dá para saber o que foge do perfil.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l5q13",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conhecer, registrar e comunicar",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada dever à sua prática:",
+          "pairs": [
+            {
+              "left": "Conhecer o cliente",
+              "right": "Cadastro com renda e atividade"
+            },
+            {
+              "left": "Registrar",
+              "right": "Guardar os dados das operações"
+            },
+            {
+              "left": "Monitorar",
+              "right": "Alerta de movimentação fora do perfil"
+            },
+            {
+              "left": "Comunicar",
+              "right": "Envio ao Coaf"
+            }
+          ],
+          "explanation": "Os quatro deveres se completam: sem cadastro e registros, não há monitoramento nem comunicação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l5q14",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "conhecer, registrar e comunicar",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente pergunta ao gerente se o banco comunicou ao Coaf um depósito que ele fez. O gerente deve:",
+          "options": [
+            "confirmar, por transparência",
+            "não confirmar nem negar",
+            "mostrar a comunicação enviada"
+          ],
+          "answer": 1,
+          "explanation": "As comunicações ao Coaf são sigilosas e não podem ser reveladas ao cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l5q15",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Coaf",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o banco envia a comunicação de operação suspeita; o Coaf analisa e, se for o caso, repassa às autoridades. Quem recebe as comunicações de operações suspeitas feitas pelos bancos?",
+          "options": [
+            "a Receita Federal, diretamente",
+            "a Febraban",
+            "o Coaf"
+          ],
+          "answer": 2,
+          "explanation": "O Coaf é a unidade de inteligência financeira que centraliza as comunicações das instituições.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l5q16",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Coaf",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "O Coaf julga criminalmente os suspeitos de lavagem de dinheiro.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O Coaf produz inteligência financeira. A investigação é da polícia e do Ministério Público, e o julgamento, do Poder Judiciário.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l5q17",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Coaf",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada órgão ao seu papel no combate à lavagem:",
+          "pairs": [
+            {
+              "left": "Coaf",
+              "right": "Inteligência financeira"
+            },
+            {
+              "left": "Polícia e Ministério Público",
+              "right": "Investigação e acusação"
+            },
+            {
+              "left": "Poder Judiciário",
+              "right": "Julgamento do crime"
+            },
+            {
+              "left": "Banco Central",
+              "right": "Supervisão das instituições"
+            }
+          ],
+          "explanation": "Cada órgão age numa etapa: o Coaf analisa, a polícia e o MP investigam, o Judiciário julga e o BC fiscaliza os bancos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l5q18",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Coaf",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um banco deixou de comunicar operações suspeitas por meses. Qual destas é sanção administrativa prevista?",
+          "options": [
+            "multa e inabilitação de administradores",
+            "prisão automática do gerente",
+            "cancelamento das contas dos clientes"
+          ],
+          "answer": 0,
+          "explanation": "As sanções administrativas são advertência, multa, inabilitação de administradores e cassação ou suspensão da autorização.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l5q19",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Coaf",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "O Conselho de Controle de Atividades Financeiras (Coaf)",
+          "options": [
+            "julga os crimes de lavagem de dinheiro cometidos no território nacional.",
+            "é a unidade de inteligência financeira que analisa operações suspeitas.",
+            "fiscaliza as seguradoras e as entidades de previdência aberta.",
+            "define a meta de inflação junto com o Conselho Monetário Nacional.",
+            "autoriza o funcionamento dos bancos comerciais e múltiplos."
+          ],
+          "answer": 1,
+          "explanation": "O Coaf é a UIF brasileira: recebe, analisa e repassa informações. Julgar é do Judiciário; seguros são da Susep; meta de inflação, do CMN; autorizar bancos, do Banco Central.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l5q20",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "sinais de alerta e PEP",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um deputado federal e o cônjuge dele são PEP, e o banco acompanha suas contas com mais cuidado. Quem destes é pessoa exposta politicamente?",
+          "options": [
+            "o dono de uma rede de lojas",
+            "um ministro de Estado",
+            "um gerente de banco privado"
+          ],
+          "answer": 1,
+          "explanation": "PEP é quem exerce cargo ou função pública relevante. Empresários e funcionários privados não são PEP por isso.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l5q21",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "sinais de alerta e PEP",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Quem deixou um cargo público relevante continua sendo tratado como PEP por cinco anos.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A condição de PEP vale durante o exercício e nos cinco anos seguintes à saída do cargo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l5q22",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "sinais de alerta e PEP",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A conta de uma pessoa com renda de R$ 3 mil recebe dezenas de depósitos em espécie de R$ 4.900 num mês. O técnico deve:",
+          "options": [
+            "ignorar, depósito é sempre legal",
+            "avisar o cliente da suspeita",
+            "registrar para análise e comunicação"
+          ],
+          "answer": 2,
+          "explanation": "Movimentação muito acima da renda, fracionada em espécie, é sinal de alerta: deve seguir para análise interna e possível comunicação ao Coaf, sem avisar o cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l5q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "sinais de alerta e PEP",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Qual destas situações é sinal de alerta para lavagem de dinheiro?",
+          "options": [
+            "empresa nova faturando muito acima do setor",
+            "cliente que paga faturas em dia",
+            "salário depositado pelo empregador"
+          ],
+          "answer": 0,
+          "explanation": "Faturamento incompatível com a estrutura e o histórico da empresa pode indicar dinheiro ilícito misturado ao legal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l5q24",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "sinais de alerta e PEP",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para fins de prevenção à lavagem de dinheiro, deve ser tratado como pessoa exposta politicamente (PEP) o cliente que",
+          "options": [
+            "é diretor-presidente de uma grande empresa privada de capital aberto.",
+            "é gerente regional de um banco privado com atuação em vários estados.",
+            "exerceu, até dois anos atrás, o mandato de deputado federal.",
+            "tem renda mensal acima de R$ 100 mil.",
+            "é cliente da instituição há mais de dez anos."
+          ],
+          "answer": 2,
+          "explanation": "Ex-deputado federal continua PEP por cinco anos depois de deixar o mandato. Cargo em empresa privada, renda alta ou tempo de relacionamento não tornam ninguém PEP.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l5c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u16l6",
+      "order": 6,
+      "title": "Seguros, previdência, capitalização e consórcio",
+      "concepts": [
+        {
+          "id": "u16l6c1",
+          "title": "Sistema de seguros",
+          "summary": "No sistema de seguros privados, o CNSP faz as regras e a Susep fiscaliza seguradoras, resseguradores, sociedades de capitalização e entidades de previdência complementar aberta. No contrato, o segurado paga o prêmio à seguradora; se ocorre o sinistro (o evento coberto), recebe a indenização, descontada a franquia quando houver. Beneficiário é quem recebe a indenização."
+        },
+        {
+          "id": "u16l6c2",
+          "title": "Seguros de pessoas e de danos",
+          "summary": "Seguros de pessoas cobrem vida e integridade: vida, acidentes pessoais e prestamista (quita ou paga parcelas de uma dívida em caso de morte, invalidez ou desemprego involuntário). Seguros de danos cobrem bens: automóvel, residencial, empresarial. No seguro auto, o valor de mercado referenciado segue uma tabela de preços de referência, com o percentual combinado; o valor determinado é uma quantia fixa definida na contratação."
+        },
+        {
+          "id": "u16l6c3",
+          "title": "Previdência complementar",
+          "summary": "A previdência complementar aberta é vendida por seguradoras e entidades abertas, fiscalizadas pela Susep, a qualquer pessoa. No PGBL, as contribuições podem ser deduzidas da base do IR até 12% da renda bruta tributável (na declaração completa), e o IR incide sobre o valor total resgatado. No VGBL não há dedução e o IR incide só sobre os rendimentos. A previdência fechada (fundos de pensão) é restrita a empregados ou associados e é fiscalizada pela Previc. Num plano de contribuição definida, o benefício depende do saldo acumulado."
+        },
+        {
+          "id": "u16l6c4",
+          "title": "Capitalização",
+          "summary": "Título de capitalização junta pagamentos (únicos ou mensais) com sorteios de prêmios. Parte do valor pago forma a reserva que será devolvida no resgate; parte paga os sorteios e as despesas. No fim do prazo o cliente resgata a reserva, corrigida conforme o título; resgatar antes pode devolver menos do que foi pago. Não é investimento: é um produto de sorteio com resgate, regulado pela Susep."
+        },
+        {
+          "id": "u16l6c5",
+          "title": "Consórcio e bancassurance",
+          "summary": "Consórcio é um grupo de pessoas que contribui mensalmente para um fundo comum para comprar bens ou serviços. Todo mês há contemplações por sorteio ou lance, e o contemplado recebe a carta de crédito. Não há juros; há taxa de administração e, em geral, fundo de reserva. As administradoras são autorizadas e fiscalizadas pelo Banco Central. Bancassurance é a venda de seguros, previdência e capitalização pelo banco, em seus canais, em parceria com seguradoras."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l6q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Susep e termos do seguro",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: no seguro auto, o valor pago pelo cliente à seguradora é o prêmio; a batida coberta é o sinistro. No seguro residencial, o incêndio coberto que atinge a casa é chamado de:",
+          "options": [
+            "prêmio",
+            "sinistro",
+            "franquia"
+          ],
+          "answer": 1,
+          "explanation": "Sinistro é a ocorrência do evento coberto pela apólice; prêmio é o preço do seguro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l6q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Susep e termos do seguro",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A Susep fiscaliza as seguradoras, as sociedades de capitalização e as entidades de previdência complementar aberta.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Esses três mercados estão sob a Susep, que segue as normas do CNSP.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l6q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Susep e termos do seguro",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada termo do seguro ao seu significado:",
+          "pairs": [
+            {
+              "left": "Prêmio",
+              "right": "Valor pago pelo segurado"
+            },
+            {
+              "left": "Sinistro",
+              "right": "Evento coberto que aconteceu"
+            },
+            {
+              "left": "Indenização",
+              "right": "Valor pago pela seguradora"
+            },
+            {
+              "left": "Franquia",
+              "right": "Parte do prejuízo que fica com o segurado"
+            }
+          ],
+          "explanation": "Prêmio vai do segurado para a seguradora; indenização vai da seguradora para o segurado ou beneficiário.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l6q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Susep e termos do seguro",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O carro de um cliente, segurado com franquia de R$ 3.000, teve um conserto de R$ 10.000 coberto. Quanto a seguradora paga?",
+          "options": [
+            "R$ 10.000",
+            "R$ 13.000",
+            "R$ 7.000"
+          ],
+          "answer": 2,
+          "explanation": "A franquia fica por conta do segurado: 10.000 − 3.000 = R$ 7.000.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l6q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Susep e termos do seguro",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "No sistema de seguros privados, NÃO está entre as atribuições da Susep",
+          "options": [
+            "fiscalizar as companhias seguradoras.",
+            "fiscalizar as sociedades de capitalização.",
+            "fiscalizar as entidades de previdência aberta.",
+            "fiscalizar os fundos de pensão de empresas.",
+            "fiscalizar as empresas resseguradoras."
+          ],
+          "answer": 3,
+          "explanation": "Fundos de pensão são previdência fechada, fiscalizada pela Previc. Seguradoras, capitalização, previdência aberta e resseguradores estão sob a Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l6q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de seguro",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o seguro de vida é seguro de pessoas; o seguro do carro é seguro de danos. Um seguro que quita o financiamento do carro se o devedor morrer é o seguro:",
+          "options": [
+            "prestamista",
+            "residencial",
+            "de responsabilidade civil"
+          ],
+          "answer": 0,
+          "explanation": "O prestamista protege a dívida: em caso de morte ou invalidez (e, se contratado, desemprego), quita ou paga parcelas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l6q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de seguro",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No seguro auto com valor de mercado referenciado, a indenização segue uma tabela de preços de referência, com o percentual combinado no contrato.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Por isso a indenização acompanha o preço de mercado do carro na data do sinistro, e não um valor fixo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l6q08",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de seguro",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada seguro ao que ele cobre:",
+          "pairs": [
+            {
+              "left": "Vida",
+              "right": "Morte do segurado"
+            },
+            {
+              "left": "Acidentes pessoais",
+              "right": "Morte ou invalidez por acidente"
+            },
+            {
+              "left": "Prestamista",
+              "right": "Dívida do segurado"
+            },
+            {
+              "left": "Residencial",
+              "right": "Danos ao imóvel"
+            }
+          ],
+          "explanation": "Os três primeiros são seguros de pessoas; o residencial é seguro de danos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l6q09",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de seguro",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente com empréstimo consignado quer que a dívida seja paga se ele for demitido sem justa causa. O prestamista indicado tem cobertura de:",
+          "options": [
+            "desemprego voluntário",
+            "desemprego involuntário",
+            "acidente de trânsito"
+          ],
+          "answer": 1,
+          "explanation": "A cobertura de perda de renda é para desemprego involuntário; pedir demissão não está coberto.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l6q10",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "tipos de seguro",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "No seguro de automóvel contratado na modalidade valor determinado, a indenização integral corresponde",
+          "options": [
+            "ao valor de uma tabela de referência na data do sinistro.",
+            "ao total de prêmios pagos pelo segurado.",
+            "à média de três orçamentos de oficinas credenciadas.",
+            "ao valor da nota fiscal de compra corrigido.",
+            "à quantia fixa estabelecida pelas partes na contratação."
+          ],
+          "answer": 4,
+          "explanation": "No valor determinado a quantia é fixada na contratação; a tabela de referência é a lógica do valor de mercado referenciado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c2",
+          "level": "prova"
+        },
+        {
+          "id": "u16l6q11",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "PGBL, VGBL e fundos de pensão",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quem faz a declaração completa do IR e contribui ao PGBL deduz até 12% da renda bruta tributável. Um cliente usa a declaração simplificada. Qual plano costuma ser mais indicado para ele?",
+          "options": [
+            "PGBL",
+            "nenhum dos dois",
+            "VGBL"
+          ],
+          "answer": 2,
+          "explanation": "Sem declaração completa, a dedução do PGBL não traz vantagem; no VGBL o IR incide só sobre os rendimentos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l6q12",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "PGBL, VGBL e fundos de pensão",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No VGBL, o imposto de renda incide apenas sobre os rendimentos, no resgate ou no recebimento da renda.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Como as contribuições do VGBL não são deduzidas, só o ganho é tributado; no PGBL, o valor total.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l6q13",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "PGBL, VGBL e fundos de pensão",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um funcionário de uma estatal participa do fundo de pensão da empresa. Quem fiscaliza esse plano?",
+          "options": [
+            "a Previc",
+            "a Susep",
+            "a CVM"
+          ],
+          "answer": 0,
+          "explanation": "Fundos de pensão são previdência fechada, fiscalizada pela Previc. A Susep cuida da previdência aberta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l6q14",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "PGBL, VGBL e fundos de pensão",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Num plano de contribuição definida (CD), o participante sabe com certeza:",
+          "options": [
+            "o valor exato do benefício futuro",
+            "quanto contribui, não o benefício final",
+            "que o resgate é isento de IR"
+          ],
+          "answer": 1,
+          "explanation": "Na contribuição definida o benefício depende do saldo acumulado e da rentabilidade; não é garantido de antemão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l6q15",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "títulos de capitalização",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: num título de 12 meses, parte de cada pagamento vai para os sorteios; por isso o resgate antecipado pode ser menor que o total pago. Um cliente quer que o dinheiro renda mais que a poupança. O título de capitalização é indicado?",
+          "options": [
+            "sim, rende mais que a poupança",
+            "sim, se o pagamento for mensal",
+            "não, ele não é feito para render"
+          ],
+          "answer": 2,
+          "explanation": "A capitalização é um produto de sorteio com devolução da reserva; não foi feito para competir em rendimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l6q16",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "títulos de capitalização",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Os títulos de capitalização são regulados e fiscalizados pela Susep.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "As sociedades de capitalização estão no sistema de seguros privados, sob o CNSP e a Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l6q17",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "títulos de capitalização",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente pagou R$ 1.200 num título e quer resgatar no 3º mês. É possível que ela receba:",
+          "options": [
+            "menos do que pagou",
+            "o valor pago corrigido pela Selic",
+            "o valor pago mais os prêmios"
+          ],
+          "answer": 0,
+          "explanation": "Parte dos pagamentos custeia sorteios e despesas, e pode haver carência: o resgate antecipado pode ser menor.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l6q18",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "títulos de capitalização",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada produto à sua lógica:",
+          "pairs": [
+            {
+              "left": "Título de capitalização",
+              "right": "Sorteio com resgate da reserva"
+            },
+            {
+              "left": "Poupança",
+              "right": "Rendimento definido em lei"
+            },
+            {
+              "left": "Consórcio",
+              "right": "Compra planejada em grupo"
+            },
+            {
+              "left": "Seguro de vida",
+              "right": "Indenização ao beneficiário"
+            }
+          ],
+          "explanation": "Produtos diferentes para objetivos diferentes: capitalização não substitui poupança, consórcio nem seguro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l6q19",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "títulos de capitalização",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ao oferecer um título de capitalização, o técnico bancário deve informar ao cliente que",
+          "options": [
+            "parte dos pagamentos custeia sorteios e o resgate antecipado pode ser menor.",
+            "o produto tem garantia do FGC até R$ 250 mil por cliente e por instituição.",
+            "o rendimento acompanha sempre o CDI do período, como num CDB pós-fixado.",
+            "o título é fiscalizado pela CVM, como as ações e as debêntures.",
+            "não há sorteios, só rendimento mensal garantido pela seguradora."
+          ],
+          "answer": 0,
+          "explanation": "A informação correta sobre o produto evita venda inadequada: sorteios e resgate possivelmente menor. Não há FGC nem rendimento de CDI, e a fiscalização é da Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l6q20",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "consórcio e bancassurance",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: num consórcio de imóvel, quem dá o maior lance do mês é contemplado e recebe a carta de crédito. No consórcio, além do valor do bem dividido nas parcelas, o participante paga:",
+          "options": [
+            "juros compostos mensais",
+            "taxa de administração",
+            "spread bancário"
+          ],
+          "answer": 1,
+          "explanation": "Consórcio não tem juros: o custo é a taxa de administração (e o fundo de reserva, quando houver).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l6q21",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "consórcio e bancassurance",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "As administradoras de consórcio são autorizadas e fiscalizadas pelo Banco Central.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O consórcio integra o sistema financeiro sob o Banco Central, não sob a Susep.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l6q22",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "consórcio e bancassurance",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada termo do consórcio ao seu significado:",
+          "pairs": [
+            {
+              "left": "Contemplação",
+              "right": "Direito de usar a carta de crédito"
+            },
+            {
+              "left": "Lance",
+              "right": "Oferta para antecipar a contemplação"
+            },
+            {
+              "left": "Taxa de administração",
+              "right": "Remuneração da administradora"
+            },
+            {
+              "left": "Carta de crédito",
+              "right": "Valor para comprar o bem"
+            }
+          ],
+          "explanation": "A contemplação dá acesso à carta de crédito; o lance é a forma de antecipá-la; a taxa paga a administradora.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l6q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "consórcio e bancassurance",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente compra um seguro residencial na agência do banco em que tem conta, de uma seguradora parceira do banco. Esse modelo de negócio é o:",
+          "options": [
+            "consórcio",
+            "open banking",
+            "bancassurance"
+          ],
+          "answer": 2,
+          "explanation": "Bancassurance é usar a rede e os canais do banco para vender seguros, previdência e capitalização.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l6q24",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "consórcio e bancassurance",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre o consórcio, NÃO é correto afirmar que",
+          "options": [
+            "a contemplação ocorre por sorteio ou por lance.",
+            "o participante paga juros compostos sobre a carta de crédito.",
+            "as administradoras são fiscalizadas pelo Banco Central.",
+            "o custo principal é a taxa de administração.",
+            "o contemplado recebe uma carta de crédito."
+          ],
+          "answer": 1,
+          "explanation": "No consórcio não há juros: o custo é a taxa de administração. As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l6c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u16l7",
+      "order": 7,
+      "title": "Regulação e perfil do cliente",
+      "concepts": [
+        {
+          "id": "u16l7c1",
+          "title": "Autorregulação bancária",
+          "summary": "A autorregulação bancária, criada pela Febraban em 2008, é um conjunto de normas que as próprias instituições assumem para ir além do que a lei exige, em temas como relacionamento com o consumidor e transparência. A adesão ao sistema é voluntária. Ela não substitui a regulação do CMN e do Banco Central, e o cumprimento das suas normas é acompanhado por órgãos da própria Febraban."
+        },
+        {
+          "id": "u16l7c2",
+          "title": "Relacionamento com clientes (Res. CMN 4.949/2021)",
+          "summary": "A Resolução CMN nº 4.949/2021 trata do relacionamento das instituições com clientes e usuários. Exige tratamento justo, transparência, diligência e produtos adequados às necessidades do cliente, em todas as fases: pré-contratação (oferta e informação), contratação e pós-contratação (atendimento, cancelamento, reclamações). Induzir o cliente a erro ou prometer ganho sem risco contraria esses princípios."
+        },
+        {
+          "id": "u16l7c3",
+          "title": "Adequação ao perfil do cliente",
+          "summary": "Antes de recomendar investimentos, a instituição verifica se o produto é adequado ao cliente (suitability): objetivos, prazo, situação financeira, tolerância a risco e conhecimento. Com isso o cliente recebe um perfil (conservador, moderado ou arrojado). Se ele quiser algo fora do perfil, a instituição deve alertá-lo e registrar sua ciência antes de seguir."
+        },
+        {
+          "id": "u16l7c4",
+          "title": "Portabilidade",
+          "summary": "Portabilidade é o direito de levar um produto para outra instituição. Na de crédito, o cliente transfere a dívida para um banco que ofereça condições melhores, sem custo; o novo banco quita a dívida no antigo, que pode fazer uma contraproposta, mas não pode impedir. Há também a de salário (o salário vai para a conta escolhida, sem custo) e a de previdência (a reserva passa de um plano para outro, sem IR na transferência)."
+        },
+        {
+          "id": "u16l7c5",
+          "title": "Resolução CMN 4.966/2021",
+          "summary": "A Resolução CMN nº 4.966/2021, em vigor desde 2025, muda a contabilidade dos instrumentos financeiros nos bancos e a aproxima da norma internacional IFRS 9. A provisão para crédito deixa de olhar sobretudo o atraso que já aconteceu e passa a considerar a perda esperada, em três estágios conforme o aumento do risco. Os ativos são classificados pelo modelo de negócio: custo amortizado, valor justo em outros resultados abrangentes ou valor justo no resultado."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16l7q01",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "autorregulação",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o banco que adere à autorregulação se compromete com regras de atendimento além das exigidas por lei. A adesão de um banco ao sistema de autorregulação bancária é:",
+          "options": [
+            "voluntária",
+            "obrigatória por resolução do CMN",
+            "imposta pela CVM"
+          ],
+          "answer": 0,
+          "explanation": "Ninguém é obrigado a aderir; quem adere assume os compromissos do sistema.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l7q02",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "autorregulação",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para os bancos que aderem, as normas de autorregulação substituem as resoluções do CMN e do Banco Central.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "A autorregulação soma compromissos à regulação oficial, que continua valendo integralmente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l7q03",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "autorregulação",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada instância ao seu papel:",
+          "pairs": [
+            {
+              "left": "CMN",
+              "right": "Edita as normas do sistema"
+            },
+            {
+              "left": "Banco Central",
+              "right": "Supervisiona as instituições"
+            },
+            {
+              "left": "Febraban",
+              "right": "Conduz a autorregulação"
+            },
+            {
+              "left": "Ouvidoria",
+              "right": "Segunda instância do cliente no banco"
+            }
+          ],
+          "explanation": "Regulação oficial (CMN e BC), autorregulação (Febraban) e o canal interno de segunda instância (ouvidoria).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l7q04",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "autorregulação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente teve a reclamação mal resolvida no SAC do banco. O próximo canal, dentro do próprio banco, é:",
+          "options": [
+            "a Febraban",
+            "a ouvidoria",
+            "o Copom"
+          ],
+          "answer": 1,
+          "explanation": "A ouvidoria atua como segunda instância, depois do SAC e do atendimento comum.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l7q05",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "autorregulação",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "A respeito da autorregulação bancária no Brasil, é correto afirmar que",
+          "options": [
+            "foi instituída por lei federal e substitui as resoluções do Banco Central.",
+            "é conduzida pela CVM, com adesão obrigatória para todos os bancos.",
+            "reúne compromissos das próprias instituições, além da regulação oficial.",
+            "aplica-se apenas às cooperativas de crédito e às financeiras.",
+            "dispensa as instituições de manter ouvidoria e SAC próprios."
+          ],
+          "answer": 2,
+          "explanation": "A autorregulação é da própria indústria (Febraban): soma compromissos à regulação oficial, sem substituí-la.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c1",
+          "level": "prova"
+        },
+        {
+          "id": "u16l7q06",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Resolução CMN 4.949/2021",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: anunciar um investimento com ganho garantido quando ele tem risco fere a política de relacionamento com clientes. Em qual fase da relação a Resolução 4.949/2021 se aplica?",
+          "options": [
+            "só na contratação",
+            "só depois da contratação",
+            "em todas: antes, durante e depois"
+          ],
+          "answer": 2,
+          "explanation": "A norma cobre a pré-contratação, a contratação e a pós-contratação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l7q07",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Resolução CMN 4.949/2021",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Pela política de relacionamento com clientes, a instituição deve oferecer produtos adequados às necessidades e ao perfil de cada cliente.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Adequação é um dos princípios da norma, ao lado de transparência, diligência e tratamento justo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l7q08",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Resolução CMN 4.949/2021",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um gerente diz a um cliente: “Este fundo de ações não tem risco nenhum”. Essa conduta:",
+          "options": [
+            "é vedada, induz o cliente a erro",
+            "é permitida, se o fundo foi bem",
+            "é permitida para cliente arrojado"
+          ],
+          "answer": 0,
+          "explanation": "Fundo de ações tem risco. Afirmar que não tem induz o cliente a erro, o que contraria a transparência e o tratamento justo exigidos na relação com o cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l7q09",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "Resolução CMN 4.949/2021",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente quer cancelar um serviço e o banco cria obstáculos para dificultar. Isso fere a fase de:",
+          "options": [
+            "pré-contratação",
+            "pós-contratação",
+            "nenhuma, cancelamento é livre"
+          ],
+          "answer": 1,
+          "explanation": "Cancelamento, atendimento e reclamações fazem parte da pós-contratação, também coberta pela norma.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l7q10",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "suitability",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a aposentada que não aceita perdas e pode precisar do dinheiro em 6 meses tem perfil conservador; um fundo de ações não é adequado para ela. Qual produto combina com um cliente conservador que pode precisar do dinheiro a qualquer momento?",
+          "options": [
+            "ações de empresa iniciante",
+            "fundo com carência de 2 anos",
+            "renda fixa com liquidez diária"
+          ],
+          "answer": 2,
+          "explanation": "Conservador com necessidade de liquidez pede baixo risco e resgate a qualquer momento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l7q11",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "suitability",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "O perfil do investidor considera, entre outros pontos, o objetivo do investimento, o prazo e a tolerância a perdas.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Esses fatores mostram quanto risco o cliente pode e quer correr, e por quanto tempo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l7q12",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "suitability",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada perfil à sua descrição:",
+          "pairs": [
+            {
+              "left": "Conservador",
+              "right": "Prioriza segurança e liquidez"
+            },
+            {
+              "left": "Moderado",
+              "right": "Aceita algum risco por retorno maior"
+            },
+            {
+              "left": "Arrojado",
+              "right": "Aceita oscilações fortes buscando retorno alto"
+            }
+          ],
+          "explanation": "O perfil orienta quais produtos podem ser recomendados a cada cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l7q13",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "suitability",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente de perfil conservador insiste em aplicar todo o patrimônio num fundo de ações. O técnico deve:",
+          "options": [
+            "alertar e registrar a ciência do cliente",
+            "recusar qualquer aplicação dele",
+            "aplicar sem comentar nada"
+          ],
+          "answer": 0,
+          "explanation": "A decisão é do cliente, mas a instituição precisa alertar sobre a incompatibilidade com o perfil e registrar que ele está ciente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l7q14",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "suitability",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente de 70 anos, aposentada, diz que não aceita perder dinheiro e que pode precisar dos recursos para despesas de saúde. A recomendação mais adequada ao perfil dela é",
+          "options": [
+            "um fundo de ações com foco em empresas iniciantes de tecnologia.",
+            "um título de capitalização com sorteios mensais em dinheiro.",
+            "um CDB de cinco anos sem liquidez antes do vencimento.",
+            "um investimento de renda fixa de baixo risco e liquidez diária.",
+            "uma carteira diversificada de criptoativos de grande liquidez."
+          ],
+          "answer": 3,
+          "explanation": "Ela é conservadora e precisa de liquidez: renda fixa de baixo risco com resgate diário. Ações e cripto são arriscados; o CDB longo prende o dinheiro; capitalização não é investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c3",
+          "level": "prova"
+        },
+        {
+          "id": "u16l7q15",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "portabilidade de crédito, salário e previdência",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o cliente tem empréstimo a 3% ao mês no banco A; o banco B oferece 2%. Pela portabilidade, B quita a dívida em A e o cliente passa a pagar a B. Quem paga tarifa por essa transferência?",
+          "options": [
+            "o cliente, ao banco A",
+            "ninguém, ela não pode ser cobrada",
+            "o cliente, ao banco B"
+          ],
+          "answer": 1,
+          "explanation": "A portabilidade de crédito não pode gerar custo para o cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l7q16",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "portabilidade de crédito, salário e previdência",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na portabilidade de previdência entre planos, o valor transferido não sofre imposto de renda na transferência.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O IR só incide no resgate ou no recebimento da renda; a transferência entre planos não é resgate.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l7q17",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "portabilidade de crédito, salário e previdência",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada portabilidade ao que ela faz:",
+          "pairs": [
+            {
+              "left": "De crédito",
+              "right": "Leva a dívida para outro banco"
+            },
+            {
+              "left": "De salário",
+              "right": "Leva o salário para a conta escolhida"
+            },
+            {
+              "left": "De previdência",
+              "right": "Leva a reserva para outro plano"
+            },
+            {
+              "left": "Refinanciamento",
+              "right": "Nova operação no mesmo banco"
+            }
+          ],
+          "explanation": "As portabilidades mudam o produto de instituição; o refinanciamento é uma nova operação no mesmo banco.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l7q18",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "portabilidade de crédito, salário e previdência",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente recebe uma proposta melhor de outro banco para o seu financiamento. O banco atual pode impedir a portabilidade?",
+          "options": [
+            "sim, se o contrato for antigo",
+            "sim, cobrando multa",
+            "não, mas pode fazer contraproposta"
+          ],
+          "answer": 2,
+          "explanation": "O banco original pode tentar reter o cliente com uma proposta melhor, mas não pode impedir nem cobrar pela transferência.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l7q19",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "portabilidade de crédito, salário e previdência",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Sobre a portabilidade de crédito, é correto afirmar que",
+          "options": [
+            "exige que o cliente quite antes a dívida com recursos próprios, à vista.",
+            "só vale para o crédito consignado de servidores públicos federais e estaduais.",
+            "obriga o novo banco a manter a mesma taxa de juros do contrato original.",
+            "depende de autorização prévia do Banco Central em cada caso concreto.",
+            "permite levar a dívida a outra instituição, em condições melhores, sem custo."
+          ],
+          "answer": 4,
+          "explanation": "Na portabilidade, o novo banco quita a dívida no antigo e o cliente leva a operação, sem custo, para condições melhores.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c4",
+          "level": "prova"
+        },
+        {
+          "id": "u16l7q20",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos financeiros e perda esperada",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: antes, a provisão crescia sobretudo depois do atraso; com a Resolução 4.966, o banco provisiona a perda que espera ter, mesmo antes do atraso. A ideia central da nova regra para o crédito é:",
+          "options": [
+            "provisionar pela perda esperada",
+            "provisionar só após 90 dias de atraso",
+            "eliminar as provisões"
+          ],
+          "answer": 0,
+          "explanation": "O modelo de perda esperada antecipa o reconhecimento do risco, em vez de esperar o atraso acontecer.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u16l7q21",
+          "type": "truefalse",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos financeiros e perda esperada",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A Resolução CMN 4.966/2021 aproxima a contabilidade dos instrumentos financeiros dos bancos brasileiros da norma internacional IFRS 9.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A convergência com o IFRS 9 é um dos objetivos centrais da resolução.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u16l7q22",
+          "type": "match",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos financeiros e perda esperada",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada categoria de classificação ao modelo de negócio:",
+          "pairs": [
+            {
+              "left": "Custo amortizado",
+              "right": "Manter o ativo para receber os fluxos"
+            },
+            {
+              "left": "Valor justo em outros resultados abrangentes",
+              "right": "Receber os fluxos e também vender"
+            },
+            {
+              "left": "Valor justo no resultado",
+              "right": "Negociar o ativo ativamente"
+            }
+          ],
+          "explanation": "A classificação depende de como o banco administra o ativo: só receber, receber e vender, ou negociar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u16l7q23",
+          "type": "quick",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos financeiros e perda esperada",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O risco de um crédito aumentou muito desde a concessão, mas ainda não há atraso. Pela lógica da perda esperada, esse crédito:",
+          "options": [
+            "não exige provisão até atrasar",
+            "passa a exigir provisão maior",
+            "deve sair do balanço"
+          ],
+          "answer": 1,
+          "explanation": "O aumento significativo do risco leva o crédito a um estágio com provisão maior, antes mesmo do atraso.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u16l7q24",
+          "type": "mcq5",
+          "topic": "Conhecimentos bancários",
+          "subtopic": "instrumentos financeiros e perda esperada",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "A Resolução CMN nº 4.966/2021 trata principalmente",
+          "options": [
+            "dos critérios contábeis de instrumentos financeiros e da perda esperada.",
+            "das regras de funcionamento do Pix para pessoas jurídicas.",
+            "da política de relacionamento das instituições com clientes e usuários.",
+            "das normas de prevenção à lavagem de dinheiro e ao financiamento do terrorismo.",
+            "do funcionamento das sociedades de crédito direto."
+          ],
+          "answer": 0,
+          "explanation": "A 4.966 é a norma contábil dos instrumentos financeiros. O relacionamento com clientes está na 4.949/2021; PLD, Pix e SCD têm normas próprias.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u16l7c5",
+          "level": "prova"
+        }
+      ]
+    }
+  ]
+}

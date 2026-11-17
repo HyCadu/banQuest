@@ -107,4 +107,55 @@ class TargetExamTest {
         assertEquals(listOf(ExamPart.Full), tb.single().parts)
         assertTrue(tb.single().cargo.startsWith("Só os Conhecimentos Gerais"))
     }
+
+    @Test fun `cargo da prova anterior diz de qual prova ela e`() {
+        assertEquals(TargetExam.TecnicoBancario, TargetExam.forCargo("Técnico Bancário"))
+        assertEquals(TargetExam.TecnicoBancario, TargetExam.forCargo("TECNICO BANCARIO"))
+        assertEquals(TargetExam.AnalistaTi, TargetExam.forCargo("Analista em Tecnologia da Informação"))
+        assertEquals(TargetExam.AnalistaTi, TargetExam.forCargo(""))
+    }
+
+    @Test fun `prova do proprio cargo vem inteira e a do outro so com os gerais de quem estuda`() {
+        fun q(cargo: String, number: Int, lessonId: String) = TestData.question("${cargo.take(3)}-$number", lessonId)
+            .copy(ref = ExamRef("FGV", "Banestes", 2018, number, AnswerKey.Final, cargo))
+        val ti = "Analista de TI"
+        val tb = "Técnico Bancário"
+        // Gerais e Específicos seguem o cargo de cada prova, como no ContentRepository.
+        val isGeneral = { it: br.com.trilhati.domain.model.Question ->
+            TargetExam.forCargo(it.ref?.cargo.orEmpty()).general.any { s -> s.unitId == it.lessonId.substringBefore('l') }
+        }
+        val exams = PastExams.from(
+            listOf(q(ti, 1, "u11l1"), q(ti, 60, "u1l1"), q(tb, 1, "u11l2"), q(tb, 21, "u15l1"), q(tb, 51, "u16l1")),
+            isGeneral,
+        )
+        // mesmo órgão e ano: a segunda leva o cargo no id
+        assertEquals(listOf("fgv-banestes-2018", "fgv-banestes-2018-tecnico-bancario"), exams.map { it.id })
+        val tbExam = exams.last()
+        assertEquals(listOf(21, 51), tbExam.specific.map { it.ref?.number }) // matemática financeira é Específicos no Técnico
+
+        val forTb = PastExams.forTarget(exams, TargetExam.TecnicoBancario)
+        assertEquals(tbExam, forTb.single { it.id == tbExam.id }) // a do próprio cargo, inteira
+        assertEquals(listOf(1), forTb.single { it.id == "fgv-banestes-2018" }.questions(ExamPart.Full).map { it.ref?.number })
+
+        val forTi = PastExams.forTarget(exams, TargetExam.AnalistaTi)
+        assertEquals(exams.first(), forTi.first())
+        // o Analista vê do Técnico os Gerais dele, inclusive a matemática financeira (G5)
+        assertEquals(listOf(1, 21), forTi.single { it.id == tbExam.id }.questions(ExamPart.Full).map { it.ref?.number })
+    }
+
+    @Test fun `trilha do tecnico destrava pela ordem da prova e nao pelo numero da unidade`() {
+        // u16 (Unidade 1 do Técnico) com conteúdo; u15 (Unidade 3) sem. A u15 tem número menor, mas vem depois.
+        val withU16 = Curriculum.units.map { info ->
+            TestData.unit(info.order, info.lessonTitles.size, withContent = info.id == "u16")
+        }
+        val statuses = TrailEngine.statuses(ExamCourse.courseFor(TargetExam.TecnicoBancario, withU16), emptyMap())
+        assertEquals(LessonStatus.Available, statuses["u16l1"])
+        assertEquals(LessonStatus.Locked, statuses["u16l2"])
+        assertEquals(LessonStatus.Locked, statuses["u15l1"])
+        // concluída a u16, a próxima da trilha é a u17 (Unidade 2), ainda sem conteúdo: trava ali
+        val done = (1..7).associate { "u16l$it" to LessonProgress("u16l$it", "u16", timesCompleted = 1) }
+        val after = TrailEngine.statuses(ExamCourse.courseFor(TargetExam.TecnicoBancario, withU16), done)
+        assertEquals(LessonStatus.Done, after["u16l7"])
+        assertEquals(LessonStatus.Locked, after["u17l1"])
+    }
 }

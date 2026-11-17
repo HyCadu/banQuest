@@ -13,7 +13,8 @@ UNITS = {f"u{i}" for i in range(1, len(LESSONS_PER_UNIT) + 1)}
 LESSONS = {f"u{u}l{l}" for u, n in enumerate(LESSONS_PER_UNIT, 1) for l in range(1, n + 1)}
 TYPES = {"mcq5", "case", "code_output"}          # questões reais entram só nesses tipos (transcrição fiel)
 STYLES = {"conceitual", "literal", "caso_pratico", "excecao"}
-FLAGS = {"versao_antiga", "versao_citada_anterior", "produto_especifico", "fora_do_edital", "depende_de_figura"}
+# "repetida": a mesma questão já está no app por outra prova (fica guardada, sem ir ao app).
+FLAGS = {"versao_antiga", "versao_citada_anterior", "produto_especifico", "fora_do_edital", "depende_de_figura", "repetida"}
 BANCAS = {"FCC", "FGV", "IDECAN", "Instituto Access", "CESPE", "CEBRASPE", "VUNESP", "CESGRANRIO"}
 JUNK = re.compile(r"pcimark|pciconcursos|www\.|Tipo 1 – Cor|Página \d+|[-]|\s__\s*$|\w-\n\w")
 

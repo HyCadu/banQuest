@@ -625,3 +625,38 @@ aprovou um mockup e respondeu as dúvidas antes do código.
     celular e no importar/exportar. Sem mudança no SQL do Supabase nem migração do Room. O ranking e os limites do
     servidor não mudam.
 11. Conquistas de unidade concluída contam as unidades das duas trilhas, sem repetir (`TrailEngine.completedUnitCount`).
+
+## Provas de Técnico Bancário: FGV · Banestes 2018 e 2023 (0.14.0, 17/11/2026) — a pedido do dono
+O dono enviou as provas Tipo 1 e os gabaritos definitivos de Técnico Bancário do Banestes (FGV, 06/05/2018 e
+05/03/2023, edital 01/2022).
+1. **Transcrição** em `content/provas/fgv-banestes-2018-tecnico.json` (80 questões; entram 79, sem a Q70 anulada) e
+   `fgv-banestes-2023-tecnico.json` (70; entram 64). Texto conferido contra o PDF, resposta conferida contra o gabarito
+   (lido do PDF, não digitado) e resolvendo as questões de cálculo. Os termos sublinhados viraram colchetes, com o aviso
+   de sempre no enunciado.
+2. **Ficam de fora em 2023:** as anuladas (Q4, Q16, Q43, Q46) e duas que dependem de imagem impossível de descrever sem
+   entregar a resposta (Q18, peças montadas; Q31, formatação de um trecho do Word). Q15 (hexágono), Q17 (quadro de peças)
+   e Q25 (gráfico) entram com a figura descrita no enunciado (`depende_de_figura`); a Q49 de 2018 também.
+3. **Guardadas sem ir ao app:** garantias civis (2018 Q66–69, aval, hipoteca, alienação fiduciária e fiança;
+   `fora_do_edital`, o edital de 2026 não cita), Resolução 4.539/2016 (2018 Q73, substituída pela 4.949/2021) e
+   criptomoedas pelo comunicado de 2017 (2018 Q63) com `versao_antiga`, e o operador “+” do Google (2023 Q35, que o
+   Google abandonou). A 2018 Q13 é a mesma questão da prova de Analista de 2018: ganhou a marca nova **`repetida`**
+   (validador e `build_provas.py`), para não aparecer duas vezes.
+4. **Gabaritos discutíveis mantidos:** 2023 Q67 (metas como “planos de ação comercial”) e Q68 (só II). A explicação diz
+   qual é o gabarito oficial e qual seria a leitura mais comum.
+5. **Provas por cargo no Praticar:** cada prova anterior é do cargo dela (`TargetExam.forCargo`). Quem estuda para uma
+   prova vê as do próprio cargo inteiras e as do outro só com os Gerais da sua prova; Gerais e Específicos seguem o cargo
+   da prova (a Matemática financeira é Específicos no Técnico). O Analista ganha os Gerais das provas de Técnico, inclusive
+   as 17 de Matemática financeira, as primeiras oficiais da G5.
+6. **Ids:** duas provas do mesmo órgão e ano levam o cargo no id da segunda (`fgv-banestes-2018-tecnico-bancario`), em vez
+   de um número.
+7. Pacote do app: de 326 para 461 questões (135 de Técnico; 30 delas de Português, que já entram nas lições da G1).
+8. **Unidade 1 do Técnico completa (pedido do dono: "pelo menos a 1 unidade por completo")**: as 7 lições de
+   Conhecimentos Bancários (`u16`) entraram nesta mesma versão, no formato por conceitos (36 conceitos, 170 exercícios),
+   com as 30 oficiais de bancários ligadas aos conceitos. O pacote é gerado por `tools/gen_u16.py` a partir de
+   `content/source/u16_*.py`: escrever a alternativa certa primeiro e deixar o gerador espalhar a posição evita viés de
+   posição. Revisão em `content/review/u16-conhecimentos-bancarios.md`.
+9. **Correção: a Unidade 1 do Técnico abria travada.** O `TrailEngine` ordenava as unidades pelo número (`order`), e não
+   pela ordem da trilha da prova. No Técnico, a Matemática financeira (`u15`, sem conteúdo) é a Unidade 3, mas pelo número
+   vinha antes de `u16` e travava tudo depois dela. Agora a ordem é a da trilha (`ExamCourse`), com teste de domínio e de
+   integração. O guia da unidade também passou a usar o rótulo da trilha ("Unidade 1", "G1") em vez do número interno.
+
