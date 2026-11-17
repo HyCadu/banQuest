@@ -175,7 +175,14 @@ Ordem ★ (do cerne de desenvolvimento para a infraestrutura). O Anexo IV do car
 
 **Conquistas (≈15):** ofensivas 3/7/14/30/60/100; XP total 1k/5k/20k; primeira lição perfeita; 10 lições perfeitas; unidade concluída; "no ritmo" (média ≤ 3:00 em 10 lições); revisão de 50 erros; Pódio da semana (top 3 do ranking geral com pelo menos 3 participantes).
 
-**Praticar erros:** sessão de 8 questões escolhidas por `SrsEngine` (intervalos 1, 3, 7, 14 dias; erro zera). Mostra quantas estão "vencidas".
+**Praticar erros:** sessão de 8 questões escolhidas por `SrsEngine` (intervalos 1, 3, 7, 14 dias; erro zera). Mostra quantas estão "vencidas". Só a revisão das vencidas dá XP e devolve 1 coração, e só ela adianta o cartão (0.10.1). Sem nenhuma vencida, "Treinar os mais antigos" e a "Revisão livre" servem para estudar, sem XP, coração, missão nem ranking. Uma questão sai dos erros guardados depois de acertar as 4 revisões, cada uma no seu dia.
+
+**Provas anteriores (0.10.0, aba Praticar):** cada prova do pacote de provas (só as questões que valem para o edital
+atual), inteira ou, se tiver as duas, só Específicos ou só Gerais. Antes de começar, um aviso com as regras: abrir gasta
+1 coração inteiro (grátis no modo sem vidas), errar não tira coração e o XP só vem se o aluno responder todas (10 por
+acerto, +5 em até 2:00, +20 ao terminar, +10 se gabaritar). Correção na hora, como nas lições; o erro não volta no fim
+e vai para "Praticar erros". Terminar conta como estudo do dia (ofensiva, também em dupla, meta e gemas de uma lição) e
+não devolve coração. Interruptor para silenciar notificações (Não perturbe) durante a prova.
 
 **Ranking semanal (0.4):** soma o XP das sessões enviadas ao servidor de segunda 00:00 a domingo 23:59 (Brasília). Lista
 geral (quem deixou "aparecer no ranking geral" ligado) e lista só de amigos. Amizade por pedido a partir do ranking (o
@@ -225,7 +232,7 @@ Cada fase termina com app compilando, testes verdes e commit. **Pare ao fim de c
 - **SQL:** `tools/sql-tests/run.sh` aplica a migração duas vezes num Postgres local e roda os testes de RLS e regras.
 - **Integração social:** a harness testa o cliente inteiro contra um Supabase falso em memória (`SocialSyncTest`).
 - Sem analytics. Permissões: `POST_NOTIFICATIONS`, `INTERNET`, `ACCESS_NETWORK_STATE` (+ `RECEIVE_BOOT_COMPLETED` e
-  `WAKE_LOCK` do WorkManager).
+  `WAKE_LOCK` do WorkManager) e `ACCESS_NOTIFICATION_POLICY` (Não perturbe durante a prova anterior, 0.10.0).
 
 ## 11. Entrega e backup
 

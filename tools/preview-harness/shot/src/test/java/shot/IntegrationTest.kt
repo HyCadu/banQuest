@@ -52,6 +52,8 @@ class IntegrationTest {
         progress = ProgressRepository(db, db.progressDao(), clock)
         content = ContentRepository(context)
         settings = SettingsRepository(context)
+        // O DataStore fica em memória durante toda a execução: um teste que liga uma opção não pode afetar os seguintes.
+        runBlocking { settings.eraseAll() }
     }
 
     @After fun tearDown() = db.close()
@@ -72,7 +74,7 @@ class IntegrationTest {
 
     private fun newVm(kind: String, id: String = "-") =
         SessionViewModel(SavedStateHandle(mapOf("kind" to kind, "id" to id)), content, progress, settings, clock, br.com.trilhati.sound.SoundPlayer(context), br.com.trilhati.notify.Notifications(context),
-            br.com.trilhati.data.social.SyncScheduler(context))
+            br.com.trilhati.data.social.SyncScheduler(context), br.com.trilhati.notify.ExamFocus(context))
 
     /** Joga a sessão inteira. [wrongOnFirst] é quantas questões errar de propósito (as primeiras de múltipla escolha). */
     /**
@@ -210,19 +212,60 @@ class IntegrationTest {
         assertEquals(3, s.stats.hearts.hearts) // 2 erros de primeira em questão de prova = 2 corações
         assertEquals(2, s.errorBankSize)
         assertEquals(0, s.dueCount) // revisão só amanhã
-        // Treino de erros: usa o banco mesmo sem vencidas
+        // Amanhã os 2 erros vencem: a revisão deles devolve 1 coração e dá XP.
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(4) } // em 24 h os corações voltaram; fica com 3
+        assertEquals(2, snap().dueCount)
+        val xpBefore = snap().stats.totalXp
         val practice = play(newVm("errors"))
+        assertTrue(practice.rewarded)
         assertEquals(2, practice.run.records.size)
         s = snap()
         assertEquals(4, s.stats.hearts.hearts)
         assertEquals(1, s.stats.practiceSessions)
-        // acertou no treino: a revisão sobe para o intervalo de 3 dias. Amanhã nada vence; em 3 dias, vence.
-        clock.instant = clock.instant.plusSeconds(24 * 3600)
-        runBlocking { progress.ensureReady(today()) }
-        assertEquals(0, snap().dueCount)
+        assertTrue(s.stats.totalXp > xpBefore)
+        // acertou na revisão: ela sobe para o intervalo de 3 dias. Amanhã nada vence; em 3 dias, vence.
+        assertEquals(0, s.dueCount)
+        assertEquals(2, s.errorBankSize) // continua guardado até acertar as 4 revisões
         clock.instant = clock.instant.plusSeconds(2 * 24 * 3600)
         runBlocking { progress.ensureReady(today()) }
+        assertEquals(0, snap().dueCount)
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()) }
         assertEquals(2, snap().dueCount)
+    }
+
+    /** Bug relatado por um amigo do dono (0.10.1): dava para repetir o treino sem fim e ganhar XP e corações. */
+    @Test fun treinoForaDoPrazoERevisaoLivreNaoDaoXpNemCoracaoENaoAdiantamARevisao() {
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(4) } // 3 corações
+        play(newVm("lesson", "u1l2"), wrongOnFirstExam = 2) // 2 erros (vencem amanhã) = 1 coração
+        val before = snap()
+        val cards = before.questionStats.values.filter { it.card.active }.associate { it.questionId to it.card }
+        assertEquals(2, cards.size)
+        repeat(3) { round ->
+            val free = play(newVm("errors")) // nada vencido: treino livre com os mais antigos
+            assertFalse("rodada $round", free.rewarded)
+            assertEquals("Treino livre", free.title)
+            assertEquals(0, free.processed.summary.totalXp)
+            assertTrue(free.run.records.all { it.xp == 0 })
+        }
+        val review = play(newVm("review"))
+        assertFalse(review.rewarded)
+        assertEquals(0, review.processed.summary.totalXp)
+        val after = snap()
+        assertEquals(before.stats.totalXp, after.stats.totalXp)
+        assertEquals(before.stats.hearts.halves, after.stats.hearts.halves) // nenhum coração ganho
+        assertEquals(before.stats.practiceSessions, after.stats.practiceSessions)
+        assertEquals(cards, after.questionStats.filterKeys { it in cards }.mapValues { it.value.card }) // revisão não adiantou
+        assertEquals(1, runBlocking { db.progressDao().outbox(10) }.size) // só a lição vai para o ranking
+        // Sem erro vencido, a tela "sem corações" não oferece o treino que não devolveria coração.
+        runBlocking { progress.loseHeart(10) }
+        val blocked = newVm("lesson", "u1l1").let { vm -> await("sem corações") { vm.ui.value as? SessionUi.NoHearts } }
+        assertEquals(0, blocked.dueErrors)
+        clock.instant = clock.instant.plusSeconds(24 * 3600)
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(10) } // em 24 h os corações voltariam
+        val tomorrow = newVm("lesson", "u1l1").let { vm -> await("sem corações") { vm.ui.value as? SessionUi.NoHearts } }
+        assertEquals(2, tomorrow.dueErrors)
     }
 
     @Test fun semCoracoesNaoComecaLicaoMasTreinoFunciona() {
@@ -386,9 +429,169 @@ class IntegrationTest {
         assertEquals(4, snap().stats.help.count); assertEquals(70, snap().stats.gems)
     }
 
+    // ------------------------------------------------------------------ provas anteriores (aba Praticar)
+
+    private fun halves() = br.com.trilhati.domain.hearts.HeartsEngine.regen(snap().stats.hearts, clock.millis()).halves
+    private fun intro(vm: SessionViewModel) = await("aviso da prova") { vm.ui.value as? SessionUi.ExamIntro }
+    private val notificationManager get() = context.getSystemService(android.app.NotificationManager::class.java)
+
+    @Test fun provasDoPacoteViramProvasAnterioresQueCabemNoServidor() {
+        val exams = content.exams
+        assertEquals(
+            listOf("instituto-access-banestes-2024", "fgv-banestes-2021", "fgv-banestes-2018", "fcc-prefeitura-de-teresina-2016", "fcc-dpe-rr-2015", "idecan-banestes-2012"),
+            exams.map { it.id },
+        )
+        assertEquals(listOf(74, 57, 87, 35, 26, 47), exams.map { it.size })
+        exams.forEach { e ->
+            assertTrue("${e.id} cabe no limite do servidor", e.size <= br.com.trilhati.domain.social.SessionLimits.EXAM_MAX_ANSWERS)
+            assertEquals(e.size, e.specific.size + e.general.size)
+            assertTrue(e.questions(br.com.trilhati.domain.exam.ExamPart.Full).zipWithNext().all { (a, b) -> a.ref!!.number < b.ref!!.number })
+        }
+        assertEquals(37 to 50, exams[2].specific.size to exams[2].general.size)
+        assertEquals(29 to 45, exams[0].specific.size to exams[0].general.size) // Banestes 2024: 4 alternativas
+        assertEquals(3, exams[2].parts.size)
+        assertEquals(1, exams[4].parts.size)
+        assertTrue(exams[0].questions(br.com.trilhati.domain.exam.ExamPart.Full).all { it.options.size == 4 })
+    }
+
+    @Test fun provaAvisaAntesGastaUmCoracaoAoComecarNaoTiraCoracaoPorErroEDaXpSoAoTerminar() {
+        runBlocking { progress.ensureReady(today()) }
+        val exam = content.exam("fcc-dpe-rr-2015")!!
+        val vm = newVm("exam", exam.id)
+        val ui = intro(vm)
+        assertEquals(exam.size, ui.questionCount)
+        assertEquals(2, ui.costHalves)
+        assertTrue(ui.canOpen)
+        assertEquals(exam.size * 180_000L, ui.estimatedMs)
+        assertEquals(10, halves()) // o aviso não gasta nada
+        vm.beginExam(); idle()
+        val first = await("primeira questão") { vm.ui.value as? SessionUi.Playing }
+        assertTrue(first.exam)
+        assertNull(first.hearts) // sem contador de corações: errar não custa
+        assertEquals(8, halves())
+        val done = play(vm, wrongOnFirst = 5)
+        assertEquals(exam.size, done.run.records.size) // os erros não voltam no fim
+        assertEquals(8, halves()) // errar não tirou coração e terminar não devolveu
+        val xp = (exam.size - 5) * 15 + 20 // relógio parado: todos os acertos são rápidos; sem o bônus de gabarito
+        assertEquals(xp, done.processed.summary.totalXp)
+        assertEquals(xp, snap().stats.totalXp)
+        assertEquals(1, snap().stats.streak.current) // conta como estudo do dia
+        val sent = runBlocking { db.progressDao().outbox(10) }.single()
+        assertEquals("exam", sent.kind)
+        assertEquals(exam.size, sent.answers)
+        assertEquals(xp, sent.xp)
+        // os erros da prova (de unidades ainda sem lição) vão para Praticar erros
+        val practice = play(newVm("errors"))
+        assertEquals(5, practice.run.firstTryRecords.size)
+        assertTrue(practice.run.records.all { it.question.ref?.body == "DPE-RR" && it.question.ref?.year == 2015 })
+    }
+
+    @Test fun abandonarAProvaNaoDaXpEOCoracaoNaoVolta() {
+        runBlocking { progress.ensureReady(today()) }
+        val vm = newVm("exam", "fcc-dpe-rr-2015")
+        intro(vm)
+        vm.beginExam(); idle()
+        repeat(3) {
+            val ui = await("questão") { (vm.ui.value as? SessionUi.Playing)?.takeIf { it.phase == Phase.Answering } }
+            vm.select(ui.question.answer); idle(); vm.check(); idle()
+            await("feedback") { (vm.ui.value as? SessionUi.Playing)?.phase as? Phase.Feedback }
+            vm.continueAfterFeedback(); idle()
+        }
+        // o aluno sai aqui: nada foi gravado além do coração gasto para abrir
+        assertEquals(0, snap().stats.totalXp)
+        assertEquals(8, halves())
+        assertEquals(0, snap().stats.streak.current)
+        assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
+    }
+
+    @Test fun semCoracaoInteiroNaoAbreAProva() {
+        runBlocking { progress.ensureReady(today()); progress.loseHeart(9) } // sobra meio coração
+        val vm = newVm("exam", "fgv-banestes-2021")
+        assertFalse(intro(vm).canOpen)
+        vm.beginExam(); idle()
+        val blocked = await("sem corações") { vm.ui.value as? SessionUi.NoHearts }
+        assertTrue(blocked.forExam)
+        assertEquals(1, halves()) // não gastou o meio coração
+    }
+
+    @Test fun modoSemVidasAbreAProvaDeGraca() {
+        runBlocking { progress.ensureReady(today()); settings.setNoLives(true); progress.loseHeart(10) }
+        val vm = newVm("exam", "fcc-dpe-rr-2015")
+        val ui = intro(vm)
+        assertEquals(0, ui.costHalves)
+        assertTrue(ui.canOpen)
+        vm.beginExam(); idle()
+        await("primeira questão") { vm.ui.value as? SessionUi.Playing }
+        assertEquals(0, halves())
+    }
+
+    @Test fun provaComGeraisDeixaEscolherAParte() {
+        runBlocking { progress.ensureReady(today()) }
+        val vm = newVm("exam", "fgv-banestes-2018")
+        val ui = intro(vm)
+        assertEquals(br.com.trilhati.domain.exam.ExamPart.entries.toList(), ui.parts)
+        assertEquals(listOf(87, 37, 50), ui.partSizes)
+        vm.pickExamPart(br.com.trilhati.domain.exam.ExamPart.Specific); idle()
+        assertEquals(37, intro(vm).questionCount)
+        vm.beginExam(); idle()
+        val playing = await("primeira questão") { vm.ui.value as? SessionUi.Playing }
+        assertEquals("FGV · Banestes 2018 · Específicos", playing.title)
+        val done = play(vm)
+        assertEquals(37, done.run.records.size)
+        assertTrue(done.run.records.all { it.question.lessonId.removePrefix("u").substringBefore("l").toInt() <= 10 })
+        assertEquals(37 * 15 + 30, done.processed.summary.totalXp) // gabaritou: + bônus de perfeição
+    }
+
+    @Test fun silenciarLigaONaoPerturbeSoDuranteAProva() {
+        runBlocking { progress.ensureReady(today()) }
+        val nm = notificationManager
+        shadowOf(nm).setNotificationPolicyAccessGranted(true)
+        nm.setInterruptionFilter(android.app.NotificationManager.INTERRUPTION_FILTER_ALL)
+        val vm = newVm("exam", "fcc-dpe-rr-2015")
+        assertTrue(intro(vm).silenceAllowed)
+        vm.setExamSilence(true); idle()
+        assertTrue(intro(vm).silence)
+        vm.beginExam(); idle()
+        await("primeira questão") { vm.ui.value as? SessionUi.Playing }
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_PRIORITY, nm.currentInterruptionFilter)
+        play(vm)
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALL, nm.currentInterruptionFilter)
+        // a escolha fica lembrada (a gravação no DataStore é assíncrona: espera ela terminar)
+        await("interruptor gravado") { runBlocking { settings.settings.first() }.examSilence.takeIf { it } }
+    }
+
+    @Test fun silencioNaoMexeQuandoONaoPerturbeJaEstavaLigado() {
+        runBlocking { progress.ensureReady(today()); settings.setExamSilence(true) }
+        val nm = notificationManager
+        shadowOf(nm).setNotificationPolicyAccessGranted(true)
+        nm.setInterruptionFilter(android.app.NotificationManager.INTERRUPTION_FILTER_ALARMS)
+        val vm = newVm("exam", "fcc-dpe-rr-2015")
+        intro(vm)
+        vm.beginExam(); idle()
+        await("primeira questão") { vm.ui.value as? SessionUi.Playing }
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALARMS, nm.currentInterruptionFilter)
+        play(vm)
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALARMS, nm.currentInterruptionFilter)
+    }
+
+    @Test fun naoPerturbeDeUmaProvaInterrompidaDesligaAoAbrirOApp() {
+        val nm = notificationManager
+        shadowOf(nm).setNotificationPolicyAccessGranted(true)
+        nm.setInterruptionFilter(android.app.NotificationManager.INTERRUPTION_FILTER_ALL)
+        assertTrue(br.com.trilhati.notify.ExamFocus(context).silence())
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_PRIORITY, nm.currentInterruptionFilter)
+        // o app foi fechado no meio da prova; ao abrir de novo, o TrilhaApp chama restore()
+        br.com.trilhati.notify.ExamFocus(context).restore()
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALL, nm.currentInterruptionFilter)
+        br.com.trilhati.notify.ExamFocus(context).restore() // de novo não faz nada
+        assertEquals(android.app.NotificationManager.INTERRUPTION_FILTER_ALL, nm.currentInterruptionFilter)
+    }
+
     @Test fun treinoTambemEntraNaFilaComoPractice() {
         runBlocking { progress.ensureReady(today()) }
         play(newVm("lesson", "u1l2"), wrongOnFirst = 1)
+        clock.instant = clock.instant.plusSeconds(24 * 3600) // o erro vence amanhã
+        runBlocking { progress.ensureReady(today()) }
         play(newVm("errors"))
         val kinds = runBlocking { db.progressDao().outbox(10) }.map { it.kind }.sorted()
         assertEquals(listOf("lesson", "practice"), kinds)

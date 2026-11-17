@@ -39,4 +39,12 @@ class SrsEngineTest {
         assertFalse(SrsEngine.isDue(c, d.minusDays(1)))
         assertFalse(SrsEngine.isDue(SrsCard(), d))
     }
+
+    @Test fun `acerto antes do dia da revisao nao adianta o cartao`() {
+        val c = SrsCard(1, d.plusDays(3))
+        assertEquals(c, SrsEngine.onAnswer(c, true, d)) // treinar de novo hoje não "forma" a questão
+        assertEquals(c, SrsEngine.onAnswer(c, true, d.plusDays(2)))
+        assertEquals(SrsCard(2, d.plusDays(10)), SrsEngine.onAnswer(c, true, d.plusDays(3)))
+        assertEquals(SrsCard(0, d.plusDays(1)), SrsEngine.onAnswer(c, false, d)) // errar zera a qualquer hora
+    }
 }

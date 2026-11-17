@@ -263,7 +263,55 @@
 - [ ] Com "Remover animações" ligado no Android (Acessibilidade), a troca é imediata.
 - [ ] Com o TalkBack, o seletor diz "Trilha Específicos" e "Trilha Gerais" e qual está selecionada.
 
-## BanQuest 0.10.0 — Unidade 2 e G1 Língua Portuguesa
+## BanQuest 0.9.1 — lições por conceitos no ranking
+
+Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supabase (`docs/PUBLICAR_VERSAO.md`).
+
+**35. Lição boa entra no ranking**
+- [ ] Anote seu XP da semana na aba **Ranking**.
+- [ ] Faça uma lição da U1 acertando quase tudo de primeira (9 ou mais dos 12 exercícios). No resultado, o XP fica
+      entre 160 e 210.
+- [ ] Volte ao Ranking e toque em ↻: o XP da semana subiu exatamente o XP da lição. Na 0.9.0 ele não mudava.
+- [ ] Num segundo celular, com uma conta amiga, o seu XP aparece atualizado. Se os dois fizeram lição hoje, a
+      ofensiva em dupla conta o dia.
+
+## BanQuest 0.10.0 — provas anteriores na aba Praticar
+
+Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supabase (`docs/PUBLICAR_VERSAO.md`).
+
+**36. Provas anteriores**
+- [ ] Na aba **Praticar**, abaixo de "Revisão livre", aparece **Provas anteriores** com quatro provas: FGV Banestes 2021
+      e 2018, FCC Prefeitura de Teresina 2016 (gabarito preliminar) e FCC DPE-RR 2015 (gabarito não confirmado).
+- [ ] Toque em FGV Banestes 2018: aparece o aviso, ainda sem gastar nada. Ele mostra o número de questões, o tempo
+      estimado, "Começar gasta 1 coração", "Errar não tira coração" e "O XP só vem se você responder todas".
+- [ ] Escolha **Específicos**: o número de questões e o tempo mudam (37 questões, cerca de 1h51). Volte ao app sem
+      começar: os corações continuam os mesmos.
+- [ ] Toque em **Começar prova**: o contador de corações cai 1. Na prova não aparece coração no topo. Erre uma questão:
+      nenhum coração some, e a questão não volta no fim.
+- [ ] No meio da prova, toque no X: o aviso diz que você não ganha XP e que o coração não volta. Saia: o XP do Perfil
+      não muda.
+- [ ] Faça uma prova curta até o fim (FCC DPE-RR 2015): aparece "Prova concluída!" com XP, precisão e acertos. As
+      erradas aparecem em **Praticar erros**. A ofensiva do dia conta, e o XP entra no Ranking depois de sincronizar.
+- [ ] Com só meio coração (ou nenhum), **Começar** leva à tela "Acabaram os corações", que explica que abrir uma
+      prova gasta 1 coração inteiro. No **Modo sem vidas**, o aviso diz que começar não gasta coração.
+- [ ] **Silenciar notificações:** ligue o interruptor. Na primeira vez, o Android abre a tela de acesso ao Não perturbe:
+      permita para o BanQuest e volte. Comece a prova: o Não perturbe liga (ícone na barra do Android). Termine ou saia:
+      ele desliga. Se o Não perturbe já estava ligado antes, ele continua ligado depois.
+
+## BanQuest 0.10.1 — treino de erros sem farm
+
+**37. Só a revisão das vencidas dá XP e coração**
+- [ ] Erre 2 questões numa lição. Na aba Praticar: "Vencidas 0", "Erros guardados 2" e o texto "Cada erro sai daqui
+      depois de 4 revisões certas, em dias diferentes". O botão diz **"Treinar os mais antigos (sem XP)"**.
+- [ ] Faça esse treino duas vezes seguidas, acertando tudo: nenhuma resposta mostra "+XP", o resultado diz "Treino
+      para estudar: sem XP e sem coração", e o XP do Perfil e os corações não mudam. Os erros continuam guardados.
+- [ ] **Revisão livre (sem XP)**: mesma coisa, sem XP e sem coração.
+- [ ] No dia seguinte, os 2 erros aparecem como **Vencidas**. "Treinar erros (2)" dá XP e devolve 1 coração. Depois
+      disso, as vencidas voltam a 0 e os erros continuam guardados (a próxima revisão é em 3 dias).
+- [ ] Fique sem corações num dia sem erro vencido: a tela "Acabaram os corações" não mostra o botão de revisar erros.
+      Com erro vencido, mostra "Revisar erros vencidos (ganhe 1 coração)".
+
+## BanQuest 0.12.0 — Unidade 2 e G1 Língua Portuguesa
 
 **35. Unidade 2: Programação e orientação a objetos**
 - [ ] Conclua as 5 lições da U1 (ou já tenha concluído): a **Unidade 2** abre, com as lições Fundamentos de programação,
@@ -288,7 +336,7 @@
 - [ ] O selo "não revisada" aparece em todos os exercícios novos (são de IA).
 - [ ] Um erro numa lição da U2 ou da G1 vai para o banco de erros e volta no treino, como na U1.
 
-## BanQuest 0.11.0 — provas Banestes 2012 e 2024
+## BanQuest 0.12.0 — provas Banestes 2012 e 2024
 
 **38. Questões das provas IDECAN 2012 e Instituto Access 2024**
 - [ ] Nas lições da U1, da U2 e da G1, entre as questões de prova aparecem algumas com a origem "IDECAN · Banestes 2012 ·
@@ -358,12 +406,28 @@ unitários (inclui `ContrastTest` nos quatro temas e nas trilhas dos Gerais, `Tr
 `LegacyPaletteTest`); validador de conteúdo sem erros (1 aviso); pacote de provas com 205 questões (123 dos Específicos
 e 82 dos Gerais, esperando conteúdo); harness com 117 testes e renders `th_*.png` e `site_*.png`.
 
-Versão 0.10.0 (U2 e G1): `./gradlew check` sem erros, com 196 testes unitários (inclui o teste que valida todos os
+Versão 0.9.1 (lições por conceitos no ranking): `./gradlew check` sem erros nem warnings, com 198 testes unitários
+(`SocialRulesTest` confere que o limite de XP da lição é exatamente o XP da melhor lição de 12 exercícios);
+`tools/sql-tests/run.sh` passando, inclusive reaplicando o 0001 sobre um banco com o limite antigo; harness com 118
+testes, entre eles `licaoPorConceitosPerfeitaEntraNoRanking` (lição real de 12 exercícios, 210 XP, chega ao ranking).
+
+Versão 0.10.0 (provas anteriores): `./gradlew check` sem erros nem warnings; testes unitários de `PastExamTest`
+(agrupamento, partes, regras de abrir e tempo), `LessonRunTest` (prova sem repetir erros), `ProgressProcessorTest` (XP
+e ofensiva da prova, sem devolver coração) e `SocialRulesTest` (limites do tipo `exam`); `tools/sql-tests/run.sh` com
+as provas no servidor e na ofensiva em dupla; harness com integração da prova (aviso, coração ao começar, XP só ao
+terminar, abandonar, partes, modo sem vidas e Não perturbe) e renders `s_exam_intro*.png`, `s_exam_mode.png`,
+`s_exam_result.png`, `s_nohearts_exam.png` e `t_practice.png`.
+
+Versão 0.10.1 (treino sem farm): `SrsEngineTest` (acerto antes do dia não adianta), `LessonRunTest` (treino sem XP) e
+`ProgressProcessorTest` (treino livre sem XP, coração, missão nem meta); harness com
+`treinoForaDoPrazoERevisaoLivreNaoDaoXpNemCoracaoENaoAdiantamARevisao` e render `s_nohearts_nada_vencido.png`.
+
+Versão 0.12.0 (U2 e G1): `./gradlew check` sem erros, com 196 testes unitários (inclui o teste que valida todos os
 pacotes embutidos e o conceito de cada questão da U2 e da G1); validador de conteúdo com 3 pacotes e 492 exercícios,
 sem erros (1 aviso antigo, u1l2q09); `validate_provas` com 218 questões OK; pacote de provas do app regerado (205
 questões, 83 com conceito); harness com 117 testes, todos passando. Saídas de código da U2 conferidas rodando Java 17,
 .NET 6 e Python 3.12.
 
-Versão 0.11.0 (provas Banestes 2012 e 2024): `./gradlew check` sem erros, com 197 testes unitários (inclui o de 4
+Versão 0.12.0 (provas Banestes 2012 e 2024): `./gradlew check` sem erros, com 197 testes unitários (inclui o de 4
 alternativas só em prova real); `validate_provas` com 353 questões OK; letras conferidas por script contra os dois
 gabaritos oficiais; pacote de provas do app com 326 questões; harness com 117 testes, todos passando.

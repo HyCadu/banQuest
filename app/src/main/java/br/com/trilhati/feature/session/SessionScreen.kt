@@ -78,9 +78,21 @@ fun SessionScreen(onExit: () -> Unit, onOpenErrors: () -> Unit, viewModel: Sessi
             onOrderPlace = viewModel::orderPlace, onOrderRemove = viewModel::orderRemove, onDontKnow = viewModel::dontKnow,
         )
     }
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val examActions = remember(viewModel) {
+        ExamIntroActions(
+            onPickPart = viewModel::pickExamPart, onSilence = viewModel::setExamSilence, onBegin = viewModel::beginExam,
+            onOpenSilenceAccess = { runCatching { context.startActivity(viewModel.silenceAccessIntent()) } },
+        )
+    }
+    // Voltou das configurações do Android: o acesso ao Não perturbe pode ter sido liberado.
+    androidx.lifecycle.compose.LifecycleResumeEffect(viewModel) {
+        viewModel.refreshExamSilenceAccess()
+        onPauseOrDispose { }
+    }
     SessionContent(
         ui = ui, now = now, character = character, actions = actions, onExit = onExit, onOpenErrors = onOpenErrors,
-        onRefill = viewModel::refillHeartsAndRetry, onRetry = viewModel::retryAfterWaiting,
+        onRefill = viewModel::refillHeartsAndRetry, onRetry = viewModel::retryAfterWaiting, examActions = examActions,
     )
 }
 
@@ -97,6 +109,7 @@ fun SessionContent(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
     animated: Boolean = true,
+    examActions: ExamIntroActions = ExamIntroActions(),
 ) {
     var confirmExit by remember { mutableStateOf(false) }
     val playing = ui as? SessionUi.Playing
@@ -107,6 +120,7 @@ fun SessionContent(
             SessionUi.Loading, SessionUi.Saving -> CenterMessage(character, "Preparando…", animated)
             is SessionUi.Empty -> EmptyScreen(ui, character, onExit, animated)
             is SessionUi.NoHearts -> NoHeartsScreen(ui, character, onRefill, onRetry, onOpenErrors, onExit, animated)
+            is SessionUi.ExamIntro -> ExamIntroScreen(ui, character, examActions, onExit, animated)
             is SessionUi.Playing -> PlayingScreen(ui, now, character, actions, onClose = { confirmExit = true }, animated = animated)
             is SessionUi.Finished -> ResultScreen(ui, character, onContinue = onExit, animated = animated)
         }
@@ -115,8 +129,17 @@ fun SessionContent(
     if (confirmExit) {
         TrilhaDialog(
             onDismiss = { confirmExit = false },
-            title = "Sair da lição?",
-            content = { Text("Você perde o progresso desta lição. Os corações já gastos não voltam.", style = MaterialTheme.typography.bodyMedium, color = Trilha.colors.ink) },
+            title = if (playing?.exam == true) "Sair da prova?" else "Sair da lição?",
+            content = {
+                Text(
+                    when {
+                        playing?.exam != true -> "Você perde o progresso desta lição. Os corações já gastos não voltam."
+                        playing.examHeartSpent -> "O XP só vem se você responder todas. Saindo agora, você não ganha XP e o coração usado para abrir a prova não volta."
+                        else -> "O XP só vem se você responder todas. Saindo agora, você não ganha XP."
+                    },
+                    style = MaterialTheme.typography.bodyMedium, color = Trilha.colors.ink,
+                )
+            },
             actions = {
                 ChunkyButton("Continuar estudando", { confirmExit = false }, Modifier.fillMaxWidth())
                 ChunkyButton("Sair", { confirmExit = false; onExit() }, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
@@ -145,7 +168,7 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
         // Cabeçalho: X, progresso, cronômetro e corações
         Row(Modifier.fillMaxWidth().padding(horizontal = Spacing.screen, vertical = Spacing.sm), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Box(
-                Modifier.size(40.dp).semantics { contentDescription = "Sair da lição"; role = Role.Button }.clickable(onClick = onClose),
+                Modifier.size(40.dp).semantics { contentDescription = if (ui.exam) "Sair da prova" else "Sair da lição"; role = Role.Button }.clickable(onClick = onClose),
                 contentAlignment = Alignment.Center,
             ) { GameIconView(GameIcon.Close, size = 26.dp, colors = IconColors.flat(c.inkSoft, c.inkSoft)) }
             GameProgressBar(ui.progress, Modifier.weight(1f), height = 16.dp)

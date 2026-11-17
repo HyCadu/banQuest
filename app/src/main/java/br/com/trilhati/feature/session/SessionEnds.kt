@@ -75,15 +75,24 @@ internal fun NoHeartsScreen(
         Mascot(character, MascotPose.Sad, Modifier.size(180.dp), animated = animated)
         Text("Acabaram os corações!", style = MaterialTheme.typography.headlineLarge, color = c.ink, textAlign = TextAlign.Center)
         Text(
-            if (ui.endedMidLesson) "A lição termina aqui, mas o que você acertou foi bom. Recupere corações e volte mais forte."
-            else "Você precisa de pelo menos 1 coração para fazer uma lição.",
+            when {
+                ui.forExam -> "Abrir uma prova gasta 1 coração inteiro. Recupere um e volte para a prova."
+                ui.endedMidLesson -> "A lição termina aqui, mas o que você acertou foi bom. Recupere corações e volte mais forte."
+                else -> "Você precisa de pelo menos 1 coração para fazer uma lição."
+            },
             style = MaterialTheme.typography.bodyLarge, color = c.inkSoft, textAlign = TextAlign.Center,
         )
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
             repeat(5) { GameIconView(GameIcon.Heart, size = 30.dp, modifier = Modifier.padding(2.dp)) }
         }
-        ChunkyButton("Praticar erros (ganhe 1 coração)", onOpenErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
-        ChunkyButton("Recarregar por 350 gemas", onRefill, Modifier.fillMaxWidth(), ChunkyStyle.Secondary, enabled = ui.gems >= 350, icon = GameIcon.Gem)
+        // Só a revisão de erros vencidos devolve coração (0.10.1): sem nenhum vencido, o botão não aparece.
+        if (ui.dueErrors > 0) {
+            ChunkyButton("Revisar erros vencidos (ganhe 1 coração)", onOpenErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
+        }
+        ChunkyButton(
+            "Recarregar por 350 gemas", onRefill, Modifier.fillMaxWidth(),
+            if (ui.dueErrors > 0) ChunkyStyle.Secondary else ChunkyStyle.Primary, enabled = ui.gems >= 350, icon = GameIcon.Gem,
+        )
         if (ui.gems < 350) Text("Você tem ${ui.gems} gemas.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
         ui.msUntilNext?.let { untilNext ->
             Text("Ou espere: o próximo coração volta em ${PaceEngine.format(untilNext)}.", style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
@@ -99,6 +108,7 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
     val run = ui.run
     val summary = ui.processed.summary
     val isLesson = ui.source == SessionSource.Lesson
+    val isExam = ui.source == SessionSource.Exam
     val perfect = run.perfect
     val avg = PaceEngine.averageMs(run.totalTimeMs, run.records.size)
     val targetAvg = PaceEngine.averageMs(run.targetsSumMs, run.records.size)
@@ -117,6 +127,9 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             Mascot(character, pose, Modifier.size(200.dp), animated = animated)
             Text(
                 when {
+                    !ui.rewarded -> "Treino concluído!"
+                    isExam && perfect -> "Prova gabaritada!"
+                    isExam -> "Prova concluída!"
                     !isLesson -> "Treino concluído!"
                     perfect -> "Lição perfeita!"
                     else -> "Lição concluída!"
@@ -124,11 +137,21 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
                 style = MaterialTheme.typography.headlineLarge, color = c.primaryText, textAlign = TextAlign.Center,
             )
             Text(ui.title, style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
+            if (!ui.rewarded) {
+                Text(
+                    "Treino para estudar: sem XP e sem coração. Eles vêm das revisões no dia certo.",
+                    style = MaterialTheme.typography.bodyMedium, color = c.ink, textAlign = TextAlign.Center,
+                )
+            }
 
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 ResultStat("XP ganho", "+${summary.totalXp}", GameIcon.Star, Modifier.weight(1f))
                 ResultStat("Precisão", "${run.accuracyPercent}%", GameIcon.Target, Modifier.weight(1f))
-                ResultStat("Melhor combo", run.bestCombo.toString(), GameIcon.Flame, Modifier.weight(1f))
+                if (isExam) {
+                    ResultStat("Acertos", "${run.correctCount}/${run.records.size}", GameIcon.Check, Modifier.weight(1f))
+                } else {
+                    ResultStat("Melhor combo", run.bestCombo.toString(), GameIcon.Flame, Modifier.weight(1f))
+                }
             }
             // Resumo de tempo: sempre aparece, mesmo com o cronômetro desligado (regra do projeto).
             Column(
@@ -181,6 +204,13 @@ internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, on
             val wrong = run.firstTryRecords.filter { !it.correct }
             if (wrong.isNotEmpty()) {
                 Text("Para revisar", style = MaterialTheme.typography.headlineSmall, color = c.ink, modifier = Modifier.fillMaxWidth())
+                if (isExam) {
+                    val n = wrong.size
+                    Text(
+                        "${if (n == 1) "1 questão errada foi" else "$n questões erradas foram"} para Praticar erros.",
+                        style = MaterialTheme.typography.bodyMedium, color = c.inkSoft, modifier = Modifier.fillMaxWidth(),
+                    )
+                }
                 wrong.take(5).forEach { r ->
                     Text(
                         (if (r.corrected) "Corrigida no caminho · " else "") + r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",

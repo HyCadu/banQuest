@@ -16,6 +16,7 @@ import br.com.trilhati.data.repo.ProgressRepository
 import br.com.trilhati.data.social.AuthStore
 import br.com.trilhati.data.social.SyncRepository
 import br.com.trilhati.data.social.SyncStore
+import br.com.trilhati.domain.lesson.LessonPlanner
 import br.com.trilhati.domain.lesson.LessonRun
 import br.com.trilhati.domain.progress.SessionKind
 import br.com.trilhati.domain.progress.SessionResult
@@ -24,6 +25,7 @@ import java.time.Instant
 import java.time.LocalDate
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlin.random.Random
 import kotlinx.serialization.json.Json
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -188,6 +190,43 @@ class SocialSyncTest {
         assertEquals(1, server.sessions.size)
         assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
         assertNull(meta().lastError)
+    }
+
+    /** Lição por conceitos de verdade (12 exercícios, montada pelo LessonPlanner), feita sem erro e rápido. */
+    private fun studyConceptLessonPerfectly(lessonId: String) = runBlocking {
+        val lesson = content.lesson(lessonId)!!
+        val questions = LessonPlanner.plan(lesson.questions, emptySet(), Random(7), lesson.concepts.map { it.id })
+        assertEquals(LessonPlanner.SIZE, questions.size)
+        var run = LessonRun.start(questions)
+        while (run.current != null) run = LessonRun.answer(run, true, 30_000, 180_000)
+        progress.applySession(SessionResult(SessionKind.Lesson, lessonId, "u1", run.records, run.bestCombo, run.perfect), today(), content.course)
+            .summary.totalXp
+    }
+
+    @Test fun licaoPorConceitosPerfeitaEntraNoRanking() {
+        login()
+        val xp = studyConceptLessonPerfectly("u1l2")
+        assertEquals(210, xp) // 12 × 15 + 20 + 10: passava do antigo limite de 150 e ficava fora do ranking
+        assertTrue(runBlocking { sync.syncNow() } is ApiResult.Ok)
+        assertEquals(listOf(210), server.sessions.map { it.xp })
+        assertEquals(210, meta().overview!!.global.single { it.isMe }.xp)
+        assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
+    }
+
+    @Test fun provaAnteriorInteiraEntraNoRanking() {
+        login()
+        val xp = runBlocking {
+            val qs = content.exams.first { it.id == "fgv-banestes-2018" }.questions(br.com.trilhati.domain.exam.ExamPart.Full)
+            var run = LessonRun.start(qs, repeatMistakes = false)
+            while (run.current != null) run = LessonRun.answer(run, true, 30_000, 180_000)
+            progress.applySession(SessionResult(SessionKind.Exam, null, null, run.records, run.bestCombo, run.perfect), today(), content.course)
+                .summary.totalXp
+        }
+        assertEquals(87 * 15 + 30, xp) // 87 questões: muito acima dos limites de lição (30 respostas, 210 XP)
+        assertTrue(runBlocking { sync.syncNow() } is ApiResult.Ok)
+        assertEquals(listOf("exam" to xp), server.sessions.map { it.kind to it.xp })
+        assertEquals(xp, meta().overview!!.global.single { it.isMe }.xp)
+        assertTrue(runBlocking { db.progressDao().outbox(10) }.isEmpty())
     }
 
     @Test fun sessaoForaDosLimitesSaiDaFilaSemTravar() {

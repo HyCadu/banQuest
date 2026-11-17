@@ -35,6 +35,14 @@ val NOW_MS: Long = Instant.parse("2026-11-18T15:20:00Z").toEpochMilli()
 
 fun Bitmap.save(name: String) = File(OUT, name).outputStream().use { compress(Bitmap.CompressFormat.PNG, 100, it) }
 
+/** Provas anteriores do pacote real, agrupadas como o app faz (seção "Provas anteriores" da aba Praticar). */
+val pastExams by lazy {
+    val questions = Json { ignoreUnknownKeys = true }
+        .decodeFromString(br.com.trilhati.data.content.ExamPackDto.serializer(), File("../../../app/src/main/assets/provas/provas-anteriores.json").readText())
+        .toDomain()
+    br.com.trilhati.domain.exam.PastExams.from(questions) { it.lessonId.removePrefix("u").substringBefore("l").toInt() > 10 }
+}
+
 val course by lazy {
     val dto = Json { ignoreUnknownKeys = true }.decodeFromString(PackDto.serializer(), File("../../../app/src/main/assets/content/u1-banco-de-dados.json").readText())
     CourseAssembler.assemble(listOfNotNull(dto.toDomain()))
@@ -63,7 +71,7 @@ fun fakeState(progress: Boolean, character: String = "Guaiamum", noLives: Boolea
     val quests = br.com.trilhati.domain.quest.QuestEngine.questsFor(TODAY).mapIndexed { i, d ->
         QuestProgress(TODAY, d.id, if (progress) (if (i == 0) d.target else d.target / 2) else 0, claimed = false)
     }
-    return AppState(TODAY, course, snap, quests, Settings(noLives = noLives))
+    return AppState(TODAY, course, snap, quests, Settings(noLives = noLives), pastExams)
 }
 
 /** Ranking, amigos e pedidos de exemplo (nomes fictícios), como se tivessem vindo do `social_overview`. */

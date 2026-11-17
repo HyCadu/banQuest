@@ -1,5 +1,6 @@
 package br.com.trilhati.domain.social
 
+import br.com.trilhati.domain.lesson.XpEngine
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.ZoneId
@@ -33,22 +34,34 @@ object SocialRules {
     fun isValidCode(input: String): Boolean = normalizeFriendCode(input) != null
 }
 
-/** Limites anti-trapaça (iguais aos de `submit_session` no servidor). */
+/**
+ * Limites anti-trapaça (iguais aos de `submit_session` no servidor). Uma sessão fora deles sai da fila sem ir para o
+ * ranking, então o teto precisa caber na melhor sessão possível: a lição por conceitos tem 12 exercícios
+ * (`LessonPlanner.SIZE`), e 12 × 15 XP + 20 de conclusão + 10 de perfeita = 210. O teste `SocialRulesTest` confere.
+ */
 object SessionLimits {
-    const val LESSON_MAX_XP = 150
+    const val LESSON_MAX_XP = 210
     const val PRACTICE_MAX_XP = 120
     const val MIN_MS_PER_ANSWER = 2_000L
     const val MAX_DAYS_LATE = 7L
     const val MAX_ANSWERS = 30
 
+    /** Prova anterior ("exam"): até 100 respostas (a maior prova do pacote tem 87). */
+    const val EXAM_MAX_ANSWERS = 100
+
+    /** XP máximo de uma prova com [answers] respostas: 15 por acerto rápido + 20 de conclusão + 10 de gabarito. */
+    fun examMaxXp(answers: Int): Int =
+        answers * (XpEngine.CORRECT_FIRST_TRY + XpEngine.FAST_BONUS) + XpEngine.COMPLETION + XpEngine.PERFECT_LESSON
+
     fun accepts(kind: String, xp: Int, answers: Int, durationMs: Long, day: LocalDate, today: LocalDate): Boolean {
-        val maxXp = when (kind) {
-            "lesson" -> LESSON_MAX_XP
-            "practice" -> PRACTICE_MAX_XP
+        val (maxXp, maxAnswers) = when (kind) {
+            "lesson" -> LESSON_MAX_XP to MAX_ANSWERS
+            "practice" -> PRACTICE_MAX_XP to MAX_ANSWERS
+            "exam" -> examMaxXp(answers) to EXAM_MAX_ANSWERS
             else -> return false
         }
         return xp in 0..maxXp &&
-            answers in 1..MAX_ANSWERS &&
+            answers in 1..maxAnswers &&
             durationMs >= answers * MIN_MS_PER_ANSWER &&
             !day.isAfter(today) && !day.isBefore(today.minusDays(MAX_DAYS_LATE))
     }

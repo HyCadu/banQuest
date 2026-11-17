@@ -21,10 +21,16 @@ data class AnswerRecord(
     val corrected: Boolean = false,
 )
 
-/** Estado imutável de uma sessão (lição, treino de erros ou revisão livre). */
+/**
+ * Estado imutável de uma sessão (lição, treino de erros, revisão livre ou prova anterior).
+ * [repeatMistakes]: o erro volta no fim da fila (lições e treinos); na prova anterior não volta, como na prova real.
+ */
 data class LessonRunState(
     val queue: List<LessonItem>,
     val planned: Int,
+    val repeatMistakes: Boolean = true,
+    /** `false` no treino sem recompensa (nada vencido ou revisão livre): as respostas valem 0 XP. */
+    val awardsXp: Boolean = true,
     val completed: Int = 0,
     val combo: Int = 0,
     val bestCombo: Int = 0,
@@ -61,8 +67,11 @@ object LessonRun {
         return chosen.shuffled(random)
     }
 
-    fun start(questions: List<Question>): LessonRunState =
-        LessonRunState(queue = questions.map { LessonItem(it, retry = false) }, planned = questions.size)
+    fun start(questions: List<Question>, repeatMistakes: Boolean = true, awardsXp: Boolean = true): LessonRunState =
+        LessonRunState(
+            queue = questions.map { LessonItem(it, retry = false) }, planned = questions.size,
+            repeatMistakes = repeatMistakes, awardsXp = awardsXp,
+        )
 
     /**
      * Registra a resposta da questão atual. Erro na primeira vez recoloca a questão no fim da fila (uma vez só).
@@ -73,10 +82,10 @@ object LessonRun {
     fun answer(state: LessonRunState, correct: Boolean, timeMs: Long, targetMs: Long, corrected: Boolean = false): LessonRunState {
         val item = state.current ?: return state
         val fixed = corrected && !correct
-        val xp = XpEngine.answerXp(correct, item.retry, timeMs, fixed)
+        val xp = if (state.awardsXp) XpEngine.answerXp(correct, item.retry, timeMs, fixed) else 0
         val record = AnswerRecord(item.question, correct, item.retry, timeMs, targetMs, xp, fixed)
         val rest = state.queue.drop(1)
-        val requeue = !correct && !fixed && !item.retry
+        val requeue = state.repeatMistakes && !correct && !fixed && !item.retry
         val combo = if (correct) state.combo + 1 else 0
         return state.copy(
             queue = if (requeue) rest + LessonItem(item.question, retry = true) else rest,

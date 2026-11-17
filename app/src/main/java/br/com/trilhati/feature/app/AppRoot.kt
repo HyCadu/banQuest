@@ -75,6 +75,7 @@ private fun MainNav(appViewModel: AppViewModel) {
                 onOpenErrors = { nav.navigate(Routes.session(SessionSource.Errors)) },
                 onOpenReview = { nav.navigate(Routes.session(SessionSource.Review)) },
                 onOpenSettings = { nav.navigate(Routes.SETTINGS) },
+                onOpenExam = { nav.navigate(Routes.session(SessionSource.Exam, it)) },
             )
         }
         composable(

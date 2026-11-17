@@ -115,4 +115,26 @@ class LessonRunTest {
         assertTrue(s.records.last().correct); assertFalse(s.records.last().corrected)
         assertEquals(15, s.xp)
     }
+
+    @Test fun `prova anterior nao repete erros no fim e acaba depois de responder todas`() {
+        var s = LessonRun.start(TestData.questions(3), repeatMistakes = false)
+        s = LessonRun.answer(s, false, 60_000, 180_000)
+        s = LessonRun.answer(s, true, 60_000, 180_000)
+        s = LessonRun.answer(s, false, 60_000, 180_000)
+        assertTrue(s.finished)
+        assertEquals(3, s.records.size)
+        assertEquals(3, s.planned)
+        assertEquals(15, s.xp)
+        assertFalse(s.perfect)
+    }
+
+    @Test fun `treino sem recompensa nao da xp por resposta`() {
+        var s = LessonRun.start(TestData.questions(2), awardsXp = false)
+        s = LessonRun.answer(s, true, 10_000, 180_000)
+        s = LessonRun.answer(s, false, 10_000, 180_000)
+        s = LessonRun.answer(s, true, 10_000, 180_000) // repetição
+        assertTrue(s.finished)
+        assertEquals(0, s.xp)
+        assertTrue(s.records.all { it.xp == 0 })
+    }
 }

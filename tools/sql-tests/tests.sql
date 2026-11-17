@@ -80,9 +80,9 @@ select tst.err($$select public.make_friends('a0000000-0000-0000-0000-00000000000
 -- =====================================================================================================================
 -- 2. Sessões e limites anti-trapaça
 -- =====================================================================================================================
-select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 150, 8, 16000, 1, 1, public.today_brt())->>'ok')::boolean, 'lição com XP máximo (150) aceita');
-select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 150, 8, 16000, 1, 1, public.today_brt())->>'duplicate')::boolean, 'reenviar a mesma sessão não duplica');
-select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 151, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'lição acima de 150 XP recusada');
+select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 210, 12, 24000, 1, 1, public.today_brt())->>'ok')::boolean, 'lição com XP máximo (210: 12 exercícios por conceitos) aceita');
+select tst.ok((public.submit_session('b0000000-0000-0000-0000-000000000001', public.today_brt(), 'lesson', 210, 12, 24000, 1, 1, public.today_brt())->>'duplicate')::boolean, 'reenviar a mesma sessão não duplica');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 211, 12, 24000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'lição acima de 210 XP recusada');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'practice', 121, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'treino acima de 120 XP recusado');
 select tst.ok((public.submit_session(gen_random_uuid(), public.today_brt(), 'practice', 120, 8, 16000, 1, 1, public.today_brt())->>'ok')::boolean, 'treino com 120 XP aceito');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt() + 1, 'lesson', 50, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'invalid_day', 'dia no futuro recusado');
@@ -91,6 +91,14 @@ select tst.ok((public.submit_session(gen_random_uuid(), public.today_brt() - 7, 
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 50, 8, 15999, 1, 1, public.today_brt())->>'reason' = 'too_fast', 'menos de 2 s por resposta recusado');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'boss', 50, 8, 16000, 1, 1, public.today_brt())->>'reason' = 'invalid_kind', 'tipo inválido recusado');
 select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 50, 0, 16000, 1, 1, public.today_brt())->>'reason' = 'invalid_answers', 'zero respostas recusado');
+
+-- prova anterior ('exam', 0.10.0): até 100 respostas e 15 XP por resposta + 30
+select set_config('request.jwt.claim.sub', :'caio', false);
+select tst.ok((public.submit_session(gen_random_uuid(), public.today_brt(), 'exam', 87 * 15 + 30, 87, 87 * 2000, 1, 1, public.today_brt())->>'ok')::boolean, 'prova de 87 questões gabaritada (1335 XP) aceita');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'exam', 87 * 15 + 31, 87, 87 * 2000, 1, 1, public.today_brt())->>'reason' = 'xp_limit', 'prova acima de 15 XP por resposta + 30 recusada');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'exam', 100, 101, 101 * 2000, 1, 1, public.today_brt())->>'reason' = 'invalid_answers', 'prova com mais de 100 respostas recusada');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'lesson', 100, 31, 31 * 2000, 1, 1, public.today_brt())->>'reason' = 'invalid_answers', 'lição continua limitada a 30 respostas');
+select tst.ok(public.submit_session(gen_random_uuid(), public.today_brt(), 'exam', 100, 40, 79999, 1, 1, public.today_brt())->>'reason' = 'too_fast', 'prova também precisa de 2 s por resposta');
 
 select set_config('request.jwt.claim.sub', :'davi', false);
 select count(*) from (select tst.study(public.today_brt(), 'practice', 1) from generate_series(1, 40)) x;
@@ -111,8 +119,8 @@ select tst.study(public.today_brt(), 'lesson', 80);
 -- 3. Ranking da semana
 -- =====================================================================================================================
 select set_config('request.jwt.claim.sub', :'ana', false);
-select tst.ok((select xp from public.weekly_ranking('global') where friend_state = 'me') = 270,
-              'XP da semana soma as sessões aceitas desta semana (150 + 120; a de 7 dias atrás é da semana passada)');
+select tst.ok((select xp from public.weekly_ranking('global') where friend_state = 'me') = 330,
+              'XP da semana soma as sessões aceitas desta semana (210 + 120; a de 7 dias atrás é da semana passada)');
 select tst.ok((select pos from public.weekly_ranking('global') where friend_state = 'me') = 1, 'Ana em 1º no geral');
 select tst.ok(not exists (select 1 from public.weekly_ranking('global') where display_name = 'Caio'), 'quem está oculto não aparece no geral');
 select tst.ok((select count(*) from public.weekly_ranking('friends')) = 1, 'sem amigos, o ranking de amigos só tem você');
@@ -183,8 +191,8 @@ select tst.ok((select pair_streak from public.my_friends() where display_name = 
 select tst.ok((select me_today = false and friend_today = true from public.my_friends() where display_name = 'Fábio'), 'mostra quem já estudou hoje');
 select tst.study(public.today_brt() - 3, 'practice', 50);
 select tst.ok((select pair_streak from public.my_friends() where display_name = 'Fábio') = 2, 'treino não conta para a ofensiva em dupla');
-select tst.study(public.today_brt());
-select tst.ok((select pair_streak from public.my_friends() where display_name = 'Fábio') = 3, 'Eva estudou hoje: dupla vai a 3');
+select public.submit_session(gen_random_uuid(), public.today_brt(), 'exam', 200, 30, 60000, 1, 1, public.today_brt());
+select tst.ok((select pair_streak from public.my_friends() where display_name = 'Fábio') = 3, 'Eva fez uma prova anterior hoje: conta como lição e a dupla vai a 3');
 select set_config('request.jwt.claim.sub', :'fabio', false);
 select tst.ok((select pair_streak from public.my_friends() where display_name = 'Eva') = 3, 'a ofensiva em dupla é a mesma dos dois lados');
 

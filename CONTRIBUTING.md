@@ -36,10 +36,26 @@ Quem não tem permissão de escrita no repositório trabalha num fork e abre o P
 - `docs/DECISIONS.md` atualizado, se houve decisão (com o link da issue).
 - Para conteúdo: o relatório da segunda revisão em `content/review/`.
 
+## Conteúdo com IA (qualquer IA)
+
+O jeito mais rápido de ajudar é transformar uma prova anterior ou uma lição do edital em conteúdo do app. Dá para usar
+qualquer IA (ChatGPT, Claude, Gemini…), desde que ela siga a mesma lógica de aprendizado da Unidade 1:
+
+1. Anexe à conversa o [`docs/GUIA_TRILHA_COM_IA.md`](docs/GUIA_TRILHA_COM_IA.md) e o PDF da prova com o gabarito (ou
+   diga qual lição quer gerar).
+2. Cole o prompt da Parte 9 do guia e faça uma etapa por vez: transcrever, classificar, gerar a lição.
+3. Salve os arquivos nos caminhos que o guia indica e rode os validadores:
+   `python3 tools/validate_content.py app/src/main/assets/content/` e `python3 tools/validate_provas.py`.
+4. Leia e resolva as questões antes do PR: o validador pega erros de formato, não de conteúdo.
+5. Abra um PR por lição ou por prova, com o relatório de revisão em `content/review/`.
+
+Antes de começar, veja nas issues e PRs abertos se alguém já está na mesma lição ou prova.
+
 ## Agentes de IA (Claude Code e outros)
 
-Seguem o `CLAUDE.md` e este arquivo: trabalham numa branch, fazem commit nela, abrem o PR e **param**. Não fazem merge,
-não aprovam o próprio PR e não mudam as configurações do repositório.
+Seguem o `CLAUDE.md`, o `AGENTS.md` e este arquivo: trabalham numa branch, fazem commit nela, abrem o PR e **param**.
+Não fazem merge, não aprovam o próprio PR e não mudam as configurações do repositório. Para conteúdo, leem o
+`docs/GUIA_TRILHA_COM_IA.md` (no Claude Code, a skill `trilha-de-conteudo` faz isso).
 
 ## Configuração única do dono (proteção da `main`)
 

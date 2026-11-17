@@ -17,10 +17,13 @@ Ele lê a versão mais nova da tabela `app_releases` do Supabase (`supabase/migr
 
 1. **Gerar o APK assinado** (ver `docs/ASSINATURA.md`): `tools/build_apk.sh` → `dist/banquest-<versão>.apk`.
    O `versionCode` em `app/build.gradle.kts` precisa ser maior que o da versão anterior.
-2. **Subir o APK:** **Storage → apk → Upload file** e escolha o arquivo. Depois, nos três pontinhos do arquivo,
+2. **Se a versão mudou o SQL** (algum arquivo em `supabase/migrations/`), rode o arquivo alterado no **SQL Editor**
+   antes de anunciar. A 0.9.1 e a 0.10.0 mudaram o `0001_social.sql` (limite de XP da lição e provas anteriores no
+   ranking).
+3. **Subir o APK:** **Storage → apk → Upload file** e escolha o arquivo. Depois, nos três pontinhos do arquivo,
    **Get URL / Copy URL**. O link tem este formato:
    `https://fheldagijfrqqgjjfcdt.supabase.co/storage/v1/object/public/apk/banquest-0.5.1.apk`
-3. **Anunciar no SQL Editor** (troque os valores):
+4. **Anunciar no SQL Editor** (troque os valores):
    ```sql
    insert into public.app_releases (version_code, version_name, apk_url, notes)
    values (9, '0.5.1',
@@ -29,7 +32,7 @@ Ele lê a versão mais nova da tabela `app_releases` do Supabase (`supabase/migr
    ```
    - `version_code`: o `versionCode` do `app/build.gradle.kts`.
    - `notes`: até 500 caracteres. Aparecem no aviso e na notificação.
-4. Em até ~30 min (ou na hora, em Configurações → Sobre o app → Verificar atualização), quem tiver uma versão
+5. Em até ~30 min (ou na hora, em Configurações → Sobre o app → Verificar atualização), quem tiver uma versão
    anterior vê o aviso. Tocando em **Baixar**, o navegador baixa o APK. Na primeira vez, o Android pede permissão para
    o navegador instalar apps, e a versão nova entra por cima, sem perder nada.
 

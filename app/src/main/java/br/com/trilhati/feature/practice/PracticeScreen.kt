@@ -2,6 +2,7 @@ package br.com.trilhati.feature.practice
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,7 +17,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import br.com.trilhati.domain.exam.ExamPart
+import br.com.trilhati.domain.exam.ExamRules
+import br.com.trilhati.domain.exam.PastExam
+import br.com.trilhati.domain.model.AnswerKey
+import br.com.trilhati.domain.pace.PaceConfig
 import br.com.trilhati.domain.srs.SrsEngine
 import br.com.trilhati.feature.app.AppActions
 import br.com.trilhati.feature.app.AppState
@@ -50,7 +57,7 @@ fun weakSpots(state: AppState, limit: Int = 3): List<WeakSpot> {
         .take(limit)
 }
 
-/** Aba Praticar: revisão espaçada dos erros (intervalos 1, 3, 7 e 14 dias) e revisão livre. */
+/** Aba Praticar: revisão espaçada dos erros (intervalos 1, 3, 7 e 14 dias), revisão livre e provas anteriores. */
 @Composable
 fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = Modifier, animated: Boolean = true) {
     val c = Trilha.colors
@@ -69,7 +76,9 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
                 "Como funciona",
                 "Toda questão que você erra volta para revisão depois de ${SrsEngine.INTERVALS_DAYS[0]}, " +
                     "${SrsEngine.INTERVALS_DAYS[1]}, ${SrsEngine.INTERVALS_DAYS[2]} e ${SrsEngine.INTERVALS_DAYS[3]} dias, se você for acertando. " +
-                    "Errou de novo? O ciclo recomeça. Terminar um treino devolve 1 coração.",
+                    "Ela só sai dos erros guardados depois de acertar as ${SrsEngine.INTERVALS_DAYS.size} revisões, cada uma no seu dia. " +
+                    "Errou de novo? O ciclo recomeça. XP e 1 coração vêm só da revisão das vencidas; treinar antes do dia " +
+                    "e a revisão livre servem para estudar, sem XP.",
             )
         }
         MascotSays(
@@ -90,16 +99,33 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
             Counter("Vencidas", due, GameIcon.Clock)
             Counter("Erros guardados", bank, GameIcon.Target)
         }
+        if (bank > 0) {
+            Text(
+                "Cada erro sai daqui depois de ${SrsEngine.INTERVALS_DAYS.size} revisões certas, em dias diferentes.",
+                style = MaterialTheme.typography.bodySmall, color = c.inkSoft,
+            )
+        }
         when {
             due > 0 -> ChunkyButton("Treinar erros ($due)", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Primary)
-            bank > 0 -> ChunkyButton("Treinar os mais antigos", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
+            bank > 0 -> ChunkyButton("Treinar os mais antigos (sem XP)", actions.openErrors, Modifier.fillMaxWidth(), ChunkyStyle.Neutral)
         }
         ChunkyButton(
-            "Revisão livre", actions.openReview, Modifier.fillMaxWidth(), ChunkyStyle.Secondary,
+            "Revisão livre (sem XP)", actions.openReview, Modifier.fillMaxWidth(), ChunkyStyle.Secondary,
             enabled = state.hasAnyCompletedLesson,
         )
         if (!state.hasAnyCompletedLesson) {
             Text("Libera depois da primeira lição.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+        }
+        if (state.exams.isNotEmpty()) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Provas anteriores", Modifier.weight(1f), style = MaterialTheme.typography.headlineSmall, color = c.ink)
+                InfoButton(
+                    "Provas anteriores",
+                    "Provas de concursos passados, só com as questões que valem para o edital atual. Abrir uma prova gasta " +
+                        "1 coração, errar não tira coração e o XP só vem se você responder todas as questões.",
+                )
+            }
+            state.exams.forEach { exam -> ExamCard(exam, state.settings.paceConfig) { actions.openExam(exam.id) } }
         }
         if (weak.isNotEmpty()) {
             Text("Seus pontos fracos", style = MaterialTheme.typography.headlineSmall, color = c.ink)
@@ -113,6 +139,34 @@ fun PracticeContent(state: AppState, actions: AppActions, modifier: Modifier = M
                     Text("${w.accuracy}% de acerto", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
                 }
             }
+        }
+    }
+}
+
+/** Cartão de uma prova anterior: nome, número de questões, tempo estimado e o aviso de gabarito. */
+@Composable
+private fun ExamCard(exam: PastExam, pace: PaceConfig, onClick: () -> Unit) {
+    val c = Trilha.colors
+    val all = exam.questions(ExamPart.Full)
+    val time = ExamRules.durationLabel(all.sumOf { pace.targetMs(it) })
+    val parts = if (exam.parts.size > 1) "Específicos e Gerais" else "Específicos"
+    val key = when (exam.answerKey) {
+        AnswerKey.Final -> null
+        AnswerKey.Preliminary -> "Gabarito preliminar"
+        AnswerKey.Unconfirmed -> "Gabarito não confirmado"
+    }
+    Row(
+        Modifier.fillMaxWidth()
+            .background(c.surface, RoundedCornerShape(16.dp)).border(2.dp, c.outline, RoundedCornerShape(16.dp))
+            .clickable(onClickLabel = "abrir a prova", role = Role.Button, onClick = onClick)
+            .padding(14.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        GameIconView(GameIcon.Book, size = 34.dp)
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Text(exam.title, style = MaterialTheme.typography.titleSmall, color = c.ink)
+            Text("${all.size} questões · $parts · cerca de $time", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
+            if (key != null) Text(key, style = MaterialTheme.typography.labelMedium, color = c.warningText)
         }
     }
 }

@@ -34,6 +34,8 @@ data class Settings(
     val themeChosen: Boolean = false,
     /** Trilha aberta na aba Trilha (Específicos ou Gerais). */
     val trailTrack: br.com.trilhati.domain.model.Track = br.com.trilhati.domain.model.Track.Specific,
+    /** Ligar o Não perturbe do Android durante as provas anteriores (interruptor na tela antes da prova). */
+    val examSilence: Boolean = false,
 ) {
     val reminderTime: java.time.LocalTime get() = java.time.LocalTime.of(reminderMinutes / 60, reminderMinutes % 60)
 
@@ -57,6 +59,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         val palette = stringPreferencesKey("palette")
         val themeChosen = booleanPreferencesKey("theme_chosen")
         val trailTrack = stringPreferencesKey("trail_track")
+        val examSilence = booleanPreferencesKey("exam_silence")
     }
 
     val settings: Flow<Settings> = context.settingsStore.data.map { p -> p.toSettings() }
@@ -76,6 +79,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         themeChosen = this[Keys.themeChosen] ?: false,
         trailTrack = this[Keys.trailTrack]?.let { runCatching { br.com.trilhati.domain.model.Track.valueOf(it) }.getOrNull() }
             ?: br.com.trilhati.domain.model.Track.Specific,
+        examSilence = this[Keys.examSilence] ?: false,
     )
 
     suspend fun setTimerMode(mode: TimerMode) = context.settingsStore.edit { it[Keys.timerMode] = mode.name }
@@ -94,6 +98,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext private val con
         it[Keys.themeChosen] = true
     }
     suspend fun setTrailTrack(track: br.com.trilhati.domain.model.Track) = context.settingsStore.edit { it[Keys.trailTrack] = track.name }
+    suspend fun setExamSilence(on: Boolean) = context.settingsStore.edit { it[Keys.examSilence] = on }
     suspend fun eraseAll() = context.settingsStore.edit { it.clear() }
 }
 

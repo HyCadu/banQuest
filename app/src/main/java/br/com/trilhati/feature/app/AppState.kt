@@ -22,6 +22,8 @@ data class AppState(
     val snapshot: AppSnapshot,
     val quests: List<QuestProgress>,
     val settings: Settings,
+    /** Provas anteriores do modo da aba Praticar. */
+    val exams: List<br.com.trilhati.domain.exam.PastExam> = emptyList(),
 ) {
     val statuses: Map<String, LessonStatus> = TrailEngine.statuses(course, snapshot.lessonProgress)
     val daysToExam: Int = daysToExam(today)
@@ -73,6 +75,8 @@ data class AppActions(
     val openLesson: (String) -> Unit = {},
     val openErrors: () -> Unit = {},
     val openReview: () -> Unit = {},
+    /** Abre a tela de aviso de uma prova anterior (id da [br.com.trilhati.domain.exam.PastExam]). */
+    val openExam: (String) -> Unit = {},
     val openSettings: () -> Unit = {},
     val buy: (br.com.trilhati.domain.progress.ShopItem) -> Unit = {},
     val claimQuest: (String) -> Unit = {},

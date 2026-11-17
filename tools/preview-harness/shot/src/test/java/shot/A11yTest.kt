@@ -99,6 +99,17 @@ class A11yTest {
         assertClickablesLabeled("escolha de tema")
     }
 
+    @Test fun avisoDaProvaAnteriorTemRotulos() {
+        val e = pastExams.first { it.id == "fgv-banestes-2018" }
+        val part = br.com.trilhati.domain.exam.ExamPart.Full
+        val qs = e.questions(part)
+        val ui = SessionUi.ExamIntro(e.title, e.cargo, e.answerKey, e.parts, part, e.parts.map { e.questions(it).size }, qs.size, qs.size * 180_000L, 2, true, true, false)
+        rule.mainClock.autoAdvance = false
+        rule.setContent { TrilhaTheme { SessionContent(ui, mutableStateOf(NOW_MS), MascotCharacter.Guaiamum, SessionActions(), {}, {}, {}, {}, animated = false) } }
+        rule.mainClock.advanceTimeBy(300)
+        assertClickablesLabeled("aviso da prova anterior")
+    }
+
     @Test fun licaoOrdenar() = session(QuestionType.OrderCode, ExerciseState.Order(listOf(4, 3, 2, 1, 0)))
     // Escolha rápida de aprender, com o botão "Dica" do conceito (u1l1).
     @Test fun licaoEscolhaRapidaComDica() = session(QuestionType.Quick, ExerciseState.Choice(1))

@@ -164,8 +164,8 @@ construir sem responder antes:
    `authenticated`. O app só lê o próprio perfil e o próprio retrato, e todo o resto passa por funções
    `security definer` com `search_path` fixo. As funções internas (`are_friends`, `pair_streak`…) não podem ser
    chamadas pelo app.
-7. **Anti-trapaça "confiança + limites"**, iguais no app (`SessionLimits`) e no servidor: até 150 XP por lição e 120
-   por treino, no mínimo 2 s por resposta, data entre hoje − 7 e hoje, e 40 sessões por dia. O id da sessão é um UUID
+7. **Anti-trapaça "confiança + limites"**, iguais no app (`SessionLimits`) e no servidor: até 210 XP por lição (150 até a
+   0.9.0, ver "Limite de XP da lição no ranking") e 120 por treino, no mínimo 2 s por resposta, data entre hoje − 7 e hoje, e 40 sessões por dia. O id da sessão é um UUID
    gerado no app, então reenviar não duplica. Uma sessão que o app já sabe que será recusada sai da fila, para não
    travar as seguintes.
 8. **Progresso na nuvem = retrato JSON** no mesmo formato do backup, com versão otimista (`expected_version`). Se outro
@@ -461,7 +461,97 @@ animação fluida.
 7. **Animação da troca.** A trilha desliza para o lado da trilha escolhida, com esmaecimento, e as cores se misturam em
    0,5 s. O botão do seletor desliza com efeito de mola. Se o aparelho pedir para remover animações, a troca é imediata.
 
-## U2 e G1 juntas, com as oficiais ligadas a conceitos (0.10.0, 17/11/2026) — a pedido do dono
+## Limite de XP da lição no ranking (0.9.1, 17/11/2026) — a pedido do dono
+O dono perguntou se o ranking estava atualizando. Não estava: as lições boas no formato por conceitos não chegavam ao
+servidor.
+1. **Causa.** O limite anti-trapaça da lição (decisão 7 do social) era 150 XP, a lição perfeita no formato antigo
+   (8 questões × 15 + 20 de conclusão + 10 de perfeita). A lição por conceitos tem 12 exercícios
+   (`LessonPlanner.SIZE`) e chega a 210 XP. Acima de 150, o app tirava a sessão da fila sem enviar, e o servidor
+   recusaria do mesmo jeito. Num teste com 4 lições da U1 (12, 10, 8 e 6 acertos de primeira), o app somou 690 XP e
+   o ranking recebeu 140. Isso afetava também a ofensiva em dupla (o servidor só conta o dia com lição recebida) e o
+   "Pódio da semana". XP, nível e ofensiva individual não eram afetados.
+2. **Correção.** O limite da lição passou para **210** no app (`SessionLimits.LESSON_MAX_XP`), no `submit_session` e
+   na restrição da tabela `study_sessions`. A mudança fica no próprio `0001_social.sql`, que pode ser reaplicado: uma
+   migration separada seria desfeita por quem rodasse o 0001 de novo. O 0001 refaz a restrição da tabela, então
+   rodá-lo de novo atualiza um banco criado antes.
+3. **Para não voltar a acontecer:** o `SocialRulesTest` joga a melhor lição possível de `LessonPlanner.SIZE`
+   exercícios e exige que o limite seja exatamente o XP dela. Se o tamanho da lição ou o XP mudarem, o teste falha. O
+   pior caso de respostas (todas erradas e repetidas, 24) também cabe no limite de 30. A harness tem um teste de ponta
+   a ponta com uma lição real de 12 exercícios, e o `tools/sql-tests/run.sh` simula um banco antigo antes de reaplicar
+   o 0001.
+4. **O que já se perdeu não volta.** As sessões recusadas saíram da fila do aparelho. O ranking das semanas passadas
+   fica como está, e o desta semana passa a contar a partir da atualização.
+
+## Provas anteriores na aba Praticar (0.10.0, 17/11/2026) — a pedido do dono
+Pedido do dono: um modo "provas anteriores" na aba Praticar. Completar uma prova dá XP, mas só se o aluno completar
+tudo. Cada vez que abre, gasta um coração, mas errar não tira coração. Isso precisa ser avisado antes de começar. Se
+possível, uma opção para silenciar as notificações durante a prova.
+1. **Uma prova = as questões dela que estão no pacote de provas** (`assets/provas`), agrupadas por banca, órgão, ano e
+   cargo (`PastExams`). O pacote já tira as de versão antiga e as fora do edital, então a prova tem só o que vale para o
+   edital atual: FGV Banestes 2021 (57), FGV Banestes 2018 (87), FCC Teresina 2016 (35) e FCC DPE-RR 2015 (26). As
+   questões dos Gerais e das unidades sem conteúdo também entram: é o primeiro lugar do app onde elas aparecem.
+2. **Regras pedidas pelo dono:**
+   - antes de começar, uma tela de aviso com as regras, o tempo estimado e o gabarito (preliminar ou não confirmado);
+   - "Começar" gasta 1 coração inteiro, e nada é gasto antes disso;
+   - errar não tira coração (a sessão não usa corações);
+   - o XP só é creditado quando todas as questões foram respondidas. Sair no meio não grava nada, e o coração gasto
+     para abrir não volta.
+3. **Escolhas feitas aqui (★), fáceis de mudar:**
+   - **Partes:** nas provas com Específicos e Gerais dá para escolher prova inteira, só Específicos ou só Gerais. A
+     de 2018 inteira tem 87 questões, cerca de 4h20 no ritmo de 3:00.
+   - **Correção na hora**, com a explicação, como nas lições. A versão sem correção, com resultado só no fim, fica para
+     o simulado (fase 10).
+   - **O erro não volta no fim** (`LessonRun.start(repeatMistakes = false)`), como numa prova real, e vai para
+     "Praticar erros". Para isso, o `ContentRepository` passou a achar por id também as questões de prova que ainda
+     não estão numa lição.
+   - **XP:** 10 por acerto, +5 se em até 2:00, +20 ao terminar e +10 se gabaritar. São as mesmas regras da lição.
+   - **Conta como estudo do dia:** ofensiva (também a em dupla, no servidor), meta diária e as gemas de uma lição.
+     Não conta como lição concluída nem como treino de erros.
+   - **Não devolve coração** ao terminar, ao contrário do treino de erros. Senão, abrir sairia de graça.
+   - **Precisa de 1 coração inteiro para abrir.** Com só meio coração, aparece a tela "sem corações". No modo sem
+     vidas, abrir é grátis.
+4. **Servidor:** o `submit_session` aceita o tipo `exam`, com até 100 respostas e XP até 15 por resposta + 30. As
+   restrições da tabela foram refeitas no próprio `0001_social.sql`, como na 0.9.1. A ofensiva em dupla (`pair_streak` e
+   `my_friends`) conta o dia com lição ou prova. Sem isso, uma prova de 87 questões cairia no mesmo problema da 0.9.1
+   (limite de 30 respostas) e sumiria do ranking. O `SocialRulesTest` e a harness conferem a maior prova do pacote.
+5. **Silenciar notificações:** um interruptor na tela de aviso, lembrado para as próximas provas.
+   - **Como funciona:** liga o Não perturbe do Android (modo prioridade) ao começar e desliga ao terminar ou sair. Se
+     o app for fechado no meio, desliga quando ele abrir de novo (`ExamFocus`, chamado no `TrilhaApp`).
+   - **Quando não mexe:** se o Não perturbe já estava ligado, não mexe nele. Se o aluno mudou o modo durante a prova,
+     não desfaz a mudança.
+   - **Permissão:** precisa de `ACCESS_NOTIFICATION_POLICY` (permissão nova, pedida pelo dono) e de o aluno liberar o
+     acesso uma vez nas configurações do Android. O interruptor abre essa tela. No Android 15 ou mais novo, o sistema
+     mostra isso como um modo "BanQuest" nas configurações de Modos.
+6. **Limite conhecido:** se o Android encerrar o app no meio de uma prova longa (por exemplo, com o app muito tempo em
+   segundo plano), a prova recomeça do aviso e o coração gasto não volta. Guardar a prova em andamento fica para
+   depois, se fizer falta.
+
+## Treino de erros sem farm (0.10.1, 17/11/2026) — decisão do dono
+Um amigo do dono achou o bug: na aba Praticar dava para repetir o treino sem fim. Ele também estranhou que os erros
+continuavam lá depois de acertar.
+1. **Por que acontecia:**
+   - **Erro que não sai:** acertar uma vez só reagenda a questão. Ela sai dos "erros guardados" depois de acertar as 4
+     revisões (1, 3, 7 e 14 dias). Isso é de propósito, mas a tela não explicava.
+   - **Treinar os mais antigos:** sem nada vencido, o botão repetia as mesmas questões. Cada rodada dava até 120 XP e
+     +1 coração, e cada acerto adiantava a revisão espaçada mesmo fora do prazo. Em 4 rodadas seguidas a questão "se
+     formava" em minutos, em vez de 25 dias.
+   - **Revisão livre:** também dava XP e +1 coração a cada rodada, sem limite.
+   - **Efeito:** XP infinito no ranking e corações infinitos (lição de graça).
+2. **Escolha do dono: "só vencidas valem".**
+   - XP e o coração do treino vêm só da revisão das questões vencidas (`SessionKind.Practice`).
+   - O treino sem nada vencido ("Treino livre") e a "Revisão livre" continuam liberados para estudar, mas viram
+     `SessionKind.FreeReview`: não dão XP, coração, missão nem meta, e não vão para o ranking. As respostas valem 0
+     XP já na hora (`LessonRun.start(awardsXp = false)`).
+   - Errar no treino livre ainda volta o cartão para o começo.
+3. **Revisão espaçada de verdade:** acertar antes do dia da revisão não adianta o cartão (`SrsEngine.onAnswer`). Vale
+   em qualquer sessão (lição, treino e prova). A conquista de revisão conta só as revisões no dia certo.
+4. **Telas:**
+   - A aba Praticar explica que cada erro sai depois de 4 revisões certas, em dias diferentes.
+   - Os botões dizem "(sem XP)" quando não há recompensa, e o resultado do treino livre diz por quê.
+   - A tela "sem corações" só oferece "Revisar erros vencidos (ganhe 1 coração)" quando há erro vencido. Os erros de
+     hoje só vencem amanhã, então, no dia em que os corações acabam, sobram esperar ou recarregar com gemas.
+
+## U2 e G1 juntas, com as oficiais ligadas a conceitos (0.12.0, 17/11/2026) — a pedido do dono
 O dono pediu a U2 (Programação e OO) e a G1 (Língua Portuguesa) na mesma rodada, validando tudo no fim, e enviou os PDFs
 das provas do Banestes de 2012 e 2024.
 1. **Uma branch e um PR para as duas unidades** (o CONTENT_PLAN sugere uma unidade por PR): foi o pedido do dono. Cada
@@ -481,8 +571,8 @@ das provas do Banestes de 2012 e 2024.
    (oficiais incluídas) tem conceito da lição. Os testes da harness que usavam a U2 como "unidade sem conteúdo" passaram
    a usar a U3.
 
-## Provas Banestes 2012 (IDECAN) e 2024 (Instituto Access) (0.11.0, 17/11/2026) — a pedido do dono
-O dono enviou os gabaritos das duas provas do cargo que, na 0.10.0, tinham servido só para calibrar o estilo (decisão
+## Provas Banestes 2012 (IDECAN) e 2024 (Instituto Access) (0.12.0, 17/11/2026) — a pedido do dono
+O dono enviou os gabaritos das duas provas do cargo que, na geração da U2 e da G1, tinham servido só para calibrar o estilo (decisão
 anterior, item 4), e depois o Guia de Conduta Ética do Banestes.
 1. **Duas provas novas em `content/provas`**, no mesmo formato das outras. O texto foi conferido contra o PDF (figura e
    tabela viraram texto, com `depende_de_figura`); a resposta segue o gabarito e foi conferida resolvendo a questão. Um

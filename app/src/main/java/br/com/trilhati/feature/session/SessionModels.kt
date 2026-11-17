@@ -6,11 +6,12 @@ import br.com.trilhati.domain.model.Question
 import br.com.trilhati.domain.pace.PaceConfig
 import br.com.trilhati.domain.progress.ProcessedSession
 
-/** De onde vem a sessão: uma lição da trilha, treino de erros (revisão espaçada) ou revisão livre. */
+/** De onde vem a sessão: uma lição da trilha, treino de erros (revisão espaçada), revisão livre ou prova anterior. */
 enum class SessionSource(val route: String) {
     Lesson("lesson"),
     Errors("errors"),
     Review("review"),
+    Exam("exam"),
     ;
 
     companion object {
@@ -58,8 +59,41 @@ sealed interface SessionUi {
 
     data class Empty(val title: String, val message: String) : SessionUi
 
-    /** Sem corações: não dá para começar (ou continuar) uma lição. */
-    data class NoHearts(val gems: Int, val msUntilNext: Long?, val endedMidLesson: Boolean) : SessionUi
+    /** Sem corações: não dá para começar (ou continuar) uma lição, ou abrir uma prova anterior ([forExam]). */
+    data class NoHearts(
+        val gems: Int,
+        val msUntilNext: Long?,
+        val endedMidLesson: Boolean,
+        val forExam: Boolean = false,
+        /** Erros vencidos agora: só com eles "Praticar erros" devolve um coração (0.10.1). */
+        val dueErrors: Int = 0,
+    ) : SessionUi
+
+    /**
+     * Aviso antes da prova anterior: as regras (abrir gasta 1 coração, errar não tira coração, XP só ao terminar), a
+     * parte escolhida, o tempo estimado e o interruptor de silenciar notificações. Nada é gasto até "Começar".
+     */
+    data class ExamIntro(
+        val title: String,
+        val cargo: String,
+        val answerKey: br.com.trilhati.domain.model.AnswerKey,
+        val parts: List<br.com.trilhati.domain.exam.ExamPart>,
+        val part: br.com.trilhati.domain.exam.ExamPart,
+        /** Questões em cada parte, na ordem de [parts]. */
+        val partSizes: List<Int>,
+        val questionCount: Int,
+        /** Soma dos tempos-alvo das questões (3:00 cada, ou o ritmo escolhido). */
+        val estimatedMs: Long,
+        /** Metades de coração que começar gasta: 2, ou 0 no modo sem vidas. */
+        val costHalves: Int,
+        /** Tem um coração inteiro (ou está no modo sem vidas)? */
+        val canOpen: Boolean,
+        /** Interruptor "Silenciar notificações durante a prova". */
+        val silence: Boolean,
+        /** O acesso ao Não perturbe já foi liberado nas configurações do Android. */
+        val silenceAllowed: Boolean,
+        val starting: Boolean = false,
+    ) : SessionUi
 
     data class Playing(
         val title: String,
@@ -88,6 +122,10 @@ sealed interface SessionUi {
         val halfHeart: Boolean = false,
         /** Estoque do "Não sei"; o botão só aparece nos exercícios de ensino. */
         val helps: Int = 0,
+        /** Prova anterior: sem corações por erro, sem repetição e XP só ao terminar. */
+        val exam: Boolean = false,
+        /** Abrir esta prova gastou um coração (não no modo sem vidas). */
+        val examHeartSpent: Boolean = false,
     ) : SessionUi {
         /** Texto ao lado do coração: "5" ou "4,5" (ver [br.com.trilhati.domain.hearts.HeartsEngine.display]). */
         val heartsText: String? get() = hearts?.let { if (halfHeart) "$it,5" else "$it" }
@@ -102,5 +140,7 @@ sealed interface SessionUi {
         val processed: ProcessedSession,
         val run: LessonRunState,
         val pace: PaceConfig,
+        /** `false` no treino livre e na revisão livre: só estudo, sem XP nem coração. */
+        val rewarded: Boolean = true,
     ) : SessionUi
 }

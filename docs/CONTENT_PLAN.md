@@ -11,7 +11,7 @@ também eliminam, porque a média ponderada mínima é 6,00. Por isso entram na 
 | Un. | Tema | Lições | Questões | Estado | Densidade | Risco factual |
 |---|---|---|---|---|---|---|
 | 1 | Banco de dados | 5 | 50 | **pronta**, por conceitos (170 exercícios, 27 conceitos) | média | baixo |
-| 2 | Programação e OO | 5 | 50 | **pronta (0.10.0)**, por conceitos (154 exercícios, 26 conceitos) | alta (l4) | baixo |
+| 2 | Programação e OO | 5 | 50 | **pronta (0.12.0)**, por conceitos (154 exercícios, 26 conceitos) | alta (l4) | baixo |
 | 3 | Engenharia de software e ágil | 5 | 50 | a fazer | alta (l4) | **alto** (normas) |
 | 4 | Web, APIs e arquitetura | 5 | 50 | a fazer | **muito alta** (l3, l5) | médio |
 | 5 | DevOps e containers | 4 | 40 | a fazer | média | baixo |
@@ -21,7 +21,7 @@ também eliminam, porque a média ponderada mínima é 6,00. Por isso entram na 
 | 9 | Redes | 5 | 50 | a fazer | **muito alta** (l2, l4) | médio |
 | 10 | Serviços, monitoramento e nuvem | 4 | 40 | a fazer | alta (l1, l2) | médio (RFCs) |
 | | **Subtotal Específicos** | **48** | **480** | U1 e U2 prontas | | |
-| G1 | Língua Portuguesa | 5 | 50 | **pronta (0.10.0)**, por conceitos (168 exercícios, 28 conceitos) | alta | baixo |
+| G1 | Língua Portuguesa | 5 | 50 | **pronta (0.12.0)**, por conceitos (168 exercícios, 28 conceitos) | alta | baixo |
 | G2 | Raciocínio lógico, estatística e matemática financeira | 8 | 80 | a fazer | alta | baixo (cálculo conferível) |
 | G3 | Atualidades do mercado financeiro | 4 | 40 | a fazer | alta | **alto** (envelhece rápido) |
 | G4 | Ética, compliance e ESG | 4 | 40 | a fazer | média | médio (guia do Banestes) |
@@ -93,7 +93,7 @@ A coluna "Questões" da visão geral conta só as de **prova** (estilo FCC e ofi
 ### U2 — Programação e orientação a objetos
 Decisão: **as cinco linguagens do edital (PHP, Python, C, Java, C#) e o .NET com peso igual.** Os trechos de código
 das lições 1 e 2 alternam entre as linguagens; nenhuma é a "padrão".
-**Feita na 0.10.0** (pacote `u2-programacao`, revisão em `content/review/u2-programacao.md`): 26 conceitos, 154
+**Feita na 0.12.0** (pacote `u2-programacao`, revisão em `content/review/u2-programacao.md`): 26 conceitos, 154
 exercícios e as 22 oficiais ligadas a conceitos.
 
 | Lição | Tópicos do edital | Tipos indicados | Observação |
@@ -188,7 +188,7 @@ Específicos"); o merge deste plano é a aprovação do dono. IDs nos pacotes: `
 Na prova: Português 10, Raciocínio e Estatística 10, Atualidades 5, Ética/ESG 5.
 
 ### G1 — Língua Portuguesa (`u11`)
-**Feita na 0.10.0** (pacote `u11-lingua-portuguesa`, revisão em `content/review/u11-lingua-portuguesa.md`): 28
+**Feita na 0.12.0** (pacote `u11-lingua-portuguesa`, revisão em `content/review/u11-lingua-portuguesa.md`): 28
 conceitos, 168 exercícios e as 35 oficiais da FGV ligadas a conceitos. Textos de interpretação autorais e curtos.
 
 | Lição | Tópicos do edital | Tipos | Observação |
@@ -260,7 +260,7 @@ Opções:
 
 Mínimo para lançar (PLAN §6): U1–U4. Depois, por largura no edital:
 
-1. ~~**U2** (base, risco baixo)~~ feita na 0.10.0, junto com a G1
+1. ~~**U2** (base, risco baixo)~~ feita na 0.12.0, junto com a G1
 2. **U4** (densa)
 3. **U3** (normas a conferir)
 4. **U6** (segurança, grande)
