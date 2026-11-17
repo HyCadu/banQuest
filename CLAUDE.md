@@ -39,6 +39,8 @@ HTTP próprio (`data/remote/`), sem SDK. O SQL fica em `supabase/migrations/` e 
    (ou uma prova anterior inteira, desde a 0.10.0).
 
 ## Convenções de conteúdo
+- **Guia completo para gerar conteúdo com qualquer IA: `docs/GUIA_TRILHA_COM_IA.md`** (skill `trilha-de-conteudo`).
+  Ele resume as regras abaixo, os formatos de arquivo e a checagem final; se divergir daqui, vale este arquivo.
 - Formato e schema: seção 5.1 do PLAN.md. Pacotes em `app/src/main/assets/content/`, um arquivo por unidade.
 - Questões estilo FCC: cinco alternativas de tamanho parecido, uma correta, sem "todas as anteriores", mistura de enunciado literal, exceção ("NÃO é") e ~40% de casos práticos.
 - Gere **uma unidade por vez**, valide com `tools/validate_content.py`, faça a segunda revisão e grave o relatório em `content/review/`. Distribua a posição da resposta correta de forma uniforme entre as 5 alternativas.
