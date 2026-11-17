@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.util.lerp
 import kotlin.math.PI
-import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
 
@@ -59,18 +58,26 @@ internal fun DrawScope.drawMascot(character: MascotCharacter, f: Frame) {
 // ===================== Guaiamum (caranguejo azul-arroxeado) =====================
 // Jeito próprio: anda de lado (duas idas e voltas) estalando as garras.
 
-private val CrabBody = Color(0xFF6F6BF0)
-private val CrabDark = Color(0xFF4B45C9)
-private val CrabBelly = Color(0xFFAFAAFF)
+private val CrabBody = Color(0xFF6889CE)
+private val CrabDark = Color(0xFF4466A3)
+private val CrabBelly = Color(0xFFA6C6E6)
 
-private fun DrawScope.crabClaw(center: Offset, radius: Float, gapCenterDeg: Float, gapDeg: Float) {
-    val start = gapCenterDeg + gapDeg / 2f
-    val sweep = 360f - gapDeg
-    val topLeft = Offset(center.x - radius, center.y - radius)
-    val size = Size(radius * 2, radius * 2)
-    drawArc(CrabDark, start, sweep, true, topLeft, size)
-    drawArc(Ink, start, sweep, true, topLeft, size, style = Stroke(OUTLINE, join = StrokeJoin.Round))
-    drawArc(Color.White.copy(alpha = 0.3f), start + 20f, 70f, false, Offset(center.x - radius * 0.7f, center.y - radius * 0.7f), Size(radius * 1.4f, radius * 1.4f), style = Stroke(3f, cap = StrokeCap.Round))
+private fun DrawScope.crabClaw(center: Offset, size: Float, facing: Float, pinch: Float) {
+    translate(center.x, center.y) {
+        scale(facing * size, size, Offset.Zero) {
+            val claw = Path().apply {
+                moveTo(-9f - pinch * 0.13f, -20f)
+                cubicTo(-22f, -18f, -24f, -3f, -20f, 8f)
+                cubicTo(-16f, 21f, -1f, 24f, 10f, 16f)
+                cubicTo(18f, 10f, 19f, -3f, 13f, -11f)
+                quadraticTo(9f, -16f, pinch * 0.10f, -17f)
+                quadraticTo(7f, -8f, 1f, -2f)
+                quadraticTo(-7f, -2f, -9f, -8f)
+                close()
+            }
+            fillPath(claw, CrabDark)
+        }
+    }
 }
 
 private fun DrawScope.drawGuaiamum(f: Frame) {
@@ -112,11 +119,20 @@ private fun DrawScope.drawGuaiamum(f: Frame) {
         val calm = 52f - 22f * (0.5f + 0.5f * sin(f.seconds * 3.2f)) * (1f - f.droop)
         val snap = 58f - 54f * (0.5f + 0.5f * sin(f.seconds * 24f))
         val pinch = lerp(calm, snap, sig)
-        crabClaw(lClaw, 21f, 225f, pinch)
-        crabClaw(rClaw, 16f, 315f, pinch)
+        crabClaw(lClaw, 1f, 1f, pinch)
+        crabClaw(rClaw, 0.84f, -1f, pinch)
         // corpo com barriga clara e sombra embaixo
         val bodyRect = Rect(36f, 76f, 164f, 168f)
-        val body = Path().apply { addOval(bodyRect) }
+        val body = Path().apply {
+            moveTo(37f, 112f)
+            cubicTo(39f, 90f, 59f, 78f, 82f, 79f)
+            quadraticTo(100f, 82f, 118f, 79f)
+            cubicTo(142f, 77f, 161f, 92f, 163f, 111f)
+            quadraticTo(168f, 131f, 149f, 151f)
+            cubicTo(133f, 169f, 70f, 172f, 51f, 151f)
+            quadraticTo(32f, 133f, 37f, 112f)
+            close()
+        }
         drawPath(body, CrabBody)
         drawOval(CrabBelly, Offset(58f, 122f), Size(84f, 40f))
         shadeInside(body, bodyRect, 0.14f)
@@ -124,7 +140,7 @@ private fun DrawScope.drawGuaiamum(f: Frame) {
         for ((sx, sy) in listOf(80f to 104f, 100f to 98f, 120f to 104f)) {
             drawCircle(CrabDark.copy(alpha = 0.45f), 4.5f, Offset(sx, sy))
         }
-        shine(76f, 98f, 18f, 8f, -25f)
+
         drawNightCap(Offset(100f, 90f), 64f, f)
         drawFace(
             FaceSpec(
@@ -146,17 +162,8 @@ private operator fun Offset.plus(o: Offset) = Offset(x + o.x, y + o.y)
 private val TurtleSkin = Color(0xFF8EE2AE)
 private val TurtleSkinDark = Color(0xFF55C487)
 private val TurtleShell = Color(0xFF2FA57A)
+private val TurtleSeam = Color(0xFF247967)
 private val TurtleShellLight = Color(0xFF4CCB9C)
-
-private fun hexagon(cx: Float, cy: Float, r: Float): Path = Path().apply {
-    for (i in 0 until 6) {
-        val a = (60f * i - 30f) * PI.toFloat() / 180f
-        val x = cx + r * cos(a)
-        val y = cy + r * sin(a)
-        if (i == 0) moveTo(x, y) else lineTo(x, y)
-    }
-    close()
-}
 
 private fun DrawScope.drawTartaruga(f: Frame) {
     val paddle = sin(f.seconds * 3f) * 4f * (1f - f.sleepy)
@@ -171,29 +178,68 @@ private fun DrawScope.drawTartaruga(f: Frame) {
     } else 0f
     val peek = if (f.fidget == Fidget.Signature && t > 0.65f) sin((t - 0.65f) / 0.35f * PI.toFloat()) * 4f * f.idle else 0f
 
-    // patas de trás
-    fillOval(68f, 172f, 17f, 11f, TurtleSkinDark)
-    fillOval(132f, 172f, 17f, 11f, TurtleSkinDark)
+    val rearFlipper = Path().apply {
+        moveTo(83f, 132f)
+        cubicTo(88f, 137f, 92f, 147f, 86f, 157f)
+        quadraticTo(79f, 168f, 66f, 174f)
+        quadraticTo(60f, 176f, 62f, 168f)
+        cubicTo(63f, 155f, 69f, 139f, 83f, 132f)
+        close()
+    }
+    val frontFlipper = Path().apply {
+        moveTo(65f, 115f)
+        cubicTo(54f, 111f, 44f, 117f, 35f, 128f)
+        cubicTo(26f, 139f, 17f, 145f, 10f, 149f)
+        quadraticTo(7f, 153f, 16f, 154f)
+        cubicTo(33f, 156f, 48f, 148f, 57f, 140f)
+        quadraticTo(73f, 127f, 65f, 115f)
+        close()
+    }
+    // A rotação parte do ombro, coberto pelo casco em todas as poses.
+    for (right in listOf(false, true)) {
+        scale(if (right) -1f else 1f, 1f, Offset(100f, 120f)) {
+            rotate(-12f * tuck, Offset(83f, 137f)) { fillPath(rearFlipper, TurtleSkinDark) }
+            val raised = if (right) f.rightArm else f.arms
+            val beat = if (right) -paddle + f.rightArmSwing(7f) else paddle
+            val angle = lerp(-24f * tuck, 54f, raised) + beat
+            translate(-8f * raised, 0f) {
+                rotate(angle, Offset(60f, 122f)) { fillPath(frontFlipper, TurtleSkin) }
+            }
+        }
+    }
     // casco
     val shellRect = Rect(28f, 38f, 172f, 150f)
     val shell = Path().apply { addOval(shellRect) }
     drawPath(shell, TurtleShell)
     clipPath(shell) {
-        fillPath(hexagon(100f, 64f, 22f), TurtleShellLight, outline = 3.5f)
-        fillPath(hexagon(58f, 92f, 19f), TurtleShellLight, outline = 3.5f)
-        fillPath(hexagon(142f, 92f, 19f), TurtleShellLight, outline = 3.5f)
-        fillPath(hexagon(100f, 112f, 18f), TurtleShellLight, outline = 3.5f)
+        val plate = Path().apply {
+            moveTo(72f, 72f)
+            quadraticTo(80f, 53f, 100f, 47f)
+            quadraticTo(121f, 55f, 129f, 72f)
+            lineTo(122f, 94f)
+            quadraticTo(100f, 106f, 79f, 94f)
+            close()
+        }
+        drawPath(plate, TurtleShellLight)
+        val seams = Path().apply {
+            moveTo(72f, 72f)
+            quadraticTo(49f, 74f, 30f, 91f)
+            moveTo(129f, 72f)
+            quadraticTo(152f, 76f, 170f, 91f)
+            moveTo(79f, 94f)
+            quadraticTo(69f, 114f, 54f, 133f)
+            moveTo(122f, 94f)
+            quadraticTo(132f, 114f, 147f, 134f)
+            moveTo(100f, 47f)
+            lineTo(100f, 38f)
+        }
+        val seamStroke = Stroke(2.7f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+        drawPath(plate, TurtleSeam, style = seamStroke)
+        drawPath(seams, TurtleSeam, style = seamStroke)
     }
     shadeInside(shell, shellRect, 0.16f)
     drawPath(shell, Ink, style = Stroke(OUTLINE))
-    shine(70f, 56f, 24f, 8f, -28f)
-    // nadadeiras (recolhem junto com a cabeça; a direita acena)
-    val inward = 10f * tuck
-    val lFlip = mix(Offset(40f + inward, 142f), Offset(32f, 98f + paddle), f.arms)
-    val rRest = Offset(160f - inward, 142f)
-    val rFlip = mix(rRest, Offset(168f, 98f), f.rightArm) + Offset(0f, -f.rightArmSwing(5f))
-    fillOval(lFlip.x, lFlip.y + paddle * (1f - f.arms), 21f, 11f, TurtleSkinDark, degrees = lerp(-28f, -75f, f.arms))
-    fillOval(rFlip.x, rFlip.y - paddle * (1f - f.rightArm), 21f, 11f, TurtleSkinDark, degrees = lerp(28f, 75f, f.rightArm))
+
     // cabeça: entra por trás da borda do casco. A parte escondida é o casco "subido" (borda curva, não um corte
     // reto); sobre a cabeça, essa borda ganha contorno, como se fosse a beirada do casco passando na frente dela.
     val rimLift = lerp(62f, 0f, tuck)
@@ -204,7 +250,7 @@ private fun DrawScope.drawTartaruga(f: Frame) {
     clipPath(hidden, ClipOp.Difference) {
         translate(0f, headDy) {
             scale(headScale, pivot = Offset(100f, 136f)) { fillOvalShaded(100f, 136f, 40f, 33f, TurtleSkin) }
-            shine(86f, 122f, 14f, 6f, -20f)
+
             drawNightCap(Offset(100f, 104f), 64f, f)
             drawFace(
                 FaceSpec(
@@ -255,13 +301,16 @@ private fun DrawScope.drawTamandua(f: Frame) {
             val plume = tailPlume()
             drawPath(plume, AntFur)
             shadeInside(plume, Rect(-70f, -122f, 14f, 12f), 0.14f)
-            // mechas de pelo ao longo da cauda
-            for (i in 0 until 5) {
-                val k = 0.18f + i * 0.15f
-                val a = bezier(Offset(4f, 0f), Offset(10f, -60f), Offset(-6f, -116f), k)
-                val b = bezier(Offset(-14f, 10f), Offset(-76f, -58f), Offset(-6f, -118f), k)
-                drawLine(AntFurDark, mix(a, b, 0.25f), mix(a, b, 0.75f), 3.5f, StrokeCap.Round)
+            val lock = Path().apply {
+                moveTo(-12f, -99f)
+                quadraticTo(-31f, -71f, -30f, -44f)
+                quadraticTo(-36f, -51f, -37f, -58f)
+                quadraticTo(-39f, -30f, -17f, -9f)
+                quadraticTo(-36f, -16f, -43f, -38f)
+                quadraticTo(-50f, -68f, -12f, -99f)
+                close()
             }
+            drawPath(lock, AntFurDark)
             drawPath(plume, Ink, style = Stroke(OUTLINE, cap = StrokeCap.Round, join = StrokeJoin.Round))
         }
     }
@@ -292,7 +341,7 @@ private fun DrawScope.drawTamandua(f: Frame) {
     drawCircle(AntStripe.copy(alpha = 0.5f), 4.5f, Offset(108f, 59f))
     // cabeça
     fillOvalShaded(92f, 92f, 38f, 34f, AntFur)
-    shine(74f, 72f, 13f, 6f, -30f)
+
     // focinho comprido: fareja (treme) e cai um pouco quando triste
     val sniff = sin(f.seconds * 16f) * 2.5f * sig
     val snoutAngle = sniff + 7f * f.droop - 3f * f.think
@@ -343,32 +392,17 @@ private fun DrawScope.drawTamandua(f: Frame) {
     drawTear(Offset(73f, 92f), f)
 }
 
-private fun bezier(p0: Offset, p1: Offset, p2: Offset, t: Float): Offset {
-    val u = 1f - t
-    return Offset(u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x, u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y)
-}
-
-/** Cauda em bandeira: borda de dentro lisa e borda de fora em pontas de pelo (não em "nuvem"). */
 private fun tailPlume(): Path = Path().apply {
-    val tip = Offset(-6f, -118f)
     moveTo(8f, 6f)
-    cubicTo(14f, -36f, 8f, -80f, tip.x, tip.y)
-    val n = 7
-    var prev = tip
-    for (i in 1..n) {
-        val t = i / n.toFloat()
-        // borda de fora: da ponta até a base, bojuda para a esquerda; cada mecha de pelo cai para baixo
-        val p = bezier(tip, Offset(-80f, -58f), Offset(-14f, 10f), t)
-        val dir = Offset(p.x - prev.x, p.y - prev.y)
-        val len = kotlin.math.sqrt(dir.x * dir.x + dir.y * dir.y).coerceAtLeast(0.01f)
-        val normal = Offset(dir.y / len, -dir.x / len) // aponta para fora (esquerda)
-        val tangent = Offset(dir.x / len, dir.y / len)
-        val out = if (i == n) 3f else 7f
-        val lock = mix(prev, p, 0.7f) + Offset(normal.x * out + tangent.x * 4f, normal.y * out + tangent.y * 4f)
-        quadraticTo(mix(prev, p, 0.35f).x + normal.x * out * 0.9f, mix(prev, p, 0.35f).y + normal.y * out * 0.9f, lock.x, lock.y)
-        lineTo(p.x, p.y)
-        prev = p
-    }
+    cubicTo(17f, -37f, 5f, -98f, -9f, -120f)
+    quadraticTo(-12f, -108f, -19f, -104f)
+    lineTo(-20f, -111f)
+    quadraticTo(-40f, -88f, -45f, -61f)
+    lineTo(-49f, -67f)
+    quadraticTo(-52f, -39f, -40f, -18f)
+    lineTo(-46f, -20f)
+    quadraticTo(-32f, 5f, -14f, 10f)
+    quadraticTo(-1f, 14f, 8f, 6f)
     close()
 }
 
@@ -416,16 +450,33 @@ private fun DrawScope.drawPreguica(f: Frame) {
     drawPath(body, Ink, style = Stroke(OUTLINE))
     slothHand(lHandSway)
     slothHand(rHandSway)
-    // orelhinhas e cabeça (inclina para trás no bocejo)
+    // cabeça (inclina para trás no bocejo)
     rotate(-6f * yawn, Offset(100f, 140f)) {
-        fillOval(58f, 62f, 11f, 11f, SlothFurDark)
-        fillOval(142f, 62f, 11f, 11f, SlothFurDark)
         fillOvalShaded(100f, 98f, 56f, 46f, SlothFur, shade = 0.12f)
-        shine(76f, 66f, 18f, 7f, -22f)
+
         // máscara clara + manchas escuras dos olhos
-        fillOval(100f, 106f, 42f, 32f, SlothFace, outline = 0f)
-        fillOval(80f, 98f, 15f, 12f, SlothPatch, outline = 0f, degrees = -22f)
-        fillOval(120f, 98f, 15f, 12f, SlothPatch, outline = 0f, degrees = 22f)
+        val mask = Path().apply {
+            moveTo(57f, 109f)
+            cubicTo(57f, 91f, 66f, 78f, 80f, 80f)
+            quadraticTo(91f, 80f, 100f, 89f)
+            quadraticTo(110f, 80f, 121f, 80f)
+            cubicTo(138f, 80f, 145f, 97f, 143f, 112f)
+            quadraticTo(138f, 135f, 100f, 138f)
+            quadraticTo(64f, 136f, 57f, 109f)
+            close()
+        }
+        drawPath(mask, SlothFace)
+        val patch = Path().apply {
+            moveTo(59f, 109f)
+            quadraticTo(61f, 95f, 72f, 90f)
+            cubicTo(81f, 84f, 91f, 89f, 91f, 96f)
+            quadraticTo(90f, 103f, 81f, 105f)
+            quadraticTo(69f, 107f, 62f, 114f)
+            quadraticTo(59f, 115f, 59f, 109f)
+            close()
+        }
+        drawPath(patch, SlothPatch)
+        scale(-1f, 1f, Offset(100f, 98f)) { drawPath(patch, SlothPatch) }
         fillOval(100f, 113f, 8f, 5.5f, Ink, outline = 0f)
         drawCircle(Color.White.copy(alpha = 0.8f), 1.8f, Offset(97.5f, 111.5f))
         drawNightCap(Offset(100f, 62f), 74f, f)

@@ -170,14 +170,6 @@ internal fun DrawScope.fillPath(path: Path, color: Color, outline: Float = OUTLI
     }
 }
 
-/** Brilho suave no canto superior esquerdo, dá volume de "adesivo". */
-internal fun DrawScope.shine(cx: Float, cy: Float, rx: Float, ry: Float, degrees: Float = -20f) {
-    rotate(degrees, Offset(cx, cy)) {
-        drawOval(Color.White.copy(alpha = 0.32f), Offset(cx - rx, cy - ry), Size(rx * 2, ry * 2))
-        drawCircle(Color.White.copy(alpha = 0.45f), ry * 0.45f, Offset(cx + rx * 0.95f, cy + ry * 0.2f))
-    }
-}
-
 /** Membro grosso com contorno: linha escura por baixo, cor por cima. */
 internal fun DrawScope.limb(from: Offset, to: Offset, width: Float, color: Color) {
     drawLine(Ink, from, to, strokeWidth = width + OUTLINE * 2, cap = StrokeCap.Round)
