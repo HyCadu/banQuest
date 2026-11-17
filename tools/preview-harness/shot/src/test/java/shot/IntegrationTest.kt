@@ -164,11 +164,13 @@ class IntegrationTest {
             settings.setPaceTarget(null)
             assertEquals(205_000L, settings.settings.first().paceConfig.perQuestionMs)
         }
-        // Trilha do Técnico: Específicos dele ainda sem conteúdo, Gerais iguais aos do Analista (com o Português pronto)
+        // Trilha do Técnico: Gerais iguais aos do Analista (com o Português pronto)
         val course = content.course(tb)
         val specific = course.filter { it.track == br.com.trilhati.domain.model.Track.Specific }
         assertEquals(listOf("u16", "u17", "u15", "u18", "u19"), specific.map { it.id })
-        assertTrue(specific.none { it.hasContent })
+        // 0.14.0: a Unidade 1 do Técnico (Conhecimentos Bancários) tem as 7 lições; o resto ainda espera conteúdo.
+        assertTrue(specific.first().lessons.all { it.hasContent && it.concepts.isNotEmpty() })
+        assertTrue(specific.drop(1).none { it.hasContent })
         val general = course.filter { it.track == br.com.trilhati.domain.model.Track.General }
         assertEquals(listOf("u11", "u12", "u13", "u14"), general.map { it.id })
         assertEquals(content.course(ti).first { it.id == "u11" }.lessons, general.first().lessons)

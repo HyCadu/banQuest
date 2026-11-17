@@ -650,4 +650,9 @@ O dono enviou as provas Tipo 1 e os gabaritos definitivos de Técnico Bancário 
 6. **Ids:** duas provas do mesmo órgão e ano levam o cargo no id da segunda (`fgv-banestes-2018-tecnico-bancario`), em vez
    de um número.
 7. Pacote do app: de 326 para 461 questões (135 de Técnico; 30 delas de Português, que já entram nas lições da G1).
+8. **Unidade 1 do Técnico completa (pedido do dono: "pelo menos a 1 unidade por completo")**: as 7 lições de
+   Conhecimentos Bancários (`u16`) entraram nesta mesma versão, no formato por conceitos (36 conceitos, 170 exercícios),
+   com as 30 oficiais de bancários ligadas aos conceitos. O pacote é gerado por `tools/gen_u16.py` a partir de
+   `content/source/u16_*.py`: escrever a alternativa certa primeiro e deixar o gerador espalhar a posição evita viés de
+   posição. Revisão em `content/review/u16-conhecimentos-bancarios.md`.
 

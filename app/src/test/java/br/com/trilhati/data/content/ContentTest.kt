@@ -28,20 +28,21 @@ class ContentTest {
     @Test fun `todos os pacotes embutidos sao validos, por conceitos, e cada questao oficial tem conceito da licao`() {
         val packs = File("src/main/assets/content").listFiles { f -> f.extension == "json" }!!.sortedBy { it.name }
             .map { json.decodeFromString(PackDto.serializer(), it.readText(Charsets.UTF_8)) }
-        assertEquals(listOf("u1", "u11", "u2"), packs.map { it.unit.id })
+        assertEquals(listOf("u1", "u11", "u16", "u2"), packs.map { it.unit.id })
         packs.forEach { assertEquals(it.pack, emptyList<String>(), ContentValidator.validate(it)) }
         val exam = parseProvas().toDomain()
         val course = CourseAssembler.assemble(packs.mapNotNull { it.toDomain() }, exam)
         // U2 e G1 (u11) chegaram na 0.10.0; as oficiais que esperavam por elas entram ligadas a um conceito da lição.
         // 0.11.0: + IDECAN Banestes 2012 e Instituto Access Banestes 2024 (U2: 22 + 13; G1: 35 + 20).
         // 0.14.0: + FGV Banestes 2018 e 2023 de Técnico Bancário (G1: + 19 + 11).
-        listOf("u2" to 35, "u11" to 85).forEach { (id, official) ->
+        // 0.14.0: Conhecimentos Bancários do Técnico (u16), com as 30 oficiais de bancários das provas de 2018 e 2023.
+        listOf("u2" to 35, "u11" to 85, "u16" to 30).forEach { (id, official) ->
             val unit = course.first { it.id == id }
             assertTrue(unit.lessons.all { it.hasContent && it.concepts.isNotEmpty() })
             assertEquals(id, official, unit.lessons.sumOf { l -> l.questions.count { it.isFromExam } })
             unit.lessons.forEach { l -> assertTrue(l.id, l.questions.all { l.concept(it.conceptId) != null }) }
         }
-        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11") }.none { it.hasContent })
+        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u16") }.none { it.hasContent })
     }
 
     @Test fun `unidade 1 tem 5 licoes por conceitos, a primeira com 50 exercicios e as outras com 30`() {

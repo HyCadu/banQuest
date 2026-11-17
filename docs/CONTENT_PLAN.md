@@ -260,7 +260,7 @@ prova em 24/01/2027 (70 questões, 4 h). Os Gerais são os mesmos do Analista (G
 
 | Un. | Id | Tema | Lições | Questões na prova | Estado | Risco factual |
 |---|---|---|---|---|---|---|
-| 1 | `u16` | Conhecimentos bancários e securitários | 7 | 15 | a fazer | **alto** (Res. CMN 4.966/2021, PLD/FT, COAF) |
+| 1 | `u16` | Conhecimentos bancários e securitários | 7 | 15 | **pronta (0.14.0)**, por conceitos (170 exercícios, 36 conceitos) | **alto** (Res. CMN 4.966/2021, PLD/FT, COAF) |
 | 2 | `u17` | Vendas, negociação e atendimento | 5 | 10 | a fazer | baixo |
 | 3 | `u15` | Matemática financeira (lições 1–3, a mesma G5 do Analista) | 3 | 5 | a fazer | baixo |
 | 4 | `u18` | Probabilidade e estatística | 4 | 5 | a fazer | baixo |

@@ -396,6 +396,14 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Na G1 (Português), as lições ganharam questões oficiais "FGV · Banestes 2018 · …" e "FGV · Banestes 2023 · …" de
       Técnico Bancário.
 
+**45. Unidade 1 do Técnico: Conhecimentos Bancários**
+- [ ] No Técnico Bancário, a Trilha de Específicos abre a Unidade 1 (Conhecimentos bancários e securitários) com a lição 1
+      liberada; o aviso "em preparação" sumiu dos Específicos.
+- [ ] A lição 1 começa com um conceito novo (Estrutura do SFN) e exercícios de aprender com exemplo no enunciado; depois
+      praticar (associar, escolha rápida) e prova. Questões oficiais aparecem como "FGV · Banestes 2023 · …".
+- [ ] Concluir uma lição libera a seguinte, até a lição 7 (Regulação e perfil do cliente).
+- [ ] Na lição 3 aparece um exercício de ordenar (venda de títulos pelo Banco Central) e, na 5, o das etapas da lavagem.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar

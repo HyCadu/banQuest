@@ -11967,6 +11967,7 @@
   {
    "id": "fgv-banestes-2023-tb-q36",
    "lesson": "u16l1",
+   "concept": "u16l1c4",
    "type": "mcq5",
    "topic": "Sistema Financeiro Nacional",
    "subtopic": "instituições bancárias",
@@ -11997,6 +11998,7 @@
   {
    "id": "fgv-banestes-2023-tb-q37",
    "lesson": "u16l1",
+   "concept": "u16l1c5",
    "type": "mcq5",
    "topic": "Sistema Financeiro Nacional",
    "subtopic": "banco múltiplo",
@@ -12027,6 +12029,7 @@
   {
    "id": "fgv-banestes-2023-tb-q38",
    "lesson": "u16l1",
+   "concept": "u16l1c1",
    "type": "mcq5",
    "topic": "Sistema Financeiro Nacional",
    "subtopic": "CMN e Copom",
@@ -12057,6 +12060,7 @@
   {
    "id": "fgv-banestes-2023-tb-q39",
    "lesson": "u16l1",
+   "concept": "u16l1c3",
    "type": "mcq5",
    "topic": "Sistema Financeiro Nacional",
    "subtopic": "Banco Central",
@@ -12087,6 +12091,7 @@
   {
    "id": "fgv-banestes-2018-tb-q52",
    "lesson": "u16l2",
+   "concept": "u16l2c1",
    "type": "mcq5",
    "topic": "Produtos bancários",
    "subtopic": "remuneração da poupança",
@@ -12117,6 +12122,7 @@
   {
    "id": "fgv-banestes-2018-tb-q53",
    "lesson": "u16l2",
+   "concept": "u16l2c6",
    "type": "mcq5",
    "topic": "Produtos bancários",
    "subtopic": "fiança bancária",
@@ -12147,6 +12153,7 @@
   {
    "id": "fgv-banestes-2018-tb-q56",
    "lesson": "u16l2",
+   "concept": "u16l2c5",
    "type": "mcq5",
    "topic": "Produtos bancários",
    "subtopic": "Fundo Garantidor de Créditos",
@@ -12177,6 +12184,7 @@
   {
    "id": "fgv-banestes-2018-tb-q57",
    "lesson": "u16l2",
+   "concept": "u16l2c2",
    "type": "mcq5",
    "topic": "Produtos bancários",
    "subtopic": "cartão de crédito",
@@ -12207,6 +12215,7 @@
   {
    "id": "fgv-banestes-2018-tb-q62",
    "lesson": "u16l2",
+   "concept": "u16l2c1",
    "type": "mcq5",
    "topic": "Investimentos",
    "subtopic": "poupança, CDB e imposto de renda",
@@ -12237,6 +12246,7 @@
   {
    "id": "fgv-banestes-2018-tb-q64",
    "lesson": "u16l2",
+   "concept": "u16l2c3",
    "type": "mcq5",
    "topic": "Crédito",
    "subtopic": "Custo Efetivo Total",
@@ -12267,6 +12277,7 @@
   {
    "id": "fgv-banestes-2023-tb-q47",
    "lesson": "u16l2",
+   "concept": "u16l2c5",
    "type": "mcq5",
    "topic": "Produtos bancários",
    "subtopic": "cobertura do FGC",
@@ -12297,6 +12308,7 @@
   {
    "id": "fgv-banestes-2018-tb-q51",
    "lesson": "u16l3",
+   "concept": "u16l3c1",
    "type": "mcq5",
    "topic": "Política monetária",
    "subtopic": "Copom e mesa de operações",
@@ -12327,6 +12339,7 @@
   {
    "id": "fgv-banestes-2018-tb-q54",
    "lesson": "u16l3",
+   "concept": "u16l3c2",
    "type": "mcq5",
    "topic": "Política monetária",
    "subtopic": "operações de mercado aberto",
@@ -12357,6 +12370,7 @@
   {
    "id": "fgv-banestes-2018-tb-q55",
    "lesson": "u16l3",
+   "concept": "u16l3c2",
    "type": "mcq5",
    "topic": "Política monetária",
    "subtopic": "operações de mercado aberto",
@@ -12387,6 +12401,7 @@
   {
    "id": "fgv-banestes-2018-tb-q58",
    "lesson": "u16l3",
+   "concept": "u16l3c4",
    "type": "mcq5",
    "topic": "Mercado de capitais",
    "subtopic": "valores mobiliários",
@@ -12417,6 +12432,7 @@
   {
    "id": "fgv-banestes-2018-tb-q59",
    "lesson": "u16l3",
+   "concept": "u16l3c5",
    "type": "mcq5",
    "topic": "Câmbio",
    "subtopic": "intervenção do Banco Central",
@@ -12447,6 +12463,7 @@
   {
    "id": "fgv-banestes-2018-tb-q60",
    "lesson": "u16l3",
+   "concept": "u16l3c5",
    "type": "mcq5",
    "topic": "Câmbio",
    "subtopic": "swap cambial reverso",
@@ -12477,6 +12494,7 @@
   {
    "id": "fgv-banestes-2023-tb-q40",
    "lesson": "u16l3",
+   "concept": "u16l3c4",
    "type": "mcq5",
    "topic": "Mercado de capitais",
    "subtopic": "CVM",
@@ -12507,6 +12525,7 @@
   {
    "id": "fgv-banestes-2023-tb-q44",
    "lesson": "u16l3",
+   "concept": "u16l3c4",
    "type": "mcq5",
    "topic": "Mercado de capitais",
    "subtopic": "títulos e acesso do investidor",
@@ -12537,6 +12556,7 @@
   {
    "id": "fgv-banestes-2023-tb-q45",
    "lesson": "u16l3",
+   "concept": "u16l3c5",
    "type": "mcq5",
    "topic": "Câmbio",
    "subtopic": "mercado de câmbio",
@@ -12567,6 +12587,7 @@
   {
    "id": "fgv-banestes-2023-tb-q52",
    "lesson": "u16l4",
+   "concept": "u16l4c3",
    "type": "mcq5",
    "topic": "Inovação financeira",
    "subtopic": "fintechs, IPs, Open Finance e Pix",
@@ -12597,6 +12618,7 @@
   {
    "id": "fgv-banestes-2023-tb-q53",
    "lesson": "u16l4",
+   "concept": "u16l4c2",
    "type": "mcq5",
    "topic": "Inovação financeira",
    "subtopic": "fintechs, IPs, Open Finance e Pix",
@@ -12627,6 +12649,7 @@
   {
    "id": "fgv-banestes-2023-tb-q54",
    "lesson": "u16l4",
+   "concept": "u16l4c1",
    "type": "mcq5",
    "topic": "Inovação financeira",
    "subtopic": "Pix e Open Finance",
@@ -12657,6 +12680,7 @@
   {
    "id": "fgv-banestes-2023-tb-q49",
    "lesson": "u16l5",
+   "concept": "u16l5c5",
    "type": "mcq5",
    "topic": "Prevenção à lavagem de dinheiro",
    "subtopic": "situações suspeitas e PEP",
@@ -12687,6 +12711,7 @@
   {
    "id": "fgv-banestes-2023-tb-q50",
    "lesson": "u16l5",
+   "concept": "u16l5c3",
    "type": "mcq5",
    "topic": "Prevenção à lavagem de dinheiro",
    "subtopic": "obrigações dos bancos e sanções",
@@ -12717,6 +12742,7 @@
   {
    "id": "fgv-banestes-2023-tb-q41",
    "lesson": "u16l6",
+   "concept": "u16l6c2",
    "type": "mcq5",
    "topic": "Seguros",
    "subtopic": "regras de seguros de pessoas e de automóvel",
@@ -12747,6 +12773,7 @@
   {
    "id": "fgv-banestes-2023-tb-q42",
    "lesson": "u16l6",
+   "concept": "u16l6c3",
    "type": "mcq5",
    "topic": "Previdência complementar",
    "subtopic": "planos e tributação",
@@ -12777,6 +12804,7 @@
   {
    "id": "fgv-banestes-2018-tb-q61",
    "lesson": "u16l7",
+   "concept": "u16l7c1",
    "type": "mcq5",
    "topic": "Regulação",
    "subtopic": "autorregulação bancária",
@@ -12807,6 +12835,7 @@
   {
    "id": "fgv-banestes-2023-tb-q48",
    "lesson": "u16l7",
+   "concept": "u16l7c1",
    "type": "mcq5",
    "topic": "Regulação",
    "subtopic": "autorregulação bancária",
@@ -12837,6 +12866,7 @@
   {
    "id": "fgv-banestes-2023-tb-q55",
    "lesson": "u16l7",
+   "concept": "u16l7c2",
    "type": "mcq5",
    "topic": "Regulação",
    "subtopic": "Resolução CMN 4.949/2021",
