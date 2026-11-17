@@ -369,7 +369,7 @@ Tarefa: [escolha uma]
 
 Como trabalhar:
 1. Antes de escrever JSON, me mostre o plano: os conceitos da lição em ordem, o cenário de cada um e quantos
-   exercícios por nível. Espere meu ok.
+   exercícios por nível. O Contributor pode definir e ajustar o roteiro sem aprovação prévia do fundador.
 2. Depois, entregue um conceito por vez, em JSON válido.
 3. No fim, faça a checagem da Parte 8.1, corrija o que falhar e entregue o relatório da Parte 8.2.
 Nunca invente norma, versão ou artigo. Na dúvida, deixe a questão conceitual e avise no relatório.

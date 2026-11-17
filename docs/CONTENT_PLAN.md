@@ -336,3 +336,7 @@ Hoje 15/11/2026, prova em 21/02/2027: cerca de 14 semanas. Faltam 13 unidades, u
    baixá-lo e colocá-lo em `docs/` para G4l1 ser gerada sem inventar conteúdo.
 4. **Ordem das unidades** conforme o ponto fraco.
 5. **Questões reais da FCC** em `content/inbox/` para calibrar o estilo.
+
+## Colaboração DCM
+
+Cada unidade tem uma Issue com seu roteiro de lições e prompt. Contributors podem dividir as lições e definir os conceitos, respeitando o edital e o guia. Matemática financeira usa um único pacote compartilhado. PR pequeno por lição; revisão factual e validação obrigatórias.

@@ -1,14 +1,14 @@
 # Como colaborar
 
-O projeto é colaborativo, mas **quem decide é o dono** (@HyCadu). Este fluxo garante duas coisas: a `main` sempre
-compila e passa nos testes, e nada entra nela sem a aprovação do dono.
+O projeto é colaborativo, mas **quem decide é o Revisor (Reviewer)** (@HyCadu). Este fluxo garante duas coisas: a `main` sempre
+compila e passa nos testes, e nada entra nela sem a aprovação do Revisor.
 
 ## Regras
 
 1. **Ninguém faz push direto na `main`.** Nem pessoas, nem agentes de IA. Tudo entra por pull request.
-2. **Só o dono aprova e faz o merge.** O arquivo `.github/CODEOWNERS` pede a revisão dele em todo PR.
+2. **Só o Revisor aprova e faz o merge.** O arquivo `.github/CODEOWNERS` pede a revisão dele em todo PR.
 3. **Decisão vira issue.** Se uma escolha é cara de desfazer (escopo, dependência, permissão, mudança de dados, nome do
-   app), abra uma issue com o título começando por `[Decisão]`, liste as opções e marque a recomendada com ★. O dono
+   app), abra uma issue com o título começando por `[Decisão]`, liste as opções e marque a recomendada com ★. O Revisor
    responde na issue. Depois, a decisão é registrada em `docs/DECISIONS.md` com o link da issue.
 4. **Um assunto por PR.** Uma unidade de conteúdo, uma fase ou uma correção. PR pequeno é revisado mais rápido.
 
@@ -60,9 +60,9 @@ Seguem o `CLAUDE.md`, o `AGENTS.md` e este arquivo: trabalham numa branch, fazem
 Não fazem merge, não aprovam o próprio PR e não mudam as configurações do repositório. Para conteúdo, leem o
 `docs/GUIA_TRILHA_COM_IA.md` (no Claude Code, a skill `trilha-de-conteudo` faz isso).
 
-## Configuração única do dono (proteção da `main`)
+## Configuração única do Revisor (proteção da `main`)
 
-Só o dono pode fazer isto, em GitHub > Settings > Branches > Add branch ruleset (ou "branch protection rule") para `main`:
+Só o Revisor pode fazer isto, em GitHub > Settings > Branches > Add branch ruleset (ou "branch protection rule") para `main`:
 
 - Exigir pull request antes do merge, com **1 aprovação** e **revisão dos Code Owners**.
 - Bloquear force push e exclusão da branch.
@@ -70,5 +70,9 @@ Só o dono pode fazer isto, em GitHub > Settings > Branches > Add branch ruleset
 - Exigir que os status checks passem ("Require status checks to pass") e adicionar só o check **CI ok** (do workflow
   `.github/workflows/ci.yml`). Ele só aparece na lista depois que o workflow rodou uma vez. Não adicione os outros
   jobs: eles são pulados quando o PR não mexe no que conferem, e um check obrigatório pulado trava o merge.
-- Deixar o dono fora da regra (bypass), senão ele não consegue fazer merge dos próprios PRs, porque o GitHub não deixa
+- Deixar o Revisor fora da regra (bypass), senão ele não consegue fazer merge dos próprios PRs, porque o GitHub não deixa
   ninguém aprovar o próprio PR.
+
+## DCM — colaboração aberta
+
+Leia [docs/DCM.md](docs/DCM.md). Comente `/participar` numa tarefa Available ou In progress; não há exclusividade nem prazo. Novas ideias aguardam aprovação do Revisor. A revisão comunitária é opcional; a conferência do conteúdo e a CI continuam necessárias. O Contributor define o roteiro da lição. Sem Git? Anexe os arquivos e relatório na Issue para outro Contributor integrar. Apenas o Revisor aprova e faz merge.

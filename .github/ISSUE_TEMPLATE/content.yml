@@ -1,0 +1,23 @@
+name: Content
+description: Criar unidades, lições e provas
+labels: ["Content"]
+body:
+  - type: markdown
+    attributes:
+      value: "Bem-vindo! Todos podem contribuir. Novas tarefas aguardam aprovação do Revisor."
+  - type: textarea
+    id: proposta
+    attributes:
+      label: "Qual unidade ou lição vamos criar?"
+      description: "Conte com suas palavras."
+    validations:
+      required: true
+  - type: textarea
+    id: apoio
+    attributes:
+      label: "Materiais ou sugestões (opcional)"
+      description: "Links, exemplos ou como você gostaria de ajudar."
+
+  - type: markdown
+    attributes:
+      value: "Use a [skill de conteúdo](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md) ou o [guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md). Não precisa programar."
