@@ -27,6 +27,14 @@ class TallShots {
         rule.shot(name, dark) { RankingContent(fakeState(true), social, NOW_MS, AppActions(), initialScope = scope, animated = false) }
 
     @Test fun rankingGlobal() = ranking("r_global.png", fakeSocial(), RankingScope.Global)
+    /** Celular estreito com a fonte do sistema aumentada (0.14.2): a ofensiva "1 dia" não pode quebrar letra por letra. */
+    @Test @Config(sdk = [35], qualifiers = "w360dp-h2600dp-xxhdpi")
+    fun rankingGlobalFonteGrande() = rule.shot("r_global_fonte_grande.png") {
+        val d = androidx.compose.ui.platform.LocalDensity.current
+        androidx.compose.runtime.CompositionLocalProvider(androidx.compose.ui.platform.LocalDensity provides androidx.compose.ui.unit.Density(d.density, fontScale = 1.3f)) {
+            RankingContent(fakeState(true), fakeSocial(), NOW_MS, AppActions(), initialScope = RankingScope.Global, animated = false)
+        }
+    }
     @Test fun rankingFriends() = ranking("r_friends.png", fakeSocial(), RankingScope.Friends)
     @Test fun rankingFriendsDark() = ranking("r_friends_dark.png", fakeSocial(), RankingScope.Friends, dark = true)
     @Test fun rankingNoFriends() = ranking("r_nofriends.png", fakeSocial(friends = false, requests = false, lastPodium = false), RankingScope.Friends)
