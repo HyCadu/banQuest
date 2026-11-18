@@ -1,0 +1,542 @@
+[
+  {
+    "id": "historico-01",
+    "title": "Desenvolver a trilha interativa de estudos",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-02",
+    "title": "Implementar a progressão e o desbloqueio de lições",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-03",
+    "title": "Desenvolver os oito formatos de exercícios",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/8",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-04",
+    "title": "Estruturar a metodologia de ensino por conceitos",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/8",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-05",
+    "title": "Implementar feedback e explicações das respostas",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-06",
+    "title": "Implementar o sistema de revisão espaçada",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/22",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-07",
+    "title": "Criar um modo de prática livre",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/22",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-08",
+    "title": "Implementar a resolução de provas anteriores",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/18",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-09",
+    "title": "Desenvolver o cronômetro de ritmo de prova",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/25",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-10",
+    "title": "Implementar a seleção de concursos",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/25",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-11",
+    "title": "Criar a tela de resultados das lições",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-12",
+    "title": "Criar a estrutura da trilha de Analista de TI — Desenvolvimento de Sistemas",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Analista de TI",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-13",
+    "title": "Criar unidade de Banco de Dados",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Analista de TI",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/11",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-14",
+    "title": "Criar unidade de Programação e OO",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Analista de TI",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/19",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-15",
+    "title": "Criar a estrutura da trilha de Conhecimentos Gerais",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/15",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-16",
+    "title": "Criar unidade de Língua Portuguesa",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/19",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-17",
+    "title": "Integrar provas de concursos anteriores",
+    "category": "Content",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/21",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-18",
+    "title": "Implementar o sistema de XP e níveis",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-19",
+    "title": "Desenvolver o sistema de corações e regeneração",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/8",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-20",
+    "title": "Criar um modo de estudos sem limite de vidas",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-21",
+    "title": "Implementar o sistema de ofensiva diária",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-22",
+    "title": "Desenvolver o sistema de metas e missões diárias",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-23",
+    "title": "Criar o sistema de conquistas",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-24",
+    "title": "Implementar a economia de gemas e baús",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-25",
+    "title": "Desenvolver a loja de recompensas",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-26",
+    "title": "Implementar o sistema de amizades",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/2",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-27",
+    "title": "Desenvolver o ranking semanal de estudantes",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/2",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-28",
+    "title": "Implementar o sistema de ofensiva em dupla",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/2",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-29",
+    "title": "Desenvolver a identidade visual do BanQuest",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/4",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-30",
+    "title": "Criar os mascotes e suas animações",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/3",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-31",
+    "title": "Implementar o sistema de temas personalizados",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/15",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-32",
+    "title": "Adicionar efeitos sonoros e feedback tátil",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-33",
+    "title": "Implementar notificações e lembretes de estudos",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência: https://github.com/HyCadu/banQuest/blob/main/PLAN.md e código da main.",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-34",
+    "title": "Integrar a autenticação de usuários com Supabase",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/2",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-35",
+    "title": "Implementar a sincronização e o backup de progresso",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/2",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-36",
+    "title": "Desenvolver o site oficial do BanQuest",
+    "category": "Feature",
+    "status": "Done",
+    "initiative": "Produto",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/13",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-37",
+    "title": "Estruturar o projeto para contribuições open-source",
+    "category": "Improvement",
+    "status": "Done",
+    "initiative": "Comunidade",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/17",
+    "priority": "Medium"
+  },
+  {
+    "id": "historico-38",
+    "title": "Configurar testes e validações automatizadas",
+    "category": "Improvement",
+    "status": "Done",
+    "initiative": "Comunidade",
+    "body": "Registro retroativo de entrega implementada no BanQuest. Não representa homologação adicional de QA.\n\nReferência relacionada: https://github.com/HyCadu/banQuest/pull/23",
+    "priority": "Medium"
+  },
+  {
+    "id": "u3",
+    "title": "Criar unidade de Engenharia de Software e Ágil",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Engenharia de Software e Ágil! Não precisa saber programar.\n\n## Roteiro\n- [ ] Processos\n- [ ] Requisitos e modelagem\n- [ ] Scrum, Kanban e XP\n- [ ] Testes e configuração\n- [ ] Qualidade e documentação\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u3 — Engenharia de Software e Ágil. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u4",
+    "title": "Criar unidade de Web, APIs e Arquitetura",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Web, APIs e Arquitetura! Não precisa saber programar.\n\n## Roteiro\n- [ ] HTML, CSS e JS\n- [ ] Frameworks e plataformas\n- [ ] APIs e XML\n- [ ] Usabilidade e acessibilidade\n- [ ] Arquitetura\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u4 — Web, APIs e Arquitetura. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u5",
+    "title": "Criar unidade de DevOps e Containers",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de DevOps e Containers! Não precisa saber programar.\n\n## Roteiro\n- [ ] CI/CD e IaC\n- [ ] Containers\n- [ ] Implantação\n- [ ] Observabilidade e DevSecOps\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u5 — DevOps e Containers. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u6",
+    "title": "Criar unidade de Segurança da Informação e LGPD",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Segurança da Informação e LGPD! Não precisa saber programar.\n\n## Roteiro\n- [ ] Normas e riscos\n- [ ] Criptografia\n- [ ] Identidade e acesso\n- [ ] Proteção de redes\n- [ ] Operação e incidentes\n- [ ] LGPD\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u6 — Segurança da Informação e LGPD. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u7",
+    "title": "Criar unidade de Governança de TI",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Governança de TI! Não precisa saber programar.\n\n## Roteiro\n- [ ] Projetos e portfólio\n- [ ] Serviços\n- [ ] COBIT e planejamento\n- [ ] Finanças e riscos\n- [ ] Contratações e arquitetura\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u7 — Governança de TI. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u8",
+    "title": "Criar unidade de Sistemas Operacionais",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Sistemas Operacionais! Não precisa saber programar.\n\n## Roteiro\n- [ ] Processos\n- [ ] Memória e E/S\n- [ ] Linux\n- [ ] Windows e virtualização\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u8 — Sistemas Operacionais. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u9",
+    "title": "Criar unidade de Redes de Computadores",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Redes de Computadores! Não precisa saber programar.\n\n## Roteiro\n- [ ] Fundamentos\n- [ ] TCP/IP\n- [ ] Roteamento e data center\n- [ ] Cabeamento e padrões\n- [ ] QoS e voz\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u9 — Redes de Computadores. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u10",
+    "title": "Criar unidade de Serviços, Monitoramento e Nuvem",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Analista de TI",
+    "body": "Vamos construir a unidade de Serviços, Monitoramento e Nuvem! Não precisa saber programar.\n\n## Roteiro\n- [ ] Servidores e serviços\n- [ ] Gerência de redes e monitoramento\n- [ ] Computação em nuvem\n- [ ] Inglês técnico\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u10 — Serviços, Monitoramento e Nuvem. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u12",
+    "title": "Criar unidade de Raciocínio Lógico e Estatística",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Vamos construir a unidade de Raciocínio Lógico e Estatística! Não precisa saber programar.\n\n## Roteiro\n- [ ] Lógica de relações\n- [ ] Aritmética\n- [ ] Proporção e porcentagem\n- [ ] Estatística e contagem\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u12 — Raciocínio Lógico e Estatística. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u13",
+    "title": "Criar unidade de Atualidades do Mercado Financeiro",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Vamos construir a unidade de Atualidades do Mercado Financeiro! Não precisa saber programar.\n\n## Roteiro\n- [ ] Sistema Financeiro Nacional\n- [ ] Política monetária\n- [ ] Mercado e inovação\n- [ ] Cidadania financeira e cenários\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u13 — Atualidades do Mercado Financeiro. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u14",
+    "title": "Criar unidade de Ética, Compliance e ESG",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Vamos construir a unidade de Ética, Compliance e ESG! Não precisa saber programar.\n\n## Roteiro\n- [ ] Ética e integridade\n- [ ] Governança e compliance\n- [ ] Corrupção, fraude e dados\n- [ ] ESG e sustentabilidade\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u14 — Ética, Compliance e ESG. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.\n\nDependência: obter o Guia de Conduta Ética do Banestes antes da lição correspondente.",
+    "priority": "High"
+  },
+  {
+    "id": "u15",
+    "title": "Criar unidade de Matemática Financeira",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Vamos construir a unidade de Matemática Financeira! Não precisa saber programar.\n\n## Roteiro\n- [ ] Juros e taxas\n- [ ] Descontos e séries\n- [ ] Amortização\n- [ ] Avaliação de projetos\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u15 — Matemática Financeira. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.\n\nPacote compartilhado: as três primeiras lições também atendem Técnico Bancário; não duplicar.",
+    "priority": "High"
+  },
+  {
+    "id": "u16",
+    "title": "Criar unidade de Conhecimentos Bancários e Securitários",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Técnico Bancário",
+    "body": "Vamos construir a unidade de Conhecimentos Bancários e Securitários! Não precisa saber programar.\n\n## Roteiro\nDefina as lições a partir do edital de Técnico Bancário e do plano de conteúdo. O Contributor tem autonomia para definir o roteiro.\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u16 — Conhecimentos Bancários e Securitários. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u17",
+    "title": "Criar unidade de Vendas, Negociação e Atendimento",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Técnico Bancário",
+    "body": "Vamos construir a unidade de Vendas, Negociação e Atendimento! Não precisa saber programar.\n\n## Roteiro\nDefina as lições a partir do edital de Técnico Bancário e do plano de conteúdo. O Contributor tem autonomia para definir o roteiro.\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u17 — Vendas, Negociação e Atendimento. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u18",
+    "title": "Criar unidade de Probabilidade e Estatística",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Técnico Bancário",
+    "body": "Vamos construir a unidade de Probabilidade e Estatística! Não precisa saber programar.\n\n## Roteiro\nDefina as lições a partir do edital de Técnico Bancário e do plano de conteúdo. O Contributor tem autonomia para definir o roteiro.\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u18 — Probabilidade e Estatística. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "u19",
+    "title": "Criar unidade de Informática e Comportamentos Digitais",
+    "category": "Content",
+    "status": "Available",
+    "initiative": "Técnico Bancário",
+    "body": "Vamos construir a unidade de Informática e Comportamentos Digitais! Não precisa saber programar.\n\n## Roteiro\nDefina as lições a partir do edital de Técnico Bancário e do plano de conteúdo. O Contributor tem autonomia para definir o roteiro.\n\n## Como começar\n- [Skill](https://github.com/HyCadu/banQuest/blob/main/.claude/skills/trilha-de-conteudo/SKILL.md)\n- [Guia de IA](https://github.com/HyCadu/banQuest/blob/main/docs/GUIA_TRILHA_COM_IA.md)\n- [Plano de conteúdo](https://github.com/HyCadu/banQuest/blob/main/docs/CONTENT_PLAN.md)\n\n**Prompt:** Utilize a skill trilha-de-conteudo para desenvolver u19 — Informática e Comportamentos Digitais. Siga o edital e o CONTENT_PLAN.md. Defina o roteiro, trabalhe uma lição por vez, valide e revise antes de enviar.\n\nEnvie um PR por lição ou anexe o JSON e o relatório nesta Issue para outro Contributor integrar.",
+    "priority": "High"
+  },
+  {
+    "id": "nivelamento",
+    "title": "Desenvolver o sistema de nivelamento",
+    "category": "Feature",
+    "status": "Available",
+    "initiative": "Produto",
+    "body": "Criar um teste que ajude o estudante a identificar o nível de conhecimento e avançar na trilha. Proponha critérios, fluxo, interface e testes.",
+    "priority": "High"
+  },
+  {
+    "id": "simulado",
+    "title": "Desenvolver o modo simulado",
+    "category": "Feature",
+    "status": "Available",
+    "initiative": "Produto",
+    "body": "Criar uma experiência que reproduza o ritmo e as regras da prova. Discutir seleção de questões, duração, resultados e integração com as trilhas.",
+    "priority": "High"
+  },
+  {
+    "id": "cyber-simulado",
+    "title": "Desenvolver a tela do simulado de Cyber Segurança",
+    "category": "Feature",
+    "status": "Available",
+    "initiative": "Produto",
+    "body": "Aprovada por @HyCadu. Vamos criar uma experiência de simulado de Cyber Segurança seguindo a identidade do BanQuest.\n\n- [ ] Criar layout\n- [ ] Apresentar questões e alternativas\n- [ ] Adicionar cronômetro e progresso\n- [ ] Criar navegação entre questões\n- [ ] Criar tela de resultados\n- [ ] Garantir compatibilidade com os temas\n\nDesign, desenvolvimento, Cyber Segurança e UX: todos podem colaborar. Alinhar integração com o modo simulado geral.",
+    "priority": "High"
+  },
+  {
+    "id": "trilha-analista",
+    "title": "Criar trilha de Analista de TI",
+    "category": "Content",
+    "status": "In progress",
+    "initiative": "Analista de TI",
+    "body": "Iniciativa que reúne as unidades concluídas e pendentes. Consulte as Issues da iniciativa e o plano de conteúdo. A trilha só estará concluída quando suas unidades estiverem prontas.",
+    "priority": "High"
+  },
+  {
+    "id": "trilha-gerais",
+    "title": "Criar trilha de Conhecimentos Gerais",
+    "category": "Content",
+    "status": "In progress",
+    "initiative": "Conhecimentos Gerais",
+    "body": "Iniciativa que reúne as unidades concluídas e pendentes. Consulte as Issues da iniciativa e o plano de conteúdo. A trilha só estará concluída quando suas unidades estiverem prontas.",
+    "priority": "High"
+  },
+  {
+    "id": "trilha-tecnico",
+    "title": "Criar trilha de Técnico Bancário",
+    "category": "Content",
+    "status": "In progress",
+    "initiative": "Técnico Bancário",
+    "body": "Iniciativa que reúne as unidades concluídas e pendentes. Consulte as Issues da iniciativa e o plano de conteúdo. A trilha só estará concluída quando suas unidades estiverem prontas.",
+    "priority": "High"
+  }
+]

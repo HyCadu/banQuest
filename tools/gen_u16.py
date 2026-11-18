@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 """
-Gera app/src/main/assets/content/u16-conhecimentos-bancarios.json a partir de content/source/u16_*.py.
+Gera um pacote de conteúdo (u16-conhecimentos-bancarios.json, u12-raciocinio-logico.json) a partir de
+content/source/<unidade>_*.py.
 
 Cada arquivo de origem define LESSONS, uma lista de lições; cada lição tem conceitos, e cada conceito, os exercícios
 na ordem: aprender (passos 1 e 2), praticar (2 e 3) e prova. Os exercícios são escritos com a alternativa certa
 PRIMEIRO; o gerador espalha a posição da resposta (A a E nas de 5 alternativas, A a C na escolha rápida) em rodízio,
-para a posição não ser previsível. Uso: python3 tools/gen_u16.py
+para a posição não ser previsível. Uso: python3 tools/gen_u16.py [u16|u12] (padrão: u16)
 """
 import json
 import runpy
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = sorted((ROOT / "content" / "source").glob("u16_*.py"))
-OUT = ROOT / "app" / "src" / "main" / "assets" / "content" / "u16-conhecimentos-bancarios.json"
-
-UNIT = {
+UNIT_U16 = {
     "id": "u16", "order": 16, "title": "Conhecimentos bancários e securitários",
     "editalTopics": [
         "Sistema Financeiro Nacional: estrutura, órgãos normativos, supervisores e operadores",
@@ -28,6 +27,23 @@ UNIT = {
     ],
 }
 
+UNIT_U12 = {
+    "id": "u12", "order": 12, "title": "Raciocínio lógico e estatística",
+    "editalTopics": [
+        "Estrutura lógica de relações arbitrárias; dedução de novas informações; raciocínio verbal, sequencial, espacial e temporal",
+        "Processo lógico que, a partir de hipóteses, conduz de forma válida a conclusões",
+        "Números inteiros e racionais; expressões numéricas; múltiplos e divisores; frações",
+        "Razões e proporções; divisão proporcional; regra de três; porcentagem, acréscimos e descontos",
+        "Noções de estatística: tendência central, dispersão, gráficos e tabelas; contagem",
+    ],
+}
+
+# unidade: (pacote, unidade, tópico dos exercícios)
+PACKS = {
+    "u16": ("u16-conhecimentos-bancarios", UNIT_U16, "Conhecimentos bancários"),
+    "u12": ("u12-raciocinio-logico", UNIT_U12, "Raciocínio lógico"),
+}
+
 
 def rotate(correct, wrongs, pos):
     """Põe a alternativa certa na posição pos, mantendo a ordem das erradas."""
@@ -36,17 +52,20 @@ def rotate(correct, wrongs, pos):
     return opts
 
 
-def build():
+def build(unit_id="u16"):
+    pack_name, unit, topic = PACKS[unit_id]
+    src = sorted((ROOT / "content" / "source").glob(f"{unit_id}_*.py"))
+    out = ROOT / "app" / "src" / "main" / "assets" / "content" / f"{pack_name}.json"
     lessons = []
     five_pos = 0  # rodízio das de 5 alternativas no pacote inteiro
     quick_pos = 0
-    for path in SRC:
+    for path in src:
         for lesson in runpy.run_path(str(path))["LESSONS"]:
             lessons.append(lesson)
     lessons.sort(key=lambda l: l["order"])
     out_lessons = []
     for lesson in lessons:
-        lid = f"u16l{lesson['order']}"
+        lid = f"{unit_id}l{lesson['order']}"
         concepts, questions = [], []
         n = 0
         for ci, c in enumerate(lesson["concepts"], 1):
@@ -55,13 +74,14 @@ def build():
             for item in c["items"]:
                 n += 1
                 q = {
-                    "id": f"{lid}q{n:02d}", "type": item["type"], "topic": "Conhecimentos bancários",
+                    "id": f"{lid}q{n:02d}", "type": item["type"], "topic": topic,
                     "subtopic": c.get("subtopic", c["title"].lower()), "difficulty": item.get("diff", 2),
                     "style": item.get("style", "conceitual"), "stem": item["stem"],
                 }
                 t = item["type"]
                 if t in ("mcq5", "case"):
-                    pos = five_pos % 5
+                    # "pos" fixa a posição quando as alternativas têm ordem natural (números, dias da semana).
+                    pos = item.get("pos", five_pos % 5)
                     five_pos += 1
                     q["options"] = rotate(item["correct"], item["wrong"], pos)
                     q["answer"] = pos
@@ -90,10 +110,10 @@ def build():
                 questions.append(q)
         out_lessons.append({"id": lid, "order": lesson["order"], "title": lesson["title"], "concepts": concepts,
                             "questions": questions})
-    pack = {"schema": 1, "pack": "u16-conhecimentos-bancarios", "version": 1, "unit": UNIT, "lessons": out_lessons}
-    OUT.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{OUT.relative_to(ROOT)}: {len(out_lessons)} lições, {sum(len(l['questions']) for l in out_lessons)} exercícios")
+    pack = {"schema": 1, "pack": pack_name, "version": 1, "unit": unit, "lessons": out_lessons}
+    out.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print(f"{out.relative_to(ROOT)}: {len(out_lessons)} lições, {sum(len(l['questions']) for l in out_lessons)} exercícios")
 
 
 if __name__ == "__main__":
-    build()
+    build(*sys.argv[1:2])

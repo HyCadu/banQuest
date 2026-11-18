@@ -404,14 +404,27 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Concluir uma lição libera a seguinte, até a lição 7 (Regulação e perfil do cliente).
 - [ ] Na lição 3 aparece um exercício de ordenar (venda de títulos pelo Banco Central) e, na 5, o das etapas da lavagem.
 
+## G2 Raciocínio lógico — lição 1 (Lógica de relações)
+
+**46. Nos Gerais (Analista de TI ou Técnico Bancário)**
+- [ ] A Trilha dos Gerais mostra a G2 (Raciocínio lógico e estatística) com a lição 1, Lógica de relações, liberada
+      depois da G1; as lições 2 a 4 continuam "em breve".
+- [ ] A lição começa por "Conectivos e tabela-verdade": o exemplo do enunciado mostra a regra antes de pedir a resposta.
+- [ ] Aparecem exercícios de associar (conectivos, equivalências do condicional, operações entre conjuntos) e de escolha
+      rápida com cenários de agência (senha, boleto, caixas).
+- [ ] As questões oficiais de lógica entram como "FGV · Banestes 2018 · …", "FGV · Banestes 2021 · …" e "Instituto Access
+      · Banestes 2024 · …" (estas com 4 alternativas), só depois do conceito que cobram.
+- [ ] Na explicação da questão da mesa quadrada (Tânia, Ulisses, Vera e Xavier), direita e esquerda são de quem está
+      sentado.
+
 ## BanQuest 0.14.1 — sino de avisos e meta do dia em lições
 
-**46. Topo da Trilha**
+**47. Topo da Trilha**
 - [ ] A barra com estrela e "XP/meta" sumiu. No topo ficam o chip da prova, a ofensiva, os corações e um sino só de
       contorno, à direita.
 - [ ] O aviso de versão nova e o de ofensiva em dupla não aparecem mais soltos na Trilha: estão dentro do sino.
 
-**47. Sino de avisos**
+**48. Sino de avisos**
 - [ ] Antes de estudar no dia, com ofensiva, o sino tem um ponto vermelho. Toque nele: abre "Avisos" com a meta do dia e
       "Ofensiva em risco" ("Sua ofensiva de N dias acaba hoje..."; com dupla em risco, o nome do amigo aparece e tocar no
       aviso abre o Ranking).
@@ -420,7 +433,7 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Tocar fora do painel, no sino de novo ou no botão voltar fecha. Abrir o sino fecha o painel de provas e vice-versa.
 - [ ] Com o TalkBack, o sino é lido como "Avisos: 2 novos".
 
-**48. Meta do dia em lições**
+**49. Meta do dia em lições**
 - [ ] O cartão diz "Meta de hoje: N lição(ões)" e "Ritmo para terminar a trilha até 24/01" (Técnico) ou "até 21/02"
       (Analista). Em 18/11 a conta dá 1 lição por dia nas duas provas (42 lições em 67 dias; 69 em 95).
 - [ ] Concluir uma lição (ou uma prova anterior inteira) preenche um bloco. Ao bater a meta, o cartão vira "Meta de hoje
@@ -429,7 +442,7 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] O Perfil não tem mais a escolha "Meta diária" (Leve, Regular...).
 
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
 conteúdo.
 

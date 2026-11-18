@@ -1,0 +1,64 @@
+name: DCM — colaboração
+on:
+  issues:
+    types: [opened, reopened, closed]
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+  issues: read
+concurrency:
+  group: dcm-${{ github.event.issue.number }}
+  cancel-in-progress: false
+jobs:
+  status:
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.DCM_PROJECT_TOKEN }}
+      DCM_PROJECT_NUMBER: ${{ vars.DCM_PROJECT_NUMBER }}
+    steps:
+      - name: Atualizar board
+        shell: bash
+        run: |
+          if [[ -z "$GH_TOKEN" || -z "$DCM_PROJECT_NUMBER" ]]; then
+            echo 'DCM: configure o segredo e a variável do Project.'; exit 0
+          fi
+          python3 - <<'PY'
+          import json, os, subprocess
+          def gh(*args):
+              return subprocess.check_output(['gh',*args],text=True).strip()
+          def gql(q,**v):
+              args=['api','graphql','-f','query='+q]
+              for k,x in v.items(): args+=['-F' if isinstance(x,int) else '-f',f'{k}={x}']
+              result=json.loads(gh(*args))
+              if result.get('errors'): raise RuntimeError(str(result['errors']))
+              return result['data']
+          e=json.load(open(os.environ['GITHUB_EVENT_PATH'])); issue=e['issue']; repo=os.environ['GITHUB_REPOSITORY']; owner=repo.split('/')[0]
+          if repo.lower()!='hycadu/banquest': raise SystemExit(0)
+          actor=e['sender']['login'].lower(); reviewer=actor=='hycadu'; action=e['action']; n=os.environ['DCM_PROJECT_NUMBER']; url=issue['html_url']
+          current=json.loads(gh('api',f'repos/{repo}/issues/{issue["number"]}'))
+          approved=any(x['name']=='dcm:approved' for x in current['labels'])
+          p=gql('query($owner:String!,$n:Int!){user(login:$owner){projectV2(number:$n){id fields(first:100){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}',owner=owner,n=int(n))['user']['projectV2']; pid=p['id']
+          status=next(x for x in p['fields']['nodes'] if x.get('name')=='Status')
+          data=gql('query($id:ID!){node(id:$id){... on Issue{projectItems(first:100){nodes{id project{id} fieldValueByName(name:"Status"){... on ProjectV2ItemFieldSingleSelectValue{name}}}}}}}',id=issue['node_id'])['node']
+          item=next((i for i in data['projectItems']['nodes'] if i['project']['id']==pid),None); old=(item.get('fieldValueByName') or {}).get('name') if item else None
+          target=None
+          if 'comment' in e:
+              cmd=e['comment']['body'].strip().lower()
+              if current['state']!='open': raise SystemExit(0)
+              if cmd=='/aprovar-tarefa' and reviewer and old in (None,'Ideas'):
+                  gh('issue','edit',str(issue['number']),'--repo',repo,'--add-label','dcm:approved'); target='Available'
+              elif approved and cmd=='/participar' and old in ('Available','In progress'): target='In progress'
+              elif approved and cmd=='/revisao' and old=='In progress': target='Review'
+              elif approved and cmd=='/entregar' and old in ('In progress','Review'): target='Approval'
+          elif action=='opened' and not item and current['state']=='open': target='Available' if approved else 'Ideas'
+          elif action=='reopened' and reviewer: target='Available' if approved else 'Ideas'
+          elif action=='closed' and reviewer and approved and current.get('state_reason')=='completed' and current['state']=='closed': target='Done'
+          if not target: raise SystemExit(0)
+          if not item:
+              item=gql('mutation($p:ID!,$c:ID!){addProjectV2ItemById(input:{projectId:$p,contentId:$c}){item{id}}}',p=pid,c=issue['node_id'])['addProjectV2ItemById']['item']
+          option=next(x for x in status['options'] if x['name']==target)
+          gh('project','item-edit','--id',item['id'],'--project-id',pid,'--field-id',status['id'],'--single-select-option-id',option['id'])
+          print('Status:',target)
+          PY

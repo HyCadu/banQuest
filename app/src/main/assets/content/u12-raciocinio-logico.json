@@ -1,0 +1,1030 @@
+{
+  "schema": 1,
+  "pack": "u12-raciocinio-logico",
+  "version": 1,
+  "unit": {
+    "id": "u12",
+    "order": 12,
+    "title": "Raciocínio lógico e estatística",
+    "editalTopics": [
+      "Estrutura lógica de relações arbitrárias; dedução de novas informações; raciocínio verbal, sequencial, espacial e temporal",
+      "Processo lógico que, a partir de hipóteses, conduz de forma válida a conclusões",
+      "Números inteiros e racionais; expressões numéricas; múltiplos e divisores; frações",
+      "Razões e proporções; divisão proporcional; regra de três; porcentagem, acréscimos e descontos",
+      "Noções de estatística: tendência central, dispersão, gráficos e tabelas; contagem"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "u12l1",
+      "order": 1,
+      "title": "Lógica de relações",
+      "concepts": [
+        {
+          "id": "u12l1c1",
+          "title": "Conectivos e tabela-verdade",
+          "summary": "Proposição é uma frase que é verdadeira (V) ou falsa (F). “p e q” só é V com as duas V; “p ou q” só é F com as duas F; “se p, então q” (p → q) só é F quando p é V e q é F; “p se e somente se q” (p ↔ q) é V quando as duas têm o mesmo valor. Com n proposições, a tabela-verdade tem 2ⁿ linhas. Sempre V: tautologia; sempre F: contradição; misto: contingência."
+        },
+        {
+          "id": "u12l1c2",
+          "title": "Negação de proposições compostas",
+          "summary": "Negar “p e q” dá “não p ou não q”; negar “p ou q” dá “não p e não q”: nega as duas partes e troca o conectivo (leis de De Morgan). Negar “se p, então q” dá “p e não q”: mantém a primeira, nega a segunda e usa “e”. A negação de um condicional nunca é outro “se… então”."
+        },
+        {
+          "id": "u12l1c3",
+          "title": "Equivalências do condicional",
+          "summary": "“Se p, então q” equivale a “se não q, então não p” (contrapositiva: inverte a ordem e nega as duas) e a “não p ou q”. Não equivale a “se q, então p” (recíproca) nem a “se não p, então não q” (inversa). Duas proposições são equivalentes quando têm a mesma tabela-verdade."
+        },
+        {
+          "id": "u12l1c4",
+          "title": "Todo, algum e nenhum",
+          "summary": "Negação: “todo A é B” vira “algum A não é B”; “algum A é B” vira “nenhum A é B”; “nenhum A é B” vira “algum A é B”. “Todo A é B” põe o grupo A dentro de B: quem é A é B, mas quem é B pode não ser A. Para concluir, desenhe os conjuntos e veja o que é obrigatório."
+        },
+        {
+          "id": "u12l1c5",
+          "title": "Dedução a partir de premissas",
+          "summary": "Comece pela premissa simples (sem “se” nem “ou”) e trate-a como verdade. Em “se p, então q”: p verdadeira obriga q; q falsa obriga p falsa. Em “p ou q”: p falsa obriga q. Saber que q é verdadeira não diz nada sobre p. Em quantidades, teste o caso-limite: 23 tarefas entre 4 pessoas obrigam alguém a fazer 6 ou mais."
+        },
+        {
+          "id": "u12l1c6",
+          "title": "Conjuntos e diagramas",
+          "summary": "Quando todos estão em pelo menos um de dois grupos: total = só A + só B + os dois. Comece pela interseção e desconte-a de cada grupo. União (A ∪ B): está em A ou em B. Interseção (A ∩ B): está nos dois. Diferença (A − B): está em A e não está em B."
+        },
+        {
+          "id": "u12l1c7",
+          "title": "Associações e posições",
+          "summary": "Monte uma tabela pessoa × característica e marque X no que cada dica proíbe. Quando sobra uma opção numa linha, ela é a resposta e sai das outras linhas. Em filas, posição = pessoas à frente + 1. Em mesas, fixe uma pessoa e posicione as outras em relação a ela; direita e esquerda são de quem está sentado."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12l1q01",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: “O cliente tem conta e tem cartão” é falsa se ele não tiver cartão, porque o “e” exige as duas partes verdadeiras. Já o “ou” só é falso quando as duas partes são falsas. Agora: “O boleto foi pago ou foi cancelado” é falsa em qual situação?",
+          "options": [
+            "Não foi pago nem cancelado",
+            "Foi pago e não foi cancelado",
+            "Foi cancelado e não foi pago"
+          ],
+          "answer": 0,
+          "explanation": "O “ou” é verdadeiro se pelo menos uma parte for verdadeira. Ele só falha quando nenhuma das duas acontece.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q02",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No “se p, então q”, a única linha falsa é p verdadeira com q falsa. Assim, “Se chover, levo guarda-chuva” é verdadeira num dia sem chuva em que não levei guarda-chuva.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Com a primeira parte falsa (não choveu), o condicional é verdadeiro, qualquer que seja a segunda. A promessa só é quebrada se chover e eu não levar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q03",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra: “se p, então q” só é falsa quando p é verdadeira e q é falsa. A sentença “Se a senha está errada, então o acesso é bloqueado” é FALSA quando:",
+          "options": [
+            "a senha está certa e o acesso é bloqueado",
+            "a senha está errada e o acesso não é bloqueado",
+            "a senha está certa e o acesso não é bloqueado"
+          ],
+          "answer": 1,
+          "explanation": "Falsa só na combinação V e F: a senha errada (p verdadeira) e o acesso liberado (q falsa). Com a senha certa, a sentença é verdadeira em qualquer caso.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q04",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "A tabela-verdade tem 2ⁿ linhas, em que n é o número de proposições simples: com p e q, são 2² = 4 linhas. Quantas linhas tem a tabela de uma proposição formada por p, q e r?",
+          "options": [
+            "6",
+            "9",
+            "8"
+          ],
+          "answer": 2,
+          "explanation": "Três proposições: 2³ = 2 × 2 × 2 = 8 linhas. 6 seria 2 × 3, e 9 seria 3², contas que não seguem a regra.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q05",
+          "type": "match",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada proposição composta à regra do seu valor lógico:",
+          "pairs": [
+            {
+              "left": "p e q",
+              "right": "Verdadeira só com p e q verdadeiras"
+            },
+            {
+              "left": "p ou q",
+              "right": "Falsa só com p e q falsas"
+            },
+            {
+              "left": "se p, então q",
+              "right": "Falsa só com p verdadeira e q falsa"
+            },
+            {
+              "left": "p se e somente se q",
+              "right": "Verdadeira quando p e q têm o mesmo valor"
+            }
+          ],
+          "explanation": "Conjunção exige as duas; disjunção basta uma; o condicional só falha em V → F; o bicondicional pede valores iguais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q06",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "Uma proposição composta que resulta verdadeira em todas as linhas da sua tabela-verdade, quaisquer que sejam os valores das proposições simples, é chamada de",
+          "options": [
+            "tautologia.",
+            "contradição.",
+            "contingência.",
+            "equivalência.",
+            "negação."
+          ],
+          "answer": 0,
+          "explanation": "Sempre verdadeira é tautologia. Contradição é sempre falsa; contingência tem linhas V e F. Equivalência é uma relação entre duas proposições, e negação é uma operação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q07",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conectivos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sabe-se que a proposição p é verdadeira, q é falsa e r é verdadeira. Entre as proposições compostas a seguir, a única verdadeira é",
+          "options": [
+            "p e q",
+            "(p ou q) → r",
+            "p → q",
+            "(p e r) → q",
+            "q ↔ r"
+          ],
+          "answer": 1,
+          "explanation": "(p ou q) é V, e V → r (V) dá V. As outras são falsas: p e q tem q falsa; p → q é V → F; (p e r) → q é V → F; q ↔ r compara F com V.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q08",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a negação de “O caixa está aberto e tem fila” é “O caixa não está aberto ou não tem fila” (nega as duas partes e troca “e” por “ou”). Agora: a negação de “O sistema está lento ou fora do ar” é:",
+          "options": [
+            "O sistema não está lento e não está fora do ar",
+            "O sistema não está lento ou não está fora do ar",
+            "O sistema está lento e não está fora do ar"
+          ],
+          "answer": 0,
+          "explanation": "Para negar o “ou”, as duas partes são negadas e o conectivo vira “e”. Manter o “ou” ou negar só uma parte não produz a negação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q09",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para negar “se p, então q”, mantém-se p, nega-se q e usa-se “e”. Logo, a negação de “Se o pagamento atrasar, então haverá multa” é “O pagamento atrasa e não há multa”.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A promessa é desmentida quando o atraso acontece e a multa não vem: p e não q.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q10",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra: a negação de “se p, então q” é “p e não q”. Qual é a negação de “Se Rita é gerente, então ela assina o contrato”?",
+          "options": [
+            "Se Rita não é gerente, então não assina o contrato",
+            "Rita é gerente e não assina o contrato",
+            "Rita não é gerente e assina o contrato"
+          ],
+          "answer": 1,
+          "explanation": "Mantém “Rita é gerente”, nega “assina o contrato” e liga com “e”. Trocar por outro “se… então” não nega nada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q11",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um colega disse que a negação de “Lucas estudou e passou” é “Lucas não estudou e não passou”. Ele errou porque:",
+          "options": [
+            "só a segunda parte deveria ser negada",
+            "a negação deveria ser um “se… então”",
+            "o “e” deveria virar “ou”"
+          ],
+          "answer": 2,
+          "explanation": "Negação correta: “Lucas não estudou ou não passou”. Basta uma das partes falhar para a frase original ser falsa; por isso o conectivo vira “ou”.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q12",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Assinale a alternativa que NÃO apresenta a negação correta da sentença indicada.",
+          "options": [
+            "“Ana viaja e Bia fica”: “Ana não viaja ou Bia não fica”.",
+            "“Ana viaja ou Bia fica”: “Ana não viaja e Bia não fica”.",
+            "“Se Bia fica, Ana viaja”: “Se Bia não fica, Ana não viaja”.",
+            "“Se Ana viaja, Bia fica”: “Ana viaja e Bia não fica”.",
+            "“Ana não viaja ou Bia fica”: “Ana viaja e Bia não fica”."
+          ],
+          "answer": 2,
+          "explanation": "A negação de “se p, então q” é “p e não q”: “Bia fica e Ana não viaja”. Negar as duas partes e manter o condicional não nega. As outras aplicam De Morgan ou a regra do condicional corretamente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q13",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "negação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um gerente afirmou: “Se a meta foi batida, então a equipe recebe bônus”. Mais tarde, verificou-se que a afirmação era falsa. Conclui-se que",
+          "options": [
+            "a meta não foi batida e a equipe recebeu bônus.",
+            "a meta não foi batida e a equipe não recebeu bônus.",
+            "a meta foi batida e a equipe recebeu bônus.",
+            "a meta foi batida e a equipe não recebeu bônus.",
+            "a equipe recebeu bônus, mas a meta pode não ter sido batida."
+          ],
+          "answer": 3,
+          "explanation": "Condicional falso só na linha V → F: a meta batida (V) e o bônus não pago (F). Nas demais combinações a afirmação seria verdadeira.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q14",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: “Se é feriado, a agência fecha” equivale a “Se a agência não fecha, não é feriado” (inverte a ordem e nega as duas partes). Agora: “Se o cartão foi bloqueado, a compra é recusada” equivale a:",
+          "options": [
+            "Se a compra não é recusada, o cartão não foi bloqueado",
+            "Se a compra é recusada, o cartão foi bloqueado",
+            "Se o cartão não foi bloqueado, a compra não é recusada"
+          ],
+          "answer": 0,
+          "explanation": "Contrapositiva: inverte e nega. Só inverter (recíproca) ou só negar (inversa) muda o sentido: a compra pode ser recusada por outro motivo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q15",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "“Se p, então q” equivale a “não p ou q”. Assim, “Se estudo, passo” equivale a “Não estudo ou passo”.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Nega a primeira parte, troca por “ou” e mantém a segunda. As duas formas só são falsas quando estudo e não passo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q16",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra: “se p, então q” equivale a “não p ou q”. A frase “Se o cliente é novo, ganha desconto” equivale a:",
+          "options": [
+            "O cliente é novo ou não ganha desconto",
+            "O cliente não é novo ou ganha desconto",
+            "O cliente é novo e ganha desconto"
+          ],
+          "answer": 1,
+          "explanation": "Nega “é novo”, usa “ou” e mantém “ganha desconto”. A forma com “e” afirma as duas coisas, o que o condicional não garante.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q17",
+          "type": "match",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada frase obtida de “Se p, então q” ao que ela é:",
+          "pairs": [
+            {
+              "left": "Se não q, então não p",
+              "right": "Contrapositiva, equivalente"
+            },
+            {
+              "left": "Se q, então p",
+              "right": "Recíproca, não equivalente"
+            },
+            {
+              "left": "Se não p, então não q",
+              "right": "Inversa, não equivalente"
+            },
+            {
+              "left": "Não p ou q",
+              "right": "Disjunção equivalente"
+            }
+          ],
+          "explanation": "Só a contrapositiva e a forma “não p ou q” mantêm a tabela-verdade. Recíproca e inversa erram na linha em que p e q têm valores diferentes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q18",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma norma interna diz: “Se o valor passa de R$ 10 mil, então o gerente aprova a transferência”. Uma frase logicamente equivalente a essa é:",
+          "options": [
+            "Se o gerente aprova a transferência, então o valor passa de R$ 10 mil.",
+            "Se o valor não passa de R$ 10 mil, então o gerente não aprova a transferência.",
+            "O valor passa de R$ 10 mil e o gerente aprova a transferência.",
+            "O valor passa de R$ 10 mil ou o gerente não aprova a transferência.",
+            "Se o gerente não aprova a transferência, então o valor não passa de R$ 10 mil."
+          ],
+          "answer": 4,
+          "explanation": "Contrapositiva: inverte e nega. A recíproca e a inversa não são equivalentes; a forma com “e” afirma os fatos; a disjunção correta seria “o valor não passa de R$ 10 mil ou o gerente aprova”.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q19",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equivalência",
+          "difficulty": 3,
+          "style": "excecao",
+          "stem": "Todas as frases a seguir são logicamente equivalentes a “Se Pedro não pagou, então recebeu aviso”, EXCETO:",
+          "options": [
+            "Se Pedro pagou, então não recebeu aviso.",
+            "Se Pedro não recebeu aviso, então pagou.",
+            "Pedro pagou ou recebeu aviso.",
+            "Não é verdade que Pedro não pagou e não recebeu aviso.",
+            "Pedro recebeu aviso ou pagou."
+          ],
+          "answer": 0,
+          "explanation": "Negar as duas partes sem inverter (inversa) não é equivalente. A contrapositiva, a forma “não p ou q” (com “não p” = “pagou”), a dupla negação do “p e não q” e a troca de ordem do “ou” mantêm o sentido.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q20",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: para negar “Todo boleto venceu”, basta um contraexemplo: “Algum boleto não venceu”. Agora: a negação de “Todo cliente tem senha” é:",
+          "options": [
+            "Nenhum cliente tem senha",
+            "Algum cliente tem senha",
+            "Algum cliente não tem senha"
+          ],
+          "answer": 2,
+          "explanation": "Um único cliente sem senha já derruba o “todo”. “Nenhum” exagera, e “algum tem” é compatível com a frase original.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q21",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A negação de “Nenhum caixa está fechado” é “Algum caixa está fechado”.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Para desmentir “nenhum”, basta um caso: um caixa fechado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q22",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Se é verdade que “todo gerente é funcionário” e que Carla é gerente, então:",
+          "options": [
+            "Carla é funcionária",
+            "Nada se pode concluir sobre Carla",
+            "Todo funcionário é gerente"
+          ],
+          "answer": 0,
+          "explanation": "Carla está dentro do grupo dos gerentes, que está inteiro dentro do grupo dos funcionários. A frase não diz que todo funcionário é gerente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q23",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sabe-se que todo auditor é contador e que Lia é contadora. O que se conclui?",
+          "options": [
+            "Lia é auditora",
+            "Lia pode ser ou não auditora",
+            "Lia não é auditora"
+          ],
+          "answer": 1,
+          "explanation": "O grupo dos contadores é maior que o dos auditores. Lia está entre os contadores, mas pode estar fora do grupo dos auditores: nada é obrigatório.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q24",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "A negação lógica da sentença “Algum relatório foi entregue com atraso” é:",
+          "options": [
+            "Algum relatório não foi entregue com atraso.",
+            "Nenhum relatório foi entregue com atraso.",
+            "Todo relatório foi entregue com atraso.",
+            "Algum relatório foi entregue no prazo.",
+            "Nem todo relatório foi entregue com atraso."
+          ],
+          "answer": 1,
+          "explanation": "A negação de “algum A é B” é “nenhum A é B”. As outras são compatíveis com a frase original: podem ser verdadeiras junto com ela.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q25",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "quantificadores",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Em uma agência, são verdadeiras as afirmações: “Todo caixa é concursado” e “Nenhum estagiário é concursado”. É correto concluir que",
+          "options": [
+            "algum caixa é estagiário.",
+            "todo concursado é caixa.",
+            "nenhum caixa é estagiário.",
+            "algum estagiário é caixa.",
+            "todo concursado é estagiário."
+          ],
+          "answer": 2,
+          "explanation": "O grupo dos caixas está dentro do dos concursados, e os estagiários estão todos fora dele: os caixas e os estagiários não se tocam. As demais afirmações não decorrem das premissas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q26",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: de “Se o sistema cai, o atendimento para” e “O sistema caiu”, conclui-se que o atendimento parou. Agora: de “Se a taxa sobe, o crédito encarece” e “A taxa subiu”, conclui-se que:",
+          "options": [
+            "a taxa vai voltar a cair",
+            "nada se pode concluir",
+            "o crédito encareceu"
+          ],
+          "answer": 2,
+          "explanation": "A primeira parte do condicional aconteceu, então a segunda é obrigatória.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q27",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "De “Se Bruno viajou, então perdeu a reunião” e “Bruno não perdeu a reunião”, conclui-se que Bruno não viajou.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Se ele tivesse viajado, teria perdido a reunião. Como não perdeu, não viajou (a segunda parte falsa obriga a primeira a ser falsa).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q28",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra: em “p ou q”, se p é falsa, q é verdadeira. São verdadeiras: “Davi está na agência ou em casa” e “Davi não está em casa”. Logo:",
+          "options": [
+            "Davi está na agência",
+            "Davi está em casa",
+            "Davi não está na agência"
+          ],
+          "answer": 0,
+          "explanation": "Uma das duas partes do “ou” precisa valer. Como “em casa” é falsa, “na agência” é verdadeira.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q29",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "São verdadeiras: “Se Elisa é gerente, então tem a chave do cofre” e “Elisa tem a chave do cofre”. O que se conclui?",
+          "options": [
+            "Elisa é gerente",
+            "Nada sobre Elisa ser gerente",
+            "Elisa não é gerente"
+          ],
+          "answer": 1,
+          "explanation": "A segunda parte verdadeira não obriga a primeira: outras pessoas também podem ter a chave. Concluir que ela é gerente é o erro clássico de inverter o condicional.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q30",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Caso-limite: se 23 tarefas vão para 4 pessoas, alguém faz ao menos 6, porque 4 × 5 = 20 não chega a 23. Se 31 boletos são conferidos por 6 analistas, pelo menos um deles confere no mínimo:",
+          "options": [
+            "5 boletos",
+            "7 boletos",
+            "6 boletos"
+          ],
+          "answer": 2,
+          "explanation": "Se cada um conferisse no máximo 5, seriam 6 × 5 = 30 boletos, menos que 31. Logo alguém confere 6 ou mais. Nada obriga alguém a chegar a 7.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q31",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Considere verdadeiras as sentenças: 1. Se Caio é analista, então Lia é auditora. 2. Se Lia é auditora, então Rui é contador. 3. Rui não é contador. Deduz-se que",
+          "options": [
+            "Caio é analista e Lia não é auditora.",
+            "Caio não é analista e Lia é auditora.",
+            "Caio é analista e Lia é auditora.",
+            "Caio não é analista e Lia não é auditora.",
+            "Lia não é auditora, mas Caio pode ser analista."
+          ],
+          "answer": 3,
+          "explanation": "Comece pela 3: Rui não é contador. Pela 2, Lia não pode ser auditora. Pela 1, Caio não pode ser analista. Cada segunda parte falsa derruba a primeira.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q32",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dedução",
+          "difficulty": 3,
+          "style": "caso_pratico",
+          "stem": "Uma agência tem 5 caixas, que atenderam juntos 53 clientes numa manhã. É correto concluir que",
+          "options": [
+            "cada caixa atendeu pelo menos 10 clientes.",
+            "algum caixa atendeu exatamente 11 clientes.",
+            "nenhum caixa atendeu mais de 11 clientes.",
+            "pelo menos um caixa atendeu 12 clientes ou mais.",
+            "pelo menos um caixa atendeu 11 clientes ou mais."
+          ],
+          "answer": 4,
+          "explanation": "Com no máximo 10 cada, seriam 50 clientes, menos que 53: alguém atendeu 11 ou mais. Nada impede que um caixa atenda poucos e outro muitos, então as outras afirmações não são garantidas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q33",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 10 clientes têm cartão, 7 têm seguro e 4 têm os dois. Só cartão: 10 − 4 = 6. Agora: 12 funcionários falam inglês, 8 falam espanhol e 5 falam os dois idiomas. Quantos falam só inglês?",
+          "options": [
+            "7",
+            "12",
+            "3"
+          ],
+          "answer": 0,
+          "explanation": "Desconta a interseção: 12 − 5 = 7. O número 12 inclui quem fala os dois, e 3 é quem fala só espanhol (8 − 5).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q34",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Num grupo em que todos usam Pix ou boleto, 9 pessoas usam Pix, 6 usam boleto e 2 usam os dois. O grupo tem 13 pessoas.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Somar 9 + 6 conta duas vezes quem usa os dois. Total: 9 + 6 − 2 = 13 (só Pix 7, só boleto 4, os dois 2).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q35",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra: total = só A + só B + os dois = A + B − os dois. Numa equipe de 20 pessoas, todas usam planilha ou painel: 14 usam planilha e 11 usam painel. Quantas usam os dois?",
+          "options": [
+            "3",
+            "5",
+            "6"
+          ],
+          "answer": 1,
+          "explanation": "14 + 11 = 25 passa do total em 5: são as pessoas contadas duas vezes, que usam os dois.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q36",
+          "type": "match",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada operação entre conjuntos ao que ela reúne:",
+          "pairs": [
+            {
+              "left": "União (A ∪ B)",
+              "right": "Está em A ou em B"
+            },
+            {
+              "left": "Interseção (A ∩ B)",
+              "right": "Está em A e em B"
+            },
+            {
+              "left": "Diferença (A − B)",
+              "right": "Está em A e não está em B"
+            },
+            {
+              "left": "Complementar de A",
+              "right": "Não está em A"
+            }
+          ],
+          "explanation": "União junta tudo; interseção pega o comum; diferença tira de A o que também está em B; complementar é o resto do universo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q37",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma pesquisa com 50 clientes perguntou se usam o aplicativo ou o internet banking; todos usam pelo menos um deles. O número dos que usam só o aplicativo é o dobro do número dos que usam só o internet banking, e 8 usam os dois. Quantos clientes usam só o internet banking?",
+          "options": [
+            "14.",
+            "16.",
+            "21.",
+            "28.",
+            "42."
+          ],
+          "answer": 0,
+          "explanation": "Só internet banking = x, só aplicativo = 2x: x + 2x + 8 = 50, então 3x = 42 e x = 14. 28 é o número de quem usa só o aplicativo, e 42 é quem usa só um dos dois.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q38",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "conjuntos",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Sejam A = {1, 2, 3, 4} e B = {3, 4, 5}. O conjunto dos elementos que estão em A ou em B, mas não nos dois, é",
+          "options": [
+            "{3, 4}",
+            "{1, 2, 5}",
+            "{1, 2}",
+            "{5}",
+            "{1, 2, 3, 4, 5}"
+          ],
+          "answer": 1,
+          "explanation": "União {1, 2, 3, 4, 5} menos a interseção {3, 4} dá {1, 2, 5}. {1, 2} é só A − B, {5} é só B − A, e {3, 4} é a interseção.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c6",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q39",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: Ana, Beto e Caio são caixa, gerente e analista, um cargo para cada. Ana não é caixa nem gerente: logo, é analista, e esse cargo sai das outras linhas. Agora, sabendo também que Beto não é caixa, qual é o cargo de Beto?",
+          "options": [
+            "Caixa",
+            "Analista",
+            "Gerente"
+          ],
+          "answer": 2,
+          "explanation": "Analista já é da Ana, e caixa foi eliminado pela dica: sobra gerente. Caio fica com caixa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l1q40",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Numa fila, se há 6 pessoas na frente de Rui, ele ocupa a 7ª posição.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Posição = pessoas à frente + 1: 6 + 1 = 7.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l1q41",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Posição = pessoas à frente + 1. Numa fila de 20 pessoas, Sara tem 4 pessoas à sua frente. Quantas pessoas estão atrás dela?",
+          "options": [
+            "15",
+            "16",
+            "14"
+          ],
+          "answer": 0,
+          "explanation": "Sara é a 5ª (4 + 1). Atrás dela: 20 − 5 = 15. O 16 esquece de descontar a própria Sara.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l1q42",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Quatro amigos sentam numa mesa quadrada, um de cada lado. Tânia está em frente a Ulisses, e Vera está à direita de Tânia. Onde está Xavier?",
+          "options": [
+            "À direita de Tânia",
+            "Em frente a Vera",
+            "Em frente a Tânia"
+          ],
+          "answer": 1,
+          "explanation": "Fixando Tânia, Ulisses fica em frente e Vera à direita dela. Sobra o lugar à esquerda de Tânia, que fica em frente ao de Vera.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l1q43",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Rui, Sol e Teo trabalham nas agências de Vitória, Serra e Vila Velha, cada um numa agência diferente. Sabe-se que Rui não trabalha em Vitória nem na Serra e que Sol não trabalha na Serra. Conclui-se que",
+          "options": [
+            "Teo trabalha em Vitória e Sol, na Serra.",
+            "Rui trabalha na Serra e Teo, em Vitória.",
+            "Teo trabalha na Serra e Sol, em Vitória.",
+            "Sol trabalha em Vila Velha e Rui, em Vitória.",
+            "Teo trabalha em Vila Velha e Rui, na Serra."
+          ],
+          "answer": 2,
+          "explanation": "Rui só pode estar em Vila Velha. Sol não está na Serra nem em Vila Velha (já ocupada): Vitória. Sobra a Serra para Teo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "prova"
+        },
+        {
+          "id": "u12l1q44",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "associação lógica",
+          "difficulty": 3,
+          "style": "caso_pratico",
+          "stem": "Cinco contas de uma família venceram em dias diferentes de uma mesma semana, de segunda a sexta-feira. A de internet venceu na quarta-feira e a de aluguel, na sexta. A de gás venceu um dia depois da de água, e a de luz venceu depois da de água. Em que dia venceu a conta de luz?",
+          "options": [
+            "Segunda-feira.",
+            "Terça-feira.",
+            "Quarta-feira.",
+            "Quinta-feira.",
+            "Sexta-feira."
+          ],
+          "answer": 3,
+          "explanation": "Sobram segunda, terça e quinta. Gás no dia seguinte à água só cabe em água na segunda e gás na terça. Luz, depois da água, fica com a quinta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l1c7",
+          "level": "prova"
+        }
+      ]
+    }
+  ]
+}

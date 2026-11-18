@@ -661,6 +661,21 @@ O dono enviou as provas Tipo 1 e os gabaritos definitivos de Técnico Bancário 
    integração. O guia da unidade também passou a usar o rótulo da trilha ("Unidade 1", "G1") em vez do número interno.
 
 
+## G2 Raciocínio lógico, lição 1: Lógica de relações (18/11/2026) — a pedido do dono
+
+1. **Fonte de roteiro:** o dono pediu para usar a playlist "Bônus: Editora Opção" (Apostilas Opção, YouTube) nos Gerais.
+   As aulas de lógica (vídeos 42 a 53) deram a ordem dos conceitos e os métodos de resolução; nenhum texto, exemplo ou
+   número foi copiado (CLAUDE.md, regra 1). Os vídeos de Português (54 a 76) ficam para revisar a G1; os de probabilidade
+   (39 a 41) entram na u12l4, porque as oficiais FGV 2018 Q50 e FGV 2021 Q35 já esperam lá, embora o edital não cite
+   probabilidade. Informática e Direito Constitucional não são dos Gerais.
+2. **Lógica proposicional na l1:** o edital fala em "processo lógico que, a partir de hipóteses, conduz de forma válida a
+   conclusões", e 11 das 26 oficiais da lição são de negação, equivalência ou dedução com condicionais. A l1 ganhou 7
+   conceitos (conectivos, negação, equivalências, quantificadores, dedução, conjuntos, associações), 44 exercícios e as 26
+   oficiais ligadas a eles.
+3. **Gerador:** `tools/gen_u16.py` passou a aceitar a unidade (`python3 tools/gen_u16.py u12`; sem argumento continua
+   gerando a u16, idêntica). `pos` fixa a posição da correta quando as alternativas têm ordem natural, e a saída é
+   gravada com fim de linha LF também no Windows.
+
 ## Sino de avisos e meta do dia em lições (0.14.1, 18/11/2026) — a pedido do dono
 O dono pediu um botão de notificações minimalista que reúna a versão nova, o alerta de ofensiva e a meta do dia, e
 apontou que 100 XP por dia não servia mais de meta.
