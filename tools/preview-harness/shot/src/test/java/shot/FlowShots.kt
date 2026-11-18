@@ -91,6 +91,20 @@ class FlowShots {
     @Test fun painelDeProvas() = panelShot("x_panel_analista.png", br.com.trilhati.domain.exam.TargetExam.AnalistaTi)
     @Test fun painelDeProvasTecnicoEscuro() = panelShot("x_panel_tecnico_escuro.png", tb, br.com.trilhati.ui.theme.ThemePalette.Escuro)
     @Test fun painelDeProvasChiclete() = panelShot("x_panel_chiclete.png", tb, chiclete)
+    // ---- Sino de avisos (0.14.1): fechado com o ponto, aberto com meta, ofensiva e versão; meta batida
+    private fun noticesShot(name: String, exam: br.com.trilhati.domain.exam.TargetExam, open: Boolean, palette: br.com.trilhati.ui.theme.ThemePalette = br.com.trilhati.ui.theme.ThemePalette.Claro) =
+        rule.shot(name, palette = palette) {
+            br.com.trilhati.feature.path.PathContent(
+                noticesState(exam), NOW_MS, AppActions(), animated = false, pairsAtRisk = listOf("Bia" to 5),
+                updateBanner = noticeRelease, initialNoticesOpen = open,
+            )
+        }
+    @Test fun sinoFechado() = noticesShot("n_bell_tecnico.png", tb, open = false)
+    @Test fun sinoAberto() = noticesShot("n_notices_tecnico.png", tb, open = true)
+    @Test fun sinoAbertoAnalistaEscuro() = noticesShot("n_notices_analista_escuro.png", br.com.trilhati.domain.exam.TargetExam.AnalistaTi, open = true, br.com.trilhati.ui.theme.ThemePalette.Escuro)
+    @Test fun sinoMetaBatida() = rule.shot("n_notices_meta_batida.png", palette = chiclete) {
+        br.com.trilhati.feature.path.PathContent(fakeState(true, exam = tb), NOW_MS, AppActions(), animated = false, initialNoticesOpen = true)
+    }
     @Test fun trilhaDoTecnico() = rule.shot("x_path_tecnico.png") {
         MainContent(fakeState(false, exam = tb), NOW_MS, AppActions(), snack, animated = false, social = fakeSocial())
     }

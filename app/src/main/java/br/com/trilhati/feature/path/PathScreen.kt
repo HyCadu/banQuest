@@ -79,7 +79,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
-import br.com.trilhati.ui.components.GameProgressBar
 import br.com.trilhati.ui.components.NodeState
 import br.com.trilhati.ui.components.PathNode
 import br.com.trilhati.ui.components.StreakCalendar
@@ -103,7 +102,7 @@ private sealed interface PathDialog {
     data class UnitGuide(val unitId: String) : PathDialog
 }
 
-/** Aba Trilha: faixa de status, meta do dia e a trilha de unidades e lições. */
+/** Aba Trilha: faixa de status (prova, ofensiva, corações e sino de avisos) e a trilha de unidades e lições. */
 @Composable
 fun PathContent(
     state: AppState,
@@ -116,9 +115,20 @@ fun PathContent(
     updateBanner: br.com.trilhati.domain.update.ReleaseInfo? = null,
     /** Começa com o painel de provas aberto (prévias da harness). */
     initialExamPanelOpen: Boolean = false,
+    /** Começa com os avisos abertos (prévias da harness). */
+    initialNoticesOpen: Boolean = false,
 ) {
     var dialog by remember { mutableStateOf<PathDialog?>(null) }
     var examPanel by remember { mutableStateOf(initialExamPanelOpen) }
+    var noticesPanel by remember { mutableStateOf(initialNoticesOpen) }
+    val notices = Notices(
+        goalLessons = state.dailyGoalLessons,
+        lessonsToday = state.todayLog.lessons,
+        examDate = state.targetExam.date,
+        streakAlert = br.com.trilhati.domain.streak.StreakAlert.text(state.streakCount, state.studiedToday, pairsAtRisk),
+        pairsInAlert = pairsAtRisk.isNotEmpty(),
+        update = updateBanner,
+    )
     // Onde termina a faixa do topo (o painel de provas desce dali), medido em relação à tela da Trilha.
     var rootTopPx by remember { androidx.compose.runtime.mutableFloatStateOf(0f) }
     var headerBottomPx by remember { androidx.compose.runtime.mutableFloatStateOf(0f) }
@@ -144,7 +154,10 @@ fun PathContent(
             TopStatusBar(
                 streak = state.streakCount, hearts = hearts,
                 examChip = {
-                    ExamChip(state.targetExam, state.daysToExam, expanded = examPanel, onClick = { examPanel = !examPanel })
+                    ExamChip(state.targetExam, state.daysToExam, expanded = examPanel, onClick = { examPanel = !examPanel; noticesPanel = false })
+                },
+                trailing = {
+                    NoticeBell(notices.alerts, expanded = noticesPanel, onClick = { noticesPanel = !noticesPanel; examPanel = false })
                 },
                 modifier = Modifier.onGloballyPositioned { headerBottomPx = it.positionInRoot().y + it.size.height },
                 halfHeart = state.heartsHalf(nowMs),
@@ -153,13 +166,6 @@ fun PathContent(
                 onStreakClick = { dialog = PathDialog.Streak },
                 onHeartsClick = { dialog = PathDialog.Hearts },
             )
-            DailyGoalBar(state.todayLog.xp, state.snapshot.profile.dailyGoalXp)
-            updateBanner?.let { release ->
-                br.com.trilhati.feature.update.UpdateBanner(
-                    release, onDownload = { actions.openUpdate(release.apkUrl) }, onDismiss = { actions.dismissUpdate(release.versionCode) },
-                )
-            }
-            if (pairsAtRisk.isNotEmpty() && !state.studiedToday) PairRiskBanner(pairsAtRisk, actions.openRanking)
             if (showReminderPrompt) ReminderPrompt(state, character, actions, animated)
             TrackSwitch(track, actions.setTrack, animated = !reduced)
         }
@@ -213,6 +219,15 @@ fun PathContent(
         onDismiss = { examPanel = false },
         topOffset = with(density) { (headerBottomPx - rootTopPx).coerceAtLeast(0f).toDp() },
     )
+    NoticesPanel(
+        visible = noticesPanel,
+        notices = notices,
+        onDownload = { actions.openUpdate(it.apkUrl) },
+        onDismissUpdate = { actions.dismissUpdate(it.versionCode) },
+        onOpenRanking = { noticesPanel = false; actions.openRanking() },
+        onDismiss = { noticesPanel = false },
+        topOffset = with(density) { (headerBottomPx - rootTopPx).coerceAtLeast(0f).toDp() },
+    )
     }
     }
 
@@ -221,20 +236,6 @@ fun PathContent(
         PathDialog.Hearts -> HeartsDialog(state, nowMs, actions, onDismiss = { dialog = null })
         is PathDialog.UnitGuide -> state.course.firstOrNull { it.id == d.unitId }?.let { UnitGuideDialog(it, state, onDismiss = { dialog = null }) }
         null -> Unit
-    }
-}
-
-@Composable
-private fun DailyGoalBar(xpToday: Int, goal: Int) {
-    val c = Trilha.colors
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        GameIconView(GameIcon.Star, size = 22.dp)
-        GameProgressBar((xpToday.toFloat() / goal).coerceIn(0f, 1f), Modifier.weight(1f), color = c.warning, height = 12.dp)
-        Text(
-            if (xpToday >= goal) "Meta batida!" else "$xpToday/$goal XP",
-            style = MaterialTheme.typography.labelMedium,
-            color = if (xpToday >= goal) c.successText else c.inkSoft,
-        )
     }
 }
 
@@ -411,28 +412,6 @@ private fun ReminderPrompt(state: AppState, character: MascotCharacter, actions:
             ChunkyButton("Ativar lembrete", actions.enableReminders, Modifier.weight(1f), ChunkyStyle.Primary, minHeight = 44.dp)
             ChunkyButton("Agora não", actions.dismissReminderPrompt, Modifier.weight(1f), ChunkyStyle.Neutral, minHeight = 44.dp)
         }
-    }
-}
-
-/** Aviso no topo da Trilha: a ofensiva em dupla com algum amigo acaba hoje se você não estudar. */
-@Composable
-private fun PairRiskBanner(pairs: List<Pair<String, Int>>, onOpen: () -> Unit) {
-    val c = Trilha.colors
-    val (name, days) = pairs.maxBy { it.second }
-    val others = pairs.size - 1
-    val text = buildString {
-        append("A ofensiva em dupla com $name ($days ${if (days == 1) "dia" else "dias"})")
-        if (others > 0) append(" e mais $others")
-        append(" acaba hoje se você não fizer uma lição.")
-    }
-    Row(
-        Modifier.fillMaxWidth().background(c.warningSoft, androidx.compose.foundation.shape.RoundedCornerShape(16.dp))
-            .border(2.dp, c.warning, androidx.compose.foundation.shape.RoundedCornerShape(16.dp))
-            .clickable(onClickLabel = "Ver ofensivas em dupla", onClick = onOpen).padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        GameIconView(GameIcon.Flame, size = 28.dp)
-        Text(text, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium, color = c.warningText)
     }
 }
 

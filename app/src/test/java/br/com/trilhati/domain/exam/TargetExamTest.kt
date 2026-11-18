@@ -158,4 +158,17 @@ class TargetExamTest {
         assertEquals(LessonStatus.Done, after["u16l7"])
         assertEquals(LessonStatus.Locked, after["u17l1"])
     }
+
+    @Test fun `meta do dia pelo catalogo real - 42 licoes do Tecnico e 69 do Analista dao 1 por dia em 18-11-2026`() {
+        val today = LocalDate.of(2026, 11, 18)
+        val zone = br.com.trilhati.domain.time.APP_ZONE
+        val tb = ExamCourse.courseFor(TargetExam.TecnicoBancario, catalog)
+        val ti = ExamCourse.courseFor(TargetExam.AnalistaTi, catalog)
+        assertEquals(42, tb.sumOf { it.lessons.size })
+        assertEquals(69, ti.sumOf { it.lessons.size })
+        assertEquals(1, br.com.trilhati.domain.progress.DailyGoal.lessons(tb, emptyMap(), today, TargetExam.TecnicoBancario.date, zone))
+        assertEquals(1, br.com.trilhati.domain.progress.DailyGoal.lessons(ti, emptyMap(), today, TargetExam.AnalistaTi.date, zone))
+        // A 30 dias da prova do Técnico, sem ter estudado nada: 42 em 30 dias, 2 por dia.
+        assertEquals(2, br.com.trilhati.domain.progress.DailyGoal.lessons(tb, emptyMap(), TargetExam.TecnicoBancario.date.minusDays(30), TargetExam.TecnicoBancario.date, zone))
+    }
 }

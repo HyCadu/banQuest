@@ -37,7 +37,6 @@ import br.com.trilhati.feature.app.AppState
 import br.com.trilhati.ui.components.ChunkyButton
 import br.com.trilhati.ui.components.ChunkyStyle
 import br.com.trilhati.ui.components.GameProgressBar
-import br.com.trilhati.ui.components.PillChoice
 import br.com.trilhati.ui.components.StreakCalendar
 import br.com.trilhati.ui.components.TrilhaDialog
 import br.com.trilhati.ui.icons.GameIcon
@@ -49,9 +48,7 @@ import br.com.trilhati.ui.mascot.MascotPose
 import br.com.trilhati.ui.theme.Spacing
 import br.com.trilhati.ui.theme.Trilha
 
-private val GOALS = listOf("Leve" to 50, "Regular" to 100, "Séria" to 200, "Intensa" to 300)
-
-/** Aba Perfil: personagem (só aqui!), nome, meta diária, estatísticas, calendário e conquistas. */
+/** Aba Perfil: personagem (só aqui!), nome, estatísticas, calendário e conquistas. */
 @Composable
 fun ProfileContent(state: AppState, actions: AppActions, modifier: Modifier = Modifier, animated: Boolean = true) {
     val c = Trilha.colors
@@ -96,16 +93,6 @@ fun ProfileContent(state: AppState, actions: AppActions, modifier: Modifier = Mo
                 ) {
                     Mascot(option, MascotPose.Idle, Modifier.size(64.dp), animated = false, decorative = true)
                     Text(option.displayName.substringBefore('-'), style = MaterialTheme.typography.labelSmall, color = if (selected) c.primaryText else c.inkSoft, maxLines = 1)
-                }
-            }
-        }
-
-        // Meta diária
-        SectionTitle("Meta diária")
-        GOALS.chunked(2).forEach { rowGoals ->
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                rowGoals.forEach { (label, xp) ->
-                    PillChoice("$label · $xp XP", profile.dailyGoalXp == xp, { actions.setGoal(xp) }, Modifier.weight(1f))
                 }
             }
         }

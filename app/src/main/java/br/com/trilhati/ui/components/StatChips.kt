@@ -72,6 +72,8 @@ fun TopStatusBar(
     studiedToday: Boolean = true,
     /** Meio coração além de [hearts]: mostra o coração rachado. */
     halfHeart: Boolean = false,
+    /** Depois dos corações (o sino de avisos da Trilha). */
+    trailing: @Composable () -> Unit = {},
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -91,5 +93,6 @@ fun TopStatusBar(
             val description = pluralStringResource(R.plurals.stat_hearts_description, hearts, hearts) + if (halfHeart) " e meio" else ""
             StatChip(if (halfHeart) GameIcon.HeartCracked else GameIcon.Heart, text, description, onClick = onHeartsClick)
         }
+        trailing()
     }
 }

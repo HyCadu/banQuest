@@ -426,7 +426,8 @@ class SessionViewModel @Inject constructor(
             val unitId = lessonOnly?.let { content.lesson(it)?.unitId }
             // Só chega aqui com todas as questões respondidas: na prova anterior, é o único caminho que dá XP.
             val result = SessionResult(kind, lessonOnly, unitId, r.records, r.bestCombo, r.perfect)
-            val processed = progress.applySession(result, clock.today(), content.allCourses)
+            val exam = settings.targetExam
+            val processed = progress.applySession(result, clock.today(), content.allCourses, content.course(exam), exam.date)
             if (kind != SessionKind.Practice) notifications.clear()
             // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
             syncScheduler.syncSoon()

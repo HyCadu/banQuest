@@ -140,3 +140,17 @@ fun ComposeContentTestRule.shot(
     mainClock.advanceTimeBy(300)
     onRoot().captureToImage().asAndroidBitmap().save(name)
 }
+
+/**
+ * Trilha com avisos (0.14.1): ainda não estudou hoje com ofensiva de 3 dias, dupla em risco e versão nova.
+ * Base dos renders e do teste de acessibilidade do sino.
+ */
+fun noticesState(exam: br.com.trilhati.domain.exam.TargetExam = br.com.trilhati.domain.exam.TargetExam.AnalistaTi): AppState {
+    val st = fakeState(true, exam = exam)
+    val stats = st.snapshot.stats.copy(streak = StreakState(3, 5, TODAY.minusDays(1), 1))
+    return st.copy(snapshot = st.snapshot.copy(stats = stats, dailyLogs = st.snapshot.dailyLogs - TODAY))
+}
+
+val noticeRelease = br.com.trilhati.domain.update.ReleaseInfo(
+    25, "0.14.2", "https://example.invalid/banquest-0.14.2.apk", "Correções e melhorias.", 19,
+)
