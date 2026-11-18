@@ -31,6 +31,10 @@ data class AppState(
     val streakCount: Int = StreakEngine.displayCount(snapshot.stats.streak, today)
     val streakStatus: StreakStatus = StreakEngine.status(snapshot.stats.streak, today)
     val todayLog: DailyLog = snapshot.dailyLogs[today] ?: DailyLog(today)
+    /** Meta do dia em lições: ritmo para terminar a trilha da prova escolhida até a véspera dela. */
+    val dailyGoalLessons: Int = br.com.trilhati.domain.progress.DailyGoal.lessons(
+        course, snapshot.lessonProgress, today, settings.targetExam.date, br.com.trilhati.domain.time.APP_ZONE,
+    )
     val completedUnitIds: Set<String> = course.filter { TrailEngine.isUnitComplete(it, snapshot.lessonProgress) }.map { it.id }.toSet()
 
     /** Lição que o aluno deve fazer agora (a primeira disponível), se houver. */
@@ -85,7 +89,6 @@ data class AppActions(
     val claimUnitChest: (String) -> Unit = {},
     val setCharacter: (String) -> Unit = {},
     val setName: (String) -> Unit = {},
-    val setGoal: (Int) -> Unit = {},
     val message: (String) -> Unit = {},
     val openShop: () -> Unit = {},
     val enableReminders: () -> Unit = {},

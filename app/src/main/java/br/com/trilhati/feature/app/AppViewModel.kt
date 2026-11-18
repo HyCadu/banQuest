@@ -202,7 +202,6 @@ class AppViewModel @Inject constructor(
 
     fun setCharacter(name: String) = viewModelScope.launch { progress.setCharacter(name) }
     fun setName(name: String) = viewModelScope.launch { progress.setName(name) }
-    fun setGoal(xp: Int) = viewModelScope.launch { progress.setDailyGoal(xp) }
 
     fun setTimerMode(mode: TimerMode) = viewModelScope.launch { settingsRepo.setTimerMode(mode) }
     fun setPaceTarget(ms: Long?) = viewModelScope.launch { settingsRepo.setPaceTarget(ms) }

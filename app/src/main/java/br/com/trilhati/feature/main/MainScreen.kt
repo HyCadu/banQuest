@@ -93,7 +93,7 @@ fun MainScreen(
             openExam = onOpenExam,
             buy = viewModel::buy, claimQuest = viewModel::claimQuest, claimDailyChest = viewModel::claimDailyChest,
             claimUnitChest = viewModel::claimUnitChest, setCharacter = viewModel::setCharacter, setName = viewModel::setName,
-            setGoal = viewModel::setGoal, message = viewModel::message,
+            message = viewModel::message,
             enableReminders = {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                     permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)

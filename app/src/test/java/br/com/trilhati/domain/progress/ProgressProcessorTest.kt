@@ -17,12 +17,12 @@ class ProgressProcessorTest {
     private val nowMs = 1_000_000L
     private val units = listOf(TestData.unit(1, 2))
 
-    private fun freshState(goal: Int = 100, stats: Stats = Stats()): ProgressState {
+    private fun freshState(goal: Int = 1, stats: Stats = Stats()): ProgressState {
         val quests = QuestEngine.questsFor(today).map { QuestProgress(today, it.id) }
         return ProgressState(
             stats = stats, lessonProgress = emptyMap(), questionStats = emptyMap(),
             todayLog = DailyLog(today), todayQuests = quests, unlockedAchievements = emptySet(),
-            dailyGoalXp = goal,
+            dailyGoalLessons = goal,
         )
     }
 
@@ -47,7 +47,7 @@ class ProgressProcessorTest {
         // 8 respostas x 15 + 20 conclusão + 10 perfeita
         assertEquals(8 * 15 + 30, s.stats.totalXp)
         assertEquals(run.xp + 30, out.summary.totalXp)
-        assertEquals(ShopEngine.LESSON_GEMS + ShopEngine.PERFECT_GEMS + 20 /* meta de 100 XP atingida */ + gemsFromAchievements(out), s.stats.gems)
+        assertEquals(ShopEngine.LESSON_GEMS + ShopEngine.PERFECT_GEMS + 20 /* meta de 1 lição atingida */ + gemsFromAchievements(out), s.stats.gems)
         assertEquals(1, s.stats.streak.current)
         assertTrue(out.summary.streakIncreased)
         assertTrue(s.lessonProgress.getValue("u1l1").perfect)
@@ -90,15 +90,19 @@ class ProgressProcessorTest {
 
     @Test fun `meta diaria so dispara uma vez e da gemas`() {
         val (_, r) = play(List(8) { true })
-        val first = apply(freshState(goal = 100), r)
-        assertTrue(first.summary.goalJustMet)
+        val first = apply(freshState(goal = 2), r)
+        assertFalse(first.summary.goalJustMet)
         val second = apply(first.state, play(List(8) { true }, "u1l2").second)
-        assertFalse(second.summary.goalJustMet)
+        assertTrue(second.summary.goalJustMet)
+        assertTrue(second.state.todayLog.goalMet)
+        assertEquals(ShopEngine.DAILY_GOAL_GEMS, second.summary.gemsEarned - ShopEngine.LESSON_GEMS - ShopEngine.PERFECT_GEMS - gemsFromAchievements(second))
+        val third = apply(second.state, play(List(8) { true }, "u1l1").second)
+        assertFalse(third.summary.goalJustMet)
     }
 
     @Test fun `meta nao atingida nao da gemas de meta`() {
         val (_, r) = play(List(8) { true })
-        val out = apply(freshState(goal = 300), r)
+        val out = apply(freshState(goal = 3), r)
         assertFalse(out.summary.goalJustMet)
         assertFalse(out.state.todayLog.goalMet)
     }

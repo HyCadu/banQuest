@@ -16,7 +16,9 @@ import br.com.trilhati.domain.model.CourseUnit
 import br.com.trilhati.domain.progress.DailyLog
 import br.com.trilhati.domain.progress.ProcessedSession
 import br.com.trilhati.domain.progress.ProgressProcessor
+import br.com.trilhati.domain.progress.DailyGoal
 import br.com.trilhati.domain.progress.ProgressState
+import br.com.trilhati.domain.time.APP_ZONE
 import br.com.trilhati.domain.progress.PurchaseResult
 import br.com.trilhati.domain.progress.QuestProgress
 import br.com.trilhati.domain.progress.SessionResult
@@ -154,12 +156,20 @@ class ProgressRepository @Inject constructor(
 
     // ---------- sessões de estudo
 
-    /** Grava o resultado de uma lição ou treino e devolve o resumo para a tela de resultado. */
-    suspend fun applySession(result: SessionResult, today: LocalDate, course: List<CourseUnit>): ProcessedSession = db.withTransaction {
+    /**
+     * Grava o resultado de uma lição ou treino e devolve o resumo para a tela de resultado. [course] são todas as
+     * unidades (conquistas); [goalCourse] e [examDate], a trilha e a data da prova escolhida (meta do dia, [DailyGoal]).
+     */
+    suspend fun applySession(
+        result: SessionResult,
+        today: LocalDate,
+        course: List<CourseUnit>,
+        goalCourse: List<CourseUnit> = course,
+        examDate: LocalDate = br.com.trilhati.domain.exam.TargetExam.DEFAULT.date,
+    ): ProcessedSession = db.withTransaction {
         ensureReadyInternal(today)
         val now = nowMs()
         val ids = result.records.map { it.question.id }.distinct()
-        val profile = checkNotNull(dao.profile())
         val lessonProgress = dao.lessonProgress().map { it.toDomain() }.associateBy { it.lessonId }
         val state = ProgressState(
             stats = checkNotNull(dao.stats()).toDomain(),
@@ -168,7 +178,7 @@ class ProgressRepository @Inject constructor(
             todayLog = dao.dailyLog(today.toEpochDay())?.toDomain() ?: DailyLog(today),
             todayQuests = dao.quests(today.toEpochDay()).map { it.toDomain() },
             unlockedAchievements = dao.achievementIds().toSet(),
-            dailyGoalXp = profile.dailyGoalXp,
+            dailyGoalLessons = DailyGoal.lessons(goalCourse, lessonProgress, today, examDate, APP_ZONE),
         )
         val before = TrailEngine.completedUnitCount(course, lessonProgress)
         val out = ProgressProcessor.apply(state, result, today, now, { TrailEngine.completedUnitCount(course, it) }, before)

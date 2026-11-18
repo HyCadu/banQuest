@@ -115,12 +115,12 @@ object ProgressProcessor {
         else StreakEngine.reconcile(state.stats.streak, today)
         val streakBefore = StreakEngine.displayCount(state.stats.streak, today)
 
-        // Meta diária.
-        val newDailyXp = state.todayLog.xp + xpTotal
-        val goalJustMet = !state.todayLog.goalMet && newDailyXp >= state.dailyGoalXp
+        // Meta diária: lições concluídas hoje (a prova anterior inteira conta como uma, como na ofensiva).
+        val newDailyLessons = state.todayLog.lessons + if (completesStudy) 1 else 0
+        val goalJustMet = !state.todayLog.goalMet && completesStudy && DailyGoal.met(newDailyLessons, state.dailyGoalLessons)
         val todayLog = state.todayLog.copy(
-            xp = newDailyXp,
-            lessons = state.todayLog.lessons + if (completesStudy) 1 else 0,
+            xp = state.todayLog.xp + xpTotal,
+            lessons = newDailyLessons,
             goalMet = state.todayLog.goalMet || goalJustMet,
         )
 

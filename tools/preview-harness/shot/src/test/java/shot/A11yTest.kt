@@ -115,6 +115,20 @@ class A11yTest {
         assertClickablesLabeled("painel de provas")
     }
 
+    @Test fun sinoDeAvisosTemRotulos() {
+        rule.mainClock.autoAdvance = false
+        rule.setContent {
+            TrilhaTheme {
+                br.com.trilhati.feature.path.PathContent(
+                    noticesState(), NOW_MS, AppActions(), animated = false, pairsAtRisk = listOf("Bia" to 5),
+                    updateBanner = noticeRelease, initialNoticesOpen = true,
+                )
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        assertClickablesLabeled("sino de avisos")
+    }
+
     @Test fun avisoDaProvaAnteriorTemRotulos() {
         val e = pastExams.first { it.id == "fgv-banestes-2018" }
         val part = br.com.trilhati.domain.exam.ExamPart.Full

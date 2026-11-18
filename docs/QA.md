@@ -10,7 +10,7 @@
 ## Roteiro principal (≈15 minutos)
 
 **1. Primeira tela = Trilha**
-- [ ] O app abre direto na **Trilha**, com ofensiva, gemas, corações e "dias para a prova" no topo, e a barra da meta do dia.
+- [ ] O app abre direto na **Trilha**, com a prova escolhida e os dias que faltam, a ofensiva e os corações no topo.
 - [ ] Banner roxo "Unidade 1 · Banco de dados" **fixo no topo** enquanto você rola; o nó atual pulsa com o balão "Começar" e o
       personagem (Guaiamum) fica ao lado.
 - [ ] Role até o fim: as Unidades 2 a 10 aparecem cinzas ("Conteúdo chegando em breve"). Toque num nó cinza: aparece uma
@@ -416,6 +416,30 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       · Banestes 2024 · …" (estas com 4 alternativas), só depois do conceito que cobram.
 - [ ] Na explicação da questão da mesa quadrada (Tânia, Ulisses, Vera e Xavier), direita e esquerda são de quem está
       sentado.
+
+## BanQuest 0.14.1 — sino de avisos e meta do dia em lições
+
+**47. Topo da Trilha**
+- [ ] A barra com estrela e "XP/meta" sumiu. No topo ficam o chip da prova, a ofensiva, os corações e um sino só de
+      contorno, à direita.
+- [ ] O aviso de versão nova e o de ofensiva em dupla não aparecem mais soltos na Trilha: estão dentro do sino.
+
+**48. Sino de avisos**
+- [ ] Antes de estudar no dia, com ofensiva, o sino tem um ponto vermelho. Toque nele: abre "Avisos" com a meta do dia e
+      "Ofensiva em risco" ("Sua ofensiva de N dias acaba hoje..."; com dupla em risco, o nome do amigo aparece e tocar no
+      aviso abre o Ranking).
+- [ ] Com versão nova publicada no Supabase, o cartão "BanQuest X disponível" aparece no sino com Baixar e Agora não.
+      "Agora não" tira o cartão e o ponto.
+- [ ] Tocar fora do painel, no sino de novo ou no botão voltar fecha. Abrir o sino fecha o painel de provas e vice-versa.
+- [ ] Com o TalkBack, o sino é lido como "Avisos: 2 novos".
+
+**49. Meta do dia em lições**
+- [ ] O cartão diz "Meta de hoje: N lição(ões)" e "Ritmo para terminar a trilha até 24/01" (Técnico) ou "até 21/02"
+      (Analista). Em 18/11 a conta dá 1 lição por dia nas duas provas (42 lições em 67 dias; 69 em 95).
+- [ ] Concluir uma lição (ou uma prova anterior inteira) preenche um bloco. Ao bater a meta, o cartão vira "Meta de hoje
+      batida", o resultado da lição mostra "Meta batida" e entram as gemas da meta, uma vez por dia.
+- [ ] A meta não diminui ao longo do dia, mesmo concluindo lições novas.
+- [ ] O Perfil não tem mais a escolha "Meta diária" (Leve, Regular...).
 
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do

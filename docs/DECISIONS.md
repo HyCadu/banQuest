@@ -675,3 +675,24 @@ O dono enviou as provas Tipo 1 e os gabaritos definitivos de Técnico Bancário 
 3. **Gerador:** `tools/gen_u16.py` passou a aceitar a unidade (`python3 tools/gen_u16.py u12`; sem argumento continua
    gerando a u16, idêntica). `pos` fixa a posição da correta quando as alternativas têm ordem natural, e a saída é
    gravada com fim de linha LF também no Windows.
+
+## Sino de avisos e meta do dia em lições (0.14.1, 18/11/2026) — a pedido do dono
+O dono pediu um botão de notificações minimalista que reúna a versão nova, o alerta de ofensiva e a meta do dia, e
+apontou que 100 XP por dia não servia mais de meta.
+1. **A faixa da meta saiu do topo da Trilha.** No lugar entrou um sino só de contorno depois dos corações
+   (`feature/path/Notices.kt`). O ponto vermelho acende só para os avisos (versão nova ainda não dispensada e ofensiva em
+   risco), não para a meta, que está sempre no painel.
+2. **O painel desce do topo como o de provas** e mostra: meta do dia, "Ofensiva em risco" (a do aluno e as duplas, texto
+   em `domain/streak/StreakAlert.kt`) e o cartão de versão nova (o mesmo `UpdateBanner` de antes). Os avisos de versão e
+   de dupla que ficavam soltos na Trilha foram para dentro dele. O convite do lembrete diário continua na Trilha.
+3. **Meta em lições pelo ritmo da prova** (escolha do dono entre três opções): as lições que faltavam no começo do dia na
+   trilha da prova escolhida, Específicos e Gerais, inclusive as ainda em preparação, divididas pelos dias de estudo até a
+   véspera da prova e arredondadas para cima, mínimo 1 (`domain/progress/DailyGoal.kt`). Em 18/11/2026 dá 1 lição por dia
+   nas duas provas; a meta sobe sozinha se o aluno atrasar.
+4. **A meta não cai durante o dia:** lição concluída hoje pela primeira vez volta para a conta de "faltavam". Se o aluno
+   repetir no mesmo dia uma lição que concluiu pela primeira vez hoje, ela sai dessa conta (o registro guarda só a última
+   conclusão); a meta pode cair uma lição nesse caso raro. Aceito para não criar tabela nem migração.
+5. **Conta para a meta** o mesmo que conta para a ofensiva: lição concluída (inclusive repetida) e prova anterior inteira.
+   As gemas da meta e o "Meta batida" do resultado continuam, uma vez por dia.
+6. **A escolha de meta saiu do Perfil.** A coluna `dailyGoalXp` continua no banco, no retrato sincronizado e no
+   exportar, sem uso, para não mexer no Room nem no formato do backup. Nada muda no SQL do Supabase.

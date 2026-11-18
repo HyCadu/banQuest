@@ -65,5 +65,6 @@ data class ProgressState(
     val todayLog: DailyLog,
     val todayQuests: List<QuestProgress>,
     val unlockedAchievements: Set<String>,
-    val dailyGoalXp: Int,
+    /** Meta do dia em lições ([DailyGoal]). */
+    val dailyGoalLessons: Int,
 )
