@@ -8227,6 +8227,7 @@
   {
    "id": "access-banestes-2024-q18",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "dedução",
@@ -8255,6 +8256,7 @@
   {
    "id": "access-banestes-2024-q25",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "relações de parentesco",
@@ -8283,6 +8285,7 @@
   {
    "id": "access-banestes-2024-q27",
    "lesson": "u12l1",
+   "concept": "u12l1c4",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação",
@@ -8311,6 +8314,7 @@
   {
    "id": "access-banestes-2024-q28",
    "lesson": "u12l1",
+   "concept": "u12l1c6",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "conjuntos",
@@ -8339,6 +8343,7 @@
   {
    "id": "access-banestes-2024-q29",
    "lesson": "u12l1",
+   "concept": "u12l1c4",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "silogismos",
@@ -8367,6 +8372,7 @@
   {
    "id": "fgv-banestes-2018-q31",
    "lesson": "u12l1",
+   "concept": "u12l1c1",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "condicional",
@@ -8397,6 +8403,7 @@
   {
    "id": "fgv-banestes-2018-q32",
    "lesson": "u12l1",
+   "concept": "u12l1c2",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação da disjunção",
@@ -8427,6 +8434,7 @@
   {
    "id": "fgv-banestes-2018-q33",
    "lesson": "u12l1",
+   "concept": "u12l1c3",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "contrapositiva",
@@ -8457,6 +8465,7 @@
   {
    "id": "fgv-banestes-2018-q34",
    "lesson": "u12l1",
+   "concept": "u12l1c4",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação de quantificador",
@@ -8487,6 +8496,7 @@
   {
    "id": "fgv-banestes-2018-q40",
    "lesson": "u12l1",
+   "concept": "u12l1c7",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "posições em fila",
@@ -8517,6 +8527,7 @@
   {
    "id": "fgv-banestes-2018-q41",
    "lesson": "u12l1",
+   "concept": "u12l1c7",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "raciocínio espacial",
@@ -8547,6 +8558,7 @@
   {
    "id": "fgv-banestes-2018-q47",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "dedução",
@@ -8577,6 +8589,7 @@
   {
    "id": "fgv-banestes-2018-q48",
    "lesson": "u12l1",
+   "concept": "u12l1c2",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação da conjunção",
@@ -8607,6 +8620,7 @@
   {
    "id": "fgv-banestes-2018-tb-q42",
    "lesson": "u12l1",
+   "concept": "u12l1c4",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "silogismo",
@@ -8637,6 +8651,7 @@
   {
    "id": "fgv-banestes-2018-tb-q43",
    "lesson": "u12l1",
+   "concept": "u12l1c2",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação da conjunção",
@@ -8667,6 +8682,7 @@
   {
    "id": "fgv-banestes-2018-tb-q44",
    "lesson": "u12l1",
+   "concept": "u12l1c7",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "ordenação",
@@ -8697,6 +8713,7 @@
   {
    "id": "fgv-banestes-2018-tb-q46",
    "lesson": "u12l1",
+   "concept": "u12l1c4",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "negação da condicional",
@@ -8727,6 +8744,7 @@
   {
    "id": "fgv-banestes-2018-tb-q47",
    "lesson": "u12l1",
+   "concept": "u12l1c7",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "posições em mesa",
@@ -8757,6 +8775,7 @@
   {
    "id": "fgv-banestes-2018-tb-q49",
    "lesson": "u12l1",
+   "concept": "u12l1c7",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "associação de atributos",
@@ -8787,6 +8806,7 @@
   {
    "id": "fgv-banestes-2021-q27",
    "lesson": "u12l1",
+   "concept": "u12l1c3",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "condicional e disjunção",
@@ -8817,6 +8837,7 @@
   {
    "id": "fgv-banestes-2021-q28",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "princípio da casa dos pombos",
@@ -8847,6 +8868,7 @@
   {
    "id": "fgv-banestes-2021-q29",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "verdades e mentiras",
@@ -8877,6 +8899,7 @@
   {
    "id": "fgv-banestes-2021-q31",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica",
    "subtopic": "dedução",
@@ -8907,6 +8930,7 @@
   {
    "id": "fgv-banestes-2023-tb-q17",
    "lesson": "u12l1",
+   "concept": "u12l1c6",
    "type": "mcq5",
    "topic": "Conjuntos",
    "subtopic": "ou lógico com tabela",
@@ -8937,6 +8961,7 @@
   {
    "id": "fgv-banestes-2023-tb-q21",
    "lesson": "u12l1",
+   "concept": "u12l1c5",
    "type": "mcq5",
    "topic": "Lógica proposicional",
    "subtopic": "disjunções verdadeiras",
@@ -8967,6 +8992,7 @@
   {
    "id": "fgv-banestes-2023-tb-q24",
    "lesson": "u12l1",
+   "concept": "u12l1c6",
    "type": "mcq5",
    "topic": "Conjuntos",
    "subtopic": "complementar e união",

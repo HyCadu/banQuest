@@ -28,7 +28,7 @@ class ContentTest {
     @Test fun `todos os pacotes embutidos sao validos, por conceitos, e cada questao oficial tem conceito da licao`() {
         val packs = File("src/main/assets/content").listFiles { f -> f.extension == "json" }!!.sortedBy { it.name }
             .map { json.decodeFromString(PackDto.serializer(), it.readText(Charsets.UTF_8)) }
-        assertEquals(listOf("u1", "u11", "u16", "u2"), packs.map { it.unit.id })
+        assertEquals(listOf("u1", "u11", "u12", "u16", "u2"), packs.map { it.unit.id })
         packs.forEach { assertEquals(it.pack, emptyList<String>(), ContentValidator.validate(it)) }
         val exam = parseProvas().toDomain()
         val course = CourseAssembler.assemble(packs.mapNotNull { it.toDomain() }, exam)
@@ -42,7 +42,12 @@ class ContentTest {
             assertEquals(id, official, unit.lessons.sumOf { l -> l.questions.count { it.isFromExam } })
             unit.lessons.forEach { l -> assertTrue(l.id, l.questions.all { l.concept(it.conceptId) != null }) }
         }
-        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u16") }.none { it.hasContent })
+        // G2 (u12): só a l1 tem pacote por enquanto, com as 26 oficiais de lógica ligadas aos conceitos.
+        val u12l1 = course.first { it.id == "u12" }.lessons.first()
+        assertTrue(u12l1.hasContent && u12l1.concepts.size == 7)
+        assertEquals(26, u12l1.questions.count { it.isFromExam })
+        assertTrue(u12l1.questions.all { u12l1.concept(it.conceptId) != null })
+        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u12", "u16") }.none { it.hasContent })
     }
 
     @Test fun `unidade 1 tem 5 licoes por conceitos, a primeira com 50 exercicios e as outras com 30`() {

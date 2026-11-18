@@ -404,8 +404,21 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] Concluir uma lição libera a seguinte, até a lição 7 (Regulação e perfil do cliente).
 - [ ] Na lição 3 aparece um exercício de ordenar (venda de títulos pelo Banco Central) e, na 5, o das etapas da lavagem.
 
+## G2 Raciocínio lógico — lição 1 (Lógica de relações)
+
+**46. Nos Gerais (Analista de TI ou Técnico Bancário)**
+- [ ] A Trilha dos Gerais mostra a G2 (Raciocínio lógico e estatística) com a lição 1, Lógica de relações, liberada
+      depois da G1; as lições 2 a 4 continuam "em breve".
+- [ ] A lição começa por "Conectivos e tabela-verdade": o exemplo do enunciado mostra a regra antes de pedir a resposta.
+- [ ] Aparecem exercícios de associar (conectivos, equivalências do condicional, operações entre conjuntos) e de escolha
+      rápida com cenários de agência (senha, boleto, caixas).
+- [ ] As questões oficiais de lógica entram como "FGV · Banestes 2018 · …", "FGV · Banestes 2021 · …" e "Instituto Access
+      · Banestes 2024 · …" (estas com 4 alternativas), só depois do conceito que cobram.
+- [ ] Na explicação da questão da mesa quadrada (Tânia, Ulisses, Vera e Xavier), direita e esquerda são de quem está
+      sentado.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 3 a 10 e dos Gerais G2 a G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
 conteúdo.
 
