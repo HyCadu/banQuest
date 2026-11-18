@@ -696,3 +696,9 @@ apontou que 100 XP por dia não servia mais de meta.
    As gemas da meta e o "Meta batida" do resultado continuam, uma vez por dia.
 6. **A escolha de meta saiu do Perfil.** A coluna `dailyGoalXp` continua no banco, no retrato sincronizado e no
    exportar, sem uso, para não mexer no Room nem no formato do backup. Nada muda no SQL do Supabase.
+
+## Hotfix: ofensiva quebrada na linha do ranking (0.14.2, 18/11/2026) — relatado pelo dono
+Com a fonte do sistema aumentada, o botão "+ Adicionar" ou "Aceitar" ocupa a direita da linha do ranking e o texto da
+ofensiva ("1 dia") era espremido até quebrar uma letra por linha. O XP e a ofensiva agora ficam num `FlowRow`: lado a
+lado quando cabem e, sem espaço, a ofensiva (chama e dias, sempre juntos e numa linha só) desce para baixo do XP. Render
+de regressão em tela de 360 dp com fonte a 130% (`r_global_fonte_grande.png`).

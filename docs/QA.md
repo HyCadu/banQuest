@@ -441,6 +441,14 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 - [ ] A meta não diminui ao longo do dia, mesmo concluindo lições novas.
 - [ ] O Perfil não tem mais a escolha "Meta diária" (Leve, Regular...).
 
+## BanQuest 0.14.2 — hotfix: linha do ranking com fonte grande
+
+**50. Ranking com a fonte do celular aumentada**
+- [ ] Em Configurações do Android, aumente o tamanho da fonte. No Ranking › Geral, nas linhas com "+ Adicionar" ou
+      "Aceitar", a ofensiva ("1 dia", "7 dias") aparece inteira, na linha de baixo do XP se não couber ao lado, sem
+      quebrar letra por letra.
+- [ ] Com a fonte normal, a linha continua igual: XP e ofensiva lado a lado.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar

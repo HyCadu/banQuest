@@ -271,11 +271,18 @@ private fun RankRow(row: RankingRow, trailing: @Composable () -> Unit) {
                 style = if (row.isMe) MaterialTheme.typography.titleSmall else MaterialTheme.typography.bodyLarge, color = c.ink,
                 maxLines = 1, overflow = TextOverflow.Ellipsis,
             )
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("${row.xp} XP", style = MaterialTheme.typography.labelLarge, color = c.inkSoft)
+            // XP e ofensiva lado a lado; sem espaço (tela estreita, fonte grande ou botão ao lado), a ofensiva desce
+            // inteira para a linha de baixo em vez de quebrar "1 dia" letra por letra.
+            androidx.compose.foundation.layout.FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                itemVerticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text("${row.xp} XP", style = MaterialTheme.typography.labelLarge, color = c.inkSoft, maxLines = 1, softWrap = false)
                 if (row.streak > 0) {
-                    GameIconView(GameIcon.Flame, size = 16.dp)
-                    Text(plural(row.streak, "dia", "dias"), style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        GameIconView(GameIcon.Flame, size = 16.dp)
+                        Text(plural(row.streak, "dia", "dias"), style = MaterialTheme.typography.labelMedium, color = c.inkSoft, maxLines = 1, softWrap = false)
+                    }
                 }
             }
         }
