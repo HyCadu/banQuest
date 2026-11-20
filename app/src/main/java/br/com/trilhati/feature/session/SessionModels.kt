@@ -142,5 +142,16 @@ sealed interface SessionUi {
         val pace: PaceConfig,
         /** `false` no treino livre e na revisão livre: só estudo, sem XP nem coração. */
         val rewarded: Boolean = true,
+        /** Semana real da ofensiva (segunda a domingo), para a celebração da chama; vazia quando a ofensiva não subiu. */
+        val week: List<br.com.trilhati.domain.celebration.WeekDayInfo> = emptyList(),
+        /** Vibração ligada nas configurações (a ignição da chama vibra). */
+        val haptics: Boolean = true,
     ) : SessionUi
 }
+
+/** O que a celebração do fim da sessão avisa ao ViewModel (etapa terminada, pular, chama acesa). */
+class CelebrationActions(
+    val onStepDone: (br.com.trilhati.domain.celebration.CelebrationStep) -> Unit = {},
+    val onSkip: () -> Unit = {},
+    val onLightFlame: () -> Unit = {},
+)
