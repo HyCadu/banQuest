@@ -2,6 +2,7 @@ package br.com.trilhati.feature.session
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.togetherWith
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
@@ -70,6 +71,7 @@ fun SessionScreen(onExit: () -> Unit, onOpenErrors: () -> Unit, viewModel: Sessi
     val ui by viewModel.ui.collectAsState()
     val now = viewModel.now.collectAsState(initial = 0L)
     val characterName by viewModel.character.collectAsState()
+    val celebration by viewModel.celebration.collectAsState()
     val character = MascotCharacter.entries.firstOrNull { it.name == characterName } ?: MascotCharacter.Guaiamum
     val actions = remember(viewModel) {
         SessionActions(
@@ -85,6 +87,11 @@ fun SessionScreen(onExit: () -> Unit, onOpenErrors: () -> Unit, viewModel: Sessi
             onOpenSilenceAccess = { runCatching { context.startActivity(viewModel.silenceAccessIntent()) } },
         )
     }
+    val celebrationActions = remember(viewModel) {
+        CelebrationActions(
+            onStepDone = viewModel::completeCelebrationStep, onSkip = viewModel::skipCelebration, onLightFlame = viewModel::lightFlame,
+        )
+    }
     // Voltou das configurações do Android: o acesso ao Não perturbe pode ter sido liberado.
     androidx.lifecycle.compose.LifecycleResumeEffect(viewModel) {
         viewModel.refreshExamSilenceAccess()
@@ -93,6 +100,7 @@ fun SessionScreen(onExit: () -> Unit, onOpenErrors: () -> Unit, viewModel: Sessi
     SessionContent(
         ui = ui, now = now, character = character, actions = actions, onExit = onExit, onOpenErrors = onOpenErrors,
         onRefill = viewModel::refillHeartsAndRetry, onRetry = viewModel::retryAfterWaiting, examActions = examActions,
+        celebration = celebration, celebrationActions = celebrationActions,
     )
 }
 
@@ -110,19 +118,38 @@ fun SessionContent(
     modifier: Modifier = Modifier,
     animated: Boolean = true,
     examActions: ExamIntroActions = ExamIntroActions(),
+    /** Etapa da celebração do fim (nula nas prévias: o resultado aparece completo e parado). */
+    celebration: br.com.trilhati.domain.celebration.CelebrationState? = null,
+    celebrationActions: CelebrationActions = CelebrationActions(),
 ) {
     var confirmExit by remember { mutableStateOf(false) }
     val playing = ui as? SessionUi.Playing
     BackHandler(enabled = playing != null) { confirmExit = true }
 
+    val motion = br.com.trilhati.ui.animation.motionOn(animated)
     Box(modifier.fillMaxSize().background(Trilha.colors.background)) {
-        when (ui) {
-            SessionUi.Loading, SessionUi.Saving -> CenterMessage(character, "Preparando…", animated)
-            is SessionUi.Empty -> EmptyScreen(ui, character, onExit, animated)
-            is SessionUi.NoHearts -> NoHeartsScreen(ui, character, onRefill, onRetry, onOpenErrors, onExit, animated)
-            is SessionUi.ExamIntro -> ExamIntroScreen(ui, character, examActions, onExit, animated)
-            is SessionUi.Playing -> PlayingScreen(ui, now, character, actions, onClose = { confirmExit = true }, animated = animated)
-            is SessionUi.Finished -> ResultScreen(ui, character, onContinue = onExit, animated = animated)
+        // Troca de tela suave: ao terminar, a atividade some e a conclusão entra (dentro da mesma tela, sem transição).
+        androidx.compose.animation.AnimatedContent(
+            targetState = ui,
+            contentKey = { it::class },
+            transitionSpec = {
+                if (motion) {
+                    androidx.compose.animation.fadeIn(androidx.compose.animation.core.tween(380, delayMillis = 80)) togetherWith
+                        androidx.compose.animation.fadeOut(androidx.compose.animation.core.tween(260))
+                } else {
+                    androidx.compose.animation.EnterTransition.None togetherWith androidx.compose.animation.ExitTransition.None
+                }
+            },
+            label = "sessionScreen",
+        ) { screen ->
+            when (screen) {
+                SessionUi.Loading, SessionUi.Saving -> CenterMessage(character, "Preparando…", animated)
+                is SessionUi.Empty -> EmptyScreen(screen, character, onExit, animated)
+                is SessionUi.NoHearts -> NoHeartsScreen(screen, character, onRefill, onRetry, onOpenErrors, onExit, animated)
+                is SessionUi.ExamIntro -> ExamIntroScreen(screen, character, examActions, onExit, animated)
+                is SessionUi.Playing -> PlayingScreen(screen, now, character, actions, onClose = { confirmExit = true }, animated = animated)
+                is SessionUi.Finished -> FinishedScreen(screen, character, onExit, animated, celebration, celebrationActions)
+            }
         }
     }
 
@@ -195,7 +222,7 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             QuestionMeta(q, ui)
             Text(q.stem, style = MaterialTheme.typography.titleMedium, color = c.ink)
             q.code?.let { CodeBlock(it) }
-            ExerciseBody(q, ui.exercise, ui.phase, actions)
+            ExerciseBody(q, ui.exercise, ui.phase, actions, animated = animated)
         }
         // Rodapé: verificar ou painel de feedback
         Column(Modifier.fillMaxWidth().navigationBarsPadding()) {

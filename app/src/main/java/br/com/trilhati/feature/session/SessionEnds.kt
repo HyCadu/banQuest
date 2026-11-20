@@ -1,5 +1,24 @@
 package br.com.trilhati.feature.session
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import br.com.trilhati.domain.celebration.CelebrationState
+import br.com.trilhati.domain.celebration.CelebrationStep
+import br.com.trilhati.ui.animation.celebration.AchievementItem
+import br.com.trilhati.ui.animation.celebration.CompletionData
+import br.com.trilhati.ui.animation.celebration.CompletionScene
+import br.com.trilhati.ui.animation.celebration.RewardItem
+import br.com.trilhati.ui.animation.celebration.RewardTone
+import br.com.trilhati.ui.animation.celebration.StatItem
+import br.com.trilhati.ui.animation.celebration.StatKind
+import br.com.trilhati.ui.animation.celebration.StreakIgnition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -102,150 +121,170 @@ internal fun NoHeartsScreen(
     }
 }
 
+/**
+ * Fim da sessão (qualquer modalidade): a conclusão coreografada e, quando a ofensiva subiu, a chama para acender. Com
+ * [celebration] nulo (prévias) ou "remover animações" ligado no Android, mostra o resultado completo e parado.
+ */
 @Composable
-internal fun ResultScreen(ui: SessionUi.Finished, character: MascotCharacter, onContinue: () -> Unit, animated: Boolean) {
+internal fun FinishedScreen(
+    ui: SessionUi.Finished,
+    character: MascotCharacter,
+    onExit: () -> Unit,
+    animated: Boolean,
+    celebration: CelebrationState? = null,
+    actions: CelebrationActions = CelebrationActions(),
+) {
+    val reduced = br.com.trilhati.ui.theme.LocalReducedMotion.current
+    LaunchedEffect(reduced, celebration?.finished) {
+        if (reduced && celebration != null && !celebration.finished) actions.onSkip()
+    }
+    val streak = celebration?.step == CelebrationStep.Streak
+    AnimatedContent(
+        targetState = streak,
+        transitionSpec = {
+            if (animated && !reduced) fadeIn(tween(450, delayMillis = 120)) togetherWith fadeOut(tween(300))
+            else EnterTransition.None togetherWith ExitTransition.None
+        },
+        label = "celebration",
+    ) { showStreak ->
+        val state = celebration
+        if (showStreak && state != null) {
+            val summary = ui.processed.summary
+            StreakIgnition(
+                before = summary.streakBefore,
+                after = summary.streakAfter,
+                week = ui.week,
+                character = character,
+                lit = state.flameLit,
+                onLight = actions.onLightFlame,
+                onContinue = onExit,
+                animated = animated,
+                haptics = ui.haptics,
+            )
+        } else {
+            ResultScreen(ui, character, onExit, animated, state, actions.onStepDone, actions.onSkip)
+        }
+    }
+}
+
+@Composable
+internal fun ResultScreen(
+    ui: SessionUi.Finished,
+    character: MascotCharacter,
+    onContinue: () -> Unit,
+    animated: Boolean,
+    celebration: CelebrationState? = null,
+    onStepDone: (CelebrationStep) -> Unit = {},
+    onSkip: () -> Unit = {},
+) {
     val c = Trilha.colors
     val run = ui.run
-    val summary = ui.processed.summary
-    val isLesson = ui.source == SessionSource.Lesson
     val isExam = ui.source == SessionSource.Exam
-    val perfect = run.perfect
     val avg = PaceEngine.averageMs(run.totalTimeMs, run.records.size)
     val targetAvg = PaceEngine.averageMs(run.targetsSumMs, run.records.size)
     val slackSeconds = (PaceEngine.slackMs(run.targetsSumMs, run.totalTimeMs) / 1000).toInt()
+    val data = remember(ui) { ui.toCompletionData() }
 
-    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+    CompletionScene(
+        data = data,
+        character = character,
+        onContinue = onContinue,
+        celebration = celebration,
+        onStepDone = onStepDone,
+        onSkip = onSkip,
+        animated = animated,
+    ) {
+        // Resumo de tempo: sempre aparece, mesmo com o cronômetro desligado (regra do projeto).
         Column(
-            Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen, vertical = Spacing.md),
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(Spacing.md),
+            Modifier.fillMaxWidth().background(c.surface, RoundedCornerShape(20.dp)).border(2.dp, c.outline, RoundedCornerShape(20.dp)).padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            val pose = when {
-                perfect -> MascotPose.Celebrate
-                summary.streakIncreased || summary.newAchievements.isNotEmpty() -> MascotPose.Proud
-                else -> MascotPose.Happy
-            }
-            Mascot(character, pose, Modifier.size(200.dp), animated = animated)
-            Text(
-                when {
-                    !ui.rewarded -> "Treino concluído!"
-                    isExam && perfect -> "Prova gabaritada!"
-                    isExam -> "Prova concluída!"
-                    !isLesson -> "Treino concluído!"
-                    perfect -> "Lição perfeita!"
-                    else -> "Lição concluída!"
-                },
-                style = MaterialTheme.typography.headlineLarge, color = c.primaryText, textAlign = TextAlign.Center,
-            )
-            Text(ui.title, style = MaterialTheme.typography.bodyMedium, color = c.inkSoft)
-            if (!ui.rewarded) {
-                Text(
-                    "Treino para estudar: sem XP e sem coração. Eles vêm das revisões no dia certo.",
-                    style = MaterialTheme.typography.bodyMedium, color = c.ink, textAlign = TextAlign.Center,
-                )
-            }
-
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                ResultStat("XP ganho", "+${summary.totalXp}", GameIcon.Star, Modifier.weight(1f))
-                ResultStat("Precisão", "${run.accuracyPercent}%", GameIcon.Target, Modifier.weight(1f))
-                if (isExam) {
-                    ResultStat("Acertos", "${run.correctCount}/${run.records.size}", GameIcon.Check, Modifier.weight(1f))
-                } else {
-                    ResultStat("Melhor combo", run.bestCombo.toString(), GameIcon.Flame, Modifier.weight(1f))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                GameIconView(GameIcon.Clock, size = 32.dp)
+                Column(Modifier.weight(1f)) {
+                    Text("Tempo médio · alvo ${PaceEngine.format(targetAvg)}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
+                    Text(PaceEngine.format(avg), style = MaterialTheme.typography.headlineMedium, color = if (avg <= targetAvg) c.ink else c.warningText)
                 }
-            }
-            // Resumo de tempo: sempre aparece, mesmo com o cronômetro desligado (regra do projeto).
-            Column(
-                Modifier.fillMaxWidth().background(c.surface, RoundedCornerShape(20.dp)).border(2.dp, c.outline, RoundedCornerShape(20.dp)).padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    GameIconView(GameIcon.Clock, size = 32.dp)
-                    Column(Modifier.weight(1f)) {
-                        Text("Tempo médio · alvo ${PaceEngine.format(targetAvg)}", style = MaterialTheme.typography.labelMedium, color = c.inkSoft)
-                        Text(PaceEngine.format(avg), style = MaterialTheme.typography.headlineMedium, color = if (avg <= targetAvg) c.ink else c.warningText)
-                    }
-                    PaceChip(slackSeconds)
-                }
-            }
-            val levelAfter = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp)
-            val levelBefore = br.com.trilhati.domain.lesson.XpEngine.level(ui.processed.state.stats.totalXp - summary.totalXp)
-            // Recompensas em fichas curtas, lado a lado (quebram linha sozinhas).
-            androidx.compose.foundation.layout.FlowRow(
-                Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                if (levelAfter > levelBefore) Reward("Nível $levelAfter!", GameIcon.Crown, c.primarySoft, c.primaryText)
-                if (summary.gemsEarned > 0) Reward("+${summary.gemsEarned}", GameIcon.Gem, c.secondarySoft, c.secondaryText, "+${summary.gemsEarned} gemas")
-                if (summary.streakIncreased) {
-                    val days = "${summary.streakAfter} ${if (summary.streakAfter == 1) "dia" else "dias"}"
-                    Reward(days, GameIcon.Flame, c.warningSoft, c.warningText, "Ofensiva de $days")
-                }
-                if (summary.frozenDays.isNotEmpty()) Reward("Congelamento usado", GameIcon.Snowflake, c.secondarySoft, c.secondaryText)
-                if (summary.goalJustMet) Reward("Meta batida", GameIcon.Star, c.successSoft, c.successText)
-                if (summary.unitCompleted) Reward("Baú liberado", GameIcon.Chest, c.warningSoft, c.warningText, "Unidade concluída: baú liberado na trilha")
-                // Missões e conquistas viram uma ficha cada grupo; os nomes ficam para o TalkBack (e para as abas Ranking e Perfil).
-                val quests = summary.questsCompleted
-                if (quests.isNotEmpty()) {
-                    Reward(
-                        if (quests.size == 1) "1 missão" else "${quests.size} missões", GameIcon.Target, c.successSoft, c.successText,
-                        "Missões cumpridas: ${quests.joinToString()}",
-                    )
-                }
-                val achievements = summary.newAchievements
-                if (achievements.isNotEmpty()) {
-                    Reward(
-                        if (achievements.size == 1) achievements.first().title else "${achievements.size} conquistas", GameIcon.Trophy,
-                        c.warningSoft, c.warningText, "Conquistas: ${achievements.joinToString { it.title }}",
-                    )
-                }
-            }
-
-            val wrong = run.firstTryRecords.filter { !it.correct }
-            if (wrong.isNotEmpty()) {
-                Text("Para revisar", style = MaterialTheme.typography.headlineSmall, color = c.ink, modifier = Modifier.fillMaxWidth())
-                if (isExam) {
-                    val n = wrong.size
-                    Text(
-                        "${if (n == 1) "1 questão errada foi" else "$n questões erradas foram"} para Praticar erros.",
-                        style = MaterialTheme.typography.bodyMedium, color = c.inkSoft, modifier = Modifier.fillMaxWidth(),
-                    )
-                }
-                wrong.take(5).forEach { r ->
-                    Text(
-                        (if (r.corrected) "Corrigida no caminho · " else "") + r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
-                        Modifier.fillMaxWidth().background(if (r.corrected) c.warningSoft else c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
-                        style = MaterialTheme.typography.bodySmall, color = c.ink,
-                    )
-                }
+                PaceChip(slackSeconds)
             }
         }
-        ChunkyButton("Continuar", onContinue, Modifier.fillMaxWidth().padding(Spacing.screen), ChunkyStyle.Primary)
+        val wrong = run.firstTryRecords.filter { !it.correct }
+        if (wrong.isNotEmpty()) {
+            Text("Para revisar", style = MaterialTheme.typography.headlineSmall, color = c.ink, modifier = Modifier.fillMaxWidth())
+            if (isExam) {
+                val n = wrong.size
+                Text(
+                    "${if (n == 1) "1 questão errada foi" else "$n questões erradas foram"} para Praticar erros.",
+                    style = MaterialTheme.typography.bodyMedium, color = c.inkSoft, modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            wrong.take(5).forEach { r ->
+                Text(
+                    (if (r.corrected) "Corrigida no caminho · " else "") + r.question.stem.take(140) + if (r.question.stem.length > 140) "…" else "",
+                    Modifier.fillMaxWidth().background(if (r.corrected) c.warningSoft else c.errorSoft, RoundedCornerShape(14.dp)).padding(12.dp),
+                    style = MaterialTheme.typography.bodySmall, color = c.ink,
+                )
+            }
+        }
     }
 }
 
-@Composable
-private fun ResultStat(label: String, value: String, icon: GameIcon, modifier: Modifier = Modifier) {
-    val c = Trilha.colors
-    Column(
-        modifier.background(c.surface, RoundedCornerShape(18.dp)).border(2.dp, c.outline, RoundedCornerShape(18.dp)).padding(vertical = 12.dp, horizontal = 6.dp),
-        horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp),
-    ) {
-        GameIconView(icon, size = 26.dp)
-        Text(value, style = MaterialTheme.typography.headlineSmall, color = c.ink)
-        Text(label, style = MaterialTheme.typography.labelSmall, color = c.inkSoft)
+/**
+ * Converte o resultado real da sessão no que a conclusão mostra: título, indicadores (acertos de primeira, precisão,
+ * melhor combo), XP, fichas de recompensa e conquistas. Nada inventado; o que não aconteceu não aparece.
+ */
+internal fun SessionUi.Finished.toCompletionData(): CompletionData {
+    val summary = processed.summary
+    val isLesson = source == SessionSource.Lesson
+    val isExam = source == SessionSource.Exam
+    val perfect = run.perfect
+    val firstTry = run.firstTryRecords
+    val stats = buildList {
+        add(StatItem("Acertos", firstTry.count { it.correct }, StatKind.Fraction, GameIcon.Check, total = firstTry.size))
+        add(StatItem("Precisão", run.accuracyPercent, StatKind.Percent, GameIcon.Target))
+        if (!isExam) add(StatItem("Melhor combo", run.bestCombo, StatKind.Count, GameIcon.Flame))
     }
-}
-
-/** Ficha de recompensa: ícone e poucas palavras; [description] é o que o TalkBack lê. */
-@Composable
-private fun Reward(text: String, icon: GameIcon, bg: Color, fg: Color, description: String = text) {
-    Row(
-        Modifier.background(bg, RoundedCornerShape(50)).padding(start = 8.dp, end = 14.dp, top = 6.dp, bottom = 6.dp)
-            .semantics(mergeDescendants = true) { contentDescription = description },
-        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        GameIconView(icon, size = 24.dp)
-        Text(text, style = MaterialTheme.typography.titleSmall, color = fg)
+    val levelAfter = br.com.trilhati.domain.lesson.XpEngine.level(processed.state.stats.totalXp)
+    val levelBefore = br.com.trilhati.domain.lesson.XpEngine.level(processed.state.stats.totalXp - summary.totalXp)
+    val rewards = buildList {
+        if (levelAfter > levelBefore) add(RewardItem("Nível $levelAfter!", GameIcon.Crown, RewardTone.Primary))
+        if (summary.gemsEarned > 0) add(RewardItem("+${summary.gemsEarned}", GameIcon.Gem, RewardTone.Secondary, "+${summary.gemsEarned} gemas"))
+        if (summary.streakIncreased) {
+            val days = "${summary.streakAfter} ${if (summary.streakAfter == 1) "dia" else "dias"}"
+            add(RewardItem(days, GameIcon.Flame, RewardTone.Warning, "Ofensiva de $days"))
+        }
+        if (summary.frozenDays.isNotEmpty()) add(RewardItem("Congelamento usado", GameIcon.Snowflake, RewardTone.Secondary))
+        if (summary.goalJustMet) add(RewardItem("Meta batida", GameIcon.Star, RewardTone.Success))
+        if (summary.unitCompleted) add(RewardItem("Baú liberado", GameIcon.Chest, RewardTone.Warning, "Unidade concluída: baú liberado na trilha"))
+        val quests = summary.questsCompleted
+        if (quests.isNotEmpty()) {
+            add(
+                RewardItem(
+                    if (quests.size == 1) "1 missão" else "${quests.size} missões", GameIcon.Target, RewardTone.Success,
+                    "Missões cumpridas: ${quests.joinToString()}",
+                ),
+            )
+        }
     }
+    return CompletionData(
+        title = when {
+            !rewarded -> "Treino concluído!"
+            isExam && perfect -> "Prova gabaritada!"
+            isExam -> "Prova concluída!"
+            !isLesson -> "Treino concluído!"
+            perfect -> "Lição perfeita!"
+            else -> "Lição concluída!"
+        },
+        subtitle = title,
+        note = if (!rewarded) "Treino para estudar: sem XP e sem coração. Eles vêm das revisões no dia certo." else null,
+        pose = when {
+            perfect -> MascotPose.Celebrate
+            summary.streakIncreased || summary.newAchievements.isNotEmpty() -> MascotPose.Proud
+            else -> MascotPose.Happy
+        },
+        xp = summary.totalXp.takeIf { rewarded },
+        stats = stats,
+        rewards = rewards,
+        achievements = summary.newAchievements.map { AchievementItem(it.title, it.description) },
+    )
 }

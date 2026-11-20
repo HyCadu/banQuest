@@ -16,6 +16,7 @@ enum class Sfx(val res: Int) {
     Complete(R.raw.snd_complete),
     Achievement(R.raw.snd_achievement),
     Click(R.raw.snd_click),
+    Ignite(R.raw.snd_ignite),
 }
 
 @Singleton

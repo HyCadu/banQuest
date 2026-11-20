@@ -33,6 +33,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -62,6 +63,14 @@ class SessionViewModel @Inject constructor(
 
     /** Personagem escolhido no perfil, para reagir na tela (feliz, triste, comemorando). */
     val character: StateFlow<String> = _character.asStateFlow()
+
+    private val _celebration = MutableStateFlow<br.com.trilhati.domain.celebration.CelebrationState?>(null)
+
+    /**
+     * Etapa da celebração do fim da sessão (conclusão, XP, conquistas, chama da ofensiva). Fica aqui, e não na tela,
+     * para sobreviver a rotação e à volta para a tela sem repetir etapas. Só apresenta: tudo já foi gravado.
+     */
+    val celebration: StateFlow<br.com.trilhati.domain.celebration.CelebrationState?> = _celebration.asStateFlow()
 
     /** Relógio de 250 ms que alimenta só o anel do cronômetro. */
     val now: Flow<Long> = clock.millisFlow(250)
@@ -100,6 +109,7 @@ class SessionViewModel @Inject constructor(
 
     private suspend fun start() {
         _ui.value = SessionUi.Loading
+        _celebration.value = null
         rewarded = true
         settings = settingsRepo.settings.first()
         val today = clock.today()
@@ -432,8 +442,44 @@ class SessionViewModel @Inject constructor(
             // Manda a sessão para o ranking assim que houver rede (fica na fila se estiver offline).
             syncScheduler.syncSoon()
             sfx(if (processed.summary.newAchievements.isNotEmpty()) br.com.trilhati.sound.Sfx.Achievement else br.com.trilhati.sound.Sfx.Complete)
-            _ui.value = SessionUi.Finished(title, source, processed, r, settings.paceConfig, rewarded = rewarded)
+            val summary = processed.summary
+            val today = clock.today()
+            // Semana real da ofensiva (já com o dia de hoje gravado), para a celebração da chama.
+            val week = if (summary.streakIncreased) {
+                br.com.trilhati.domain.celebration.StreakWeek.of(today, progress.snapshot(today).first().dailyLogs)
+            } else {
+                emptyList()
+            }
+            _celebration.value = br.com.trilhati.domain.celebration.CelebrationPlan.start(
+                br.com.trilhati.domain.celebration.CelebrationInput(
+                    rewarded = rewarded,
+                    xp = summary.totalXp,
+                    achievements = summary.newAchievements.size,
+                    streakIncreased = summary.streakIncreased,
+                ),
+            )
+            _ui.value = SessionUi.Finished(
+                title, source, processed, r, settings.paceConfig, rewarded = rewarded, week = week, haptics = settings.haptics,
+            )
         }
+    }
+
+    /** A tela terminou de apresentar a etapa [step]. Repetido ou fora de hora, não faz nada. */
+    fun completeCelebrationStep(step: br.com.trilhati.domain.celebration.CelebrationStep) {
+        _celebration.update { it?.complete(step) }
+    }
+
+    /** Pular: tudo à mostra de uma vez. */
+    fun skipCelebration() {
+        _celebration.update { it?.skip() }
+    }
+
+    /** O aluno acendeu a chama: toca o som da ignição uma vez só. */
+    fun lightFlame() {
+        val before = _celebration.value
+        _celebration.update { it?.lightFlame() }
+        val after = _celebration.value
+        if (before != null && after != null && !before.flameLit && after.flameLit) sfx(br.com.trilhati.sound.Sfx.Ignite)
     }
 
     /** Recarrega corações com gemas a partir da tela "sem corações" e reinicia a sessão. */

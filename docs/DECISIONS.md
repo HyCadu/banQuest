@@ -702,3 +702,29 @@ Com a fonte do sistema aumentada, o botão "+ Adicionar" ou "Aceitar" ocupa a di
 ofensiva ("1 dia") era espremido até quebrar uma letra por linha. O XP e a ofensiva agora ficam num `FlowRow`: lado a
 lado quando cabem e, sem espaço, a ofensiva (chama e dias, sempre juntos e numa linha só) desce para baixo do XP. Render
 de regressão em tela de 360 dp com fonte a 130% (`r_global_fonte_grande.png`).
+
+## Animações: feedback, conclusão coreografada e chama da ofensiva (0.15.0, 20/11/2026) — a pedido do dono
+O dono pediu animações no nível de um app de idiomas conhecido, com vídeo de referência, valendo para toda atividade
+com questões e não só para os simulados.
+1. **Só a mecânica (regra 1):** do vídeo vieram a coreografia e o "arrastar para acender". A chama é a do nosso ícone,
+   desenhada em código; cores, mascote, textos ("Deslize para cima e acenda a chama de hoje") e som são do BanQuest.
+2. **Compose nativo, sem dependência nova:** Animatable, transições infinitas, molas, keyframes, Canvas e pointerInput.
+   Lottie e Rive não foram necessários. Pacote `ui/animation/` (feedback, efeitos e celebração).
+3. **Universal:** a sessão serve lição, treino, revisão e prova anterior, então todas ganham o sistema. A conclusão é
+   `CompletionScene`, que recebe `CompletionData` com os dados reais; uma modalidade nova (o simulado da Fase 10) só
+   monta esse objeto.
+4. **Etapas e estado no domínio:** `CelebrationPlan` monta as etapas (Completion, Results, XpReward, Achievements,
+   Streak, Finished) e pula as vazias; `CelebrationState` é imutável e só anda para a frente, e a chama acende uma vez.
+   O estado fica no `SessionViewModel` (sobrevive a rotação). Cada etapa roda numa corrotina presa a ela, cancelável.
+5. **Não concede nada:** XP, gemas e ofensiva são gravados em `applySession` antes da celebração começar. Ela só
+   apresenta o que já foi confirmado.
+6. **Intensidade:** Micro (feedback, 150 a 400 ms), Medium (fim sem ofensiva nova nem conquista, tempos a 75%) e Full
+   (com ofensiva nova ou conquista, cerca de 5 s até o "Continuar"; "Pular" encurta).
+7. **A chama só no primeiro estudo do dia** (`streakIncreased`), depois de um "Continuar" na conclusão, para o aluno
+   ler o resultado antes. A semana é a de segunda a domingo, com os dias reais do banco.
+8. **Movimento reduzido:** com "remover animações" do Android a celebração pula direto para o resultado parado (sem a
+   cena da chama; a ficha "N dias" continua). O feedback das questões também fica parado.
+9. **Desempenho:** partículas em FloatArray reaproveitado (no máximo 48 por rajada), Path reaproveitado na chama,
+   pincel do brilho cacheado e valores animados lidos só na fase de desenho; nada roda fora da tela.
+10. **Som novo** `snd_ignite` gerado por `tools/generate_sounds.py` (sopro subindo e acorde); os outros sons não mudaram.
+
