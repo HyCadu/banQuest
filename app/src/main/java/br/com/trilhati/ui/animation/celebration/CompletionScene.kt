@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -301,6 +302,7 @@ fun CompletionScene(
             Text(
                 "Pular",
                 Modifier.align(Alignment.TopEnd).padding(8.dp)
+                    .defaultMinSize(minWidth = 48.dp, minHeight = 48.dp)
                     .semantics { role = Role.Button; contentDescription = "Pular a animação" }
                     .clickable(onClick = onSkip)
                     .padding(horizontal = 14.dp, vertical = 10.dp),

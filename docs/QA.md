@@ -449,6 +449,41 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       quebrar letra por letra.
 - [ ] Com a fonte normal, a linha continua igual: XP e ofensiva lado a lado.
 
+## BanQuest 0.15.0 — animações: feedback, conclusão coreografada e chama da ofensiva
+
+**51. Feedback das questões (qualquer formato)**
+- [ ] Múltipla escolha e certo/errado: ao verificar um acerto, a alternativa certa cresce, volta com mola e solta
+      faíscas; num erro, a alternativa escolhida treme de leve e para. O painel de acerto solta faíscas do mascote.
+- [ ] Associar pares: o par certo dá o mesmo "pulo" com faíscas; o par errado treme. Ordenar: a resposta pula (acerto)
+      ou treme (erro). Tocar nos elementos continua funcionando igual, sem atraso.
+- [ ] A barra de progresso do topo acende por um instante quando avança.
+
+**52. Conclusão de uma lição (o primeiro estudo do dia)**
+- [ ] A tela da questão some suavemente. O mascote salta, o título entra com mola, os cartões Acertos, Precisão e
+      Melhor combo aparecem um a um com os números subindo até o valor real, e o XP aparece com brilho e faíscas.
+- [ ] As fichas (gemas, ofensiva, meta, missões, baú, nível) saltam em sequência; se houver conquista nova, o cartão
+      dela entra girando, com raios atrás do troféu.
+- [ ] No fim aparece "Continuar". O botão "Pular" (canto de cima) mostra tudo de uma vez.
+
+**53. Chama da ofensiva**
+- [ ] Depois do "Continuar" da conclusão (só no primeiro estudo do dia, quando a ofensiva sobe), a tela escurece e a
+      chama aparece apagada, balançando, com o núcleo âmbar pulsando e brasas subindo.
+- [ ] Arraste o dedo para cima: a chama esquenta com o dedo; soltando antes do topo, ela esfria de novo. Chegando ao
+      topo, ou tocando na chama, ou no botão "Acender a chama", ela acende: encolhe, explode com um anel de luz e
+      faíscas, vibra e toca o som novo.
+- [ ] O número de dias salta (de ontem para hoje), aparece "dias de ofensiva", a semana entra dia a dia (dias de estudo
+      com check, hoje com contorno amarelo, congelados em azul) e o mascote comemora. "Continuar" sai da sessão.
+- [ ] Gire o celular no meio: a chama continua acesa e nada se repete. Volte para a Trilha: XP, gemas e ofensiva são
+      os mesmos que já seriam sem a animação (ela não dá nada a mais).
+
+**54. Outras modalidades e acessibilidade**
+- [ ] Treino de erros, revisão livre e prova anterior terminam com a mesma conclusão (sem XP no treino livre); a
+      chama só aparece quando a ofensiva subiu.
+- [ ] Com "Remover animações" ligado nas opções de acessibilidade do Android, a conclusão aparece pronta e parada,
+      sem a cena da chama (a ofensiva aparece na ficha "N dias").
+- [ ] Com o TalkBack, a chama é lida como "Chama apagada. Toque duas vezes para acender" e os números são lidos já no
+      valor final.
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
