@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Gera os efeitos sonoros originais do app (ondas simples sintetizadas) em app/src/main/res/raw.
 
-acerto, erro, combo, lição concluída, conquista e clique. WAV PCM 16 bits mono, 22050 Hz.
+acerto, erro, combo, lição concluída, conquista, clique e a ignição da chama da ofensiva. WAV PCM 16 bits mono, 22050 Hz.
 Uso: python3 tools/generate_sounds.py
 """
 import math
+import random
 import struct
 import wave
 from pathlib import Path
@@ -75,4 +76,26 @@ write("snd_achievement", mix(
     silence(0.3) + note(C7, 0.3, 0.12, release=0.25),
 ))
 write("snd_click", note(1800, 0.018, 0.25, attack=0.001, release=0.012))
+
+
+def whoosh(dur, vol=0.35, seed=7):
+    """Sopro de ar subindo (ruído filtrado que abre e fecha), para a chama pegando fogo."""
+    rnd = random.Random(seed)
+    n = int(RATE * dur)
+    out, low = [], 0.0
+    for i in range(n):
+        t = i / RATE
+        k = 0.04 + 0.5 * (t / dur)  # o filtro abre: o sopro fica mais brilhante
+        low += k * (rnd.uniform(-1, 1) - low)
+        env = min(1.0, t / 0.06) * min(1.0, (dur - t) / 0.18)
+        out.append(low * vol * 2.2 * env)
+    return out
+
+
+# Ignição da chama da ofensiva (0.15.0): sopro subindo e um acorde que acende por cima.
+write("snd_ignite", mix(
+    whoosh(0.55),
+    glide(220, 660, 0.42, 0.18, shape="sine"),
+    silence(0.32) + mix(note(G5, 0.5, 0.28, release=0.4), note(C6, 0.5, 0.22, release=0.4), note(E6, 0.5, 0.16, release=0.4)),
+))
 print("sons gerados em", OUT)
