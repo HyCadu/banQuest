@@ -195,7 +195,7 @@ private fun PlayingScreen(ui: SessionUi.Playing, now: State<Long>, character: Ma
             QuestionMeta(q, ui)
             Text(q.stem, style = MaterialTheme.typography.titleMedium, color = c.ink)
             q.code?.let { CodeBlock(it) }
-            ExerciseBody(q, ui.exercise, ui.phase, actions)
+            ExerciseBody(q, ui.exercise, ui.phase, actions, animated = animated)
         }
         // Rodapé: verificar ou painel de feedback
         Column(Modifier.fillMaxWidth().navigationBarsPadding()) {

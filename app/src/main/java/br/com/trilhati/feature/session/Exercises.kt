@@ -25,6 +25,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.domain.model.Question
 import br.com.trilhati.domain.model.QuestionType
+import br.com.trilhati.ui.animation.feedback.CorrectSparkles
+import br.com.trilhati.ui.animation.feedback.FeedbackKind
+import br.com.trilhati.ui.animation.feedback.feedbackMotion
+import br.com.trilhati.ui.animation.feedback.rememberFeedbackMotion
 import br.com.trilhati.ui.components.OptionCard
 import br.com.trilhati.ui.components.OptionState
 import br.com.trilhati.ui.theme.CodeTextStyle
@@ -38,11 +42,13 @@ fun ExerciseBody(
     phase: Phase,
     actions: SessionActions,
     modifier: Modifier = Modifier,
+    /** Microinterações de acerto e erro (desligadas nas prévias e com "remover animações" do Android). */
+    animated: Boolean = true,
 ) {
     when (exercise) {
-        is ExerciseState.Choice -> ChoiceExercise(question, exercise, phase, actions.onSelect, modifier)
-        is ExerciseState.Match -> MatchExercise(question, exercise, phase, actions, modifier)
-        is ExerciseState.Order -> OrderExercise(question, exercise, phase, actions, modifier)
+        is ExerciseState.Choice -> ChoiceExercise(question, exercise, phase, actions.onSelect, modifier, animated)
+        is ExerciseState.Match -> MatchExercise(question, exercise, phase, actions, modifier, animated)
+        is ExerciseState.Order -> OrderExercise(question, exercise, phase, actions, modifier, animated)
     }
 }
 
@@ -59,7 +65,7 @@ class SessionActions(
 )
 
 @Composable
-private fun ChoiceExercise(question: Question, ex: ExerciseState.Choice, phase: Phase, onSelect: (Int) -> Unit, modifier: Modifier) {
+private fun ChoiceExercise(question: Question, ex: ExerciseState.Choice, phase: Phase, onSelect: (Int) -> Unit, modifier: Modifier, animated: Boolean) {
     val letters = if (question.type == QuestionType.TrueFalse) listOf("C", "E") else listOf("A", "B", "C", "D", "E")
     Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
         question.options.forEachIndexed { index, text ->
@@ -70,13 +76,13 @@ private fun ChoiceExercise(question: Question, ex: ExerciseState.Choice, phase: 
                 index == ex.selected -> OptionState.Selected
                 else -> OptionState.Idle
             }
-            OptionCard(letters.getOrElse(index) { "?" }, text, state, onClick = { onSelect(index) }, enabled = phase == Phase.Answering)
+            OptionCard(letters.getOrElse(index) { "?" }, text, state, onClick = { onSelect(index) }, enabled = phase == Phase.Answering, animated = animated)
         }
     }
 }
 
 @Composable
-private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Phase, actions: SessionActions, modifier: Modifier) {
+private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Phase, actions: SessionActions, modifier: Modifier, animated: Boolean) {
     val enabled = phase == Phase.Answering
     Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("Toque num termo e na definição.", style = MaterialTheme.typography.bodySmall, color = Trilha.colors.inkSoft)
@@ -89,7 +95,7 @@ private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Ph
                         ex.wrongPair?.first == index -> TileState.Wrong
                         else -> TileState.Idle
                     }
-                    MatchTile(pair.left, state, enabled && index !in ex.solved, onClick = { actions.onMatchLeft(index) })
+                    MatchTile(pair.left, state, enabled && index !in ex.solved, animated, onClick = { actions.onMatchLeft(index) })
                 }
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -99,7 +105,7 @@ private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Ph
                         ex.wrongPair?.second == pairIndex -> TileState.Wrong
                         else -> TileState.Idle
                     }
-                    MatchTile(question.pairs[pairIndex].right, state, enabled && pairIndex !in ex.solved && ex.selectedLeft != null, onClick = { actions.onMatchRight(position) })
+                    MatchTile(question.pairs[pairIndex].right, state, enabled && pairIndex !in ex.solved && ex.selectedLeft != null, animated, onClick = { actions.onMatchRight(position) })
                 }
             }
         }
@@ -109,8 +115,17 @@ private fun MatchExercise(question: Question, ex: ExerciseState.Match, phase: Ph
 private enum class TileState { Idle, Selected, Solved, Wrong }
 
 @Composable
-private fun MatchTile(text: String, state: TileState, enabled: Boolean, onClick: () -> Unit) {
+private fun MatchTile(text: String, state: TileState, enabled: Boolean, animated: Boolean, onClick: () -> Unit) {
     val c = Trilha.colors
+    // Par certo: cresce e volta com faíscas; par errado: treme. O toque segue no Box de baixo, intocado.
+    val motion = rememberFeedbackMotion(
+        when (state) {
+            TileState.Solved -> FeedbackKind.Correct
+            TileState.Wrong -> FeedbackKind.Wrong
+            else -> FeedbackKind.None
+        },
+        animated,
+    )
     val (bg, border) = when (state) {
         TileState.Idle -> c.surface to c.outline
         TileState.Selected -> c.primarySoft to c.primary
@@ -122,6 +137,7 @@ private fun MatchTile(text: String, state: TileState, enabled: Boolean, onClick:
         Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
+            .feedbackMotion(motion)
             .alpha(if (state == TileState.Solved) 0.55f else 1f)
             .semantics {
                 role = Role.Button
@@ -134,18 +150,27 @@ private fun MatchTile(text: String, state: TileState, enabled: Boolean, onClick:
         contentAlignment = Alignment.Center,
     ) {
         Text(text, style = MaterialTheme.typography.bodyMedium, color = c.ink, textAlign = TextAlign.Center)
+        CorrectSparkles(motion, animated)
     }
 }
 
 @Composable
-private fun OrderExercise(question: Question, ex: ExerciseState.Order, phase: Phase, actions: SessionActions, modifier: Modifier) {
+private fun OrderExercise(question: Question, ex: ExerciseState.Order, phase: Phase, actions: SessionActions, modifier: Modifier, animated: Boolean) {
     val c = Trilha.colors
     val enabled = phase == Phase.Answering
     val feedback = phase as? Phase.Feedback
+    val motion = rememberFeedbackMotion(
+        when {
+            feedback == null -> FeedbackKind.None
+            feedback.correct -> FeedbackKind.Correct
+            else -> FeedbackKind.Wrong
+        },
+        animated,
+    )
     Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text("Toque nas linhas na ordem certa. Toque de novo em uma linha colocada para tirá-la.", style = MaterialTheme.typography.bodySmall, color = c.inkSoft)
         Column(
-            Modifier.fillMaxWidth().heightIn(min = 120.dp).background(c.surfaceAlt, RoundedCornerShape(16.dp)).border(2.dp, if (feedback == null) c.outline else if (feedback.correct) c.success else c.error, RoundedCornerShape(16.dp)).padding(8.dp),
+            Modifier.fillMaxWidth().heightIn(min = 120.dp).feedbackMotion(motion).background(c.surfaceAlt, RoundedCornerShape(16.dp)).border(2.dp, if (feedback == null) c.outline else if (feedback.correct) c.success else c.error, RoundedCornerShape(16.dp)).padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             if (ex.placed.isEmpty()) Text("Sua resposta aparece aqui", style = MaterialTheme.typography.bodySmall, color = c.inkSoft, modifier = Modifier.padding(6.dp))

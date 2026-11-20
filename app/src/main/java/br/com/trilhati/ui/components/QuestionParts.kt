@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +44,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import br.com.trilhati.R
+import br.com.trilhati.ui.animation.feedback.CorrectSparkles
+import br.com.trilhati.ui.animation.feedback.FeedbackKind
+import br.com.trilhati.ui.animation.feedback.feedbackMotion
+import br.com.trilhati.ui.animation.feedback.rememberFeedbackMotion
 import br.com.trilhati.ui.icons.GameIcon
 import br.com.trilhati.ui.icons.GameIconView
 import br.com.trilhati.ui.icons.IconColors
@@ -64,6 +69,7 @@ fun OptionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    animated: Boolean = true,
 ) {
     val c = Trilha.colors
     val (face, border, edge, badge, badgeText) = when (state) {
@@ -81,15 +87,19 @@ fun OptionCard(
     }
     val description = stringResource(R.string.option_description, letter)
     val shape = RoundedCornerShape(18.dp)
-    val scale by animateFloatAsState(
-        if (state == OptionState.Correct || state == OptionState.Wrong) 1.02f else 1f,
-        spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMedium),
-        label = "optionScale",
+    // Acerto cresce e volta com mola (e solta faíscas); erro treme de leve. Mesma linguagem em todos os formatos.
+    val motion = rememberFeedbackMotion(
+        when (state) {
+            OptionState.Correct -> FeedbackKind.Correct
+            OptionState.Wrong -> FeedbackKind.Wrong
+            else -> FeedbackKind.None
+        },
+        animated,
     )
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .scale(scale)
+            .feedbackMotion(motion)
             .semantics(mergeDescendants = true) {
                 contentDescription = description
                 role = Role.RadioButton
@@ -128,6 +138,7 @@ fun OptionCard(
                 color = if (state == OptionState.Dimmed) c.inkSoft else c.ink,
             )
         }
+        CorrectSparkles(motion, animated)
     }
 }
 
@@ -161,6 +172,7 @@ fun FeedbackPanel(
         color = background,
         shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
     ) {
+        Box {
         Column(Modifier.padding(horizontal = Spacing.md, vertical = Spacing.md).animateContentSize()) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Mascot(
@@ -183,6 +195,23 @@ fun FeedbackPanel(
                 modifier = Modifier.fillMaxWidth(),
                 style = when { partial -> ChunkyStyle.Warning; correct -> ChunkyStyle.Success; else -> ChunkyStyle.Error },
             )
+        }
+        // Acerto: faíscas saindo do mascote quando o painel sobe (só desenho, por cima, sem pegar toque).
+        if (correct && !partial && br.com.trilhati.ui.animation.motionOn(animated)) {
+            var burst by remember { androidx.compose.runtime.mutableIntStateOf(0) }
+            androidx.compose.runtime.LaunchedEffect(Unit) { burst = 1 }
+            br.com.trilhati.ui.animation.effects.ParticleBurst(
+                trigger = burst,
+                colors = listOf(c.success, c.warning, c.secondary, c.primary),
+                modifier = Modifier.matchParentSize(),
+                count = 18,
+                power = 90.dp,
+                durationMs = 700,
+                gravity = 0.35f,
+                origin = androidx.compose.ui.geometry.Offset(0.14f, 0.3f),
+                upward = true,
+            )
+        }
         }
     }
 }

@@ -18,6 +18,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,6 +48,18 @@ fun GameProgressBar(
     height: Dp = 18.dp,
 ) {
     val animated by animateFloatAsState(progress.coerceIn(0f, 1f), tween(450, easing = FastOutSlowInEasing), label = "progress")
+    // Quando avança, a parte cheia acende por um instante (some com "remover animações" do Android).
+    val flash = remember { androidx.compose.animation.core.Animatable(0f) }
+    var last by remember { androidx.compose.runtime.mutableFloatStateOf(progress) }
+    val reduced = br.com.trilhati.ui.theme.LocalReducedMotion.current
+    androidx.compose.runtime.LaunchedEffect(progress) {
+        val grew = progress > last
+        last = progress
+        if (grew && !reduced) {
+            flash.snapTo(1f)
+            flash.animateTo(0f, tween(br.com.trilhati.ui.animation.MotionMs.PROGRESS_FLASH))
+        }
+    }
     val track = Trilha.colors.surfaceAlt
     val description = stringResource(R.string.progress_description, (progress.coerceIn(0f, 1f) * 100).toInt())
     Canvas(
@@ -66,6 +80,8 @@ fun GameProgressBar(
                 size = Size((w - size.height * 0.8f).coerceAtLeast(0f), size.height * 0.24f),
                 cornerRadius = CornerRadius(size.height * 0.12f),
             )
+            val f = flash.value
+            if (f > 0f) drawRoundRect(Color.White.copy(alpha = 0.35f * f), size = Size(w, size.height), cornerRadius = radius)
         }
     }
 }
