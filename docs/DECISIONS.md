@@ -708,11 +708,15 @@ de regressão em tela de 360 dp com fonte a 130% (`r_global_fonte_grande.png`).
 1. **Fonte de conferência:** a apostila do cargo enviada pelo dono (Apostilas Opção, OP-121NV-26) serviu para conferir
    definições e métodos de Aritmética, Proporção e porcentagem e Estatística. É material licenciado: fica fora do
    repositório, e nada dela foi copiado (CLAUDE.md, regra 1).
-2. **Variância:** a apostila usa o denominador n − 1 (amostral). As bancas costumam pedir a populacional (÷ n). O
-   conceito ensina as duas e todo exercício diz qual usa, em vez de adotar uma só.
+2. **Variância:** a apostila usa o denominador n − 1 (amostral); as bancas costumam pedir a populacional (÷ n). O dono
+   decidiu seguir o padrão das bancas: a populacional é a regra do conceito, e a amostral entra só quando a questão a
+   pedir (e como distrator).
 3. **Probabilidade na u12l4:** o edital de Raciocínio não cita probabilidade, mas três oficiais (FGV 2018 Q50, FGV 2021
    Q35, Access 2024 Q20) já esperavam pela lição. O conceito "Casa dos pombos e chance" cobre só o necessário para elas
    (casos favoráveis ÷ possíveis, retiradas sem reposição); o resto fica com a `u18` do Técnico.
 4. **Contas e ordem das alternativas:** cada arquivo de origem tem um `assert` por conta e por distrator justificado, e
    a geração para se um resultado não bater. Nas questões de prova numéricas, as alternativas ficam em ordem crescente,
    como nas provas; os distratores foram escolhidos para a resposta não ficar sempre no meio.
+5. **Estilo das questões de prova:** nas lições de cálculo, a proporção de casos práticos fica acima dos ~40% do guia
+   (27 de 34). O dono aceitou: o conteúdo segue o edital, e mais prática não atrapalha.
+6. **Probabilidade na u12l4:** o dono confirmou o item 3.

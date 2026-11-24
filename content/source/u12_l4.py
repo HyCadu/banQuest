@@ -2,7 +2,8 @@
 # Mesmo formato da lição 2 (certa primeiro; PVS ordena alternativas numéricas; um assert por conta). Conteúdo de IA (não
 # revisado), conferido contra a apostila do cargo (OP-121NV-26), usada só como referência de fatos e métodos.
 # Variância: a apostila define a amostral (divide por n − 1); as bancas costumam pedir a populacional (divide por n).
-# Aqui o conceito ensina as duas, e todo exercício diz qual usa.
+# Decisão do dono (24/11/2026): segue o padrão das bancas. A regra é a populacional; a amostral aparece só como
+# exceção, quando a questão a pedir (e como distrator).
 from fractions import Fraction as F
 from itertools import permutations, product
 from math import comb, factorial, perm, sqrt
@@ -109,8 +110,8 @@ LESSONS = [
    ]),
   dict(title="Medidas de dispersão", subtopic="dispersão",
    summary="Amplitude = maior − menor. Desvio de um valor = valor − média; a soma dos desvios é sempre zero. Desvio "
-           "médio: média dos desvios sem sinal. Variância: média dos quadrados dos desvios — a populacional divide por "
-           "n; a amostral, por n − 1 (a questão diz qual usar). Desvio padrão = raiz da variância, na mesma unidade dos "
+           "médio: média dos desvios sem sinal. Variância: média dos quadrados dos desvios, dividindo por n (a "
+           "populacional, padrão das bancas); só se a questão pedir a amostral, divide-se por n − 1. Desvio padrão = raiz da variância, na mesma unidade dos "
            "dados. Somar uma constante a todos não muda a dispersão; multiplicar por k multiplica o desvio padrão por k "
            "e a variância por k².",
    items=[

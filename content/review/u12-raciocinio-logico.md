@@ -98,8 +98,8 @@ oficiais foram resolvidas de novo por script, e todas batem com o gabarito defin
 ### Divergência com a apostila: variância
 
 A apostila define a variância com denominador **n − 1** (a amostral), embora a descreva como "média dos quadrados dos
-desvios". As bancas costumam pedir a **populacional** (÷ n) ou dizem qual querem. O conceito u12l4c2 ensina as duas, e
-todo exercício diz qual usa; a questão de prova u12l4q12 põe o desvio padrão amostral (1,63) como distrator do
+desvios". As bancas costumam pedir a **populacional** (÷ n) ou dizem qual querem. Por decisão do dono, o conceito
+u12l4c2 segue o padrão das bancas (populacional como regra, amostral só quando pedida); a questão de prova u12l4q12 põe o desvio padrão amostral (1,63) como distrator do
 populacional (1,41).
 
 ### Cobertura do edital
@@ -174,8 +174,13 @@ escolhidos para a certa não cair sempre no meio. Exceção: 5 de 48 no pacote (
 - **Estilo:** nas l2 a l4, 27 das 34 questões de prova do pacote são casos práticos com conta, acima dos ~40% do guia;
   é a natureza da matéria, e as oficiais seguem o mesmo padrão.
 
-### O que o dono precisa conferir
+### Decisões do dono (24/11/2026)
 
-1. Se a probabilidade básica (l4 c6) deve ficar na G2, dado que o edital não a cita.
-2. A explicação de u12l4q12 (desvio padrão populacional × amostral).
-3. Se as alternativas em ordem crescente (como nas provas) atendem à regra de espalhar a resposta.
+1. **Variância:** segue o padrão das bancas. O resumo do conceito u12l4c2 passa a dar a populacional (÷ n) como regra
+   e a amostral (÷ n − 1) só como exceção, quando a questão pedir.
+2. **Probabilidade na l4:** fica, no básico do conceito c6.
+3. **Estilo:** a proporção maior de casos práticos nas lições de cálculo está aceita; o conteúdo segue o edital.
+
+### O que o dono ainda pode conferir
+
+1. Se as alternativas em ordem crescente (como nas provas) atendem à regra de espalhar a resposta.
