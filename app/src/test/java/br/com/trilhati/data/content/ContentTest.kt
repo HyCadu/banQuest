@@ -42,11 +42,12 @@ class ContentTest {
             assertEquals(id, official, unit.lessons.sumOf { l -> l.questions.count { it.isFromExam } })
             unit.lessons.forEach { l -> assertTrue(l.id, l.questions.all { l.concept(it.conceptId) != null }) }
         }
-        // G2 (u12): só a l1 tem pacote por enquanto, com as 26 oficiais de lógica ligadas aos conceitos.
-        val u12l1 = course.first { it.id == "u12" }.lessons.first()
-        assertTrue(u12l1.hasContent && u12l1.concepts.size == 7)
-        assertEquals(26, u12l1.questions.count { it.isFromExam })
-        assertTrue(u12l1.questions.all { u12l1.concept(it.conceptId) != null })
+        // G2 (u12) completa: l1 Lógica (7 conceitos, 26 oficiais), l2 Aritmética (6, 17), l3 Proporção e porcentagem
+        // (5, 18) e l4 Estatística e contagem (6, 12), todas as oficiais ligadas a um conceito da lição.
+        val u12 = course.first { it.id == "u12" }.lessons
+        assertEquals(listOf(7, 6, 5, 6), u12.map { it.concepts.size })
+        assertEquals(listOf(26, 17, 18, 12), u12.map { l -> l.questions.count { it.isFromExam } })
+        u12.forEach { l -> assertTrue(l.id, l.hasContent && l.questions.all { l.concept(it.conceptId) != null }) }
         assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u12", "u16") }.none { it.hasContent })
     }
 

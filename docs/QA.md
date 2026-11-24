@@ -408,7 +408,7 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
 
 **46. Nos Gerais (Analista de TI ou Técnico Bancário)**
 - [ ] A Trilha dos Gerais mostra a G2 (Raciocínio lógico e estatística) com a lição 1, Lógica de relações, liberada
-      depois da G1; as lições 2 a 4 continuam "em breve".
+      depois da G1 (as lições 2 a 4 chegaram depois; ver o passo 51).
 - [ ] A lição começa por "Conectivos e tabela-verdade": o exemplo do enunciado mostra a regra antes de pedir a resposta.
 - [ ] Aparecem exercícios de associar (conectivos, equivalências do condicional, operações entre conjuntos) e de escolha
       rápida com cenários de agência (senha, boleto, caixas).
@@ -449,8 +449,24 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       quebrar letra por letra.
 - [ ] Com a fonte normal, a linha continua igual: XP e ofensiva lado a lado.
 
+## G2 Raciocínio lógico e estatística — lições 2 a 4
+
+**51. Nos Gerais (Analista de TI ou Técnico Bancário)**
+- [ ] A G2 mostra as quatro lições com conteúdo: Lógica de relações, Aritmética, Proporção e porcentagem e Estatística e
+      contagem. A lição 2 libera depois da 1, e assim por diante; nenhuma aparece mais como "em breve".
+- [ ] Aritmética começa por "Operações e expressões"; Proporção e porcentagem, por "Razão, proporção e escala";
+      Estatística e contagem, por "Média, mediana e moda". O primeiro exercício de cada conceito traz um exemplo
+      resolvido.
+- [ ] Nas questões de prova com alternativas numéricas, os números vêm em ordem crescente.
+- [ ] As oficiais de matemática entram depois do conceito que cobram, por exemplo "FGV · Banestes 2018 · …" (urnas,
+      meia maratona), "IDECAN · Banestes 2012 · …" (saques no caixa) e "Instituto Access · Banestes 2024 · …" (escala do
+      mapa, com 4 alternativas).
+- [ ] Na lição 4, a questão do desvio padrão dos saldos 2, 4, 4 e 6 diz "populacional", e a explicação mostra que 1,63
+      seria o amostral.
+- [ ] Questões com gráfico (curva S da obra, consumo de refrigerantes) aparecem com o gráfico descrito em texto.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+Conteúdo das Unidades 3 a 10 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
 conteúdo.
 

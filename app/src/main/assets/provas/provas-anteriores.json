@@ -9023,6 +9023,7 @@
   {
    "id": "access-banestes-2024-q17",
    "lesson": "u12l2",
+   "concept": "u12l2c2",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "frações",
@@ -9051,6 +9052,7 @@
   {
    "id": "access-banestes-2024-q21",
    "lesson": "u12l2",
+   "concept": "u12l2c3",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "equações",
@@ -9079,6 +9081,7 @@
   {
    "id": "access-banestes-2024-q24",
    "lesson": "u12l2",
+   "concept": "u12l2c2",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "equação do 1º grau",
@@ -9107,6 +9110,7 @@
   {
    "id": "fgv-banestes-2018-q35",
    "lesson": "u12l2",
+   "concept": "u12l2c5",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "tempo",
@@ -9137,6 +9141,7 @@
   {
    "id": "fgv-banestes-2018-q36",
    "lesson": "u12l2",
+   "concept": "u12l2c1",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "média",
@@ -9167,6 +9172,7 @@
   {
    "id": "fgv-banestes-2018-q39",
    "lesson": "u12l2",
+   "concept": "u12l2c4",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "sistema simples",
@@ -9197,6 +9203,7 @@
   {
    "id": "fgv-banestes-2018-q45",
    "lesson": "u12l2",
+   "concept": "u12l2c4",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "equação do 1º grau",
@@ -9227,6 +9234,7 @@
   {
    "id": "fgv-banestes-2018-tb-q41",
    "lesson": "u12l2",
+   "concept": "u12l2c5",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "operações com tempo",
@@ -9257,6 +9265,7 @@
   {
    "id": "fgv-banestes-2018-tb-q45",
    "lesson": "u12l2",
+   "concept": "u12l2c1",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "problemas",
@@ -9287,6 +9296,7 @@
   {
    "id": "fgv-banestes-2018-tb-q48",
    "lesson": "u12l2",
+   "concept": "u12l2c5",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "unidades de volume e massa",
@@ -9317,6 +9327,7 @@
   {
    "id": "fgv-banestes-2021-q26",
    "lesson": "u12l2",
+   "concept": "u12l2c5",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "unidades de área",
@@ -9347,6 +9358,7 @@
   {
    "id": "fgv-banestes-2021-q32",
    "lesson": "u12l2",
+   "concept": "u12l2c3",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "paridade",
@@ -9377,6 +9389,7 @@
   {
    "id": "fgv-banestes-2023-tb-q15",
    "lesson": "u12l2",
+   "concept": "u12l2c5",
    "type": "mcq5",
    "topic": "Geometria",
    "subtopic": "área por subtração",
@@ -9407,6 +9420,7 @@
   {
    "id": "fgv-banestes-2023-tb-q19",
    "lesson": "u12l2",
+   "concept": "u12l2c6",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "dízimas periódicas",
@@ -9437,6 +9451,7 @@
   {
    "id": "idecan-banestes-2012-q10",
    "lesson": "u12l2",
+   "concept": "u12l2c6",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "progressão",
@@ -9466,6 +9481,7 @@
   {
    "id": "idecan-banestes-2012-q12",
    "lesson": "u12l2",
+   "concept": "u12l2c2",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "frações",
@@ -9495,6 +9511,7 @@
   {
    "id": "idecan-banestes-2012-q9",
    "lesson": "u12l2",
+   "concept": "u12l2c4",
    "type": "mcq5",
    "topic": "Aritmética",
    "subtopic": "frações",
@@ -9524,6 +9541,7 @@
   {
    "id": "access-banestes-2024-q22",
    "lesson": "u12l3",
+   "concept": "u12l3c1",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "escala",
@@ -9552,6 +9570,7 @@
   {
    "id": "access-banestes-2024-q23",
    "lesson": "u12l3",
+   "concept": "u12l3c3",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "velocidade média",
@@ -9580,6 +9599,7 @@
   {
    "id": "access-banestes-2024-q26",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "porcentagens sucessivas",
@@ -9608,6 +9628,7 @@
   {
    "id": "access-banestes-2024-q30",
    "lesson": "u12l3",
+   "concept": "u12l3c2",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "divisão proporcional",
@@ -9636,6 +9657,7 @@
   {
    "id": "fgv-banestes-2018-q37",
    "lesson": "u12l3",
+   "concept": "u12l3c1",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "pontos igualmente espaçados",
@@ -9666,6 +9688,7 @@
   {
    "id": "fgv-banestes-2018-q42",
    "lesson": "u12l3",
+   "concept": "u12l3c5",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "acréscimo",
@@ -9696,6 +9719,7 @@
   {
    "id": "fgv-banestes-2018-q43",
    "lesson": "u12l3",
+   "concept": "u12l3c3",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "volume",
@@ -9726,6 +9750,7 @@
   {
    "id": "fgv-banestes-2018-q44",
    "lesson": "u12l3",
+   "concept": "u12l3c3",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "regra de três composta",
@@ -9756,6 +9781,7 @@
   {
    "id": "fgv-banestes-2018-q46",
    "lesson": "u12l3",
+   "concept": "u12l3c5",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "gorjeta",
@@ -9786,6 +9812,7 @@
   {
    "id": "fgv-banestes-2018-tb-q21",
    "lesson": "u12l3",
+   "concept": "u12l3c2",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "grandezas inversamente proporcionais",
@@ -9816,6 +9843,7 @@
   {
    "id": "fgv-banestes-2018-tb-q27",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "variação de partes de um todo",
@@ -9846,6 +9874,7 @@
   {
    "id": "fgv-banestes-2018-tb-q35",
    "lesson": "u12l3",
+   "concept": "u12l3c5",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "lucro e prejuízo",
@@ -9876,6 +9905,7 @@
   {
    "id": "fgv-banestes-2018-tb-q50",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "porcentagem de porcentagem",
@@ -9906,6 +9936,7 @@
   {
    "id": "fgv-banestes-2021-q30",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "tabela de dupla entrada",
@@ -9936,6 +9967,7 @@
   {
    "id": "fgv-banestes-2023-tb-q13",
    "lesson": "u12l3",
+   "concept": "u12l3c1",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "divisão de tempo",
@@ -9966,6 +9998,7 @@
   {
    "id": "fgv-banestes-2023-tb-q14",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "problema com porcentagens",
@@ -9996,6 +10029,7 @@
   {
    "id": "fgv-banestes-2023-tb-q20",
    "lesson": "u12l3",
+   "concept": "u12l3c3",
    "type": "mcq5",
    "topic": "Proporção",
    "subtopic": "velocidade e distância",
@@ -10026,6 +10060,7 @@
   {
    "id": "fgv-banestes-2023-tb-q23",
    "lesson": "u12l3",
+   "concept": "u12l3c4",
    "type": "mcq5",
    "topic": "Porcentagem",
    "subtopic": "conjuntos e porcentagem",
@@ -10056,6 +10091,7 @@
   {
    "id": "access-banestes-2024-q16",
    "lesson": "u12l4",
+   "concept": "u12l4c3",
    "type": "mcq5",
    "topic": "Estatística",
    "subtopic": "leitura de gráficos",
@@ -10084,6 +10120,7 @@
   {
    "id": "access-banestes-2024-q19",
    "lesson": "u12l4",
+   "concept": "u12l4c3",
    "type": "mcq5",
    "topic": "Estatística",
    "subtopic": "tabelas e porcentagem",
@@ -10112,6 +10149,7 @@
   {
    "id": "access-banestes-2024-q20",
    "lesson": "u12l4",
+   "concept": "u12l4c6",
    "type": "mcq5",
    "topic": "Probabilidade",
    "subtopic": "eventos sucessivos",
@@ -10140,6 +10178,7 @@
   {
    "id": "fgv-banestes-2018-q38",
    "lesson": "u12l4",
+   "concept": "u12l4c4",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "eliminatória",
@@ -10170,6 +10209,7 @@
   {
    "id": "fgv-banestes-2018-q49",
    "lesson": "u12l4",
+   "concept": "u12l4c6",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "princípio da casa dos pombos",
@@ -10200,6 +10240,7 @@
   {
    "id": "fgv-banestes-2018-q50",
    "lesson": "u12l4",
+   "concept": "u12l4c6",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "princípio da casa dos pombos",
@@ -10230,6 +10271,7 @@
   {
    "id": "fgv-banestes-2021-q33",
    "lesson": "u12l4",
+   "concept": "u12l4c5",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "anagramas",
@@ -10260,6 +10302,7 @@
   {
    "id": "fgv-banestes-2021-q34",
    "lesson": "u12l4",
+   "concept": "u12l4c1",
    "type": "mcq5",
    "topic": "Estatística",
    "subtopic": "média e mediana",
@@ -10290,6 +10333,7 @@
   {
    "id": "fgv-banestes-2021-q35",
    "lesson": "u12l4",
+   "concept": "u12l4c6",
    "type": "mcq5",
    "topic": "Probabilidade",
    "subtopic": "dados",
@@ -10320,6 +10364,7 @@
   {
    "id": "fgv-banestes-2023-tb-q22",
    "lesson": "u12l4",
+   "concept": "u12l4c4",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "números com condição nos algarismos",
@@ -10350,6 +10395,7 @@
   {
    "id": "fgv-banestes-2023-tb-q25",
    "lesson": "u12l4",
+   "concept": "u12l4c3",
    "type": "mcq5",
    "topic": "Estatística",
    "subtopic": "leitura de gráfico",
@@ -10380,6 +10426,7 @@
   {
    "id": "idecan-banestes-2012-q11",
    "lesson": "u12l4",
+   "concept": "u12l4c5",
    "type": "mcq5",
    "topic": "Contagem",
    "subtopic": "arranjo",
