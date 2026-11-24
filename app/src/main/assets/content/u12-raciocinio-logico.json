@@ -1025,6 +1025,2277 @@
           "level": "prova"
         }
       ]
+    },
+    {
+      "id": "u12l2",
+      "order": 2,
+      "title": "Aritmética",
+      "concepts": [
+        {
+          "id": "u12l2c1",
+          "title": "Operações e expressões",
+          "summary": "Ordem de cálculo: parênteses; depois potências; depois multiplicação e divisão, da esquerda para a direita; por fim soma e subtração. Sinais: (−) × (−) = (+). Sem parênteses, o sinal fica fora da potência: −3² = −9, mas (−3)² = 9. Todo número diferente de zero elevado a 0 vale 1 (5⁰ = 1)."
+        },
+        {
+          "id": "u12l2c2",
+          "title": "Frações e decimais",
+          "summary": "Fração de um total: 2/5 de 300 = 300 ÷ 5 × 2 = 120. Para somar ou subtrair, iguale os denominadores (1/2 + 1/3 = 3/6 + 2/6 = 5/6); para multiplicar, numerador com numerador e denominador com denominador; para dividir, multiplique pelo inverso (6 ÷ 3/4 = 6 × 4/3 = 8). “Do restante” muda a base: depois de gastar 1/4, um terço do restante é 1/3 de 3/4, ou seja, 1/4 do total."
+        },
+        {
+          "id": "u12l2c3",
+          "title": "Múltiplos e divisores",
+          "summary": "Múltiplos de 6: 6, 12, 18… Divisores de 12: 1, 2, 3, 4, 6 e 12. MMC (menor múltiplo comum) responde “quando os eventos coincidem de novo”; MDC (maior divisor comum), “dividir em partes iguais, as maiores possíveis”. Fatorando 12 = 2² × 3 e 18 = 2 × 3²: MDC = 2 × 3 = 6 (menores expoentes) e MMC = 2² × 3² = 36 (maiores). Paridade: par + par e ímpar + ímpar dão par; par + ímpar dá ímpar."
+        },
+        {
+          "id": "u12l2c4",
+          "title": "Problemas com equações",
+          "summary": "Traduza o texto em conta: chame o valor desconhecido de x e escreva cada frase como equação. “A tem 5 a mais que B”: A = B + 5. Soma e diferença conhecidas: o maior é (soma + diferença) ÷ 2. Em idades, daqui a n anos todo mundo tem n anos a mais. No fim, confira a resposta voltando ao enunciado."
+        },
+        {
+          "id": "u12l2c5",
+          "title": "Unidades de medida e tempo",
+          "summary": "Comprimento: 1 km = 1.000 m e 1 m = 100 cm. Área tem duas dimensões: 1 m² = 10.000 cm², e 1 hectare = 10.000 m². Volume: 1 m³ = 1.000 litros e 1 litro = 1.000 cm³. Tempo é de base 60: 1 h = 60 min e 1 min = 60 s. Para somar horários, some segundos, minutos e horas e “vá um” a cada 60."
+        },
+        {
+          "id": "u12l2c6",
+          "title": "Restos, ciclos e sequências",
+          "summary": "Em padrões que se repetem, divida a posição pelo tamanho do ciclo e olhe o resto: num ciclo de 7 dias, o dia 100 dá 100 ÷ 7 = 14, resto 2, e cai no 2º dia do ciclo. Resto 0 é o último elemento do ciclo. Numa progressão aritmética (sempre o mesmo acréscimo r), o termo n é a₁ + (n − 1) × r, e a soma dos n primeiros é (a₁ + aₙ) × n ÷ 2."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12l2q01",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: em 8 + 2 × 5, a multiplicação vem antes da soma: 8 + 10 = 18. Agora: no controle de senhas, quanto vale 20 − 12 ÷ 4?",
+          "options": [
+            "2",
+            "3",
+            "17"
+          ],
+          "answer": 2,
+          "explanation": "A divisão vem antes: 12 ÷ 4 = 3, e 20 − 3 = 17. O 2 sai de fazer a subtração primeiro, (20 − 12) ÷ 4, e o 3 é só o resultado da divisão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q02",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A potência vem antes da multiplicação: em 2 × 3², calcula-se primeiro 3² = 9. Logo, 2 × 3² = 36.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "2 × 9 = 18. O 36 seria (2 × 3)², que eleva o produto inteiro; sem parênteses, só o 3 é elevado ao quadrado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q03",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sem parênteses, o sinal fica fora da potência: −3² = −9, e (−3)² = 9. Quanto vale −2⁴ + (−2)⁴?",
+          "options": [
+            "0",
+            "32",
+            "−32"
+          ],
+          "answer": 0,
+          "explanation": "−2⁴ = −16 e (−2)⁴ = +16 (expoente par com base negativa dá positivo). A soma é zero. 32 e −32 aparecem quando os dois termos recebem o mesmo sinal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q04",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Todo número diferente de zero elevado a 0 vale 1, e a potência vem antes da multiplicação. Quanto vale 5⁰ + 2³ × 10?",
+          "options": [
+            "90",
+            "81",
+            "80"
+          ],
+          "answer": 1,
+          "explanation": "5⁰ = 1 e 2³ × 10 = 8 × 10 = 80; total 81. O 90 sai de somar antes de multiplicar, (1 + 8) × 10, e o 80, de tratar 5⁰ como zero.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q05",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "O valor da expressão 18 − 2 × (7 − 4)² ÷ 6 + 5 é",
+          "options": [
+            "5",
+            "10",
+            "20",
+            "22",
+            "29"
+          ],
+          "answer": 2,
+          "explanation": "Parênteses: 7 − 4 = 3. Potência: 3² = 9. Multiplicação e divisão, da esquerda para a direita: 2 × 9 = 18 e 18 ÷ 6 = 3. Por fim, 18 − 3 + 5 = 20. O 29 sai de fazer tudo da esquerda para a direita; o 22, de esquecer o quadrado; o 5, de dividir (18 − 18) por 6; o 10, de pôr o 5 dentro do que é subtraído.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q06",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "expressões",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma agência tinha 150 senhas impressas. Pela manhã, distribuiu 4 lotes de 18 senhas e, à tarde, recebeu da gráfica 2 lotes de 25 senhas. As senhas que sobraram foram repartidas igualmente entre 4 guichês. Cada guichê recebeu",
+          "options": [
+            "7",
+            "18",
+            "25",
+            "28",
+            "32"
+          ],
+          "answer": 4,
+          "explanation": "Sobraram 150 − 4 × 18 + 2 × 25 = 150 − 72 + 50 = 128 senhas, e 128 ÷ 4 = 32. O 7 subtrai os lotes recebidos em vez de somar; o 28 faz o mesmo e esquece de dividir; o 25 ignora a manhã e ainda subtrai as recebidas, (150 − 50) ÷ 4; o 18 divide só as senhas distribuídas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q07",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 3/4 de R$ 200 = 200 ÷ 4 × 3 = R$ 150. Agora: um cliente separou 2/5 de um bônus de R$ 1.500 para a poupança. Quanto foi para a poupança?",
+          "options": [
+            "R$ 300",
+            "R$ 900",
+            "R$ 600"
+          ],
+          "answer": 2,
+          "explanation": "1.500 ÷ 5 = 300, e 300 × 2 = 600. R$ 300 é só um quinto, e R$ 900 são os 3/5 que sobraram.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q08",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para somar frações, somam-se os numeradores e os denominadores: 1/2 + 1/4 = 2/6.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "É preciso igualar os denominadores: 1/2 = 2/4, e 2/4 + 1/4 = 3/4. Repare que 2/6 = 1/3 é menor que 1/2, o que já mostra o erro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q09",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "“Do restante” muda a base do cálculo. Um caixa tinha R$ 1.200; pagou 1/4 desse valor e, depois, 1/3 do que sobrou. Quanto restou no caixa?",
+          "options": [
+            "R$ 600",
+            "R$ 500",
+            "R$ 700"
+          ],
+          "answer": 0,
+          "explanation": "Pagou 300 e ficou com 900; um terço de 900 é 300, e restam 600. O R$ 500 sai de tirar 1/4 e 1/3 do valor inicial, como se os dois pagamentos tivessem a mesma base.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q10",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Dividir por uma fração é multiplicar pelo inverso: 6 ÷ 3/4 = 6 × 4/3 = 8. Quantos copos de 1/4 de litro enchem uma garrafa de 2,5 litros?",
+          "options": [
+            "5",
+            "10",
+            "8"
+          ],
+          "answer": 1,
+          "explanation": "2,5 ÷ 1/4 = 2,5 × 4 = 10 copos. Multiplicar 2,5 por 1/4 daria uma fração de litro, não um número de copos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q11",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente sacou 1/3 do saldo da conta e, em seguida, 1/4 do que restou, ficando com R$ 900,00. O saldo inicial era de",
+          "options": [
+            "R$ 1.800,00",
+            "R$ 2.160,00",
+            "R$ 2.700,00",
+            "R$ 3.600,00",
+            "R$ 5.400,00"
+          ],
+          "answer": 0,
+          "explanation": "Depois do 1º saque sobram 2/3 do saldo; do 2º, 3/4 disso: 2/3 × 3/4 = 1/2 do saldo inicial. Se metade é 900, o saldo era 1.800. O 2.160 sai de somar 1/3 + 1/4 sobre o saldo inicial (sobrariam 5/12); o 2.700 trata 900 como 1/3 do saldo; o 3.600, como 1/4; o 5.400, como 1/3 de 1/2.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q12",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "frações",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "O valor de (2/3 + 1/6) ÷ 5/4 é",
+          "options": [
+            "25/24",
+            "1/2",
+            "2/3",
+            "3/2",
+            "5/6"
+          ],
+          "answer": 2,
+          "explanation": "2/3 = 4/6, e 4/6 + 1/6 = 5/6. Dividir por 5/4 é multiplicar por 4/5: 5/6 × 4/5 = 20/30 = 2/3. O 25/24 sai de multiplicar por 5/4 em vez de dividir; 3/2 é o inverso da resposta; 5/6 esquece a divisão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q13",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um alarme toca a cada 4 dias e outro a cada 6; voltam a tocar juntos no MMC(4, 6) = 12 dias. Agora: o malote da agência A sai a cada 6 dias e o da agência B, a cada 9. Saíram juntos hoje. Daqui a quantos dias saem juntos de novo?",
+          "options": [
+            "54",
+            "3",
+            "18"
+          ],
+          "answer": 2,
+          "explanation": "Os múltiplos de 9 são 9, 18, 27…; o primeiro que também é múltiplo de 6 é 18. O 54 é o produto 6 × 9, que também é múltiplo comum, mas não o menor; o 3 é o MDC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q14",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para cortar duas fitas de 24 m e de 36 m em pedaços iguais, do maior tamanho possível e sem sobra, usa-se o MDC: pedaços de 12 m.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "12 é o maior número que divide 24 e 36 ao mesmo tempo; saem 2 + 3 = 5 pedaços. O MMC (72) seria maior do que as próprias fitas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q15",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O MDC resolve “grupos iguais, os maiores possíveis”. Uma agência tem 48 cartões azuis e 60 verdes e quer embalá-los em pacotes com a mesma quantidade, sem misturar cores, sem sobras e com o maior pacote possível. Quantos cartões vão em cada pacote?",
+          "options": [
+            "12",
+            "6",
+            "240"
+          ],
+          "answer": 0,
+          "explanation": "48 = 2⁴ × 3 e 60 = 2² × 3 × 5: MDC = 2² × 3 = 12 (4 pacotes azuis e 5 verdes). Pacotes de 6 também funcionam, mas não são os maiores; 240 é o MMC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q16",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Paridade: ímpar + ímpar dá par, e par + ímpar dá ímpar. A soma de três números ímpares é",
+          "options": [
+            "sempre par",
+            "sempre ímpar",
+            "par ou ímpar, conforme os números"
+          ],
+          "answer": 1,
+          "explanation": "Os dois primeiros ímpares somam um par; par + o terceiro ímpar dá ímpar. Exemplo: 1 + 3 + 5 = 9. Não depende de quais ímpares são.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q17",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Três caixas eletrônicos passam por manutenção a cada 8, 12 e 15 dias, respectivamente. A manutenção dos três coincidiu numa segunda-feira. A próxima coincidência dos três ocorrerá depois de",
+          "options": [
+            "60 dias",
+            "120 dias",
+            "180 dias",
+            "240 dias",
+            "1.440 dias"
+          ],
+          "answer": 1,
+          "explanation": "8 = 2³, 12 = 2² × 3 e 15 = 3 × 5. O MMC pega os maiores expoentes: 2³ × 3 × 5 = 120. O 60 não é múltiplo de 8; 240 é múltiplo comum, mas não o menor; 1.440 é o produto 8 × 12 × 15.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q18",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "mmc e mdc",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre os números 36 e 60, NÃO é correto afirmar que",
+          "options": [
+            "o MDC entre eles é 12.",
+            "o MMC entre eles é 180.",
+            "60 é múltiplo de 12.",
+            "a fatoração de 36 é 2² × 3².",
+            "o MMC entre eles é 2.160, o produto dos dois números."
+          ],
+          "answer": 4,
+          "explanation": "36 = 2² × 3² e 60 = 2² × 3 × 5. MDC: menores expoentes dos fatores comuns, 2² × 3 = 12. MMC: todos os fatores com os maiores expoentes, 2² × 3² × 5 = 180. O produto 36 × 60 = 2.160 é múltiplo comum, mas não o menor; só coincide com o MMC quando o MDC é 1.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q19",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: “o dobro de um número mais 6 dá 20” vira 2x + 6 = 20, então 2x = 14 e x = 7. Agora: “o triplo das senhas chamadas, mais 4, dá 49”. Quantas senhas foram chamadas?",
+          "options": [
+            "45",
+            "53",
+            "15"
+          ],
+          "answer": 2,
+          "explanation": "3x + 4 = 49, então 3x = 45 e x = 15. O 45 é o triplo, antes de dividir por 3; o 53 soma 4 em vez de subtrair.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q20",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se A + B = 80 e A − B = 20, então A = 50 e B = 30.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A = (80 + 20) ÷ 2 = 50 e B = 80 − 50 = 30. Conferindo a diferença: 50 − 30 = 20.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q21",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com soma e diferença, o maior é (soma + diferença) ÷ 2. Dois caixas atenderam juntos 130 clientes, e um deles atendeu 24 a mais que o outro. Quantos clientes atendeu o que atendeu mais?",
+          "options": [
+            "77",
+            "65",
+            "53"
+          ],
+          "answer": 0,
+          "explanation": "(130 + 24) ÷ 2 = 77, e o outro atendeu 53 (77 − 53 = 24). O 65 é só a metade do total, e o 53 é o que atendeu menos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q22",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Daqui a n anos, cada pessoa terá n anos a mais. Hoje, Ana tem 30 anos e o filho, 6. Daqui a quantos anos Ana terá o triplo da idade do filho?",
+          "options": [
+            "4",
+            "6",
+            "8"
+          ],
+          "answer": 1,
+          "explanation": "30 + n = 3 × (6 + n), então 30 + n = 18 + 3n, 12 = 2n e n = 6. Conferindo: Ana terá 36, e o filho, 12.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q23",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma agência tem 92 funcionários entre caixas e atendentes. Se 8 caixas fossem transferidos para o atendimento, os dois grupos ficariam com o mesmo número de pessoas. O número de caixas é",
+          "options": [
+            "38",
+            "46",
+            "50",
+            "54",
+            "62"
+          ],
+          "answer": 3,
+          "explanation": "Depois da troca, cada grupo teria 92 ÷ 2 = 46 pessoas; antes dela, havia 46 + 8 = 54 caixas e 46 − 8 = 38 atendentes. O 46 esquece a transferência; o 62 soma 8 duas vezes; o 38 é o número de atendentes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q24",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "equações",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cofre tem 40 cédulas, apenas de R$ 20,00 e de R$ 50,00, num total de R$ 1.580,00. Quantas cédulas de R$ 50,00 há no cofre?",
+          "options": [
+            "14",
+            "22",
+            "26",
+            "28",
+            "30"
+          ],
+          "answer": 2,
+          "explanation": "Se as 40 fossem de R$ 20, seriam R$ 800. Faltam 780, e cada troca de uma cédula de 20 por uma de 50 acrescenta 30: 780 ÷ 30 = 26 cédulas de R$ 50 (e 14 de R$ 20). Conferindo: 26 × 50 + 14 × 20 = 1.300 + 280 = 1.580. O 14 é a quantidade de cédulas de R$ 20.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q25",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 1h50min + 25min = 1h75min = 2h15min, porque 60 minutos viram 1 hora. Agora: um atendimento começou às 9h48min e durou 35 minutos. A que horas terminou?",
+          "options": [
+            "10h13min",
+            "10h33min",
+            "10h23min"
+          ],
+          "answer": 2,
+          "explanation": "48 + 35 = 83 minutos = 1h23min, então 9h + 1h23min = 10h23min. Os outros horários erram o “vai um” de 60 minutos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q26",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Como 1 m = 100 cm, então 1 m² = 100 cm².",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Área tem duas dimensões: 1 m² = 100 cm × 100 cm = 10.000 cm². No volume, são três: 1 m³ = 1.000.000 cm³.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q27",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "1 m³ = 1.000 litros. Um reservatório de 2,4 m³ guarda quantos litros?",
+          "options": [
+            "2.400",
+            "240",
+            "24.000"
+          ],
+          "answer": 0,
+          "explanation": "2,4 × 1.000 = 2.400 litros. 240 e 24.000 deslocam a vírgula uma casa a menos ou a mais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q28",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Tempo é de base 60, não de base 10. Quanto é 2,5 horas?",
+          "options": [
+            "2h50min",
+            "2h30min",
+            "2h05min"
+          ],
+          "answer": 1,
+          "explanation": "0,5 hora é metade de 60 minutos: 30 min. O 2h50min lê a parte decimal como minutos, como se a hora tivesse 100 minutos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q29",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um processamento noturno tem 14 lotes de 18 minutos cada, rodados um depois do outro, a partir das 22h40min. O processamento termina às",
+          "options": [
+            "1h32min",
+            "2h12min",
+            "2h52min",
+            "3h12min",
+            "4h12min"
+          ],
+          "answer": 2,
+          "explanation": "14 × 18 = 252 min = 4h12min. 22h40min + 4h12min = 26h52min, isto é, 2h52min do dia seguinte. O 1h32min lê 252 minutos como 2h52min; o 4h12min é a duração, não o horário de término.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q30",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "unidades",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Um terreno retangular de 250 m por 180 m será vendido por hectare (1 hectare = 10.000 m²). A área do terreno, em hectares, é",
+          "options": [
+            "0,45",
+            "4,5",
+            "45",
+            "450",
+            "4.500"
+          ],
+          "answer": 1,
+          "explanation": "250 × 180 = 45.000 m², e 45.000 ÷ 10.000 = 4,5 hectares. As outras alternativas deslocam a vírgula, como se o hectare tivesse 1.000 ou 100.000 m².",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q31",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: hoje é segunda; daqui a 10 dias, 10 ÷ 7 dá resto 3, e três dias depois de segunda é quinta. Agora: hoje é quarta-feira. Que dia da semana será daqui a 30 dias?",
+          "options": [
+            "quinta-feira",
+            "sábado",
+            "sexta-feira"
+          ],
+          "answer": 2,
+          "explanation": "30 ÷ 7 = 4 semanas inteiras, resto 2. Dois dias depois de quarta é sexta. As semanas inteiras não mudam o dia.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l2q32",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Num ciclo de 5 cores (azul, verde, amarelo, vermelho, branco) repetido sem parar, a 25ª posição é branco, porque 25 ÷ 5 dá resto 0, e resto 0 corresponde à última cor do ciclo.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "As posições 5, 10, 15, 20 e 25 fecham ciclos e são sempre a 5ª cor, branco.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l2q33",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Termo geral da progressão aritmética: aₙ = a₁ + (n − 1) × r. Uma fila começou na senha 15 e anda de 3 em 3 (15, 18, 21…). Qual é a 20ª senha chamada?",
+          "options": [
+            "72",
+            "75",
+            "60"
+          ],
+          "answer": 0,
+          "explanation": "15 + 19 × 3 = 72: do 1º ao 20º termo há 19 saltos. O 75 conta 20 saltos; o 60 é só 20 × 3.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l2q34",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Soma da progressão aritmética: (primeiro + último) × quantidade ÷ 2. Quanto é 1 + 2 + 3 + … + 40?",
+          "options": [
+            "800",
+            "820",
+            "1.640"
+          ],
+          "answer": 1,
+          "explanation": "(1 + 40) × 40 ÷ 2 = 41 × 20 = 820. O 1.640 esquece de dividir por 2; o 800 usa 40 no lugar de 41.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l2q35",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Os códigos de um lote seguem o padrão A, B, C, D, E, F, A, B, C… repetido sem parar. A letra do código de número 500 é",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1,
+          "explanation": "O ciclo tem 6 letras: 500 ÷ 6 = 83, resto 2. O código 500 é a 2ª letra do ciclo, B. Resto 0 seria F, que nem está entre as alternativas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "prova"
+        },
+        {
+          "id": "u12l2q36",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "sequências",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente depositou R$ 10 no 1º dia do mês, R$ 15 no 2º, R$ 20 no 3º e assim por diante, sempre R$ 5 a mais que no dia anterior. Ao fim do 20º dia, o total depositado foi de",
+          "options": [
+            "R$ 575",
+            "R$ 1.045",
+            "R$ 1.050",
+            "R$ 1.100",
+            "R$ 1.150"
+          ],
+          "answer": 4,
+          "explanation": "O 20º depósito é 10 + 19 × 5 = 105. A soma é (10 + 105) × 20 ÷ 2 = 1.150. O 1.100 usa 100 como último termo (18 saltos em vez de 19); o 1.045 soma só 19 dias; o 1.050 multiplica o último depósito por 10, a metade dos dias; o 575 divide por 2 duas vezes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l2c6",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u12l3",
+      "order": 3,
+      "title": "Proporção e porcentagem",
+      "concepts": [
+        {
+          "id": "u12l3c1",
+          "title": "Razão, proporção e escala",
+          "summary": "Razão compara por divisão: 12 caixas e 18 atendentes estão na razão 12 : 18 = 2 : 3. Proporção é a igualdade de duas razões (a/b = c/d) e se resolve pelo produto cruzado: a × d = b × c. Escala 1 : 50.000 quer dizer que 1 cm no mapa vale 50.000 cm (500 m) no real. Em pontos igualmente espaçados, conte os intervalos, e não os pontos."
+        },
+        {
+          "id": "u12l3c2",
+          "title": "Divisão proporcional",
+          "summary": "Direta: divida o total pela soma das partes. R$ 900 em partes proporcionais a 2, 3 e 4: 900 ÷ 9 = 100, e as partes são 200, 300 e 400. Inversa: use os inversos (1/2, 1/3, 1/6) e multiplique pelo MMC dos denominadores para tirar as frações (3, 2 e 1); quem tem o número maior recebe menos. Proporcional a duas grandezas ao mesmo tempo: multiplique-as (capital × tempo)."
+        },
+        {
+          "id": "u12l3c3",
+          "title": "Regra de três",
+          "summary": "Monte uma tabela com as grandezas e compare cada uma com a que se procura. Diretamente proporcionais: se uma dobra, a outra dobra (mais extratos, mais tempo). Inversamente: se uma dobra, a outra cai à metade (mais caixas, menos tempo). Na regra de três composta, analise cada grandeza separadamente em relação à incógnita. Velocidade média = distância total ÷ tempo total."
+        },
+        {
+          "id": "u12l3c4",
+          "title": "Porcentagem",
+          "summary": "x% de um valor é x ÷ 100 vezes o valor: 15% de 80 = 0,15 × 80 = 12. Porcentagem de porcentagem multiplica: 40% de 70% = 0,4 × 0,7 = 28%. “Quantos por cento A é de B”: faça A ÷ B. Em grupos cruzados (homens e mulheres, com e sem curso), monte uma tabela de dupla entrada e use um total de 100."
+        },
+        {
+          "id": "u12l3c5",
+          "title": "Acréscimos, descontos e variações",
+          "summary": "Acréscimo de x%: multiplique por (1 + x/100); desconto de x%: por (1 − x/100). Variações sucessivas multiplicam os fatores: +10% e depois −10% dá 1,1 × 0,9 = 0,99, ou seja, 1% a menos. Para achar o valor original, divida pelo fator: R$ 220 com 10% de acréscimo vieram de 220 ÷ 1,1 = R$ 200. Lucro “sobre a venda” usa o preço de venda como base, e não o custo."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12l3q01",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: numa escala 1 : 10.000, 3 cm no mapa valem 30.000 cm = 300 m. Agora: num mapa em escala 1 : 25.000, duas agências estão a 8 cm uma da outra. Qual é a distância real?",
+          "options": [
+            "200 m",
+            "20 km",
+            "2 km"
+          ],
+          "answer": 2,
+          "explanation": "8 × 25.000 = 200.000 cm. Como 100.000 cm = 1 km, são 2 km. 200 m e 20 km erram a conversão de centímetros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l3q02",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se a razão entre caixas e atendentes é 2 : 3 e há 12 caixas, então há 18 atendentes.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "12/x = 2/3, e pelo produto cruzado 2x = 36, x = 18. Conferindo: 12 : 18 simplifica para 2 : 3.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l3q03",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Produto cruzado: a/b = c/d ⇒ a × d = b × c. Se 5 cartões custam R$ 35, quanto custam 8 cartões do mesmo tipo?",
+          "options": [
+            "R$ 56",
+            "R$ 40",
+            "R$ 48"
+          ],
+          "answer": 0,
+          "explanation": "5/35 = 8/x, então 5x = 280 e x = 56 (cada cartão custa R$ 7). O R$ 40 soma 5 ao preço; o R$ 48 não segue a proporção.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l3q04",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Em pontos igualmente espaçados, conte os intervalos: do 1º ao 5º ponto há 4 intervalos. Numa rua, há um poste a cada 30 m. Qual é a distância do 1º ao 11º poste?",
+          "options": [
+            "330 m",
+            "300 m",
+            "270 m"
+          ],
+          "answer": 1,
+          "explanation": "Do 1º ao 11º há 10 intervalos: 10 × 30 = 300 m. O 330 conta 11 intervalos (os postes); o 270 conta 9.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l3q05",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Numa agência, a razão entre clientes pessoa física e pessoa jurídica é de 7 para 2. Se há 315 clientes ao todo, o número de clientes pessoa jurídica é",
+          "options": [
+            "45",
+            "63",
+            "70",
+            "90",
+            "245"
+          ],
+          "answer": 2,
+          "explanation": "A razão 7 : 2 divide o total em 9 partes: 315 ÷ 9 = 35 por parte. PJ = 2 × 35 = 70; PF = 7 × 35 = 245. O 63 e o 90 tomam 2/10 e 2/7 do total, e o 245 é o número de pessoas físicas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q06",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "razão e proporção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma viagem de 2h40min foi feita em dois trechos, e o segundo trecho durou 3/5 do tempo do primeiro. O primeiro trecho durou",
+          "options": [
+            "1h04min",
+            "1h20min",
+            "1h36min",
+            "1h40min",
+            "2h00min"
+          ],
+          "answer": 3,
+          "explanation": "2h40min = 160 min. Se o primeiro dura t, o segundo dura 3t/5, e t + 3t/5 = 8t/5 = 160, então t = 100 min = 1h40min (o segundo, 60 min). O 1h36min toma 3/5 do total; o 1h04min, 2/5; o 1h20min divide ao meio.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q07",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 600 em partes proporcionais a 1 e 2 dá 600 ÷ 3 = 200 por parte: R$ 200 e R$ 400. Agora: um prêmio de R$ 1.200 será dividido entre dois caixas em partes proporcionais a 3 e 5. Quanto recebe quem tem a parte 5?",
+          "options": [
+            "R$ 450",
+            "R$ 600",
+            "R$ 750"
+          ],
+          "answer": 2,
+          "explanation": "3 + 5 = 8 partes; 1.200 ÷ 8 = 150; 5 × 150 = 750. R$ 450 é a parte 3, e R$ 600, a divisão ao meio.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l3q08",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na divisão inversamente proporcional, quem tem o maior número recebe a maior parte.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "É o contrário: divide-se pelos inversos, e o maior número tem o menor inverso. R$ 120 em partes inversas a 1 e 2 dão R$ 80 (para o 1) e R$ 40 (para o 2).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l3q09",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Inversa a 2 e 3: os inversos 1/2 e 1/3, multiplicados por 6, viram 3 e 2. R$ 500 divididos em partes inversamente proporcionais a 2 e 3 dão, respectivamente,",
+          "options": [
+            "R$ 300 e R$ 200",
+            "R$ 200 e R$ 300",
+            "R$ 250 e R$ 250"
+          ],
+          "answer": 0,
+          "explanation": "Partes 3 e 2 somam 5: 500 ÷ 5 = 100, então 300 para o 2 e 200 para o 3. R$ 200 e R$ 300 seria a divisão direta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l3q10",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Proporcional a duas grandezas ao mesmo tempo: multiplique-as. Dois sócios dividem um lucro de R$ 3.000 proporcionalmente a capital × tempo: A aplicou R$ 2.000 por 3 meses e B, R$ 3.000 por 4 meses. Quanto recebe A?",
+          "options": [
+            "R$ 1.200",
+            "R$ 1.000",
+            "R$ 1.500"
+          ],
+          "answer": 1,
+          "explanation": "Pesos: A = 2.000 × 3 = 6.000 e B = 3.000 × 4 = 12.000, razão 1 : 2. A recebe 1/3 de 3.000 = 1.000. O R$ 1.200 olha só o capital (2 : 3) e esquece o tempo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l3q11",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma bonificação de R$ 4.400,00 será repartida entre três equipes em partes diretamente proporcionais ao número de metas batidas: 3, 5 e 8. A equipe que bateu 5 metas recebe",
+          "options": [
+            "R$ 1.375,00",
+            "R$ 1.466,67",
+            "R$ 2.200,00",
+            "R$ 2.750,00",
+            "R$ 3.025,00"
+          ],
+          "answer": 0,
+          "explanation": "3 + 5 + 8 = 16 partes; 4.400 ÷ 16 = 275; 5 × 275 = 1.375. O 2.200 é a parte da equipe de 8 metas; o 1.466,67 divide o total por 3, ignorando a proporção; o 2.750 toma 5/8 do total, esquecendo a equipe de 3 metas; o 3.025 é o que vai para as outras duas equipes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q12",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "divisão proporcional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Três agências receberão 520 talões em quantidades inversamente proporcionais ao número de reclamações de cada uma: 2, 3 e 4. A agência com 2 reclamações recebe",
+          "options": [
+            "120",
+            "160",
+            "173",
+            "240",
+            "260"
+          ],
+          "answer": 3,
+          "explanation": "Inversos 1/2, 1/3 e 1/4; vezes 12 (o MMC), viram 6, 4 e 3, que somam 13. 520 ÷ 13 = 40, e a agência com 2 reclamações recebe 6 × 40 = 240 (as outras, 160 e 120). O 173 divide em três partes iguais; o 260 dá metade do total a quem reclamou menos; o 120 é a parte da agência com 4 reclamações.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q13",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: se 4 caixas atendem uma fila em 30 min, 2 caixas levam 60 min: menos caixas, mais tempo (inversa). Agora: 3 caixas atendem uma fila em 40 min. Em quanto tempo 6 caixas, no mesmo ritmo, atendem a mesma fila?",
+          "options": [
+            "80 min",
+            "40 min",
+            "20 min"
+          ],
+          "answer": 2,
+          "explanation": "O dobro de caixas faz o trabalho na metade do tempo: 40 × 3 ÷ 6 = 20 min. O 80 trata a relação como direta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l3q14",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se 5 impressoras imprimem 1.000 extratos em 2 horas, as mesmas 5 impressoras imprimem 3.000 extratos em 6 horas.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Com as mesmas máquinas, extratos e tempo são diretamente proporcionais: o triplo de extratos leva o triplo do tempo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l3q15",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Regra de três composta: compare cada grandeza com o tempo. 4 máquinas contam 2.400 cédulas em 30 min. Em quantos minutos 6 máquinas contam 4.800 cédulas?",
+          "options": [
+            "40",
+            "90",
+            "60"
+          ],
+          "answer": 0,
+          "explanation": "O dobro de cédulas dobra o tempo (direta); 6 máquinas em vez de 4 multiplicam o tempo por 4/6 (inversa): 30 × 2 × 4/6 = 40. O 90 trata as máquinas como diretas; o 60 as ignora.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l3q16",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Velocidade média é a distância total dividida pelo tempo total, não a média das velocidades. Um carro vai 120 km a 60 km/h e volta os mesmos 120 km a 40 km/h. Qual é a velocidade média na viagem toda?",
+          "options": [
+            "50 km/h",
+            "48 km/h",
+            "45 km/h"
+          ],
+          "answer": 1,
+          "explanation": "Ida: 2 h; volta: 3 h. 240 km ÷ 5 h = 48 km/h. O 50 é a média das duas velocidades, que ignora que a volta demorou mais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l3q17",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Numa central de atendimento, 6 atendentes respondem 360 mensagens em 4 horas. Mantido o ritmo, quantos atendentes são necessários para responder 540 mensagens em 3 horas?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "12",
+            "15"
+          ],
+          "answer": 3,
+          "explanation": "Mais mensagens pedem mais atendentes (direta: × 540/360 = 1,5); menos tempo também pede mais atendentes (inversa: × 4/3). 6 × 1,5 × 4/3 = 12. O 9 considera só as mensagens; o 8 só o tempo; o 15 erra a inversão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q18",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "regra de três",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um equipamento de compensação processava 900 cheques por hora. Depois de uma atualização, passou a processar 20% a mais por hora. O tempo para processar 4.320 cheques passou a ser de",
+          "options": [
+            "3h12min",
+            "3h36min",
+            "4h00min",
+            "4h20min",
+            "4h48min"
+          ],
+          "answer": 2,
+          "explanation": "Nova capacidade: 900 × 1,2 = 1.080 cheques por hora. 4.320 ÷ 1.080 = 4 h. O 4h48min é o tempo antigo (4.320 ÷ 900 = 4,8 h); o 3h36min tira 25% do tempo antigo, como se a relação fosse direta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q19",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 20% de 350 = 0,2 × 350 = 70. Agora: 35% dos 240 clientes atendidos hoje usaram o aplicativo. Quantos clientes usaram o aplicativo?",
+          "options": [
+            "35",
+            "96",
+            "84"
+          ],
+          "answer": 2,
+          "explanation": "0,35 × 240 = 84. O 35 é a taxa, não a quantidade, e o 96 seria 40% de 240.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l3q20",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se 60% dos clientes têm cartão e, desses, metade usa a função crédito, então 30% de todos os clientes usam a função crédito.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Porcentagem de porcentagem multiplica: 0,6 × 0,5 = 0,3 = 30% do total.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l3q21",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "“Quantos por cento A é de B”: faça A ÷ B. Numa equipe de 25 pessoas, 9 são analistas. Que porcentagem da equipe são analistas?",
+          "options": [
+            "36%",
+            "9%",
+            "64%"
+          ],
+          "answer": 0,
+          "explanation": "9 ÷ 25 = 0,36 = 36%. O 9% confunde quantidade com porcentagem, e 64% é a parte que não é analista.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l3q22",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Use um total de 100 e uma tabela. Numa empresa, 60% dos funcionários são mulheres, e metade delas trabalha no atendimento. Os homens do atendimento são 10% do total de funcionários. Que porcentagem do total trabalha no atendimento?",
+          "options": [
+            "30%",
+            "40%",
+            "70%"
+          ],
+          "answer": 1,
+          "explanation": "Em 100 funcionários: 60 mulheres, 30 delas no atendimento, mais 10 homens = 40. O 30% conta só as mulheres; o 70% soma 60% e 10%.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l3q23",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Numa carteira de 400 clientes, 45% são do varejo. Depois da entrada de novos clientes, todos do varejo, o varejo passou a representar 60% da carteira. Quantos clientes novos entraram?",
+          "options": [
+            "60",
+            "90",
+            "120",
+            "150",
+            "240"
+          ],
+          "answer": 3,
+          "explanation": "Varejo antes: 180. Com x novos: 180 + x = 0,6 × (400 + x), então 180 + x = 240 + 0,6x, 0,4x = 60 e x = 150. Conferindo: 330 de 550 é 60%. O 60 aplica os 15 pontos de diferença sobre 400; o 240 é 60% de 400.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q24",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "porcentagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Num banco, 40% dos funcionários são da área de TI. Entre os de TI, 25% são mulheres; entre os demais, 50% são mulheres. Que porcentagem das mulheres do banco trabalha na área de TI?",
+          "options": [
+            "10%",
+            "20%",
+            "25%",
+            "40%",
+            "50%"
+          ],
+          "answer": 2,
+          "explanation": "Em 100 funcionários: 40 de TI, com 10 mulheres; 60 de outras áreas, com 30 mulheres. São 40 mulheres, e 10 delas na TI: 10 ÷ 40 = 25%. O 10% é a parte do total de funcionários, não das mulheres; o 40% é a fatia da TI no banco.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q25",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: um produto de R$ 200 com 15% de desconto sai por 200 × 0,85 = R$ 170. Agora: uma tarifa de R$ 40,00 teve reajuste de 12%. Qual é o novo valor?",
+          "options": [
+            "R$ 52,00",
+            "R$ 35,20",
+            "R$ 44,80"
+          ],
+          "answer": 2,
+          "explanation": "40 × 1,12 = 44,80. O R$ 35,20 aplica desconto em vez de acréscimo, e o R$ 52,00 soma 12 reais, não 12%.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l3q26",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Um aumento de 20% seguido de um desconto de 20% traz o preço de volta ao valor inicial.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "1,2 × 0,8 = 0,96: o preço termina 4% abaixo do inicial, porque o desconto incide sobre um valor já aumentado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l3q27",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para voltar ao valor original, divida pelo fator. Uma conta paga com 5% de multa custou R$ 210,00. Qual era o valor original?",
+          "options": [
+            "R$ 200,00",
+            "R$ 199,50",
+            "R$ 205,00"
+          ],
+          "answer": 0,
+          "explanation": "210 ÷ 1,05 = 200. O R$ 199,50 tira 5% de 210, que é uma base diferente da usada para a multa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l3q28",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Variações sucessivas multiplicam os fatores. Dois aumentos seguidos de 10% equivalem a um aumento único de",
+          "options": [
+            "20%",
+            "21%",
+            "11%"
+          ],
+          "answer": 1,
+          "explanation": "1,1 × 1,1 = 1,21: aumento de 21%. O segundo aumento incide também sobre o primeiro, por isso passa de 20%.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l3q29",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O preço de um serviço subiu 25% em janeiro e caiu 20% em fevereiro. Em relação ao preço do início de janeiro, o preço no fim de fevereiro",
+          "options": [
+            "ficou 5% maior.",
+            "ficou 5% menor.",
+            "ficou 4% menor.",
+            "ficou 45% maior.",
+            "ficou igual."
+          ],
+          "answer": 4,
+          "explanation": "1,25 × 0,8 = 1,00: o preço volta ao inicial. Somar e subtrair as porcentagens (25 − 20 = 5%) ignora que a queda incide sobre um valor maior.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l3q30",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "acréscimos e descontos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um comerciante vendeu um produto por R$ 600,00, com lucro de 20% sobre o preço de venda. O custo do produto foi de",
+          "options": [
+            "R$ 480,00",
+            "R$ 500,00",
+            "R$ 520,00",
+            "R$ 576,00",
+            "R$ 720,00"
+          ],
+          "answer": 0,
+          "explanation": "O lucro é 20% da venda: 0,2 × 600 = 120, então o custo é 600 − 120 = 480. O R$ 500 seria o custo com lucro de 20% sobre o custo (600 ÷ 1,2); o R$ 720 soma 20% à venda.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l3c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u12l4",
+      "order": 4,
+      "title": "Estatística e contagem",
+      "concepts": [
+        {
+          "id": "u12l4c1",
+          "title": "Média, mediana e moda",
+          "summary": "Média = soma ÷ quantidade; média ponderada = soma de (valor × peso) ÷ soma dos pesos. Mediana: ordene os dados e pegue o do meio (com quantidade par, a média dos dois do meio). Moda: o valor que mais se repete (pode haver mais de uma ou nenhuma). A média é puxada por valores extremos; a mediana, não."
+        },
+        {
+          "id": "u12l4c2",
+          "title": "Medidas de dispersão",
+          "summary": "Amplitude = maior − menor. Desvio de um valor = valor − média; a soma dos desvios é sempre zero. Desvio médio: média dos desvios sem sinal. Variância: média dos quadrados dos desvios, dividindo por n (a populacional, padrão das bancas); só se a questão pedir a amostral, divide-se por n − 1. Desvio padrão = raiz da variância, na mesma unidade dos dados. Somar uma constante a todos não muda a dispersão; multiplicar por k multiplica o desvio padrão por k e a variância por k²."
+        },
+        {
+          "id": "u12l4c3",
+          "title": "Gráficos e tabelas",
+          "summary": "Antes dos números, leia o título, as unidades e a escala. Setores: cada fatia é parte do todo, e 25% ocupam 360° × 0,25 = 90°. Histograma: barras encostadas para faixas de valores; a altura (ou a área) mostra a frequência. Linha: evolução no tempo; compare as variações entre os pontos, e não só os valores. Não conclua nada sobre o que o gráfico não mostra."
+        },
+        {
+          "id": "u12l4c4",
+          "title": "Princípio multiplicativo e aditivo",
+          "summary": "Multiplicativo: se uma etapa tem m opções e a seguinte tem n, as duas juntas têm m × n (etapas que acontecem juntas, “e”). Aditivo: casos que não se misturam se somam (“ou”). Sem repetição, as opções diminuem a cada etapa: 10 × 9 × 8. Comece pela etapa que tem restrição (por exemplo, o 0 não pode iniciar um número)."
+        },
+        {
+          "id": "u12l4c5",
+          "title": "Permutações e combinações",
+          "summary": "Permutação: arrumar n itens distintos em fila dá n! (4! = 4 × 3 × 2 × 1 = 24). Com letras repetidas, divida pelo fatorial de cada repetição: ARARA = 5! ÷ (3! × 2!) = 10. Arranjo (a ordem importa): A(n, p) = n! ÷ (n − p)!. Combinação (a ordem não importa, é um grupo): C(n, p) = n! ÷ [p! × (n − p)!]. Pergunta-chave: trocar a ordem muda o resultado?"
+        },
+        {
+          "id": "u12l4c6",
+          "title": "Casa dos pombos e chance",
+          "summary": "Para ter certeza, pense no pior caso: com 3 cores de meia, tirando 4 meias, com certeza duas são da mesma cor (n gavetas e n + 1 objetos). Probabilidade = casos favoráveis ÷ casos possíveis, quando todos são igualmente prováveis: num dado, sair par é 3/6 = 1/2. Em retiradas seguidas sem reposição, multiplique as chances, atualizando o total a cada retirada."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12l4q01",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: os atendimentos 4, 6 e 8 têm média (4 + 6 + 8) ÷ 3 = 6. Agora: um caixa atendeu 12, 15, 9, 14 e 10 clientes em cinco dias. Qual foi a média diária?",
+          "options": [
+            "13",
+            "60",
+            "12"
+          ],
+          "answer": 2,
+          "explanation": "Soma: 12 + 15 + 9 + 14 + 10 = 60; dividindo pelos 5 dias, 12. O 60 é a soma, antes de dividir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q02",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Nos dados 3, 8, 2, 9 e 5, a mediana é 2, o valor que está no meio da lista como ela foi escrita.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Primeiro se ordena: 2, 3, 5, 8, 9. A mediana é o termo do meio da lista ordenada, 5.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q03",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com quantidade par de dados, a mediana é a média dos dois valores do meio, depois de ordenar. Qual é a mediana de 7, 1, 4, 10, 3 e 8?",
+          "options": [
+            "5,5",
+            "4",
+            "7"
+          ],
+          "answer": 0,
+          "explanation": "Ordenando: 1, 3, 4, 7, 8, 10. Os do meio são 4 e 7, e (4 + 7) ÷ 2 = 5,5. Ficar só com o 4 ou só com o 7 esquece que há dois termos centrais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q04",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Média ponderada: some valor × peso e divida pela soma dos pesos. Numa avaliação, Gerais tem peso 1 e Específicos, peso 2. Um candidato tirou 6 em Gerais e 9 em Específicos. Qual é a média ponderada?",
+          "options": [
+            "7,5",
+            "8",
+            "8,5"
+          ],
+          "answer": 1,
+          "explanation": "(6 × 1 + 9 × 2) ÷ (1 + 2) = 24 ÷ 3 = 8. O 7,5 é a média simples, que ignora os pesos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q05",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Os valores, em reais, de oito saques feitos num caixa eletrônico foram: 50, 100, 50, 200, 80, 50, 120 e 950. Sobre esses valores, NÃO é correto afirmar que",
+          "options": [
+            "a moda é 50.",
+            "a média é menor que a mediana.",
+            "a mediana é 90.",
+            "a média é 200.",
+            "a amplitude é 900."
+          ],
+          "answer": 1,
+          "explanation": "Ordenando: 50, 50, 50, 80, 100, 120, 200, 950. Moda: 50 (aparece três vezes). Mediana: (80 + 100) ÷ 2 = 90. Média: 1.600 ÷ 8 = 200. Amplitude: 950 − 50 = 900. A média fica acima da mediana, puxada pelo saque de 950; por isso a afirmação de que ela é menor está errada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q06",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "tendência central",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A média das notas de 4 funcionários numa avaliação foi 7. Um quinto funcionário fez a mesma avaliação, e a média dos 5 passou a ser 7,4. A nota do quinto funcionário foi",
+          "options": [
+            "7,4",
+            "8",
+            "8,6",
+            "9",
+            "9,4"
+          ],
+          "answer": 3,
+          "explanation": "Soma antes: 4 × 7 = 28. Soma depois: 5 × 7,4 = 37. A nota nova é 37 − 28 = 9. O 7,4 é a nova média, e o 9,4 soma 2 à média em vez de trabalhar com as somas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q07",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: em 4, 9 e 11, a amplitude é 11 − 4 = 7. Agora: os tempos de atendimento foram 6, 15, 9, 3 e 12 minutos. Qual é a amplitude?",
+          "options": [
+            "9",
+            "15",
+            "12"
+          ],
+          "answer": 2,
+          "explanation": "Maior menos menor: 15 − 3 = 12. O 15 é só o maior valor, e o 9, a diferença entre o primeiro e o último da lista como foi escrita.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q08",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se todos os salários de uma equipe sobem R$ 300, o desvio padrão dos salários não muda.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Somar a mesma quantia desloca todos os valores juntos: a média sobe R$ 300, mas a distância de cada salário até a média continua a mesma.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q09",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Desvio médio: a média das distâncias, sem sinal, até a média. Para 1, 5, 6 e 8, a média é 5. Qual é o desvio médio?",
+          "options": [
+            "2",
+            "0",
+            "8"
+          ],
+          "answer": 0,
+          "explanation": "As distâncias são 4, 0, 1 e 3, que somam 8; divididas por 4, dão 2. O 0 é a soma dos desvios com sinal (sempre zero), e o 8 esquece de dividir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q10",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Variância populacional: a média dos quadrados dos desvios. Para 1, 3, 5 e 7 (média 4), os desvios são −3, −1, 1 e 3. Qual é a variância populacional?",
+          "options": [
+            "2",
+            "5",
+            "0"
+          ],
+          "answer": 1,
+          "explanation": "Quadrados: 9, 1, 1 e 9, que somam 20; 20 ÷ 4 = 5. O 2 é o desvio médio (sem elevar ao quadrado), e o 0, a soma dos desvios com sinal. O desvio padrão seria √5 ≈ 2,24.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q11",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre as medidas de dispersão de um conjunto de dados, NÃO é correto afirmar que",
+          "options": [
+            "o desvio padrão é a raiz quadrada positiva da variância.",
+            "somar 10 a todos os dados não altera o desvio padrão.",
+            "a amplitude é a diferença entre o maior e o menor valor.",
+            "multiplicar todos os dados por 3 multiplica a variância por 3.",
+            "a soma dos desvios em relação à média aritmética é zero."
+          ],
+          "answer": 3,
+          "explanation": "Multiplicar os dados por 3 multiplica o desvio padrão por 3 e a variância por 3² = 9, porque ela é feita de quadrados. As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q12",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "dispersão",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Os saldos, em milhares de reais, de quatro contas são 2, 4, 4 e 6. O desvio padrão populacional desses saldos, em milhares de reais, é aproximadamente",
+          "options": [
+            "1,00",
+            "1,41",
+            "1,63",
+            "2,00",
+            "4,00"
+          ],
+          "answer": 1,
+          "explanation": "Média 4; desvios −2, 0, 0 e 2; quadrados somam 8. Variância populacional: 8 ÷ 4 = 2; desvio padrão: √2 ≈ 1,41. O 1,63 é o desvio padrão amostral (√(8 ÷ 3)); o 2,00 é a variância; o 1,00 é o desvio médio; o 4,00 é a média.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c2",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q13",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: num gráfico de setores, uma fatia de 25% ocupa 360° × 0,25 = 90°. Agora: numa pesquisa, 40% dos clientes preferem o aplicativo. Quantos graus ocupa essa fatia?",
+          "options": [
+            "40°",
+            "160°",
+            "144°"
+          ],
+          "answer": 2,
+          "explanation": "360° × 0,4 = 144°. O 40° confunde porcentagem com grau, e o 160° usa 400° como volta inteira.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q14",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Um gráfico de linha mostra o saldo de uma conta só em janeiro (R$ 500) e em março (R$ 800). Com base nele, pode-se afirmar que o saldo de fevereiro foi de R$ 650.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O gráfico não traz fevereiro: o saldo pode ter subido, caído ou ficado parado no meio. A média dos dois meses é uma suposição, não um dado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q15",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Numa tabela de frequências, some as frequências para ter o total. Atendimentos por tempo de espera: até 5 min, 18; de 5 a 10 min, 12; mais de 10 min, 10. Que porcentagem dos clientes esperou mais de 10 min?",
+          "options": [
+            "25%",
+            "10%",
+            "30%"
+          ],
+          "answer": 0,
+          "explanation": "Total: 18 + 12 + 10 = 40; 10 ÷ 40 = 25%. O 10% usa a frequência como se fosse porcentagem, e o 30% é a faixa de 5 a 10 min.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q16",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Compare variações, não só valores. Clientes no aplicativo: 2021, 400 mil; 2022, 520 mil; 2023, 600 mil. Em qual período o número de clientes cresceu mais?",
+          "options": [
+            "de 2022 para 2023",
+            "de 2021 para 2022",
+            "igual nos dois períodos"
+          ],
+          "answer": 1,
+          "explanation": "De 2021 para 2022 entraram 120 mil; de 2022 para 2023, 80 mil. O maior valor está em 2023, mas o maior crescimento foi antes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q17",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O número de contas abertas numa agência, por trimestre de um ano, foi: 1º trimestre, 240; 2º, 300; 3º, 180; 4º, 480. Com base nesses dados, é correto afirmar que",
+          "options": [
+            "o 4º trimestre concentrou 40% das contas abertas no ano.",
+            "a média trimestral foi de 240 contas abertas.",
+            "o 3º trimestre ficou 50% abaixo do 2º.",
+            "o 1º trimestre teve 25% das contas abertas no ano.",
+            "a maior alta de um trimestre para o seguinte foi do 1º para o 2º."
+          ],
+          "answer": 0,
+          "explanation": "Total do ano: 1.200 contas; 480 ÷ 1.200 = 40%. A média é 1.200 ÷ 4 = 300; o 3º trimestre ficou 40% abaixo do 2º (180 ÷ 300 = 0,6); o 1º teve 240 ÷ 1.200 = 20%; e a maior alta foi do 3º para o 4º (+300).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q18",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "gráficos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Num gráfico de setores sobre o canal preferido de 1.200 clientes, o aplicativo ocupa 216°, o internet banking, 90°, e a agência, o restante do círculo. Quantos clientes preferem a agência?",
+          "options": [
+            "150",
+            "180",
+            "216",
+            "300",
+            "720"
+          ],
+          "answer": 1,
+          "explanation": "A agência ocupa 360° − 216° − 90° = 54°, isto é, 54 ÷ 360 = 15% do círculo; 15% de 1.200 = 180. O 720 é o aplicativo (60%), o 300 é o internet banking (25%) e o 216 confunde graus com clientes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q19",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: com 3 camisas e 4 calças há 3 × 4 = 12 combinações de roupa. Agora: um cartão pode ter 5 cores de fundo e 3 desenhos. Quantos modelos diferentes de cartão existem?",
+          "options": [
+            "8",
+            "125",
+            "15"
+          ],
+          "answer": 2,
+          "explanation": "Cada cor combina com cada desenho: 5 × 3 = 15. O 8 soma as opções, como se fosse escolher cor ou desenho; o 125 é 5³.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q20",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Uma senha de 3 dígitos distintos, escolhidos de 0 a 9, tem 10 × 10 × 10 = 1.000 possibilidades.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Com dígitos distintos, as opções caem a cada posição: 10 × 9 × 8 = 720. O 1.000 vale quando os dígitos podem se repetir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q21",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Comece pela posição com restrição. Quantos números de 3 algarismos distintos podem ser formados com os algarismos 0, 1, 2, 3 e 4?",
+          "options": [
+            "48",
+            "60",
+            "100"
+          ],
+          "answer": 0,
+          "explanation": "A centena não pode ser 0: 4 opções. Depois sobram 4 para a dezena (o 0 volta a valer) e 3 para a unidade: 4 × 4 × 3 = 48. O 60 (5 × 4 × 3) deixa o número começar por 0.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q22",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Casos que não se misturam se somam. Um cliente vai escolher um único investimento entre 4 de renda fixa ou 3 de renda variável. Quantas escolhas ele tem?",
+          "options": [
+            "12",
+            "7",
+            "1"
+          ],
+          "answer": 1,
+          "explanation": "É um investimento de um grupo ou do outro: 4 + 3 = 7. Multiplicar (12) contaria pares de investimentos, que ele não vai escolher.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q23",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um código de acesso tem 2 letras distintas, escolhidas entre A, B, C, D e E, seguidas de 2 algarismos de 0 a 9, que podem se repetir. Quantos códigos diferentes podem ser formados?",
+          "options": [
+            "1.800",
+            "2.000",
+            "2.500",
+            "9.000",
+            "10.000"
+          ],
+          "answer": 1,
+          "explanation": "Letras: 5 × 4 = 20 (distintas). Algarismos: 10 × 10 = 100 (podem repetir). Total: 20 × 100 = 2.000. O 2.500 deixa as letras repetirem (5 × 5); o 1.800 proíbe repetir os algarismos (10 × 9).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q24",
+          "type": "mcq5",
+          "topic": "Raciocínio lógico",
+          "subtopic": "contagem",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Quantos números pares de 3 algarismos distintos podem ser formados com os algarismos 1, 2, 3, 4 e 5?",
+          "options": [
+            "12",
+            "20",
+            "24",
+            "30",
+            "60"
+          ],
+          "answer": 2,
+          "explanation": "Comece pela unidade, que tem a restrição: 2 ou 4 (2 opções). Sobram 4 algarismos para a centena e 3 para a dezena: 2 × 4 × 3 = 24. O 60 conta todos os números de 3 algarismos distintos; o 12 só os terminados em 2.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c4",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q25",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: as letras de SOL formam 3! = 3 × 2 × 1 = 6 anagramas. Agora: quantos anagramas tem a palavra PRAZO, que tem 5 letras diferentes?",
+          "options": [
+            "25",
+            "60",
+            "120"
+          ],
+          "answer": 2,
+          "explanation": "5! = 5 × 4 × 3 × 2 × 1 = 120. O 25 é 5², e o 60 só valeria se houvesse uma letra repetida duas vezes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q26",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Escolher 3 de 8 funcionários para formar uma comissão, sem cargos, é um caso de combinação, porque a ordem da escolha não muda a comissão.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A comissão Ana, Beto e Caio é a mesma que Caio, Ana e Beto: a ordem não importa, então é C(8, 3) = 56.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q27",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Combinação: C(n, p) = n! ÷ [p! × (n − p)!]. Entre 6 agências, a diretoria vai sortear 2 para uma auditoria. Quantos pares diferentes são possíveis?",
+          "options": [
+            "15",
+            "30",
+            "12"
+          ],
+          "answer": 0,
+          "explanation": "C(6, 2) = 6 × 5 ÷ 2 = 15. O 30 conta cada par duas vezes (A e B, B e A), como num arranjo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q28",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com letras repetidas, divida pelo fatorial de cada repetição. Quantos anagramas tem a palavra BANANA?",
+          "options": [
+            "720",
+            "60",
+            "120"
+          ],
+          "answer": 1,
+          "explanation": "6 letras, com 3 A e 2 N: 6! ÷ (3! × 2!) = 720 ÷ 12 = 60. O 720 trata todas as letras como diferentes.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q29",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "De um grupo de 7 analistas, serão escolhidos um coordenador e um vice-coordenador para um projeto. De quantas maneiras essa escolha pode ser feita?",
+          "options": [
+            "7",
+            "13",
+            "14",
+            "21",
+            "42"
+          ],
+          "answer": 4,
+          "explanation": "Os cargos são diferentes, então a ordem importa: 7 opções para coordenador e 6 para vice, 7 × 6 = 42. O 21 é a combinação C(7, 2), que esquece os cargos; o 13 soma 7 + 6 em vez de multiplicar; o 14 é 7 × 2; o 7 conta só a escolha do coordenador.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q30",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "permutação e combinação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma equipe de 5 pessoas será formada com 2 gerentes, escolhidos entre 4, e 3 analistas, escolhidos entre 6. O número de equipes diferentes que podem ser formadas é",
+          "options": [
+            "26",
+            "120",
+            "240",
+            "252",
+            "1.440"
+          ],
+          "answer": 1,
+          "explanation": "Gerentes: C(4, 2) = 6. Analistas: C(6, 3) = 20. As duas escolhas acontecem juntas: 6 × 20 = 120. O 26 soma em vez de multiplicar; o 240 trata os gerentes como cargos ordenados; o 252 é C(10, 5), que ignora a exigência de 2 gerentes e 3 analistas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c5",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q31",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: numa urna com bolas de 2 cores, tirando 3 bolas no escuro, com certeza 2 têm a mesma cor (no pior caso, uma de cada cor e a 3ª repete). Agora: uma caixa tem cartões de 4 cores. Quantos cartões é preciso tirar, sem olhar, para ter certeza de 2 da mesma cor?",
+          "options": [
+            "2",
+            "8",
+            "5"
+          ],
+          "answer": 2,
+          "explanation": "No pior caso, os 4 primeiros são um de cada cor; o 5º repete uma delas. Com 2 cartões, podem vir cores diferentes; 8 é mais do que o necessário.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u12l4q32",
+          "type": "truefalse",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Ao lançar um dado honesto, a probabilidade de sair um número maior que 4 é 2/6, isto é, 1/3.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Os casos favoráveis são 5 e 6, dois entre seis resultados igualmente prováveis: 2/6 = 1/3.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u12l4q33",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Quando se pede uma cor específica, o pior caso tira antes todas as outras. Uma gaveta tem 5 cartões azuis, 7 verdes e 3 vermelhos. Quantos é preciso tirar, sem olhar, para ter certeza de pegar 2 vermelhos?",
+          "options": [
+            "14",
+            "2",
+            "4"
+          ],
+          "answer": 0,
+          "explanation": "No pior caso saem antes os 5 azuis e os 7 verdes (12); depois, 2 vermelhos: 12 + 2 = 14. O 4 garante duas da mesma cor, não duas vermelhas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u12l4q34",
+          "type": "quick",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sem reposição, o total diminui a cada retirada. Uma urna tem 3 bolas brancas e 2 pretas. Tirando duas, sem repor a primeira, qual é a probabilidade de as duas serem pretas?",
+          "options": [
+            "4/25",
+            "1/10",
+            "1/5"
+          ],
+          "answer": 1,
+          "explanation": "1ª preta: 2/5; 2ª preta, com 4 bolas e 1 preta restante: 1/4. 2/5 × 1/4 = 2/20 = 1/10. O 4/25 repõe a primeira bola (2/5 × 2/5).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u12l4q35",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma urna tem 4 fichas premiadas e 6 não premiadas. Um cliente tira duas fichas, uma depois da outra, sem devolver a primeira. A probabilidade de apenas a segunda ficha ser premiada é",
+          "options": [
+            "2/15",
+            "6/25",
+            "4/15",
+            "2/5",
+            "8/15"
+          ],
+          "answer": 2,
+          "explanation": "1ª não premiada: 6/10; 2ª premiada, com 9 fichas e 4 premiadas: 4/9. 6/10 × 4/9 = 24/90 = 4/15. O 6/25 repõe a primeira ficha; o 8/15 é a chance de exatamente uma ser premiada, em qualquer ordem; o 2/5 olha só a segunda retirada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "prova"
+        },
+        {
+          "id": "u12l4q36",
+          "type": "case",
+          "topic": "Raciocínio lógico",
+          "subtopic": "probabilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Num sorteio de brindes, o cliente lança dois dados honestos e ganha se a soma dos pontos for 8. A probabilidade de ganhar é",
+          "options": [
+            "5/36",
+            "1/6",
+            "2/9",
+            "1/4",
+            "5/18"
+          ],
+          "answer": 0,
+          "explanation": "São 6 × 6 = 36 resultados igualmente prováveis. Somam 8: (2, 6), (3, 5), (4, 4), (5, 3) e (6, 2), 5 casos: 5/36. O 1/6 é a chance da soma 7; o 5/18 conta cada caso duas vezes; o 2/9 (8/36) usa o próprio 8 como número de casos; o 1/4 (9/36) conta também (1, 7) e (7, 1), que não existem num dado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u12l4c6",
+          "level": "prova"
+        }
+      ]
     }
   ]
 }
