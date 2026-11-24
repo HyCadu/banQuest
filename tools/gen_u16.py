@@ -6,7 +6,7 @@ content/source/<unidade>_*.py.
 Cada arquivo de origem define LESSONS, uma lista de lições; cada lição tem conceitos, e cada conceito, os exercícios
 na ordem: aprender (passos 1 e 2), praticar (2 e 3) e prova. Os exercícios são escritos com a alternativa certa
 PRIMEIRO; o gerador espalha a posição da resposta (A a E nas de 5 alternativas, A a C na escolha rápida) em rodízio,
-para a posição não ser previsível. Uso: python3 tools/gen_u16.py [u16|u12] (padrão: u16)
+para a posição não ser previsível. Uso: python3 tools/gen_u16.py [u16|u12|u15] (padrão: u16)
 """
 import json
 import runpy
@@ -38,10 +38,23 @@ UNIT_U12 = {
     ],
 }
 
+UNIT_U15 = {
+    "id": "u15", "order": 15, "title": "Matemática financeira",
+    "editalTopics": [
+        "Juros simples e compostos; montante, juros e número de períodos; taxas nominal, efetiva, proporcional, "
+        "equivalente e real",
+        "Descontos simples e compostos, comercial e racional; valor presente e valor futuro; equivalência de capitais; "
+        "séries de pagamentos uniformes e não uniformes",
+        "Sistemas de amortização: Price, SAC e misto",
+        "Fluxo de caixa; avaliação de projetos: VPL e TIR; capitalização contínua",
+    ],
+}
+
 # unidade: (pacote, unidade, tópico dos exercícios)
 PACKS = {
     "u16": ("u16-conhecimentos-bancarios", UNIT_U16, "Conhecimentos bancários"),
     "u12": ("u12-raciocinio-logico", UNIT_U12, "Raciocínio lógico"),
+    "u15": ("u15-matematica-financeira", UNIT_U15, "Matemática financeira"),
 }
 
 

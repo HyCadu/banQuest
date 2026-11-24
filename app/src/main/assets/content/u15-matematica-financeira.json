@@ -1,0 +1,2582 @@
+{
+  "schema": 1,
+  "pack": "u15-matematica-financeira",
+  "version": 1,
+  "unit": {
+    "id": "u15",
+    "order": 15,
+    "title": "Matemática financeira",
+    "editalTopics": [
+      "Juros simples e compostos; montante, juros e número de períodos; taxas nominal, efetiva, proporcional, equivalente e real",
+      "Descontos simples e compostos, comercial e racional; valor presente e valor futuro; equivalência de capitais; séries de pagamentos uniformes e não uniformes",
+      "Sistemas de amortização: Price, SAC e misto",
+      "Fluxo de caixa; avaliação de projetos: VPL e TIR; capitalização contínua"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "u15l1",
+      "order": 1,
+      "title": "Juros e taxas",
+      "concepts": [
+        {
+          "id": "u15l1c1",
+          "title": "Juros simples",
+          "summary": "J = C × i × t, com a taxa e o prazo na mesma unidade; o montante é M = C + J = C × (1 + i × t). O juro incide sempre sobre o capital inicial, então cresce em linha reta. Mês comercial: 30 dias; ano comercial: 360 dias. No regime simples, taxas proporcionais se equivalem: 2% ao mês = 24% ao ano."
+        },
+        {
+          "id": "u15l1c2",
+          "title": "Juros compostos",
+          "summary": "Juro sobre juro: M = C × (1 + i)ⁿ. Cada período multiplica o saldo pelo mesmo fator (1 + i): a 10% ao mês, em 3 meses, 1,1 × 1,1 × 1,1 = 1,331. Para achar o capital, divida o montante pelo fator; para achar o prazo, compare potências do mesmo fator. Nas provas, as potências vêm dadas no enunciado."
+        },
+        {
+          "id": "u15l1c3",
+          "title": "Taxas equivalentes",
+          "summary": "No regime composto, taxas equivalentes levam ao mesmo montante no mesmo prazo: (1 + i_ano) = (1 + i_mês)¹². 10% ao mês, em 3 meses, equivalem a 1,1³ − 1 = 33,1% ao trimestre, e não a 30%. Do período maior para o menor, use a raiz: 21% ao ano equivalem a 10% ao semestre, porque 1,1² = 1,21. No regime simples, basta a proporção."
+        },
+        {
+          "id": "u15l1c4",
+          "title": "Taxa nominal e taxa efetiva",
+          "summary": "Taxa nominal é anunciada num período mas capitalizada em outro: “24% ao ano com capitalização mensal”. Primeiro divida pelo número de capitalizações (24% ÷ 12 = 2% ao mês, a taxa efetiva do período); depois componha para o período pedido: 1,02¹² − 1 ≈ 26,8% ao ano. Com mais de uma capitalização, a efetiva é sempre maior que a nominal."
+        },
+        {
+          "id": "u15l1c5",
+          "title": "Taxa real e rentabilidade",
+          "summary": "Taxa aparente (a do contrato), inflação e taxa real se ligam por multiplicação: (1 + aparente) = (1 + real) × (1 + inflação). Rendeu 12% com inflação de 4%: real = 1,12 ÷ 1,04 − 1 ≈ 7,7%, e não 8%. Rentabilidade de uma carteira: média das taxas ponderada pelo valor aplicado em cada parte."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15l1q01",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 1.000 a 2% ao mês por 3 meses rendem 1.000 × 0,02 × 3 = R$ 60 de juros simples. Agora: R$ 2.500 a 3% ao mês, juros simples, por 4 meses. Quanto rendem de juros?",
+          "options": [
+            "R$ 300",
+            "R$ 75",
+            "R$ 2.800"
+          ],
+          "answer": 0,
+          "explanation": "2.500 × 0,03 × 4 = 300. R$ 75 é o juro de um só mês, e R$ 2.800 é o montante (capital mais juros).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l1q02",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "No regime de juros simples, a taxa de 1,5% ao mês é proporcional a 18% ao ano.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Basta multiplicar pelo número de meses do ano: 1,5% × 12 = 18%. No simples, taxas proporcionais rendem o mesmo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l1q03",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Taxa e prazo na mesma unidade; o mês comercial tem 30 dias. Um boleto de R$ 1.200 pago com 10 dias de atraso, com juros simples de 6% ao mês, custa",
+          "options": [
+            "R$ 1.272",
+            "R$ 1.224",
+            "R$ 1.920"
+          ],
+          "answer": 1,
+          "explanation": "10 dias = 1/3 do mês: 1.200 × 0,06 × 1/3 = 24, total 1.224. R$ 1.272 cobra o mês inteiro; R$ 1.920 trata os 10 dias como 10 meses.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l1q04",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para achar o capital, divida pelo fator: C = M ÷ (1 + i × t). Que capital, a juros simples de 2% ao mês, vira R$ 1.320 em 5 meses?",
+          "options": [
+            "R$ 1.188",
+            "R$ 1.100",
+            "R$ 1.200"
+          ],
+          "answer": 2,
+          "explanation": "1 + 0,02 × 5 = 1,10, e 1.320 ÷ 1,10 = 1.200. O R$ 1.188 tira 10% do montante (base errada); o R$ 1.100 dividiria por 1,20, como se a taxa fosse 4% ao mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l1q05",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um capital de R$ 8.000,00 foi aplicado a juros simples de 18% ao ano durante 7 meses. O montante foi de",
+          "options": [
+            "R$ 8.840,00",
+            "R$ 8.878,76",
+            "R$ 9.008,00",
+            "R$ 9.440,00",
+            "R$ 18.080,00"
+          ],
+          "answer": 0,
+          "explanation": "18% ao ano = 1,5% ao mês (proporcional). M = 8.000 × (1 + 0,015 × 7) = 8.000 × 1,105 = 8.840. O 8.878,76 usa juros compostos; o 9.008 usa 1,8% ao mês; o 9.440 cobra o ano inteiro; o 18.080 aplica 18% por mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q06",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "juros simples",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Aplicado a juros simples de 4% ao mês, um capital dobra de valor em",
+          "options": [
+            "12,5 meses",
+            "18 meses",
+            "20 meses",
+            "24 meses",
+            "25 meses"
+          ],
+          "answer": 4,
+          "explanation": "Dobrar é render juros iguais ao capital: C × 0,04 × t = C, então t = 1 ÷ 0,04 = 25 meses. O 18 é o prazo aproximado em juros compostos; o 20 seria com 5% ao mês, e o 12,5, com 8%; em 24 meses os juros somam 96%, ainda abaixo do dobro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q07",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 1.000 a 10% ao mês, juros compostos, por 2 meses: 1.000 × 1,1 × 1,1 = R$ 1.210. Agora: R$ 5.000 a 10% ao mês, juros compostos, por 2 meses. Qual é o montante?",
+          "options": [
+            "R$ 6.050",
+            "R$ 6.000",
+            "R$ 5.500"
+          ],
+          "answer": 0,
+          "explanation": "5.000 × 1,1 = 5.500 no 1º mês e 5.500 × 1,1 = 6.050 no 2º. R$ 6.000 é o juro simples, e R$ 5.500 para no 1º mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l1q08",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Com a mesma taxa e o mesmo prazo, desde que maior que um período, os juros compostos rendem mais que os simples.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "No composto, o juro de cada período também rende juros. Com prazo menor que um período ocorre o contrário: o simples rende mais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l1q09",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para achar o capital, divida pelo fator: C = M ÷ (1 + i)ⁿ. Dado 1,05² = 1,1025, que capital, a 5% ao mês, juros compostos, vira R$ 4.410 em 2 meses?",
+          "options": [
+            "R$ 3.969",
+            "R$ 4.000",
+            "R$ 4.200"
+          ],
+          "answer": 1,
+          "explanation": "4.410 ÷ 1,1025 = 4.000. O R$ 4.200 desconta só um mês (÷ 1,05); o R$ 3.969 tira 10% de 4.410, que não é a operação inversa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l1q10",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para achar o prazo, compare potências do mesmo fator. A 10% ao mês, 1,1⁴ = 1,4641. Em quantos meses R$ 1.000 viram R$ 1.464,10?",
+          "options": [
+            "3",
+            "5",
+            "4"
+          ],
+          "answer": 2,
+          "explanation": "1.464,10 ÷ 1.000 = 1,4641 = 1,1⁴: são 4 meses. Com 3 meses seriam 1.331, e com 5, 1.610,51.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l1q11",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Um capital de R$ 10.000,00 é aplicado a juros compostos de 2% ao mês por 3 meses. Dado 1,02³ = 1,061208, os juros obtidos são de",
+          "options": [
+            "R$ 208,08",
+            "R$ 600,00",
+            "R$ 612,08",
+            "R$ 1.061,21",
+            "R$ 10.612,08"
+          ],
+          "answer": 2,
+          "explanation": "Montante: 10.000 × 1,061208 = 10.612,08; juros: 10.612,08 − 10.000 = 612,08. O 600 é o juro simples; o 10.612,08 é o montante; o 208,08 é só o juro do 3º mês; o 1.061,21 lê mal o fator.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q12",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "juros compostos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um investidor aplicou R$ 5.000,00 a juros compostos de 10% ao mês. Após 2 meses, sacou R$ 1.050,00, e o saldo continuou aplicado nas mesmas condições por mais 1 mês. O saldo final foi de",
+          "options": [
+            "R$ 5.000,00",
+            "R$ 5.500,00",
+            "R$ 5.605,00",
+            "R$ 6.050,00",
+            "R$ 6.655,00"
+          ],
+          "answer": 1,
+          "explanation": "Em 2 meses: 5.000 × 1,21 = 6.050. Depois do saque: 5.000. Mais 1 mês: 5.000 × 1,1 = 5.500. O 6.655 ignora o saque; o 5.605 tira o saque só no fim; o 5.000 esquece o último mês; o 6.050 para antes do saque.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q13",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 10% ao mês, juros compostos, em 2 meses dão 1,1² − 1 = 21% ao bimestre. Agora: qual é a taxa trimestral equivalente a 10% ao mês, juros compostos? (1,1³ = 1,331)",
+          "options": [
+            "33,1%",
+            "30%",
+            "31,3%"
+          ],
+          "answer": 0,
+          "explanation": "1,331 − 1 = 0,331 = 33,1% ao trimestre. O 30% é a taxa proporcional, que só vale no regime simples.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l1q14",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Em juros compostos, a taxa de 2% ao mês equivale a 24% ao ano.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "1,02¹² ≈ 1,268, cerca de 26,8% ao ano. O 24% é a taxa proporcional, que vale no regime simples.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l1q15",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Do período maior para o menor, use a raiz. Uma aplicação rende 44% em 2 anos, juros compostos. A taxa anual equivalente é",
+          "options": [
+            "22%",
+            "20%",
+            "12%"
+          ],
+          "answer": 1,
+          "explanation": "√1,44 = 1,2, ou seja, 20% ao ano (1,2 × 1,2 = 1,44). O 22% divide 44 por 2, que é a lógica do regime simples.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l1q16",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Qual é a taxa semestral equivalente a 21% ao ano, juros compostos? (√1,21 = 1,1)",
+          "options": [
+            "10,5%",
+            "11%",
+            "10%"
+          ],
+          "answer": 2,
+          "explanation": "1,1² = 1,21, então 10% ao semestre. O 10,5% é a metade de 21%, a taxa proporcional.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l1q17",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "A taxa anual equivalente, em juros compostos, a 5% ao semestre é de",
+          "options": [
+            "10,00%",
+            "10,25%",
+            "10,50%",
+            "11,00%",
+            "25,00%"
+          ],
+          "answer": 1,
+          "explanation": "1,05² = 1,1025: 10,25% ao ano. O 10% é a taxa proporcional (regime simples); as outras não saem de nenhuma conta com 5% em dois semestres.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q18",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "taxas equivalentes",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre taxas de juros no regime composto, NÃO é correto afirmar que",
+          "options": [
+            "10% ao mês equivalem a 33,1% ao trimestre.",
+            "21% ao ano equivalem a 10% ao semestre.",
+            "taxas equivalentes levam ao mesmo montante no mesmo prazo.",
+            "a taxa proporcional só equivale à original no regime simples.",
+            "2% ao mês equivalem a 24% ao ano."
+          ],
+          "answer": 4,
+          "explanation": "2% ao mês compostos equivalem a 1,02¹² − 1 ≈ 26,8% ao ano; 24% é a proporcional, que só vale no regime simples. As outras afirmações estão corretas (1,1³ = 1,331 e 1,1² = 1,21).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q19",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 36% ao ano com capitalização mensal dão 36 ÷ 12 = 3% ao mês, efetivos. Agora: 18% ao ano com capitalização mensal correspondem a quantos por cento ao mês, efetivos?",
+          "options": [
+            "1,5%",
+            "18%",
+            "1,39%"
+          ],
+          "answer": 0,
+          "explanation": "18 ÷ 12 = 1,5% ao mês: a taxa nominal se divide pelo número de capitalizações. O 1,39% seria a raiz 12ª de 1,18, conta de taxa equivalente, que não se usa para taxa nominal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l1q20",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Uma taxa nominal de 12% ao ano com capitalização semestral corresponde a 12% ao ano efetivos.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "São 6% ao semestre, efetivos; no ano, 1,06² − 1 = 12,36%. Com mais de uma capitalização, a efetiva passa da nominal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l1q21",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Primeiro divida, depois componha. Qual é a taxa efetiva anual de 20% ao ano capitalizados semestralmente?",
+          "options": [
+            "20%",
+            "21%",
+            "10%"
+          ],
+          "answer": 1,
+          "explanation": "20 ÷ 2 = 10% ao semestre; 1,1² − 1 = 21% ao ano. O 20% é a nominal, e o 10% é a efetiva do semestre.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l1q22",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Uma taxa nominal de 40% ao ano tem capitalização trimestral. A taxa efetiva trimestral é",
+          "options": [
+            "40%",
+            "8,78%",
+            "10%"
+          ],
+          "answer": 2,
+          "explanation": "40 ÷ 4 = 10% ao trimestre. O 8,78% é a raiz 4ª de 1,40, que trataria 40% como taxa efetiva anual.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l1q23",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um empréstimo tem taxa nominal de 48% ao ano com capitalização mensal. Dado 1,04³ = 1,124864, a taxa efetiva trimestral é de, aproximadamente,",
+          "options": [
+            "12,00%",
+            "12,49%",
+            "13,00%",
+            "16,00%",
+            "48,00%"
+          ],
+          "answer": 1,
+          "explanation": "48 ÷ 12 = 4% ao mês; no trimestre, 1,04³ − 1 ≈ 12,49%. O 12% é a proporcional (3 × 4%); o 16% divide 48 por 3 como se a capitalização fosse quadrimestral; o 48% é a nominal anual.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q24",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "nominal e efetiva",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma fatura de R$ 2.000,00 ficou um mês sem pagamento num cartão que cobra 144% ao ano com capitalização mensal, em juros compostos. O valor devido após esse mês é de",
+          "options": [
+            "R$ 2.240,00",
+            "R$ 2.288,00",
+            "R$ 2.480,00",
+            "R$ 2.880,00",
+            "R$ 4.880,00"
+          ],
+          "answer": 0,
+          "explanation": "144 ÷ 12 = 12% ao mês: 2.000 × 1,12 = 2.240. O 2.288 lê 14,4% ao mês; o 2.480 divide 144 por 6; o 2.880 aplica 44%; o 4.880 aplica a taxa anual inteira num só mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q25",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: uma aplicação rendeu 12% num ano de inflação de 4%: real = 1,12 ÷ 1,04 − 1 ≈ 7,7%. Agora: um salário foi reajustado em 10,25% num ano de inflação de 5%. Qual foi o ganho real?",
+          "options": [
+            "5%",
+            "5,25%",
+            "15,76%"
+          ],
+          "answer": 0,
+          "explanation": "1,1025 ÷ 1,05 = 1,05: ganho real de 5%. O 5,25% subtrai as taxas; o 15,76% multiplica em vez de dividir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l1q26",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se uma aplicação rende exatamente a inflação do período, o ganho real é zero.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "1 + aparente = 1 + inflação, então (1 + real) = 1 e a taxa real é 0%: o poder de compra só foi mantido.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l1q27",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "(1 + aparente) = (1 + real) × (1 + inflação). Para ganhar 3% reais num ano de inflação de 6%, a taxa aparente precisa ser de",
+          "options": [
+            "9%",
+            "9,18%",
+            "3%"
+          ],
+          "answer": 1,
+          "explanation": "1,03 × 1,06 = 1,0918: 9,18%. Somar (9%) esquece o ganho real sobre a parte corrigida pela inflação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l1q28",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Carteira: média das taxas ponderada pelo valor aplicado. R$ 3.000 renderam 10% e R$ 1.000 renderam 2% no ano. A rentabilidade da carteira foi de",
+          "options": [
+            "6%",
+            "12%",
+            "8%"
+          ],
+          "answer": 2,
+          "explanation": "Juros: 300 + 20 = 320 sobre 4.000 = 8%. O 6% é a média simples das taxas, que ignora quanto foi aplicado em cada uma; o 12% soma as taxas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l1q29",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um investimento rendeu 8% num ano em que a inflação foi de 10%. A taxa real do investimento foi de, aproximadamente,",
+          "options": [
+            "−2,00%",
+            "−1,82%",
+            "1,82%",
+            "2,00%",
+            "18,80%"
+          ],
+          "answer": 1,
+          "explanation": "1,08 ÷ 1,10 − 1 ≈ −0,0182: perda real de 1,82%. O −2% subtrai as taxas; os valores positivos esquecem que a inflação foi maior que o rendimento; o 18,80% multiplica os fatores.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "prova"
+        },
+        {
+          "id": "u15l1q30",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "taxa real",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma pessoa aplicou 70% do capital num fundo que rendeu 12% no ano e o restante numa aplicação que rendeu 2%. A rentabilidade total da carteira foi de",
+          "options": [
+            "5%",
+            "7%",
+            "9%",
+            "12%",
+            "14%"
+          ],
+          "answer": 2,
+          "explanation": "0,7 × 12% + 0,3 × 2% = 8,4% + 0,6% = 9%. O 5% troca os pesos; o 7% é a média simples; o 14% soma as taxas; o 12% é só a do fundo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l1c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u15l2",
+      "order": 2,
+      "title": "Descontos e séries",
+      "concepts": [
+        {
+          "id": "u15l2c1",
+          "title": "Desconto comercial simples",
+          "summary": "O desconto comercial (bancário, “por fora”) incide sobre o valor nominal N: D = N × d × t, e o valor atual, que o cliente recebe, é A = N − D = N × (1 − d × t). Taxa e prazo na mesma unidade (mês comercial de 30 dias). Tarifas e IOF calculados sobre o nominal também saem do valor recebido."
+        },
+        {
+          "id": "u15l2c2",
+          "title": "Desconto racional simples",
+          "summary": "O desconto racional (“por dentro”) trata o valor atual A como um capital que, a juros simples, vira o nominal: N = A × (1 + i × t), então A = N ÷ (1 + i × t). O desconto incide sobre A, que é menor; por isso, com a mesma taxa e o mesmo prazo, o racional é menor que o comercial. Relação útil: Dc = Dr × (1 + i × t)."
+        },
+        {
+          "id": "u15l2c3",
+          "title": "Descontos compostos",
+          "summary": "Racional composto: A = N ÷ (1 + i)ⁿ, trazer o nominal a valor presente a juros compostos. Comercial composto: cada período tira d% do valor anterior, A = N × (1 − d)ⁿ. Com a mesma taxa, o comercial composto dá o menor valor atual. Atenção: 10% ao mês comercial composto por 2 meses é 0,9² = 0,81, ou seja, 19% de desconto, e não 20%."
+        },
+        {
+          "id": "u15l2c4",
+          "title": "Valor presente, valor futuro e equivalência",
+          "summary": "Valor futuro: VF = VP × (1 + i)ⁿ; valor presente: VP = VF ÷ (1 + i)ⁿ. Capitais de datas diferentes só se comparam depois de levados à mesma data (data focal). No regime composto, qualquer data focal dá a mesma conclusão; escolha a que facilita a conta. Equação de valor: o que se deve e o que se paga, levados à mesma data, têm de ser iguais."
+        },
+        {
+          "id": "u15l2c5",
+          "title": "Séries uniformes",
+          "summary": "Série uniforme postecipada: n parcelas iguais P, a primeira um período depois. Valor presente: VP = P × a, em que a = [1 − (1 + i)⁻ⁿ] ÷ i é o fator de valor presente (dado na prova ou numa tabela). Para achar a parcela: P = VP ÷ a. Valor futuro de depósitos iguais: VF = P × s, com s = [(1 + i)ⁿ − 1] ÷ i. Sem fator dado, traga parcela por parcela."
+        },
+        {
+          "id": "u15l2c6",
+          "title": "Séries antecipadas, com carência e não uniformes",
+          "summary": "Antecipada: a primeira parcela é paga no ato; vale a postecipada vezes (1 + i), ou a entrada mais n − 1 parcelas postecipadas. Com carência (diferida): as parcelas começam depois de alguns períodos; ache o valor da série um período antes da 1ª parcela e desconte até hoje. Não uniforme: traga cada parcela a valor presente e some."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15l2q01",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: título de R$ 1.000, descontado 2 meses antes a 3% ao mês: D = 1.000 × 0,03 × 2 = 60, e o cliente recebe R$ 940. Agora: uma duplicata de R$ 5.000 é descontada 3 meses antes do vencimento, desconto comercial simples de 2% ao mês. Quanto o cliente recebe?",
+          "options": [
+            "R$ 4.700",
+            "R$ 4.900",
+            "R$ 4.716,98"
+          ],
+          "answer": 0,
+          "explanation": "D = 5.000 × 0,02 × 3 = 300, e 5.000 − 300 = 4.700. O R$ 4.900 desconta só um mês; o R$ 4.716,98 é o desconto racional (5.000 ÷ 1,06).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q02",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "No desconto comercial simples, a taxa incide sobre o valor nominal do título.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "É o desconto “por fora”: D = N × d × t. O racional, ao contrário, incide sobre o valor atual.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q03",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Prazo em dias: use o mês comercial de 30 dias. Um título de R$ 6.000 é descontado 15 dias antes do vencimento, desconto comercial simples de 4% ao mês. Qual é o desconto?",
+          "options": [
+            "R$ 240",
+            "R$ 120",
+            "R$ 3.600"
+          ],
+          "answer": 1,
+          "explanation": "15 dias = meio mês: 6.000 × 0,04 × 0,5 = 120. O R$ 240 cobra o mês inteiro; o R$ 3.600 trata os 15 dias como 15 meses.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q04",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Tarifas sobre o nominal também saem do valor recebido. Título de R$ 10.000, desconto comercial de 2% ao mês por 1 mês e tarifa de 1% sobre o nominal. O cliente recebe",
+          "options": [
+            "R$ 9.800",
+            "R$ 9.702",
+            "R$ 9.700"
+          ],
+          "answer": 2,
+          "explanation": "Desconto 200 e tarifa 100, ambos sobre 10.000: recebe 9.700. O R$ 9.800 esquece a tarifa; o R$ 9.702 aplica a tarifa sobre o valor já descontado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q05",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um título de R$ 15.000,00 foi descontado 40 dias antes do vencimento, pelo desconto bancário simples, à taxa de 3% ao mês. O valor líquido recebido foi de",
+          "options": [
+            "R$ 14.400,00",
+            "R$ 14.423,08",
+            "R$ 14.550,00",
+            "R$ 14.950,00",
+            "R$ 15.600,00"
+          ],
+          "answer": 0,
+          "explanation": "40 dias = 4/3 de mês: D = 15.000 × 0,03 × 4/3 = 600, e 15.000 − 600 = 14.400. O 14.423,08 é o desconto racional; o 14.550 desconta só 30 dias; o 14.950 lê 3% como taxa anual; o 15.600 soma o desconto.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q06",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto comercial",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ao descontar uma nota promissória 2 meses antes do vencimento, à taxa de desconto comercial simples de 5% ao mês, um cliente recebeu R$ 7.200,00. O valor nominal do título era de",
+          "options": [
+            "R$ 6.480,00",
+            "R$ 7.560,00",
+            "R$ 7.920,00",
+            "R$ 8.000,00",
+            "R$ 14.400,00"
+          ],
+          "answer": 3,
+          "explanation": "A = N × (1 − 0,05 × 2) = 0,9 N = 7.200, então N = 8.000. O 7.920 soma 10% sobre o valor recebido (a base certa é o nominal); o 7.560 usa um mês só; o 6.480 aplica o desconto de novo; o 14.400 dobra o valor.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q07",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: título de R$ 1.100, 1 mês antes, racional simples de 10% ao mês: A = 1.100 ÷ 1,1 = R$ 1.000. Agora: título de R$ 2.400, 2 meses antes, desconto racional simples de 10% ao mês. Qual é o valor atual?",
+          "options": [
+            "R$ 2.000",
+            "R$ 1.920",
+            "R$ 2.160"
+          ],
+          "answer": 0,
+          "explanation": "1 + 0,1 × 2 = 1,2, e 2.400 ÷ 1,2 = 2.000. O R$ 1.920 é o comercial (2.400 × 0,8); o R$ 2.160 desconta só um mês por fora.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q08",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Com a mesma taxa e o mesmo prazo, o desconto racional simples é maior que o comercial simples.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "É o contrário: o racional incide sobre o valor atual, menor que o nominal, então o desconto é menor.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q09",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A = N ÷ (1 + i × t). Um título de R$ 5.300 é descontado 3 meses antes, racional simples de 2% ao mês. O desconto é",
+          "options": [
+            "R$ 318",
+            "R$ 300",
+            "R$ 5.000"
+          ],
+          "answer": 1,
+          "explanation": "A = 5.300 ÷ 1,06 = 5.000, e D = 5.300 − 5.000 = 300. O R$ 318 é o desconto comercial (5.300 × 0,06); o R$ 5.000 é o valor atual, não o desconto.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q10",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "O desconto comercial é o racional mais o juro sobre ele: Dc = Dr × (1 + i × t). Se Dr = R$ 200 e i × t = 0,1, quanto é Dc?",
+          "options": [
+            "R$ 180",
+            "R$ 200",
+            "R$ 220"
+          ],
+          "answer": 2,
+          "explanation": "200 × 1,1 = 220: o comercial é sempre o maior dos dois. O R$ 180 inverteria essa relação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q11",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um título de R$ 10.600,00 é descontado 4 meses antes do vencimento, à taxa de 1,5% ao mês. A diferença entre o desconto comercial simples e o desconto racional simples é de",
+          "options": [
+            "R$ 0,00",
+            "R$ 36,00",
+            "R$ 600,00",
+            "R$ 636,00",
+            "R$ 1.236,00"
+          ],
+          "answer": 1,
+          "explanation": "i × t = 0,06. Comercial: 10.600 × 0,06 = 636. Racional: 10.600 − 10.600 ÷ 1,06 = 10.600 − 10.000 = 600. Diferença: 36. O 600 e o 636 são cada desconto sozinho; o 1.236 soma os dois; o 0 supõe que são iguais.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q12",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto racional",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre o desconto simples, NÃO é correto afirmar que",
+          "options": [
+            "o desconto comercial incide sobre o valor nominal do título.",
+            "no desconto racional, o valor atual é tratado como capital aplicado a juros simples.",
+            "com a mesma taxa e o mesmo prazo, o desconto comercial é maior que o racional.",
+            "o desconto racional incide sobre o valor nominal do título.",
+            "no desconto comercial, o valor atual é N × (1 − d × t)."
+          ],
+          "answer": 3,
+          "explanation": "O racional incide sobre o valor atual, não sobre o nominal (quem incide sobre o nominal é o comercial). As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q13",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: N = R$ 1.000, comercial composto de 10% ao mês, 2 meses: A = 1.000 × 0,9 × 0,9 = R$ 810. Agora: N = R$ 5.000, desconto comercial composto de 20% ao mês, 2 meses antes. Qual é o valor atual?",
+          "options": [
+            "R$ 3.200",
+            "R$ 3.000",
+            "R$ 3.472,22"
+          ],
+          "answer": 0,
+          "explanation": "5.000 × 0,8 × 0,8 = 3.200. O R$ 3.000 é o comercial simples (tira 40% de uma vez); o R$ 3.472,22 é o racional composto (5.000 ÷ 1,44).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q14",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "No desconto racional composto, o valor atual é o nominal dividido por (1 + i)ⁿ.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "É o valor presente a juros compostos: o valor atual, aplicado à taxa i por n períodos, vira o nominal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q15",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Fórmula do racional composto: A = N ÷ (1 + i)ⁿ. Faltando 2 meses para o vencimento, uma duplicata de R$ 12.100 é descontada a 10% ao mês. Pelo desconto racional composto, o cliente recebe",
+          "options": [
+            "R$ 9.801",
+            "R$ 10.000",
+            "R$ 10.083,33"
+          ],
+          "answer": 1,
+          "explanation": "12.100 ÷ 1,21 = 10.000. O R$ 9.801 é o comercial composto (12.100 × 0,81); o R$ 10.083,33 é o racional simples (12.100 ÷ 1,2).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q16",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Do comercial para o racional: ache o nominal primeiro. Um título descontado 1 mês antes, comercial composto de 10%, valeu R$ 900. Com desconto racional à mesma taxa, valeria",
+          "options": [
+            "R$ 990,00",
+            "R$ 818,18",
+            "R$ 909,09"
+          ],
+          "answer": 2,
+          "explanation": "N × 0,9 = 900, então N = 1.000; racional: 1.000 ÷ 1,1 ≈ 909,09. O 990 aplica 10% sobre o valor atual; o 818,18 divide o valor atual, em vez do nominal, por 1,1.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q17",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma duplicata de R$ 20.000,00 é descontada 3 meses antes do vencimento, desconto comercial composto de 10% ao mês. Dado 0,9³ = 0,729, o valor atual é de",
+          "options": [
+            "R$ 14.000,00",
+            "R$ 14.580,00",
+            "R$ 15.026,30",
+            "R$ 16.200,00",
+            "R$ 18.000,00"
+          ],
+          "answer": 1,
+          "explanation": "20.000 × 0,729 = 14.580. O 14.000 é o comercial simples (30% de uma vez); o 15.026,30 é o racional composto (÷ 1,331); o 16.200 e o 18.000 descontam só 2 meses e 1 mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q18",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "desconto composto",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um título descontado 2 meses antes do vencimento, à taxa de 25% ao mês no desconto racional composto, valeu R$ 6.400,00. Se o desconto fosse comercial composto, à mesma taxa, o valor atual seria de",
+          "options": [
+            "R$ 3.600,00",
+            "R$ 5.000,00",
+            "R$ 5.625,00",
+            "R$ 6.400,00",
+            "R$ 10.000,00"
+          ],
+          "answer": 2,
+          "explanation": "Nominal: 6.400 × 1,25² = 6.400 × 1,5625 = 10.000. Comercial composto: 10.000 × 0,75² = 5.625. O 3.600 aplica 0,75² sobre o valor atual; o 5.000 usa o comercial simples; o 10.000 é o nominal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q19",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 1.210 daqui a 2 meses, a 10% ao mês, valem hoje 1.210 ÷ 1,21 = R$ 1.000. Agora: um pagamento de R$ 6.050 daqui a 2 meses, a 10% ao mês compostos, vale quanto hoje?",
+          "options": [
+            "R$ 5.000",
+            "R$ 4.840",
+            "R$ 5.041,67"
+          ],
+          "answer": 0,
+          "explanation": "6.050 ÷ 1,21 = 5.000. O R$ 4.840 tira 20% do valor; o R$ 5.041,67 divide por 1,2 (juros simples).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q20",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No regime composto, a escolha da data focal muda a conclusão sobre qual de dois capitais vale mais.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "No composto, levar os dois para qualquer data multiplica ambos pelo mesmo fator, e a comparação não muda. No simples, a data focal pode mudar o resultado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q21",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Leve tudo para a mesma data. A 10% ao mês compostos, o que vale mais: R$ 1.000 hoje ou R$ 1.200 daqui a 2 meses?",
+          "options": [
+            "R$ 1.200 daqui a 2 meses",
+            "R$ 1.000 hoje",
+            "os dois valem o mesmo"
+          ],
+          "answer": 1,
+          "explanation": "Trazendo para hoje: 1.200 ÷ 1,21 ≈ 991,74, menos que 1.000. Ou levando para o mês 2: 1.000 × 1,21 = 1.210, mais que 1.200. As duas datas dão a mesma conclusão.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q22",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Equação de valor: a dívida e os pagamentos, na mesma data. Uma dívida de R$ 2.100 vence hoje. O cliente paga R$ 1.000 hoje e o resto daqui a 1 mês, a 10% ao mês. Quanto paga daqui a 1 mês?",
+          "options": [
+            "R$ 1.100",
+            "R$ 1.310",
+            "R$ 1.210"
+          ],
+          "answer": 2,
+          "explanation": "Ficam 1.100 devendo hoje; daqui a 1 mês, 1.100 × 1,1 = 1.210. O R$ 1.100 esquece os juros; o R$ 1.310 cobra 10% sobre a dívida inteira.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q23",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma dívida será paga em duas parcelas de R$ 2.420,00, daqui a 1 e a 2 meses, a juros compostos de 10% ao mês. O cliente quer trocá-las por um único pagamento hoje. Esse pagamento é de",
+          "options": [
+            "R$ 4.000,00",
+            "R$ 4.200,00",
+            "R$ 4.216,67",
+            "R$ 4.400,00",
+            "R$ 4.840,00"
+          ],
+          "answer": 1,
+          "explanation": "2.420 ÷ 1,1 + 2.420 ÷ 1,21 = 2.200 + 2.000 = 4.200. O 4.216,67 usa juros simples; o 4.400 desconta as duas por um mês só; o 4.000 desconta as duas por dois meses; o 4.840 não desconta nada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q24",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "equivalência de capitais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente deve R$ 3.000,00 para daqui a 1 mês e R$ 3.630,00 para daqui a 3 meses. Ele quer pagar tudo numa só parcela daqui a 2 meses, a juros compostos de 10% ao mês. O valor dessa parcela é de",
+          "options": [
+            "R$ 6.000,00",
+            "R$ 6.300,00",
+            "R$ 6.600,00",
+            "R$ 6.630,00",
+            "R$ 7.260,00"
+          ],
+          "answer": 2,
+          "explanation": "Na data 2: 3.000 × 1,1 + 3.630 ÷ 1,1 = 3.300 + 3.300 = 6.600. O 6.630 soma sem levar à data; o 6.300 corrige só a segunda dívida; o 6.000 e o 7.260 calculam o valor nas datas 1 e 3, não na 2.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q25",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 2 parcelas de R$ 121, em 1 e 2 meses, a 10%: 121 ÷ 1,1 + 121 ÷ 1,21 = 110 + 100 = R$ 210. Agora: 2 parcelas de R$ 1.210, em 1 e 2 meses, a 10% ao mês. Qual é o valor à vista equivalente?",
+          "options": [
+            "R$ 2.100",
+            "R$ 2.420",
+            "R$ 2.000"
+          ],
+          "answer": 0,
+          "explanation": "1.210 ÷ 1,1 + 1.210 ÷ 1,21 = 1.100 + 1.000 = 2.100. O R$ 2.420 não desconta nada; o R$ 2.000 desconta as duas por 2 meses.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q26",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na série postecipada, a primeira parcela é paga no ato da compra.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Postecipada: a primeira parcela vence um período depois. Com pagamento no ato, a série é antecipada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q27",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "VP = P × a. O fator a para 5 parcelas mensais a 5% é 4,33. Uma compra em 5 parcelas de R$ 1.000 vale à vista",
+          "options": [
+            "R$ 5.000",
+            "R$ 4.330",
+            "R$ 4.761,90"
+          ],
+          "answer": 1,
+          "explanation": "1.000 × 4,33 = 4.330. O R$ 5.000 soma as parcelas sem descontar; o R$ 4.761,90 desconta o total por um mês só.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q28",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para achar a parcela, divida pelo fator: P = VP ÷ a. Um empréstimo de R$ 8.660 em 5 parcelas mensais, com fator a = 4,33. A parcela é",
+          "options": [
+            "R$ 1.732",
+            "R$ 2.165",
+            "R$ 2.000"
+          ],
+          "answer": 2,
+          "explanation": "8.660 ÷ 4,33 = 2.000. O R$ 1.732 divide por 5, esquecendo os juros; o R$ 2.165 divide por 4.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q29",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma pessoa deposita R$ 500,00 no fim de cada mês, durante 3 meses, numa aplicação que rende 10% ao mês em juros compostos. Logo após o 3º depósito, o saldo é de",
+          "options": [
+            "R$ 1.500,00",
+            "R$ 1.650,00",
+            "R$ 1.655,00",
+            "R$ 1.820,50",
+            "R$ 1.996,50"
+          ],
+          "answer": 2,
+          "explanation": "O 1º depósito rende 2 meses, o 2º, 1 mês, e o 3º, nada: 500 × (1,21 + 1,1 + 1) = 500 × 3,31 = 1.655. O 1.650 usa juros simples; o 1.820,50 trata os depósitos como feitos no início do mês; o 1.996,50 capitaliza tudo por 3 meses; o 1.500 esquece os juros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q30",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "séries uniformes",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um carro de R$ 43.300,00 à vista será financiado em 10 prestações mensais iguais, a primeira um mês após a compra, a 2% ao mês. Dado o fator de valor presente a = 8,66 (10 meses, 2%), cada prestação vale",
+          "options": [
+            "R$ 866,00",
+            "R$ 4.330,00",
+            "R$ 4.416,60",
+            "R$ 5.000,00",
+            "R$ 5.196,00"
+          ],
+          "answer": 3,
+          "explanation": "P = 43.300 ÷ 8,66 = 5.000. O 4.330 divide por 10 e esquece os juros; o 4.416,60 soma 2% a isso; o 5.196 soma o juro de um mês sobre o total; o 866 é só esse juro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c5",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q31",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 2 parcelas de R$ 110, a 1ª no ato e a 2ª em 1 mês, a 10%: 110 + 110 ÷ 1,1 = R$ 210. Agora: 2 parcelas de R$ 550, a 1ª no ato e a 2ª em 1 mês, a 10% ao mês. Qual é o valor à vista?",
+          "options": [
+            "R$ 1.050",
+            "R$ 1.100",
+            "R$ 954,55"
+          ],
+          "answer": 0,
+          "explanation": "550 + 550 ÷ 1,1 = 550 + 500 = 1.050. O R$ 1.100 não desconta a 2ª parcela; o R$ 954,55 trata a série como postecipada, descontando também a 1ª.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l2q32",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Uma compra em “1 + 2” (entrada mais duas parcelas mensais iguais à entrada) é uma série antecipada de 3 parcelas.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A 1ª parcela é paga no ato e as outras vêm a cada mês: é a definição de série antecipada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l2q33",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com carência: ache o valor da série um período antes da 1ª parcela e desconte até hoje. Uma série vale R$ 12.100 na data 2, um mês antes da 1ª parcela, que vence no 3º mês. A 10% ao mês, quanto ela vale hoje?",
+          "options": [
+            "R$ 11.000",
+            "R$ 10.000",
+            "R$ 9.090,91"
+          ],
+          "answer": 1,
+          "explanation": "Da data 2 até hoje são 2 meses: 12.100 ÷ 1,21 = 10.000. O R$ 11.000 desconta só 1 mês; o R$ 9.090,91 desconta 3, contando até a 1ª parcela.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l2q34",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Não uniforme: traga cada parcela e some. Parcelas de R$ 1.100 em 1 mês e de R$ 2.420 em 2 meses, a 10% ao mês. Qual é o valor presente?",
+          "options": [
+            "R$ 3.520",
+            "R$ 3.200",
+            "R$ 3.000"
+          ],
+          "answer": 2,
+          "explanation": "1.100 ÷ 1,1 + 2.420 ÷ 1,21 = 1.000 + 2.000 = 3.000. O R$ 3.520 soma sem descontar; o R$ 3.200 desconta tudo por um mês só.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l2q35",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma loja vende um produto em 3 parcelas mensais de R$ 1.210,00, a 1ª no ato da compra. A juros compostos de 10% ao mês, o valor à vista equivalente é de",
+          "options": [
+            "R$ 3.009,09",
+            "R$ 3.300,00",
+            "R$ 3.310,00",
+            "R$ 3.630,00",
+            "R$ 3.641,00"
+          ],
+          "answer": 2,
+          "explanation": "1.210 + 1.210 ÷ 1,1 + 1.210 ÷ 1,21 = 1.210 + 1.100 + 1.000 = 3.310. O 3.009,09 trata a série como postecipada; o 3.300 desconta o total por um mês; o 3.630 não desconta; o 3.641 leva a série para o mês 1.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "prova"
+        },
+        {
+          "id": "u15l2q36",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "séries especiais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um empréstimo de R$ 10.000,00 será pago em 2 parcelas iguais, no 2º e no 3º mês (carência de 1 mês), a juros compostos de 10% ao mês. Dados 1,1² = 1,21 e 1,1³ = 1,331, cada parcela vale, aproximadamente,",
+          "options": [
+            "R$ 5.000,00",
+            "R$ 5.761,90",
+            "R$ 6.050,00",
+            "R$ 6.338,10",
+            "R$ 6.655,00"
+          ],
+          "answer": 3,
+          "explanation": "P ÷ 1,21 + P ÷ 1,331 = 10.000, ou seja, P × (0,8264 + 0,7513) ≈ P × 1,5778 = 10.000, e P ≈ 6.338,10. O 5.761,90 esquece a carência (parcelas no 1º e no 2º mês); o 6.050 e o 6.655 corrigem metade da dívida por 2 ou 3 meses; o 5.000 esquece os juros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l2c6",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u15l3",
+      "order": 3,
+      "title": "Amortização",
+      "concepts": [
+        {
+          "id": "u15l3c1",
+          "title": "Prestação, juros e amortização",
+          "summary": "Cada prestação tem duas partes: os juros, calculados sobre o saldo devedor do início do período, e a amortização, que reduz a dívida: prestação = juros + amortização. Novo saldo = saldo anterior − amortização. Quanto mais cedo a dívida cai, menos juros se pagam no total."
+        },
+        {
+          "id": "u15l3c2",
+          "title": "Sistema de amortização constante (SAC)",
+          "summary": "SAC: amortização constante, A = valor financiado ÷ número de prestações. Como o saldo cai sempre o mesmo valor, os juros também caem, e as prestações diminuem em progressão aritmética: cada uma é a anterior menos A × i. Prestação de número k = A + i × saldo antes dela."
+        },
+        {
+          "id": "u15l3c3",
+          "title": "Sistema Price (francês)",
+          "summary": "Price (francês): prestações iguais, P = valor financiado ÷ a, com a = [1 − (1 + i)⁻ⁿ] ÷ i. No começo, a prestação é quase toda juros; com o tempo, os juros caem e a amortização cresce, e a soma fica constante. Saldo depois de cada prestação = saldo × (1 + i) − P. A “Tabela Price” costuma vir com taxa nominal anual capitalizada mensalmente: divida por 12."
+        },
+        {
+          "id": "u15l3c4",
+          "title": "Sistema misto e comparação",
+          "summary": "SAM (sistema misto): cada prestação é a média aritmética das prestações do SAC e da Price no mesmo mês; o mesmo vale para juros, amortização e saldo. Comparação, com mesmo valor, taxa e prazo: a 1ª prestação do SAC é maior que a da Price, e a última, menor; o SAC paga menos juros no total, porque amortiza mais cedo."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15l3q01",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: saldo de R$ 10.000 a 2% ao mês dá R$ 200 de juros no mês; com prestação de R$ 1.200, a amortização é 1.200 − 200 = R$ 1.000. Agora: saldo de R$ 20.000 a 1,5% ao mês e prestação de R$ 2.300. Qual é a amortização?",
+          "options": [
+            "R$ 2.000",
+            "R$ 2.300",
+            "R$ 300"
+          ],
+          "answer": 0,
+          "explanation": "Juros: 20.000 × 0,015 = 300; amortização: 2.300 − 300 = 2.000. O R$ 2.300 é a prestação inteira, e o R$ 300, só os juros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l3q02",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "Os juros de cada prestação são calculados sobre o valor original do empréstimo, do começo ao fim.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "São calculados sobre o saldo devedor do início de cada período, que cai à medida que a dívida é amortizada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l3q03",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Novo saldo = saldo anterior − amortização. Com saldo de R$ 20.000 e amortização de R$ 2.000 no mês, o saldo depois da prestação é",
+          "options": [
+            "R$ 17.700",
+            "R$ 18.000",
+            "R$ 20.300"
+          ],
+          "answer": 1,
+          "explanation": "Só a amortização reduz a dívida: 20.000 − 2.000 = 18.000. O R$ 17.700 tira a prestação inteira (os juros não abatem a dívida); o R$ 20.300 soma os juros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l3q04",
+          "type": "match",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada termo ao seu papel no financiamento:",
+          "pairs": [
+            {
+              "left": "Saldo devedor",
+              "right": "O que ainda falta amortizar"
+            },
+            {
+              "left": "Juros do período",
+              "right": "Taxa × saldo do início do período"
+            },
+            {
+              "left": "Amortização",
+              "right": "Parte da prestação que reduz a dívida"
+            },
+            {
+              "left": "Prestação",
+              "right": "Juros mais amortização"
+            }
+          ],
+          "explanation": "A prestação se divide em juros (o custo do período, sobre o saldo) e amortização (o que reduz o saldo).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l3q05",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um empréstimo de R$ 50.000,00 a 2% ao mês tem, na 1ª prestação, amortização de R$ 4.000,00. O valor da 1ª prestação e o saldo devedor logo depois dela são, respectivamente,",
+          "options": [
+            "R$ 4.000,00 e R$ 46.000,00.",
+            "R$ 5.000,00 e R$ 45.000,00.",
+            "R$ 1.000,00 e R$ 49.000,00.",
+            "R$ 4.080,00 e R$ 45.920,00.",
+            "R$ 5.000,00 e R$ 46.000,00."
+          ],
+          "answer": 4,
+          "explanation": "Juros: 50.000 × 0,02 = 1.000; prestação: 1.000 + 4.000 = 5.000; saldo: 50.000 − 4.000 = 46.000. Tirar a prestação inteira do saldo (45.000) trata os juros como amortização; 4.000 é só a amortização.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q06",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "elementos",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "Em qualquer sistema de amortização, os juros de cada período são calculados sobre",
+          "options": [
+            "o valor original do empréstimo, até a última prestação.",
+            "o valor da prestação paga no período.",
+            "a soma das amortizações já pagas.",
+            "o saldo devedor do início do período.",
+            "o total das prestações que ainda faltam pagar."
+          ],
+          "answer": 3,
+          "explanation": "Os juros remuneram o dinheiro que ainda está emprestado, isto é, o saldo devedor no começo do período. Por isso caem à medida que a dívida é amortizada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q07",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 12.000 em 4 prestações pelo SAC: a amortização é 12.000 ÷ 4 = R$ 3.000 em todas. Agora: R$ 60.000 em 10 prestações pelo SAC. Qual é a amortização mensal?",
+          "options": [
+            "R$ 600",
+            "R$ 12.000",
+            "R$ 6.000"
+          ],
+          "answer": 2,
+          "explanation": "60.000 ÷ 10 = 6.000 em todos os meses. O R$ 600 divide por 100, e o R$ 12.000, por 5.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l3q08",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No SAC, as prestações são iguais do começo ao fim do financiamento.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "No SAC a amortização é que é constante; os juros caem com o saldo, e as prestações diminuem. Prestações iguais são da Price.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l3q09",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Prestação k = A + i × saldo antes dela. R$ 60.000 em 10 prestações pelo SAC, a 2% ao mês. A 1ª prestação é",
+          "options": [
+            "R$ 7.200",
+            "R$ 6.000",
+            "R$ 7.080"
+          ],
+          "answer": 0,
+          "explanation": "6.000 + 0,02 × 60.000 = 6.000 + 1.200 = 7.200. O R$ 6.000 é só a amortização; o R$ 7.080 é a 2ª prestação (juros sobre 54.000).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l3q10",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "No SAC, cada prestação é A × i menor que a anterior. Com A = R$ 6.000 e i = 2% ao mês, quanto a 3ª prestação é menor que a 2ª?",
+          "options": [
+            "R$ 1.200",
+            "R$ 120",
+            "R$ 6.000"
+          ],
+          "answer": 1,
+          "explanation": "O saldo cai 6.000 por mês, então os juros caem 6.000 × 0,02 = 120. O R$ 1.200 são os juros da 1ª prestação, e o R$ 6.000, a amortização.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l3q11",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um financiamento de R$ 30.000,00 será pago em 6 prestações mensais pelo SAC, a 3% ao mês, a primeira um mês após a contratação. O valor da 4ª prestação é de",
+          "options": [
+            "R$ 5.150,00",
+            "R$ 5.300,00",
+            "R$ 5.450,00",
+            "R$ 5.600,00",
+            "R$ 5.900,00"
+          ],
+          "answer": 2,
+          "explanation": "A = 30.000 ÷ 6 = 5.000. Antes da 4ª, já foram amortizados 15.000: saldo de 15.000 e juros de 450. Prestação: 5.450. As outras alternativas são a 6ª, a 5ª, a 3ª e a 1ª prestação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q12",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "sac",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Pelo SAC, um empréstimo de R$ 48.000,00 em 24 prestações mensais teve 1ª prestação de R$ 3.440,00. A taxa mensal de juros é de",
+          "options": [
+            "2,00%",
+            "2,50%",
+            "3,00%",
+            "3,50%",
+            "7,17%"
+          ],
+          "answer": 2,
+          "explanation": "A = 48.000 ÷ 24 = 2.000; juros da 1ª: 3.440 − 2.000 = 1.440; taxa: 1.440 ÷ 48.000 = 3%. O 7,17% divide a prestação inteira pelo saldo, sem separar a amortização.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q13",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: saldo de R$ 10.000, 2% ao mês e prestação Price de R$ 1.500: juros 200, amortização 1.300, saldo novo R$ 8.700. Agora: saldo de R$ 20.000, 3% ao mês e prestação Price de R$ 2.600. Qual é o saldo depois da prestação?",
+          "options": [
+            "R$ 17.400",
+            "R$ 18.600",
+            "R$ 18.000"
+          ],
+          "answer": 2,
+          "explanation": "Juros: 600; amortização: 2.600 − 600 = 2.000; saldo: 18.000. O R$ 17.400 tira a prestação inteira; o R$ 18.600 soma os juros em vez de descontá-los da prestação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l3q14",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na Price, a amortização cresce ao longo do tempo, enquanto os juros de cada prestação diminuem.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A prestação é fixa; como o saldo cai, os juros caem, e a parte que sobra para amortizar cresce.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l3q15",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "P = valor financiado ÷ a. Um empréstimo de R$ 17.300 em 4 prestações mensais pela Price tem fator a = 3,46 (4 meses, 6%). A prestação é",
+          "options": [
+            "R$ 5.000",
+            "R$ 4.325",
+            "R$ 4.584,50"
+          ],
+          "answer": 0,
+          "explanation": "17.300 ÷ 3,46 = 5.000. O R$ 4.325 divide por 4 e esquece os juros; o R$ 4.584,50 só soma 6% a isso.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l3q16",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Taxa nominal na Tabela Price: 24% ao ano com capitalização mensal dão 2% ao mês. Num saldo de R$ 15.000, os juros do mês são",
+          "options": [
+            "R$ 3.600",
+            "R$ 300",
+            "R$ 600"
+          ],
+          "answer": 1,
+          "explanation": "24 ÷ 12 = 2% ao mês: 15.000 × 0,02 = 300. O R$ 3.600 aplica a taxa anual inteira; o R$ 600 usa 4% (24 ÷ 6).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l3q17",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um empréstimo de R$ 6.000,00 será pago em 3 prestações mensais iguais pela Tabela Price, a 10% ao mês, a primeira um mês após a contratação. Dado o fator a = 2,4869 (3 meses, 10%), o valor aproximado de cada prestação e os juros embutidos na 1ª são, respectivamente,",
+          "options": [
+            "R$ 2.412,64 e R$ 600,00.",
+            "R$ 2.000,00 e R$ 600,00.",
+            "R$ 2.412,64 e R$ 241,26.",
+            "R$ 2.600,00 e R$ 600,00.",
+            "R$ 2.200,00 e R$ 200,00."
+          ],
+          "answer": 0,
+          "explanation": "P = 6.000 ÷ 2,4869 ≈ 2.412,64. Os juros da 1ª incidem sobre o saldo inteiro: 6.000 × 0,10 = 600. O 2.600 é a 1ª prestação do SAC; o 2.000 é só a amortização do SAC; o 241,26 aplica a taxa sobre a prestação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q18",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "price",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Pela Tabela Price, um empréstimo de R$ 10.000,00 a 4% ao mês tem prestação de R$ 2.246,27. O saldo devedor logo após a 1ª prestação é de",
+          "options": [
+            "R$ 7.753,73",
+            "R$ 8.153,73",
+            "R$ 9.600,00",
+            "R$ 10.000,00",
+            "R$ 10.400,00"
+          ],
+          "answer": 1,
+          "explanation": "Saldo × (1 + i) − P: 10.000 × 1,04 − 2.246,27 = 8.153,73 (juros 400, amortização 1.846,27). O 7.753,73 tira a prestação inteira; o 9.600 tira só os juros; o 10.400 só os soma.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q19",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: no mês 1, a prestação do SAC é R$ 3.000 e a da Price, R$ 2.600; no SAM, (3.000 + 2.600) ÷ 2 = R$ 2.800. Agora: no mês 1, SAC = R$ 7.200 e Price = R$ 6.680. Qual é a prestação do SAM?",
+          "options": [
+            "R$ 13.880",
+            "R$ 6.680",
+            "R$ 6.940"
+          ],
+          "answer": 2,
+          "explanation": "(7.200 + 6.680) ÷ 2 = 6.940. O R$ 13.880 soma sem dividir; o R$ 6.680 é a Price.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l3q20",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Com o mesmo valor, a mesma taxa e o mesmo prazo, o total de juros pagos no SAC é menor que na Price.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "No SAC a dívida cai mais depressa no começo, então os juros, que incidem sobre o saldo, somam menos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l3q21",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "No SAM, o saldo também é a média dos dois sistemas. Depois da 1ª prestação, o saldo no SAC é R$ 54.000 e na Price, R$ 54.520. Qual é o saldo no SAM?",
+          "options": [
+            "R$ 54.260",
+            "R$ 108.520",
+            "R$ 54.000"
+          ],
+          "answer": 0,
+          "explanation": "(54.000 + 54.520) ÷ 2 = 54.260. O R$ 108.520 soma sem dividir; o R$ 54.000 é o saldo do SAC.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l3q22",
+          "type": "match",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada sistema à sua característica:",
+          "pairs": [
+            {
+              "left": "SAC",
+              "right": "Amortização constante e prestações decrescentes"
+            },
+            {
+              "left": "Price",
+              "right": "Prestações constantes e amortização crescente"
+            },
+            {
+              "left": "SAM",
+              "right": "Prestação igual à média de SAC e Price"
+            }
+          ],
+          "explanation": "SAC fixa a amortização; Price fixa a prestação; SAM tira a média dos dois, mês a mês.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l3q23",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um financiamento de R$ 100.000,00 em 10 prestações mensais, a 2% ao mês, tem 1ª prestação de R$ 11.132,65 pela Tabela Price. Pelo sistema misto (SAM), a 1ª prestação é de, aproximadamente,",
+          "options": [
+            "R$ 10.000,00",
+            "R$ 11.132,65",
+            "R$ 11.566,33",
+            "R$ 12.000,00",
+            "R$ 23.132,65"
+          ],
+          "answer": 2,
+          "explanation": "SAC: 10.000 de amortização + 2.000 de juros = 12.000. SAM: (12.000 + 11.132,65) ÷ 2 ≈ 11.566,33. O 12.000 e o 11.132,65 são o SAC e a Price; o 10.000 é só a amortização do SAC; o 23.132,65 soma sem dividir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l3q24",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "sam e comparação",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Comparando SAC e Price com o mesmo valor financiado, a mesma taxa e o mesmo prazo, NÃO é correto afirmar que",
+          "options": [
+            "o SAC paga menos juros no total.",
+            "no SAC, a amortização é igual em todos os meses.",
+            "na Price, as prestações são iguais.",
+            "a última prestação do SAC é menor que a última da Price.",
+            "a 1ª prestação da Price é maior que a 1ª prestação do SAC."
+          ],
+          "answer": 4,
+          "explanation": "O SAC começa com a prestação maior, porque amortiza mais logo no início; a Price começa menor e fica igual até o fim. As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l3c4",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u15l4",
+      "order": 4,
+      "title": "Avaliação de projetos",
+      "concepts": [
+        {
+          "id": "u15l4c1",
+          "title": "Fluxo de caixa e TMA",
+          "summary": "Fluxo de caixa: as entradas (+) e as saídas (−) de dinheiro em cada data; o investimento inicial fica na data 0, com sinal negativo. TMA (taxa mínima de atratividade) é o retorno que a empresa exige, o custo de oportunidade do dinheiro. Para comparar valores de datas diferentes, traga tudo à data 0 descontando pela TMA: VP = FC ÷ (1 + TMA)ᵗ."
+        },
+        {
+          "id": "u15l4c2",
+          "title": "Valor presente líquido (VPL)",
+          "summary": "VPL = valor presente das entradas − valor presente das saídas, descontados pela TMA. VPL > 0: o projeto rende mais que a TMA e deve ser aceito; VPL = 0: rende exatamente a TMA; VPL < 0: deve ser rejeitado. Entre projetos excludentes, escolha o de maior VPL. Quanto maior a TMA, menor o VPL."
+        },
+        {
+          "id": "u15l4c3",
+          "title": "Taxa interna de retorno (TIR)",
+          "summary": "TIR (taxa interna de retorno) é a taxa que zera o VPL: com ela, o valor presente das entradas é igual ao do investimento. Regra: TIR > TMA, aceita; TIR < TMA, rejeita. Com uma única entrada, sai direto: investir 1.000 para receber 1.150 em 1 ano dá TIR de 15%. Com várias entradas, teste as taxas das alternativas até o VPL dar zero."
+        },
+        {
+          "id": "u15l4c4",
+          "title": "Capitalização contínua",
+          "summary": "Na capitalização contínua, o juro é incorporado a cada instante: M = C × eʳᵗ, com e ≈ 2,718 e r a taxa contínua por período. A taxa efetiva equivalente é eʳ − 1: 10% ao ano contínuos dão e^0,1 − 1 ≈ 10,52% ao ano. É o limite da capitalização composta quando as capitalizações ficam cada vez mais frequentes; com a mesma taxa nominal, rende mais que a mensal."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15l4q01",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: com TMA de 10% ao ano, receber R$ 1.210 daqui a 2 anos vale hoje 1.210 ÷ 1,21 = R$ 1.000. Agora: um projeto paga R$ 2.420 daqui a 2 anos. Com TMA de 10% ao ano, quanto isso vale hoje?",
+          "options": [
+            "R$ 2.200",
+            "R$ 2.000",
+            "R$ 1.936"
+          ],
+          "answer": 1,
+          "explanation": "2.420 ÷ 1,21 = 2.000. O R$ 2.200 desconta só um ano; o R$ 1.936 tira 20% do valor, que não é o mesmo que dividir por 1,21.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l4q02",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "No fluxo de caixa de um projeto, o investimento inicial aparece na data 0, com sinal negativo.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "É uma saída de dinheiro no início do projeto; as entradas futuras aparecem nas datas seguintes, com sinal positivo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l4q03",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A TMA é o custo de oportunidade: o que o dinheiro renderia na melhor alternativa disponível. Uma empresa consegue 12% ao ano sem risco no mercado. Que TMA faz sentido para avaliar os projetos dela?",
+          "options": [
+            "0%, porque o dinheiro é próprio",
+            "a inflação do ano",
+            "pelo menos 12% ao ano"
+          ],
+          "answer": 2,
+          "explanation": "Um projeto que rende menos que 12% perde para a aplicação sem risco. Dinheiro próprio também tem custo de oportunidade, e a inflação, sozinha, não remunera o capital.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l4q04",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Traga cada entrada pela TMA e some. Entradas de R$ 1.100 em 1 ano e de R$ 1.210 em 2 anos, com TMA de 10% ao ano. Qual é o valor presente das entradas?",
+          "options": [
+            "R$ 2.000",
+            "R$ 2.310",
+            "R$ 2.100"
+          ],
+          "answer": 0,
+          "explanation": "1.100 ÷ 1,1 + 1.210 ÷ 1,21 = 1.000 + 1.000 = 2.000. O R$ 2.310 soma sem descontar; o R$ 2.100 desconta só a segunda entrada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l4q05",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "As entradas de um projeto são de R$ 3.300,00 no fim do 1º ano e de R$ 3.630,00 no fim do 2º; o investimento inicial é de R$ 5.000,00. Descontadas pela TMA de 10% ao ano, essas entradas valem hoje",
+          "options": [
+            "R$ 1.000,00",
+            "R$ 5.000,00",
+            "R$ 6.000,00",
+            "R$ 6.300,00",
+            "R$ 6.930,00"
+          ],
+          "answer": 2,
+          "explanation": "3.300 ÷ 1,1 + 3.630 ÷ 1,21 = 3.000 + 3.000 = 6.000. O 1.000 é o VPL (entradas menos investimento), não o valor das entradas; o 6.300 desconta a 2ª entrada por um ano só; o 6.930 não desconta; o 5.000 é o investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q06",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "fluxo de caixa",
+          "difficulty": 1,
+          "style": "literal",
+          "stem": "Na análise de investimentos, a taxa mínima de atratividade (TMA) representa",
+          "options": [
+            "a taxa que zera o valor presente líquido do projeto.",
+            "a inflação oficial do período de análise.",
+            "o prazo necessário para recuperar o investimento inicial.",
+            "a taxa de juros paga pela poupança no período.",
+            "o retorno mínimo exigido, equivalente ao custo de oportunidade do capital."
+          ],
+          "answer": 4,
+          "explanation": "A TMA é o retorno que se exige para aceitar o projeto, porque é o que o dinheiro renderia em outra alternativa. A taxa que zera o VPL é a TIR; o prazo de recuperação é outra medida; inflação e poupança não definem a TMA.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q07",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: investe R$ 1.000, recebe R$ 1.320 em 1 ano, TMA de 10%: VPL = 1.320 ÷ 1,1 − 1.000 = R$ 200. Agora: investe R$ 4.000 e recebe R$ 4.620 em 1 ano, com TMA de 10% ao ano. Qual é o VPL?",
+          "options": [
+            "R$ 620",
+            "R$ 200",
+            "R$ 4.200"
+          ],
+          "answer": 1,
+          "explanation": "4.620 ÷ 1,1 = 4.200, e 4.200 − 4.000 = 200. O R$ 620 é o ganho sem descontar; o R$ 4.200 é o valor presente da entrada, sem tirar o investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l4q08",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Um projeto com VPL negativo, calculado pela TMA da empresa, deve ser aceito, porque ainda gera entradas positivas.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "VPL negativo significa que as entradas, trazidas a hoje pela TMA, não pagam o investimento: o projeto rende menos que a alternativa e deve ser rejeitado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l4q09",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Aumentar a TMA reduz o valor presente das entradas. Se o VPL de um projeto é R$ 500 com TMA de 8%, com TMA de 12% o VPL tende a",
+          "options": [
+            "aumentar",
+            "continuar igual",
+            "diminuir"
+          ],
+          "answer": 2,
+          "explanation": "Descontar as entradas por uma taxa maior dá valores presentes menores; o investimento, na data 0, não muda. Logo, o VPL cai.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l4q10",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Entre projetos excludentes, escolha o de maior VPL. O projeto A tem VPL de R$ 3.000, e o B, de R$ 4.500; só um pode ser feito. A escolha é",
+          "options": [
+            "o projeto B",
+            "o projeto A",
+            "os dois, somando os VPLs"
+          ],
+          "answer": 0,
+          "explanation": "Excludentes: só um entra, e o que mais agrega valor hoje é o de maior VPL. Somar não vale, porque fazer um impede o outro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l4q11",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um projeto exige investimento de R$ 10.000,00 hoje e gera entradas de R$ 6.600,00 em 1 ano e de R$ 7.260,00 em 2 anos. Com TMA de 10% ao ano, o VPL do projeto é de",
+          "options": [
+            "−R$ 2.000,00",
+            "R$ 2.000,00",
+            "R$ 3.860,00",
+            "R$ 12.000,00",
+            "R$ 13.860,00"
+          ],
+          "answer": 1,
+          "explanation": "6.600 ÷ 1,1 + 7.260 ÷ 1,21 = 6.000 + 6.000 = 12.000; VPL = 12.000 − 10.000 = 2.000. O 3.860 não desconta as entradas; o 12.000 esquece o investimento; o 13.860 soma as entradas sem descontar; o −2.000 troca o sinal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q12",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "vpl",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma empresa com TMA de 12% ao ano avalia três projetos excludentes: X, com VPL de R$ 8.000,00; Y, com VPL de −R$ 1.000,00; e Z, com VPL de R$ 12.000,00. A decisão correta é",
+          "options": [
+            "fazer o projeto X, que tem o menor investimento.",
+            "fazer o projeto Y, porque ele ainda gera entradas.",
+            "fazer os projetos X e Z, somando os seus VPLs.",
+            "fazer o projeto Z.",
+            "não fazer nenhum, porque um dos VPLs é negativo."
+          ],
+          "answer": 3,
+          "explanation": "Projetos excludentes: só um entra, e o de maior VPL (Z) é o que mais agrega valor. O investimento de X não foi informado; Y tem VPL negativo; somar X e Z é impossível, porque são excludentes; o VPL negativo de Y não afeta os outros.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c2",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q13",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: investe R$ 1.000 e recebe R$ 1.150 em 1 ano: a TIR é 1.150 ÷ 1.000 − 1 = 15%. Agora: investe R$ 2.000 e recebe R$ 2.360 em 1 ano. Qual é a TIR?",
+          "options": [
+            "36%",
+            "18%",
+            "15,25%"
+          ],
+          "answer": 1,
+          "explanation": "2.360 ÷ 2.000 = 1,18: TIR de 18%. O 15,25% divide o ganho pela entrada (360 ÷ 2.360), e não pelo investimento; o 36% dobra a taxa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l4q14",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Se a TIR de um projeto é de 14% ao ano e a TMA da empresa é de 10% ao ano, o projeto deve ser aceito.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "TIR maior que a TMA quer dizer que o projeto rende mais que o mínimo exigido; com a TMA, o VPL dá positivo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l4q15",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Com uma única entrada em 2 anos: (1 + TIR)² = entrada ÷ investimento. Investe R$ 10.000 e recebe R$ 12.100 em 2 anos. A TIR anual é",
+          "options": [
+            "21%",
+            "10,5%",
+            "10%"
+          ],
+          "answer": 2,
+          "explanation": "12.100 ÷ 10.000 = 1,21 = 1,1²: TIR de 10% ao ano. O 21% é o ganho dos 2 anos; o 10,5% divide 21% por 2, a lógica dos juros simples.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l4q16",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Pela definição da TIR, quando o fluxo é descontado por ela, o VPL é",
+          "options": [
+            "zero",
+            "igual ao investimento",
+            "sempre positivo"
+          ],
+          "answer": 0,
+          "explanation": "A TIR é exatamente a taxa que iguala o valor presente das entradas ao investimento, e por isso zera o VPL.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l4q17",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um projeto custa R$ 1.000,00 hoje e paga R$ 1.440,00 daqui a 2 anos, numa única entrada. A TIR anual do projeto é de",
+          "options": [
+            "20%",
+            "22%",
+            "44%",
+            "72%",
+            "144%"
+          ],
+          "answer": 0,
+          "explanation": "(1 + TIR)² = 1.440 ÷ 1.000 = 1,44, então 1 + TIR = 1,2 e a TIR é 20% ao ano. O 22% divide 44% por 2; o 44% é o ganho dos 2 anos; o 72% e o 144% partem de 1.440 sem tirar o investimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q18",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "tir",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um projeto custa R$ 20.000,00 e gera R$ 11.500,00 em 1 ano e R$ 13.225,00 em 2 anos. Testando taxas, conclui-se que a TIR anual do projeto é de",
+          "options": [
+            "10%",
+            "15%",
+            "18,5%",
+            "20%",
+            "23,6%"
+          ],
+          "answer": 1,
+          "explanation": "A 15%: 11.500 ÷ 1,15 + 13.225 ÷ 1,3225 = 10.000 + 10.000 = 20.000, e o VPL é zero. A 10% o VPL ainda é positivo, e a 20% já é negativo. O 23,6% é o ganho total sem descontar (24.725 ÷ 20.000 − 1).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q19",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: R$ 1.000 a 10% ao ano contínuos, por 1 ano: M = 1.000 × e^0,1 ≈ 1.000 × 1,1052 = R$ 1.105,20. Agora: R$ 5.000 a 10% ao ano contínuos, por 1 ano (e^0,1 ≈ 1,1052). Qual é o montante?",
+          "options": [
+            "R$ 5.500",
+            "R$ 5.526",
+            "R$ 5.512,50"
+          ],
+          "answer": 1,
+          "explanation": "5.000 × 1,1052 = 5.526. O R$ 5.500 capitaliza uma vez no ano; o R$ 5.512,50, duas vezes (1,05²). A contínua rende um pouco mais que as duas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u15l4q20",
+          "type": "truefalse",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Com a mesma taxa nominal anual, a capitalização contínua rende mais que a capitalização mensal.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Quanto mais frequentes as capitalizações, maior o montante; a contínua é o limite dessa sequência.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u15l4q21",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Taxa efetiva da contínua: eʳ − 1. Dado e^0,2 ≈ 1,2214, a taxa efetiva anual equivalente a 20% ao ano contínuos é de",
+          "options": [
+            "20%",
+            "21%",
+            "22,14%"
+          ],
+          "answer": 2,
+          "explanation": "1,2214 − 1 = 22,14% ao ano. O 20% é a própria taxa contínua; o 21% seria a efetiva com capitalização semestral (1,1²).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u15l4q22",
+          "type": "quick",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "M = C × eʳᵗ: a taxa vezes o tempo vai no expoente. Dado e^0,3 ≈ 1,3499, R$ 10.000 a 10% ao ano contínuos, por 3 anos, viram",
+          "options": [
+            "R$ 13.499",
+            "R$ 13.000",
+            "R$ 13.310"
+          ],
+          "answer": 0,
+          "explanation": "r × t = 0,1 × 3 = 0,3, e 10.000 × 1,3499 = 13.499. O R$ 13.000 é o juro simples; o R$ 13.310, o composto anual (1,1³).",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u15l4q23",
+          "type": "case",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um capital de R$ 20.000,00 é aplicado a 6% ao ano com capitalização contínua por 5 anos. Dado e^0,3 ≈ 1,35, o montante é de",
+          "options": [
+            "R$ 21.200,00",
+            "R$ 21.236,73",
+            "R$ 26.000,00",
+            "R$ 26.764,51",
+            "R$ 27.000,00"
+          ],
+          "answer": 4,
+          "explanation": "r × t = 0,06 × 5 = 0,3: M = 20.000 × 1,35 = 27.000. O 26.764,51 é o composto anual (1,06⁵); o 26.000, o simples; o 21.200 e o 21.236,73 param no 1º ano.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "prova"
+        },
+        {
+          "id": "u15l4q24",
+          "type": "mcq5",
+          "topic": "Matemática financeira",
+          "subtopic": "capitalização contínua",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Sobre a capitalização contínua, NÃO é correto afirmar que",
+          "options": [
+            "a taxa efetiva equivalente é igual à própria taxa contínua.",
+            "o montante é dado por C × eʳᵗ.",
+            "a taxa efetiva equivalente a uma taxa contínua r é eʳ − 1.",
+            "com a mesma taxa nominal, rende mais que a capitalização mensal.",
+            "é o limite da capitalização composta com capitalizações cada vez mais frequentes."
+          ],
+          "answer": 0,
+          "explanation": "A efetiva é eʳ − 1, maior que r: 10% contínuos equivalem a cerca de 10,52% efetivos. As outras afirmações estão corretas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u15l4c4",
+          "level": "prova"
+        }
+      ]
+    }
+  ]
+}

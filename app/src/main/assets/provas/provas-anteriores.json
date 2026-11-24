@@ -11530,6 +11530,7 @@
   {
    "id": "fgv-banestes-2018-tb-q22",
    "lesson": "u15l1",
+   "concept": "u15l1c1",
    "type": "mcq5",
    "topic": "Juros simples",
    "subtopic": "juros de mora",
@@ -11560,6 +11561,7 @@
   {
    "id": "fgv-banestes-2018-tb-q24",
    "lesson": "u15l1",
+   "concept": "u15l1c5",
    "type": "mcq5",
    "topic": "Taxas",
    "subtopic": "taxa real",
@@ -11590,6 +11592,7 @@
   {
    "id": "fgv-banestes-2018-tb-q25",
    "lesson": "u15l1",
+   "concept": "u15l1c2",
    "type": "mcq5",
    "topic": "Juros compostos",
    "subtopic": "interpolação de fatores",
@@ -11620,6 +11623,7 @@
   {
    "id": "fgv-banestes-2018-tb-q26",
    "lesson": "u15l1",
+   "concept": "u15l1c4",
    "type": "mcq5",
    "topic": "Taxas",
    "subtopic": "nominal e efetiva",
@@ -11650,6 +11654,7 @@
   {
    "id": "fgv-banestes-2018-tb-q29",
    "lesson": "u15l1",
+   "concept": "u15l1c2",
    "type": "mcq5",
    "topic": "Juros compostos",
    "subtopic": "montante com saque",
@@ -11680,6 +11685,7 @@
   {
    "id": "fgv-banestes-2018-tb-q30",
    "lesson": "u15l1",
+   "concept": "u15l1c4",
    "type": "mcq5",
    "topic": "Juros compostos",
    "subtopic": "rotativo do cartão",
@@ -11710,6 +11716,7 @@
   {
    "id": "fgv-banestes-2018-tb-q33",
    "lesson": "u15l1",
+   "concept": "u15l1c2",
    "type": "mcq5",
    "topic": "Juros compostos",
    "subtopic": "prazo equivalente",
@@ -11740,6 +11747,7 @@
   {
    "id": "fgv-banestes-2018-tb-q39",
    "lesson": "u15l1",
+   "concept": "u15l1c5",
    "type": "mcq5",
    "topic": "Rentabilidade",
    "subtopic": "média ponderada de aplicações",
@@ -11770,6 +11778,7 @@
   {
    "id": "fgv-banestes-2018-tb-q23",
    "lesson": "u15l2",
+   "concept": "u15l2c6",
    "type": "mcq5",
    "topic": "Séries de pagamentos",
    "subtopic": "carência e prestações antecipadas",
@@ -11800,6 +11809,7 @@
   {
    "id": "fgv-banestes-2018-tb-q32",
    "lesson": "u15l2",
+   "concept": "u15l2c1",
    "type": "mcq5",
    "topic": "Desconto",
    "subtopic": "comercial simples",
@@ -11830,6 +11840,7 @@
   {
    "id": "fgv-banestes-2018-tb-q34",
    "lesson": "u15l2",
+   "concept": "u15l2c6",
    "type": "mcq5",
    "topic": "Séries de pagamentos",
    "subtopic": "taxa de série antecipada",
@@ -11860,6 +11871,7 @@
   {
    "id": "fgv-banestes-2018-tb-q36",
    "lesson": "u15l2",
+   "concept": "u15l2c3",
    "type": "mcq5",
    "topic": "Desconto",
    "subtopic": "comercial composto",
@@ -11890,6 +11902,7 @@
   {
    "id": "fgv-banestes-2018-tb-q38",
    "lesson": "u15l2",
+   "concept": "u15l2c3",
    "type": "mcq5",
    "topic": "Desconto",
    "subtopic": "comercial e racional compostos",
@@ -11920,6 +11933,7 @@
   {
    "id": "fgv-banestes-2018-tb-q40",
    "lesson": "u15l2",
+   "concept": "u15l2c1",
    "type": "mcq5",
    "topic": "Desconto",
    "subtopic": "desconto bancário com IOF e taxa",
@@ -11950,6 +11964,7 @@
   {
    "id": "fgv-banestes-2018-tb-q28",
    "lesson": "u15l3",
+   "concept": "u15l3c3",
    "type": "mcq5",
    "topic": "Amortização",
    "subtopic": "Tabela Price",
@@ -11980,6 +11995,7 @@
   {
    "id": "fgv-banestes-2018-tb-q31",
    "lesson": "u15l3",
+   "concept": "u15l3c2",
    "type": "mcq5",
    "topic": "Amortização",
    "subtopic": "SAC",
@@ -12010,6 +12026,7 @@
   {
    "id": "fgv-banestes-2018-tb-q37",
    "lesson": "u15l3",
+   "concept": "u15l3c2",
    "type": "mcq5",
    "topic": "Amortização",
    "subtopic": "SAC",
