@@ -53,7 +53,8 @@ da numeração impressa. Esta revisão não substitui a do dono, e todos os exer
 1. **60 explicações da u1 (lições 2 a 5) só repetem a resposta** e colam o resumo do conceito (“X é a resposta que
    aplica essa regra”), o que a Parte 4.6 do guia proíbe. As de `match` são aceitáveis (listam os pares); as de
    `quick` e `truefalse` precisam dizer por que as outras opções erram. Lista: `u1l2q11` a `q30`, `u1l3q11` a `q30`,
-   `u1l4q11` a `q30`, `u1l5q11` a `q30` (passos de aprender e praticar). Proposta: um PR só para reescrevê-las.
+   `u1l4q11` a `q30`, `u1l5q11` a `q30` (passos de aprender e praticar). **Resolvido** no PR seguinte (branch
+   `content/u1-explicacoes`): cada uma agora diz por que a certa vale e por que as outras opções erram.
 2. **Lacunas de cobertura** que a apostila trata e o app ainda não:
    - u1: dimensões que mudam no tempo (tipo 1 e tipo 2), teorema CAP e consistência eventual, OLAP *pivot*, paginação
      por dialeto (LIMIT no PostgreSQL e H2, FETCH FIRST no Oracle, que não tem LIMIT), DDL transacional no PostgreSQL e
