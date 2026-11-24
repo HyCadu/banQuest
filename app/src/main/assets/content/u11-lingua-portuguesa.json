@@ -396,7 +396,7 @@
      "style": "conceitual",
      "stem": "A frase redigida de acordo com a norma-padrão é:",
      "options": [
-      "O cliente não informou ao gerente porque desistiu do empréstimo.",
+      "Ninguém sabe porque o cliente desistiu do empréstimo.",
       "Por que você não renovou o seguro? Por que não quis.",
       "Você cancelou o cartão do banco porquê?",
       "O atendimento do caixa foi mau feito ontem.",
@@ -3615,7 +3615,7 @@
      "subtopic": "pontuacao-reescrita",
      "difficulty": 1,
      "style": "caso_pratico",
-     "stem": "Juntar “O banco reduziu a tarifa” e “Os clientes aumentaram” como “O banco reduziu a tarifa, por isso os clientes aumentaram” cria entre as ideias uma relação de conclusão.",
+     "stem": "Juntar “O banco reduziu a tarifa” e “O número de clientes aumentou” como “O banco reduziu a tarifa, por isso o número de clientes aumentou” cria entre as ideias uma relação de conclusão.",
      "options": [
       "Certo",
       "Errado"
