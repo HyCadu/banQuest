@@ -3583,7 +3583,7 @@
       "o banco do tipo chave-valor puro, em que o valor é um bloco opaco que o SGBD não consegue consultar por campos internos.",
       "o banco orientado a grafos, indicado quando o foco são as arestas entre os usuários.",
       "o banco relacional, com uma tabela para cada nível de aninhamento e esquema fixo.",
-      "o banco orientado a colunas, otimizado para varreduras analíticas sobre poucas colunas."
+      "o banco de colunas largas, voltado a grandes volumes de escrita distribuídos entre muitos nós."
      ],
      "answer": 0,
      "explanation": "Documentos (como JSON) acomodam estrutura variável e aninhada e permitem consulta por campos internos. Em chave-valor puro o valor é opaco ao SGBD.",
@@ -3599,7 +3599,7 @@
      "subtopic": "governanca",
      "difficulty": 2,
      "style": "conceitual",
-     "stem": "Na governança de dados, o papel responsável por zelar pela qualidade e pelo significado dos dados de um domínio de negócio, definindo regras e padrões de uso, é o",
+     "stem": "Na governança de dados, o papel que, no dia a dia, cuida da qualidade e do significado dos dados de um domínio de negócio, mantendo as definições e resolvendo inconsistências, é o",
      "options": [
       "administrador de banco de dados (DBA), que define o significado de negócio dos dados.",
       "data steward (curador de dados).",
@@ -3920,7 +3920,7 @@
      "difficulty": 1,
      "style": "caso_pratico",
      "stem": "Exemplo: um documento de produto contém nome, lista de cores e medidas. O modelo de documentos permite consultar esses campos internos. Agora: A rede guarda fichas de produtos com listas e campos variáveis e consulta seus campos internos. Qual modelo se ajusta a esse uso?",
-     "explanation": "Documentos. Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL.",
+     "explanation": "Documentos. Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Colunas largas: Famílias de colunas distribuídas entre muitos nós.",
      "source": "ia",
      "reviewed": false,
      "concept": "u1l5c4",
@@ -3983,7 +3983,7 @@
      "difficulty": 2,
      "style": "conceitual",
      "stem": "Retome o cenário da lição e associe cada termo de modelos nosql ao seu significado:",
-     "explanation": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL.",
+     "explanation": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Colunas largas: Famílias de colunas distribuídas entre muitos nós.",
      "source": "ia",
      "reviewed": false,
      "concept": "u1l5c4",
@@ -4116,7 +4116,7 @@
     {
      "id": "u1l5c4",
      "title": "Modelos NoSQL",
-     "summary": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Famílias de colunas: Outra categoria clássica de NoSQL."
+     "summary": "Chave-valor: Acesso a um valor pela chave. Documentos: Campos e estruturas aninhadas. Grafos: Nós ligados por relações. Colunas largas: Famílias de colunas distribuídas entre muitos nós."
     },
     {
      "id": "u1l5c5",

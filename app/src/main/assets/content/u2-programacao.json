@@ -27,7 +27,7 @@
     {
      "id": "u2l1c1",
      "title": "Tipos e representação de números",
-     "summary": "int guarda inteiros; double, números com casas decimais; boolean, verdadeiro ou falso. Entre dois int, a divisão descarta a parte fracionária (7 / 2 = 3). Em complemento a dois com n bits, o intervalo vai de −2^(n−1) a 2^(n−1) − 1."
+     "summary": "int guarda inteiros; double, números com casas decimais (para dinheiro, BigDecimal no Java ou decimal no C#, sem erro de arredondamento); boolean, verdadeiro ou falso. Entre dois int, a divisão descarta a parte fracionária (7 / 2 = 3). Em complemento a dois com n bits, o intervalo vai de −2^(n−1) a 2^(n−1) − 1."
     },
     {
      "id": "u2l1c2",
@@ -63,14 +63,14 @@
      "subtopic": "fundamentos",
      "difficulty": 1,
      "style": "caso_pratico",
-     "stem": "Exemplo: em Java, int guarda inteiros (idade = 30), double guarda números com casas decimais (taxa = 1.5) e boolean guarda true ou false. Agora: no sistema do caixa, a variável saldo vai guardar 1250.75. Qual tipo serve?",
+     "stem": "Exemplo: em Java, int guarda inteiros (idade = 30), double guarda números com casas decimais (taxa = 1.5) e boolean guarda true ou false. Agora: no sistema do caixa, a variável mediaPorHora vai guardar 12.5 clientes atendidos por hora. Qual tipo serve?",
      "options": [
       "int",
       "double",
       "boolean"
      ],
      "answer": 1,
-     "explanation": "1250.75 tem casas decimais, então precisa de um tipo real como double. int perderia os centavos e boolean só guarda verdadeiro ou falso.",
+     "explanation": "12.5 tem casas decimais, então precisa de um tipo real como double. int perderia a parte decimal e boolean só guarda verdadeiro ou falso. Para dinheiro, o double não serve: acumula erros de arredondamento (use BigDecimal no Java ou decimal no C#).",
      "source": "ia",
      "reviewed": false,
      "concept": "u2l1c1",
@@ -133,7 +133,7 @@
       },
       {
        "left": "double",
-       "right": "Valor com centavos, como 10.50"
+       "right": "Média com casas decimais, como 12.5"
       },
       {
        "left": "char",
