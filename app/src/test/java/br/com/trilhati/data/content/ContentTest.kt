@@ -28,7 +28,7 @@ class ContentTest {
     @Test fun `todos os pacotes embutidos sao validos, por conceitos, e cada questao oficial tem conceito da licao`() {
         val packs = File("src/main/assets/content").listFiles { f -> f.extension == "json" }!!.sortedBy { it.name }
             .map { json.decodeFromString(PackDto.serializer(), it.readText(Charsets.UTF_8)) }
-        assertEquals(listOf("u1", "u11", "u12", "u16", "u2"), packs.map { it.unit.id })
+        assertEquals(listOf("u1", "u11", "u12", "u15", "u16", "u2"), packs.map { it.unit.id })
         packs.forEach { assertEquals(it.pack, emptyList<String>(), ContentValidator.validate(it)) }
         val exam = parseProvas().toDomain()
         val course = CourseAssembler.assemble(packs.mapNotNull { it.toDomain() }, exam)
@@ -48,7 +48,13 @@ class ContentTest {
         assertEquals(listOf(7, 6, 5, 6), u12.map { it.concepts.size })
         assertEquals(listOf(26, 17, 18, 12), u12.map { l -> l.questions.count { it.isFromExam } })
         u12.forEach { l -> assertTrue(l.id, l.hasContent && l.questions.all { l.concept(it.conceptId) != null }) }
-        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u12", "u16") }.none { it.hasContent })
+        // G5 (u15) Matemática financeira: l1 Juros e taxas (5 conceitos, 8 oficiais), l2 Descontos e séries (6, 6),
+        // l3 Amortização (4, 3) e l4 Avaliação de projetos (4, nenhuma oficial ainda).
+        val u15 = course.first { it.id == "u15" }.lessons
+        assertEquals(listOf(5, 6, 4, 4), u15.map { it.concepts.size })
+        assertEquals(listOf(8, 6, 3, 0), u15.map { l -> l.questions.count { it.isFromExam } })
+        u15.forEach { l -> assertTrue(l.id, l.hasContent && l.questions.all { l.concept(it.conceptId) != null }) }
+        assertTrue(course.filter { it.id !in setOf("u1", "u2", "u11", "u12", "u15", "u16") }.none { it.hasContent })
     }
 
     @Test fun `unidade 1 tem 5 licoes por conceitos, a primeira com 50 exercicios e as outras com 30`() {

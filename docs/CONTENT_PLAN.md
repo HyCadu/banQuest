@@ -214,10 +214,10 @@ Na tabela, l5 a l8 são as lições 1 a 4 da `u15`.
 | l2 Aritmética | inteiros, racionais, frações, expressões, múltiplos e divisores | `mcq5` | |
 | l3 Proporção e porcentagem | razão, proporção, divisão proporcional, regra de três, porcentagem, acréscimos e descontos | `case` | |
 | l4 Estatística e contagem | média, moda, mediana, desvio, variância, gráficos e tabelas, princípio multiplicativo, permutação, combinação | `case` | gráficos descritos em texto (o app não mostra imagem) |
-| l5 Juros e taxas | juros simples e compostos, montante, nominal × efetiva × real, equivalência de taxas e capitais, capitalização contínua | `case` | contas que dão para fazer à mão; a explicação mostra o cálculo |
+| l5 Juros e taxas | juros simples e compostos, montante, nominal × efetiva × real, equivalência de taxas | `case` | contas que dão para fazer à mão; a explicação mostra o cálculo |
 | l6 Descontos e séries | desconto simples e composto (comercial e racional), séries uniformes e não uniformes | `case` | |
 | l7 Amortização | Price, SAC, Sistema Misto | `case`, `match` | |
-| l8 Avaliação de projetos | fluxo de caixa, valor presente e futuro, VPL, TIR | `case` | liga com U7l4 (ROI, TCO) |
+| l8 Avaliação de projetos | fluxo de caixa, TMA, VPL, TIR, capitalização contínua | `case` | liga com U7l4 (ROI, TCO); só Analista. **Feita:** pacote `u15-matematica-financeira` (l5 a l8 = lições 1 a 4); VP, VF e equivalência de capitais ficaram na l6 |
 
 Matemática financeira tem 4 lições porque é a parte mais larga do edital de Raciocínio. O Técnico Bancário vê só as 3
 primeiras (o edital dele não cita VPL, TIR nem capitalização contínua). Questões de cálculo: conferir cada

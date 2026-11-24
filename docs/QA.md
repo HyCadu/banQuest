@@ -465,8 +465,24 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       seria o amostral.
 - [ ] Questões com gráfico (curva S da obra, consumo de refrigerantes) aparecem com o gráfico descrito em texto.
 
+## G5 Matemática financeira
+
+**52. Analista de TI (Gerais)**
+- [ ] A G5 (Matemática financeira) mostra as quatro lições com conteúdo: Juros e taxas, Descontos e séries, Amortização
+      e Avaliação de projetos, liberadas em ordem.
+- [ ] Nas questões de prova com conta, as potências e os fatores vêm no enunciado (por exemplo, “Dado 1,1³ = 1,331”) e
+      as alternativas numéricas ficam em ordem crescente.
+- [ ] A lição 4 traz VPL, TIR e capitalização contínua; a questão de exceção diz que a taxa efetiva da contínua é eʳ − 1.
+- [ ] As oficiais de matemática financeira aparecem como "FGV · Banestes 2018 · Técnico Bancário · …", depois do
+      conceito que cobram (por exemplo, a de SAC depois de "Sistema de amortização constante (SAC)").
+
+**53. Técnico Bancário (Específicos)**
+- [ ] A Matemática financeira aparece nos Específicos, depois de Vendas, com só três lições (Juros e taxas, Descontos e
+      séries, Amortização). Avaliação de projetos não aparece.
+- [ ] Concluir a lição 3 (Amortização) libera a unidade seguinte da trilha do Técnico.
+
 ## O que ainda NÃO existe (não é bug)
-Conteúdo das Unidades 3 a 10 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
+Conteúdo das Unidades 3 a 10, dos Gerais G3 e G4 e das unidades 2, 4 e 5 do Técnico, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
 conteúdo.
 

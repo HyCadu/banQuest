@@ -720,3 +720,16 @@ de regressão em tela de 360 dp com fonte a 130% (`r_global_fonte_grande.png`).
 5. **Estilo das questões de prova:** nas lições de cálculo, a proporção de casos práticos fica acima dos ~40% do guia
    (27 de 34). O dono aceitou: o conteúdo segue o edital, e mais prática não atrapalha.
 6. **Probabilidade na u12l4:** o dono confirmou o item 3.
+
+## G5 Matemática financeira (24/11/2026) — a pedido do dono
+
+1. **Capitalização contínua na lição 4:** o plano a punha na lição 1 (Juros e taxas), mas o edital do Técnico não a
+   cita, e a trilha dele usa as lições 1 a 3 da `u15`. Ela foi para a lição 4 (Avaliação de projetos), com VPL e TIR,
+   que são só do Analista. Assim o Técnico não estuda nada fora do edital dele, e o `UnitSlot("u15", lessons = 3)`
+   continua valendo sem mudança de código.
+2. **Sistema misto:** a apostila do cargo trata SACRE e SAM como o mesmo sistema, o que vários autores não fazem. A lição
+   usa só a definição do SAM como média das prestações do SAC e da Price e não cita o SACRE.
+3. **Fonte de conferência:** a mesma apostila (OP-121NV-26), só como referência, fora do repositório e sem cópia. Ela não
+   trata VPL, TIR nem capitalização contínua; a l4 segue as definições correntes.
+4. **Contas:** um `assert` por conta e por distrator justificado em `content/source/u15_*.py`, como na G2; as potências e
+   os fatores vêm dados no enunciado, como nas provas.
