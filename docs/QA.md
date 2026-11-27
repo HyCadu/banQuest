@@ -449,6 +449,19 @@ Antes de testar: o SQL `0001_social.sql` atualizado precisa estar rodado no Supa
       quebrar letra por letra.
 - [ ] Com a fonte normal, a linha continua igual: XP e ofensiva lado a lado.
 
+## Unidade 2 do Técnico: Vendas, negociação e atendimento (`u17`)
+
+**54. Técnico Bancário (Específicos)**
+- [ ] Depois da Unidade 1 (Conhecimentos bancários), a Trilha mostra a Unidade 2, Vendas, negociação e atendimento, com
+      as 5 lições: Atendimento ao cliente, Comportamento do consumidor, Vendas, prospecção e fidelização, Negociação e
+      CRM, reclamações e canais digitais.
+- [ ] A lição 1 começa por "Características dos serviços": o exemplo do enunciado (caixa eletrônico parado de
+      madrugada) mostra a regra antes de pedir a resposta.
+- [ ] Aparecem exercícios de ordenar (etapas da decisão de compra na lição 2, etapas da venda na 3, etapas da negociação
+      na 4) e de associar (4 Ps, matriz SWOT, os quatro pontos da negociação por princípios).
+- [ ] As oficiais entram como "FGV · Banestes 2018 · …" e "FGV · Banestes 2023 · …", só depois do conceito que cobram.
+      A lição 4 (Negociação) não tem oficial: as questões de prova dela são todas do pacote, com o selo "não revisada".
+
 ## O que ainda NÃO existe (não é bug)
 Conteúdo das Unidades 3 a 10, das lições 2 a 4 da G2 e dos Gerais G3 e G4, simulado de prova, teste de nivelamento e missão mensal (v1.1 do
 PLAN). Questões de prova das unidades sem pacote (por exemplo, Raciocínio de 2024) só aparecem quando a unidade ganhar
