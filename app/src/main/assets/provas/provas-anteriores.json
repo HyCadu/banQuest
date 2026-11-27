@@ -12923,6 +12923,7 @@
   {
    "id": "fgv-banestes-2018-tb-q72",
    "lesson": "u17l1",
+   "concept": "u17l1c2",
    "type": "mcq5",
    "topic": "Atendimento",
    "subtopic": "momentos da verdade",
@@ -12953,6 +12954,7 @@
   {
    "id": "fgv-banestes-2018-tb-q74",
    "lesson": "u17l1",
+   "concept": "u17l1c3",
    "type": "mcq5",
    "topic": "Atendimento",
    "subtopic": "satisfação do cliente",
@@ -12983,6 +12985,7 @@
   {
    "id": "fgv-banestes-2018-tb-q77",
    "lesson": "u17l1",
+   "concept": "u17l1c1",
    "type": "mcq5",
    "topic": "Serviços",
    "subtopic": "características dos serviços",
@@ -13013,6 +13016,7 @@
   {
    "id": "fgv-banestes-2018-tb-q80",
    "lesson": "u17l1",
+   "concept": "u17l1c1",
    "type": "mcq5",
    "topic": "Serviços",
    "subtopic": "intangibilidade",
@@ -13043,6 +13047,7 @@
   {
    "id": "fgv-banestes-2023-tb-q57",
    "lesson": "u17l1",
+   "concept": "u17l1c4",
    "type": "mcq5",
    "topic": "Atendimento",
    "subtopic": "boas práticas",
@@ -13073,6 +13078,7 @@
   {
    "id": "fgv-banestes-2023-tb-q59",
    "lesson": "u17l1",
+   "concept": "u17l1c5",
    "type": "mcq5",
    "topic": "Atendimento",
    "subtopic": "etiqueta empresarial",
@@ -13103,6 +13109,7 @@
   {
    "id": "fgv-banestes-2023-tb-q60",
    "lesson": "u17l1",
+   "concept": "u17l1c1",
    "type": "mcq5",
    "topic": "Serviços",
    "subtopic": "serviço como produto",
@@ -13133,6 +13140,7 @@
   {
    "id": "fgv-banestes-2023-tb-q61",
    "lesson": "u17l1",
+   "concept": "u17l1c2",
    "type": "mcq5",
    "topic": "Atendimento",
    "subtopic": "momentos da verdade",
@@ -13163,6 +13171,7 @@
   {
    "id": "fgv-banestes-2018-tb-q75",
    "lesson": "u17l2",
+   "concept": "u17l2c1",
    "type": "mcq5",
    "topic": "Comportamento do consumidor",
    "subtopic": "valor percebido",
@@ -13193,6 +13202,7 @@
   {
    "id": "fgv-banestes-2023-tb-q69",
    "lesson": "u17l2",
+   "concept": "u17l2c2",
    "type": "mcq5",
    "topic": "Valor para o cliente",
    "subtopic": "vantagem competitiva",
@@ -13223,6 +13233,7 @@
   {
    "id": "fgv-banestes-2018-tb-q71",
    "lesson": "u17l3",
+   "concept": "u17l3c1",
    "type": "mcq5",
    "topic": "Vendas",
    "subtopic": "apresentação do produto",
@@ -13253,6 +13264,7 @@
   {
    "id": "fgv-banestes-2018-tb-q76",
    "lesson": "u17l3",
+   "concept": "u17l3c3",
    "type": "mcq5",
    "topic": "Marketing",
    "subtopic": "mix de marketing: promoção",
@@ -13283,6 +13295,7 @@
   {
    "id": "fgv-banestes-2018-tb-q78",
    "lesson": "u17l3",
+   "concept": "u17l3c4",
    "type": "mcq5",
    "topic": "Marketing",
    "subtopic": "variáveis controláveis e incontroláveis",
@@ -13313,6 +13326,7 @@
   {
    "id": "fgv-banestes-2018-tb-q79",
    "lesson": "u17l3",
+   "concept": "u17l3c1",
    "type": "mcq5",
    "topic": "Vendas",
    "subtopic": "conhecimento do produto",
@@ -13343,6 +13357,7 @@
   {
    "id": "fgv-banestes-2023-tb-q62",
    "lesson": "u17l3",
+   "concept": "u17l3c5",
    "type": "mcq5",
    "topic": "Gestão comercial",
    "subtopic": "motivação da equipe",
@@ -13373,6 +13388,7 @@
   {
    "id": "fgv-banestes-2023-tb-q64",
    "lesson": "u17l3",
+   "concept": "u17l3c2",
    "type": "mcq5",
    "topic": "Vendas",
    "subtopic": "pós-venda",
@@ -13403,6 +13419,7 @@
   {
    "id": "fgv-banestes-2023-tb-q65",
    "lesson": "u17l3",
+   "concept": "u17l3c3",
    "type": "mcq5",
    "topic": "Marketing",
    "subtopic": "4 P’s",
@@ -13433,6 +13450,7 @@
   {
    "id": "fgv-banestes-2023-tb-q67",
    "lesson": "u17l3",
+   "concept": "u17l3c4",
    "type": "mcq5",
    "topic": "Gestão comercial",
    "subtopic": "metas de vendas",
@@ -13463,6 +13481,7 @@
   {
    "id": "fgv-banestes-2023-tb-q68",
    "lesson": "u17l3",
+   "concept": "u17l3c5",
    "type": "mcq5",
    "topic": "Gestão comercial",
    "subtopic": "ações motivacionais internas",
@@ -13493,6 +13512,7 @@
   {
    "id": "fgv-banestes-2023-tb-q70",
    "lesson": "u17l3",
+   "concept": "u17l3c4",
    "type": "mcq5",
    "topic": "Planejamento comercial",
    "subtopic": "análise ambiental",
@@ -13523,6 +13543,7 @@
   {
    "id": "fgv-banestes-2023-tb-q56",
    "lesson": "u17l5",
+   "concept": "u17l5c1",
    "type": "mcq5",
    "topic": "CRM",
    "subtopic": "cadastro de clientes",
@@ -13553,6 +13574,7 @@
   {
    "id": "fgv-banestes-2023-tb-q58",
    "lesson": "u17l5",
+   "concept": "u17l5c1",
    "type": "mcq5",
    "topic": "CRM",
    "subtopic": "marketing de relacionamento",
@@ -13583,6 +13605,7 @@
   {
    "id": "fgv-banestes-2023-tb-q63",
    "lesson": "u17l5",
+   "concept": "u17l5c2",
    "type": "mcq5",
    "topic": "Gestão de carteira",
    "subtopic": "segmentação de clientes",
@@ -13613,6 +13636,7 @@
   {
    "id": "fgv-banestes-2023-tb-q66",
    "lesson": "u17l5",
+   "concept": "u17l5c3",
    "type": "mcq5",
    "topic": "Reclamações",
    "subtopic": "reclamação como oportunidade",

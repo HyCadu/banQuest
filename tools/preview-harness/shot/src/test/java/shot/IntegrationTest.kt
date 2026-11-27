@@ -168,9 +168,9 @@ class IntegrationTest {
         val course = content.course(tb)
         val specific = course.filter { it.track == br.com.trilhati.domain.model.Track.Specific }
         assertEquals(listOf("u16", "u17", "u15", "u18", "u19"), specific.map { it.id })
-        // 0.14.0: a Unidade 1 do Técnico (Conhecimentos Bancários) tem as 7 lições; o resto ainda espera conteúdo.
-        assertTrue(specific.first().lessons.all { it.hasContent && it.concepts.isNotEmpty() })
-        assertTrue(specific.drop(1).none { it.hasContent })
+        // 0.14.0: a Unidade 1 do Técnico (Conhecimentos Bancários) tem as 7 lições; a Unidade 2 (Vendas), as 5.
+        assertTrue(specific.take(2).all { u -> u.lessons.all { it.hasContent && it.concepts.isNotEmpty() } })
+        assertTrue(specific.drop(2).none { it.hasContent })
         // ...e a lição 1 dela abre (a u15 vem depois na trilha, mesmo tendo número menor; bug corrigido na 0.14.0)
         val tbStatuses = br.com.trilhati.domain.progress.TrailEngine.statuses(course, emptyMap())
         assertEquals(br.com.trilhati.domain.progress.LessonStatus.Available, tbStatuses["u16l1"])

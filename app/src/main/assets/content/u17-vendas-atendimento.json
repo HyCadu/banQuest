@@ -1,0 +1,2845 @@
+{
+  "schema": 1,
+  "pack": "u17-vendas-atendimento",
+  "version": 1,
+  "unit": {
+    "id": "u17",
+    "order": 17,
+    "title": "Vendas, negociação e atendimento",
+    "editalTopics": [
+      "Atendimento ao cliente: conceitos, princípios, qualidade, excelência e satisfação; comunicação interpessoal",
+      "Técnicas de atendimento presencial e digital; ética, transparência e responsabilidade no atendimento",
+      "Perfil, necessidades e comportamento do consumidor de produtos e serviços financeiros; adequação ao perfil",
+      "Técnicas de vendas e pós-venda; prospecção, fidelização e retenção de clientes",
+      "Negociação: conceitos, etapas, estratégias e técnicas",
+      "CRM, marketing de relacionamento e experiência do cliente",
+      "Resolução de conflitos e tratamento de reclamações; canais de atendimento e transformação digital",
+      "Educação financeira e orientação ao cliente"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "u17l1",
+      "order": 1,
+      "title": "Atendimento ao cliente",
+      "concepts": [
+        {
+          "id": "u17l1c1",
+          "title": "Características dos serviços",
+          "summary": "Serviços têm quatro características. Intangibilidade: não dá para ver nem testar antes de comprar. Inseparabilidade: é produzido e consumido ao mesmo tempo, e quem atende faz parte do serviço. Variabilidade: a qualidade muda conforme quem, quando e onde se presta. Perecibilidade: não pode ser estocado; o horário vago se perde."
+        },
+        {
+          "id": "u17l1c2",
+          "title": "Momentos da verdade",
+          "summary": "Momento da verdade é cada contato do cliente com a empresa em que ele forma uma opinião sobre ela: na agência, no aplicativo, na central, na fila, numa reclamação. Todos contam, não só o primeiro, e dependem também das áreas internas e dos sistemas, não apenas de quem está na linha de frente."
+        },
+        {
+          "id": "u17l1c3",
+          "title": "Qualidade e satisfação",
+          "summary": "A satisfação nasce da comparação entre o que o cliente percebeu do serviço e o que ele esperava. Percebeu menos que o esperado: insatisfeito. O mesmo: satisfeito. Mais: encantado. Prometer além do que se entrega aumenta a expectativa e gera frustração."
+        },
+        {
+          "id": "u17l1c4",
+          "title": "Comunicação e técnicas de atendimento",
+          "summary": "Escuta ativa: ouvir sem interromper e confirmar o que entendeu com as próprias palavras. Linguagem clara, sem jargão, adaptada a cada cliente. Perguntas abertas (o quê, por quê, como) fazem o cliente contar a necessidade. No digital vale o mesmo cuidado: cordialidade, objetividade e o passo a passo da solução."
+        },
+        {
+          "id": "u17l1c5",
+          "title": "Ética e conduta no atendimento",
+          "summary": "Os Códigos de Ética e de Conduta registram as regras de comportamento da empresa, inclusive a etiqueta empresarial no trato com colegas e clientes. No atendimento: informar custos e riscos com clareza, não induzir a erro, respeitar o sigilo dos dados e não condicionar um produto à compra de outro (venda casada, proibida pelo Código de Defesa do Consumidor)."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17l1q01",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "intangibilidade, inseparabilidade, variabilidade e perecibilidade",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o caixa eletrônico parado de madrugada não guarda os atendimentos que deixou de fazer; isso é perecibilidade, porque serviço não se estoca. Na agenda da gerente Ana, um horário de consultoria que ninguém marcou ilustra qual característica?",
+          "options": [
+            "perecibilidade",
+            "intangibilidade",
+            "inseparabilidade"
+          ],
+          "answer": 0,
+          "explanation": "O horário vago não pode ser guardado para outro dia: a capacidade de atender se perde, e isso é perecibilidade. Intangibilidade fala de não poder ver ou testar; inseparabilidade, de produção e consumo simultâneos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l1q02",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "intangibilidade, inseparabilidade, variabilidade e perecibilidade",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Variabilidade significa que a qualidade do serviço pode mudar conforme quem atende, quando e onde. Por isso, dois clientes atendidos por gerentes diferentes da agência de Ana podem ter experiências diferentes.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "É a definição de variabilidade (ou heterogeneidade): o serviço depende das pessoas e do momento, e por isso é difícil de padronizar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l1q03",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "intangibilidade, inseparabilidade, variabilidade e perecibilidade",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada situação da agência de Ana à característica do serviço:",
+          "pairs": [
+            {
+              "left": "O cliente não consegue testar a consultoria antes",
+              "right": "Intangibilidade"
+            },
+            {
+              "left": "A consultoria acontece com Ana e o cliente juntos",
+              "right": "Inseparabilidade"
+            },
+            {
+              "left": "Cada gerente conduz a consultoria de um jeito",
+              "right": "Variabilidade"
+            },
+            {
+              "left": "Horário vago na agenda não se recupera",
+              "right": "Perecibilidade"
+            }
+          ],
+          "explanation": "Não testar antes é intangibilidade; produzir junto com o cliente, inseparabilidade; mudar conforme quem atende, variabilidade; não poder estocar, perecibilidade.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l1q04",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "intangibilidade, inseparabilidade, variabilidade e perecibilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Para reduzir o efeito da intangibilidade, a agência de Ana pode:",
+          "options": [
+            "treinar todos no mesmo roteiro de atendimento",
+            "mostrar sinais concretos, como o ambiente",
+            "abrir horários extras nos dias de maior movimento"
+          ],
+          "answer": 1,
+          "explanation": "Como o cliente não vê o serviço, ele julga pelos sinais tangíveis: ambiente, pessoas, folhetos, contrato claro. O roteiro único combate a variabilidade, e os horários extras lidam com a perecibilidade.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q05",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "intangibilidade, inseparabilidade, variabilidade e perecibilidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Na agência de Ana, o mesmo atendimento de abertura de conta leva 10 minutos com um funcionário e 40 com outro. Qual característica dos serviços aparece aqui, e como reduzi-la?",
+          "options": [
+            "perecibilidade; aumentar o número de caixas eletrônicos",
+            "intangibilidade; distribuir folhetos na fila",
+            "variabilidade; padronizar e treinar a equipe"
+          ],
+          "answer": 2,
+          "explanation": "A diferença vem de quem presta o serviço: é variabilidade, combatida com padrão de processo e treinamento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q06",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "pontos de contato",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: Marcos ligou para a central do banco e foi bem atendido; foi um momento da verdade, porque ele formou uma opinião sobre o banco nesse contato. Depois, Marcos abre o aplicativo para ver o extrato. Isso também é um momento da verdade?",
+          "options": [
+            "sim, todo contato com a empresa conta",
+            "não, só o contato com um atendente conta",
+            "não, só o primeiro contato conta"
+          ],
+          "answer": 0,
+          "explanation": "O aplicativo é um ponto de contato: se travar ou confundir, Marcos forma uma opinião ruim do banco do mesmo jeito.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l1q07",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "pontos de contato",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Os momentos da verdade dependem só dos funcionários da linha de frente; o que acontece nos sistemas e nas áreas internas não influencia a opinião de Marcos.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Um sistema fora do ar ou um erro de cadastro feito numa área interna também viram experiência ruim para o cliente. Toda a empresa constrói os momentos da verdade.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l1q08",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "pontos de contato",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Marcos esperou 40 minutos na fila da agência e saiu sem ser atendido. Para o banco, esse episódio:",
+          "options": [
+            "não conta, pois não houve atendimento",
+            "foi um momento da verdade negativo",
+            "só conta se ele registrar reclamação"
+          ],
+          "answer": 1,
+          "explanation": "A espera também é contato com a empresa. Marcos saiu com uma opinião pior do banco, mesmo sem falar com ninguém.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l1q09",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "pontos de contato",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Qual ação melhora os momentos da verdade de Marcos de forma mais ampla?",
+          "options": [
+            "treinar apenas quem faz a abertura de contas",
+            "concentrar o esforço no primeiro atendimento",
+            "cuidar de todos os pontos de contato"
+          ],
+          "answer": 2,
+          "explanation": "Como todo contato conta, o cuidado precisa cobrir a jornada inteira: agência, app, central, cobrança, reclamação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q10",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "pontos de contato",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Marcos recebeu uma ligação de cobrança por engano, de uma dívida que já tinha quitado. Esse contato:",
+          "options": [
+            "é momento da verdade e pesa contra o banco",
+            "não conta, pois foi feito por uma terceirizada",
+            "só pesa se ele mudar de banco"
+          ],
+          "answer": 0,
+          "explanation": "Mesmo feito por outra área ou empresa contratada, o contato fala em nome do banco e forma a opinião de Marcos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q11",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "expectativa e percepção",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: Lúcia esperava receber o cartão em 10 dias e recebeu em 5; o que ela percebeu superou o que esperava, e ela ficou encantada. Se o gerente tivesse prometido 3 dias e o cartão chegasse em 5, Lúcia ficaria:",
+          "options": [
+            "encantada, pois 5 dias é rápido",
+            "insatisfeita, pois esperava mais",
+            "indiferente, pois o prazo foi o mesmo"
+          ],
+          "answer": 1,
+          "explanation": "O prazo real foi igual nos dois casos; mudou a expectativa. Com a promessa de 3 dias, 5 dias ficam abaixo do esperado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l1q12",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "expectativa e percepção",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Prometer a Lúcia mais do que o banco consegue entregar costuma aumentar a satisfação dela, porque eleva a expectativa.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Expectativa alta que não se cumpre vira insatisfação. Promessa realista, cumprida ou superada, é o que satisfaz.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l1q13",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "expectativa e percepção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Lúcia esperava ser atendida em 15 minutos e foi atendida em 15 minutos, com cordialidade. O resultado mais provável é:",
+          "options": [
+            "encantamento: o serviço superou o esperado",
+            "insatisfação: não houve surpresa",
+            "satisfação: percebido igual ao esperado"
+          ],
+          "answer": 2,
+          "explanation": "Percepção igual à expectativa gera satisfação. Encantar exige superar o esperado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l1q14",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "expectativa e percepção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O gerente quer melhorar a satisfação de Lúcia sem gastar mais. Qual atitude ajuda mais?",
+          "options": [
+            "informar prazos realistas e cumpri-los",
+            "prometer o prazo mais curto possível",
+            "evitar falar de prazos com a cliente agora"
+          ],
+          "answer": 0,
+          "explanation": "Prazo realista ajusta a expectativa, e o cumprimento garante que a percepção fique à altura dela.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q15",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "expectativa e percepção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Lúcia diz que o atendimento foi rápido, mas saiu sem entender as tarifas do pacote que contratou. Quanto à qualidade percebida:",
+          "options": [
+            "o atendimento foi excelente, pois foi rápido",
+            "a rapidez não compensa a falta de clareza",
+            "a qualidade só depende do preço das tarifas"
+          ],
+          "answer": 1,
+          "explanation": "A cliente avalia o serviço inteiro. Se a necessidade dela (entender o que contratou) não foi atendida, a percepção cai, por mais rápido que tenha sido.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q16",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "escuta ativa, presencial e digital",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: na escuta ativa o atendente ouve sem interromper e confirma o que entendeu: 'Então a senhora quer um lugar seguro para guardar o 13º, é isso?'. Dona Rosa conta a Paulo que quer ajudar o neto a pagar a faculdade. Qual resposta de Paulo segue a escuta ativa?",
+          "options": [
+            "Temos um ótimo título de capitalização hoje.",
+            "A senhora deveria pensar antes na sua aposentadoria.",
+            "Se entendi, quer guardar para a faculdade dele?"
+          ],
+          "answer": 2,
+          "explanation": "Confirmar com as próprias palavras mostra que Paulo ouviu e evita oferecer algo que não atende Dona Rosa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l1q17",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "escuta ativa, presencial e digital",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Usar termos como 'liquidez' e 'marcação a mercado' com qualquer cliente transmite segurança e melhora a comunicação de Paulo com Dona Rosa.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Jargão afasta e confunde. A linguagem deve ser clara e adaptada a quem está sendo atendido.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l1q18",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "escuta ativa, presencial e digital",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Perguntas abertas fazem o cliente falar mais do que 'sim' ou 'não'. Paulo quer descobrir o que Dona Rosa espera do investimento. Qual pergunta ajuda mais?",
+          "options": [
+            "O que a senhora pretende fazer com esse dinheiro?",
+            "A senhora quer aplicar tudo na poupança, não é isso?",
+            "A senhora já tem conta aqui no banco?"
+          ],
+          "answer": 0,
+          "explanation": "A pergunta aberta deixa Dona Rosa contar objetivo e prazo. As outras se respondem com sim ou não e induzem a resposta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l1q19",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "escuta ativa, presencial e digital",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "À noite, Dona Rosa escreve no chat do banco: 'Não consigo ver meu saldo'. No atendimento digital, a melhor resposta é:",
+          "options": [
+            "curta, apenas com o link da central de ajuda",
+            "cordial, objetiva e com o passo a passo",
+            "formal, pedindo que ela vá até a agência"
+          ],
+          "answer": 1,
+          "explanation": "O canal digital pede o mesmo cuidado do presencial: acolher, ser claro e resolver ali mesmo, quando possível.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q20",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "escuta ativa, presencial e digital",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Paulo atende Dona Rosa e o celular dele toca várias vezes. Ele olha as mensagens enquanto ela fala. Essa atitude:",
+          "options": [
+            "é aceitável, se ele responder às mensagens depois",
+            "mostra agilidade no atendimento",
+            "prejudica a escuta e passa desinteresse"
+          ],
+          "answer": 2,
+          "explanation": "Escuta ativa exige atenção total: olhar para o cliente, não se distrair e mostrar que está acompanhando.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q21",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "transparência, venda casada e sigilo",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: condicionar a liberação de um empréstimo à compra de um seguro é venda casada, prática proibida pelo Código de Defesa do Consumidor. Bia diz a um cliente que só abre a conta se ele contratar também um título de capitalização. Isso é:",
+          "options": [
+            "venda casada, prática proibida",
+            "oferta cruzada, prática correta",
+            "fidelização, prática recomendada"
+          ],
+          "answer": 0,
+          "explanation": "Bia condicionou a conta a outro produto. Oferecer é permitido; exigir a compra conjunta é venda casada.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l1q22",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "transparência, venda casada e sigilo",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Oferecer um seguro a quem contrata um empréstimo, deixando claro que o cliente pode recusar, é venda casada.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Ofertar outro produto é permitido. A venda casada existe quando um produto só é liberado se o cliente comprar o outro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l1q23",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "transparência, venda casada e sigilo",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente pergunta a Bia o saldo da conta do vizinho, 'só para saber se ele pode pagar uma dívida'. Bia deve:",
+          "options": [
+            "informar, se o valor for pequeno",
+            "recusar, pois os dados são sigilosos",
+            "informar, se o vizinho for cliente antigo"
+          ],
+          "answer": 1,
+          "explanation": "Os dados bancários de um cliente não podem ser passados a terceiros, qualquer que seja o motivo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l1q24",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "transparência, venda casada e sigilo",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Bia vai oferecer um CDB a um cliente. Para agir com transparência, ela deve:",
+          "options": [
+            "destacar só o rendimento, que é o que atrai",
+            "dizer que o rendimento sempre supera a inflação",
+            "explicar rendimento, prazo, liquidez e custos"
+          ],
+          "answer": 2,
+          "explanation": "Transparência é mostrar tudo o que pesa na decisão. Esconder prazo ou custo, ou prometer ganho que não é garantido, induz o cliente a erro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l1q25",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "transparência, venda casada e sigilo",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A agência de Bia tem meta alta de seguros no mês. Um cliente sem dependentes e com renda apertada pede só um cartão. A conduta ética é:",
+          "options": [
+            "atender o pedido e ofertar só o que servir",
+            "incluir o seguro de vida no pacote do cartão",
+            "dizer que o cartão sai mais rápido com o seguro"
+          ],
+          "answer": 0,
+          "explanation": "A meta não justifica empurrar produto inadequado nem condicionar o cartão ao seguro. A oferta deve servir à necessidade do cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l1c5",
+          "level": "praticar",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "u17l2",
+      "order": 2,
+      "title": "Comportamento do consumidor",
+      "concepts": [
+        {
+          "id": "u17l2c1",
+          "title": "Valor percebido",
+          "summary": "Para o cliente, um serviço tem valor quando os benefícios que ele percebe (financeiros, práticos e emocionais, como tranquilidade) superam os custos que ele tem (preço, tempo, esforço e aborrecimento). O mais barato nem sempre é o de maior valor."
+        },
+        {
+          "id": "u17l2c2",
+          "title": "Vantagem competitiva",
+          "summary": "Vantagem competitiva é o diferencial que faz o cliente preferir uma empresa às concorrentes, porque ela cria mais valor para ele. Dura mais quando é difícil de copiar, como relacionamento e conhecimento do cliente. As estratégias mais citadas para obtê-la são custo baixo, diferenciação e foco num nicho."
+        },
+        {
+          "id": "u17l2c3",
+          "title": "Processo de decisão de compra",
+          "summary": "O cliente costuma passar por cinco etapas: reconhecer a necessidade, buscar informações, avaliar as alternativas, decidir a compra e o comportamento pós-compra (satisfação, arrependimento, recomendação). O atendente ajuda mais quando sabe em que etapa o cliente está."
+        },
+        {
+          "id": "u17l2c4",
+          "title": "Fatores que influenciam o consumidor",
+          "summary": "Quatro grupos de fatores influenciam a compra. Culturais: valores e costumes da sociedade. Sociais: família, amigos e grupos de referência. Pessoais: idade, fase da vida, ocupação, renda e estilo de vida. Psicológicos: motivação, percepção, experiências passadas, crenças e atitudes."
+        },
+        {
+          "id": "u17l2c5",
+          "title": "Adequação e orientação ao cliente",
+          "summary": "Característica é o que o produto é ('a conta tem Pix ilimitado'); benefício é o que ele faz pelo cliente ('você recebe sem pagar tarifa'). A oferta certa parte da necessidade, do prazo e do risco que o cliente aceita. Orientar também é educação financeira: explicar custos e desaconselhar o uso inadequado do crédito."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17l2q01",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "benefícios e custos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: para Carla, o pacote A custa R$ 30, mas evita idas à agência e dá tranquilidade; ela sente que ganha mais do que paga. O pacote B custa R$ 10, mas obriga Carla a enfrentar fila toda semana, o que ela detesta. Para Carla, o pacote B:",
+          "options": [
+            "tem mais valor, pois é mais barato",
+            "pode ter menos valor, apesar de mais barato",
+            "tem o mesmo valor, pois os serviços são iguais"
+          ],
+          "answer": 1,
+          "explanation": "O valor soma todos os custos, inclusive tempo e aborrecimento. A fila semanal pesa para Carla mais que os R$ 20 de diferença.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l2q02",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "benefícios e custos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No valor que Carla percebe num serviço entram também custos não financeiros, como o tempo gasto e o aborrecimento.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Custos de tempo, esforço e emoção entram na conta junto com o preço.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l2q03",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "benefícios e custos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Carla compara dois cartões sem anuidade. O cartão X tem aplicativo confuso e atendimento demorado; o Y resolve tudo pelo app em poucos minutos. Pelo conceito de valor percebido, ela tende a preferir:",
+          "options": [
+            "o X, pois o preço dos dois é igual",
+            "qualquer um, pois a anuidade dos dois é zero",
+            "o Y, que lhe custa menos tempo e esforço"
+          ],
+          "answer": 2,
+          "explanation": "Com preço igual, decide o resto da conta: o Y entrega mais e custa menos tempo e aborrecimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l2q04",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "benefícios e custos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O banco de Carla quer aumentar o valor percebido do aplicativo sem baixar tarifas. Qual ação funciona?",
+          "options": [
+            "reduzir o tempo e o esforço para fazer um Pix",
+            "aumentar a publicidade do aplicativo na televisão",
+            "trocar o app por outro com os mesmos passos"
+          ],
+          "answer": 0,
+          "explanation": "Valor sobe quando o benefício aumenta ou o custo do cliente cai. Menos passos reduzem tempo e esforço.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q05",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "benefícios e custos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Carla paga R$ 25 por mês de tarifa e diz que vale a pena, porque o gerente resolve seus problemas na hora. Uma amiga, com o mesmo pacote, acha caro. Isso mostra que o valor:",
+          "options": [
+            "é fixado pela tabela de tarifas do banco",
+            "depende da percepção de cada cliente",
+            "é igual para todos que pagam o mesmo"
+          ],
+          "answer": 1,
+          "explanation": "O valor é percebido: cada cliente pesa benefícios e custos de um jeito, por isso a mesma oferta agrada um e não agrada outro.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q06",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "diferenciais",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o Banco Litoral conhece de perto os produtores rurais da região e libera crédito de safra mais rápido que os concorrentes; esse diferencial, que faz os produtores o preferirem, é uma vantagem competitiva. Uma cooperativa que atende pescadores com horário adaptado à rotina deles, e por isso é a preferida da categoria, tem:",
+          "options": [
+            "uma ameaça de mercado",
+            "um custo emocional",
+            "uma vantagem competitiva"
+          ],
+          "answer": 2,
+          "explanation": "O horário adaptado cria valor para os pescadores e faz a cooperativa ser preferida: é um diferencial competitivo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l2q07",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "diferenciais",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Um diferencial fácil de copiar, como tarifa zero por um mês, tende a dar ao Banco Litoral uma vantagem competitiva duradoura.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O concorrente copia a promoção no mês seguinte. Vantagem duradoura vem de algo difícil de imitar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l2q08",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "diferenciais",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Qual destes diferenciais do Banco Litoral é o mais difícil de os concorrentes copiarem rapidamente?",
+          "options": [
+            "relacionamento de anos com a comunidade local",
+            "desconto de 10% na tarifa durante o mês que vem",
+            "brinde na abertura de conta"
+          ],
+          "answer": 0,
+          "explanation": "Relacionamento e conhecimento do cliente levam tempo para construir. Desconto e brinde se copiam em dias.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l2q09",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "diferenciais",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "As três estratégias genéricas para obter vantagem competitiva são custo, diferenciação e foco. Associe cada uma a um exemplo bancário:",
+          "pairs": [
+            {
+              "left": "Liderança em custo",
+              "right": "Tarifas baixas graças a uma operação enxuta"
+            },
+            {
+              "left": "Diferenciação",
+              "right": "Atendimento ou produto único, valorizado pelo cliente"
+            },
+            {
+              "left": "Foco",
+              "right": "Atender muito bem um nicho, como o agronegócio"
+            }
+          ],
+          "explanation": "Custo: ser o mais eficiente. Diferenciação: oferecer algo que o cliente valoriza e os outros não têm. Foco: concentrar-se num segmento específico.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q10",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "etapas",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: as etapas são necessidade, busca de informações, avaliação de alternativas, decisão e pós-compra. Pedro percebeu que precisa de um carro para trabalhar (necessidade) e pesquisou financiamentos em três bancos (busca). Ao comparar o CET de cada proposta, ele está na etapa de:",
+          "options": [
+            "decisão de compra",
+            "avaliação de alternativas",
+            "pós-compra"
+          ],
+          "answer": 1,
+          "explanation": "Comparar as opções encontradas é a avaliação de alternativas. A decisão vem depois, quando ele escolhe uma.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l2q11",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "etapas",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A etapa de pós-compra não interessa ao banco de Pedro, porque a venda já foi feita.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "No pós-compra o cliente confirma ou não a escolha: daí vêm arrependimento, recomendação a outras pessoas e nova compra. O banco tem muito a ganhar acompanhando.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l2q12",
+          "type": "order_code",
+          "topic": "Vendas e atendimento",
+          "subtopic": "etapas",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ordene as etapas da decisão de Pedro sobre o financiamento:",
+          "lines": [
+            "Percebe que precisa de um carro para trabalhar",
+            "Pesquisa financiamentos em três bancos",
+            "Compara o CET das propostas",
+            "Assina o financiamento escolhido",
+            "Avalia se fez um bom negócio nos meses seguintes"
+          ],
+          "explanation": "Necessidade, busca, avaliação, decisão e pós-compra, nessa ordem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l2q13",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "etapas",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Dois meses depois de assinar, Pedro se pergunta se não teria feito melhor negócio em outro banco. Em que etapa ele está, e o que o banco pode fazer?",
+          "options": [
+            "busca; enviar novas propostas de crédito",
+            "avaliação; oferecer outro financiamento igual",
+            "pós-compra; contatá-lo e tirar as dúvidas"
+          ],
+          "answer": 2,
+          "explanation": "A dúvida depois da compra é típica do pós-compra. Um contato do banco, tirando dúvidas, reduz o arrependimento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q14",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "etapas",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente procura a agência dizendo que o filho começará a faculdade em dois anos e que precisa juntar dinheiro. Ele já pesquisou na internet e trouxe anotações sobre três aplicações. Considerando as etapas do processo de decisão de compra, o atendente que quer ajudar o cliente neste momento deve",
+          "options": [
+            "comparar com ele as opções, de acordo com o prazo e o objetivo.",
+            "oferecer o produto que tem a maior meta de venda da agência no mês.",
+            "despertar nele a necessidade de poupar, mostrando por que guardar.",
+            "encerrar a conversa e retomar o contato depois da aplicação feita.",
+            "insistir numa decisão imediata, antes que ele procure concorrentes."
+          ],
+          "answer": 0,
+          "explanation": "O cliente já reconheceu a necessidade e buscou informações: está avaliando alternativas. Ajudar a comparar, pelo prazo e pelo objetivo, é o que serve agora. Despertar a necessidade é uma etapa já vencida, e empurrar a meta ou pressionar a decisão ignora o que ele precisa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c3",
+          "level": "prova"
+        },
+        {
+          "id": "u17l2q15",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "culturais, sociais, pessoais e psicológicos",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: Rafael abriu conta num banco digital porque os amigos da faculdade usam e recomendam; é um fator social (grupo de referência). Depois do primeiro emprego, ele passou a procurar cartão com limite maior, porque a renda subiu. Esse fator é:",
+          "options": [
+            "pessoal (situação econômica)",
+            "cultural (valores do país)",
+            "psicológico (percepção)"
+          ],
+          "answer": 0,
+          "explanation": "Renda e ocupação são fatores pessoais. A recomendação dos amigos é social.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l2q16",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "culturais, sociais, pessoais e psicológicos",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A fase da vida de Rafael, como casar ou ter filhos, é um fator pessoal que muda as necessidades financeiras dele.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O ciclo de vida é fator pessoal: com filhos, por exemplo, ganham peso a reserva, o seguro e a previdência.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l2q17",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "culturais, sociais, pessoais e psicológicos",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada situação de Rafael ao fator que influencia a compra:",
+          "pairs": [
+            {
+              "left": "Os amigos recomendam um banco",
+              "right": "Social"
+            },
+            {
+              "left": "Medo de investir após perder dinheiro",
+              "right": "Psicológico"
+            },
+            {
+              "left": "Renda maior depois de uma promoção",
+              "right": "Pessoal"
+            },
+            {
+              "left": "Costume do país de parcelar compras",
+              "right": "Cultural"
+            }
+          ],
+          "explanation": "Grupo de referência é social; experiência e atitude são psicológicas; renda é pessoal; costume da sociedade é cultural.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l2q18",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "culturais, sociais, pessoais e psicológicos",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Rafael perdeu dinheiro numa aplicação no ano passado e agora sente medo de investir. Para o atendente, o fator a considerar é:",
+          "options": [
+            "cultural: costume da região",
+            "psicológico: experiência e atitude",
+            "social: opinião dos amigos"
+          ],
+          "answer": 1,
+          "explanation": "A experiência ruim mudou a atitude de Rafael diante do risco. É um fator psicológico, e o atendente precisa explicar riscos com calma, sem pressionar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q19",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "culturais, sociais, pessoais e psicológicos",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Na análise do comportamento do consumidor de produtos financeiros, são exemplos de fatores pessoais que influenciam a decisão de compra, EXCETO",
+          "options": [
+            "a idade e a fase do ciclo de vida.",
+            "a opinião dos colegas de trabalho.",
+            "a ocupação e a renda disponível.",
+            "o estilo de vida do cliente.",
+            "a situação econômica do momento."
+          ],
+          "answer": 1,
+          "explanation": "Idade, fase da vida, ocupação, renda, estilo de vida e situação econômica são fatores pessoais. A opinião dos colegas vem de um grupo de referência: é fator social.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c4",
+          "level": "prova"
+        },
+        {
+          "id": "u17l2q20",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "características, benefícios e educação financeira",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: 'a maquininha aceita aproximação' é característica; 'o senhor atende a fila mais rápido na hora do pico' é benefício. Sérgio, dono de padaria, ouve: 'a conta PJ tem Pix ilimitado'. O benefício correspondente para ele é:",
+          "options": [
+            "a conta ter um aplicativo moderno",
+            "o banco ter muitas agências",
+            "receber sem pagar tarifa por Pix"
+          ],
+          "answer": 2,
+          "explanation": "O benefício traduz a característica no ganho do cliente: sem custo por Pix recebido, a padaria economiza.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l2q21",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "características, benefícios e educação financeira",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Orientar Sérgio a usar o cheque especial como complemento de caixa todo mês é uma boa prática de educação financeira.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O cheque especial é um crédito caro, para emergência curta. Usá-lo todo mês indica problema de caixa que precisa de outra solução.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l2q22",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "características, benefícios e educação financeira",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sérgio quer guardar dinheiro para trocar o forno daqui a um ano e não aceita perder valor. A oferta mais adequada é:",
+          "options": [
+            "renda fixa conservadora com prazo de um ano",
+            "ações de uma grande empresa do setor de alimentos",
+            "consórcio de imóvel com prazo de 15 anos"
+          ],
+          "answer": 0,
+          "explanation": "Prazo curto e nenhuma tolerância a perda pedem renda fixa conservadora no prazo do objetivo. Ações oscilam, e o consórcio não serve ao prazo nem ao bem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l2q23",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "características, benefícios e educação financeira",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sérgio pede um empréstimo para cobrir a falta de caixa que aparece todo fim de mês. A orientação mais responsável é:",
+          "options": [
+            "liberar um limite maior no cheque especial",
+            "analisar o fluxo de caixa e buscar a causa",
+            "oferecer o crédito de maior valor disponível"
+          ],
+          "answer": 1,
+          "explanation": "Falta de caixa repetida tem causa (prazo de recebimento, estoque, retiradas). Crédito sem diagnóstico só adia e encarece o problema.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l2q24",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "características, benefícios e educação financeira",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma cliente de 68 anos, aposentada, quer aplicar uma reserva da qual pode precisar a qualquer momento para despesas de saúde. O técnico bancário que age com responsabilidade na oferta deve recomendar",
+          "options": [
+            "título de capitalização, pelo sorteio mensal.",
+            "ações, pelo potencial de ganho no longo prazo.",
+            "aplicação de baixo risco e com resgate rápido.",
+            "previdência com prazo longo de carência.",
+            "consórcio, pela disciplina de pagamento."
+          ],
+          "answer": 2,
+          "explanation": "A reserva pode ser usada a qualquer hora: precisa de liquidez e de baixo risco. Ações oscilam, previdência e consórcio prendem o dinheiro por prazos longos, e capitalização não é investimento para reserva.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l2c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u17l3",
+      "order": 3,
+      "title": "Vendas, prospecção e fidelização",
+      "concepts": [
+        {
+          "id": "u17l3c1",
+          "title": "Venda consultiva e objeções",
+          "summary": "Na venda consultiva, o vendedor primeiro descobre a necessidade do cliente e só depois apresenta o produto que a resolve. Objeção é uma dúvida ou resistência ('está caro', 'vou pensar'); bem respondida, ajuda a fechar. Conhecer bem o produto dá segurança para responder sem inventar."
+        },
+        {
+          "id": "u17l3c2",
+          "title": "Etapas da venda",
+          "summary": "Etapas da venda: prospecção (achar clientes com potencial), abordagem (primeiro contato), sondagem (levantar necessidades), apresentação (mostrar a solução), tratamento de objeções, fechamento e pós-venda. A venda não acaba na assinatura: o pós-venda mantém o relacionamento."
+        },
+        {
+          "id": "u17l3c3",
+          "title": "Mix de marketing (4 Ps)",
+          "summary": "O mix de marketing tem quatro Ps. Produto: o que se oferece. Preço: quanto custa. Praça: onde e como chega ao cliente (canais e distribuição). Promoção: como a empresa comunica e estimula a compra, com propaganda, publicidade, promoção de vendas (incentivos temporários), relações públicas e venda pessoal."
+        },
+        {
+          "id": "u17l3c4",
+          "title": "Análise ambiental e planejamento comercial",
+          "summary": "Na análise ambiental, o banco olha o ambiente externo (oportunidades e ameaças, que ele não controla, como economia, concorrência, leis e tecnologia) e o interno (forças e fraquezas, que ele controla, como equipe, produtos, canais e localização). A matriz SWOT junta as quatro coisas e orienta o plano comercial."
+        },
+        {
+          "id": "u17l3c5",
+          "title": "Gestão e motivação da equipe comercial",
+          "summary": "Cabe ao gestor criar o clima para a equipe se motivar: metas realistas e desafiadoras combinadas com a equipe, acompanhamento frequente, reconhecimento e confiança entre líder e liderados. Expor quem não bateu a meta, ou deixar conflitos crescerem, piora o resultado."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17l3q01",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "foco na necessidade",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: na venda consultiva, o vendedor descobre a necessidade e só então apresenta o produto que a atende. Helena conta a Diego que mora sozinha e se preocupa com roubo no apartamento. A abordagem consultiva é:",
+          "options": [
+            "listar todas as coberturas do seguro, uma a uma",
+            "falar da promoção do mês antes de ouvir mais",
+            "mostrar a cobertura de roubo"
+          ],
+          "answer": 2,
+          "explanation": "Diego liga o produto à necessidade que Helena trouxe. Despejar todas as coberturas ou a promoção ignora o que ela disse.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l3q02",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "foco na necessidade",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Objeção é uma dúvida ou resistência de Helena; quando bem respondida, pode ajudar Diego a fechar a venda.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A objeção mostra o que ainda impede a compra. Respondê-la com clareza remove o obstáculo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l3q03",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "foco na necessidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Helena diz: 'Acho caro'. Qual resposta de Diego trata a objeção?",
+          "options": [
+            "comparar o custo mensal ao prejuízo de um roubo",
+            "mudar de assunto e falar de outro produto",
+            "dizer que os outros clientes acham o seguro barato"
+          ],
+          "answer": 0,
+          "explanation": "Tratar a objeção é responder ao ponto: mostrar o custo em perspectiva. Fugir do assunto ou desqualificar a opinião dela não resolve a dúvida.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l3q04",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "foco na necessidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Helena pergunta se o seguro cobre danos que um vazamento no apartamento dela causar ao vizinho. Diego não sabe. A melhor atitude é:",
+          "options": [
+            "dizer que sim, para não perder a venda",
+            "conferir nas condições gerais e responder",
+            "dizer que não, por precaução"
+          ],
+          "answer": 1,
+          "explanation": "Inventar uma resposta, para mais ou para menos, engana a cliente. Conferir no documento mantém a confiança.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q05",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "foco na necessidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Antes de qualquer oferta, Diego pergunta a Helena como é a rotina dela e o que mais a preocupa no apartamento. Essa conduta mostra que ele:",
+          "options": [
+            "está atrasando a venda sem motivo",
+            "está tentando conhecer a vida pessoal da cliente",
+            "está levantando a necessidade antes de oferecer"
+          ],
+          "answer": 2,
+          "explanation": "Perguntar antes de apresentar é a base da venda consultiva: a oferta vem depois, sob medida.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q06",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "da prospecção ao pós-venda",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: as etapas são prospecção, abordagem, sondagem, apresentação, objeções, fechamento e pós-venda. Camila ligou para clientes com perfil para previdência (prospecção) e marcou uma conversa com Jorge (abordagem). Quando pergunta a Jorge sobre os planos dele para a aposentadoria, ela está na etapa de:",
+          "options": [
+            "sondagem",
+            "fechamento",
+            "pós-venda"
+          ],
+          "answer": 0,
+          "explanation": "Perguntar para entender a necessidade é a sondagem. Fechamento e pós-venda vêm bem depois.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l3q07",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "da prospecção ao pós-venda",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Para Camila, o processo de vendas termina na assinatura do contrato; o que vem depois é responsabilidade de outra área.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O pós-venda faz parte da venda: tirar dúvidas, acompanhar o uso e manter o contato evitam arrependimento e trazem novas vendas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l3q08",
+          "type": "order_code",
+          "topic": "Vendas e atendimento",
+          "subtopic": "da prospecção ao pós-venda",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ordene as etapas da venda de Camila para Jorge:",
+          "lines": [
+            "Seleciona clientes com perfil para previdência",
+            "Faz o primeiro contato com Jorge",
+            "Pergunta sobre os planos de aposentadoria dele",
+            "Apresenta o plano que se encaixa nesses planos",
+            "Responde à dúvida de Jorge sobre o resgate",
+            "Formaliza a contratação"
+          ],
+          "explanation": "Prospecção, abordagem, sondagem, apresentação, objeções e fechamento. O pós-venda vem depois.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l3q09",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "da prospecção ao pós-venda",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Três meses depois de Jorge contratar a previdência, Camila liga para saber se ele recebeu o extrato e tem dúvidas. Essa ligação é parte de qual etapa?",
+          "options": [
+            "prospecção, para encontrar novos clientes",
+            "pós-venda, para manter o relacionamento",
+            "sondagem, antes da oferta"
+          ],
+          "answer": 1,
+          "explanation": "Acompanhar o cliente depois da compra é o pós-venda, que sustenta a relação de longo prazo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q10",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "da prospecção ao pós-venda",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Camila apresentou o plano a Jorge antes de perguntar qualquer coisa sobre os objetivos dele. Que etapa ela pulou?",
+          "options": [
+            "o fechamento da venda",
+            "a prospecção de clientes",
+            "a sondagem das necessidades"
+          ],
+          "answer": 2,
+          "explanation": "Sem sondagem, a apresentação é genérica e corre o risco de não servir ao cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q11",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "produto, preço, praça e promoção",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: Produto é o que se oferece, Preço é quanto custa, Praça é onde e como chega ao cliente, e Promoção é como a empresa comunica e incentiva a compra. O banco lança uma conta universitária e fixa a tarifa mensal em R$ 5. Essa decisão é do P de:",
+          "options": [
+            "Preço",
+            "Praça",
+            "Produto"
+          ],
+          "answer": 0,
+          "explanation": "Definir quanto o cliente paga é decisão de Preço.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l3q12",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "produto, preço, praça e promoção",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "No mix de marketing, permitir abrir a conta universitária pelo aplicativo, sem ir à agência, é uma decisão de Praça.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Praça trata dos canais pelos quais o produto chega ao cliente: agência, app, correspondente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l3q13",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "produto, preço, praça e promoção",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada decisão sobre a conta universitária ao P do mix de marketing:",
+          "pairs": [
+            {
+              "left": "Conta com cartão e limite para estudante",
+              "right": "Produto"
+            },
+            {
+              "left": "Tarifa de R$ 5 por mês",
+              "right": "Preço"
+            },
+            {
+              "left": "Abertura pelo app e em quiosques no campus",
+              "right": "Praça"
+            },
+            {
+              "left": "Anúncios nas redes sociais",
+              "right": "Promoção"
+            }
+          ],
+          "explanation": "O que é oferecido, quanto custa, por onde chega e como é comunicado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l3q14",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "produto, preço, praça e promoção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Dentro do P de Promoção, dar um bônus por tempo limitado a quem abrir a conta universitária até o fim do mês é exemplo de:",
+          "options": [
+            "relações públicas",
+            "promoção de vendas",
+            "venda pessoal"
+          ],
+          "answer": 1,
+          "explanation": "Incentivo temporário para estimular a compra é promoção de vendas. Relações públicas cuidam da imagem; venda pessoal é o contato direto do vendedor.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q15",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "produto, preço, praça e promoção",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "O banco passa a oferecer a conta universitária também por correspondentes perto das faculdades. Qual P mudou?",
+          "options": [
+            "Preço",
+            "Promoção",
+            "Praça"
+          ],
+          "answer": 2,
+          "explanation": "Correspondentes são mais um canal de distribuição: é uma mudança de Praça.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q16",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ambiente externo e interno",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o ambiente externo traz oportunidades e ameaças que o banco não controla; o interno, forças e fraquezas que ele controla. Uma fábrica que vai abrir no bairro da agência Jardim, trazendo 500 empregos, é:",
+          "options": [
+            "oportunidade do ambiente externo",
+            "força do ambiente interno",
+            "fraqueza do ambiente interno"
+          ],
+          "answer": 0,
+          "explanation": "A fábrica é um fato de fora, que o banco não controla, e que favorece novos negócios: oportunidade.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l3q17",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ambiente externo e interno",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "O horário de funcionamento da agência Jardim é uma variável que o banco pode controlar.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Horário é decisão interna. Variáveis incontroláveis são as do ambiente, como inflação e concorrência.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l3q18",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ambiente externo e interno",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada fato da agência Jardim ao quadrante da matriz SWOT:",
+          "pairs": [
+            {
+              "left": "Equipe experiente em crédito rural",
+              "right": "Força"
+            },
+            {
+              "left": "Sistema lento na abertura de contas",
+              "right": "Fraqueza"
+            },
+            {
+              "left": "Safra recorde prevista na região",
+              "right": "Oportunidade"
+            },
+            {
+              "left": "Fintech com tarifa zero chegando à cidade",
+              "right": "Ameaça"
+            }
+          ],
+          "explanation": "Forças e fraquezas são internas; oportunidades e ameaças vêm de fora.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l3q19",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ambiente externo e interno",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A inflação sobe e as famílias do bairro passam a poupar menos. Para a agência Jardim, isso é:",
+          "options": [
+            "fraqueza interna, que ela pode corrigir",
+            "ameaça externa, fora do seu controle",
+            "força interna, se ela reagir rápido"
+          ],
+          "answer": 1,
+          "explanation": "Inflação é variável do ambiente econômico: o banco não a controla, só reage a ela.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q20",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ambiente externo e interno",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A agência Jardim cruza a força 'equipe de crédito rural' com a oportunidade 'safra recorde'. A ação que sai desse cruzamento é:",
+          "options": [
+            "reduzir a equipe de crédito rural",
+            "fechar o atendimento aos sábados",
+            "campanha de crédito de custeio"
+          ],
+          "answer": 2,
+          "explanation": "Usar uma força para aproveitar uma oportunidade é a leitura mais direta da SWOT no plano comercial.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q21",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "clima, metas e reconhecimento",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: o gestor que combina metas com a equipe, acompanha o resultado toda semana e reconhece quem evolui cria um clima de confiança. Fábio decide divulgar só os nomes de quem ficou abaixo da meta, para 'pressionar'. Essa atitude tende a:",
+          "options": [
+            "piorar o clima e a motivação da equipe",
+            "melhorar a confiança entre líder e equipe",
+            "aumentar a cooperação entre colegas"
+          ],
+          "answer": 0,
+          "explanation": "A exposição pública gera medo e ressentimento, não confiança. O reconhecimento motiva mais que a punição.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l3q22",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "clima, metas e reconhecimento",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Metas impossíveis de atingir costumam motivar mais a equipe de Fábio, porque exigem esforço máximo.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Meta que ninguém alcança desanima. O que motiva é a meta desafiadora, mas possível.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l3q23",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "clima, metas e reconhecimento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Dois vendedores da equipe de Fábio brigam pelo mesmo cliente. A atitude de líder que preserva o clima é:",
+          "options": [
+            "deixar que disputem para ver quem vende mais",
+            "mediar e definir regras claras de carteira",
+            "dar o cliente a quem tem mais tempo de casa"
+          ],
+          "answer": 1,
+          "explanation": "Conflito sem regra cresce. O líder media e deixa claro quem atende cada cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l3q24",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "clima, metas e reconhecimento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Fábio quer que a equipe venda mais seguros no trimestre. Qual ação é mais adequada?",
+          "options": [
+            "cortar a folga de quem não bater a meta",
+            "aumentar a meta sem conversar antes com a equipe",
+            "metas claras, acompanhamento e reconhecimento"
+          ],
+          "answer": 2,
+          "explanation": "Metas combinadas, acompanhadas de perto e com reconhecimento sustentam a motivação. Punir e impor desgastam.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l3q25",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "clima, metas e reconhecimento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um vendedor novo da equipe de Fábio está abaixo da meta porque ainda não conhece os produtos de seguro. O gestor deve:",
+          "options": [
+            "treiná-lo e acompanhar a evolução dele",
+            "transferi-lo para outra agência",
+            "dar a ele a mesma meta dos mais antigos, sem apoio"
+          ],
+          "answer": 0,
+          "explanation": "A causa é falta de preparo: o caminho é capacitar e acompanhar, não punir.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l3c5",
+          "level": "praticar",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "u17l4",
+      "order": 4,
+      "title": "Negociação",
+      "concepts": [
+        {
+          "id": "u17l4c1",
+          "title": "Etapas da negociação",
+          "summary": "Negociar é buscar um acordo quando as partes têm interesses em comum e em conflito. Etapas: preparação (objetivos, informações, limites e alternativas), abertura (clima de confiança), exploração (descobrir necessidades), propostas e concessões, fechamento (formalizar o acordo) e acompanhamento (verificar o cumprimento)."
+        },
+        {
+          "id": "u17l4c2",
+          "title": "Posições e interesses",
+          "summary": "Posição é o que a parte pede; interesse é o motivo por trás do pedido. A negociação baseada em princípios propõe: separar as pessoas do problema, focar nos interesses e não nas posições, criar opções de ganho mútuo e usar critérios objetivos (como preços de mercado) para decidir."
+        },
+        {
+          "id": "u17l4c3",
+          "title": "Negociação distributiva e integrativa",
+          "summary": "Na negociação distributiva (ganha-perde), as partes dividem um valor fixo: o que uma ganha, a outra perde, como quando só se discute o preço. Na integrativa (ganha-ganha), entram vários itens (prazo, garantia, taxa), e as partes trocam o que vale menos para uma e mais para a outra, ampliando o valor do acordo."
+        },
+        {
+          "id": "u17l4c4",
+          "title": "MAPAN e zona de acordo",
+          "summary": "MAPAN (melhor alternativa para um acordo negociado, em inglês BATNA) é o que você fará se não houver acordo; ela define quando vale a pena recusar. Preço de reserva é o limite de cada parte. A zona de possível acordo fica entre o limite de uma parte e o da outra; se os limites não se cruzam, não há acordo possível."
+        },
+        {
+          "id": "u17l4c5",
+          "title": "Concessões e técnicas de negociação",
+          "summary": "Cada concessão deve vir em troca de algo e de forma gradual, nunca de graça nem tudo de uma vez. Ancoragem: a primeira proposta vira referência para o resto da conversa. Ouvir e perguntar antes de propor, e resumir o que foi combinado ao final, evitam mal-entendidos."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17l4q01",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "preparação ao acompanhamento",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: antes de receber Otávio, que tem uma dívida no cartão, Lívia levanta o histórico dele, as opções de parcelamento e até onde pode reduzir os juros; isso é a preparação. Na reunião, ela começa cumprimentando Otávio e criando um clima tranquilo. Essa fase é a:",
+          "options": [
+            "exploração",
+            "abertura",
+            "fechamento"
+          ],
+          "answer": 1,
+          "explanation": "Criar clima e confiança no início da conversa é a abertura. A exploração vem depois, quando ela ouve a situação de Otávio.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l4q02",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "preparação ao acompanhamento",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A preparação é a etapa em que Lívia define objetivos, reúne informações e estabelece seus limites antes de conversar com Otávio.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Sem preparação, o negociador não sabe até onde pode ir nem o que pedir em troca.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l4q03",
+          "type": "order_code",
+          "topic": "Vendas e atendimento",
+          "subtopic": "preparação ao acompanhamento",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Ordene as etapas da renegociação de Lívia com Otávio:",
+          "lines": [
+            "Estudar o histórico e as opções de parcelamento",
+            "Criar um clima de confiança no início",
+            "Ouvir quanto Otávio consegue pagar por mês",
+            "Apresentar uma proposta de parcelamento",
+            "Formalizar o acordo no sistema",
+            "Verificar o pagamento das primeiras parcelas"
+          ],
+          "explanation": "Preparação, abertura, exploração, proposta, fechamento e acompanhamento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l4q04",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "preparação ao acompanhamento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Otávio aceitou o parcelamento, mas o acordo não foi registrado e a cobrança continuou. Que etapa falhou?",
+          "options": [
+            "abertura, que cria o clima",
+            "exploração, que levanta as necessidades",
+            "fechamento, que formaliza o acordo"
+          ],
+          "answer": 2,
+          "explanation": "O acordo só vale quando é formalizado. Sem registro, o combinado se perde.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l4q05",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "preparação ao acompanhamento",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Na renegociação de um contrato de crédito empresarial, o gerente percebe, já durante a reunião, que não sabe qual desconto máximo a instituição autoriza nem conhece o faturamento atual do cliente. A falha ocorreu na etapa de",
+          "options": [
+            "abertura, quando se cria o clima inicial da conversa.",
+            "exploração, quando se descobrem os interesses do cliente.",
+            "fechamento, quando se formaliza o que foi acordado.",
+            "preparação, quando se definem limites e se reúnem dados.",
+            "acompanhamento, quando se verifica o cumprimento."
+          ],
+          "answer": 3,
+          "explanation": "Conhecer os próprios limites e as informações da outra parte é tarefa da preparação, antes da reunião. As outras etapas acontecem durante ou depois da conversa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c1",
+          "level": "prova"
+        },
+        {
+          "id": "u17l4q06",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "negociação baseada em princípios",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: posição é o que se pede ('quero tarifa zero'); interesse é o motivo ('preciso cortar custos fixos neste ano'). A Transportadora Rota diz ao gerente Nelson: 'Só fico no banco se a tarifa da folha cair pela metade, porque nosso caixa está apertado'. O interesse da empresa é:",
+          "options": [
+            "aliviar o caixa neste período",
+            "reduzir a tarifa pela metade",
+            "trocar de banco"
+          ],
+          "answer": 0,
+          "explanation": "Cortar a tarifa pela metade é a posição. O que está por trás dela é o caixa apertado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l4q07",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "negociação baseada em princípios",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na negociação baseada em princípios, Nelson deve ser firme com o problema e respeitoso com as pessoas, separando uma coisa da outra.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "Separar as pessoas do problema evita que a discussão vire disputa pessoal.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l4q08",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "negociação baseada em princípios",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sabendo que o interesse da Rota é aliviar o caixa, Nelson pode propor:",
+          "options": [
+            "manter a tarifa e encerrar a conversa",
+            "carência na tarifa por seis meses",
+            "cortar a tarifa pela metade para sempre"
+          ],
+          "answer": 1,
+          "explanation": "A carência atende o interesse (caixa agora) sem ceder a posição de forma permanente: é uma opção de ganho mútuo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l4q09",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "negociação baseada em princípios",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "A negociação baseada em princípios tem quatro pontos. Associe cada um à sua prática:",
+          "pairs": [
+            {
+              "left": "Pessoas",
+              "right": "Separar as pessoas do problema"
+            },
+            {
+              "left": "Interesses",
+              "right": "Focar no motivo por trás das posições"
+            },
+            {
+              "left": "Opções",
+              "right": "Criar alternativas de ganho mútuo"
+            },
+            {
+              "left": "Critérios",
+              "right": "Usar padrões objetivos, como preço de mercado"
+            }
+          ],
+          "explanation": "Os quatro pontos levam a acordos mais sensatos e preservam a relação.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l4q10",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "negociação baseada em princípios",
+          "difficulty": 3,
+          "style": "caso_pratico",
+          "stem": "Um cliente exige desconto nos juros de um empréstimo, e o gerente insiste em que a taxa é a da tabela. Para aplicar a negociação baseada em princípios, o gerente deveria",
+          "options": [
+            "manter a taxa da tabela, para não abrir precedente na agência.",
+            "conceder o desconto pedido, para preservar o relacionamento.",
+            "transferir o cliente para outro gerente, que seja mais flexível.",
+            "ameaçar reduzir o limite, para recuperar a posição de força.",
+            "entender o motivo do pedido e usar a taxa de mercado como base."
+          ],
+          "answer": 4,
+          "explanation": "O método manda sair das posições (desconto × tabela), entender o interesse do cliente e decidir por critérios objetivos. Manter ou ceder sem análise continua preso às posições, e ameaçar mistura pessoas e problema.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c2",
+          "level": "prova"
+        },
+        {
+          "id": "u17l4q11",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ganha-perde e ganha-ganha",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: quando só se discute a taxa, cada ponto que o cliente ganha o banco perde: é negociação distributiva. Quando entram prazo, garantia e taxa, as partes podem trocar o que vale menos para uma e mais para a outra: é integrativa. O produtor Ivo e o banco ajustam a carência à colheita em troca de uma garantia melhor. Essa negociação é:",
+          "options": [
+            "distributiva",
+            "competitiva",
+            "integrativa"
+          ],
+          "answer": 2,
+          "explanation": "Vários itens foram combinados para ganho dos dois lados: é integrativa. Distributiva e competitiva são nomes do ganha-perde.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l4q12",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ganha-perde e ganha-ganha",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na negociação integrativa entre Ivo e o banco, o objetivo é que uma parte ganhe o máximo possível às custas da outra.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Esse é o espírito da distributiva. A integrativa busca ampliar o valor para os dois.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l4q13",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ganha-perde e ganha-ganha",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ivo pede taxa menor. O banco aceita reduzir a taxa se Ivo der em garantia uma máquina, o que diminui o risco da operação. Essa troca:",
+          "options": [
+            "cria valor para os dois lados",
+            "é ganha-perde, pois o banco cedeu",
+            "só beneficia o banco"
+          ],
+          "answer": 0,
+          "explanation": "Ivo paga menos juros e o banco corre menos risco: os dois saem melhor, típico da integrativa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l4q14",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ganha-perde e ganha-ganha",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Em qual situação a negociação distributiva é mais comum?",
+          "options": [
+            "parceria de anos entre banco e cooperativa",
+            "compra única, sem relação futura, só pelo preço",
+            "acordo com vários itens em discussão ao mesmo tempo"
+          ],
+          "answer": 1,
+          "explanation": "Um item só e nenhuma relação futura empurram para o ganha-perde. Relações longas e muitos itens favorecem a integrativa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l4q15",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ganha-perde e ganha-ganha",
+          "difficulty": 2,
+          "style": "literal",
+          "stem": "Comparada à negociação distributiva, a negociação integrativa caracteriza-se por",
+          "options": [
+            "ampliar o valor, combinando vários itens.",
+            "discutir um único item, em geral o preço final.",
+            "tratar a outra parte como adversária a vencer.",
+            "esconder informações para obter vantagem.",
+            "encerrar o relacionamento após o acordo."
+          ],
+          "answer": 0,
+          "explanation": "A integrativa combina itens para criar valor e preservar a relação. Item único, adversário e informação escondida são marcas da distributiva.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c3",
+          "level": "prova"
+        },
+        {
+          "id": "u17l4q16",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "alternativas e limites",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a MAPAN é o que você fará se não houver acordo. Teresa já tem uma proposta de outro banco a 1,8% ao mês para o consignado; essa é a MAPAN dela. Se o banco dela oferecer 2,0% ao mês, o mais racional para Teresa é:",
+          "options": [
+            "aceitar, para não perder tempo",
+            "aceitar, pois é o banco onde ela tem conta",
+            "recusar e ficar com a proposta de 1,8%"
+          ],
+          "answer": 2,
+          "explanation": "Qualquer acordo pior que a MAPAN deve ser recusado: 2,0% é mais caro que a alternativa de 1,8%.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l4q17",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "alternativas e limites",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Conhecer a própria MAPAN ajuda Teresa a saber quando é melhor não fechar o acordo.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A MAPAN é o piso de comparação: abaixo dela, sair da negociação é melhor que aceitar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l4q18",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "alternativas e limites",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A zona de possível acordo fica entre o limite de uma parte e o da outra. O banco aceita baixar até 1,6% ao mês, e Teresa aceita pagar até 1,8%. Onde está a zona de acordo?",
+          "options": [
+            "entre 1,6% e 1,8% ao mês",
+            "abaixo de 1,6% ao mês",
+            "acima de 1,8% ao mês"
+          ],
+          "answer": 0,
+          "explanation": "Qualquer taxa entre os dois limites é aceitável para ambos. Fora dessa faixa, uma das partes recusa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l4q19",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "alternativas e limites",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Se o menor juro que o banco aceita fosse 1,9% ao mês e Teresa só aceitasse até 1,8%, o que aconteceria?",
+          "options": [
+            "o acordo sairia a 1,85%",
+            "não haveria zona de acordo",
+            "Teresa pagaria 1,9% ao mês"
+          ],
+          "answer": 1,
+          "explanation": "Os limites não se cruzam: o banco não desce de 1,9% e Teresa não sobe de 1,8%. Sem zona de acordo, Teresa fica com a MAPAN.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l4q20",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "alternativas e limites",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Uma empresa negocia com o banco a taxa de antecipação de recebíveis. Outra instituição já lhe ofereceu formalmente 1,5% ao mês, e o diretor financeiro sabe que pode recorrer a ela a qualquer momento. No vocabulário da negociação, essa proposta concorrente representa, para a empresa,",
+          "options": [
+            "a zona de possível acordo entre as partes.",
+            "a melhor alternativa sem acordo (MAPAN).",
+            "a âncora fixada pelo banco na abertura.",
+            "a concessão final obtida no fechamento.",
+            "a posição inicial que o banco declarou."
+          ],
+          "answer": 1,
+          "explanation": "O que a empresa fará se não fechar com o banco é a MAPAN. A zona de acordo depende dos limites das duas partes, e âncora, concessão e posição do banco são outras coisas.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c4",
+          "level": "prova"
+        },
+        {
+          "id": "u17l4q21",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "troca, ancoragem e confirmação",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: cada concessão deve vir em troca de outra: 'reduzo a tarifa se a empresa trouxer a folha de pagamento para cá'. A clínica Vida pede a Márcia isenção da tarifa da maquininha. A resposta que segue a regra é:",
+          "options": [
+            "isento já, para agradar a clínica",
+            "não isento, e encerra a conversa por ali",
+            "isento se concentrarem os recebíveis aqui"
+          ],
+          "answer": 2,
+          "explanation": "Márcia cede na tarifa e ganha volume de recebíveis: concessão com contrapartida.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l4q22",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "troca, ancoragem e confirmação",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Ancoragem é o efeito da primeira proposta apresentada, que tende a servir de referência para o resto da negociação entre Márcia e a clínica Vida.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A primeira proposta puxa a conversa para perto dela; por isso quem abre bem preparado tem vantagem.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l4q23",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "troca, ancoragem e confirmação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Ceder aos poucos dá espaço para trocar cada passo por uma contrapartida. A clínica pede 50% de desconto, e Márcia pode dar até 30%. Ela deve:",
+          "options": [
+            "começar com menos e ceder aos poucos",
+            "oferecer logo de uma vez os 30% de desconto",
+            "recusar qualquer desconto"
+          ],
+          "answer": 0,
+          "explanation": "Dar tudo de uma vez acaba com a margem para negociar; recusar tudo pode encerrar a conversa.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l4q24",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "troca, ancoragem e confirmação",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "No fim, Márcia diz: 'Então combinamos: desconto de 20% e folha de pagamento conosco a partir de março, certo?'. Essa técnica serve para:",
+          "options": [
+            "reabrir a negociação de outros itens do pacote",
+            "confirmar o acordo e evitar mal-entendidos",
+            "ancorar uma nova proposta"
+          ],
+          "answer": 1,
+          "explanation": "Resumir o combinado garante que as duas partes entenderam o mesmo antes de formalizar.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l4q25",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "troca, ancoragem e confirmação",
+          "difficulty": 2,
+          "style": "excecao",
+          "stem": "Em uma negociação comercial com uma empresa cliente, são condutas adequadas do gerente as seguintes, EXCETO",
+          "options": [
+            "ouvir o cliente antes de apresentar propostas.",
+            "resumir os pontos acordados ao final.",
+            "fazer concessões sem pedir nada em troca.",
+            "planejar os seus limites antes da conversa.",
+            "usar perguntas abertas para sondar."
+          ],
+          "answer": 2,
+          "explanation": "Concessão sem contrapartida reduz o valor do acordo e ensina a outra parte a pedir mais. As demais são boas práticas de preparação, escuta e fechamento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l4c5",
+          "level": "prova"
+        }
+      ]
+    },
+    {
+      "id": "u17l5",
+      "order": 5,
+      "title": "CRM, reclamações e canais digitais",
+      "concepts": [
+        {
+          "id": "u17l5c1",
+          "title": "CRM e marketing de relacionamento",
+          "summary": "CRM (gestão do relacionamento com clientes) é a estratégia, apoiada num sistema, de registrar dados e cada contato do cliente (pedidos, compras, reclamações) para personalizar o atendimento. Só funciona com dados atualizados e registrados por todos. O marketing de relacionamento usa essas informações para manter o cliente fiel no longo prazo."
+        },
+        {
+          "id": "u17l5c2",
+          "title": "Segmentação da carteira",
+          "summary": "Segmentar é dividir a carteira em grupos com características parecidas (renda, idade, atividade, momento de vida, canal preferido) para tratar cada grupo de um jeito. A mesma oferta para todos desperdiça esforço e agrada pouca gente."
+        },
+        {
+          "id": "u17l5c3",
+          "title": "Tratamento de reclamações",
+          "summary": "Reclamação bem tratada recupera o cliente e mostra onde o processo falha. Passos: ouvir sem interromper, registrar com número de protocolo, resolver ou encaminhar, e dar retorno ao cliente. Se o atendimento habitual (agência, SAC) não resolver, o cliente pode recorrer à ouvidoria da instituição."
+        },
+        {
+          "id": "u17l5c4",
+          "title": "Resolução de conflitos e mediação",
+          "summary": "Diante de um cliente irritado: manter a calma, ouvir, mostrar empatia ('entendo o transtorno'), não levar para o lado pessoal, conversar em local reservado e focar na solução possível, sem prometer o que não pode cumprir. Ao mediar um conflito entre pessoas, ouvir os dois lados e aplicar a regra com neutralidade."
+        },
+        {
+          "id": "u17l5c5",
+          "title": "Canais de atendimento e transformação digital",
+          "summary": "No multicanal, o banco tem vários canais (agência, app, internet banking, central, correspondentes), mas eles não se falam. No omnichannel, os canais são integrados: o cliente começa num e termina no outro sem repetir nada. O digital resolve o simples; o atendimento humano segue essencial nos casos complexos e para quem tem dificuldade com tecnologia."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17l5q01",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "histórico e personalização",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: no CRM, a agência registra cada contato do cliente; quem atende depois já conhece o histórico. Gustavo ligou ontem reclamando de uma tarifa e hoje foi à agência. Com o CRM bem usado, Renata:",
+          "options": [
+            "pede que ele conte tudo de novo",
+            "oferece um produto novo sem olhar o histórico",
+            "já conhece a reclamação e retoma o assunto"
+          ],
+          "answer": 2,
+          "explanation": "O registro do contato de ontem permite continuar de onde parou, sem fazer Gustavo repetir a história.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c1",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l5q02",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "histórico e personalização",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "CRM é apenas um software; para funcionar, não depende de os funcionários registrarem as informações dos clientes como Gustavo.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O sistema só mostra o que foi registrado. Sem registro e atualização pela equipe, o CRM fica vazio ou errado.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c1",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l5q03",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "histórico e personalização",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Pelo CRM, Renata vê que Gustavo recebe o salário na conta, usa pouco o cartão e perguntou duas vezes sobre investimento. A ação de relacionamento mais adequada é:",
+          "options": [
+            "ligar e oferecer orientação sobre investimentos",
+            "oferecer um aumento do limite do cartão de crédito",
+            "enviar a mesma oferta que todos recebem"
+          ],
+          "answer": 0,
+          "explanation": "O histórico mostra o interesse dele. Personalizar a oferta é o uso certo dos dados do CRM.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c1",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l5q04",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "histórico e personalização",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Qual destas práticas é de marketing de relacionamento, e não de venda pontual?",
+          "options": [
+            "vender o máximo no primeiro contato",
+            "acompanhar Gustavo e ajustar as ofertas",
+            "dar um desconto só no dia da abertura da conta"
+          ],
+          "answer": 1,
+          "explanation": "Relacionamento é contínuo: conhecer o cliente ao longo do tempo e oferecer o que faz sentido em cada momento.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q05",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "histórico e personalização",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Gustavo mudou de telefone e de endereço, mas ninguém atualizou o cadastro. Para o CRM, a consequência é:",
+          "options": [
+            "a tarifa de Gustavo passa a aumentar sozinha",
+            "o sistema corrige os dados sozinho",
+            "as ações de relacionamento não chegam a ele"
+          ],
+          "answer": 2,
+          "explanation": "Com dados desatualizados, ligações, cartas e ofertas se perdem. O cadastro é a base do CRM.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c1",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q06",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "grupos com características comuns",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: segmentar é dividir a carteira em grupos parecidos para tratar cada um de um jeito, como aposentados, jovens no primeiro emprego e pequenos empresários. A gerente Sandra tem 400 clientes e separa os que são donos de comércio. O critério usado foi:",
+          "options": [
+            "atividade econômica",
+            "faixa etária",
+            "região de moradia"
+          ],
+          "answer": 0,
+          "explanation": "Ser dono de comércio é uma atividade econômica. Idade e região seriam outros critérios.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c2",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l5q07",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "grupos com características comuns",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Na segmentação, Sandra envia exatamente a mesma oferta a todos os clientes da carteira, para não haver tratamento diferente.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "Segmentar serve justamente para adaptar a oferta a cada grupo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c2",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l5q08",
+          "type": "match",
+          "topic": "Vendas e atendimento",
+          "subtopic": "grupos com características comuns",
+          "difficulty": 2,
+          "style": "conceitual",
+          "stem": "Associe cada segmento da carteira de Sandra à oferta mais adequada:",
+          "pairs": [
+            {
+              "left": "Jovens no primeiro emprego",
+              "right": "Primeiro cartão e reserva de emergência"
+            },
+            {
+              "left": "Pequenos comerciantes",
+              "right": "Maquininha e capital de giro"
+            },
+            {
+              "left": "Aposentados",
+              "right": "Recebimento do benefício e prevenção a golpes"
+            },
+            {
+              "left": "Clientes de alta renda",
+              "right": "Consultoria de investimentos"
+            }
+          ],
+          "explanation": "Cada grupo tem necessidades típicas; a oferta acompanha o momento e a atividade do cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c2",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l5q09",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "grupos com características comuns",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sandra percebe que 60 clientes jovens usam só o app e nunca vão à agência. A melhor forma de falar com esse segmento é:",
+          "options": [
+            "cartas impressas pelo correio a cada trimestre",
+            "ofertas personalizadas pelo próprio app",
+            "convites para palestras na agência"
+          ],
+          "answer": 1,
+          "explanation": "O canal preferido também é critério de segmentação: fala-se com o cliente onde ele está.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q10",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "grupos com características comuns",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Sandra separa os clientes com a conta parada há seis meses. Esse grupo pede uma ação de:",
+          "options": [
+            "encerramento imediato das contas",
+            "a mesma campanha enviada aos clientes ativos",
+            "reativação, com contato e oferta sob medida"
+          ],
+          "answer": 2,
+          "explanation": "Clientes inativos formam um segmento próprio: o objetivo é entender por que pararam e trazê-los de volta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c2",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q11",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ouvir, registrar, resolver e dar retorno",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: a reclamação bem tratada segue quatro passos: ouvir, registrar com protocolo, resolver ou encaminhar, e dar retorno. Neide reclama de uma tarifa cobrada indevidamente. O técnico ouviu e registrou o protocolo. O próximo passo é:",
+          "options": [
+            "resolver ou encaminhar a correção",
+            "encerrar o atendimento",
+            "pedir que ela volte outro dia"
+          ],
+          "answer": 0,
+          "explanation": "Depois de ouvir e registrar, vem a solução (ou o encaminhamento a quem resolve). O retorno fecha o ciclo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c3",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l5q12",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ouvir, registrar, resolver e dar retorno",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Quando a reclamação de Neide não é resolvida no atendimento habitual (agência ou SAC), ela pode recorrer à ouvidoria da instituição.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "A ouvidoria atua depois do atendimento habitual, como instância para os casos que não foram resolvidos ali.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c3",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l5q13",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ouvir, registrar, resolver e dar retorno",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "A tarifa de Neide foi estornada. O que falta para fechar bem o atendimento?",
+          "options": [
+            "nada, o estorno já resolveu o caso",
+            "dar retorno a Neide e confirmar a solução",
+            "aproveitar e oferecer outro produto na mesma ligação"
+          ],
+          "answer": 1,
+          "explanation": "Sem retorno, Neide pode nem saber que o problema foi resolvido. O retorno é o último passo.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c3",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l5q14",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "ouvir, registrar, resolver e dar retorno",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Neide ligou três vezes e, em cada ligação, teve de explicar tudo de novo. O que falhou?",
+          "options": [
+            "a cordialidade dos atendentes",
+            "o horário de funcionamento do atendimento telefônico",
+            "o registro do histórico da reclamação"
+          ],
+          "answer": 2,
+          "explanation": "Com o protocolo e o histórico registrados, cada atendente continuaria de onde o anterior parou.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c3",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q15",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "cliente irritado e neutralidade",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: diante de um cliente irritado, o atendente mantém a calma, ouve, mostra que entende e passa para a solução. Wagner fala alto na fila porque o caixa eletrônico reteve o cartão dele. A primeira resposta adequada é:",
+          "options": [
+            "ouvir e dizer que entende o transtorno",
+            "pedir que ele baixe o tom ou saia",
+            "explicar que a culpa é da máquina, não do banco"
+          ],
+          "answer": 0,
+          "explanation": "Acolher primeiro baixa a tensão. Repreender ou se justificar aumenta o conflito.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c4",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l5q16",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "cliente irritado e neutralidade",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "Ao atender um cliente exaltado como Wagner, convém levá-lo para um local mais reservado, longe da fila, para conversar com calma.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 0,
+          "explanation": "O local reservado tira a plateia, acalma e dá privacidade ao cliente.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c4",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l5q17",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "cliente irritado e neutralidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Wagner exige o cartão de volta na hora, mas o caixa só será aberto pela manutenção amanhã. O atendente deve:",
+          "options": [
+            "prometer que o cartão será devolvido em uma hora, no máximo",
+            "dizer o prazo real e oferecer bloqueio e segunda via",
+            "dizer que não há nada a fazer"
+          ],
+          "answer": 1,
+          "explanation": "Prometer o impossível gera nova frustração; negar tudo também. O caminho é a verdade e uma solução possível.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c4",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l5q18",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "cliente irritado e neutralidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Dois clientes discutem na agência por causa da ordem da fila preferencial. Como mediador, o técnico deve:",
+          "options": [
+            "dar razão a quem estiver falando mais alto na fila",
+            "pedir que os dois resolvam a questão entre eles",
+            "ouvir os dois e aplicar a regra com neutralidade"
+          ],
+          "answer": 2,
+          "explanation": "O mediador não toma partido: escuta as partes e decide pela regra, que vale para todos.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c4",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q19",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "cliente irritado e neutralidade",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente chega à agência muito irritado, falando alto, porque um Pix agendado não foi feito e ele pagou multa num boleto. Diante da situação, a conduta mais adequada do técnico bancário é",
+          "options": [
+            "pedir que o cliente se acalme antes de iniciar o atendimento.",
+            "explicar que o agendamento é de responsabilidade do cliente.",
+            "encaminhar o cliente à ouvidoria, sem analisar o caso antes.",
+            "acolher o cliente, ouvir o relato e buscar uma solução.",
+            "garantir o ressarcimento da multa antes de apurar o ocorrido."
+          ],
+          "answer": 3,
+          "explanation": "Acolher e ouvir baixa a tensão e permite entender o que houve. Exigir calma ou culpar o cliente acirra o conflito; a ouvidoria vem depois do atendimento habitual; e prometer ressarcimento sem apurar pode criar uma promessa que não se cumpre.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c4",
+          "level": "prova"
+        },
+        {
+          "id": "u17l5q20",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "multicanal e omnichannel",
+          "difficulty": 1,
+          "style": "caso_pratico",
+          "stem": "Exemplo: no multicanal, há vários canais que não se comunicam; no omnichannel, os canais são integrados e o cliente continua de onde parou. Yara simulou um financiamento no app e foi à agência; o gerente abriu a mesma simulação na tela dele. Isso é:",
+          "options": [
+            "omnichannel",
+            "multicanal",
+            "canal único"
+          ],
+          "answer": 0,
+          "explanation": "O gerente viu o que Yara fez no app: os canais compartilham o histórico, característica do omnichannel.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c5",
+          "level": "aprender",
+          "step": 1
+        },
+        {
+          "id": "u17l5q21",
+          "type": "truefalse",
+          "topic": "Vendas e atendimento",
+          "subtopic": "multicanal e omnichannel",
+          "difficulty": 1,
+          "style": "conceitual",
+          "stem": "A transformação digital do setor bancário eliminou a necessidade de atendimento humano, inclusive nos casos complexos como o financiamento de Yara.",
+          "options": [
+            "Certo",
+            "Errado"
+          ],
+          "answer": 1,
+          "explanation": "O digital absorve as operações simples. Casos complexos, orientação e clientes com dificuldade ainda pedem atendimento humano.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c5",
+          "level": "aprender",
+          "step": 2
+        },
+        {
+          "id": "u17l5q22",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "multicanal e omnichannel",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Yara começou um pedido de cartão no chat, mas a conexão caiu. Ao ligar para a central de um banco omnichannel, ela:",
+          "options": [
+            "refaz o pedido desde o início",
+            "continua o pedido de onde parou",
+            "precisa ir à agência para concluir"
+          ],
+          "answer": 1,
+          "explanation": "Com canais integrados, a central vê o pedido iniciado no chat e segue dali.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c5",
+          "level": "praticar",
+          "step": 2
+        },
+        {
+          "id": "u17l5q23",
+          "type": "quick",
+          "topic": "Vendas e atendimento",
+          "subtopic": "multicanal e omnichannel",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um cliente idoso tem dificuldade com o app. A atitude que combina inclusão e transformação digital é:",
+          "options": [
+            "exigir que ele passe a usar apenas o aplicativo",
+            "desativar o acesso digital dele",
+            "orientar o uso do app e manter outros canais"
+          ],
+          "answer": 2,
+          "explanation": "Ensinar o uso ajuda a incluir, e manter agência e telefone garante o atendimento enquanto ele se adapta.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c5",
+          "level": "praticar",
+          "step": 3
+        },
+        {
+          "id": "u17l5q24",
+          "type": "mcq5",
+          "topic": "Vendas e atendimento",
+          "subtopic": "multicanal e omnichannel",
+          "difficulty": 2,
+          "style": "caso_pratico",
+          "stem": "Um banco percebe que os clientes que usam o aplicativo e depois ligam para a central precisam repetir todos os dados, e que o gerente da agência não vê as simulações feitas no aplicativo. Para melhorar a experiência do cliente, o banco deve",
+          "options": [
+            "criar novos canais, cada um com equipe própria.",
+            "reduzir o horário de atendimento da central.",
+            "levar todo o atendimento de volta para a agência.",
+            "limitar o aplicativo às consultas de saldo.",
+            "integrar os canais e o histórico do cliente."
+          ],
+          "answer": 4,
+          "explanation": "O problema é a falta de integração (multicanal). A saída é o omnichannel: canais conectados, com o mesmo histórico. Criar mais canais isolados ou cortar canais piora a experiência.",
+          "source": "ia",
+          "reviewed": false,
+          "concept": "u17l5c5",
+          "level": "prova"
+        }
+      ]
+    }
+  ]
+}
